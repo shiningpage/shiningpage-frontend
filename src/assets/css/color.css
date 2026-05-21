@@ -1,0 +1,1027 @@
+.fontColor {
+  color:#000000
+}
+.fontColor.wt {
+  color:#ffffff
+}
+.fontColor.bl {
+  color:#000000
+}
+.fontColor:hover {
+  cursor: pointer;
+}
+
+.C0 {
+  background-color: #BAC4D4;
+}
+.f0 {
+  color: #7a8594;
+}
+.i0 {
+  color: #9aa7ba;
+}
+.b0 {
+  border: 3px solid #99a3b2;
+}
+.fontColor.h0:hover {
+  color: #9aa7ba;
+}
+
+.C1 {
+  background-color: #364CFF;
+}
+.f1 {
+  color: #283ccf;
+}
+.i1 {
+  color: #283ccf;
+}
+.b1 {
+  border: 3px solid #364CFF;
+}
+.fontColor.h1:hover {
+  color: #364CFF;
+}
+
+.C2 {
+  background-color: #24b735;
+}
+.f2 {
+  color: #20a32f;
+}
+.i2 {
+  color: #24b735;
+}
+.b2 {
+  border: 3px solid #24b735;
+}
+.fontColor.h2:hover {
+  color: #24b735;
+}
+
+.C3 {
+  background-color: #FF9547;
+}
+.f3 {
+  color: #e3833e;
+}
+.i3 {
+  color: #e3833e;
+}
+.b3 {
+  border: 3px solid #FF9547;
+}
+.fontColor.h3:hover {
+  color: #FF9547;
+}
+
+.C4 {
+  background-color: #f4ef5f;
+}
+.f4 {
+  color: #bfba1f;
+}
+.i4 {
+  color: #bfba1f;
+}
+.b4 {
+  border: 3px solid #f4ef5f;
+}
+.fontColor.h4:hover {
+  color: #f4ef5f;
+}
+
+.C5 {
+  background-color: #B246D4;
+}
+.f5 {
+  color: #a131c4;
+}
+.i5 {
+  color: #a131c4;
+}
+.b5 {
+  border: 3px solid #B246D4;
+}
+.fontColor.h5:hover {
+  color: #B246D4;
+}
+
+.C6 {
+  background-color: #824400;
+}
+.f6 {
+  color: #824400;
+}
+.i6 {
+  color: #824400;
+}
+.b6 {
+  border: 3px solid #824400;
+}
+.fontColor.h6:hover {
+  color: #824400;
+}
+
+.C7 {
+  background-color: #000000;
+}
+.f7 {
+  color: #000000;
+}
+.i7 {
+  color: #000000;
+}
+.b7 {
+  border: 3px solid #000000;
+}
+.fontColor.h7:hover {
+  color: #000000;
+}
+
+.C8 {
+  background-color: #ff002e;
+}
+.f8 {
+  color: #d00026;
+}
+.i8 {
+  color: #d00026;
+}
+.b8 {
+  border: 3px solid #ff002e;
+}
+.fontColor.h8:hover {
+  color: #ff002e;
+}
+
+.C9 {
+  background-color: #f8cb71;
+}
+.f9 {
+  color: #ad8f53;
+}
+.i9 {
+  color: #ad8f53;
+}
+.b9 {
+  border: 3px solid #f8cb71;
+}
+.fontColor.h9:hover {
+  color: #f8cb71;
+}
+
+.C10 {
+  background-color: #fd90e0;
+}
+.f10 {
+  color: #d869ba;
+}
+.i10 {
+  color: #d869ba;
+}
+.b10 {
+  border: 3px solid #fd90e0;
+}
+.fontColor.h10:hover {
+  color: #fd90e0;
+}
+
+.C11 {
+  background-color: #ffffff;
+}
+.f11 {
+  color: #ffffff;
+}
+.i11 {
+  color: #000000;
+}
+.b11 {
+  border: 3px solid #ffffff;
+}
+.fontColor.h11:hover {
+  color: #ffffff;
+}
+
+.C12 {
+  background-color: #00ddff;
+}
+.f12 {
+  color: #00cef2;
+}
+.i12 {
+  color: #00cef2;
+}
+.b12 {
+  border: 3px solid #00ddff;
+}
+.fontColor.h12:hover {
+  color: #00d0f0;
+}
+
+.C13 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/13.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f13 {
+  color: #3e3e3e;
+}
+.i13 {
+  color: #3e3e3e;
+}
+.b13 {
+  border: 3px solid #909396;
+}
+.fontColor.h13:hover {
+  color: #76787a;
+}
+
+.C14 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/14.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f14 {
+  color: #d1a44a;
+}
+.i14 {
+  color: #d1a44a;
+}
+.b14 {
+  border: 3px solid #ddb973;
+}
+.fontColor.h14:hover {
+  color: #d1a44a;
+}
+
+.C15 {
+  background-color: #00194c;
+}
+.f15 {
+  color: #00194c;
+}
+.i15 {
+  color: #00194c;
+}
+.b15 {
+  border: 3px solid #00194c;
+}
+.fontColor.h15:hover {
+  color: #00194c;
+}
+
+.C16 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/16.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f16 {
+  color: #9F716A;
+}
+.i16 {
+  color: #D8A9A4;
+}
+.b16 {
+  border: 3px solid #D8A9A4;
+}
+.fontColor.h16:hover {
+  color: #9F716A;
+}
+
+.C17 {
+  background-color: #0c5b14;
+}
+.f17 {
+  color: #0c5b14;
+}
+.i17 {
+  color: #0c5b14;
+}
+.b17 {
+  border: 3px solid #0c5b14;
+}
+.fontColor.h17:hover {
+  color: #0c5b14;
+}
+
+.C18 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/18.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f18 {
+  color: #FC0496;
+}
+.i18 {
+  color: #FC0496;
+}
+.b18 {
+  border: 3px solid #FC0496;
+}
+.fontColor.h18:hover {
+  color: #FC0496;
+}
+
+.C19 {
+  background-color: #ff34a3;
+}
+.f19 {
+  color: #d42e89;
+}
+.i19 {
+  color: #d42e89;
+}
+.b19 {
+  border: 3px solid #ff34a3;
+}
+.fontColor.h19:hover {
+  color: #FC0496;
+}
+
+.C20 {
+  background-color: #8F1657;
+}
+.f20 {
+  color: #8F1657;
+}
+.i20 {
+  color: #8F1657;
+}
+.b20 {
+  border: 3px solid #8F1657;
+}
+.fontColor.h20:hover {
+  color: #8F1657;
+}
+
+.C21 {
+  background-color: #541a67;
+}
+.f21 {
+  color: #541a67;
+}
+.i21 {
+  color: #541a67;
+}
+.b21 {
+  border: 3px solid #541a67;
+}
+.fontColor.h21:hover {
+  color: #541a67;
+}
+
+.C22 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/22.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f22 {
+  color: #3e3e3e;
+}
+.i22 {
+  color: #3e3e3e;
+}
+.b22 {
+  border: 3px solid #8b8b8b;
+}
+.fontColor.h22:hover {
+  color: #555555;
+}
+
+.C23 {
+  background-color: #CE0301;
+}
+.f23 {
+  color: #ad0300;
+}
+.i23 {
+  color: #ad0300;
+}
+.b23 {
+  border: 3px solid #CE0301;
+}
+.fontColor.h23:hover {
+  color: #CE0301;
+}
+
+.C24 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/24.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f24 {
+  color: #980918;
+}
+.i24 {
+  color: #980918;
+}
+.b24 {
+  border: 3px solid #D02F32;
+}
+.fontColor.h24:hover {
+  color: #d5cc95;
+}
+
+.C25 {
+  background-color: #99E315;
+}
+.f25 {
+  color: #68a400;
+}
+.i25 {
+  color: #88cc13;
+}
+.b25 {
+  border: 3px solid #99E315;
+}
+.fontColor.h25:hover {
+  color: #99E315;
+}
+
+.C26 {
+  background-color: #555555;
+}
+.f26 {
+  color: #3e3e3e;
+}
+.i26 {
+  color: #3e3e3e;
+}
+.b26 {
+  border: 3px solid #555555;
+}
+.fontColor.h26:hover {
+  color: #555555;
+}
+
+.C27 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/27.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f27 {
+  color: #0c5b14;
+}
+.i27 {
+  color: #0c5b14;
+}
+.b27 {
+  border: 3px solid #0c5b14;
+}
+.fontColor.h27:hover {
+  color: #0c5b14;
+}
+
+.C28 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/28a.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f28 {
+  color: #601C3B;
+}
+.i28 {
+  color: #601C3B;
+}
+.b28 {
+  border: 3px solid #601C3B;
+}
+.fontColor.h28:hover {
+  color: #601C3B;
+}
+
+.C29 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/29a.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f29 {
+  color: #933121;
+}
+.i29 {
+  color: #B24C31;
+}
+.b29 {
+  border: 3px solid #B24C31;
+}
+.fontColor.h29:hover {
+  color: #B24C31;
+}
+
+.C30 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/30.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f30 {
+  color: #20a32f;
+}
+.i30 {
+  color: #20a32f;
+}
+.b30 {
+  border: 3px solid #20a32f;
+}
+.fontColor.h30:hover {
+  color: #20a32f;
+}
+
+.C31 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/31.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f31 {
+  color: #B97F15;
+}
+.i31 {
+  color: #B97F15;
+}
+.b31 {
+  border: 3px solid #B97F15;
+}
+.fontColor.h31:hover {
+  color: #7E4C01;
+}
+
+.C32 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/32.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f32 {
+  color: #B97F15;
+}
+.i32 {
+  color: #d1a44a;
+}
+.b32 {
+  border: 3px solid #d1a44a;
+}
+.fontColor.h32:hover {
+  color: #d1a44a;
+}
+
+.C33 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/33.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f33 {
+  color: #3e3e3e;
+}
+.i33 {
+  color: #3e3e3e;
+}
+.b33 {
+  border: 3px solid #555555;
+}
+.fontColor.h33:hover {
+  color: #555555;
+}
+
+.C34 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/34.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f34 {
+  color: #2639c8;
+}
+.i34 {
+  color: #283ccf;
+}
+.b34 {
+  border: 3px solid #364CFF;
+}
+.fontColor.h34:hover {
+  color: #364CFF;
+}
+
+.C35 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/35.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f35 {
+  color: #00b0cb;
+}
+.i35 {
+  color: #00b0cb;
+}
+.b35 {
+  border: 3px solid #00BFDD;
+}
+.fontColor.h35:hover {
+  color: #00BFDD;
+}
+
+.C36 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/36.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f36 {
+  color: #a131c4;
+}
+.i36 {
+  color: #a131c4;
+}
+.b36 {
+  border: 3px solid #B246D4;
+}
+.fontColor.h36:hover {
+  color: #B246D4;
+}
+
+.C37 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/37.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f37 {
+  color: #c40020;
+}
+.i37 {
+  color: #c40020;
+}
+.b37 {
+  border: 3px solid #c40020;
+}
+.fontColor.h37:hover {
+  color: #c40020;
+}
+
+.C38 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/38.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f38 {
+  color: #d1a44a;
+}
+.i38 {
+  color: #d1a44a;
+}
+.b38 {
+  border: 3px solid #ddb973;
+}
+.fontColor.h38:hover {
+  color: #d1a44a;
+}
+
+.C39 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/39.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f39 {
+  color: #d42e89;
+}
+.i39 {
+  color: #d42e89;
+}
+.b39 {
+  border: 3px solid #ff34a3;
+}
+.fontColor.h39:hover {
+  color: #FC0496;
+}
+
+.C40 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/40a.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f40 {
+  color: #000000;
+}
+.i40 {
+  color: #000000;
+}
+.b40 {
+  border: 3px solid #000000;
+}
+.fontColor.h40:hover {
+  color: #000000;
+}
+
+.C41 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/41.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f41 {
+  color: #20a32f;
+}
+.i41 {
+  color: #24b735;
+}
+.b41 {
+  border: 3px solid #24b735;
+}
+.fontColor.h41:hover {
+  color: #24b735;
+}
+
+.C42 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/42.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f42 {
+  color: #E06C01;
+}
+.i42 {
+  color: #f4ac11;
+}
+.b42 {
+  border: 3px solid #F4D011;
+}
+.fontColor.h42:hover {
+  color: #F4D011;
+}
+
+.C43 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/43.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f43 {
+  color: #602909;
+}
+.i43 {
+  color: #602909;
+}
+.b43 {
+  border: 3px solid #602909;
+}
+.fontColor.h43:hover {
+  color: #602909;
+}
+
+.C44 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/44a.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f44 {
+  color: #af011e;
+}
+.i44 {
+  color: #af011e;
+}
+.b44 {
+  border: 3px solid #c40020;
+}
+.fontColor.h44:hover {
+  color: #c40020;
+}
+
+.C45 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/45.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f45 {
+  color: #1e9c2d;
+}
+.i45 {
+  color: #1e9c2d;
+}
+.b45 {
+  border: 3px solid #24b735;
+}
+.fontColor.h45:hover {
+  color: #24b735;
+}
+
+.C46 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/46.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f46 {
+  color: #a131c4;
+}
+.i46 {
+  color: #a131c4;
+}
+.b46 {
+  border: 3px solid #B246D4;
+}
+.fontColor.h46:hover {
+  color: #B246D4;
+}
+
+.C47 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/47.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f47 {
+  color: #10879c;
+}
+.i47 {
+  color: #10879c;
+}
+.b47 {
+  border: 3px solid #259FB4;
+}
+.fontColor.h47:hover {
+  color: #10879c;
+}
+
+.C48 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/48.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f48 {
+  color: #F81550;
+}
+.i48 {
+  color: #F81550;
+}
+.b48 {
+  border: 3px solid #F81550;
+}
+.fontColor.h48:hover {
+  color: #F81550;
+}
+
+.C49 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/49.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f49 {
+  color: #00b0cb;
+}
+.i49 {
+  color: #00b0cb;
+}
+.b49 {
+  border: 3px solid #00BFDD;
+}
+.fontColor.h49:hover {
+  color: #00BFDD;
+}
+
+.C50 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/50.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f50 {
+  color: #835965;
+}
+.i50 {
+  color: #B58B97;
+}
+.b50 {
+  border: 3px solid #B58B97;
+}
+.fontColor.h50:hover {
+  color: #835965;
+}
+
+.C51 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/51.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.f51 {
+  color: #1079B8;
+}
+.i51 {
+  color: #1079B8;
+}
+.b51 {
+  border: 3px solid #1079B8;
+}
+.fontColor.h51:hover {
+  color: #1079B8;
+}
+
+.C52 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/52.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f52 {
+  color: #66553f;
+}
+.i52 {
+  color: #876d4e;
+}
+.b52 {
+  border: 3px solid #9D8361;
+}
+.fontColor.h52:hover {
+  color: #876d4e;
+}
+
+.C53 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/53.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f53 {
+  color: #000000;
+}
+.i53 {
+  color: #000000;
+}
+.b53 {
+  border: 3px solid #000000;
+}
+.fontColor.h53:hover {
+  color: #000000;
+}
+
+.C54 {
+  background-color: #FBD8D0;
+}
+.f54 {
+  color: #ca8e81;
+}
+.i54 {
+  color: #e3ab9d;
+}
+.b54 {
+  border: 3px solid #FBD8D0;
+}
+.fontColor.h54:hover {
+  color: #FBD8D0;
+}
+
+.C55 {
+  background-color: #9564F7;
+}
+.f55 {
+  color: #9564F7;
+}
+.i55 {
+  color: #9564F7;
+}
+.b55 {
+  border: 3px solid #9564F7;
+}
+.fontColor.h55:hover {
+  color: #9564F7;
+}
+
+.C56 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/56.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f56 {
+  color: #9d7119;
+}
+.i56 {
+  color: #ab7e22;
+}
+.b56 {
+  border: 3px solid #ab7e22;
+}
+.fontColor.h56:hover {
+  color: #ab7e22;
+}
+
+.C57 {
+  background-color: #721119;
+}
+.f57 {
+  color: #721119;
+}
+.i57 {
+  color: #721119;
+}
+.b57 {
+  border: 3px solid #721119;
+}
+.fontColor.h57:hover {
+  color: #721119;
+}
+
+.C58 {
+  background-image: url("https://www.pix.shiningpage.com/whoraly/color/58.jpg");
+  background-size: cover  ;
+  background-position: center;
+}
+.f58 {
+  color: #af011e;
+}
+.i58 {
+  color: #c40020;
+}
+.b58 {
+  border: 3px solid #c40020;
+}
+.fontColor.h58:hover {
+  color: #c40020;
+}
+

@@ -1,0 +1,89 @@
+
+/* استایل کلی Carousel */
+.carousel {
+  position: relative;
+}
+
+/* استایل اسلایدها */
+.carousel-item {
+  display: none;
+  position: relative;
+  transition: transform 0.6s ease-in-out;
+}
+
+.carousel-item.active {
+  display: block;
+}
+
+/* استایل کنترل‌ها */
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 80%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  opacity: 1;
+}
+
+/* استایل آیکن‌های کنترل */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #000; /* رنگ آیکن‌ها */
+  color: #fff; /* رنگ متن آیکن‌ها */
+  border-radius: 50%;
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+}
+
+/* استایل متن کنترل‌ها (اگر نمی‌خواهید متن نمایش داده شود) */
+.carousel-control-prev {
+  left: 10px;
+}
+
+.carousel-control-next {
+  right: 10px;
+}
+
+/* استایل Indicator ها */
+.carousel-indicators {
+  position: absolute;
+  bottom: 15px;
+  left: 50% !important;
+  right: -50% !important;
+  transform: translateX(-50%);
+  z-index: 15;
+  width: 100%; /* قبلا ۱۰۰٪ بود */
+  margin: 0;
+  list-style: none;
+  text-align: center;
+}
+
+/* .carousel-indicators li {
+  min-width: 10px;  /* Change this value to the desired width
+} */
+.carousel-indicators li {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 10px;
+  text-indent: -999px;
+  cursor: pointer;
+  background-color: #ffffff81; /* رنگ پس زمینه Indicator ها */
+  border: 1px solid #ddd; /* حاشیه Indicator ها */
+  border-radius: 50%;
+  transition: background-color 0.6s ease;
+}
+
+.carousel-indicators .active {
+  background-color: #fcfbfb; /* رنگ پس زمینه Indicator فعال */
+  border-color: #fbfcfc50; /* حاشیه Indicator فعال */
+}

@@ -1,0 +1,5248 @@
+{
+    "searchPlaceholder" : {
+        "fa" : "جستجو ...",
+        "en" : "search ...",
+        "ar" : "بحث ..."
+    },
+    "search" : {
+        "fa" : "جستجو",
+        "en" : "search",
+        "ar" : "بحث"
+    },
+    "productListTitle" : {
+        "fa" : "کالا و محصول",
+        "en" : "Products",
+        "ar" : "منتجات"
+    },
+    "searchNA" : {
+        "fa" : "(موردی یافت نشد)",
+        "en" : "(Not Available)",
+        "ar" : "(غير متاح)",
+        "tr" : "(Sonuç Yok)",
+        "ru" : "(Недоступен)",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "businessMembers" : {
+        "fa" : "اعضای تجاری",
+        "en" : "Business Members",
+        "ar" : "أعضاء الأعمال",
+        "tr" : "İş Üyeleri",
+        "ru" : "Деловые участники",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "specialMembers" : {
+        "fa" : "اعضای ویژه",
+        "en" : "Special Members",
+        "ar" : "الأعضاء الخاصون",
+        "tr" : "Özel Üyeler",
+        "ru" : "Специальные члены",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "siteMembers" : {
+        "fa" : "اعضای سایت",
+        "en" : "Site Members",
+        "ar" : "أعضاء موقع الويب",
+        "tr" : "Site Üyeleri",
+        "ru" : "Участники сайта",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "AnnualBusinessMembershipFee" : {
+        "fa" : "هزینه سالیانه عضویت تجاری:",
+        "en" : "Annual business membership fee:",
+        "ar" : "رسوم العضوية السنوية للأعمال:",
+        "tr" : "Annual business membership fee:",
+        "ru" : "Ежегодный членский взнос для бизнеса:",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "AnnualCostSection" : {
+        "fa" : "هزینه سالانه این بخش:",
+        "en" : "Annual cost of this section:",
+        "ar" : "التكلفة السنوية لهذا القسم:",
+        "tr" : "Annual cost of this section:",
+        "ru" : "Годовая стоимость этого раздела:",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "AnnualCostLang" : {
+        "fa" : "هزینه سالانه این زبان:",
+        "en" : "Annual cost of this language:",
+        "ar" : "التكلفة السنوية لهذه اللغة:",
+        "tr" : "Bu dilin yıllık maliyeti:",
+        "ru" : "Годовая стоимость этого языка:",
+        "de" : "Jährliche Kosten dieser Sprache:",
+        "fr" : "Coût annuel de cette langue:"
+    },
+    "costStar" : {
+        "fa" : "هزینه هر ستاره:",
+        "en" : "Cost of each star:",
+        "ar" : "التكلفة لكل نجمة:",
+        "tr" : "Cost of each star:",
+        "ru" : "Стоимость каждой звезды:",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "sharePage" : {
+        "fa" : "اشتراک گذاری",
+        "en" : "Sharing",
+        "ar" : "مشاركة",
+        "tr" : "Paylaşma",
+        "ru" : "Совместное использование",
+        "de" : "",
+        "fr" : "",
+        "es" : "Intercambio",
+        "it" : "",
+        "zh" : ""
+    },
+    "copyWhoralyLinkText" : {
+        "fa" : "و یا لینک زیر را کپی کنید و در شبکه های اجتماعی به دوستانتان ارسال کنید:",
+        "en" : "Or copy the following link and send it to your friends on social networks:",
+        "ar" : "أو انسخ الرابط التالي وأرسله إلى أصدقائك على الشبكات الاجتماعية:",
+        "tr" : "Or copy the following link and send it to your friends on social networks:",
+        "ru" : "Или скопируйте следующую ссылку и отправьте своим друзьям в социальных сетях:",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "copyLink" : {
+        "fa" : "کپی لینک",
+        "en" : "Copy Link",
+        "ar" : "نسخ لينك",
+        "tr" : "Bağlantıyı kopyala",
+        "ru" : "Копировать ссылку",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "linkIsCopied" : {
+        "fa" : "لینک کپی شد",
+        "en" : "The link is copied",
+        "ar" : "تم نسخ لينك",
+        "tr" : "Bağlantı kopyalandı",
+        "ru" : "Ссылка скопирована",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "membershipType" : {
+        "fa" : "نوع عضویت",
+        "en" : "Membership Type",
+        "ar" : "نوع العضوية",
+        "tr" : "Üyelik Tipi",
+        "ru" : "Тип членства",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "person" : {
+        "fa" : "عادی - دسترسی به امکانات معمولی",
+        "en" : "Normal - Access to typical features",
+        "ar" : "عادي - الوصول إلى الميزات العادية",
+        "tr" : "Normal - Access to typical features",
+        "ru" : "Нормальный - доступ к типичным функциям",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "business" : {
+        "fa" : "تجاری - دسترسی به امکانات ویژه و درج تبلیغات",
+        "en" : "Business - Access to special features and insert ads",
+        "ar" : "تجاري - الوصول إلى الميزات الخاصة وإدراج الإعلانات",
+        "tr" : "Business - Access to special features and insert ads",
+        "ru" : "Бизнес - доступ к специальным функциям и вставка рекламы",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "categoryPlaceholder" : {
+        "fa" : "دسته بندی ...",
+        "en" : "category ...",
+        "ar" : "فئة ...",
+        "tr" : "kategori ...",
+        "ru" : "категория ...",
+        "de" : "Kategorie ...",
+        "fr" : "Catégorie ...",
+        "es" : "categoría ...",
+        "it" : "categoria ...",
+        "zh" : "类别 ..."
+    },
+    "category" : {
+        "fa" : "دسته بندی",
+        "en" : "Category",
+        "ar" : "فئة",
+        "tr" : "kategori",
+        "ru" : "категория",
+        "de" : "Kategorie",
+        "fr" : "Catégorie",
+        "es" : "Categoría",
+        "it" : "Categoria",
+        "zh" : "类别"
+    },
+    "categories" : {
+        "fa" : "دسته بندی ها",
+        "en" : "Categories",
+        "ar" : "فئات",
+        "tr" : "Kategoriler",
+        "ru" : "Категории",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "consumerSpecificationsTitle" : { 
+        "fa" : "مشخصات مصرف کننده",
+        "en" : "Consumer Specifications",
+        "ar" : "Consumer Specifications",
+        "tr" : "Consumer Specifications",
+        "ru" : "Consumer Specifications",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "ages" : {
+        "fa" : "رده سنی",
+        "en" : "Ages",
+        "ar" : "Ages",
+        "tr" : "Ages",
+        "ru" : "Ages",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "gender" : {
+        "fa" : "جنسیت",
+        "en" : "Gender",
+        "ar" : "جنس",
+        "tr" : "Cinsiyet",
+        "ru" : "Пол",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "all" : {
+        "fa" : "همه",
+        "en" : "All",
+        "ar" : "الجميع",
+        "tr" : "Tüm",
+        "ru" : "Все",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "adult" : {
+        "fa" : "بزرگسال",
+        "en" : "Adult",
+        "ar" : "Adult",
+        "tr" : "Adult",
+        "ru" : "Adult",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "child" : {
+        "fa" : "خردسال",
+        "en" : "Child",
+        "ar" : "Child",
+        "tr" : "Child",
+        "ru" : "Child",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "male" : {
+        "fa" : "مرد",
+        "en" : "Male",
+        "ar" : "الذكر",
+        "tr" : "Erkek",
+        "ru" : "Мужчина",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "female" : {
+        "fa" : "زن",
+        "en" : "Female",
+        "ar" : "أنثى",
+        "tr" : "Kadın",
+        "ru" : "женский",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "digitalProductsAccessories" : {
+        "fa" : "کالای دیجیتال و لوازم جانبی",
+        "en" : "Digital products and accessories",
+        "ar" : "المنتجات الإلكترونية وملحقاتها"
+    },
+    "digitalProductsAccessoriesDesc" : {
+        "fa": "",
+        "en": "",
+        "ar": ""
+    },
+    "beautyHealthWellness" : {
+        "fa": "زیبایی، سلامت و تندرستی",
+        "en": "Beauty, Health and Wellness",
+        "ar": "الجمال والصحة والعافية"
+    },
+    "beautyHealthWellnessDesc" : {
+        "fa": "",
+        "en": "",
+        "ar": ""
+    },
+    "goldJewelryOrnaments" : {
+        "fa" : "طلا، جواهر، زیور آلات",
+        "en" : "Gold, jewelry, ornaments",
+        "ar" : "الذهب والمجوهرات والحلي"
+    },
+    "goldJewelryOrnamentsDesc" : {
+        "fa": "",
+        "en": "",
+        "ar": ""
+    },
+    "artHandicraft" : {
+        "fa" : "هنر و صنایع دستی",
+        "en" : "Art and handicraft",
+        "ar" : "الفن والحرف اليدوية"
+    },
+    "artHandicraftDesc" : {
+        "fa": "",
+        "en": "",
+        "ar": ""
+    },
+    "clothing" : {
+        "fa" : "پوشاک",
+        "en" : "Clothing",
+        "ar" : "ملابس"
+    },
+    "clothingDesc" : {
+        "fa": "",
+        "en": "",
+        "ar": ""
+    },
+    "cleaningServices" : {
+        "fa": "خدمات نظافتی",
+        "en": "Cleaning Services",
+        "ar": "خدمات التنظيف"
+    },
+    "cleaningServicesDesc" : {
+        "fa": "",
+        "en": "",
+        "ar": ""
+    },
+    "foodStuffs" : {
+        "fa" : "مواد غذایی و محصولات کشاورزی",
+        "en" : "Food and agricultural products",
+        "ar" : "المنتجات الغذائية والزراعية"
+    },
+    "foodStuffsDesc" : {
+        "fa": "",
+        "en": "",
+        "ar": ""
+    },
+    "gameEntertainment" : {
+        "fa" : "بازی و سرگرمی",
+        "en" : "Game and entertainment",
+        "ar" : "اللعبة والمرح"
+    },
+    "gameEntertainmentDesc" : {
+        "fa": "",
+        "en": "",
+        "ar": ""
+    },
+    "booksStationery" : {
+        "fa" : "کتاب و لوازم تحریر",
+        "en" : "Books and stationery",
+        "ar" : "الكتب والقرطاسية"
+    },
+    "booksStationeryDesc" : {
+        "fa": "",
+        "en": "",
+        "ar": ""
+    },
+    "sportsRecreationalEquipment" : {
+        "fa" : "لوازم ورزشی و تفریحی",
+        "en" : "Sports and recreational equipment",
+        "ar" : "المعدات الرياضية والترفيهية"
+    },
+    "sportsRecreationalEquipmentDesc" : {
+        "fa": "",
+        "en": "",
+        "ar": ""
+    },
+    "homeKitchenAppliances" : {
+        "fa" : "لوازم خانه و آشپزخانه",
+        "en" : "Home and kitchen appliances",
+        "ar" : "أدوات المنزل والمطبخ"
+    },
+    "homeKitchenAppliancesDesc" : {
+        "fa": "",
+        "en": "",
+        "ar": ""
+    },
+    "officeSupplies" : {
+        "fa" : "لوازم اداری",
+        "en" : "Office Supplies",
+        "ar" : "اللوازم المكتبية"
+    },
+    "officeSuppliesDesc" : {
+        "fa": "",
+        "en": "",
+        "ar": ""
+    },
+    "buildingServices" : {
+        "fa" : "خدمات ساختمانی",
+        "en" : "Building Services",
+        "ar" : "خدمات البناء"
+    },
+    "buildingServicesDesc" : {
+        "fa": "",
+        "en": "",
+        "ar": ""
+    },
+    "industrialToolsEquipment" : {
+        "fa" : "ابزارآلات و تجهیزات صنعتی",
+        "en" : "Industrial tools and equipment",
+        "ar" : "الأدوات والمعدات الصناعية"
+    },
+    "industrialToolsEquipmentDesc" : {
+        "fa": "",
+        "en": "",
+        "ar": ""
+    },
+    "carSparePartsAccessories" : {
+        "fa" : "خودرو و لوازم یدکی و جانبی",
+        "en" : "Car and spare parts and accessories",
+        "ar" : "السيارات وقطع الغيار والاكسسوارات"
+    },
+    "carSparePartsAccessoriesDesc" : {
+        "fa": "",
+        "en": "",
+        "ar": ""
+    },
+    "petsAccessories" : {
+        "fa" : "حیوانات خانگی و لوازم جانبی",
+        "en" : "Pets and accessories",
+        "ar" : "الحيوانات الأليفة والاكسسوارات"
+    },
+    "petsAccessoriesDesc" : {
+        "fa": "",
+        "en": "",
+        "ar": ""
+    },
+    "trainingServices" : {
+        "fa" : "آموزش و خدمات",
+        "en" : "Training and services",
+        "ar" : "التدريب والخدمات",
+        "tr" : "Training and services"
+    },
+    "trainingServicesDesc" : {
+        "fa": "",
+        "en": "",
+        "ar": ""
+    },
+    "other" : {
+        "fa" : "سایر",
+        "en" : "Other",
+        "ar" : "آخر"
+    },
+    "otherSettings": {
+        "fa": "سایر تنظیمات",
+        "en": "Other Settings",
+        "ar": "إعدادات أخرى"
+    },
+    "approve": {
+        "fa" : "تایید",
+        "en" : "OK",
+        "ar" : "موافق",
+        "tr" : "OK",
+        "ru" : "OK",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "approvedAds": {
+        "fa" : "آگهی تایید شده",
+        "en" : "Accepted ads",
+        "ar" : "الإعلانات المقبولة",
+        "tr" : "Accepted ads",
+        "ru" : "Accepted ads",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "forMen": {
+        "fa" : "مردانه",
+        "en" : "male",
+        "ar" : "male",
+        "tr" : "male",
+        "ru" : "male",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "forWomen": {
+        "fa" : "زنانه",
+        "en" : "female",
+        "ar" : "female",
+        "tr" : "female",
+        "ru" : "female",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "profile": {
+        "fa" : "پروفایل",
+        "en" : "Profile",
+        "ar" : "الملف الشخصي",
+        "tr" : "Profile",
+        "ru" : "Profile",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "profileInfoShort": {
+        "fa" : "اطلاعات پروفایل",
+        "en" : "Profile Info",
+        "ar" : "معلومات الملف الشخصي",
+        "tr" : "Profil Bilgisi",
+        "ru" : "Информация о профиле",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "profileInfoLong": {
+        "fa" : "اطلاعات پروفایل",
+        "en" : "Profile Information",
+        "ar" : "معلومات الملف الشخصي",
+        "tr" : "Profil Bilgisi",
+        "ru" : "Информация о профиле",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "login": {
+        "fa" : "ورود",
+        "en" : "Login",
+        "ar" : "دخول",
+        "tr" : "Giriş",
+        "ru" : "логин",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "exit": {
+        "fa": "خروج",
+        "en": "Sign Out",
+        "ar": "تسجيل الخروج"
+    },
+    "loginInfoShort": {
+        "fa" : "اطلاعات ورود",
+        "en" : "Login Info",
+        "ar" : "معلومات تسجيل الدخول",
+        "tr" : "Giriş Bilgileri",
+        "ru" : "Информация для входа",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "loginInfoLong": {
+        "fa" : "اطلاعات ورود به سایت",
+        "en" : "Login Information",
+        "ar" : "معلومات تسجيل الدخول",
+        "tr" : "Login Information",
+        "ru" : "Login Information",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "loginInfoText": {
+        "fa" : "تغییر مشخصات کاربری",
+        "en" : "Change Login Information",
+        "ar" : "تغيير معلومات تسجيل الدخول",
+        "tr" : "Giriş Bilgilerini Değiştir",
+        "ru" : "Изменить логин информацию",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "ProductsServices": {
+        "fa" : "محصولات و خدمات",
+        "en" : "Our work",
+        "ar" : "منتجات وخدمات",
+        "tr" : "Ürünler ve Servisler",
+        "ru" : "Продукты и услуги",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "otherProductsServices": {
+        "fa" : "سایر محصولات و خدمات",
+        "en" : "Other products and services",
+        "ar" : "المنتجات والخدمات الأخرى",
+        "tr" : "Diğer Ürünler ve Servisler",
+        "ru" : "Прочие товары и услуги",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "ProductsServicesText": {
+        "fa" : "درج آگهی و معرفی کسب و کار، محصولات و خدمات",
+        "en" : "Insert ads and introduce businesses, products and services",
+        "ar" : "أدخل الإعلانات وقدم الأعمال والمنتجات والخدمات",
+        "tr" : "Insert ads and introduce businesses, products and services",
+        "ru" : "Вставьте рекламу и представьте компании, продукты и услуги",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "new": {
+        "fa" : "جدید",
+        "en" : "New",
+        "ar" : "جديد",
+        "tr" : "Yeni",
+        "ru" : "Новый",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "ads": {
+        "fa" : "آگهی",
+        "en" : "Ads",
+        "ar" : "إعلانات",
+        "tr" : "Reklamlar",
+        "ru" : "Объявления",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "newAds": {
+        "fa" : "آگهی جدید",
+        "en" : "New Ad",
+        "ar" : "إعلان جديد",
+        "tr" : "Yeni İlan",
+        "ru" : "Новое объявление",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "newVideo": {
+        "fa" : "ویدئو جدید",
+        "en" : "New Video",
+        "ar" : "فيديو جديد",
+        "tr" : "Yeni video",
+        "ru" : "Новое видео",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "businessAds": {
+        "fa" : "آگهی های تجاری",
+        "en" : "Business Ads",
+        "ar" : "إعلانات تجارية",
+        "tr" : "Ticari Reklamlar",
+        "ru" : "Бизнес-объявления",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "salesAds": {
+        "fa" : "آگهی های فروش",
+        "en" : "Sales Ads",
+        "ar" : "إعلانات المبيعات",
+        "tr" : "Satış İlanları",
+        "ru" : "Объявления о продаже",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "salesAdsPanel": {
+        "fa" : "پنل آگهی ها",
+        "en" : "Ads Panel",
+        "ar" : "لوحة الإعلانات",
+        "tr" : "Reklamlar Paneli",
+        "ru" : "Панель объявлений",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "businessVideo": {
+        "fa" : "ویدئو های تجاری",
+        "en" : "Business Videos",
+        "ar" : "فيديو تجاري",
+        "tr" : "Ticari Videolar",
+        "ru" : "Бизнес-видео",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "businessVideoPanel": {
+        "fa" : "پنل ویدئو ها",
+        "en" : "Videos Panel",
+        "ar" : "لوحة الفيديو",
+        "tr" : "Videolar Paneli",
+        "ru" : "Панель видео",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "adRegistration": {
+        "fa" : "ثبت آگهی",
+        "en" : "Ad registration",
+        "ar" : "تسجيل الإعلان",
+        "tr" : "reklam kaydı",
+        "ru" : "Регистрация объявления",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "purchaseRequest": {
+        "fa" : "درخواست خرید",
+        "en" : "Purchase Request",
+        "ar" : "طلب الشراء",
+        "tr" : "Satın alma isteği",
+        "ru" : "Запрос о покупке",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "purchaseRequests": {
+        "fa" : "درخواست های خرید",
+        "en" : "Purchase Requests",
+        "ar" : "طلبات الشراء",
+        "tr" : "Satın Alma Talepleri",
+        "ru" : "Запросы на покупку",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "newRequest": {
+        "fa" : "درخواست جدید",
+        "en" : "New Request",
+        "ar" : "طلب جديد",
+        "tr" : "Yeni istek",
+        "ru" : "Новый запрос",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "postNewAds": {
+        "fa" : "ثبت آگهی جدید",
+        "en" : "Post a new ad",
+        "ar" : "انشر إعلان جديد",
+        "tr" : "Yeni bir ilan yayınla",
+        "ru" : "Разместите новое объявление",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "postNewVideo": {
+        "fa" : "ثبت ویدئوی جدید",
+        "en" : "Post a new video",
+        "ar" : "انشر مقطع فيديو جديدًا",
+        "tr" : "Yeni bir video yayınla",
+        "ru" : "Опубликовать новое видео",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "postNewRequest": {
+        "fa" : "ثبت درخواست جدید",
+        "en" : "Post a new request",
+        "ar" : "انشر طلب جديد",
+        "tr" : "Yeni bir istek gönder",
+        "ru" : "Опубликовать новый запрос",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "editAds": {
+        "fa" : "ویرایش آگهی",
+        "en" : "Edit Ad",
+        "ar" : "تحرير الإعلان",
+        "tr" : "Reklamı Düzenle",
+        "ru" : "Редактировать объявление",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "editInfo": {
+        "fa" : "ویرایش اطلاعات",
+        "en" : "Edit Info",
+        "ar" : "تعديل المعلومات",
+        "tr" : "Bilgi düzenle",
+        "ru" : "Редактировать информацию",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "editRequest": {
+        "fa" : "ویرایش درخواست",
+        "en" : "Edit Request",
+        "ar" : "تحرير الطلب",
+        "tr" : "İsteği Düzenle",
+        "ru" : "Редактировать запрос",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "deleteAds": {
+        "fa" : "حذف آگهی",
+        "en" : "Delete Ad",
+        "ar" : "حذف الإعلان",
+        "tr" : "Reklamı Sil",
+        "ru" : "Удалить объявление",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "deleteRequest": {
+        "fa" : "حذف درخواست",
+        "en" : "Delete Request",
+        "ar" : "حذف طلب",
+        "tr" : "İsteği sil",
+        "ru" : "Удалить запрос",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "specialAd": {
+        "fa" : "آگهی ویژه",
+        "en" : "Special Ad",
+        "ar" : "إعلان خاص",
+        "tr" : "Özel Reklam",
+        "ru" : "Специальная реклама",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "specialAdUpgrade": {
+        "fa" : "ارتقاء به آگهی ویژه:",
+        "en" : "Upgrade to a special ad:",
+        "ar" : "الترقية إلى إعلان خاص:",
+        "tr" : "",
+        "ru" : "модернизировать на специальную рекламу:",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "oneStarAd": {
+        "fa" : "آگهی یک ستاره",
+        "en" : "One Star Ad",
+        "ar" : "إعلان نجمة واحدة",
+        "tr" : "",
+        "ru" : "Объявление с одной звездой",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "twoStarAd": {
+        "fa" : "آگهی دو ستاره",
+        "en" : "Two star ad",
+        "ar" : "إعلان نجمتين",
+        "tr" : "",
+        "ru" : "Двухзвездочная реклама",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "threeStarAd": {
+        "fa" : "آگهی سه ستاره",
+        "en" : "Three star ad",
+        "ar" : "إعلان ثلاث نجوم",
+        "tr" : "",
+        "ru" : "Трехзвездочная реклама",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "specialAdCost1Star": {
+        "fa" : "✓ ۲۰ هزار تومان",
+        "en" : "✓ 3 USD",
+        "ar" : "✓ 3 USD",
+        "tr" : "✓ 3 USD",
+        "ru" : "✓ 3 USD",
+        "de" : "✓ 3 USD",
+        "fr" : "✓ 3 USD",
+        "es" : "✓ 3 USD",
+        "zh" : "✓ 3 USD"
+    },
+    "specialAdCost2Star": {
+        "fa" : "✓ ۴۰ هزار تومان",
+        "en" : "✓ 6 USD",
+        "ar" : "✓ 6 USD",
+        "tr" : "✓ 6 USD",
+        "ru" : "✓ 6 USD",
+        "de" : "✓ 6 USD",
+        "fr" : "✓ 6 USD",
+        "es" : "✓ 6 USD",
+        "zh" : "✓ 6 USD"
+    },
+    "specialAdCost3Star": {
+        "fa" : "✓ ۶۰ هزار تومان",
+        "en" : "✓ 10 USD",
+        "ar" : "✓ 10 USD",
+        "tr" : "✓ 10 USD",
+        "ru" : "✓ 10 USD",
+        "de" : "✓ 10 USD",
+        "fr" : "✓ 10 USD",
+        "es" : "✓ 10 USD",
+        "zh" : "✓ 10 USD"
+    },
+    "specialBusinesses": {
+        "fa" : "کسب و کارهای ویژه",
+        "en" : "Top Businesses",
+        "ar" : "الأعمال الخاصة",
+        "tr" : "Özel İşletmeler",
+        "ru" : "Специальный бизнес",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "zh" : ""
+    },
+    "specialAd1StarText1": {
+        "fa" : "✓ در این روش آگهی شما ۳۰ روز در بخش آگهی های ویژه نمایش داده می شود.",
+        "en" : "✓ In this method, your ad will be displayed for 30 days in the special ads section.",
+        "ar" : "✓ بهذه الطريقة سيتم عرض إعلانك لمدة ۳۰ أيام في قسم الإعلانات الخاصة.",
+        "tr" : "",
+        "ru" : "✓ В этом методе ваша реклама будет отображаться в течение 30 дней в разделе специальных объявлений.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "specialAd2StarText1": {
+        "fa" : "✓ در این روش آگهی شما ۳۰ روز در بخش آگهی های ویژه نمایش داده می شود.",
+        "en" : "✓ In this method, your ad will be displayed for 30 days in the special ads section.",
+        "ar" : "✓ بهذه الطريقة ، سيتم عرض إعلانك لمدة ۳۰ يومًا في قسم الإعلانات الخاصة.",
+        "tr" : "",
+        "ru" : "✓ В этом методе ваше объявление будет отображаться в течение 30 дней в разделе специальных объявлений.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "specialAd2StarText2": {
+        "fa" : "✓ آگهی شما در صدر آگهی های جدید قرار می گیرد و هر روز در بالاترین قسمت نمایش داده می شود.",
+        "en" : "✓ Your ad will be at the top of the new ads and will be displayed at the top every day.",
+        "ar" : "✓ سيكون إعلانك في الجزء العلوي من الإعلانات الجديدة وسيتم عرضه في الجزء العلوي كل يوم.",
+        "tr" : "",
+        "ru" : "✓ Ваше объявление будет вверху новых объявлений и будет отображаться вверху каждый день.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "specialAd3StarText1": {
+        "fa" : "✓ در این روش آگهی شما ۳۰ روز در بخش آگهی های ویژه نمایش داده می شود.",
+        "en" : "✓ In this method, your ad will be displayed for 30 days in the special ads section.",
+        "ar" : "✓ بهذه الطريقة ، سيتم عرض إعلانك لمدة ۳۰ يومًا في قسم الإعلانات الخاصة.",
+        "tr" : "",
+        "ru" : "✓ В этом методе ваше объявление будет отображаться в течение 30 дней в разделе специальных объявлений.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "specialAd3StarText2": {
+        "fa" : "✓ آگهی شما در صدر آگهی های پر بازدید و جدید قرار می گیرد و از تمام کشورهای دنیا بازدید خواهد داشت.",
+        "en" : "✓ Your ad will be at the top of the most visited and new ads and will be visited from all countries of the world.",
+        "ar" : "✓ سيكون إعلانك في الجزء العلوي من الإعلانات الأكثر زيارة والجديدة وستتم زيارته من جميع دول العالم.",
+        "tr" : "",
+        "ru" : "✓ Ваша реклама будет в топе самых посещаемых и новых объявлений и будет посещаться из всех стран мира.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "supportContacts": {
+        "fa" : "فروش و پشتیبانی :",
+        "en" : "Sales & Support :",
+        "ar" : "المبيعات والدعم:",
+        "tr" : "",
+        "ru" : "Поддержка продаж :",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "phoneNumber": {
+        "fa" : "تلفن ثابت",
+        "en" : "Phone Number",
+        "ar" : "رقم الهاتف",
+        "tr" : "",
+        "ru" : "Номер телефона",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "mobilePhoneNumber": {
+        "fa" : "تلفن همراه",
+        "en" : "Cell Phone Number",
+        "ar" : "رقم الهاتف المحمول",
+        "tr" : "",
+        "ru" : "Номер мобильного",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "whatsapp": {
+        "fa" : "واتساپ",
+        "en" : "WhatsApp",
+        "ar" : "رقم الواتس اب",
+        "tr" : "",
+        "ru" : "WhatsApp",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "facebook": {
+        "fa" : "فیس بوک",
+        "en" : "Facebook",
+        "ar" : "الفيسبوك",
+        "tr" : "",
+        "ru" : "Facebook",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "youtube": {
+        "fa" : "یوتیوب",
+        "en" : "Youtube",
+        "ar" : "موقع YouTube",
+        "tr" : "",
+        "ru" : "YouTube",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "linkedin": {
+        "fa" : "لینکدین",
+        "en" : "LinkedIn",
+        "ar" : "لينكد إن",
+        "tr" : "",
+        "ru" : "LinkedIn",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "website": {
+        "fa" : "وب سایت",
+        "en" : "Website",
+        "ar" : "موقع الكتروني",
+        "tr" : "",
+        "ru" : "Веб-сайт",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "email": {
+        "fa" : "ایمیل",
+        "en" : "Email",
+        "ar" : "بريد إلكتروني",
+        "tr" : "",
+        "ru" : "Эл. адрес",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "instagram": {
+        "fa" : "اینستاگرام",
+        "en" : "Instagram",
+        "ar" : "انستقرام",
+        "tr" : "",
+        "ru" : "Instagram",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "instagramPanel": {
+        "fa" : "پنل اینستاگرام",
+        "en" : "Instagram Panel",
+        "ar" : "لوحة الانستقرام",
+        "tr" : "",
+        "ru" : "Панель Instagram",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "instagramPlaceHolder": {
+        "fa" : "نام آیدی",
+        "en" : "Id name",
+        "ar" : "Id name",
+        "tr" : "Id name",
+        "ru" : "Id name",
+        "de" : "Id name",
+        "fr" : "Id name",
+        "es" : "Id name",
+        "zh" : "Id name"
+    },
+    "instagramText": {
+        "fa" : "(لطفا فقط نام آیدی وارد شود.)",
+        "en" : "(Please enter only the Id name.)",
+        "ar" : "(الرجاء إدخال Id name فقط.)",
+        "tr" : "",
+        "ru" : "(Пожалуйста, введите только имя идентификатора.)",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "telegram": {
+        "fa" : "تلگرام",
+        "en" : "Telegram",
+        "ar" : "تيليجرام",
+        "tr" : "",
+        "ru" : "Telegram",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "telegramPlaceHolder": {
+        "fa" : "نام کانال",
+        "en" : "channel name",
+        "ar" : "channel name",
+        "tr" : "channel name",
+        "ru" : "channel name",
+        "de" : "channel name",
+        "fr" : "channel name",
+        "es" : "channel name",
+        "zh" : "channel name"
+    },
+    "telegramText": {
+        "fa" : "(لطفا فقط نام کانال وارد شود.)",
+        "en" : "(Please enter only channel name.)",
+        "ar" : "(الرجاء إدخال اسم الکانال فقط.)",
+        "tr" : "",
+        "ru" : "(Пожалуйста, введите только название канала.)",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "save": {
+        "fa" : "ذخیره",
+        "en" : "Save",
+        "ar" : "احفظ",
+        "tr" : "",
+        "ru" : "Сохранить",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "edit": {
+        "fa" : "ویرایش",
+        "en" : "Edit",
+        "ar" : "تحرير",
+        "tr" : "",
+        "ru" : "Редактировать",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "delete": {
+        "fa" : "حذف",
+        "en" : "Delete",
+        "ar" : "حذف",
+        "tr" : "",
+        "ru" : "Удалить",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "cancel": {
+        "fa" : "لغو",
+        "en" : "Cancel",
+        "ar" : "يلغي",
+        "tr" : "",
+        "ru" : "Отмена",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "star": {
+        "fa" : "ستاره",
+        "en" : "Star",
+        "ar" : "نجمة",
+        "tr" : "",
+        "ru" : "Звезда",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "deleteForMe": {
+        "fa" : "حذف برای من",
+        "en" : "Delete for me",
+        "ar" : "حذف بالنسبة لي",
+        "tr" : "",
+        "ru" : "Удалить для меня",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "deleteForAll": {
+        "fa" : "حذف برای همه",
+        "en" : "Delete for all",
+        "ar" : "حذف للجميع",
+        "tr" : "",
+        "ru" : "Удалить для всех",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "upload": {
+        "fa" : "آپلود",
+        "en" : "Upload",
+        "ar" : "تحميل",
+        "tr" : "",
+        "ru" : "загрузить",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "deleteProfilePhoto": {
+        "fa" : "حذف عکس پروفایل",
+        "en" : "Delete profile photo",
+        "ar" : "حذف صورة الملف الشخصي",
+        "tr" : "",
+        "ru" : "Удалить фото профиля",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "username": {
+        "fa" : "نام کاربری",
+        "en" : "Username",
+        "ar" : "اسم المستخدم",
+        "tr" : "",
+        "ru" : "Имя пользователя",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "password": {
+        "fa" : "رمز عبور",
+        "en" : "Password",
+        "ar" : "كلمه السر",
+        "tr" : "",
+        "ru" : "Пароль",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "approved": {
+        "fa" : "✓ تایید",
+        "en" : "✓ Accepted",
+        "ar" : "✓ قبلت",
+        "tr" : "",
+        "ru" : "✓ Принято",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "pending": {
+        "fa" : "⦿ در حال بررسی",
+        "en" : "⦿ Pending",
+        "ar" : "⦿ قيد المراجعة",
+        "tr" : "",
+        "ru" : "⦿ Ожидающий",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "reject": {
+        "fa" : "✗ عدم تایید",
+        "en" : "✗ Rejected",
+        "ar" : "✗ مرفوض",
+        "tr" : "",
+        "ru" : "✗ Отклоненный",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "starAd": {
+        "fa" : "ستاره دار کردن آگهی",
+        "en" : "Star the ad",
+        "ar" : "بنجمة الإعلان",
+        "tr" : "",
+        "ru" : "Дайте своему объявлению звезду",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "profileSaveInfoAlert": {
+        "fa" : "اطلاعات با موفقیت ذخیره شد.",
+        "en" : "Information saved successfully.",
+        "ar" : "تم حفظ المعلومات بنجاح.",
+        "tr" : "",
+        "ru" : "Информация успешно сохранена.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "profileSaveAlert": {
+        "fa" : "اطلاعات پروفایل با موفقیت ذخیره شد.",
+        "en" : "Profile information saved successfully.",
+        "ar" : "تم حفظ معلومات الملف الشخصي بنجاح.",
+        "tr" : "",
+        "ru" : "Информация профиля успешно сохранена.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "loginSaveAlert": {
+        "fa" : "اطلاعات ورود به سایت با موفقیت ذخیره شد. لطفا برای ورود مجدد به سایت آنها را به یاد داشته باشید.",
+        "en" : "Login information saved successfully. Please remember them to login.",
+        "ar" : "تم حفظ معلومات تسجيل الدخول بنجاح. يرجى تذكر إعادة الدخول إلى الموقع.",
+        "tr" : "",
+        "ru" : "Информация для входа успешно сохранена. Пожалуйста, запомните их для входа в систему.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "profilePicture": {
+        "fa" : "عکس پروفایل",
+        "en" : "Profile Picture",
+        "ar" : "صورة البروفایل",
+        "tr" : "",
+        "ru" : "Изображение профиля",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "prices" : {
+        "fa" : "تعرفه ها:",
+        "en" : "Prices:",
+        "ar" : "الأسعار:",
+        "tr" : "",
+        "ru" : "Цены:",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "buyDiscount" : {
+        "fa" : "تخفیف خرید",
+        "en" : "Discount",
+        "ar" : "",
+        "tr" : "",
+        "ru" : "",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "likers" : {
+        "fa" : "لایک ها",
+        "en" : "Likes",
+        "ar" : "الإعجابات",
+        "tr" : "Beğeniler",
+        "ru" : "Лайки",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "viewers" : {
+        "fa" : "بازدید کننده ها",
+        "en" : "Viewers",
+        "ar" : "المشاهدون",
+        "tr" : "",
+        "ru" : "Зрителей",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "view" : {
+        "fa" : "بازدید",
+        "en" : "View",
+        "ar" : "مشاهدة",
+        "tr" : "",
+        "ru" : "взгляд",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "views" : {
+        "fa" : "بازدید",
+        "en" : "Views",
+        "ar" : "مشاهدة"
+    },
+    "statistics" : {
+        "fa" : "آمار",
+        "en" : "Statistics",
+        "ar" : "إحصائيات",
+        "tr" : "",
+        "ru" : "Статистика зрителей",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "viewersStatistics" : {
+        "fa" : "آمار بازدید",
+        "en" : "Viewers Statistics",
+        "ar" : "إحصائيات المشاهدين"
+    },
+    "chatList" : {
+        "fa" : "چت لیست",
+        "en" : "Chat List",
+        "ar" : "قائمة الدردشة",
+        "tr" : "",
+        "ru" : "Список чата",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "chatPlaceHolder" : {
+        "fa" : "یک پیام بنویسید ...",
+        "en" : "Write a message ...",
+        "ar" : "اكتب رسالة ...",
+        "tr" : "",
+        "ru" : "Напиши сообщение ...",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "commentPlaceHolder" : {
+        "fa" : "نظرتان را بنویسید ...",
+        "en" : "Write a review ...",
+        "ar" : "أكتب مراجعة ...",
+        "tr" : "Bir değerlendirme yazın ...",
+        "ru" : "Написать обзор ...",
+        "de" : "",
+        "fr" : "",
+        "es" : "Escribe una reseña ...",
+        "it" : "",
+        "zh" : ""
+    },
+    "deleteChatText" : {
+        "fa" : "آیا می خواهید سوابق چت را حذف کنید؟",
+        "en" : "Do you like to delete chat records?",
+        "ar" : "هل تريد حذف سجلات الدردشة؟",
+        "tr" : "",
+        "ru" : "Вы хотите удалять записи чата?",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "unknown" : {
+        "fa" : "شخص ناشناس",
+        "en" : "Unknown person",
+        "ar" : "شخص مجهول",
+        "tr" : "",
+        "ru" : "неизвестный человек",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "searchMembers" : {
+        "fa" : "جستجوی اعضای سایت ...",
+        "en" : "search members ...",
+        "ar" : "البحث في أعضاء الموقع ...",
+        "tr" : "",
+        "ru" : "поиск участника веб-сайта ...",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "searchProductAndService" : {
+        "fa" : "جستجوی محصول و خدمات ...",
+        "en" : "search product and service ...",
+        "ar" : "البحث عن المنتجات والخدمات ...",
+        "tr" : "",
+        "ru" : "поиск продуктов и услуг ...",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "home": {
+        "fa" : "صفحه اصلی",
+        "en" : "Home",
+        "ar" : "الرئيسية"
+    },
+    "services": {
+        "fa" : "خدمات",
+        "en" : "Services",
+        "ar" : "خدمات",
+        "tr" : "",
+        "ru" : "Сервисы",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "dashboardPanel": {
+        "fa" : "داشبورد مدیریت",
+        "en" : "Dashboard Panel",
+        "ar" : "لوحة القيادة",
+        "tr" : "",
+        "ru" : "Панель управления",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "memberReviews": {
+        "fa" : "نظر کاربران",
+        "en" : "Reviews",
+        "ar" : "مراجعات",
+        "tr" : "İncelemeleri",
+        "ru" : "Отзывы",
+        "de" : "",
+        "fr" : "",
+        "es" : "Opiniones",
+        "it" : "",
+        "zh" : ""
+    },
+    "signupLogin": {
+        "fa" : "ثبت نام و ورود",
+        "en" : "Sign up and Login",
+        "ar" : "التسجيل و الدخول",
+        "tr" : "",
+        "ru" : "Регистрация и логин",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "signUp": {
+        "fa" : "عضویت",
+        "en" : "Sign up",
+        "ar" : "تسجيل",
+        "tr" : "",
+        "ru" : "Регистрация",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "notMember": {
+        "fa" : "عضو سایت نیستم",
+        "en" : "Sign up",
+        "ar" : "سجل على الموقع"
+    },
+    "isMember": {
+        "fa" : "قبلا عضو شده ام",
+        "en" : "Login",
+        "ar" : "تسجيل الدخول"
+    },
+    "signUpForm": {
+        "fa" : "فرم عضویت",
+        "en" : "Sign up Form",
+        "ar" : "إستمارة تسجيل",
+        "tr" : "",
+        "ru" : "Форма регистрации",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "loginForm": {
+        "fa" : "فرم ورود",
+        "en" : "Login Form",
+        "ar" : "نموذج تسجيل الدخول",
+        "tr" : "",
+        "ru" : "Форма логин",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "signedInUserErr": {
+        "fa" : "این نام کاربری قبلا ثبت شده است. لطفا نام دیگری را انتخاب کنید.",
+        "en" : "That username is taken. Try another.",
+        "ar" : "اسم المستخدم هذا مأخوذ. جرب شئ اخر.",
+        "tr" : "",
+        "ru" : "Это имя занято. Попробуй другой.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "userPassErr": {
+        "fa" : "اطلاعات کاربری اشتباه است.",
+        "en" : "User information is incorrect.",
+        "ar" : "معلومات المستخدم غير صحيحة.",
+        "tr" : "",
+        "ru" : "Информация о пользователе неверна.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "scoring": {
+        "fa" : "امتیاز",
+        "en" : "Rate",
+        "ar" : "التهديف",
+        "tr" : "",
+        "ru" : "балл",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "minute": {
+        "fa" : "دقیقه",
+        "en" : "minutes",
+        "ar" : "دقائق",
+        "tr" : "",
+        "ru" : "минуты",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "hour": {
+        "fa" : "ساعت",
+        "en" : "hours",
+        "ar" : "ساعات",
+        "tr" : "",
+        "ru" : "часа",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "day" : {
+        "fa" : "روز",
+        "en" : "days",
+        "ar" : "أيام",
+        "tr" : "",
+        "ru" : "дня",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "month" : {
+        "fa" : "ماه",
+        "en" : "months",
+        "ar" : "أشهر",
+        "tr" : "",
+        "ru" : "месяца",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "year" : {
+        "fa" : "سال",
+        "en" : "years",
+        "ar" : "سنوات",
+        "tr" : "",
+        "ru" : "года",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "ago" : {
+        "fa" : "پیش",
+        "en" : "ago",
+        "ar" : "قبل",
+        "tr" : "",
+        "ru" : "назад",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "sendCommentTitle" : {
+        "fa" : "ارسال نظرات و پیشنهادات",
+        "en" : "Comments and suggestions",
+        "ar" : "تعليقات واقتراحات",
+        "tr" : "",
+        "ru" : "Комментарии и предложения",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "send" : {
+        "fa" : "ارسال",
+        "en" : "Send",
+        "ar" : "إرسال",
+        "tr" : "",
+        "ru" : "послать",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "sendNewComment" : {
+        "fa" : "ارسال نظر",
+        "en" : "Send comment",
+        "ar" : "إرسال تعليق",
+        "tr" : "",
+        "ru" : "Оставить комментарий",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "commentSendSuccess" : {
+        "fa" : "تایید ارسال پیام",
+        "en" : "Confirmation of sending the message",
+        "ar" : "تأكيد إرسال الرسالة",
+        "tr" : "",
+        "ru" : "Подтверждение отправки сообщения",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "commentSendSuccessText" : {
+        "fa" : "با تشکر - پیام شما با موفقیت ارسال شد و پس از تایید در فهرست نظرات و پیشنهادات قرار داده می شود.",
+        "en" : "Thanks! - Your comments and suggestions have been successfully submitted.",
+        "ar" : "شكرًا - لقد تم إرسال رسالتك بنجاح وسيتم إدراجها في قائمة التعليقات والاقتراحات بعد الموافقة عليها.",
+        "tr" : "",
+        "ru" : "Спасибо! - Ваши комментарии и предложения успешно отправлены.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "chat" : {
+        "fa" : "چت",
+        "en" : "Chat",
+        "ar" : "محادثة",
+        "tr" : "",
+        "ru" : "чат",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "contactInfo" : {
+        "fa" : "اطلاعات تماس",
+        "en" : "Contact Info",
+        "ar" : "معلومات الاتصال",
+        "tr" : "",
+        "ru" : "Контактная информация",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "contact" : {
+        "fa": "تماس",
+        "en": "Contact",
+        "ar": "اتصال"
+    },
+    "contactUs" : {
+        "fa" : "تماس با ما",
+        "en" : "Contact us",
+        "ar" : "اتصل بنا",
+        "tr" : "",
+        "ru" : "КОНТАКТЫ",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "contactMe" : {
+        "fa" : "اطلاعات  تماس",
+        "en" : "Contact me",
+        "ar" : "اتصل بي",
+        "tr" : "",
+        "ru" : "Свяжитесь со мной",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "rules" : {
+        "fa" : "قوانین سایت",
+        "en" : "Website Rules",
+        "ar" : "قواعد الموقع",
+        "tr" : "",
+        "ru" : "Правила веб-сайта",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "aboutAndContact" : {
+        "fa" : "درباره و تماس",
+        "en" : "About & Contact",
+        "ar" : "عن والاتصال",
+        "tr" : "",
+        "ru" : "О нас и контакты",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "about" : {
+        "fa" : "درباره",
+        "en" : "About",
+        "ar" : "عن",
+        "tr" : "",
+        "ru" : "обо",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "aboutUs" : {
+        "fa" : "درباره ما",
+        "en" : "About us",
+        "ar" : "معلومات عنا",
+        "tr" : "",
+        "ru" : "О НАС",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "aboutMe" : {
+        "fa" : "درباره ما",
+        "en" : "About me",
+        "ar" : "معلومات عني",
+        "tr" : "",
+        "ru" : "ОБО МНЕ",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "mustSignUp" : {
+        "fa" : "برای دسترسی به این بخش، لطفا عضو سایت شوید.",
+        "en" : "Please sign up to access this section.",
+        "ar" : "يرجى التسجيل للوصول إلى هذا القسم.",
+        "tr" : "",
+        "ru" : "Пожалуйста, зарегистрируйтесь, чтобы получить доступ к этому разделу.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "freeSignUp" : {
+        "fa" : "این عضویت ساده و رایگان است.",
+        "en" : "Signing up is easy and free.",
+        "ar" : "التسجيل سهل ومجاني.",
+        "tr" : "",
+        "ru" : "Регистрация проста и бесплатна.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "advertiser" : {
+        "fa" : "آگهی دهنده",
+        "en" : "Advertiser",
+        "ar" : "المعلن",
+        "tr" : "",
+        "ru" : "Рекламодатель",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "advertiserConnection" : {
+        "fa" : "ارتباط با آگهی دهنده",
+        "en" : "Connect to advertiser",
+        "ar" : "اتصل بالمعلن",
+        "tr" : "",
+        "ru" : "Подключиться к рекламодателю",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "requesterConnection" : {
+        "fa" : "ارتباط با درخواست کننده",
+        "en" : "Connect to requester",
+        "ar" : "التواصل مع مقدم الطلب",
+        "tr" : "",
+        "ru" : "Подключиться к запрашивающему",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "more" : {
+        "fa" : "بیشتر",
+        "en" : "more",
+        "ar" : "المزيد",
+        "tr" : "",
+        "ru" : "более",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "favoriteTheme" : {
+        "fa" : "تم محبوب",
+        "en" : "Favorite Theme",
+        "ar" : "الموضوع المفضل"
+    },
+    "profileTheme" : {
+        "fa" : "تم پروفایل",
+        "en" : "Profile Theme",
+        "ar": "سمة الملف الشخصي"
+    },
+    "webPageTheme": {
+        "fa": "تم ShiningPage",
+        "en": "ShiningPage Theme",
+        "ar": "ثيم ShiningPage"
+    },
+    "chooseFavoriteTheme" : {
+        "fa" : "یک تم نمایه انتخاب کنید",
+        "en" : "Choose a profile theme",
+        "ar" : "اختر موضوع الملف الشخصي",
+        "tr" : "Favori renginizi seçin",
+        "ru" : "Выберите тему профиля",
+        "de" : "",
+        "fr" : "",
+        "es" : "Elige un tema de perfil",
+        "it" : "",
+        "zh" : ""
+    },
+    "ownerTitle" : {
+        "fa" : "طراح و مدیر سایت",
+        "en" : "Owner and Webmaster",
+        "ar" : "المالك ومدير الموقع",
+        "tr" : "",
+        "ru" : "Владелец и веб-мастер",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "globalMarketText" : {
+        "fa" : "بازار جهانی و تجارت بین الملل",
+        "en" : "Global Market And International Business",
+        "ar" : "السوق العالمية والتجارة الدولية",
+        "tr" : "",
+        "ru" : "Мировой рынок и международный бизнес",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "domesticInternationalText" : {
+        "fa" : "بازار داخلی و بین المللی",
+        "en" : "Domestic and International Market",
+        "ar" : "السوق المحلي والدولي"
+    },
+    "businessMemberCategory" : {
+        "fa" : "دسته بندی اعضای تجاری",
+        "en" : "Business Member Category",
+        "ar" : "فئة عضو الأعمال",
+        "tr" : "",
+        "ru" : "Категория бизнес-члена",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "servicesList" : {
+        "fa" : "فهرست خدمات",
+        "en" : "List of Services",
+        "ar" : "قائمة الخدمات",
+        "tr" : "",
+        "ru" : "Список услуг",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "title" : {
+        "fa" : "عنوان",
+        "en" : "Title",
+        "ar" : "عنوان",
+        "tr" : "Konu",
+        "ru" : "Тема",
+        "de" : "Titel",
+        "fr" : "Titre",
+        "es" : "Título",
+        "zh" : "标题"
+    },
+    "adsTitle" : {
+        "fa" : "عنوان",
+        "en" : "Title",
+        "ar" : "عنوان",
+        "tr" : "Konu",
+        "ru" : "Тема",
+        "de" : "Titel",
+        "fr" : "Titre",
+        "es" : "Título",
+        "zh" : "标题"
+    },
+    "requestTitle" : {
+        "fa" : "عنوان محصول یا خدمات",
+        "en" : "Title of product or service",
+        "ar" : "عنوان المنتج أو الخدمة",
+        "tr" : "",
+        "ru" : "Название продукта или услуги",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "requestStandard" : {
+        "fa" : "استاندارد مورد نیاز",
+        "en" : "Required Standard",
+        "ar" : "المعيار المطلوب",
+        "tr" : "",
+        "ru" : "Требуемый стандарт",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "adsDescription" : {
+        "fa" : "توضیحات",
+        "en" : "Description",
+        "ar" : "وصف",
+        "tr" : "Açıklama",
+        "ru" : "Описание",
+        "de" : "Beschreibung",
+        "fr" : "Description",
+        "es" : "Descripción",
+        "zh" : "描述"
+    },
+    "otherDescription" : {
+        "fa" : "سایر توضیحات",
+        "en" : "Other Description",
+        "ar" : "وصف آخر",
+        "tr" : "",
+        "ru" : "Другое Описание",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "priceInfo" : {
+        "fa" : "قیمت",
+        "en" : "Price",
+        "ar" : "سعر",
+        "tr" : "",
+        "ru" : "Цена",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "price" : {
+        "fa" : "قیمت",
+        "en" : "Price",
+        "ar" : "سعر",
+        "tr" : "",
+        "ru" : "Цена",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "negotiable" : {
+        "fa" : "قابل مذاکره",
+        "en" : "Negotiable",
+        "ar" : "قابل للتفاوض",
+        "tr" : "",
+        "ru" : "Договорная",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "byAgreement" : {
+        "fa" : "توافقی",
+        "en" : "by agreement",
+        "ar" : "بالاتفاق"
+    },
+    "unitPrice" : {
+        "fa" : "قیمت واحد",
+        "en" : "Unit Price",
+        "ar" : "سعر الوحدة",
+        "tr" : "",
+        "ru" : "Цена за единицу",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "maxUnitPrice" : {
+        "fa" : "حداکثر قیمت واحد",
+        "en" : "Maximum Unit Price",
+        "ar" : "الحد الأقصى لسعر الوحدة",
+        "tr" : "",
+        "ru" : "Максимальная цена за единицу",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "unitMeasurement" : {
+        "fa" : "واحد اندازه گیری",
+        "en" : "Unit of Measurement",
+        "ar" : "وحدة قياس",
+        "tr" : "",
+        "ru" : "Единица измерения",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "currency" : {
+        "fa" : "واحد پول",
+        "en" : "Currency",
+        "ar" : "عملة",
+        "tr" : "",
+        "ru" : "Валюта",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "activitySummary" : {
+        "fa" : "شرح مختصر فعالیت",
+        "en" : "Activity Summary",
+        "ar" : "ملخص نشاط",
+        "tr" : "Faaliyet özeti",
+        "ru" : "Сводка активности",
+        "de" : "Zusammenfassung der Aktivitäten",
+        "fr" : "Résumé de l'activité",
+        "es" : "Resumen de la actividad",
+        "zh" : "活动总结"
+    },
+    "biography" : {
+        "fa" : "بیوگرافی و سایر توضیحات",
+        "en" : "Biography and other descriptions",
+        "ar" : "السيرة الذاتية والأوصاف الأخرى",
+        "tr" : "Biyografi ve diğer açıklamalar",
+        "ru" : "Биография и другие описания",
+        "de" : "Biografie und andere Beschreibungen",
+        "fr" : "Biographie et autres descriptions",
+        "es" : "Biografía y otras descripciones",
+        "zh" : "传记和其他描述"
+    },
+    "address" : {
+        "fa" : "آدرس",
+        "en" : "Address",
+        "ar" : "العنوان"
+    },
+    "country" : {
+        "fa" : "کشور",
+        "en" : "Country",
+        "ar" : "الدولة",
+        "tr" : "Ülke",
+        "ru" : "Страна",
+        "de" : "Land",
+        "fr" : "Pays",
+        "es" : "País",
+        "zh" : "国家"
+    },
+    "city" : {
+        "fa" : "شهر",
+        "en" : "City",
+        "ar" : "المدينة",
+        "tr" : "Kent",
+        "ru" : "Город",
+        "de" : "Stadt",
+        "fr" : "Ville",
+        "es" : "Ciudad",
+        "zh" : "城市"
+    },
+    "addressLine2": {
+        "fa": "ادامه آدرس",
+        "en": "Address Line 2",
+        "ar": "الجزء الثاني من العنوان"
+    },
+    "formatErr" : {
+        "fa" : "فقط فرمت عکس قابل قبول می باشد.",
+        "en" : "Only image formats are acceptable.",
+        "ar" : "فقط تنسيقات الصور مقبولة.",
+        "tr" : "",
+        "ru" : "Допустимы только форматы изображений.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "titleErr" : {
+        "fa" : "لطفا یک عنوان وارد نمایید.",
+        "en" : "Please enter a title.",
+        "ar" : "الرجاء إدخال العنوان.",
+        "tr" : "",
+        "ru" : "Пожалуйста, введите название.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "requestTitleErr" : {
+        "fa" : "لطفا عنوان درخواست را وارد نمایید.",
+        "en" : "Please enter the title of the request.",
+        "ar" : "الرجاء إدخال عنوان الطلب.",
+        "tr" : "",
+        "ru" : "Пожалуйста, введите заголовок запроса.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "adsCommentErr" : {
+        "fa" : "لطفا شرح آگهی را وارد نمایید.",
+        "en" : "Please enter the description of the ad.",
+        "ar" : "الرجاء إدخال وصف الإعلان.",
+        "tr" : "",
+        "ru" : "Пожалуйста, введите описание объявления.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "unitPriceErr" : {
+        "fa" : "لطفا قیمت واحد را وارد نمایید.",
+        "en" : "Please enter the unit price.",
+        "ar" : "الرجاء إدخال سعر الوحدة.",
+        "tr" : "",
+        "ru" : "Пожалуйста, введите цену за единицу.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "maxUnitPriceErr" : {
+        "fa" : "لطفا حداکثر قیمت درخواستی را وارد نمایید.",
+        "en" : "Please enter the maximum unit price.",
+        "ar" : "الرجاء إدخال الحد الأقصى لسعر الوحدة.",
+        "tr" : "",
+        "ru" : "Пожалуйста, введите максимальную цену за единицу.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "unitMeasurementErr" : {
+        "fa" : "لطفا واحد اندازه گیری را وارد نمایید.",
+        "en" : "Please enter the unit of measurement.",
+        "ar" : "الرجاء إدخال وحدة القياس.",
+        "tr" : "",
+        "ru" : "Пожалуйста, введите единицу измерения.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "currencyErr" : {
+        "fa" : "لطفا واحد پول را وارد نمایید.",
+        "en" : "Please enter the currency.",
+        "ar" : "الرجاء إدخال العملة.",
+        "tr" : "",
+        "ru" : "Пожалуйста, введите валюту.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "userRequest" : {
+        "fa" : "درخواست ها",
+        "en" : "Requests",
+        "ar" : "الطلبات",
+        "tr" : "",
+        "ru" : "Запросы",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "userLocation" : {
+        "fa" : "موقعیت مکانی",
+        "en" : "Location",
+        "ar" : "موقع",
+        "tr" : "",
+        "ru" : "Место нахождения",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "userAds" : {
+        "fa" : "آگهی ها",
+        "en" : "Ads",
+        "ar" : "إعلانات",
+        "tr" : "",
+        "ru" : "Объявления",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "userVideos" : {
+        "fa" : "ویدئو ها",
+        "en" : "Videos",
+        "ar" : "أشرطة فيديو",
+        "tr" : "",
+        "ru" : "Видео",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "lastRequest" : {
+        "fa" : "جدیدترین درخواست ها",
+        "en" : "The latest Requests",
+        "ar" : "أحدث الطلبات",
+        "tr" : "",
+        "ru" : "Последние запросы",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "starredAds" : {
+        "fa" : "آگهی های ستاره دار",
+        "en" : "Starred Ads",
+        "ar" : "الإعلانات المميزة بنجمة",
+        "tr" : "",
+        "ru" : "Помеченные объявления",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "specialAds" : {
+        "fa" : "آگهی های ویژه",
+        "en" : "Special Ads",
+        "ar" : "إعلانات خاصة",
+        "tr" : "",
+        "ru" : "Специальные объявления",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "specialPS" : {
+        "fa" : "محصولات و خدمات ویژه",
+        "en" : "Top Products & Services",
+        "ar" : "المنتجات والخدمات الخاصة",
+        "tr" : "Özel Ürünler ve Hizmetler",
+        "ru" : "Специальные продукты и услуги",
+        "de" : "",
+        "fr" : "",
+        "es" : "Productos y servicios especiales",
+        "it" : "",
+        "zh" : ""
+    },
+    "special" : {
+        "fa" : "ویژه",
+        "en" : "special",
+        "ar" : "خاص",
+        "tr" : "",
+        "ru" : "особый",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "specials" : {
+        "fa" : "ویژه ها",
+        "en" : "Specials",
+        "ar" : "العروض الخاصة",
+        "tr" : "Özel",
+        "ru" : "Специальные",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "fcErr" : {
+        "fa" : "لطفا یک تم پروفایل انتخاب نمایید",
+        "en" : "Please select a profile theme",
+        "ar" : "الرجاء اختيار موضوع الملف الشخصي",
+        "tr" : "",
+        "ru" : "Пожалуйста, выберите тему профиля",
+        "de" : "",
+        "fr" : "",
+        "es" : "Por favor seleccione un tema de perfil",
+        "it" : "",
+        "zh" : ""
+    },
+    "countryErr" : {
+        "fa" : "لطفا کشور محل اقامت را انتخاب نمایید",
+        "en" : "Please select the country of residence",
+        "ar" : "الرجاء تحديد بلد الإقامة",
+        "tr" : "",
+        "ru" : "Пожалуйста, выберите страну проживания",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "usernameNullErr" : {
+        "fa" : "لطفا نام کاربری را وارد نمایید",
+        "en" : "Please enter your username",
+        "ar" : "الرجاء إدخال اسم المستخدم",
+        "tr" : "",
+        "ru" : "Пожалуйста, введите имя пользователя",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "usernameCharErr" : {
+        "fa" : "نام کاربری باید حداقل سه کاراکتر باشد",
+        "en" : "Username must be at least three characters long",
+        "ar" : "يجب أن يتكون اسم المستخدم من ثلاثة أحرف على الأقل",
+        "tr" : "",
+        "ru" : "Имя пользователя должно состоять не менее чем из трех символов.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "passwordErr" : {
+        "fa" : "لطفا رمز عبور را وارد نمایید",
+        "en" : "Please enter your password",
+        "ar" : "من فضلك أدخل رقمك السري",
+        "tr" : "",
+        "ru" : "Пожалуйста введите ваш пароль",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "recaptchaErr" : {
+        "fa" : "لطفا گزینه من ربات نیستم را فعال نمایید",
+        "en" : "Please enable the I'm not a robot option",
+        "ar" : "الرجاء تمكين خيار أنا لست برنامج روبوت",
+        "tr" : "",
+        "ru" : "Пожалуйста, включите опцию Я не робот",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "tradeRequest" : {
+        "fa" : "درخواست تجاری",
+        "en" : "Commercial Request",
+        "ar" : "طلب التجاري",
+        "tr" : "",
+        "ru" : "Коммерческий запрос",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "adsInfo" : {
+        "fa" : "مشخصات آگهی",
+        "en" : "Ads Info",
+        "ar" : "معلومات الإعلانات",
+        "tr" : "",
+        "ru" : "Информация о рекламе",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "videoInfo" : {
+        "fa" : "مشخصات ویدئو",
+        "en" : "Video Info",
+        "ar" : "معلومات الفيديو",
+        "tr" : "",
+        "ru" : "Информация о видео",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "requestInfo" : {
+        "fa" : "مشخصات درخواست",
+        "en" : "Ads Request",
+        "ar" : "معلومات الطلب",
+        "tr" : "",
+        "ru" : "Запрос рекламы",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "clearanceCustoms" : {
+        "fa" : "ترخیص و امور گمرک",
+        "en" : "Clearance and customs affairs",
+        "ar" : "التخليص الجمركي",
+        "tr" : "",
+        "ru" : "Оформление и таможенное оформление",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "forwarding" : {
+        "fa" : "حمل و نقل",
+        "en" : "Transportation and forwarding",
+        "ar" : "النقل والشحن",
+        "tr" : "",
+        "ru" : "Транспорт и экспедирование",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "insuranceOffices" : {
+        "fa" : "دفاتر بیمه",
+        "en" : "Insurance offices",
+        "ar" : "مكاتب التأمين",
+        "tr" : "",
+        "ru" : "Страховые офисы",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "embassies" : {
+        "fa" : "سفارت ها",
+        "en" : "Embassies",
+        "ar" : "السفارات",
+        "tr" : "",
+        "ru" : "Посольства",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "commercialLegalLawyers" : {
+        "fa" : "وکلای حقوقی تجاری",
+        "en" : "Commercial legal lawyers",
+        "ar" : "المحامون القانونيون التجاريون",
+        "tr" : "",
+        "ru" : "Юристы по коммерческому праву",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "translators" : {
+        "fa" : "مترجمین زبان",
+        "en" : "Translators",
+        "ar" : "المترجمين",
+        "tr" : "",
+        "ru" : "Переводчики",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "websiteDesignerLogo" : {
+        "fa" : "طراحی سایت، سئو، لوگو و ...",
+        "en" : "Website design, SEO, logo and ...",
+        "ar" : "تصميم مواقع الويب ، سيو ، الشعار و ...",
+        "tr" : "",
+        "ru" : "Дизайн веб-сайтов, SEO, логотип и ...",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "aboutUsT1" : {
+        "fa" : "سلام! من محمود سعداللهی خالق این پلتفرم هستم. ساکن لندن، فارغ التحصیل MBA، برنامه نویس وب و در طراحی و پیاده سازی نرم افزارهای ERP مهارت دارم.",
+        "en" : "Hey there! I'm Mahmoud Sadollahi, the creator of this platform. London resident, MBA graduate, web programmer and skilled in designing and implementing ERP software.",
+        "ar" : "مرحبًا يا من هناك! أنا محمود سعداللهي مبتكر هذه المنصة. مقيم في لندن، خريج ماجستير إدارة الأعمال، مبرمج ويب وماهر في تصميم وتنفيذ برامج تخطيط موارد المؤسسات (ERP).",
+        "tr" : "",
+        "ru" : "Привет! Я Махмуд Садоллахи, создатель этой платформы. Житель Лондона, выпускник MBA, веб-программист и специалист по разработке и внедрению программного обеспечения ERP.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "aboutUsT2" : {
+        "fa" : "من این سفر را با یک سوال ساده شروع کردم: «?Who are you really» این جرقه ایده WHORALY را برانگیخت، پلتفرمی که هدف آن برقراری ارتباط کسب‌ و کارها با مخاطبانشان در سطحی عمیق‌تر است.",
+        "en" : "I started this journey with a simple question: «Who are you really?» It sparked the idea for WHORALY, a platform that aims to connect businesses with their audience on a deeper level.",
+        "ar" : "لقد بدأت هذه الرحلة بسؤال بسيط: «?Who are you really» لقد أشعل ذلك فكرة WHORALY، وهي منصة تهدف إلى ربط الشركات بجمهورها على مستوى أعمق.",
+        "tr" : "",
+        "ru" : "Я начал это путешествие с простого вопроса: «Who really are you?» Это породило идею создания WHORALY, платформы, цель которой — связать бизнес со своей аудиторией на более глубоком уровне.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "aboutUsT3" : {
+        "fa" : "هدف من این است که به کسب و کارهایی مانند شما کمک کنم تا در دنیای دیجیتال امروزی رشد کنند. چه یک استارتاپ یا یک شرکت تاسیس شده باشید، WHORALY ابزارهای مورد نیاز برای موفقیت را فراهم می کند.",
+        "en" : "My goal is to help businesses like yours thrive in today's digital world. Whether you're a startup or an established company, WHORALY provides the tools you need to succeed.",
+        "ar" : "هدفي هو مساعدة الشركات مثل شركتك على الازدهار في العالم الرقمي اليوم. سواء كنت شركة ناشئة أو شركة قائمة، توفر WHORALY الأدوات التي تحتاجها لتحقيق النجاح.",
+        "tr" : "",
+        "ru" : "Моя цель — помочь таким компаниям, как ваш, процветать в современном цифровом мире. Независимо от того, являетесь ли вы стартапом или солидной компанией, WHORALY предоставляет инструменты, необходимые для достижения успеха.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "ruleT1" : {
+        "fa" : "✓ برای ثبت آگهی حتما نوع کالا، تاریخ، سال ساخت، امکانات، قیمت و تمامی امور را در نظر بگیرید تا بتوانید یک آگهی موفق داشته باشید.",
+        "en" : "✓ To register an ad, be sure to consider the type of product, date, year of manufacture, facilities, price and all things so that you can have a successful ad.",
+        "ar" : "✓ لتسجيل إعلان ، تأكد من مراعاة نوع المنتج ، وتاريخه ، وسنة التصنيع ، والتسهيلات ، والسعر وكل الأشياء ، حتى تتمكن من الحصول على إعلان ناجح.",
+        "tr" : "",
+        "ru" : "✓ Чтобы зарегистрировать объявление, обязательно учитывайте тип продукта, дату, год выпуска, оборудование, цену и все остальное, чтобы ваше объявление могло быть успешным.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "ruleT2" : {
+        "fa" : "✓ هر آگهی نشان دهنده یک نوع کالا یا خدمات می باشد. پس از تکرار آگهی خودداری کنید و برای بیشتر دیده شدن آگهی آن را  به آگهی ویژه ارتقا دهید.",
+        "en" : "✓ Each ad represents one type of product or service. Avoid repeating the ad and upgrade it to a special ad to display more.",
+        "ar" : "✓ يمثل كل إعلان نوعًا واحدًا من المنتجات أو الخدمات. تجنب تكرار الإعلان وترقيته إلى إعلان خاص لعرض المزيد.",
+        "tr" : "",
+        "ru" : "✓ Каждое объявление представляет один тип продукта или услуги. Избегайте повторения объявления и сделайте его специальным, чтобы отображалось больше.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "ruleT3" : {
+        "fa" : "✓ پس از ثبت آگهی باید منتظر تایید آگهی توسط تیم پشتیبانی سایت باشید.",
+        "en" : "✓ After registering the ad, you must wait for the ad to be approved by the site support team.",
+        "ar" : "✓ بعد تسجيل الإعلان ، يجب أن تنتظر الإعلان حتى تتم الموافقة عليه من قبل فريق دعم الموقع.",
+        "tr" : "",
+        "ru" : "✓ После регистрации объявления необходимо дождаться утверждения объявления службой поддержки сайта.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "ruleT4" : {
+        "fa" : "✓ قبل از هرگونه پرداخت وجه از وجود کالا اطمینان حاصل کنید.",
+        "en" : "✓ Make sure the goods are available before making any payment.",
+        "ar" : "✓ تأكد من توفر السلع قبل أي دفع.",
+        "tr" : "",
+        "ru" : "✓ Перед оплатой убедитесь, что товар есть в наличии.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "ruleT5" : {
+        "fa" : "✓ برای تمامی امور تجاری حتما باید مراحل و اقدامات لازم برای یک قرارداد رسمی و قانونی را انجام دهید.",
+        "en" : "✓ For all business matters, you must take the necessary steps for a formal and legal contract.",
+        "ar" : "✓ لجميع المسائل التجارية ، يجب عليك اتخاذ الخطوات اللازمة لعقد رسمي وقانوني.",
+        "tr" : "",
+        "ru" : "✓ По всем вопросам бизнеса вы должны предпринять необходимые шаги для заключения официального и юридического контракта.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "ruleT6" : {
+        "fa" : "✓ به دستور پلیس فتا ما هیچ گونه پرداخت خارج از قوانین سایت و معامله ای را بر عهده نمی گیریم و فرد معامله کننده باید تمامی شرایط امنیتی را درنظر بگیرد.",
+        "en" : "✓ By order of the FATA police, we do not accept any payment and the transaction outside the rules of the site, and the trader must consider all security conditions.",
+        "ar" : "✓ بأمر من شرطة FATA ، لا نقبل أي مدفوعات خارج قواعد الموقع والمعاملة ، ويجب على التاجر مراعاة جميع الشروط الأمنية.",
+        "tr" : "",
+        "ru" : "✓ По приказу полиции FATA мы не принимаем никаких платежей и транзакций, выходящих за рамки правил сайта, и трейдер должен учитывать все условия безопасности.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "requestT2" : {
+        "fa" : "در این بخش محصولات و خدماتی را که نیاز دارید قرار دهید تا تامین کنندگان از سرتاسر دنیا، شما را پیدا کنند و با شما ارتباط بگیرند.",
+        "en" : "In this section, put the products and services you need so that suppliers from all over the world can find you and contact you.",
+        "ar" : "في هذا القسم ، قم بتسجيل المنتجات والخدمات التي تحتاجها ، حتى يتمكن الموردون من جميع أنحاء العالم من العثور عليك والاتصال بك.",
+        "tr" : "",
+        "ru" : "В этом разделе разместите необходимые вам продукты и услуги, чтобы поставщики со всего мира могли найти вас и связаться с вами.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "videoT1" : {
+        "fa" : "در این بخش، کد ویدئو های خود را از کانالهای یوتیوب، آپارات و لینکدین ثبت کنید تا تواناییهای حرفه ای خود را بهتر نمایش دهید.",
+        "en" : "In this section, put the code of your videos from YouTube, Aparat and LinkedIn channels to better show your professional abilities.",
+        "ar" : "في هذا القسم ، أدخل رمز مقاطع الفيديو الخاصة بك من قنوات يوتيوب،أبارات، لينكد إن لإظهار قدراتك المهنية بشكل أفضل.",
+        "tr" : "",
+        "ru" : "В этот раздел поместите код ваших видео с каналов YouTube, Aparat и LinkedIn, чтобы лучше показать свои профессиональные способности.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "instagramT1" : {
+        "fa" : "در این بخش، لینک پست های اینستاگرام خود را وارد کنید تا در صفحه تجاری تان نمایش داده شوند.",
+        "en" : "In this section, enter the link of your Instagram posts to be displayed in your business page.",
+        "ar" : "في هذا القسم ، أدخل رابط منشورات انستقرام الخاصة بك ليتم عرضها في صفحة تجاريتك.",
+        "tr" : "",
+        "ru" : "В этом разделе введите ссылку на свои посты в Instagram, которые будут отображаться на вашей бизнес-странице.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "adsT1" : {
+        "fa" : "در این بخش، آگهی محصولات و خدمات خود را قرار دهید.",
+        "en" : "Post your products and services in this section.",
+        "ar" : "في هذا القسم ، أعلن عن منتجاتك وخدماتك.",
+        "tr" : "",
+        "ru" : "Размещайте свои товары и услуги в этом разделе.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "adsT2" : {
+        "fa" : "با ثبت آگهی در این سایت با خریداران از سرتاسر دنیا ارتباط برقرار کنید.",
+        "en" : "By advertising on this site, connect with buyers from all over the world.",
+        "ar" : "من خلال الإعلان على هذا الموقع ، تواصل مع المشترين من جميع أنحاء العالم.",
+        "tr" : "",
+        "ru" : "Размещая рекламу на этом сайте, связывайтесь с покупателями со всего мира.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "activeCountries" : {
+        "fa" : "کشورهای عضو",
+        "en" : "Member Countries",
+        "ar" : "الدول الأعضاء",
+        "tr" : "",
+        "ru" : "Страны-участницы",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "intTitle1" : {
+        "fa" : "با whoraly جهانی شوید",
+        "en" : "Become Global with whoraly",
+        "ar" : "كن عالميًا مع whoraly",
+        "tr" : "",
+        "ru" : "Станьте глобальным с whoraly",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "intDescription1" : {
+        "fa" : "در whoraly شروع صادرات غیر ممکن نیست. ما با دعوت و همکاری شرکت های بزرگ در صنایع مختلف این موقعیت را برای شروع یک بستر بزرگ تجاری محیا کرده ایم. کافیست با دید باز استقبال کنید.",
+        "en" : "It is not impossible to start exports in whoraly. By inviting and cooperating with large companies in various industries, we have created this opportunity to start a large business platform. Just welcome with an open mind.",
+        "ar" : "ليس من المستحيل بدء التصدير في whoraly. من خلال دعوة الشركات الكبيرة والتعاون معها في مختلف الصناعات ، أنشأنا هذه الفرصة لبدء منصة أعمال كبيرة. فقط أرحب بعقل متفتح.",
+        "tr" : "",
+        "ru" : "Начать экспорт в whoraly возможно. Приглашая и сотрудничая с крупными компаниями в различных отраслях, мы создали эту возможность для создания большой бизнес-платформы. Просто добро пожаловать непредвзято.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "intTitle2" : {
+        "fa" : "روابط تجاری گسترده در جهان",
+        "en" : "Extensive Trade Relations in the World",
+        "ar" : "علاقات تجارية واسعة النطاق في العالم",
+        "tr" : "",
+        "ru" : "Широкие торговые отношения в мире",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "intDescription2" : {
+        "fa" : "با whoraly ضمن معرفی محصولات و خدمات خود، از درخواست خرید سایر شرکت ها در سرتاسر دنیا آگاه شوید و از موقعیت محیا شدن یک قرارداد تجاری بزرگ بهره مند گردید.",
+        "en" : "With whoraly, while introducing your products and services, be aware of the purchase request of other companies around the world, and take advantage of the opportunity of a large commercial contract.",
+        "ar" : "مع whoraly ، أثناء تقديم منتجاتك وخدماتك ، كن على دراية بطلب الشراء من الشركات الأخرى حول العالم واستفد من فرصة الحصول على عقد تجاري كبير.",
+        "tr" : "",
+        "ru" : "С whoraly, представляя свои продукты и услуги, будьте в курсе запросов на закупку других компаний по всему миру и воспользуйтесь возможностью заключения крупного коммерческого контракта.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "intTitle3" : {
+        "fa" : "امکانات ویژه",
+        "en" : "Special Features",
+        "ar" : "مميزات خاصة",
+        "tr" : "",
+        "ru" : "Особые возможности",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "intDescription3" : {
+        "fa" : "ما با قرار دادن قسمتهای مختلف و امکانات ویژه، امکان خرید مستقیم سایر محصولات  گروه whoraly را فراهم کرده ایم و شما میتوانید به راحتی و اطمینان کامل از محصولات ما خرید کرده و یک  تجارت موفق را تجربه کنید.",
+        "en" : "By designing different sections and special features, we have provided the possibility of buying other products of whoraly Group directly, and you can easily and confidently buy our products and experience a successful business.",
+        "ar" : "من خلال تصميم أقسام مختلفة وميزات خاصة ، وفرنا إمكانية شراء منتجات أخرى من مجموعة whoraly مباشرة ، ويمكنك بسهولة وثقة شراء منتجاتنا وتجربة عمل ناجح.",
+        "tr" : "",
+        "ru" : "Разработав различные разделы и специальные функции, мы предоставили возможность покупать другие продукты whoraly Group напрямую, и вы можете легко и уверенно покупать наши продукты и вести успешный бизнес.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "locationT1" : {
+        "fa": "موقعیت خود را اینجا تنظیم کنید تا بازدیدکنندگان شما به‌راحتی بتوانند شما را در Google Maps پیدا کنند.",
+        "en": "Set your location here to help your visitors find you quickly on Google Maps.",
+        "ar": "قم بتحديد موقعك هنا لمساعدة زوارك في العثور عليك بسرعة على خرائط جوجل."
+    },
+    "currentLocation" : {
+        "fa" : "موقعیت فعلی",
+        "en" : "Current Location",
+        "ar" : "الموقع الحالي",
+        "tr" : "",
+        "ru" : "Текущее местоположение",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "testLocation" : {
+        "fa" : "تست موقعیت",
+        "en" : "Test Of Location",
+        "ar" : "اختبار الموقع",
+        "tr" : "",
+        "ru" : "Тест местоположения",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "latitude" : {
+        "fa" : "عرض جغرافیایی",
+        "en" : "Latitude",
+        "ar" : "خط العرض",
+        "tr" : "",
+        "ru" : "Широта",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "longitude" : {
+        "fa" : "طول جغرافیایی",
+        "en" : "Longitude",
+        "ar" : "خط الطول",
+        "tr" : "",
+        "ru" : "Долгота",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "latErr" : {
+        "fa" : "لطفا عرض جغرافیایی را وارد نمایید",
+        "en" : "Please enter latitude",
+        "ar" : "الرجاء إدخال خط العرض",
+        "tr" : "",
+        "ru" : "Пожалуйста, введите широту",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "lonErr" : {
+        "fa" : "لطفا طول جغرافیایی را وارد نمایید",
+        "en" : "Please enter longitude",
+        "ar" : "الرجاء إدخال خط الطول",
+        "tr" : "",
+        "ru" : "Пожалуйста, введите долготу",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "locationSaveAlert": {
+        "fa" : "موقعیت مکانی با موفقیت ذخیره شد.",
+        "en" : "Location saved successfully.",
+        "ar" : "تم حفظ الموقع بنجاح.",
+        "tr" : "",
+        "ru" : "Местоположение успешно сохранено.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "locationPhoto": {
+        "fa" : "عکس لوکیشن",
+        "en" : "Location Picture",
+        "ar" : "صورة الموقع",
+        "tr" : "",
+        "ru" : "Изображение местоположения",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "aboutPhoto": {
+        "fa" : "عکس درباره",
+        "en" : "About Picture",
+        "ar" : "صورة عن",
+        "tr" : "",
+        "ru" : "Изображение обо",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "deleteLocation": {
+        "fa" : "موقعیت مکانی حذف شود؟",
+        "en" : "Delete location?",
+        "ar" : "هل تريد حذف الموقع؟",
+        "tr" : "",
+        "ru" : "Удалить местоположение?",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "deleteLocationImage": {
+        "fa" : "عکس موقعیت مکانی حذف شود؟",
+        "en" : "Delete location picture?",
+        "ar" : "هل تريد حذف صورة الموقع؟",
+        "tr" : "",
+        "ru" : "Удалить фото места?",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "deleteAboutUsImage": {
+        "fa" : "عکس درباره ما حذف شود؟",
+        "en" : "Delete about us picture?",
+        "ar" : "هل تريد حذف صورة معلومات عنا؟",
+        "tr" : "",
+        "ru" : "Удалить фото о нас?",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "deleteProfileImage": {
+        "fa" : "عکس پروفایل حذف شود؟",
+        "en" : "Delete profile picture?",
+        "ar" : "هل تريد حذف صورة الملف الشخصي؟",
+        "tr" : "",
+        "ru" : "Удалить фото профиля?",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "uploadComment": {
+        "fa" : "برای ذخیره تصویر انتخابی، لطفا روی دکمه آپلود کلیک کنید.",
+        "en" : "To save the selected image, please click the upload button.",
+        "ar" : "لحفظ الصورة المحددة ، يرجى النقر فوق الزر تحميل.",
+        "tr" : "",
+        "ru" : "Чтобы сохранить выбранное изображение, нажмите кнопку загрузки.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "selectImgErr": {
+        "fa" : "لطفا یک تصویر انتخاب کنید.",
+        "en" : "Please add an image.",
+        "ar" : "الرجاء تحديد صورة."
+    },
+    "formatImgErr": {
+        "fa" : "لطفا یک فرمت تصویر انتخاب کنید.",
+        "en" : "Please select an image format.",
+        "ar" : "الرجاء تحديد تنسيق الصورة.",
+        "tr" : "",
+        "ru" : "Пожалуйста, выберите формат изображения.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "saveImageAlert": {
+        "fa" : "تصویر با موفقیت ذخیره شد.",
+        "en" : "Image saved successfully.",
+        "ar" : "تم حفظ الصورة بنجاح.",
+        "tr" : "",
+        "ru" : "Изображение успешно сохранено.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "yes": {
+        "fa" : "بله",
+        "en" : "Yes",
+        "ar" : "نعم",
+        "tr" : "",
+        "ru" : "да",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "no": {
+        "fa" : "خیر",
+        "en" : "No",
+        "ar" : "لا",
+        "tr" : "",
+        "ru" : "Нет",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "googleMapAddress": {
+        "fa" : "نمایش آدرس در Google Map",
+        "en" : "Display the address in Google Map",
+        "ar" : "لاعرض العنوان في Google Map",
+        "tr" : "",
+        "ru" : "Показать адрес на карте Google",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "BCR": {
+        "fa" : "روان شناسی در تجارت",
+        "en" : "Psychology in Business",
+        "ar" : "علم النفس في الأعمال",
+        "tr" : "",
+        "ru" : "Психология в бизнесе",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "BCRText1": {
+        "fa" : "کاربرد در ✓ شناسایی طرف مورد مذاکره ✓ جذب و استخدام نیروی انسانی",
+        "en" : "Used in ✓ Identifying the negotiating party ✓ Recruitment and employment of manpower",
+        "ar" : "مستعمل في ✓ تعرف على الطرف المفاوض ✓ استقدام وتوظيف القوى العاملة",
+        "tr" : "",
+        "ru" : "Используется для ✓ определения стороны переговоров ✓ найма рабочей силы",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "characterAnalysisCards": {
+        "fa" : "کارتهای آنالیز شخصیت",
+        "en" : "Character Analysis Cards",
+        "ar" : "بطاقات تحليل الشخصية",
+        "tr" : "",
+        "ru" : "Карты анализа персонажей",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "imageManagement" : {
+        "fa" : "مدیریت عکسها",
+        "en" : "image management",
+        "ar" : "image management",
+        "tr" : "image management",
+        "ru" : "image management",
+        "de" : "image management",
+        "fr" : "image management",
+        "es" : "image management",
+        "it" : "image management",
+        "zh" : "image management"
+    },
+    "importExportServices" : {
+        "fa" : "صادرات، واردات و خدمات تجاری",
+        "en" : "Exports, Imports and Trade Services",
+        "ar" : "الصادرات - الواردات - الخدمات التجارية",
+        "tr" : "",
+        "ru" : "Экспорт, импорт и торговые услуги",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "userCommentErr" : {
+        "fa" : "لطفا پیام خود را وارد نمایید.",
+        "en" : "Please enter your message.",
+        "ar" : "أدرج رسالتك من فضلك.",
+        "tr" : "",
+        "ru" : "Пожалуйста, введите ваше сообщение.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "userRatingErr" : {
+        "fa" : "لطفا با انتخاب ستاره ها امتیازدهی نمایید.",
+        "en" : "Please rate by selecting the stars.",
+        "ar" : "يرجى التقييم عن طريق اختيار النجوم.",
+        "tr" : "",
+        "ru" : "Пожалуйста, оцените, выбрав звезды.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "userMessageFailed" : {
+        "fa" : "متاسفانه پیام شما ارسال نشد. لطفا مجددا سعی نمایید.",
+        "en" : "Sorry, your message could not be sent. Please try again.",
+        "ar" : "عذرا ، لا يمكن إرسال رسالتك. حاول مرة اخرى.",
+        "tr" : "",
+        "ru" : "Извините, ваше сообщение не может быть отправлено. Пожалуйста, попробуйте еще раз.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "helpSelectCard" : {
+        "fa" : "کارتهای زیر را تکمیل کنید و سپس نمودار آنالیز شخصیت را بررسی نمایید.",
+        "en" : "Complete the following cards and then check the character analysis chart.",
+        "ar" : "أكمل البطاقات التالية ثم تحقق من مخطط تحليل الشخصية.",
+        "tr" : "",
+        "ru" : "Заполните следующие карточки и затем проверьте таблицу анализа персонажей.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "videoCode" : {
+        "fa" : "کد ویدئو",
+        "en" : "Video Code",
+        "ar" : "كود الفيديو",
+        "tr" : "",
+        "ru" : "Видео код",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "videoCodeErr" : {
+        "fa" : "لطفا کد ویدئو را وارد نمایید.",
+        "en" : "Please enter the video code.",
+        "ar" : "الرجاء إدخال رمز الفيديو.",
+        "tr" : "",
+        "ru" : "Пожалуйста, введите код видео.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "videos" : {
+        "fa" : "ویدئو ها",
+        "en" : "Videos",
+        "ar" : "أشرطة فيديو",
+        "tr" : "",
+        "ru" : "Видео",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "nonAcceptanceReason" : {
+        "fa" : "علت عدم تایید",
+        "en" : "Reason for non-acceptance",
+        "ar" : "سبب عدم القبول",
+        "tr" : "",
+        "ru" : "Причина отказа",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "postAds" : {
+        "fa" : "درج آگهی",
+        "en" : "Post ads",
+        "ar" : "نشر الإعلانات",
+        "tr" : "",
+        "ru" : "Творчество",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "saleAds" : {
+        "fa" : "آگهی فروش",
+        "en" : "Ad for sale",
+        "ar" : "إعلان للبيع",
+        "tr" : "",
+        "ru" : "Объявление о продаже",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "buyAds" : {
+        "fa" : "آگهی های خرید",
+        "en" : "Purchase Ads",
+        "ar" : "إعلان للشراء",
+        "tr" : "",
+        "ru" : "Объявление о покупке",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "buyAdsPanel": {
+        "fa" : "پنل آگهی های خرید",
+        "en" : "Purchase Ads Panel",
+        "ar" : "لوحة إعلانات للشراء",
+        "tr" : "",
+        "ru" : "Панель объявлений о покупке",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "visitsQTY" : {
+        "fa" : "تعداد بازدید",
+        "en" : "Number of visits",
+        "ar" : "عدد الزيارات",
+        "tr" : "",
+        "ru" : "Количество посещений",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "visitorCountries" : {
+        "fa" : "کشورهای بازدید کننده",
+        "en" : "Visitor Countries",
+        "ar" : "الدول الزائرة",
+        "tr" : "",
+        "ru" : "Страны-посетители",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "today" : {
+        "fa" : "امروز",
+        "en" : "Today",
+        "ar" : "اليوم",
+        "tr" : "",
+        "ru" : "Сегодня",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "yesterday" : {
+        "fa" : "دیروز",
+        "en" : "Yesterday",
+        "ar" : "أمس",
+        "tr" : "",
+        "ru" : "Вчера",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "last7Days" : {
+        "fa" : "7 روز گذشته",
+        "en" : "Last 7 days",
+        "ar" : "آخر 7 يومًا",
+        "tr" : "",
+        "ru" : "Последние 7 дней",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "last30Days" : {
+        "fa" : "30 روز گذشته",
+        "en" : "Last 30 days",
+        "ar" : "آخر 30 يومًا",
+        "tr" : "",
+        "ru" : "Последние 30 дней",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "last60Days" : {
+        "fa" : "60 روز گذشته",
+        "en" : "Last 60 days",
+        "ar" : "آخر 60 يومًا",
+        "tr" : "",
+        "ru" : "Последние 60 дней",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "last90Days" : {
+        "fa" : "90 روز گذشته",
+        "en" : "Last 90 days",
+        "ar" : "آخر 90 يومًا",
+        "tr" : "",
+        "ru" : "Последние 90 дней",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "last180Days" : {
+        "fa" : "180 روز گذشته",
+        "en" : "Last 180 days",
+        "ar" : "آخر 180 يومًا",
+        "tr" : "",
+        "ru" : "Последние 180 дней",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "last12months" : {
+        "fa" : "12 ماه گذشته",
+        "en" : "Last 12 months",
+        "ar" : "آخر 12 شهرًا",
+        "tr" : "",
+        "ru" : "Последние 12 месяцев",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "todayVisits" : {
+        "fa" : "بازدید امروز",
+        "en" : "Today Visits",
+        "ar" : "زيارات اليوم",
+        "tr" : "",
+        "ru" : "Сегодняшние посещения",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "last7DaysVisits" : {
+        "fa" : "بازدید 7 روز گذشته",
+        "en" : "Last 7 days Visits",
+        "ar" : "زرت آخر 7 أيام",
+        "tr" : "",
+        "ru" : "Посещения за последние 7 дней",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "totalVisits" : {
+        "fa" : "بازدید کل",
+        "en" : "Total Visits",
+        "ar" : "مجموع الزيارات",
+        "tr" : "",
+        "ru" : "Всего посещений",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "notifications" : {
+        "fa" : "اعلان ها",
+        "en" : "Notifications",
+        "ar" : "إشعارات",
+        "tr" : "",
+        "ru" : "Уведомления",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "details" : {
+        "fa" : "جزئیات",
+        "en" : "Details",
+        "ar" : "تفاصيل",
+        "tr" : "Detaylar",
+        "ru" : "Подробности",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "showDetails" : {
+        "fa" : "نمایش جزئیات",
+        "en" : "Show Details",
+        "ar" : "اظهر التفاصيل",
+        "tr" : "Detayları göster",
+        "ru" : "Показать детали",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "bizAccess" : {
+        "fa" : "دسترسی فقط برای اعضای تجاری",
+        "en" : "Access for business members only",
+        "ar" : "الوصول لأعضاء الأعمال فقط",
+        "tr" : "",
+        "ru" : "Доступ только для бизнес-участников",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "goldenAccess" : {
+        "fa" : "تصاویر بیشتر فقط برای اعضای طلایی.",
+        "en" : "More images for Golden Members only.",
+        "ar" : "المزيد من الصور للأعضاء الذهبيين فقط.",
+        "tr" : "",
+        "ru" : "Больше изображений только для Золотых участников.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "pictures" : {
+        "fa" : "تصاویر",
+        "en" : "Pictures",
+        "ar" : "الصور",
+        "tr" : "",
+        "ru" : "Изображений",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "picture" : {
+        "fa" : "تصویر",
+        "en" : "Picture",
+        "ar" : "صورة",
+        "tr" : "",
+        "ru" : "Изображение",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "select" : {
+        "fa" : "انتخاب کنید",
+        "en" : "Select",
+        "ar" : "يختار",
+        "tr" : "",
+        "ru" : "Выбирать",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "upgradeToBusinessT" : {
+        "fa" : "شما عضو عادی هستید. برای ارتقاء به عضویت تجاری، عکس پروفایل و اطلاعات زیر را تکمیل کنید، سپس از طریق لینک زیر درخواست نمایید.",
+        "en" : "You are a regular member. To promote to a business membership, complete the profile picture and information below, then submit your request via the link below.",
+        "ar" : "أنت عضو عادي. للترقية إلى عضوية أعمال ، أكمل صورة الملف الشخصي والمعلومات أدناه ، ثم أرسل طلبك عبر الرابط أدناه.",
+        "tr" : "",
+        "ru" : "Вы постоянный участник. Чтобы перейти на бизнес-членство, заполните изображение профиля и информацию ниже, а затем отправьте запрос по ссылке ниже.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "bizRequestLink" : {
+        "fa" : "درخواست برای عضویت تجاری",
+        "en" : "Apply for being a business member and use all features of whoraly.",
+        "ar" : "تقدم بطلب للحصول على عضوية أعمال واستخدم جميع ميزات whoraly.",
+        "tr" : "İş üye olmak için başvurun ve whoraly'in tüm özelliklerini kullanın.",
+        "ru" : "Подайте заявку на статус бизнес-члена и используйте все функции whoraly.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "adsBizLink" : {
+        "fa" : "نمایش صفحه تجاری",
+        "en" : "Show business page",
+        "ar" : "عرض صفحة الأعمال",
+        "tr" : "",
+        "ru" : "Показать бизнес-страницу",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "instaHelp1": {
+        "fa": "لینک پست را از اینستاگرام کپی کرده و در تکست باکس جای‌گذاری کنید.",
+        "en": "Copy the link of the post from Instagram and paste it in the text box.",
+        "ar": "انسخ رابط المنشور من إنستغرام والصقه في تکست باکس."
+    },
+    "postLinkErr" : {
+        "fa" : "لطفا لینک را وارد نمایید.",
+        "en" : "Please enter the link.",
+        "ar" : "الرجاء إدخال الارتباط.",
+        "tr" : "",
+        "ru" : "Пожалуйста, введите ссылку.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "application" : {
+        "fa" : "اپلیکیشن ها",
+        "en" : "Applications",
+        "ar" : "التطبيقات",
+        "tr" : "Uygulamalar",
+        "ru" : "Приложения",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "versionUpdate" : {
+        "fa" : "بروز رسانی ورژن",
+        "en" : "Version Update",
+        "ar" : "تحديث الإصدار",
+        "tr" : "Sürümü güncelle",
+        "ru" : "Обновить версию",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "welcome" : {
+        "fa" : "خوش آمدید",
+        "en" : "Welcome",
+        "ar" : "أهلا بك",
+        "tr" : "Hoş geldiniz",
+        "ru" : "Добро пожаловать",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "taskName" : {
+        "fa" : "فعالیت",
+        "en" : "Task Name",
+        "ar" : "Task Name",
+        "tr" : "Task Name",
+        "ru" : "Task Name",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "duration" : {
+        "fa" : "مدت",
+        "en" : "Duration",
+        "ar" : "Duration",
+        "tr" : "Duration",
+        "ru" : "Duration",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "start" : {
+        "fa" : "شروع",
+        "en" : "Start",
+        "ar" : "Start",
+        "tr" : "Start",
+        "ru" : "Start",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "finish" : {
+        "fa" : "پایان",
+        "en" : "Finish",
+        "ar" : "Finish",
+        "tr" : "Finish",
+        "ru" : "Finish",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "complete" : {
+        "fa" : "پیشرفت",
+        "en" : "Complete",
+        "ar" : "Complete",
+        "tr" : "Complete",
+        "ru" : "Complete",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "weight" : {
+        "fa" : "وزن",
+        "en" : "weight",
+        "ar" : "weight",
+        "tr" : "weight",
+        "ru" : "weight",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "sectionAccess" : {
+        "fa" : "شما به این بخش دسترسی ندارید.",
+        "en" : "You do not have access to this section.",
+        "ar" : "ليس لديك حق الوصول إلى هذا القسم.",
+        "tr" : "Bu bölüme erişiminiz yok.",
+        "ru" : "У вас нет доступа к этому разделу",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "bizName" : {
+        "fa" : "نام تجاری",
+        "en" : "ShiningPage Name",
+        "ar" : "الاسم التجاري",
+        "tr" : "iş adı",
+        "ru" : "Наименование фирмы",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "deleteTaskAlert" : {
+        "fa" : "آیا مایلید فعالیت و مسستندات آن را به صورت دائم حذف کنید؟",
+        "en" : "Would you like to permanently delete the task and its documentation?",
+        "ar" : "هل ترغب في حذف مهمة المشروع ووثائقه بشكل دائم؟",
+        "tr" : "Proje görevini ve belgelerini kalıcı olarak silmek ister misiniz?",
+        "ru" : "Вы хотите навсегда удалить проектную задачу и ее документацию?",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "genderErr" : {
+        "fa" : "لطفا جنسیت را انتخاب نمایید",
+        "en" : "Please select your gender",
+        "ar" : "الرجاء تحديد جنسك",
+        "tr" : "Lütfen cinsiyetinizi seçin",
+        "ru" : "Пожалуйста, выберите Ваш пол",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "access" : {
+        "fa" : "دسترسی",
+        "en" : "Access",
+        "ar" : "وصول",
+        "tr" : "Erişimi",
+        "ru" : "доступ",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "percentageBased" : {
+        "fa" : "بر مبنای درصد پیشرفت",
+        "en" : "Based on the percentage of progress",
+        "ar" : "بناءً على النسبة المئوية للتقدم",
+        "tr" : "İlerleme yüzdesine göre",
+        "ru" : "На основе процента прогресса",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "quantityBased" : {
+        "fa" : "بر مبنای تعداد تولید",
+        "en" : "Based on the number of production",
+        "ar" : "بناءً على عدد الإنتاج",
+        "tr" : "Üretim sayısına göre",
+        "ru" : "В зависимости от количества продукции",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "orderQty" : {
+        "fa" : "تعداد سفارش",
+        "en" : "Order QTY",
+        "ar" : "Order QTY",
+        "tr" : "Order QTY",
+        "ru" : "Order QTY",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "target" : {
+        "fa" : "برنامه",
+        "en" : "Target",
+        "ar" : "Target",
+        "tr" : "Target",
+        "ru" : "Target",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "performance" : {
+        "fa" : "عملکرد",
+        "en" : "Performance",
+        "ar" : "Performance",
+        "tr" : "Performance",
+        "ru" : "Performance",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "remaining" : {
+        "fa" : "مانده",
+        "en" : "Remaining",
+        "ar" : "Remaining",
+        "tr" : "Remaining",
+        "ru" : "Remaining",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "saveChanges" : {
+        "fa" : "آیا می خواهید تغییرات را ذخیره کنید؟",
+        "en" : "Do you want to save the changes?",
+        "ar" : "هل تريد حفظ التغييرات؟",
+        "tr" : "Değişiklikleri kaydetmek istiyor musunuz?",
+        "ru" : "Вы хотите сохранить изменения?",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "description" : {
+        "fa" : "توضیحات",
+        "en" : "Description",
+        "ar" : "وصف",
+        "tr" : "Açıklama",
+        "ru" : "Описание",
+        "de" : "Beschreibung",
+        "fr" : "Description",
+        "es" : "Descripción",
+        "zh" : "描述"
+    },
+    "total" : {
+        "fa" : "جمع کل",
+        "en" : "Total",
+        "ar" : "المجموع",
+        "tr" : "Toplam",
+        "ru" : "Общий",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "purchasePrice" : {
+        "fa" : "قیمت خرید",
+        "en" : "Purchase Price",
+        "ar" : "سعر الشراء",
+        "tr" : "Alış Fiyatı",
+        "ru" : "Покупка Цена",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "purchaseDate" : {
+        "fa" : "تاریخ خرید",
+        "en" : "Purchase Date",
+        "ar" : "تاريخ الشراء",
+        "tr" : "Alış Tarihi",
+        "ru" : "Дата Покупки",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "item" : {
+        "fa" : "کالا",
+        "en" : "Item",
+        "ar" : "عنوان",
+        "tr" : "Item",
+        "ru" : "Item",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "moreInfo" : {
+        "fa" : "اطلاعات بیشتر",
+        "en" : "More information",
+        "ar" : "معلومات اكثر",
+        "tr" : "Daha fazla bilgi",
+        "ru" : "Более информация",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "qty" : {
+        "fa" : "تعداد",
+        "en" : "QTY",
+        "ar" : "الكمية",
+        "tr" : "ADET",
+        "ru" : "КОЛ-ВО",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "categoryT1" : {
+        "fa" : "در این بخش، برای محصولات و خدمات خود دسته بندی ایجاد کنید.",
+        "en" : "In this section, create categories for your products and services.",
+        "ar" : "في هذا القسم ، قم بإنشاء فئات لمنتجاتك وخدماتك.",
+        "tr" : "Bu bölümde ürün ve hizmetleriniz için kategoriler oluşturun.",
+        "ru" : "В этом разделе создайте категории для своих товаров и услуг.",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "copyRight" : {
+        "fa" : "تمامی حقوق برای Whoraly محفوظ است",
+        "en" : "All rights reserved for Whoraly",
+        "ar" : "جميع الحقوق محفوظة لـ Whoraly",
+        "tr" : "Tüm hakları Whoraly'e aittir",
+        "ru" : "Все права защищены для Whoraly",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "attachments": {
+        "fa" : "پیوست ها",
+        "en" : "Attachments",
+        "ar" : "مرفقات"
+    },
+    "attach": {
+        "fa" : "پیوست",
+        "en" : "Attach",
+        "ar" : "إرفاق"
+    },
+    "attachmentT1" : {
+        "fa" : "در این بخش فایلها و اسناد را به ShiningPage خود پیوست کنید. آنها برای بازدید کنندگان شما قابل دانلود خواهند بود.",
+        "en" : "In this section, attach files and documents to your ShiningPage. They will be downloadable for your visitors.",
+        "ar": "في هذا القسم، قم بإرفاق الملفات والمستندات إلى ShiningPage الخاصة بك. ستكون قابلة للتنزيل لزوارك."
+    },
+    "socialMedia" : {
+        "fa" : "شبکه های اجتماعی",
+        "en" : "Social Media",
+        "ar" : "وسائل التواصل الاجتماعي"
+    },
+    "socialMediaPanel" : {
+        "fa" : "پنل شبکه های اجتماعی",
+        "en" : "Social Media Panel",
+        "ar" : "لوحة الشبكة الاجتماعية"
+    },
+    "attachmentNA" : {
+        "fa" : "هیچ ضمیمه ای وجود ندارد.",
+        "en" : "There is no attachment.",
+        "ar" : "لا يوجد مرفق.",
+        "tr" : "ek yok.",
+        "ru" : "Нет вложения.",
+        "de" : "",
+        "fr" : "",
+        "es" : "No hay adjuntos.",
+        "it" : "",
+        "zh" : ""
+    },
+    "before" : {
+        "fa" : "قبل",
+        "en" : "before",
+        "ar" : "before",
+        "tr" : "",
+        "ru" : "before",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "after" : {
+        "fa" : "بعد",
+        "en" : "after",
+        "ar" : "after",
+        "tr" : "",
+        "ru" : "after",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "name" : {
+        "fa" : "نام",
+        "en" : "Name",
+        "ar" : "اسم",
+        "tr" : "",
+        "ru" : "Имя",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "message" : {
+        "fa" : "پیام",
+        "en" : "Message",
+        "ar" : "رسالة",
+        "tr" : "",
+        "ru" : "Сообщение",
+        "de" : "",
+        "fr" : "",
+        "es" : "",
+        "it" : "",
+        "zh" : ""
+    },
+    "sendMessageSuccess" : {
+        "fa" : "پیام شما با موفقیت ارسال شد.",
+        "en" : "Your message has been sent successfully.",
+        "ar" : "لقد تم ارسال رسالتك بنجاح."
+    },
+   "missionT1": {
+        "fa": "با ما بدرخشید – حضوری دیجیتال فراتر از مرزها",
+        "en": "Shine with us – A digital presence beyond borders",
+        "ar": "تألق معنا – حضور رقمي يتجاوز الحدود"
+    },
+    "missionT2": {
+        "fa": "ماموریت ما این است که با ارائه ابزارهای خلاقانه و راهکارهای نوین، شما را به یک ستاره در فضای دیجیتال تبدیل کنیم. فرقی نمی‌کند که یک کارآفرین، یک برند معتبر، یک سازمان اجتماعی یا فردی با استعداد باشید—با ShiningPage، مسیر شما به سمت موفقیت روشن‌تر از همیشه خواهد بود.",
+        "en": "Our mission is to transform you into a star in the digital space by providing innovative tools and cutting-edge solutions. Whether you are an entrepreneur, an established brand, a social organization, or a talented individual—ShiningPage makes your path to success brighter than ever.",
+        "ar": "مهمتنا هي تحويلك إلى نجم في العالم الرقمي من خلال توفير أدوات مبتكرة وحلول متطورة. سواء كنت رائد أعمال أو علامة تجارية معروفة أو منظمة اجتماعية أو فردًا موهوبًا، فإن ShiningPage يجعل طريقك إلى النجاح أكثر إشراقًا من أي وقت مضى."
+    },
+    "tos" : {
+        "fa" : "شرایط استفاده از خدمات",
+        "en" : "Terms of service",
+        "ar" : "شروط الخدمة"
+    },
+    "sitemap" : {
+        "fa" : "نقشه سایت",
+        "en" : "Sitemap",
+        "ar" : "خريطة الموقعس"
+    },
+    "privacyPolicy" : {
+        "fa" : "سیاست حریم خصوصی",
+        "en" : "Privacy Policy",
+        "ar" : "سياسة الخصوصية"
+    },
+    "disclaimer" : {
+        "fa" : "سلب مسئولیت",
+        "en" : "Disclaimer",
+        "ar" : "إخلاء مسؤولية"
+    },
+    "referToEmail" : {
+        "fa" : "همچنین می توانید از طریق ایمیل <a style={{margin:'0px 5px'}} href='mailto:hello@shiningpage.com'>hello@shiningpage.com</a> با ما در تماس باشید.",
+        "en" : "You can also contact us via email at <a style='margin: 0px 5px;' href='mailto:hello@shiningpage.com'>hello@shiningpage.com</a>.",
+        "ar" : "يمكنك أيضًا التواصل معنا عبر البريد الإلكتروني <a style={{margin:'0px 5px'}} href='mailto:hello@shiningpage.com'>hello@shiningpage.com</a>."
+    },
+    "aboutIntro": {
+        "fa": "به <a href='/fa' class='link-underline'>ShiningPage.com</a> خوش آمدید، جایی که افراد، کسب‌وکارها، سازمان‌ها و جوامع می‌توانند هویت خود را به نمایش بگذارند. ShiningPage طراحی شده است تا بستری منحصر به فرد برای معرفی، شبکه‌سازی و ارتباط در دنیای دیجیتال فراهم کند.",
+        "en": "Welcome to <a href='/en' class='link-underline'>ShiningPage.com</a>, where individuals, businesses, organizations, and communities can showcase their identities. ShiningPage is designed to provide a unique platform for presentation, networking, and connection in the digital world.",
+        "ar": "مرحبًا بك في <a href='/ar' class='link-underline'>ShiningPage.com</a>، حيث يمكن للأفراد والشركات والمنظمات والمجتمعات عرض هوياتهم. تم تصميم ShiningPage لتوفير منصة فريدة للتعريف والتواصل والشبكات في العالم الرقمي."
+    },
+    "missionTitle": {
+        "fa": "ماموریت ما",
+        "en": "Our Mission",
+        "ar": "مهمتنا"
+    },
+    "mission": {
+        "fa": "در ShiningPage، ماموریت ما این است که به همه، از کسب‌وکارهای کوچک گرفته تا هنرمندان، فریلنسرها و سازمان‌های بزرگ، ابزارهای لازم برای حضور مؤثر و حرفه‌ای در فضای آنلاین را ارائه دهیم. پلتفرم ما ترکیبی از ویژگی‌های یک وب‌سایت اختصاصی با امکانات پیشرفته مانند پشتیبانی چندزبانه، مدیریت آسان محتوا و ابزارهای ارتباطی یکپارچه است.",
+        "en": "At ShiningPage, our mission is to provide everyone, from small businesses to artists, freelancers, and large organizations, with the necessary tools to establish a strong and professional online presence. Our platform combines the features of a dedicated website with advanced capabilities such as multilingual support, easy content management, and integrated communication tools.",
+        "ar": "في ShiningPage، مهمتنا هي تزويد الجميع، من الشركات الصغيرة إلى الفنانين والمستقلين والمنظمات الكبيرة، بالأدوات اللازمة لإنشاء حضور قوي واحترافي عبر الإنترنت. يجمع نظامنا الأساسي بين ميزات موقع الويب المخصص والقدرات المتقدمة مثل دعم اللغات المتعددة، وإدارة المحتوى السهلة، وأدوات الاتصال المتكاملة."
+    },
+    "offeringsTitle": {
+        "fa": "آنچه ما ارائه می‌دهیم",
+        "en": "What We Offer",
+        "ar": "ما نقدمه"
+    },
+    "offerings" : {
+        "fa": [
+            "<strong style='font-weight: 450;'>صفحات پروفایل قابل تنظیم</strong>: هر فرد یا سازمان می‌تواند صفحه‌ای منحصربه‌فرد داشته باشد تا خدمات، محصولات، توانایی‌ها یا مأموریت خود را نمایش دهد.",
+            "<strong style='font-weight: 450;'>دسترسی جهانی</strong>: با پشتیبانی از چندین زبان از جمله انگلیسی، عربی و فارسی، ShiningPage اطمینان می‌دهد که کاربران می‌توانند با مخاطبان در سراسر جهان ارتباط برقرار کنند.",
+            "<strong style='font-weight: 450;'>مدیریت آسان</strong>: کاربران می‌توانند اطلاعات خود را مستقیماً از طریق صفحه ShiningPage خود مدیریت کنند. پس از ورود به حساب کاربری، تنظیمات اطلاعات و ارتباطات به‌راحتی در دسترس خواهد بود. این بخش به کاربر امکان می‌دهد اطلاعات خود را به‌روزرسانی کند، درخواست‌ها را مدیریت کند و به‌راحتی با دیگران تعامل داشته باشد.",
+            "<strong style='font-weight: 450;'>نمایش در موتورهای جستجو (SEO)</strong>: صفحات ShiningPage توسط گوگل و سایر موتورهای جستجو ایندکس می‌شوند، بنابراین پیدا کردن شما برای دیگران آسان‌تر خواهد بود.",
+            "<strong style='font-weight: 450;'>ابزارهای ارتباطی داخلی</strong>: امکان دریافت اعلان‌ها، چت با سایر کاربران و برقراری ارتباط مستقیم از طریق پلتفرم فراهم شده است."
+        ],
+        "en": [
+            "<strong style='font-weight: 450;'>Customizable Profile Pages</strong>: Each individual or organization can have a unique page to showcase their services, products, skills, or mission.",
+            "<strong style='font-weight: 450;'>Global Accessibility</strong>: With support for multiple languages, including English, Arabic, and Persian, ShiningPage ensures that users can connect with audiences worldwide.",
+            "<strong style='font-weight: 450;'>Easy Management</strong>: Users can manage their information directly through their ShiningPage profile. Once logged in, settings for information and communication are easily accessible. This feature allows users to update their details, manage requests, and interact seamlessly.",
+            "<strong style='font-weight: 450;'>Search Engine Visibility (SEO)</strong>: ShiningPage profiles are indexed by Google and other search engines, making it easier for others to find you.",
+            "<strong style='font-weight: 450;'>Built-in Communication Tools</strong>: Receive notifications, chat with other users, and connect directly through the platform."
+        ],
+        "ar": [
+            "<strong style='font-weight: 450;'>صفحات الملف الشخصي القابلة للتخصيص</strong>: يمكن لكل فرد أو مؤسسة إنشاء صفحة فريدة لعرض خدماتهم أو منتجاتهم أو مهاراتهم أو مهمتهم.",
+            "<strong style='font-weight: 450;'>الوصول العالمي</strong>: بدعم من عدة لغات، بما في ذلك الإنجليزية والعربية والفارسية، يضمن ShiningPage أن يتمكن المستخدمون من التواصل مع الجماهير في جميع أنحاء العالم.",
+            "<strong style='font-weight: 450;'>إدارة سهلة</strong>: يمكن للمستخدمين إدارة معلوماتهم مباشرةً من خلال ملفهم الشخصي على ShiningPage. بمجرد تسجيل الدخول، ستكون إعدادات المعلومات والاتصال متاحة بسهولة. تتيح هذه الميزة للمستخدمين تحديث بياناتهم وإدارة الطلبات والتفاعل بسهولة.",
+            "<strong style='font-weight: 450;'>ظهور في محركات البحث (SEO)</strong>: تتم فهرسة صفحات ShiningPage بواسطة Google ومحركات البحث الأخرى، مما يسهل العثور عليك من قبل الآخرين.",
+            "<strong style='font-weight: 450;'>أدوات الاتصال المدمجة</strong>: يمكن تلقي الإشعارات، والدردشة مع المستخدمين الآخرين، والتواصل مباشرةً عبر المنصة."
+        ]
+    },
+    "whyChooseUsTitle": {
+        "fa": "چرا ShiningPage را انتخاب کنید؟",
+        "en": "Why Choose ShiningPage?",
+        "ar": "لماذا تختار ShiningPage"
+    },
+    "whyChooseUsText": {
+        "fa": "چه یک فرد و هنرمند مستقل باشید، چه یک استارت‌آپ نوپا، یک شرکت در حال رشد یا یک سازمان تثبیت‌شده، ShiningPage یک راه‌حل جامع و انعطاف‌پذیر برای حضور آنلاین شما فراهم می‌کند. پلتفرم ما به‌گونه‌ای طراحی شده است که فراگیر، کارآمد و متناسب با نیازهای متنوع کاربران باشد.",
+        "en": "Whether you are an independent individual and artist, a budding startup, a growing company, or an established organization, ShiningPage provides a comprehensive and flexible solution for your online presence. Our platform is designed to be inclusive, efficient, and tailored to the diverse needs of users.",
+        "ar": "سواء كنت فردًا مستقلاً وفنانًا، أو شركة ناشئة ناشئة، أو شركة نامية، أو منظمة راسخة، فإن ShiningPage يوفر حلاً شاملاً ومرنًا لحضورك عبر الإنترنت. تم تصميم منصتنا لتكون شاملة وفعالة ومتكيفة مع الاحتياجات المتنوعة للمستخدمين."
+    },
+    "commitmentTitle": {
+        "fa": "ایجاد یک جامعه متصل و پویا",
+        "en": "Building a Connected and Dynamic Community",
+        "ar": "بناء مجتمع متصل وحيوي"
+    },
+    "commitment": {
+        "fa": "ما در تلاش برای ایجاد یک فضای دیجیتالی هستیم که در آن کسب‌وکارها، افراد و سازمان‌ها بتوانند رشد کنند. با نوآوری مستمر و بهبود امکانات، سعی می‌کنیم که کاربران ما همیشه به جدیدترین ابزارها و منابع برای موفقیت دسترسی داشته باشند.",
+        "en": "We are committed to creating a digital space where businesses, individuals, and organizations can thrive. Through continuous innovation and feature improvements, we strive to ensure our users always have access to the latest tools and resources for success.",
+        "ar": "نحن ملتزمون بإنشاء مساحة رقمية يمكن فيها للشركات والأفراد والمنظمات الازدهار. من خلال الابتكار المستمر وتحسين الميزات، نسعى لضمان وصول مستخدمينا دائمًا إلى أحدث الأدوات والموارد لتحقيق النجاح."
+    },
+    "joinUsTitle": {
+        "fa": "همین امروز به ما بپیوندید",
+        "en": "Join Us Today",
+        "ar": "انضم إلينا اليوم"
+    },
+    "joinUs" : {
+        "fa": "اولین قدم برای نمایش هویت دیجیتالی خود را بردارید. به ShiningPage بپیوندید و حضور خود را در دنیای دیجیتال تثبیت کنید. برای اطلاعات بیشتر یا کمک، می‌توانید از طریق صفحه <a href='/contact' class='link-underline'>تماس</a> با ما در ارتباط باشید.",
+        "en": "Take the first step in showcasing your digital identity. Join ShiningPage and establish your presence in the digital world. For more information or assistance, you can contact us via the <a href='/contact' class='link-underline'>Contact</a> page.",
+        "ar": "اتخذ خطوتك الأولى في عرض هويتك الرقمية. انضم إلى ShiningPage وأثبت وجودك في العالم الرقمي. لمزيد من المعلومات أو المساعدة، يمكنك التواصل معنا عبر صفحة <a href='/contact' class='link-underline'>اتصل بنا</a>."
+    },
+    "termsOfServiceTitle": {
+        "fa": "شرایط استفاده",
+        "en": "Terms of Service",
+        "ar": "شروط الخدمة"
+    },
+    "effectiveDateTitle": {
+        "fa": "تاریخ اعمال",
+        "en": "Effective Date",
+        "ar": "تاريخ السريان"
+    },
+    "effectiveDate": {
+        "fa": "January 30, 2025",
+        "en": "January 30, 2025",
+        "ar": "January 30, 2025"
+    },
+    "termsOfServiceIntro": {
+        "fa": "به ShiningPage خوش آمدید! با استفاده از خدمات ما، شما با این شرایط استفاده موافقت می‌کنید. لطفاً آن‌ها را با دقت مطالعه کنید.",
+        "en": "Welcome to ShiningPage! By using our services, you agree to these Terms of Service. Please read them carefully.",
+        "ar": "مرحبًا بكم في ShiningPage! باستخدام خدماتنا، فإنك توافق على شروط الخدمة هذه. يرجى قراءتها بعناية."
+    },
+    "acceptanceOfTermsTitle": {
+        "fa": "پذیرش شرایط",
+        "en": "Acceptance of Terms",
+        "ar": "قبول الشروط"
+    },
+    "acceptanceOfTermsContent": {
+        "fa": "با دسترسی یا استفاده از این پلتفرم، شما موافقت می‌کنید که به این شرایط و تمام قوانین و مقررات قابل اجرا پایبند باشید. اگر با این شرایط موافق نیستید، نباید از پلتفرم استفاده کنید.",
+        "en": "By accessing or using the Platform, you agree to comply with these Terms and all applicable laws and regulations. If you do not agree to these Terms, you must not use the Platform.",
+        "ar": "من خلال الوصول إلى المنصة أو استخدامها، فإنك توافق على الامتثال لهذه الشروط وجميع القوانين واللوائح السارية. إذا كنت لا توافق على هذه الشروط، فلا يجب عليك استخدام المنصة."
+    },
+    "descriptionOfServicesTitle": {
+        "fa": "توضیحات خدمات",
+        "en": "Description of Services",
+        "ar": "وصف الخدمات"
+    },
+    "descriptionOfServicesContent": {
+        "fa": "این پلتفرم به کسب‌وکارها، افراد و سازمان‌ها یک صفحه سفارشی برای نمایش محصولات، خدمات و اطلاعات تماس آن‌ها ارائه می‌دهد.",
+        "en": "This platform provides businesses, individuals, and organizations with a customized page to showcase their products, services, and contact information.",
+        "ar": "تقدم هذه المنصة للشركات والأفراد والمنظمات صفحة مخصصة لعرض منتجاتهم وخدماتهم ومعلومات الاتصال الخاصة بهم."
+    },
+    "accountResponsibilitiesTitle": {
+        "fa": "مسئولیت‌های حساب",
+        "en": "Account Responsibilities",
+        "ar": "مسؤوليات الحساب"
+    },
+    "accountResponsibilitiesContent": {
+        "fa": "شما مسئول حفظ محرمانگی اطلاعات حساب خود و تمامی فعالیت‌هایی هستید که تحت حساب شما انجام می‌شود.",
+        "en": "You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account.",
+        "ar": "أنت مسؤول عن الحفاظ على سرية بيانات حسابك وعن جميع الأنشطة التي تحدث ضمن حسابك."
+    },
+    "prohibitedActivitiesTitle": {
+        "fa": "فعالیت‌های ممنوعه",
+        "en": "Prohibited Activities",
+        "ar": "الأنشطة المحظورة"
+    },
+    "prohibitedActivities": {
+        "fa": [
+        "استفاده از پلتفرم برای اهداف غیرقانونی یا غیرمجاز.",
+        "بارگذاری محتوایی که توهین‌آمیز، مضر یا ناقض حقوق اشخاص ثالث باشد.",
+        "تلاش برای مداخله در عملکرد یا امنیت پلتفرم."
+        ],
+        "en": [
+        "Use the Platform for illegal or unauthorized purposes.",
+        "Upload content that is offensive, harmful, or violates any third-party rights.",
+        "Attempt to interfere with the Platform’s operation or security."
+        ],
+        "ar": [
+        "استخدام المنصة لأغراض غير قانونية أو غير مصرح بها.",
+        "تحميل محتوى مسيء أو ضار أو ينتهك حقوق الأطراف الثالثة.",
+        "محاولة التدخل في تشغيل أو أمان المنصة."
+        ]
+    },
+    "terminationTitle": {
+        "fa": "خاتمه",
+        "en": "Termination",
+        "ar": "إنهاء"
+    },
+    "terminationContent": {
+        "fa": "ما حق داریم دسترسی شما به پلتفرم را در صورت نقض این شرایط یا آسیب به دیگر کاربران به صلاحدید خود و بدون اطلاع قبلی متوقف یا خاتمه دهیم.",
+        "en": "We reserve the right to terminate or suspend your access to the Platform at our discretion, without notice, for conduct that violates these Terms or is harmful to other users.",
+        "ar": "نحتفظ بالحق في إنهاء أو تعليق وصولك إلى المنصة وفقًا لتقديرنا، دون إشعار، بسبب سلوك ينتهك هذه الشروط أو يضر بالمستخدمين الآخرين."
+    },
+    "limitationOfLiabilityTitle": {
+        "fa": "محدودیت مسئولیت",
+        "en": "Limitation of Liability",
+        "ar": "تحديد المسؤولية"
+    },
+    "limitationOfLiabilityContent": {
+        "fa": "پلتفرم به صورت «همان‌طور که هست» و «همان‌طور که موجود است» ارائه می‌شود. ما در قبال هرگونه خسارت ناشی از استفاده شما از پلتفرم مسئولیتی نداریم.",
+        "en": "The Platform is provided \"as is\" and \"as available.\" We are not liable for any damages arising from your use of the Platform.",
+        "ar": "يتم توفير المنصة \"كما هي\" و\"كما هو متاح\". نحن غير مسؤولين عن أي أضرار تنشأ عن استخدامك للمنصة."
+    },
+    "governingLawTitle": {
+        "fa": "قانون حاکم",
+        "en": "Governing Law",
+        "ar": "القانون الحاكم"
+    },
+    "governingLawContent": {
+        "fa": "این شرایط تحت قوانین انگلستان و ولز تنظیم و اجرا می‌شوند. با استفاده از پلتفرم، شما موافقت می‌کنید که هرگونه اختلاف ناشی از این شرایط به صلاحیت انحصاری دادگاه‌های انگلستان واگذار شود.",
+        "en": "These Terms are governed by the laws of England and Wales. By using the Platform, you agree that any disputes arising under these Terms will be subject to the exclusive jurisdiction of the courts in England.",
+        "ar": "تحكم هذه الشروط قوانين إنجلترا وويلز. باستخدام المنصة، فإنك توافق على أن أي نزاعات تنشأ بموجب هذه الشروط ستخضع للاختصاص القضائي الحصري لمحاكم إنجلترا."
+    },
+    "contactInfoTitle": {
+        "fa": "برای سوالات تماس بگیرید",
+        "en": "For questions, contact us at",
+        "ar": "للاستفسارات، اتصل بنا على"
+    },
+    "privacyPolicyTitle": {
+    "fa": "سیاست حفظ حریم خصوصی",
+    "en": "Privacy Policy",
+    "ar": "سياسة الخصوصية"
+    },
+    "privacyPolicyIntro": {
+        "fa": "ShiningPage به حریم خصوصی شما اهمیت می‌دهد. این سیاست حفظ حریم خصوصی توضیح می‌دهد که چگونه اطلاعات شما جمع‌آوری، استفاده و محافظت می‌شود.",
+        "en": "ShiningPage values your privacy. This Privacy Policy explains how we collect, use, and protect your information.",
+        "ar": "تولي ShiningPage خصوصيتك أهمية. تشرح سياسة الخصوصية هذه كيفية جمع واستخدام وحماية معلوماتك."
+    },
+    "policyEffectiveDate": {
+        "fa": "May 7, 2025",
+        "en": "May 7, 2025",
+        "ar": "May 7, 2025"
+    },
+    "informationWeCollectTitle": {
+        "fa": "اطلاعاتی که جمع‌آوری می‌کنیم",
+        "en": "Information We Collect",
+        "ar": "المعلومات التي نجمعها"
+    },
+    "informationWeCollect": {
+        "fa": [
+        "<strong style='font-weight: 450;'>اطلاعات حساب کاربری</strong>: نام، ایمیل، شماره تلفن و جزئیات کسب‌وکار.",
+        "<strong style='font-weight: 450;'>اطلاعات فنی</strong>: آدرس IP، فینگرپرینت، نوع دستگاه و اطلاعات مرورگر برای بهینه‌سازی.",
+        "<strong style='font-weight: 450;'>اطلاعات فعالیت</strong>: تعاملات با پلتفرم، مانند مشاهده صفحات و فعالیت چت."
+        ],
+        "en": [
+        "<strong style='font-weight: 450;'>Account Information</strong>: Name, email, phone number, and business details.",
+        "<strong style='font-weight: 450;'>Technical Information</strong>: IP address, fingerprint, device type, and browser information for optimization.",
+        "<strong style='font-weight: 450;'>Activity Data</strong>: Interactions with the Platform, such as page views and chat activity."
+        ],
+        "ar": [
+        "<strong style='font-weight: 450;'>معلومات الحساب</strong>: الاسم، البريد الإلكتروني، رقم الهاتف، وتفاصيل الأعمال.",
+        "<strong style='font-weight: 450;'>المعلومات التقنية</strong>: عنوان IP، بصمة الجهاز، نوع الجهاز، ومعلومات المتصفح للتحسين.",
+        "<strong style='font-weight: 450;'>بيانات النشاط</strong>: التفاعلات مع المنصة، مثل مشاهدات الصفحات ونشاط الدردشة."
+        ]
+    },
+    "howWeUseYourInformationTitle": {
+        "fa": "چگونه از اطلاعات شما استفاده می‌کنیم",
+        "en": "How We Use Your Information",
+        "ar": "كيف نستخدم معلوماتك"
+    },
+    "howWeUseYourInformationContent": {
+        "fa": [
+            "برای ارائه و بهبود ویژگی‌های پلتفرم.",
+            "برای شخصی‌سازی تجربه کاربری و بهینه‌سازی محتوا.",
+            "برای ارتباط با شما درباره به‌روزرسانی‌ها و اطلاعیه‌ها."
+        ],
+        "en": [
+            "To provide and improve the Platform’s features.",
+            "To personalize user experience and optimize content.",
+            "To communicate with you about updates and notifications."
+        ],
+        "ar": [
+            "لتوفير وتحسين ميزات المنصة.",
+            "لتخصيص تجربة المستخدم وتحسين المحتوى.",
+            "للتواصل معك بشأن التحديثات والإشعارات."
+        ]
+    },
+    "sharingOfInformationTitle": {
+        "fa": "به اشتراک‌گذاری اطلاعات",
+        "en": "Sharing of Information",
+        "ar": "مشاركة المعلومات"
+    },
+    "sharingOfInformationContent": {
+        "fa": "ما اطلاعات شخصی شما را نمی‌فروشیم. ممکن است اطلاعات شما را با ارائه‌دهندگان خدمات معتبر برای اهداف عملیاتی یا طبق درخواست قانون به اشتراک بگذاریم.",
+        "en": "We do not sell your personal information. We may share your information with trusted service providers for operational purposes or as required by law.",
+        "ar": "نحن لا نبيع معلوماتك الشخصية. قد نشارك معلوماتك مع مقدمي الخدمات الموثوق بهم لأغراض تشغيلية أو كما يقتضي القانون."
+    },
+    "dataRetentionTitle": {
+        "fa": "نگهداری داده‌ها",
+        "en": "Data Retention",
+        "ar": "احتفاظ بالبيانات"
+    },
+    "dataRetentionContent": {
+        "fa": "ما داده‌های شما را تا زمانی که حساب شما فعال باشد یا به‌طور ضروری برای رعایت الزامات قانونی نگهداری می‌کنیم.",
+        "en": "We retain your data as long as your account is active or as necessary to comply with legal obligations.",
+        "ar": "نحتفظ ببياناتك طالما كان حسابك نشطًا أو كما هو ضروري للامتثال للالتزامات القانونية."
+    },
+    "securityTitle": {
+        "fa": "امنیت",
+        "en": "Security",
+        "ar": "الأمان"
+    },
+    "securityContent": {
+        "fa": "ما تدابیر امنیتی استاندارد صنعت را برای حفاظت از اطلاعات شما پیاده‌سازی می‌کنیم. با این حال، هیچ روشی برای انتقال داده‌ها از طریق اینترنت کاملاً امن نیست.",
+        "en": "We implement industry-standard security measures to protect your information. However, no method of transmission over the internet is completely secure.",
+        "ar": "نحن نطبق تدابير الأمان القياسية لحماية معلوماتك. ومع ذلك، لا توجد طريقة لنقل البيانات عبر الإنترنت آمنة تمامًا."
+    },
+    "internationalUsersTitle": {
+        "fa": "کاربران بین‌المللی",
+        "en": "International Users",
+        "ar": "المستخدمون الدوليون"
+    },
+    "internationalUsersContent": {
+        "fa": "برای کاربران خارج از ایران، پلتفرم ما به زبان‌های انگلیسی و عربی در دسترس است و ممکن است اطلاعات شما در کشورهای مختلف پردازش شود.",
+        "en": "For users outside of Iran, our Platform operates in English and Arabic, and your information may be processed in countries where we or our service providers operate.",
+        "ar": "للمستخدمين خارج إيران، تعمل منصتنا باللغة الإنجليزية والعربية، وقد تتم معالجة معلوماتك في البلدان التي نعمل فيها أو حيث يعمل مقدمو الخدمة لدينا."
+    },
+    "yourRightsTitle": {
+        "fa": "حقوق شما",
+        "en": "Your Rights",
+        "ar": "حقوقك"
+    },
+    "yourRightsContent": {
+        "fa": "شما می‌توانید به اطلاعات خود دسترسی داشته، ویرایش یا حذف کنید. این کار پس از لاگین و در همان صفحه ShiningPage شما قابل انجام است. اگر به کمک بیشتر نیاز دارید، می‌توانید از طریق صفحه <a href='/contact' class='link-underline'>تماس</a> با ما در ارتباط باشید.",
+        "en": "You can access, edit, or delete your information. This can be done after logging in on your ShiningPage. If you need further assistance, you can contact us through the <a href='/contact' class='link-underline'>Contact</a> page.",
+        "ar": "يمكنك الوصول إلى معلوماتك أو تعديلها أو حذفها. يمكن القيام بذلك بعد تسجيل الدخول إلى صفحتك ShiningPage. إذا كنت بحاجة إلى مزيد من المساعدة، يمكنك التواصل معنا عبر صفحة <a href='/contact' class='link-underline'>اتصل بنا</a>."
+    },
+    "disclaimerTitle": {
+    "fa": "سلب مسئولیت",
+    "en": "Disclaimer",
+    "ar": "إخلاء المسؤولية"
+    },
+    "disclaimerIntro": {
+        "fa": "ShiningPage اطلاعاتی را برای اطلاع‌رسانی ارائه می‌دهد. لطفاً برای اطلاع از محدودیت‌های مسئولیت ما و دیگر شرایط، این متن را به دقت مطالعه کنید.",
+        "en": "ShiningPage provides content for informational purposes only. Please read this text carefully to understand our limitations and other terms.",
+        "ar": "تقدم ShiningPage المحتوى لأغراض إعلامية فقط. يرجى قراءة هذا النص بعناية لفهم حدود مسؤوليتنا والشروط الأخرى."
+    },
+    "disclaimerEffectiveDate": {
+        "fa": "January 30, 2025",
+        "en": "January 30, 2025",
+        "ar": "January 30, 2025"
+    },
+    "generalInformationTitle": {
+        "fa": "اطلاعات عمومی",
+        "en": "General Information",
+        "ar": "معلومات عامة"
+    },
+    "generalInformationContent": {
+        "fa": "محتوای ارائه شده در ShiningPage تنها برای اهداف اطلاع‌رسانی است. ما هیچ تضمینی در مورد دقت، قابلیت اعتماد یا تکمیل پروفایل‌ها یا محتوای میزبان شده در پلتفرم نمی‌دهیم.",
+        "en": "The content provided on ShiningPage is for informational purposes only. We do not guarantee the accuracy, reliability, or completeness of any profiles or content hosted on the Platform.",
+        "ar": "المحتوى المقدم على ShiningPage هو لأغراض إعلامية فقط. نحن لا نضمن دقة أو موثوقية أو اكتمال أي ملفات تعريف أو محتوى مستضاف على المنصة."
+    },
+    "thirdPartyLinksTitle": {
+        "fa": "لینک‌های شخص ثالث",
+        "en": "Third-Party Links",
+        "ar": "روابط الطرف الثالث"
+    },
+    "thirdPartyLinksContent": {
+        "fa": "پلتفرم ممکن است حاوی لینک‌هایی به وب‌سایت‌های شخص ثالث باشد. ما مسئولیتی در قبال محتوای این وب‌سایت‌ها یا شیوه‌های آنها نداریم.",
+        "en": "The Platform may contain links to third-party websites. We are not responsible for the content or practices of these websites.",
+        "ar": "قد تحتوي المنصة على روابط لمواقع الويب التابعة لأطراف ثالثة. نحن غير مسؤولين عن محتوى أو ممارسات هذه المواقع."
+    },
+    "noWarrantyTitle": {
+        "fa": "بدون ضمانت",
+        "en": "No Warranty",
+        "ar": "دون ضمان"
+    },
+    "noWarrantyContent": {
+        "fa": "پلتفرم به صورت \"همانطور که هست\" ارائه می‌شود و هیچ‌گونه ضمانتی از نظر عملکرد یا استفاده نخواهد داشت.",
+        "en": "The Platform is provided 'as is,' without warranties of any kind, either express or implied.",
+        "ar": "تُقدّم المنصة 'كما هي'، دون أي ضمانات من أي نوع، سواء كانت صريحة أو ضمنية."
+    },
+    "disclaimerLimitationOfLiabilityContent": {
+        "fa": "در هیچ شرایطی، ShiningPage مسئولیتی در قبال هرگونه خسارت مستقیم، غیرمستقیم، تصادفی یا تبعی ناشی از استفاده از پلتفرم نخواهد داشت.",
+        "en": "Under no circumstances shall ShiningPage be liable for any direct, indirect, incidental, or consequential damages arising from the use of the Platform.",
+        "ar": "في أي حال من الأحوال، لا تتحمل ShiningPage مسؤولية أي أضرار مباشرة أو غير مباشرة أو عرضية أو تبعية تنشأ عن استخدام المنصة."
+    },
+    "updatesToDisclaimerTitle": {
+        "fa": "به‌روزرسانی‌های این سلب مسئولیت",
+        "en": "Updates to this Disclaimer",
+        "ar": "تحديثات لهذا الإخلاء من المسؤولية"
+    },
+    "updatesToDisclaimerContent": {
+        "fa": "ما حق داریم هر زمان که بخواهیم این سلب مسئولیت را به‌روزرسانی کنیم. استفاده مداوم از پلتفرم به معنای پذیرش هرگونه تغییرات است.",
+        "en": "We reserve the right to update this Disclaimer at any time. Continued use of the Platform constitutes your acceptance of any changes.",
+        "ar": "نحتفظ بالحق في تحديث هذا الإخلاء من المسؤولية في أي وقت. إن الاستمرار في استخدام المنصة يعني قبولك لأي تغييرات."
+    },
+    "publicSection" : {
+        "fa" : "بخش عمومی",
+        "en" : "Public Section",
+        "ar" : "القسم العام"
+    },
+    "marketingPlatform" : {
+        "fa" : "پلتفرم بازاریابی",
+        "en" : "Marketing Platform",
+        "ar" : "منصة التسويق"
+    },
+    "totalCountries" : {
+        "fa" : "کل کشورها",
+        "en" : "Total countries",
+        "ar" : "إجمالي الدول"
+    },
+    "welcomeToWhoraly": {
+        "fa": "به ShiningPage خوش آمدید!",
+        "en": "Welcome to ShiningPage!",
+        "ar": "مرحبًا بكم في ShiningPage!"
+    },
+    "welcomeIntro": {
+        "fa": "به <strong>ShiningPage</strong> خوش آمدید، پلتفرمی که در آن افراد، کسب‌وکارها و جوامع می‌توانند بدرخشند و هویت واقعی خود را به اشتراک بگذارند. چه یک کسب‌وکار باشید، چه یک فرد یا یک سازمان، اینجا فضای شماست تا حضور منحصربه‌فردی ایجاد کرده و با جهان ارتباط برقرار کنید.",
+        "en": "Welcome to <strong>ShiningPage</strong>, a platform where individuals, businesses, and communities can shine and share their true identity. Whether you're a business, an individual, or an organization, this is your space to create a unique presence and connect with the world.",
+        "ar": "مرحبًا بك في <strong>ShiningPage</strong>، المنصة التي يمكن للأفراد والشركات والمجتمعات التألق فيها ومشاركة هويتهم الحقيقية. سواء كنت شركة أو فردًا أو منظمة، فهذا هو مكانك لإنشاء حضور فريد والتواصل مع العالم."
+    },
+    "makeBusinessPage": {
+        "fa": "ShiningPage خود را بسازید و متمایز شوید!",
+        "en": "Create Your ShiningPage & Stand Out!",
+        "ar": "أنشئ ShiningPage الخاصة بك وكن مميزًا!"
+    },
+    "businessPageDetails": {
+        "fa": "ShiningPage به شما این امکان را می‌دهد که یک صفحه کاملاً قابل سفارشی‌سازی طراحی کنید و محصولات، خدمات یا برند خود را به نمایش بگذارید. داستان خود را به اشتراک بگذارید، با مخاطبان خود به‌طور معنادار درگیر شوید و اهداف کسب‌وکار یا شخصی خود را به روشی که در سطح جهانی به‌طور مؤثر ارتباط برقرار کند، ارائه دهید.",
+        "en": "ShiningPage allows you to design a fully customizable page, showcasing your products, services, or brand. Share your narrative, engage meaningfully with your audience, and present your business or personal goals in a way that resonates globally.",
+        "ar": "تتيح لك ShiningPage تصميم صفحة قابلة للتخصيص بالكامل، تعرض منتجاتك أو خدماتك أو علامتك التجارية. شارك قصتك، وتفاعل مع جمهورك بطريقة ذات مغزى، وقدم أهداف عملك أو أهدافك الشخصية بطريقة تتردد عالميًا."
+    },
+    "ourServices" : {
+        "fa" : "خدمات ما",
+        "en" : "Our Services",
+        "ar" : "خدماتنا"
+    },
+    "ourServicesTagline": {
+        "fa": "ShiningPage - ارتباط برقرار کنید، به اشتراک بگذارید و با دنیا رشد کنید",
+        "en": "ShiningPage - Connect, Share, and Grow with the World",
+        "ar": "ShiningPage - تواصل وشارك وازدهر مع العالم"
+    },
+    "ourServicesText": {
+        "fa": "در ShiningPage، ما طیف گسترده‌ای از خدمات سفارشی را ارائه می‌دهیم که برای تقویت حضور و عملکرد شما در فضاهای دیجیتال شخصی و تجاری طراحی شده است. راه‌حل‌های متنوع ما به گونه‌ای طراحی شده‌اند که به شما کمک کنند با مخاطبان خود ارتباط برقرار کنید، برند خود را بسازید و در دنیای آنلاین همیشه در حال تغییر موفق شوید. چه شما یک فرد، کسب‌وکار یا جامعه باشید، ما ابزارها و منابعی که برای رشد، تعامل و درخشش در فضای دیجیتال نیاز دارید را فراهم می‌کنیم.",
+        "en": "At ShiningPage, we offer a wide range of tailored services designed to enhance your presence and performance across both personal and business digital spaces. Our diverse solutions are crafted to help you connect with your audience, build your brand, and succeed in the ever-evolving online world. Whether you're an individual, business, or community, we provide the tools and resources you need to grow, engage, and shine in the digital landscape.",
+        "ar": "في ShiningPage، نقدم مجموعة واسعة من الخدمات المصممة خصيصًا لتعزيز وجودك وأدائك في الفضاءات الرقمية الشخصية والتجارية. تم تصميم حلولنا المتنوعة لمساعدتك في التواصل مع جمهورك، وبناء علامتك التجارية، والنجاح في العالم الرقمي المتطور باستمرار. سواء كنت فردًا أو شركة أو مجتمعًا، فإننا نوفر لك الأدوات والموارد التي تحتاجها للنمو والمشاركة والتألق في المشهد الرقمي."
+    },
+    "businessPageCreation": {
+        "fa": "ایجاد Shining-Page",
+        "en": "Shining-Page Creation",
+        "ar": "إنشاء Shining-Page"
+    },
+    "businessPageCreationDesc": {
+        "fa": "به راحتی صفحه شخصی‌سازی شده خود را ایجاد کنید و محصولات، خدمات یا داستان خود را به دنیا معرفی کنید. با پلتفرم ما ارتباط برقرار کنید، مشارکت کنید و حضور خود را به صورت محلی و جهانی گسترش دهید.",
+        "en": "Easily create your personalized page and showcase your products, services, or story to the world. Connect, engage, and grow your presence both locally and globally with our platform.",
+        "ar": "قم بإنشاء صفحتك المخصصة بسهولة وعرض منتجاتك أو خدماتك أو قصتك للعالم. تواصل وشارك وزيِّن وجودك محليًا وعالميًا باستخدام منصتنا."
+    },
+    "searchEngineVisibility": {
+        "fa": "قابلیت مشاهده در موتورهای جستجو",
+        "en": "Search Engine Visibility",
+        "ar": "الظهور في محركات البحث"
+    },
+    "searchEngineVisibilityDesc": {
+        "fa": "صفحه ShiningPage شما توسط موتورهای جستجو مانند گوگل ایندکس می‌شود و به راحتی برای مخاطبان هدف بالقوه‌ای که به دنبال خدمات شما آنلاین جستجو می‌کنند، قابل کشف است.",
+        "en": "Your ShiningPage will be indexed by search engines like Google, making it easily discoverable to potential target audience searching for your offerings online.",
+        "ar": "سيتم فهرسة صفحة ShiningPage الخاصة بك بواسطة محركات البحث مثل جوجل، مما يجعلها قابلة للاكتشاف بسهولة من قبل الجمهور المستهدف المحتمل الذي يبحث عن عروضك عبر الإنترنت."
+    },
+    "interactiveFeatures": {
+        "fa": "ویژگی‌های تعاملی",
+        "en": "Interactive Features",
+        "ar": "الميزات التفاعلية"
+    },
+    "interactiveFeaturesDesc": {
+        "fa": "از ویژگی‌های تعاملی مانند اسلایدشوها، بخش‌های «درباره» و فرم‌های تماس استفاده کنید تا با مخاطبان خود ارتباط برقرار کرده و اطلاعات ارزشمندی درباره کسب‌وکار خود ارائه دهید.",
+        "en": "Utilize interactive features such as slideshows, 'About' sections, and contact forms to engage with your audience and provide them with valuable information about your business.",
+        "ar": "استخدم الميزات التفاعلية مثل العروض التقديمية، أقسام 'من'، ونماذج الاتصال للتفاعل مع جمهورك وتزويدهم بمعلومات قيمة عن عملك."
+    },
+    "multimediaIntegration": {
+        "fa": "یکپارچه‌سازی چندرسانه‌ای",
+        "en": "Multimedia Integration",
+        "ar": "دمج الوسائط المتعددة"
+    },
+    "multimediaIntegrationDesc": {
+        "fa": "ویدئوهای خود را از کانال‌های یوتیوب و لینکدین به‌طور مستقیم به صفحه کسب‌وکار خود متصل کرده و نمایش دهید تا جذابیت بصری برند خود را افزایش دهید.",
+        "en": "Connect and display videos from your YouTube and LinkedIn channels directly on your business page, enhancing your brand's visual appeal and storytelling capabilities.",
+        "ar": "قم بربط وعرض مقاطع الفيديو من قنواتك على يوتيوب ولينكدإن مباشرة على صفحة عملك، مما يعزز جاذبية علامتك التجارية البصرية وقدراتها السردية."
+    },
+    "advertisementAndPromotion": {
+        "fa": "تبلیغات و ترویج",
+        "en": "Advertisement and Promotion",
+        "ar": "الإعلانات والترويج"
+    },
+    "advertisementAndPromotionDesc": {
+        "fa": "تبلیغات و پست‌هایی ایجاد کنید تا محصولات و خدمات خود را به طور مؤثر به مخاطبان هدف خود معرفی کنید، ترافیک وب‌سایت را افزایش دهید و بازدیدها را بالا ببرید.",
+        "en": "Create advertisements and posts to promote your products and services effectively to your target audience, driving traffic and boosting views.",
+        "ar": "أنشئ إعلانات ومنشورات للترويج لمنتجاتك وخدماتك بفعالية لجمهورك المستهدف، مما يزيد من حركة المرور ويعزز المشاهدات."
+    },
+    "categoryManagement": {
+        "fa": "مدیریت دسته‌بندی‌ها",
+        "en": "Category Management",
+        "ar": "إدارة الفئات"
+    },
+    "categoryManagementDesc": {
+        "fa": "محصولات خود را با تعریف دسته‌بندی‌ها و زیرمجموعه‌ها سازماندهی کنید، تا بازدیدکنندگان به راحتی بتوانند در ShiningPage شما جستجو کنند و آنچه را که به دنبالش هستند پیدا کنند.",
+        "en": "Organize your offerings by defining categories and subcategories, making it easier for visitors to navigate your ShiningPage and find what they're looking for.",
+        "ar": "نظم منتجاتك من خلال تحديد الفئات والفئات الفرعية، مما يسهل على الزوار التنقل في صفحتك اللامعة والعثور على ما يبحثون عنه."
+    },
+    "fileAttachments": {
+        "fa": "پیوست فایل‌ها",
+        "en": "File Attachments",
+        "ar": "إرفاق الملفات"
+    },
+    "fileAttachmentsDesc": {
+        "fa": "فایل‌ها و اسناد مختلف را در فرمت‌های مختلف برای دانلود بازدیدکنندگان پیوست کنید تا اطلاعات بیشتری درباره برند خود ارائه دهید.",
+        "en": "Attach various files and documents in different formats for visitors to download, providing them with additional resources and information about your brand.",
+        "ar": "قم بإرفاق ملفات ومستندات متنوعة بتنسيقات مختلفة لتمكين الزوار من تحميلها، مما يوفر لهم المزيد من الموارد والمعلومات حول علامتك."
+    },
+    "analyticsAndInsights": {
+        "fa": "تحلیل و دیدگاه‌ها",
+        "en": "Analytics and Insights",
+        "ar": "التحليلات والرؤى"
+    },
+    "analyticsAndInsightsDesc": {
+        "fa": "آمار بازدیدکنندگان، لایک‌ها و نظرات ShiningPage خود را رصد کنید تا دیدگاه‌های ارزشمندی درباره رفتار و ترجیحات مخاطبان خود کسب کنید.",
+        "en": "Track visitor statistics, likes, and reviews on your ShiningPage to gain valuable insights into your audience's behavior and preferences.",
+        "ar": "تتبع إحصائيات الزوار، الإعجابات، والتعليقات على ShiningPage للحصول على رؤى قيمة حول سلوك جمهورك وتفضيلاتهم."
+    },
+    "managementPanel": {
+        "fa": "پنل مدیریت",
+        "en": "Management Panel",
+        "ar": "لوحة الإدارة"
+    },
+    "managementPanelDesc": {
+        "fa": "به یک پنل مدیریت کاربرپسند دسترسی داشته باشید تا محتوای صفحه کسب‌وکار خود را به‌راحتی به‌روزرسانی و مدیریت کنید.",
+        "en": "Access a user-friendly management panel to easily update and manage your business page content, ensuring it stays relevant and up-to-date.",
+        "ar": "قم بالوصول إلى لوحة إدارة سهلة الاستخدام لتحديث وإدارة محتوى صفحتك التجارية بسهولة، مما يضمن بقائها ذات صلة ومحدثة."
+    },
+    "customizationOptions": {
+        "fa": "گزینه‌های سفارشی‌سازی",
+        "en": "Customization Options",
+        "ar": "خيارات التخصيص"
+    },
+    "customizationOptionsDesc": {
+        "fa": "تم‌های رنگارنگ مختلفی را انتخاب کنید تا ShiningPage خود را شخصی‌سازی کرده و آن را از دیگران متمایز کنید.",
+        "en": "Choose different vibrant color themes to personalize your ShiningPage and make it stand out from the crowd.",
+        "ar": "اختر سمات ألوان مختلفة نابضة بالحياة لتخصيص ShiningPage وجعلها تبرز بين الحشود."
+    },
+    "businessColorsTagline": {
+        "fa": "با رنگ‌هایی که شما را تعریف می‌کنند، برند خود را زنده کنید.",
+        "en": "Bring your brand to life with colors that define you.",
+        "ar": "أضف الحياة إلى عملك بالألوان التي تعبر عنك."
+    },
+    "joinWhoralyNow": {
+        "fa": "همین حالا به ShiningPage بپیوندید و از خدمات ما برای نمایش هویت واقعی خود و جذب مخاطبان هدف بیشتر در دنیای آنلاین بهره‌مند شوید!",
+        "en": "Join ShiningPage now and leverage our services to showcase your real identity and attract more target audience in the online world!",
+        "ar": "انضم إلى ShiningPage الآن واستفد من خدماتنا لعرض هويتك الحقيقية وجذب المزيد من الجمهور المستهدف في العالم الرقمي!"
+    },
+    "whyChooseUs" : {
+        "fa": "چرا ما را انتخاب کنید",
+        "en": "WHY CHOOSE US",
+        "ar": "لماذا تختارنا"
+    },
+    "whoralyTagline": {
+        "fa": "ShiningPage - جایی که هویت واقعی شما می‌درخشد.",
+        "en": "ShiningPage - Where your true identity shines.",
+        "ar": "ShiningPage - حيث تشرق هويتك الحقيقية."
+    },
+    "whyChooseUsDesc": {
+        "fa": "ما را برای یک تجربه دیجیتالی یکپارچه انتخاب کنید. با تعهد به خدمات استثنایی، رویکرد کاربر محور و راه‌حل‌های نتیجه‌گرا، ما اطمینان می‌دهیم که کسب‌وکار شما در دنیای دیجیتال برجسته باشد.",
+        "en": "Choose us for a seamless digital experience. With our dedication to exceptional service, user-centric approach, and results-driven solutions, we ensure your business stands out in the digital realm.",
+        "ar": "اخترنا لتجربة رقمية سلسة. مع تفانينا في تقديم خدمة استثنائية ونهج يركز على المستخدم وحلول مدفوعة بالنتائج، نضمن تميز عملك في المجال الرقمي."
+    },
+    "ourAdvantages": {
+        "fa": "مزایای ما",
+        "en": "Our Advantages",
+        "ar": "مميزاتنا"
+    },
+    "ourAdvantagesDesc": {
+        "fa": "در ShiningPage، ما به عنوان بهترین انتخاب برای کسب‌وکارهایی که می‌خواهند تأثیر قابل توجهی در دنیای دیجیتال بگذارند شناخته می‌شویم. در اینجا دلیل انتخاب ما آورده شده است:",
+        "en": "At ShiningPage, we stand out as the premier choice for businesses seeking to make a significant impact in the digital sphere. Here's why you should choose us:",
+        "ar": "في ShiningPage، نتميز كأفضل خيار للأعمال التي تتطلع إلى ترك تأثير كبير في العالم الرقمي. إليك لماذا يجب أن تختارنا:"
+    },
+    "innovativeSolutions": {
+        "fa": "راه‌حل‌های نوآورانه",
+        "en": "Innovative Solutions",
+        "ar": "حلول مبتكرة"
+    },
+    "innovativeSolutionsDesc": {
+        "fa": "ما راه‌حل‌های پیشرفته‌ای ارائه می‌دهیم که به‌طور خاص برای نیازهای در حال تحول کسب‌وکارها در عصر دیجیتال طراحی شده‌اند. از ویژگی‌های پیشرفته گرفته تا طراحی بصری، ما اطمینان می‌دهیم که کسب‌وکار شما همیشه یک قدم جلوتر از دیگران باشد.",
+        "en": "We offer cutting-edge solutions tailored to meet the evolving needs of businesses in today's digital age. From advanced features to intuitive design, we ensure your business stays ahead of the curve.",
+        "ar": "نحن نقدم حلولًا متطورة مصممة لتلبية احتياجات الأعمال المتطورة في عصر اليوم الرقمي. من الميزات المتقدمة إلى التصميم البديهي، نضمن أن عملك يظل في صدارة المنافسة."
+    },
+    "userFriendlyPlatform": {
+        "fa": "پلتفرم کاربرپسند",
+        "en": "User-Friendly Platform",
+        "ar": "منصة سهلة الاستخدام"
+    },
+    "userFriendlyPlatformDesc": {
+        "fa": "پلتفرم ما با در نظر گرفتن سادگی و راحتی در استفاده طراحی شده است. چه شما یک کارآفرین با تجربه باشید و چه تازه وارد دنیای دیجیتال، استفاده از پلتفرم ما بسیار آسان است.",
+        "en": "Our platform is designed with simplicity and ease of use in mind. Whether you're a seasoned entrepreneur or new to the digital landscape, navigating our platform is a breeze.",
+        "ar": "تم تصميم منصتنا مع مراعاة البساطة وسهولة الاستخدام. سواء كنت رائد أعمال متمرسًا أو جديدًا في المشهد الرقمي، فإن التنقل في منصتنا أمر سهل."
+    },
+    "enhancedVisibility": {
+        "fa": "دیده‌بانی بیشتر",
+        "en": "Enhanced Visibility",
+        "ar": "زيادة الظهور"
+    },
+    "enhancedVisibilityDesc": {
+        "fa": "با استفاده از پلتفرم ما، کسب‌وکار شما دید بیشتری در نتایج جستجوی موتورهای جستجو پیدا می‌کند، و اطمینان حاصل می‌شود که به بیشترین تعداد مشتریان بالقوه که به دنبال محصولات یا خدمات شما هستند، نمایش داده می‌شود.",
+        "en": "With our platform, your business gains enhanced visibility in search engine results, ensuring maximum exposure to potential customers searching for your products or services.",
+        "ar": "من خلال منصتنا، يحصل عملك على رؤية محسنة في نتائج محركات البحث، مما يضمن أقصى تعرض للعملاء المحتملين الذين يبحثون عن منتجاتك أو خدماتك."
+    },
+    "engagingUserExperience": {
+        "fa": "تجربه کاربری جذاب",
+        "en": "Engaging User Experience",
+        "ar": "تجربة مستخدم جذابة"
+    },
+    "engagingUserExperienceDesc": {
+        "fa": "ما بر تجربه کاربری تمرکز داریم، با ویژگی‌های تعاملی و محتوای جذاب که مخاطبان شما را جذب کرده و تعاملات معناداری با برند شما ایجاد می‌کند.",
+        "en": "We prioritize user experience, providing interactive features and engaging content to captivate your audience and drive meaningful interactions with your brand.",
+        "ar": "نحن نولي أهمية لتجربة المستخدم، حيث نوفر ميزات تفاعلية ومحتوى جذاب لجذب جمهورك وخلق تفاعلات ذات مغزى مع علامتك التجارية."
+    },
+    "dedicatedSupport": {
+        "fa": "پشتیبانی اختصاصی",
+        "en": "Dedicated Support",
+        "ar": "دعم مخصص"
+    },
+    "dedicatedSupportDesc": {
+        "fa": "تیم متخصص ما متعهد به ارائه پشتیبانی استثنایی در هر مرحله از راه است. از راه‌اندازی تا مدیریت مداوم، ما در کنار شما خواهیم بود تا به موفقیت شما کمک کنیم.",
+        "en": "Our team of experts is committed to providing exceptional support every step of the way. From setup to ongoing management, we're here to help you succeed.",
+        "ar": "فريقنا من الخبراء ملتزم بتقديم دعم استثنائي في كل خطوة على الطريق. من الإعداد إلى الإدارة المستمرة، نحن هنا لمساعدتك في النجاح."
+    },
+    "chooseWhoraly": {
+        "fa": "ShiningPage را انتخاب کنید و پتانسیل کامل کسب‌وکار خود را در دنیای دیجیتال باز کنید.",
+        "en": "Choose ShiningPage and unlock the full potential of your business in the digital realm.",
+        "ar": "اختر ShiningPage واكتشف الإمكانيات الكاملة لعملك في العالم الرقمي."
+    },
+    "whoralyTagline2": {
+        "fa": "ShiningPage - جایی که کسب‌وکار شما هویت واقعی خود را پیدا می‌کند.",
+        "en": "ShiningPage - Where Your Business Finds Its True Identity.",
+        "ar": "ShiningPage - حيث يجد عملك هويته الحقيقية."
+    },
+    "platformDescription": {
+        "fa": "در ShiningPage, ما به شمولیت و پاسخگویی به تمام نوع‌های کسب‌وکارها اعتقاد داریم. در حال حاضر، پلتفرم ما شامل مجموعه‌ای وسیع از دسته‌بندی‌ها است تا اطمینان حاصل شود که هر کسب‌وکار جایگاه خود را پیدا می‌کند. در اینجا یک مرور کوتاه از دسته‌بندی‌های موجود آورده شده است:",
+        "en": "At ShiningPage, we believe in inclusivity and catering to all types of businesses. Currently, our platform encompasses a wide range of categories to ensure that every business finds its place. Here's a brief overview of the categories available:",
+        "ar": "في ShiningPage, نؤمن بالشمولة وتلبية جميع أنواع الأعمال. حاليًا، تشمل منصتنا مجموعة واسعة من الفئات لضمان أن كل عمل يجد مكانه. إليك لمحة عن الفئات المتاحة:"
+    },
+    "businessOpportunity": {
+        "fa": "با چنین دسته‌بندی‌های متنوع، ShiningPage اطمینان می‌دهد که انواع کسب‌وکارها می‌توانند جایگاه خود را پیدا کرده و در بازار دیجیتال رشد کنند. به ما بپیوندید و فرصت‌های بی‌پایانی برای ارتباط با مخاطبان خود کشف کنید!",
+        "en": "With such diverse categories, ShiningPage ensures that businesses of all types can find their niche and thrive in the digital marketplace. Join us and discover endless opportunities to connect with your audience!",
+        "ar": "مع فئات متنوعة مثل هذه، يضمن ShiningPage أن الشركات من جميع الأنواع يمكنها العثور على مكانتها والازدهار في السوق الرقمي. انضم إلينا واكتشف الفرص اللامتناهية للتواصل مع جمهورك!"
+    },
+    "viewWebPage": {
+        "fa": "ShiningPage",
+        "en": "ShiningPage",
+        "ar": "ShiningPage"
+    },
+    "createBusinessPage": {
+        "fa": "صفحه کسب‌وکار خود را ایجاد کنید.",
+        "en": "Create Your Business Page.",
+        "ar": "أنشئ صفحة عملك."
+    },
+    "notificationsList" : {
+        "fa": "لیست اعلان‌ها",
+        "en": "Notifications List",
+        "ar": "قائمة الإشعارات"
+    },
+    "deleteChat": {
+        "fa": "حذف گفتگو",
+        "en": "Delete Chat",
+        "ar": "حذف الدردشة"
+    },
+    "setAddressOnGoogleMap": {
+        "fa": "تنظیم آدرس روی نقشه گوگل",
+        "en": "Set Address on Google Map",
+        "ar": "تحديد العنوان على خرائط جوجل"
+    },
+    "setLocationPicture": {
+        "fa": "تنظیم تصویر موقعیت",
+        "en": "Set Location Picture",
+        "ar": "تعيين صورة الموقع"
+    },
+    "changePassword": {
+        "fa": "تغییر رمز عبور",
+        "en": "Change Password",
+        "ar": "تغيير كلمة المرور"
+    },
+    "currentPassword": {
+        "fa": "رمز عبور فعلی",
+        "en": "Current Password",
+        "ar": "كلمة المرور الحالية"
+    },
+    "newPassword": {
+        "fa": "رمز عبور جدید",
+        "en": "New Password",
+        "ar": "كلمة المرور الجديدة"
+    },
+    "incorrectPassword" : {
+        "fa" : "پسورد اشتباه است.",
+        "en" : "Password is incorrect.",
+        "ar" : "كلمة المرور غير صحيحة."
+    },
+    "passwordSuccess" : {
+        "fa" : "پسورد با موفقیت تغییر کرد.",
+        "en" : "Password changed successfully.",
+        "ar" : "تم تغيير كلمة المرور بنجاح."
+    },
+    "sendTicket": {
+        "fa": "ارسال تیکت",
+        "en": "Send Ticket",
+        "ar": "إرسال تذكرة"
+    },
+    "aboutInformation": {
+        "fa": "اطلاعات درباره",
+        "en": "About Information",
+        "ar": "معلومات عن"
+    },
+    "basicInformation": {
+        "fa": "اطلاعات پایه",
+        "en": "Basic Information",
+        "ar": "معلومات أساسية"
+    },
+    "fileSizeLimitExceeded" : {
+        "fa" : "حجم فایل از حد مجاز بیشتر است.",
+        "en" : "The file size exceeds the allowed limit.",
+        "ar" : "حجم الملف يتجاوز الحد المسموح به."
+    },
+    "categoryName" : {
+        "fa" : "نام دسته‌بندی",
+        "en" : "Category Name",
+        "ar" : "اسم الفئة"
+    },
+    "categoryPicture": {
+        "fa": "تصویر دسته‌بندی",
+        "en": "Category Picture",
+        "ar": "صورة الفئة"
+    },
+    "newCategory": {
+        "fa": "دسته‌بندی جدید",
+        "en": "New Category",
+        "ar": "فئة جديدة"
+    },
+    "editCategory": {
+        "fa": "ویرایش دسته‌بندی",
+        "en": "Edit Category",
+        "ar": "تعديل الفئة"
+    },
+    "subcategory": {
+        "fa": "زیرشاخه",
+        "en": "Subcategory",
+        "ar": "الفئة الفرعية"
+    },
+    "pictureType" : {
+        "fa" : "نوع عکس",
+        "en" : "Picture Type",
+        "ar" : "نوع الصورة"
+    },
+    "noPrice": {
+        "fa": "بدون قیمت",
+        "en": "No Price",
+        "ar": "بدون سعر"
+    },
+    "videoType" : {
+        "fa" : "نوع ویدئو",
+        "en" : "Video Type",
+        "ar" : "نوع الفيديو"
+    },
+    "videoTypeErr" : {
+        "fa" : "لطفا یک نوع ویدئو را انتخاب نمایید.",
+        "en" : "Please select a video type.",
+        "ar" : "الرجاء تحديد نوع الفيديو."
+    },
+    "postLink": {
+        "fa": "لینک پست",
+        "en": "Post Link",
+        "ar": "رابط منشور"
+    },
+    "digitalPresencePlatform": {
+        "fa": "پلتفرم حضور دیجیتال",
+        "en": "Digital Presence Platform",
+        "ar": "منصة الوجود الرقمي"
+    },
+   "globalLocalReach": {
+        "fa": "دسترسی جهانی و محلی",
+        "en": "Global and Local Reach",
+        "ar": "وصول عالمي ومحلي"
+    },
+    "limitReached": {
+        "fa": "شما به حد مجاز رسیده‌اید.",
+        "en": "You have reached the allowed limit.",
+        "ar": "لقد وصلت إلى الحد المسموح به."
+    },
+    "limit": {
+        "fa": "محدودیت",
+        "en": "Limit",
+        "ar": "الحد"
+    },
+    "ruby" : {
+        "fa" : "یاقوت",
+        "en" : "Ruby",
+        "ar" : "ياقوت"
+    },
+    "advertisement": {
+        "fa": "تبلیغات",
+        "en": "Advertisement",
+        "ar": "إعلان"
+    },
+    "discoverPersonality": {
+        "fa": "🔍 با چهره‌خوانی و روان‌شناسی رنگ، شخصیت افراد را کشف کنید! 🎭🎨",
+        "en": "🔍 Uncover personalities through face reading & color psychology! 🎭🎨",
+        "ar": "🔍 اكتشف الشخصيات من خلال قراءة ملامح الوجه وعلم نفس الألوان! 🎭🎨"
+    },
+    "changeTheme": {
+        "fa": "تغییر قالب",
+        "en": "Change Theme",
+        "ar": "تغيير النمط"
+    },
+    "balance": {
+        "fa": "موجودی فعلی",
+        "en": "Current Balance",
+        "ar": "الرصيد الحالي"
+    },
+    "noNotifications": {
+        "fa": "هیچ اعلانی یافت نشد.",
+        "en": "No notifications found.",
+        "ar": "لم يتم العثور على إشعارات."
+    },
+    "noMessagesFound": {
+        "fa": "هیچ پیامی یافت نشد.",
+        "en": "No messages found.",
+        "ar": "لم يتم العثور على رسائل."
+    },
+    "rubyWarning": {
+        "fa": "یاقوت پول نیست، بلکه واحدی است که منحصراً برای ارتقای صفحه درخشان شما استفاده می‌شود.",
+        "en": "Ruby is not money but a unit exclusively and solely for upgrading your Shining page.",
+        "ar": "الياقوت ليس مالاً بل وحدة مخصصة حصرياً لترقية صفحتك المتألقة."
+    },
+    "rubyWarningText": {
+        "fa": "شما می‌توانید با بازدید از صفحات یاقوت جمع‌آوری کنید و از آن برای افزودن ویژگی‌های بیشتر به صفحه درخشان خود استفاده کنید و آن را بیشتر بهینه‌سازی کنید. ما هیچ وجهی پرداخت نمی‌کنیم و هیچ چیزی در قبال یاقوتهایی که از بازدید از صفحات جمع‌آوری می‌کنید ارائه نمی‌دهیم.",
+        "en": "You can collect Rubies by visiting pages and use them to add more features to your Shining page and optimize it further. We do not pay any money or provide anything else in exchange for the Rubies you collect from visiting pages.",
+        "ar": "يمكنك جمع الياقوت من خلال زيارة الصفحات واستخدامها لإضافة المزيد من الميزات إلى صفحتك اللامعة وتحسينها بشكل أكبر. نحن لا ندفع أي أموال أو نقدم أي شيء آخر مقابل الياقوت الذي تجمعه من زيارة الصفحات."
+    },
+    "perUnit": {
+        "fa": "برای هر عدد",
+        "en": "Per Unit",
+        "ar": "لكل وحدة"
+    },
+    "perMB": {
+        "fa": "برای هر مگابایت",
+        "en": "Per MB",
+        "ar": "لكل ميغابايت"
+    },
+    "rubiesForExpansion": {
+        "fa": "یاقوت‌های مورد نیاز برای گسترش هر بخش از صفحه درخشان: ",
+        "en": "Rubies required to expand each section of the shining page: ",
+        "ar": "الياقوت المطلوب لتوسيع كل قسم من الصفحة المضيئة: "
+    },
+    "yourRubiesSoFar": {
+        "fa": "یاقوت‌های شما تاکنون:",
+        "en": "Your rubies so far:",
+        "ar": "الياقوت الخاص بك حتى الآن:"
+    },
+    "rubiesAndUnits": {
+        "fa": "یاقوت‌ها و واحدهای مجازی",
+        "en": "Rubies and Virtual Units",
+        "ar": "الياقوت والوحدات الافتراضية"
+    },
+    "rubiesInfo": {
+        "fa": "یاقوت‌ها نوعی ارز نیستند، بلکه واحدی مجازی هستند که منحصراً برای ارتقا و بهبود ShiningPage شما استفاده می‌شوند. شما می‌توانید با بازدید از صفحات پلتفرم یاقوت جمع کنید و از آن‌ها برای باز کردن ویژگی‌های اضافی یا بهینه‌سازی صفحه خود استفاده کنید.",
+        "en": "Rubies are not a form of currency but a virtual unit used exclusively for upgrading and enhancing your ShiningPage. You can collect Rubies by visiting pages on the platform and use them to unlock additional features or optimize your page.",
+        "ar": "الياقوت ليس شكلاً من أشكال العملة، بل هو وحدة افتراضية تُستخدم حصريًا لترقية وتحسين صفحتك ShiningPage. يمكنك جمع الياقوت عن طريق زيارة الصفحات على المنصة واستخدامها لفتح ميزات إضافية أو تحسين صفحتك."
+    },
+    "noMonetaryValue": {
+        "fa": "بدون ارزش پولی",
+        "en": "No Monetary Value",
+        "ar": "لا قيمة نقدية"
+    },
+    "noMonetaryValueText": {
+        "fa": "یاقوت‌ها هیچ ارزش پولی ندارند و قابل مبادله، بازخرید یا تبدیل به پول واقعی، کالا یا خدمات نیستند.",
+        "en": "Rubies hold no monetary value and cannot be exchanged, redeemed, or converted for real money, goods, or services.",
+        "ar": "الياقوت ليس له قيمة نقدية ولا يمكن استبداله أو استرجاعه أو تحويله إلى نقود حقيقية أو سلع أو خدمات."
+    },
+    "usageLimitation": {
+        "fa": "محدودیت استفاده",
+        "en": "Usage Limitation",
+        "ar": "حدود الاستخدام"
+    },
+    "usageLimitationText": {
+        "fa": "یاقوت‌ها صرفاً برای استفاده در پلتفرم ShiningPage هستند و قابل انتقال یا مبادله با کاربران دیگر نیستند.",
+        "en": "Rubies are strictly for use within the ShiningPage platform and cannot be transferred or traded with other users.",
+        "ar": "الياقوت مخصص للاستخدام فقط داخل منصة ShiningPage ولا يمكن نقله أو تداوله مع مستخدمين آخرين."
+    },
+    "noCompensation": {
+        "fa": "هیچ جبران خسارتی",
+        "en": "No Compensation",
+        "ar": "لا تعويض"
+    },
+    "rubiesCompensationInfo": {
+        "fa": "ما هیچگونه جبران مالی یا پاداشی برای جمع‌آوری یا استفاده از یاقوت‌ها ارائه نمی‌دهیم.",
+        "en": "We do not provide any financial compensation or rewards for collecting or using Rubies.",
+        "ar": "نحن لا نقدم أي تعويض مالي أو مكافآت لجمع أو استخدام الياقوت."
+    },
+    "noConnectionToAds": {
+        "fa": "اتصالی به تبلیغات وجود ندارد",
+        "en": "No Connection to Ads",
+        "ar": "لا يوجد اتصال بالإعلانات"
+    },
+    "rubiesNotBasedOnAds": {
+        "fa": "روبى‌ها بر اساس بازدید یا کلیک بر روی تبلیغات اهدا نمی‌شوند. نمایش تبلیغات در هر صفحه هیچ ارتباطی با دریافت روبی ندارد.",
+        "en": "Rubies are not granted based on advertisement views or clicks. The display of ads on any page is entirely unrelated to the awarding of Rubies.",
+        "ar": "لا يتم منح الروبيات بناءً على مشاهدات الإعلانات أو النقرات. عرض الإعلانات على أي صفحة لا علاقة له بمنح الروبيات."
+    },
+    "activationDisclaimer": {
+        "fa": "سلب مسئولیت فعال‌سازی",
+        "en": "Activation Disclaimer",
+        "ar": "إخلاء المسؤولية عن التفعيل"
+    },
+    "rubiesActivationInfo": {
+        "fa": "روبی‌ها بر اساس زمان‌بندی و حضور کاربر فعال می‌شوند، نه بر اساس تعامل با تبلیغات.",
+        "en": "Rubies are activated based on timing and user presence, not on ad interactions.",
+        "ar": "يتم تفعيل الياقوتات بناءً على التوقيت وحضور المستخدم، وليس على تفاعلات الإعلانات."
+    },
+    "rubyCollectionList": {
+        "fa": "لیست جمع آوری یاقوت",
+        "en": "Ruby Collection List",
+        "ar": "قائمة جمع الياقوت"
+    },
+    "remainingTimeForPage": {
+        "fa": "زمان باقیمانده برای این صفحه:",
+        "en": "Remaining time for this page:",
+        "ar": "الوقت المتبقي لهذه الصفحة:"
+    },
+    "collectRubiesMessage": {
+        "fa": "بعد از به پایان رسیدن این زمان، شما می‌توانید یاقوت‌های این صفحه را جمع‌آوری کنید.",
+        "en": "After this time ends, you can collect the rubies on this page.",
+        "ar": "بعد انتهاء هذا الوقت، يمكنك جمع الياقوت من هذه الصفحة."
+    },
+    "collectRubiesInAccess": {
+        "fa": "شما می توانید از صفحات زیر یاقوتها را جمع آوری کنید:",
+        "en": "You can collect rubies from the following pages:",
+        "ar": "يمكنك جمع الياقوت من الصفحات التالية:"
+    },
+    "availableRubies": {
+        "fa": "یاقوت‌های قابل دریافت:",
+        "en": "Available rubies to collect:",
+        "ar": "الياقوتات المتاحة للجمع:"
+    },
+    "remainingTimeToCollectRubies": {
+        "fa": "یاقوت‌ها را قبل از پایان زمان جمع‌آوری کنید.",
+        "en": "Collect rubies before time ends.",
+        "ar": "اجمع الياقوت قبل انتهاء الوقت."
+    },
+    "allRubiesCollected": {
+        "fa": "شما همه روبی ها را جمع آوری کردید. 👏👏👏",
+        "en": "You’ve collected all the rubies. 👏👏👏",
+        "ar": "لقد جمعت جميع الياقوتات. 👏👏👏"
+    },
+    "nextCollectionTime": {
+        "fa": "زمان بعدی برای جمع‌آوری:",
+        "en": "Next time to collect:",
+        "ar": "الوقت التالي للتحصيل:"
+    },
+    "xxxx" : {
+        "fa" : "",
+        "en" : "",
+        "ar" : ""
+    }
+
+}
+

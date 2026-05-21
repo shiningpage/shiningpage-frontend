@@ -1,0 +1,429 @@
+.table-more {
+  background-color: transparent;
+  font-size: 17px;
+  margin: 0px;
+  border-radius: 100px;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:#999999;
+}
+.table-more:hover {
+  color:#000000;
+  background-color: #BFC9D480;
+}
+
+.more-row-active {
+  visibility: visible !important;
+  background-color: #BFC9D480;
+  color: #000000 !important;
+  box-shadow: 0 0 0 2px #9fcbf840;
+}
+
+.hoverGrey {
+  font-size: 20px;
+  padding: 10px;
+  margin: 0px;
+  width: 45px;
+  height: 45px;
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all .5s ease;
+}
+.hoverGrey:hover {
+  cursor: pointer;
+  background-color: #f1f1f1;
+  transition: all 0.1s ease;
+}
+
+.column-list-header {
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  border-bottom: 1px solid #99999930;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.column-list-header > div {
+  padding: 5px 7px;
+  border-radius:5px;
+  color: #1A76D2;
+  font-weight: 900;
+  cursor: pointer;
+  transition: all .5s ease;
+}
+.column-list-header > div:hover {
+  border-radius:5px;
+  background-color: #f0f7fe;
+  transition: all 0.3s ease;
+}
+
+.column-list {
+  width: 250px;
+  padding: 0px;
+  overflow: visible;
+}
+
+.column-list > div {
+  padding: 5px;
+  border-radius:3px;
+  cursor: pointer;
+}
+.column-list > div:hover {
+  color: #000000;
+  /* font-weight: bold; */
+  background-color: #f1f1f1;
+}
+
+.table-more-list {
+  width: 150px;
+  padding: 10px;
+}
+
+.table-more-list > div {
+  padding: 5px;
+  border-radius:3px;
+  cursor: pointer;
+}
+.table-more-list > div:hover {
+  color: #000000;
+  /* font-weight: bold; */
+  background-color: #f1f1f1;
+}
+
+.hoverGreyColumnList {
+  /* padding: 10px; */
+  transition: all 0.3s ease;
+}
+
+.hoverGreyColumnList:hover {
+  cursor: pointer;
+  background-color: #f1f1f1;
+  transition: all 0.1s ease;
+}
+
+.column-menu-btn {
+  width: 25px;
+  height: 25px;
+  font-size: 15px;
+  color:#999999;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  /* transition: all 0.1s ease; */
+}
+
+.column-menu-btn:hover {
+  color:#000000;
+  background-color: #f1f1f1;
+  cursor: pointer;
+  /* transition: all 0.3s ease; */
+}
+
+th .column-menu-btn.more-column-active {
+  background-color: #BFC9D480 !important;
+  color: #000000 !important;
+  box-shadow: 0 0 0 2px #9fcbf840;
+}
+
+/* رنگ سلول‌ها وقتی ستون فعال است */
+.column-active-td {
+  background-color: #F2F8FF !important; /* رنگ دلخواه */
+}
+
+/* رنگ ردیف وقتی popup row فعال است */
+.row-active-tr td {
+  background-color: #F2F8FF !important; /* رنگ دلخواه */
+}
+
+.column-sort-btn {
+  width: 25px;
+  height: 25px;
+  color:#99999900;
+  display: flex;
+  align-items: center;
+  transition: all 0.1s ease;
+}
+
+.column-sort-btn:hover {
+  color:#999999;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.highlight {
+  background-color: yellow;
+  font-weight: bold;
+}
+
+.checkboxX {
+  margin-top: 0px !important;
+}
+
+/* sticky header */
+.sticky-header thead th {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 30;
+}
+
+.sticky-header thead th::after {
+  content: '';
+  position: absolute;
+  bottom: 0; /* روی پایین th */
+  left: 0;
+  width: 100%;
+  height: 2px; /* ضخامت دلخواه */
+  background-color: black;
+}
+
+.obj-child{
+  visibility: hidden;
+}
+
+.obj-parent:hover .obj-child{
+  visibility: visible;
+}
+
+.table-row-hover td,
+.table-row-hover th {
+  background-color: #f2f8ff !important;
+}
+
+.table-row-selected td,
+.table-row-selected th {
+  background-color: #ecf6ff !important;
+}
+
+.table-row-hover-selected td,
+.table-row-hover-selected th {
+  background-color: #d9e9f7 !important;
+}
+
+.sticky-first-col {
+  position: sticky;
+  left: 0;
+  background-color: #ffffff;
+  z-index: 40; /* بالاتر از سلول‌های tbody */
+}
+
+.sticky-first-col::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0; /* سمت راست ستون */
+  width: 2px; /* ضخامت خط */
+  height: 100%; /* کل ارتفاع سلول */
+  background-color: #ccc; /* رنگ خط */
+  pointer-events: none; /* مزاحم تعاملات نشود */
+}
+
+/* hover عادی */
+tbody tr:hover td {
+  background-color: #f2f8ff;
+}
+
+/* وقتی selected هست و hover میشه */
+.table-row-selected:hover td {
+  background-color: #d9e9f7 !important;
+}
+
+.table-wrapper {
+  border-radius: 10px;
+  max-height: 500px; /* ارتفاع جدول */
+  max-width: 100%;   /* حداکثر عرض جدول */
+  overflow: auto;    /* نمایش اسکرول هم افقی هم عمودی */
+  position: relative;
+}
+
+/* استایل scrollbar برای Chrome, Edge, Safari */
+.table-wrapper::-webkit-scrollbar {
+  width: 10px; /* عمودی */
+  height: 10px; /* افقی */
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.3);
+  border-radius: 5px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+  background-color: rgba(0,0,0,0.1);
+  border-radius: 5px;
+}
+
+/* Firefox scrollbar */
+.table-wrapper {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,0,0,0.3) rgba(0,0,0,0.1);
+}
+
+/* bootstrap responsive fix */
+.table-wrapper .table-responsive {
+  overflow: visible !important;
+}
+
+.column-filter-wrapper {
+  width: 100%;
+  max-height: 200px;
+  
+  /* همیشه scrollbar افقی و عمودی نمایش داده شود */
+  overflow-x: scroll;  /* افقی */
+  overflow-y: scroll;  /* عمودی */
+
+  padding-right: 5px;
+  border: 1px solid #DEE2E6;
+  border-radius: 7px;
+}
+
+/* خود لیست */
+.column-filter-list {
+  display: inline-block;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px 0;
+  min-width: 100%;      /* مطمئن می‌شویم همیشه افقی scroll دارد */
+  white-space: nowrap;  /* جلوگیری از wrap شدن محتوا */
+}
+
+/* Chrome / Edge / Safari scrollbar */
+.column-filter-wrapper::-webkit-scrollbar {
+  width: 10px;   /* عمودی */
+  height: 10px;  /* افقی */
+}
+
+.column-filter-wrapper::-webkit-scrollbar-thumb {
+  background: #bfc9d4;
+  border-radius: 5px;
+}
+
+.column-filter-wrapper::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+
+/* Firefox */
+.column-filter-wrapper {
+  scrollbar-width: thin;       /* اندازه scrollbar */
+  scrollbar-color: #bfc9d4 #f1f1f1; /* thumb و track */
+}
+
+/* آیتم‌ها */
+.filter-item{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 6px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+/* Scrollbar */
+.column-filter-wrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.column-filter-wrapper::-webkit-scrollbar-thumb {
+  background: #bfc9d4;
+  border-radius: 4px;
+}
+
+.column-filter-wrapper::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.clear-filter {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.clear-filter button {
+  flex: 1;
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid #d0d7de;
+  background-color: #ffffff;
+  color: #333;
+  transition: all 0.15s ease;
+}
+
+.clear-filter button:hover {
+  background-color: #f3f6f9;
+}
+
+.table-info{
+  display:flex;
+  margin-bottom: 10px;
+  align-items:center;
+  gap:12px;
+  font-size:13px;
+  color:#ffffff;
+}
+
+.selected-count{
+  font-weight:600;
+  color:#ffffff;
+}
+
+.row-count{
+  color:#ffffff;
+}
+
+.row-count b{
+  color:#ffffff;
+}
+
+.clear-All-filter-btn{
+  background:#0f5bb5;
+  color:white;
+  border:none;
+  padding:6px 12px;
+  border-radius:4px;
+  font-size:13px;
+}
+
+.clear-All-filter-btn:disabled{
+  background:#ccc;
+  cursor:not-allowed;
+}
+
+.delete-selections-btn{
+  background:#e53935;
+  color:white;
+  border:none;
+  padding:6px 12px;
+  border-radius:4px;
+  font-size:13px;
+}
+
+.delete-selections-btn:disabled{
+  background:#ccc;
+  cursor:not-allowed;
+}
+
+.cell-ellipsis {
+  display: block;        /* خیلی مهم */
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.normal-btn{
+  background:#ffffff;
+  color:#000000;
+  border:none;
+  padding:6px 12px;
+  border-radius:4px;
+  font-size:13px;
+}
+

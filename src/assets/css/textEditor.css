@@ -1,0 +1,260 @@
+.text-editor {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0px 6px 6px;
+  /* background: #fff; */
+}
+
+.editor-toolbar {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 4px;
+  margin-bottom: 6px;
+  background: #ffffff;
+}
+
+.editor-toolbar button {
+  height: 30px;
+  margin: 2px 5px 3px 0px;
+  padding: 4px 8px;
+  cursor: pointer;
+  background: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.editor-toolbar button:hover {
+  background: #eaeaea;
+}
+
+.editor-area {
+  min-height: 100px;
+  outline: none;
+  font-size: 14px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  background: transparent;
+}
+
+.editor-counter {
+  text-align: right;
+  font-size: 12px;
+  color: #666;
+  margin-top: 4px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 2px 9px;
+  margin: 2px 4px 2px 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #444;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.7),
+    rgba(0, 0, 0, 0.04)
+  );
+  border-radius:10px;
+  letter-spacing: .25px;
+  /* user-select: none; */
+}
+
+.editor-size-select {
+  position: relative;
+  height: 30px;
+  padding: 0 8px;
+  top: 1.5px;
+	margin: 1px 5px 3px 0px;
+
+  font-size: 13px;
+  background-color: #F5F5F5;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+
+  cursor: pointer;
+  outline: none;
+}
+
+.editor-size-select:hover {
+  border-color: #999;
+}
+
+.editor-size-select:focus {
+  border-color: #333;
+  box-shadow: none;
+}
+
+.editor-size-select option {
+  background-color: #fff;
+  color: #333;
+}
+
+.fs-12 { font-size: 12px; }
+.fs-14 { font-size: 14px; }
+.fs-16 { font-size: 16px; }
+.fs-18 { font-size: 18px; }
+.fs-24 { font-size: 24px; }
+.fs-32 { font-size: 32px; }
+
+.editor-hr {
+  margin: 50px 0;
+}
+
+/* ===============================
+   Table Styling for Editor
+================================ */
+
+.rendered-content {
+  /* overflow-x: auto; */
+  font-family: "Inter", sans-serif;
+}
+
+/* جدول شیشه‌ای */
+.rendered-content table {
+  width: 100%;
+  /* min-width: 480px; */
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 14px;
+  line-height: 1.5;
+  border-radius: 12px;
+  overflow: hidden;
+
+  /* Glass effect */
+  background: rgba(255, 255, 255, 0.15); /* شفافیت */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* subtle shadow برای کل جدول */
+}
+
+/* حذف margin/p اضافی داخل سلول */
+.rendered-content table p,
+.rendered-content table span {
+  margin: 0;
+  padding: 0;
+  line-height: inherit;
+}
+
+/* حذف o:p اضافه */
+.rendered-content table o\:p {
+  display: none;
+}
+
+/* سلول‌ها */
+.rendered-content th,
+.rendered-content td {
+  padding: 12px 16px;
+  vertical-align: middle;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.2); /* خطوط subtle بین ردیف‌ها */
+  color: #111;
+  text-align: left;
+  backdrop-filter: blur(4px);
+}
+
+/* ستون اول (عنوان‌ها) بولد و پررنگ */
+.rendered-content td:first-child {
+  font-weight: 600;
+  color: #000;
+  font-style: italic;
+}
+
+/* ستون‌های عددی (وسط) */
+.rendered-content td:not(:first-child) {
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+/* هدر با خط پایین ساده سیاه 3px بدون gradient و سایه */
+.rendered-content thead th,
+.rendered-content tr:first-child td {
+  font-weight: 600;
+  text-align: center;
+  font-style: italic;
+  color: #111;
+  border-bottom: 2px solid #000; /* خط سیاه ساده */
+  background: transparent;      /* بدون gradient */
+  box-shadow: none;             /* بدون سایه */
+}
+
+/* ردیف‌های زوج subtle */
+.rendered-content tbody tr:nth-child(even) {
+  background-color: rgba(255,255,255,0.08);
+}
+
+/* Hover مینیمال و نرم */
+.rendered-content tbody tr:hover {
+  background: rgba(255,255,255,0.18);
+  transition: background 0.25s ease;
+}
+
+/* گوشه‌های جدول */
+.rendered-content table th:first-child {
+  border-top-left-radius: 12px;
+}
+.rendered-content table th:last-child {
+  border-top-right-radius: 12px;
+}
+.rendered-content table tr:last-child td:first-child {
+  border-bottom-left-radius: 12px;
+}
+.rendered-content table tr:last-child td:last-child {
+  border-bottom-right-radius: 12px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* جلوگیری از شکستن ساختار جدول */
+.table-wrapper table {
+  min-width: 300px; /* یا حتی 600px بسته به نیاز */
+}
+
+
+/* scroll افقی برای موبایل */
+/* .rendered-content {
+  overflow-x: auto;
+} */
+
+/* ======================================================= */
+
+.sticky-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;      /* روی همه چیز قرار گیرد */
+  background: #fff;    /* حتماً background غیرشفاف */
+  border-bottom: 1px solid #ddd;
+  padding: 4px 0;
+}
+
+.chartbox {
+  margin: 20px 0;
+  padding: 14px;
+  border: 1px dashed #aaa;
+  border-radius: 10px;
+  text-align: center;
+  background: rgba(0,0,0,0.04);
+  font-size: 14px;
+  user-select: none;
+}
+
+.editor-link-input {
+	width: 150px;
+	height: 24px;
+	font-size: 12px;
+	padding: 2px 6px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+.add-image {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+    display: block;
+}
