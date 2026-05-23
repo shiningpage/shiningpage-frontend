@@ -24,7 +24,7 @@ class WebCarousel extends Component{
         nextIcon: <GiGlobe/>,
         prevIcon: <GiGlobe/>,
         toggleAboutImage: false,
-
+        showTextSection: true,
     }
 
     componentDidMount = async () => {
@@ -85,6 +85,14 @@ class WebCarousel extends Component{
         const { subUserInfo, rtl, setLT } = this.props
         const fc = subUserInfo.fc
         const txBlack = lightColors.includes(fc) ? true : false
+        const closeBtn = (
+            <div
+                style={{ position: 'absolute', top: '10px', right: '10px', cursor: 'pointer', fontSize: '18px', color: '#fff', zIndex: 10 }}
+                onClick={this.closeTextSection}
+            >
+                ✕
+            </div>
+        )
         const textSection = (
             <div id='textCarousel'
                 className={`${ type==='out' ? 'fadeOut' : 'animated fadeIn' } backBlur`}
@@ -93,6 +101,7 @@ class WebCarousel extends Component{
                     animationDelay:type==='out' ? '2.5s' : '1s', position:'absolute'
                 }}
             >
+                {closeBtn}
                 <div className={`${ type==='out' ? 'fadeOutDown' : 'animated fadeInDown' } txWhiteThin tx f7`}
                     style={{fontSize:'25px', fontWeight:'bold', margin:'10px',
                         animationDelay:type==='out' ? '2s' : '1.5s'
@@ -162,6 +171,10 @@ class WebCarousel extends Component{
         });
     }
 
+    closeTextSection = () => {
+        this.setState({ showTextSection: false });
+    }
+
     onResize = async () => {
         this.setState({ w: window.innerWidth })
     }
@@ -219,7 +232,7 @@ class WebCarousel extends Component{
                                                     alt={`${item.title} about`}
                                                 />
                                             </div>
-                                            {animatedText}
+                                            {this.state.showTextSection && animatedText}
                                         </div>
                                     </Carousel.Item>
                                 )
