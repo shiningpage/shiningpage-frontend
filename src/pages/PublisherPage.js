@@ -1129,15 +1129,15 @@ class PublisherPage extends Component {
                     </div>
                     {w<s && contactHead}
                     {w>s && <NavbarSub fc={fc} txBlack={txBlack} mapStateToProps={this.props} />}
-                    {subUserInfo.businessType>0 && profileData && <WebCarousel dataX={subUserInfo} fc={fc}/>}
+                    {profileData && <WebCarousel dataX={subUserInfo} fc={fc}/>}
                     {googleAds && subUserInfo.ads && adsBox1}
                     <FeaturesSub fc={fc} nx={subUserInfo.totalContents} me={me} mapStateToProps={this.props} viewN={viewN} dispatch={this.props.dispatch}/>
                     {about}
                     {googleAds && subUserInfo.ads && adsBox2}
                     <PsSub fc={fc} me={me} nx={subUserInfo.totalContents} txBlack={txBlack} titleStyle={titleStyle} index={psSubActive} adsN={adsN} videoN={videoN} instaN={instaN} updatePsCount={this.updatePsCount} EditBtn={EditBtn} mapStateToProps={this.props} dispatch={this.props.dispatch}/>
-                    {subUserInfo.businessType>0 && <AttachmentSub fc={fc} titleStyle={titleStyle} index={attachmentsSubActive} me={me} mapStateToProps={this.props} dispatch={this.props.dispatch}/>}
-                    {googleAds && subUserInfo.businessType>0 && subUserInfo.ads && adsBox3}
-                    {subUserInfo.businessType>0 && <StatisticsSub fc={fc} titleStyle={titleStyle} index={statisticsSubActive} viewN={viewN} gettingView={gettingView}/>}
+                    <AttachmentSub fc={fc} titleStyle={titleStyle} index={attachmentsSubActive} me={me} mapStateToProps={this.props} dispatch={this.props.dispatch}/>
+                    {googleAds && subUserInfo.ads && adsBox3}
+                    <StatisticsSub fc={fc} titleStyle={titleStyle} index={statisticsSubActive} viewN={viewN} gettingView={gettingView}/>
                     { me && mainUser.access.includes('socialMedia') && <SocialMedia /> }
                     {googleAds && subUserInfo.ads && adsBox4}
                     <div style={{backgroundColor:'#ffffff'}}>
