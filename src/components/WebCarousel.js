@@ -200,7 +200,7 @@ class WebCarousel extends Component{
 
         return (
             <div style={{ position:'relative' }}>
-                {me && <EditBtn top={w<s ? 20 : 70} rtl={rtl} onClick={() => this.toggleAboutImage()}/>}
+                {me && <EditBtn top={w<s ? 10 : 70} right={w<s ? 10 : 20} rtl={rtl} onClick={() => this.toggleAboutImage()}/>}
                 <Carousel
                     fade
                     interval={10000}
