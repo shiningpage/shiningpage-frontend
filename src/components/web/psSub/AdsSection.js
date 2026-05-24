@@ -144,7 +144,7 @@ const AdsSection = (props) => {
             {adsTitleSub}
             {allAdsList}
             {w>=s && adsN>0 && moreConst}
-            {w>s && googleAds && subUserInfo.ads && adsBox}
+            {me && w>s && googleAds && subUserInfo.ads && adsBox}
             {/* <RubyCollector id='adsHAds' bottom={-70} left={rtl ? (me ? 60 : 20) : ''} right={rtl ? '' : (me ? 60 : 20)}/> */}
             {modalShowPS}
             {modalHandleAds}

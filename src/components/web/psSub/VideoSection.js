@@ -99,7 +99,7 @@ const VideoSection = (props) => {
             {videoTitleSub}
             {allVideoList}
             {w>=s && videoN>0 && moreConst}
-            {w>s && googleAds && subUserInfo.ads && adsBox}
+            {me && w>s && googleAds && subUserInfo.ads && adsBox}
             {/* <RubyCollector id='adsHVideo' bottom={-50} left={rtl ? (me ? 60 : 20) : ''} right={rtl ? '' : (me ? 60 : 20)}/> */}
             {modalHandleVideo}
         </div>

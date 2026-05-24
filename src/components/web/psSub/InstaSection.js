@@ -96,7 +96,7 @@ const Test = (props) => {
             {instaTitleSub}
             {allInstaList}
             {w>=s && instaN>0 && moreConst}
-            {w>s && googleAds && subUserInfo.ads && adsBox}
+            {me && w>s && googleAds && subUserInfo.ads && adsBox}
             {/* <RubyCollector id='adsHInsta' bottom={-50} left={rtl ? 20 : ''} right={rtl ? '' : 20}/> */}
             {modalHandleInsta}
         </div>

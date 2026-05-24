@@ -292,7 +292,7 @@ class ContactSub extends Component{
                     </div>
                 </Container>
                 <Container>
-                    {googleAds && subUserInfo.ads && adsBox}
+                    {me && googleAds && subUserInfo.ads && adsBox}
                 </Container>
                 {/* <RubyCollector id='adsContact' bottom={5} left={20}/> */}
                 {modalLocationImage}
