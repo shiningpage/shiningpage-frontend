@@ -1130,16 +1130,16 @@ class PublisherPage extends Component {
                     {w<s && contactHead}
                     {w>s && <NavbarSub fc={fc} txBlack={txBlack} mapStateToProps={this.props} />}
                     {profileData && <WebCarousel dataX={subUserInfo} fc={fc}/>}
-                    {googleAds && subUserInfo.ads && adsBox1}
+                    {me && googleAds && subUserInfo.ads && adsBox1}
                     <FeaturesSub fc={fc} nx={subUserInfo.totalContents} me={me} mapStateToProps={this.props} viewN={viewN} dispatch={this.props.dispatch}/>
                     {about}
-                    {googleAds && subUserInfo.ads && adsBox2}
+                    {me && googleAds && subUserInfo.ads && adsBox2}
                     <PsSub fc={fc} me={me} nx={subUserInfo.totalContents} txBlack={txBlack} titleStyle={titleStyle} index={psSubActive} adsN={adsN} videoN={videoN} instaN={instaN} updatePsCount={this.updatePsCount} EditBtn={EditBtn} mapStateToProps={this.props} dispatch={this.props.dispatch}/>
                     <AttachmentSub fc={fc} titleStyle={titleStyle} index={attachmentsSubActive} me={me} mapStateToProps={this.props} dispatch={this.props.dispatch}/>
-                    {googleAds && subUserInfo.ads && adsBox3}
+                    {me && googleAds && subUserInfo.ads && adsBox3}
                     <StatisticsSub fc={fc} titleStyle={titleStyle} index={statisticsSubActive} viewN={viewN} gettingView={gettingView}/>
-                    { me && mainUser.access.includes('socialMedia') && <SocialMedia /> }
-                    {googleAds && subUserInfo.ads && adsBox4}
+                    {me && mainUser.access.includes('socialMedia') && <SocialMedia /> }
+                    {me && googleAds && subUserInfo.ads && adsBox4}
                     <div style={{backgroundColor:'#ffffff'}}>
                         {subUserInfo.type!=='content' && <ContactSub fc={fc} me={me} hr={hr} titleStyle={titleStyle} phone={phone}/>}
                         {modalZoomProfileImage}
@@ -1149,7 +1149,7 @@ class PublisherPage extends Component {
                         {modalTeam}
                         {modalSidebarWeb}
                     </div>
-                    {/* googleAds && w<s && adsBox5 */}
+                    {/* me && googleAds && w<s && adsBox5 */}
                     {footer}
                     {/* me && subUserInfo.ads && <AdsBoxSub mapStateToProps={this.props}/> */}
                 </div>
