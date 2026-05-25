@@ -135,9 +135,15 @@ class UserBox extends Component{
             />
         )
 
+        const hasUsername = !!mainUser?.username
         const root = mainUser.businessType>0 ? 'publisher' : 'user'
+        const linkTarget = auth && hasUsername
+            ? `/${root}/${mainUser.username}`
+            : '/login'
+        // console.log('auth:', auth)
+        // console.log('linkTarget:', linkTarget)
         const userLink = (
-            <Link to={auth ? `/${root}/${mainUser.username}` : `/login`} style={{textDecoration:'none', color:'#000000'}}
+            <a href={linkTarget} style={{textDecoration:'none', color:'#000000'}}
                 onClick={() => (page!=='web' && page!=='publisher')
                                     ? null
                                     : me
@@ -162,7 +168,7 @@ class UserBox extends Component{
                         </div>
                     </div>
                 </div>
-            </Link>
+            </a>
         )
 
         const changeTheme = (
