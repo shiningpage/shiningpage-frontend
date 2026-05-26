@@ -223,7 +223,7 @@ const AttachmentSub = (props) => {
         setToggleAttachment(!toggleAttachment);
     };
 
-    const attachmentsIndex = subUserInfo.attachmentItems && subUserInfo.attachmentItems.length !== 0;
+    const attachmentExist = subUserInfo.attachmentItems && subUserInfo.attachmentItems.length !== 0;
     const loader02 = <div className='loader-02' style={{minWidth:'20px', margin:'10px', color:'red', fontSize:'20px'}}></div>
     const loaderAlert = <div className='loader-07' style={{margin: '', color:'#00CCFF', width:'100px', height:'100px', position:'absolute'}}></div>
     const loader13 = (
@@ -296,7 +296,7 @@ const AttachmentSub = (props) => {
 
     return (
         <div id="attachmentsSub" className={`C${fc}`}
-            style={{ width: '100%', color: lightColors.includes(fc) ? '#000000' : '#ffffff', position: 'relative' }}
+            style={{ width: '100%', color: lightColors.includes(fc) ? '#000000' : '#ffffff', position: 'relative', display: me || attachmentExist ? '' : 'none' }}
         >
             {me && <EditBtn rtl={rtl} type="add" onClick={toggleModal} />}
             <div style={{ width: '100%', padding: '70px 0px', backgroundColor: '#ffffff00' }}>
@@ -306,11 +306,10 @@ const AttachmentSub = (props) => {
                     </div>
                     {/* me && <div style={{ marginTop: '-25px' }}>{setLT.attachmentT1}</div> */}
                     <div className="d-flex" style={{ margin: '10px 0px 0px', borderRadius: '10px', flexWrap: 'wrap' }}>
-                        {!attachmentsIndex ? (
-                            <div style={{ fontSize: '15px', textAlign: 'center' }}>{setLT.attachmentNA}</div>
-                        ) : (
-                            attachmentList
-                        )}
+                        {attachmentExist
+                            ? attachmentList
+                            : <div style={{ fontSize: '15px', textAlign: 'center' }}>{setLT.attachmentNA}</div>
+                        }
                     </div>
                 </Container>
                 {/* <RubyCollector id='adsH3' bottom={30} left={rtl ? 30 : ''} right={rtl ? '' : 30}/> */}
