@@ -7,14 +7,6 @@ module.exports = {
   // serverURL: 'http://localhost:4200',
   serverURL: 'https://api.shiningpage.com',
 
-  // local
-  sitekey:'6LcsaVcUAAAAAL7Onj_lTp7wYZyMpzK3ZXQ3xrDg',
-  secretkey:'6LcsaVcUAAAAAH__aEv9-X6agk1zQgCJ8v9PPr0K',
-
-  // shiningpage.com
-  // sitekey:'6LeyC98qAAAAACHf1e3Q2WDQ22Jfk7kkjsnXTJHK',
-  // secretkey:'6LeyC98qAAAAAFLDgFLbKxSZbgKmZ704ZG0Vn6uV',
-
   netAPIKey: 'dd12f93b99e6a599aa40cb690a38b643',
 
   noIndexPages: [

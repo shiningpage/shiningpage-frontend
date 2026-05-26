@@ -16,7 +16,7 @@ import CountrySelector from '../components/CountrySelector';
 import siteView from '../modules/siteView';
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { exist, checkSeen } from '../helper';
-import { serverURL, s, loadingBar, secretkey, sitekey } from '../srcSet';
+import { serverURL, s, loadingBar } from '../srcSet';
 
 var w = window.innerWidth
 var LBH = loadingBar.height
@@ -471,8 +471,8 @@ class LoginPage extends Component {
                     <div style={{margin: '20px 0px -5px 0px', transform:'scale(0.77)'}}>
                         <ReCAPTCHA
                             style={{margin: rtl ? '0px -38px 0px 0px' : '0px 0px 0px -38px'}}
-                            sitekey={sitekey}
-                            secretkey={secretkey}
+                            sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
+                            secretkey={process.env.REACT_APP_RECAPTCHA_SECRET_KEY}
                             onChange={this.onRecaptchaChange}
                         />
                     </div>
