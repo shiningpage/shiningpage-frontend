@@ -691,11 +691,11 @@ const mapAllVideo = (data, me, EditBtn, rtl, setLT, w, s,
 
             return (
                 <div key={i}
-                    className={`d-flex zoomIn disable-select`}
+                    className={`d-flex zoomIn disable-select btnShadow`}
                     style={{textDecoration:'none', 
                         minWidth: w<s ? '200px' : '30%', minHeight: w<s ? '200px' : '',
                         width: w<s ? '' : '30%',
-                        padding:'3px', 
+                        padding:'3px', margin:w<s ? '' : '5px',
                         alignItems:'stretch', borderRadius:'4px', position:'relative'}}
                 >
                     {video}

@@ -1023,11 +1023,13 @@ const PsSub = (props) => {
     const setContent = (n, marginTop='0px') => {
         const container = document.getElementById("allSubcategories");
         const content = document.getElementById("content");
-        const children = container.children;
-        if (container && content) {
-            content.remove()
-            container.insertBefore(content, children[n+1])
-            content.style.marginTop = marginTop
+        if(container) {
+            const children = container.children;
+            if (container && content) {
+                content.remove()
+                container.insertBefore(content, children[n+1])
+                content.style.marginTop = marginTop
+            }
         }
     }
 
@@ -1290,6 +1292,9 @@ const PsSub = (props) => {
             catE={catE}
             txBlack={txBlack}
             activeType={activeType}
+            loadingAds={loadingAds}
+            loadingVideo={loadingVideo}
+            loadingInsta={loadingInsta}
             categorySubs={categorySubs}
             categoryTitleX={categoryTitleX}
             categoryTitleXSub={categoryTitleXSub}
@@ -1334,8 +1339,9 @@ const PsSub = (props) => {
         />
     )
 
+    const catExist = (categoryItems || []).length>0 ? true : false
     return (
-        <div id='psSub' style={{width:'100%', padding:'10px', backgroundColor:'#ffffff'}}>
+        <div id='psSub' style={{width:'100%', padding:'10px', backgroundColor:'#ffffff', display: me || catExist ? '' : 'none'}}>
             {categorySection}
         </div>
 

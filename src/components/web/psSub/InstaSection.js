@@ -60,8 +60,9 @@ const Test = (props) => {
         <div className={`d-flex`} style={subTitleStyleS}>
             {me && <EditBtn type={'add'} position={''} margin={'0px 10px'} onClick={() => onToggleInsta('new')}/>}
             <FaInstagram className='' style={{fontSize:'25px', margin:'0px 5px', borderRadius:'8px', color:'#ffffff', backgroundImage: 'linear-gradient(to right top, #fcac0f, #fd9522, #fa7f30, #f36a3c, #e85647, #e44751, #dd395b, #d42d65, #d12174, #ca1b85, #be1e96, #ae27a8)'}}/>
+            <span>Instagram</span>
             <div className={ w<s ? '' : 'd-flex'} style={{alignItems:'center'}}>
-                <span style={{fontSize:'14px', display: activeType==='' ? '' : 'none'}}>({instaN ? allInsta.length + '/' + (catXRef==='All' ? subUserInfo.totalInstagram : instaNCat) : '-'})</span>
+                <span style={{fontSize:'14px', display: activeType==='' ? '' : 'none'}}>&nbsp;({instaN ? allInsta.length + '/' + (catXRef==='All' ? subUserInfo.totalInstagram : instaNCat) : '-'})</span>
                 { activeType==='sub' && <span style={{fontSize:'14px'}}>({searchInsta.length + '/' + instaNCatSub})</span> }
                 { activeType==='search' &&
                     <div className='d-flex'>

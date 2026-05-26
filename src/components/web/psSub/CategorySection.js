@@ -16,11 +16,15 @@ import { filterCategory } from './psHelper';
 import { s, serverURL, googleAds } from '../../../srcSet';
 
 const CategorySection = (props) => {
-    const { me, fc, nx, action, saveService, txBlack, activeType, categoryTitleX, categorySubs, categoryTitleXSub, subTitleStyleS, loadingCategory, onAllCategory, mapCategoryFunction, mapModalCategoryFunction, subcatQty, categoryItems, categoryList, modalCategoryList, subcategoryList, serviceList, toggleEditCategory, onToggleEditCategory, catE, inputEditChangeHandler, serviceTitleChangeHandler, servicePriceChangeHandler, serviceOfferChangeHandler, serviceDurationHChangeHandler, serviceDurationMinChangeHandler, addSubCat, addService, allAds, allVideo, allInsta, catXRef, adsN, adsNCat, adsNCatSub, videoN, videoNCat, videoNCatSub, instaN, instaNCat, instaNCatSub, adsSection, videoSection, instaSection, EditBtn, dispatch, mapStateToProps } = props;
+    const { me, fc, nx, action, saveService, txBlack, activeType, loadingAds, loadingVideo, loadingInsta, categoryTitleX, categorySubs, categoryTitleXSub, subTitleStyleS, loadingCategory, onAllCategory, mapCategoryFunction, mapModalCategoryFunction, subcatQty, categoryItems, categoryList, modalCategoryList, subcategoryList, serviceList, toggleEditCategory, onToggleEditCategory, catE, inputEditChangeHandler, serviceTitleChangeHandler, servicePriceChangeHandler, serviceOfferChangeHandler, serviceDurationHChangeHandler, serviceDurationMinChangeHandler, addSubCat, addService, allAds, allVideo, allInsta, catXRef, adsN, adsNCat, adsNCatSub, videoN, videoNCat, videoNCatSub, instaN, instaNCat, instaNCatSub, adsSection, videoSection, instaSection, EditBtn, dispatch, mapStateToProps } = props;
     const { mainUser, subUserInfo, setLT, lang, rtl, } = mapStateToProps;
     const [w, setW] = useState(document.body.clientWidth);
     const [toggleHandleCategory, setToggleHandleCategory] = useState(false);
     const [toggleNewCategory, setToggleNewCategory] = useState(false);
+    const catExist = (categoryItems || []).length>0 ? true : false
+    const catSubExist = categorySubs.length>0 ? true : false
+    const catTitle = categoryTitleX ? categoryTitleX : 'All'
+    const contentLoading = loadingAds && loadingVideo && loadingInsta ? true : false
 
     const countTotalSub = (data) => {
         let totalSub = [];
@@ -81,10 +85,9 @@ const CategorySection = (props) => {
     //     </div>
     // )
 
-    const categoryIndex = (categoryItems || []).length<=1 ? false : true
     const categoryTitle = (
         <div className='d-flex' style={{...subTitleStyleS, margin:'0px', alignItems:'center'}}>
-            {me && <EditBtn type={categoryIndex ? 'edit' : 'add'} margin='0px 10px 0px 5px' position={''} onClick={() => onToggleHandleCategory()}/>}
+            {me && <EditBtn type={catExist ? 'edit' : 'add'} margin='0px 10px 0px 5px' position={''} onClick={() => onToggleHandleCategory()}/>}
             <span style={{fontSize:'22px', fontWeight:450}}>Category</span>
         </div>
     )
@@ -207,6 +210,38 @@ const CategorySection = (props) => {
         </div>
     )
 
+    const contentSectionWithSub = (
+        <div id='container' className={w<s ? '' : 'd-flex'} style={{width:'100%'}}>
+            <div>
+                <div style={{marginBottom:'20px', fontWeight:450}}>
+                    <div style={{fontSize:'22px'}}>{catTitle}</div>
+                    <div style={{fontSize:'16px'}}>
+                        <span style={{marginRight:'5px'}}>Subcategories</span>
+                        <span style={{fontSize:'14px', fontWeight:''}}>({categorySubs.length})</span>
+                    </div>
+                </div>
+                {/* subUserInfo?.access?.includes("BookingSystem") && <div style={{fontSize:'20px', fontWeight:450, marginBottom:'0px', textAlign: w<s ? 'center' : ''}}>Select a service</div> */}
+                {allSubcategoryList}
+            </div>
+            {content}
+        </div>
+    )
+
+    // console.log('loadingAds: ', loadingAds)
+    // console.log('loadingVideo: ', loadingVideo)
+    // console.log('loadingInsta: ', loadingInsta)
+    // console.log('AllItems: ', allAds.length+ allVideo.length>+ allInsta.length)
+    const contentSectionWithoutSub = (
+        <div id='container' className='' style={{width:'100%'}}>
+            <div style={{fontSize:'22px'}}>{ contentLoading ? 'Loading ...' : catTitle }</div>
+            <div>
+                {(me || allAds.length>0) ? adsSection : ''}
+                {(me || allVideo.length>0) ? videoSection : ''}
+                {(me || allInsta.length>0) ? instaSection : ''}
+            </div>
+        </div>
+    )
+
     const modalHanddleCategory = (
         <ModalHandleCategory
             loader={loader}
@@ -284,20 +319,7 @@ const CategorySection = (props) => {
             {w<s && allCategoryList}
             <div>
                 {w>=s && allCategoryList}
-                <div id='container' className={w<s ? '' : 'd-flex'} style={{width:'100%'}}>
-                    <div>
-                        <div style={{marginBottom:'20px', fontWeight:450}}>
-                            <div style={{fontSize:'22px'}}>{categoryTitleX ? categoryTitleX : 'All'}</div>
-                            <div style={{fontSize:'16px'}}>
-                                <span style={{marginRight:'5px'}}>Subcategories</span>
-                                <span style={{fontSize:'14px', fontWeight:''}}>({categorySubs.length})</span>
-                            </div>
-                        </div>
-                        {/* subUserInfo?.access?.includes("BookingSystem") && <div style={{fontSize:'20px', fontWeight:450, marginBottom:'0px', textAlign: w<s ? 'center' : ''}}>Select a service</div> */}
-                        {allSubcategoryList}
-                    </div>
-                    {content}
-                </div>
+                {me || catSubExist ? contentSectionWithSub : contentSectionWithoutSub}
             </div>
             {modalHanddleCategory}
             {modalNewCategory}

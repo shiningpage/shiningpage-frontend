@@ -81,9 +81,10 @@ const AdsSection = (props) => {
     )
 
     const adsTitleSub = (
-        <div className={`d-flex`} style={subTitleStyleS}>
+        <div className='d-flex' style={subTitleStyleS}>
         {me && <EditBtn type={'add'} position={''} margin={'0px 10px'} onClick={() => onToggleAds('new')}/>}
             <FcStackOfPhotos style={{width:'30px', height:'30px', margin:'0px 5px'}} />
+            <span>Featured</span>
             <div className={ w<s ? '' : 'd-flex'} style={{alignItems:'center'}}>
                 <span style={{fontSize:'14px', display: activeType==='' ? '' : 'none'}}>&nbsp;({adsN ? allAds.length + '/' + (catXRef==='All' ? subUserInfo.totalAds : adsNCat) : '-'})</span>
                 { activeType==='sub' && <span style={{fontSize:'14px'}}>({searchAds.length + '/' + adsNCatSub})</span>}

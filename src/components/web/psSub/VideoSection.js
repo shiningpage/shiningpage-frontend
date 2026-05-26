@@ -63,6 +63,7 @@ const VideoSection = (props) => {
                 src={require(`../../../assets/images/other/video.png`)}
                 alt="video icon"
             />
+            <span>Video</span>
             <div className={ w<s ? '' : 'd-flex' } style={{alignItems:'center'}}>
                 <span style={{fontSize:'14px', display: activeType==='' ? '' : 'none'}}>&nbsp;({videoN ? allVideo.length + '/' + (catXRef==='All' ? subUserInfo.totalVideo : videoNCat) : '-'})</span>
                 { activeType==='sub' && <span style={{fontSize:'14px'}}>({searchVideo.length + '/' + videoNCatSub})</span>}
