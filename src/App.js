@@ -42,7 +42,7 @@ import UserBox from './components/UserBox';
 import Search from './components/Search';
 import ModalSidebarShiningpage from './components/modals/ModalSidebarShiningpage';
 import { identifyObj, exist, getBalance, scrollStatus, checkRubyInterval, } from './helper';
-import { serverURL, s, NavH, langArray, version, countryArr, noIndexPages } from './srcSet';
+import { serverURL, s, NavH, langArray, countryArr, noIndexPages } from './srcSet';
 
 class App extends Component {
 
@@ -298,7 +298,7 @@ class App extends Component {
             const limit = 10 * 60 * 1000 // 10min
             const checkTime = dateN - updateTime > limit ? true : false
 
-            if(version!==res.data.site && checkTime) {
+            if(process.env.REACT_APP_VERSION!==res.data.site && checkTime) {
                 // console.log(true)
                 this.props.dispatch(setUpdateVersionDate(dateN))
                 this.onUpdateVersion()
@@ -967,7 +967,7 @@ class App extends Component {
 
         const currentVersion = (
             <div className='center' style={{paddingTop:'10px'}}>
-                Current Version: {version}
+                Current Version: {process.env.REACT_APP_VERSION}
             </div>
         )
 
@@ -1189,7 +1189,7 @@ class App extends Component {
                 </div>
                 <div className="nav" style={titleStyle}>
                     SHINING PAGE &nbsp;
-                    <span style={{fontSize:'12px'}}>(Version: {version})</span>
+                    <span style={{fontSize:'12px'}}>(Version: {process.env.REACT_APP_VERSION})</span>
                 </div>
             </Link>
         )

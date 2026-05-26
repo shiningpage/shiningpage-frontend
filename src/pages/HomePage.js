@@ -22,7 +22,7 @@ import StarredAds from '../components/StarredAds';
 import SiteView from '../components/SiteView';
 import { AdsHorizontal } from '../components/GoogleAds';
 import { exist, checkSeen } from '../helper';
-import { serverURL, s, version, categories, googleAds, countryArr } from '../srcSet';
+import { serverURL, s, categories, googleAds, countryArr } from '../srcSet';
 const hrS = <hr style={{border:'heirline dashed #999999', width:'100%'}}/>
 
 class HomePage extends Component {
@@ -464,7 +464,7 @@ class HomePage extends Component {
     const versionConst = (
       <div className='center' style={{color:'#00b3e0', fontWeight:450, fontSize: w<s ? '' : '', margin: '0px 0px 20px', alignItems:'flex-end', whiteSpace:'nowrap', direction:'ltr' }}>
           <span style={{}}>Version-</span>
-          <span style={{}}>{version}</span>
+          <span style={{}}>{process.env.REACT_APP_VERSION}</span>
       </div>
     )
 

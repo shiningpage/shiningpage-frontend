@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Container } from 'react-bootstrap';
 import { FaAngleLeft } from 'react-icons/fa';
 import { getPos, dig3 } from '../helper';
-import { serverURL, s, listRefreshQty, listRefreshQtySmall, version, colors, lightColors } from '../srcSet';
+import { serverURL, s, listRefreshQty, listRefreshQtySmall, colors, lightColors } from '../srcSet';
 const WorldMap = require('react-svg-worldmap').WorldMap;
 
 class SiteView extends Component {

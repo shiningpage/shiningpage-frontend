@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import { Carousel } from 'react-bootstrap';
 import aboutUsImg from '../assets/images/other/international.jpg';
-import { s, version } from '../srcSet';
+import { s } from '../srcSet';
 import { GiGlobe } from 'react-icons/gi';
 
 import '../assets/css/carousel.css';
@@ -73,7 +73,7 @@ class ShiningpageCarousel extends Component{
         const versionConst = (
             <div className='center' style={{color:'#00b3e0', fontWeight:450, fontSize: w<s ? '' : '', margin: '0px 0px 20px', alignItems:'flex-end', whiteSpace:'nowrap', direction:'ltr' }}>
                 <span style={{}}>Version-</span>
-                <span style={{}}>{version}</span>
+                <span style={{}}>{process.env.REACT_APP_VERSION}</span>
             </div>
         )
         const logo = (

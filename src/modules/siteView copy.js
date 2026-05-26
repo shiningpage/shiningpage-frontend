@@ -2,7 +2,7 @@ import axios from 'axios';
 import date from 'date-and-time';
 import { setGeo } from '../dataStore/actions';
 import { getFingerprint, getLocalIPs } from '../helper';
-import { serverURL, s, version, siteName } from '../srcSet';
+import { serverURL, s, siteName } from '../srcSet';
 import { exist } from '../helper';
 
 const siteView = async (props) => {
@@ -26,7 +26,7 @@ const siteView = async (props) => {
         lang: props.lang,
         viewDate: today,
         view: 1,
-        version,
+        version: process.env.REACT_APP_VERSION,
         siteName: local ? 'local - ' + siteName : siteName,
         platform: navigator.platform,
         userAgent: navigator.userAgent,

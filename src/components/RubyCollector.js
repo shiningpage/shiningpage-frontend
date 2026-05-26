@@ -7,7 +7,7 @@ import { setRuby, setToggleViewStatus, setRubyInterval, setRubyBlock } from '../
 import rubyS from '../assets/images/other/rubyS.png';
 import { ImBlocked } from "react-icons/im";
 import { getFingerprint, countryAdsenseRate, createConfetti, checkRubyInterval } from '../helper';
-import { serverURL, s, version, siteName, } from '../srcSet';
+import { serverURL, s, siteName, } from '../srcSet';
 
 const RubyCollector = ({ id, objects, top, bottom, left, right, mainUser, geo, subject, lang, rubyBlock, rubyInterval, dispatch }) => {
     const [status, setStatus] = useState(false);
@@ -55,7 +55,7 @@ const RubyCollector = ({ id, objects, top, bottom, left, right, mainUser, geo, s
                     city: geo.city,
                     subject,
                     lang,
-                    version,
+                    version: process.env.REACT_APP_VERSION,
                     siteName,
                     ip: geo.query,
                     isp: geo.isp,

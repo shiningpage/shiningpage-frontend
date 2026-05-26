@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { setToggleSidebar } from '../dataStore/actions';
 import { Link } from "react-router-dom";
 
-import { s, version } from '../srcSet';
+import { s } from '../srcSet';
 
 class EXV extends Component{
 
@@ -48,7 +48,7 @@ class EXV extends Component{
                 <div className='center' style={{ fontSize:'14px', fontWeight:450, alignItems:'center', flexDirection:'column' }}>
                     <span style={{fontSize:'18px', marginBottom:'-2px'}}>ShiningPage</span>
                     <div className='C14' style={{maxWidth:'130px', minWidth:'130px', height:'3px'}}></div>
-                    <span style={{marginTop:'2px'}}>Version {version}</span>
+                    <span style={{marginTop:'2px'}}>Version {process.env.REACT_APP_VERSION}</span>
                 </div>
             </Link>
         );
