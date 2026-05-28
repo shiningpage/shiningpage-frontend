@@ -264,13 +264,13 @@ body {
   display: block;
   width: 8px;
   height: 8px;
-  background-color: rgb(245, 245, 245); /* رنگ پس‌زمینه مسیر اسکرول */
+  background-color: #ffffff00; /* رنگ پس‌زمینه مسیر اسکرول */
   border-radius: 5px;
 }
 
 /* خود دستگیره (thumb) با گرادیان */
 .mostly-customized-scrollbar::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #f5f5f5, #c2c2c2, #7d7d7d); /* 👈 گرادیان روشن به تیره */
+  background: linear-gradient(180deg, #ffffff00, #ffffff50, #ffffff); /* 👈 گرادیان روشن به تیره */
   border-radius: 5px;
   transition: background 0.3s ease;
 }
@@ -1275,4 +1275,21 @@ box-shadow: inset 0px 0px 7px 0px rgba(0,0,0,0.6);
   background :#00194C;
   color: #ffffff;
   z-index: 2;
+}
+
+.kpiIconStyleDiv {
+    margin-bottom: 20px;
+    border-radius: 15px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.kpiIconStyle {
+    width: 25px;
+    font-size: 30px;
+    color: #ffffff;
 }
