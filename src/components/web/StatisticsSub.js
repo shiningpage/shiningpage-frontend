@@ -265,7 +265,13 @@ class StatisticsSub extends Component{
             for(var i=0; i<cx.length; i++) {
                 cxArr.push({"country": cx[i].countryCodeX, "value": cx[i].view})
             }
+
+            // sort descending
+            cxArr.sort((a, b) => b.value - a.value)
         })
+
+        this.makeCountriesData(cxArr)
+
         this.setState(
             () => ({
                 viewCountAll: cxArr,
@@ -273,6 +279,61 @@ class StatisticsSub extends Component{
             })
         )
     
+    }
+
+    makeCountriesData = (countries) => {
+        // تبدیل کد کشور به اسم
+        const countryNames = new Intl.DisplayNames(["en"], {
+            type: "region",
+        });
+
+        // تبدیل کد کشور به پرچم
+        const getFlagEmoji = (countryCode) => {
+            if (countryCode === "QQ") return "🌍";
+
+            return countryCode
+                .toUpperCase()
+                .replace(/./g, (char) =>
+                    String.fromCodePoint(127397 + char.charCodeAt())
+                );
+        };
+
+        const maxValue = Math.max(...countries.map((c) => c.value));
+
+        const topCountries = countries.map(
+            (item, index) => {
+                const percentage = (item.value / maxValue) * 100;
+
+                return (
+                    <div className="countryItem" key={index}>
+                        <div className="countryTop">
+                            <div className="countryInfo">
+                                <span className="flag">
+                                    {getFlagEmoji(item.country)}
+                                </span>
+
+                                <span className="countryName">
+                                    {item.country === "QQ"
+                                        ? "Unknown"
+                                        : countryNames.of(item.country)}
+                                </span>
+                            </div>
+
+                            <span className="countryValue">{item.value}</span>
+                        </div>
+
+                        <div className="progressWrapper">
+                            <div className="progressBar" style={{ width: `calc(${percentage}%)` }}/>
+                        </div>
+                    </div>
+                );
+            }
+        )
+
+        this.setState({
+            topCountries
+        })
+
     }
 
     getViewers = async () => {
@@ -693,11 +754,11 @@ class StatisticsSub extends Component{
         const {w, toggleStatistics, gettingStatistics, likeN, commentN, viewCountAll, txBlack, likeViewChatWidth, 
             rating, ratingErrors, sendingComment, comment, commentErrors, loadingLiker, loadingViewer,
             loadingCommenter, finishDataLiker, finishDataViewer, finishDataCommenter, likerMap, viewerMap,
-            commenterMap, gettingLike, toggleLikeBtn, toggleCommentBtn, toggleLike,
+            commenterMap, gettingLike, topCountries, toggleLikeBtn, toggleCommentBtn, toggleLike,
         } = this.state
         const {rtl, setLT, fc, viewN, gettingView, titleStyle, userType, mainUserId, userId } = this.props
 
-        const subTitleStyle = {fontSize:'18px', fontWeight:'', marginBottom:'10px', alignItems:'center', width:'100%', color:'#000000'}
+        const subTitleStyle = {fontSize:'20px', fontWeight:450, marginBottom:'10px', alignItems:'center', width:'100%', color:'#000000'}
         const loader13 = <div className='loader-13' style={{margin: '0px', color:''}}></div>
         const loader02 = <div className='loader-02' style={{color:'red', fontSize:'20px'}}></div>
         const loader02X = <div className='loader-02' style={{color:'red', margin:'5px', fontSize:'20px'}}></div>
@@ -913,6 +974,21 @@ class StatisticsSub extends Component{
                 {reviews}
             </div>
         )
+
+        const topCountriesSub = (
+            <div className='animated fadeIn' style={{animationDelay:'0s', width:w<s ? '100%' : '300px', padding:'10px', borderRadius:'10px', backgroundColor:'#ffffff99'}}>
+                <div className="topCountriesCard">
+                    <div className="cardHeader">
+                        <h3>Top Countries</h3>
+                    </div>
+
+                    <div className="countriesList">
+                        {topCountries}
+                    </div>
+                </div>
+            </div>
+        )
+
         return (
             <div id='statisticsSub' className='' style={{width:'100%', padding:'70px 0px', position:'relative'}}>
                 <Container>
@@ -929,6 +1005,7 @@ class StatisticsSub extends Component{
                                     </div>
                                 </div>
                                 <div className='d-flex' style={{flexWrap:'wrap', gap:'10px'}}>
+                                    {topCountriesSub}
                                     {viewersSub}
                                     {likersSub}
                                     {commentSub}

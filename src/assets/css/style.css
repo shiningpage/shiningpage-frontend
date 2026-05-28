@@ -1293,3 +1293,75 @@ box-shadow: inset 0px 0px 7px 0px rgba(0,0,0,0.6);
     font-size: 30px;
     color: #ffffff;
 }
+
+.topCountriesCard {
+  background: #fff;
+  border-radius: 22px;
+  padding: 22px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  height: 100%;
+}
+
+.cardHeader {
+  margin-bottom: 24px;
+}
+
+.cardHeader h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #222;
+}
+
+.countriesList {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.countryItem {
+  width: 100%;
+}
+
+.countryTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.countryInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.flag {
+  font-size: 20px;
+}
+
+.countryName {
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
+}
+
+.countryValue {
+  font-size: 14px;
+  font-weight: 700;
+  color: #666;
+}
+
+.progressWrapper {
+  width: 100%;
+  height: 8px;
+  background: #f1f1f1;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ff6b9d, #ff3f7f);
+  transition: width 0.4s ease;
+}
