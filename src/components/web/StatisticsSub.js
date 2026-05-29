@@ -15,6 +15,9 @@ import { IoMdHeartEmpty, IoMdHeart } from 'react-icons/io';
 import { FaRegPaperPlane, FaEye, FaStar } from 'react-icons/fa';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
 import { GiGlobe } from 'react-icons/gi';
+import { CiGlobe } from 'react-icons/ci';
+import { IoGlobeSharp, IoGlobeOutline } from "react-icons/io5";
+
 import RubyCollector from '../RubyCollector';
 import { AdsHorizontal } from '../GoogleAds';
 import { exist, getPos, dig3, addNotification } from '../../helper';
@@ -35,7 +38,11 @@ class StatisticsSub extends Component{
         searchCommenter:[],
         comment: '',
         rating: 0,
-        likeViewChatWidth: 300,
+        likerMap:[],
+        commenterMap:[],
+        topCountries:[],
+        
+
     }
 
     componentDidMount = async () => {
@@ -256,7 +263,7 @@ class StatisticsSub extends Component{
         var data = {
             userId: this.props.userId,
         }
-        var cxArr = [{country:'QQ', value:0}]
+        var cxArr = []
         await axios.post(`${serverURL}/view/getProfileCountryViewers`, data)
         .then(async res => {
             var cx = res.data
@@ -783,8 +790,8 @@ class StatisticsSub extends Component{
         console.log('viewCountAll: ', viewCountAll)
         const ViewerBSMMap = (
             <div id='viewMap' className='center animated fadeIn' style={{animationDelay:'0s', width:'100%', margin:'0px'}}>
-                <div className='cardShadow' style={{width:'100%', backgroundColor:'#ffffff00', overflow:'scroll', borderRadius:'10px'}}>
-                    <WorldMap color={`${mapColors[`C${fc}`]}`} borderColor='#000000' size={w<s ? "lg" : "xl"} data={viewCountAll}/>
+                <div className='' style={{width:'100%', backgroundColor:'#ffffff00', overflow:'scroll', borderRadius:'10px'}}>
+                    <WorldMap color={`${mapColors[`C${fc}`]}`} borderColor='#000000' size={w<1000 ? "lg" : "xl"} data={viewCountAll}/>
                 </div>
             </div>
         )
@@ -806,7 +813,7 @@ class StatisticsSub extends Component{
         const likeThisPage = (
             <div className='d-flex underline' onClick={this.onToggleLike}>
                 <div className='d-flex' style={{alignItems:'center', marginTop:'-8px'}}>
-                    <span style={{marginRight:'5px', fontSize:'14px', whiteSpace:'nowrap', display:'none'}}>Like this page</span>
+                    <span style={{marginRight:'5px', fontSize:'14px', whiteSpace:'nowrap', display:''}}>Like this page</span>
                     {gettingLike ? loader02X : heartClick}
                 </div>
             </div>
@@ -814,21 +821,33 @@ class StatisticsSub extends Component{
 
         const likersTitleSub = (
             <div style={subTitleStyle}>
-                Recent Likes
+                <div className='d-flex' style={{gap:'10px'}}>
+                    <IoMdHeart style={{fontSize:'27px', color:'#D03169'}}/>
+                    <span>Recent Likes</span>
+                </div>
                 {loadingLiker && <span style={{fontSize:'12px', marginLeft:'20px'}}>{loader13}</span>}
             </div>
         )
 
+        console.log(likerMap)
+        const likeNA = (
+			<div className='center'>
+				<div style={{textAlign:'center', margin:'30px 0px', padding:'10px 25px', borderRadius:'100px', border:'1px solid #00000030'}}>
+					<div>No likes yet.</div>
+                    <div>Be the first to like this page!</div>
+				</div>
+			</div>
+		)
         const likersSub = (
-            <div className='animated fadeIn' style={{animationDelay:'0s', width:w<s ? '100%' : '300px', padding:'10px', borderRadius:'10px', backgroundColor:'#ffffff99'}}>
+            <div className='animated fadeIn' style={{animationDelay:'0s', width:'100%', padding:'10px', borderRadius:'10px', backgroundColor:'#ffffff99'}}>
                 <div className='d-flex' style={{width:'100%', justifyContent:'space-between'}}>
                     {likersTitleSub}
                     {likeThisPage}
                 </div>
                 {!loadingLiker &&
-                    <div className='mostly-customized-scrollbar' style= {{zIndex:'0', maxHeight:'400px', overflowY:'scroll'}}>
+                    <div className='mostly-customized-scrollbar' style= {{zIndex:'0', maxHeight:'400px'}}>
                         <div className="center" style={{flexWrap: 'wrap', width: '100%', padding:'0px 0px 20px'}}>
-                            {likerMap}
+                            {likerMap.length>0 ? likerMap : likeNA}
                         </div>
                     </div>
                 }
@@ -837,17 +856,21 @@ class StatisticsSub extends Component{
 
         const viewersTitleSub = (
             <div style={subTitleStyle}>
-                Page Views
+                <div className='d-flex' style={{gap:'10px'}}>
+                    <FaEye style={{fontSize:'27px', color:'#3881D3'}}/>
+                    <span>Recent Views</span>
+                </div>
                 {loadingViewer && <span style={{fontSize:'12px', marginLeft:'20px'}}>{loader13}</span>}
             </div>
         )
 
         const viewersSub = (
-            <div className='animated fadeIn' style={{animationDelay:'0s', width:w<s ? '100%' : '300px', padding:'10px', borderRadius:'10px', backgroundColor:'#ffffff99'}}>
+            <div className='animated fadeIn' style={{animationDelay:'0s', width:'100%', padding:'10px', borderRadius:'10px', backgroundColor:'#ffffff99'}}>
                 {viewersTitleSub}
+
                 {!loadingViewer &&
-                    <div className='mostly-customized-scrollbar' style= {{zIndex:'0', maxHeight:'400px', overflowY:'scroll'}}>
-                        <div className="center" style={{flexWrap: 'wrap', width: '100%', padding:'0px 0px 20px'}}>
+                    <div className='mostly-customized-scrollbar' style= {{zIndex:'0', width:'100%', maxHeight:'400px'}}>
+                        <div className="center" style={{flexWrap:'wrap', width:'100%', paddingBottom:'20px'}}>
                             {viewerMap}
                         </div>
                     </div>
@@ -856,25 +879,26 @@ class StatisticsSub extends Component{
         )
 
         const sendComment = (
-            <div className='center animated fadeIn' style={{animationDelay:'0s', width:w<s ? '100%' : '300px'}}>
+            <div className='center animated fadeIn' style={{animationDelay:'0s', width:'100%'}}>
                 <div style={{padding:w<s ? '0px' : '0px', backgroundColor:'#', width:'100%', zIndex:''}}>
                     <div className='' style={{backgroundColor:'#ffffff00', border:'0px solid #999999', borderRadius:'5px'}}>
-                        <div className='' style={{padding:'0px'}}>
+                        <div className='' style={{width:'100%', padding:'0px'}}>
                             <textarea
                                 onChange={this.onComment}
+                                style={{width:'100%'}}
                                 value={comment}
                                 type="text"
                                 id="defaultFormContactMessageEx"
                                 className="form-control"
-                                placeholder={setLT.commentPlaceHolder}
-                                rows="5"
+                                placeholder='Write your review here...'
+                                rows='8'
                             />
                             <span className='invalid-feedback'
-                                    style={{ margin: '10px 0px 0px 0px', textAlign: rtl ? 'right' : 'left', color:'red', fontSize:'13px',
-                                            display : commentErrors ? 'block' : 'none'}}>
+                                    style={{ marginTop: '10px', textAlign:'left', color:'red', fontSize:'13px', display : commentErrors ? 'block' : 'none'}}>
                                 <ul>{commentErrors}</ul>
                             </span>
-                            <div className='text-center' style={{margin:'15px 0px 0px 0px', fontSize:'20px'}}>
+                            <div style={{marginTop:'30px', fontSize:'16px', fontWeight:500}}>Your Rating</div>
+                            <div className='text-center' style={{margin:'0px 0px 0px 0px', fontSize:'20px'}}>
                                 <StarRatingComponent
                                     name="rate1"
                                     starCount={5}
@@ -915,9 +939,9 @@ class StatisticsSub extends Component{
             </div>
         )
         const sendCommentSub = (
-            <div className='animated fadeIn' style={{animationDelay:'0s', width:w<s ? '100%' : '300px', padding:'10px', borderRadius:'10px', backgroundColor:'#ffffff99'}}>
+            <div className='animated fadeIn' style={{animationDelay:'0s', width:'100%', padding:'10px', borderRadius:'10px', backgroundColor:'#ffffff99'}}>
                 {sendCommentTitleSub}
-                <div className='mostly-customized-scrollbar' style= {{zIndex:'0', maxHeight:'400px', overflowY:'scroll'}}>
+                <div className='mostly-customized-scrollbar' style= {{zIndex:'0', width:'100%', maxHeight:'400px'}}>
                     <div className="center" style={{flexWrap: 'wrap', width: '100%', padding:'0px 0px 20px'}}>
                         {sendComment}
                     </div>
@@ -927,18 +951,32 @@ class StatisticsSub extends Component{
 
         const commentersTitleSub = (
             <div style={subTitleStyle}>
-                Recent Reviews
+                <div className='d-flex' style={{gap:'10px'}}>
+                    <FaStar style={{fontSize:'27px', color:'#EDB043'}}/>
+                    <span>Recent Reviews</span>
+                </div>
+
                 {loadingCommenter && <span style={{fontSize:'12px', marginLeft:'20px'}}>{loader13}</span>}
             </div>
         )
 
+        const commentNA = (
+			<div className='center'>
+				<div style={{textAlign:'center', margin:'30px 0px', padding:'10px 25px', borderRadius:'100px', border:'1px solid #00000030'}}>
+					<div>No reviews yet.</div>
+                    <div>Be the first to review this page!</div>
+				</div>
+			</div>
+		)
+
         const commentSub = (
-            <div className='animated fadeIn' style={{animationDelay:'0s', width:w<s ? '100%' : '300px', padding:'10px', borderRadius:'10px', backgroundColor:'#ffffff99'}}>
+            <div className='animated fadeIn' style={{animationDelay:'0s', width:'100%', padding:'10px', borderRadius:'10px', backgroundColor:'#ffffff99'}}>
                 {commentersTitleSub}
                 {!loadingCommenter &&
-                    <div className='mostly-customized-scrollbar' style= {{zIndex:'0', maxHeight:'400px', overflowY:'scroll'}}>
+                    <div className='mostly-customized-scrollbar' style= {{zIndex:'0', maxHeight:'400px'}}>
                         <div className="center" style={{flexWrap: 'wrap', width: '100%', padding:'0px 0px 20px'}}>
                             {commenterMap}
+                            {commenterMap.length>0 ? commenterMap : commentNA}
                         </div>
                     </div>
                 }
@@ -963,12 +1001,12 @@ class StatisticsSub extends Component{
             </div>
         )
 
-        const widthX = w<420 ? '100%' : '200px'
+        const widthX = w<700 ? '100%' : '200px'
         const views = <KPICards icon={pageViewsIcon} title="Page Views" value={viewNX} width={widthX}/>
         const likes = <KPICards icon={likesIcon} title="Likes" value={likeNX} width={widthX}/>
         const reviews = <KPICards icon={reviewsIcon} title="Reviews" value={commentNX} width={widthX}/>
         const kpiCards = (
-            <div className='d-flex' style={{flexWrap:'wrap', gap:'20px'}}>
+            <div className='center' style={{width:'100%', flexWrap:'wrap', gap:'20px'}}>
                 {views}
                 {likes}
                 {reviews}
@@ -976,12 +1014,12 @@ class StatisticsSub extends Component{
         )
 
         const topCountriesSub = (
-            <div className='animated fadeIn' style={{animationDelay:'0s', width:w<s ? '100%' : '300px', padding:'10px', borderRadius:'10px', backgroundColor:'#ffffff99'}}>
-                <div className="topCountriesCard">
-                    <div className="cardHeader">
-                        <h3>Top Countries</h3>
-                    </div>
+            <div className="topCountriesCard" style={{height:'100%', width:w<s ? '100%' : '30%'}}>
+                <div className="cardHeader">
+                    <h3>Top Countries</h3>
+                </div>
 
+                <div style= {{zIndex:'0', width:'100%', minWidth:topCountries.length>0 ? '' : '300px', maxHeight:'400px', overflowY:'scroll'}}>
                     <div className="countriesList">
                         {topCountries}
                     </div>
@@ -990,31 +1028,33 @@ class StatisticsSub extends Component{
         )
 
         return (
-            <div id='statisticsSub' className='' style={{width:'100%', padding:'70px 0px', position:'relative'}}>
-                <Container>
-                    <div className={`${w<s ? 'center' : 'd-flex'} txWhite tx`} style={{...titleStyle, marginBottom:'50px'}}>{setLT.statistics}&nbsp;&nbsp;&nbsp;<span style={{color:'#ffffff', fontSize:'16px'}}>{gettingStatistics ? loader13 : ''}</span></div>
-                    {kpiCards}
-                    {!toggleStatistics
-                        ? statisticsLink
-                        :
-                        <div className='' style={{margin:'20px 0px 0px', backgroundColor:'', borderRadius:'10px'}}>
-                            <div id='statisticsArea' className='' style={{backgroundColor:'', borderRadius:'10px'}}>
-                                <div className='d-flex' style={{width:'100%', flexDirection:w<1000 ? 'column' : '', justifyContent:'space-between', marginBottom:'20px'}}>
-                                    <div id='' style={{marginBottom:w<s ? '20px' : ''}}>
-                                        {ViewerBSMMap}
+            <div id='statisticsSub' className='center' style={{width:'100%', padding:'70px 10px', flexDirection:'column', position:'relative'}}>
+                <div className='center txWhite tx' style={{...titleStyle, marginBottom:'50px'}}>{setLT.statistics}&nbsp;&nbsp;&nbsp;<span style={{color:'#ffffff', fontSize:'16px'}}>{gettingStatistics ? loader13 : ''}</span></div>
+                {kpiCards}
+                {!toggleStatistics
+                    ? statisticsLink
+                    :
+                    <div className='center' style={{margin:'20px 0px 0px', backgroundColor:'', borderRadius:'10px', flexDirection:'column'}}>
+                        <div id='statisticsArea' className='center' style={{width:'100%', borderRadius:'10px', flexDirection:'column'}}>
+                            <div className='d-flex cardShadow' style={{width:'100%', maxWidth:'1300px', height:w<s ? '' : '550px', flexDirection:w<s ? 'column' : '', justifyContent:w<s ? '' : 'space-between', marginBottom:'20px', padding:w<s ? '20px 0px 0px' : '20px', backgroundColor:'#ffffff', borderRadius:'10px', flexWrap:'wrap'}}>
+                                <div id='' style={{marginBottom:w<s ? '20px' : ''}}>
+                                    <div className='d-flex' style={{fontSize:'18px', fontWeight:700, alignItems:'center', gap:'5px', margin:w<s ? '0px 15px' : ''}}>
+                                        <IoGlobeOutline style={{margin:'-10px 0px 0px', fontSize:'25px'}}/>
+                                        <h5 style={{fontWeight:650}}>Audience Map</h5>
                                     </div>
+                                    {ViewerBSMMap}
                                 </div>
-                                <div className='d-flex' style={{flexWrap:'wrap', gap:'10px'}}>
-                                    {topCountriesSub}
-                                    {viewersSub}
-                                    {likersSub}
-                                    {commentSub}
-                                    {sendCommentSub}
-                                </div>
+                                {topCountriesSub}
+                            </div>
+                            <div className='stats-grid' style={{maxWidth:'1300px'}}>
+                                {viewersSub}
+                                {likersSub}
+                                {commentSub}
+                                {sendCommentSub}
                             </div>
                         </div>
-                    }
-                </Container>
+                    </div>
+                }
                 {/* <RubyCollector id='adsH4' bottom={30} left={rtl ? 30 : ''} right={rtl ? '' : 30}/> */}
             </div>
         );

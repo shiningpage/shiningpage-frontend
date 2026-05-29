@@ -256,6 +256,10 @@ body {
 }
 
 .visible-scrollbar, .invisible-scrollbar, .mostly-customized-scrollbar {
+  --scroll-start: #ffffff00;
+  --scroll-middle: #ffffff50;
+  --scroll-end: #ffffff;
+
   display: block;
   overflow: auto;
 }
@@ -270,14 +274,25 @@ body {
 
 /* خود دستگیره (thumb) با گرادیان */
 .mostly-customized-scrollbar::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #ffffff00, #ffffff50, #ffffff); /* 👈 گرادیان روشن به تیره */
+  background: linear-gradient(
+    180deg,
+    var(--scroll-start),
+    var(--scroll-middle),
+    var(--scroll-end)
+  ); 
   border-radius: 5px;
   transition: background 0.3s ease;
 }
 
 /* هنگام هاور کمی تیره‌تر شود */
 .mostly-customized-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #e0e0e0, #a6a6a6, #5a5a5a);
+  background: linear-gradient(180deg, #ffffff, #ffffff, #ffffff);
+}
+
+.dark-scroll {
+  --scroll-start: #00000002;
+  --scroll-middle: #00000005;
+  --scroll-end: #00000060;
 }
 
 .scroller {
@@ -1178,6 +1193,26 @@ box-shadow: inset 0px 0px 7px 0px rgba(0,0,0,0.6);
   /* padding: 5px; */
   align-items: center; /* عمودی در مرکز */
   justify-items: center; /* افقی در مرکز */
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+/* زیر 1150px => دو ستون */
+@media (max-width: 1150px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* موبایل */
+@media (max-width: 600px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .border-radius-10 div {
