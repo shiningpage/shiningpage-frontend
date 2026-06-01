@@ -142,7 +142,6 @@ class StatisticsSub extends Component{
                 }
                 await axios.post(`${serverURL}/comment/addCommentProfile`, info).then((res) => {})
                 addNotification('bizPage', 'comment', fullAccess, mainUser, userId, geo)
-                this.countCommenters()
                 this.getCommenters()
                 this.setState({
                     sendingComment: false,
@@ -156,7 +155,7 @@ class StatisticsSub extends Component{
 
         }
     }
-    
+
     onDeleteComment = async (item) => {
         this.setState({
             deletingComment: true,
@@ -175,7 +174,6 @@ class StatisticsSub extends Component{
             if(res.data===0) await this.deleteNotification('bizPage', 'comment')
         })
 
-        this.countCommenters()
         this.getCommenters()
     }
 
@@ -186,7 +184,7 @@ class StatisticsSub extends Component{
         })
     }
 
-    onStarClick = (nextValue, prevValue, name) => {
+    onStarClick = (nextValue) => {
         if (this.state.rating === 1 && nextValue === 1){
             this.setState({rating: 0});
         } else {
@@ -638,7 +636,7 @@ class StatisticsSub extends Component{
                 star = (
                     <div className='d-flex' style={{height:'20px', justifyContent:'flex-end', paddingTop: '5px'}}>
                         <StarRatingComponent
-                            name="rate1"
+                            name={`comment-rate-${i}`}
                             starCount={5}
                             emptyStarColor={'#eaeaea'}
                             value={item.rating}
@@ -648,12 +646,18 @@ class StatisticsSub extends Component{
                 deleteBtn = (
                     <div className={rtl ? 'dropdown' : 'dropleft'} style={{padding:'0px'}}>
                         <div className='center bin' id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="" aria-expanded="false"
-                            style={{width:'40px', height:'40px', alignItems:'center', borderRadius:'100px'}}>
+                            style={{width:'40px', height:'40px', alignItems:'center', borderRadius:'100px'}}
+                            onClick={(e) => e.stopPropagation()}>
                             <RiDeleteBin6Fill style={{fontSize:'18px'}}/>
                         </div>
                         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton"
-                            style={{fontSize:'13px', cursor:'pointer', padding:'0px', backgroundColor:''}}>
-                            <div className="dropdown-item" style={{color:''}} onClick={() => this.onDeleteComment(item)}>
+                            style={{fontSize:'13px', cursor:'pointer', padding:'0px', backgroundColor:'red', overflow:'hidden'}}>
+                            <div className="" style={{padding:'3px 10px', color:'#ffffff'}}
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    this.onDeleteComment(item);
+                                }}
+                            >
                                 {setLT.delete}
                             </div>
                         </div>
@@ -855,11 +859,11 @@ class StatisticsSub extends Component{
                             <div className='center'>
                                 <div className={`C${fc} f${txBlack ? 7 : 11} btnShadow`}
                                     style={{width: '', textAlign:'center', 
-                                            height: '30px',
-                                            margin: '10px', padding:'2px 10px',
-                                            border: `3px solid ${[11].includes(fc) ? '#00000050' : '#ffffff80'}`,
-                                            color: `${lightColors.includes(fc) ? '#000000' : '#ffffff'}`,
-                                            borderRadius: '100px'}}
+                                        height: '30px',
+                                        margin: '10px', padding:'2px 10px',
+                                        border: `3px solid ${[11].includes(fc) ? '#00000050' : '#ffffff80'}`,
+                                        color: `${lightColors.includes(fc) ? '#000000' : '#ffffff'}`,
+                                        borderRadius: '100px'}}
                                     onClick = {() => this.onSendComment()}>
                                     {sendingComment
                                         ? loader13
