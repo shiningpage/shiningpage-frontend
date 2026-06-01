@@ -14,8 +14,6 @@ import { MdOutlineRateReview } from 'react-icons/md';
 import { IoMdHeartEmpty, IoMdHeart } from 'react-icons/io';
 import { FaRegPaperPlane, FaEye, FaStar } from 'react-icons/fa';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
-import { GiGlobe } from 'react-icons/gi';
-import { CiGlobe } from 'react-icons/ci';
 import { IoGlobeSharp, IoGlobeOutline } from "react-icons/io5";
 
 import RubyCollector from '../RubyCollector';
@@ -47,24 +45,26 @@ class StatisticsSub extends Component{
 
     componentDidMount = async () => {
         window.addEventListener("resize", this.onResize)
-        // this.setStatisticsSize()
     }
 
-    componentDidUpdate = async(prevProps) => {
-        if (this.props.index !== prevProps.index) {
-            this.onStatistics()
+    componentDidUpdate(prevProps) {
+        const indexChanged =
+            this.props.index !== prevProps.index;
+
+        const userIdBecameAvailable =
+            prevProps.userId === undefined &&
+            this.props.userId !== undefined;
+
+        if (
+            this.props.userId !== undefined &&
+            (indexChanged || userIdBecameAvailable)
+        ) {
+            this.getCountryViewers();
+            this.getViewers();
+            this.getLikers();
+            this.getCommenters();
         }
     }
-
-    // setStatisticsSize = async () => {
-    //     const statisticsArea = await getPos('statisticsArea')
-    //     const worldmap = await getPos('worldmap')
-    //     const wz = this.state.likeViewChatWidth
-    //     const wx = statisticsArea.width - worldmap.width// + 10
-    //     this.setState({
-    //         likeViewChatWidth: wx < wz ? wx : wz
-    //     })
-    // }
 
     onToggleLike = async () => {
         const { toggleLike, likeN } = this.state
@@ -78,7 +78,7 @@ class StatisticsSub extends Component{
                 likersPreviewSet: false,
                 gettingLike: true
             })
-            // console.log('mainUser: ', mainUser)
+
             var data = {
                 liker: mainUser._id,
                 likee: userId,
@@ -101,33 +101,11 @@ class StatisticsSub extends Component{
 
     onReactor = async (user) => {
         const root = user.businessType>0 ? 'publisher' : 'user'
-        // console.log(item)
-        // window.location.href = `/publisher/${item.username}`;
         window.open(`/${root}/${user.username}`);
-    }
-
-    countLikers = async () => {
-        axios.post(`${serverURL}/like/countProfileLikers`, {userId:this.props.userId}).then(async res => {
-            await this.findLikeProfile() // چک می شود که آیا من لایک کرده ام یا نه؟
-            this.setState({
-                likeN: res.data,
-                gettingLike: false,
-            })
-        })
-    }
-    countCommenters = async () => {
-        axios.post(`${serverURL}/comment/countCommentProfile`, {commentee:this.props.userId}).then(res => {
-            // console.log(res.data)
-            this.setState({
-                commentN: res.data,
-                gettingComment: false,
-            })
-        })
     }
 
     checkNull = () => {
         var infoErr = {}
-        // console.log(1, this.state.comment)
         if(this.state.comment.trim()==='') infoErr.userCommentErr = this.props.setLT.userCommentErr
         if(this.state.rating===0) infoErr.userRatingErr = this.props.setLT.userRatingErr
         return infoErr
@@ -141,10 +119,7 @@ class StatisticsSub extends Component{
             this.props.dispatch(setMembership(true))
         } else {
             var infoErr = this.checkNull()
-            // console.log(1, infoErr)
             if(Object.keys(infoErr).length>0) {
-            // console.log(1)
-
                 this.setState({
                     commentErrors: infoErr.userCommentErr,
                     ratingErrors: infoErr.userRatingErr,
@@ -156,7 +131,6 @@ class StatisticsSub extends Component{
                     loadingCommenter:true,
                     gettingComment:true,
                     searchCommenter:[],
-                    // commentN: '-',
                 })
 
                 const info = {
@@ -166,7 +140,6 @@ class StatisticsSub extends Component{
                     rating: rating,
                     commentDate: date.format(new Date(), 'YYYY/MM/DD HH:mm:ss')
                 }
-                // console.log(info)
                 await axios.post(`${serverURL}/comment/addCommentProfile`, info).then((res) => {})
                 addNotification('bizPage', 'comment', fullAccess, mainUser, userId, geo)
                 this.countCommenters()
@@ -191,7 +164,6 @@ class StatisticsSub extends Component{
             loadingCommenter:true,
             gettingComment:true,
             searchCommenter:[],
-            // commentN: '-', 
         })
         await axios.post(`${serverURL}/comment/deleteCommentProfile`, { commentId: item._id }).then(async res => {})
         
@@ -227,11 +199,9 @@ class StatisticsSub extends Component{
             liker: this.props.mainUserId,
             likee: this.props.userId,
         }
-        //console.log(data)
         axios.post(`${serverURL}/like/findLikeProfile`, data, {
         })
         .then(res => {
-            //console.log(444, res.data)
             if(res.data) {
                 this.setState({ toggleLike: true });
             } else {
@@ -240,23 +210,9 @@ class StatisticsSub extends Component{
         })
     }
 
-    statisticsItems = () => {
-        this.getCountryViewers()
-        this.countLikers()
-        this.countCommenters()
-        this.getViewers()
-        this.getLikers()
-        this.getCommenters()
-    }
-
-    onStatistics = async () => {
-        this.setState({ gettingStatistics: true })
-        await this.statisticsItems()
-    }
-
     getCountryViewers = async (x) => {
         this.setState({ 
-            gettingCountryViewers: true,
+            gettingPageViewers: true,
             viewCountAll: []
         })
 
@@ -267,13 +223,11 @@ class StatisticsSub extends Component{
         await axios.post(`${serverURL}/view/getProfileCountryViewers`, data)
         .then(async res => {
             var cx = res.data
-            // console.log(cx)
             var x = 0
             for(var i=0; i<cx.length; i++) {
                 cxArr.push({"country": cx[i].countryCodeX, "value": cx[i].view})
             }
 
-            // sort descending
             cxArr.sort((a, b) => b.value - a.value)
         })
 
@@ -282,7 +236,7 @@ class StatisticsSub extends Component{
         this.setState(
             () => ({
                 viewCountAll: cxArr,
-                gettingCountryViewers: false,
+                gettingPageViewers: false,
             })
         )
     
@@ -356,7 +310,7 @@ class StatisticsSub extends Component{
         // console.log(data)
         await axios.post(`${serverURL}/view/getProfileViewers`, data).then(async res => {
             var x2 = res.data
-            // console.log(x2)
+            // console.log(111, x2)
             this.setState(
                 (prevState) => ({
                     searchViewer : [...prevState.searchViewer, ...x2],
@@ -477,10 +431,12 @@ class StatisticsSub extends Component{
 
         await axios.post(`${serverURL}/like/getProfileLikers`, data).then(async res => {
             var x2 = res.data
+            // console.log(x2)
             this.setState(
                 (prevState) => ({
                     searchLiker : [...prevState.searchLiker, ...x2],
                     finishDataLiker: (res.data.length<listRefreshQtySmall || res.data.length===this.state.likeN) ? true : false,
+                    likeN: [...prevState.searchLiker, ...x2].length
                 }),
                 () => {
                     this.mapAllLikers(this.state.searchLiker)
@@ -496,7 +452,6 @@ class StatisticsSub extends Component{
           const {rtl, setLT} = this.props
           var dataRv = likers.map (
               (item, i) => (
-                //   // console.log(item),
                   userImage = (
                     <div className='' style={{}}>
                         <img
@@ -593,13 +548,13 @@ class StatisticsSub extends Component{
           n:this.state.nCommenter,
           q:1000 //listRefreshQtySmall //this.state.w<s ? listRefreshQtySmallSmall : listRefreshQtySmallBig
         }
-        // console.log(data)
         await axios.post(`${serverURL}/comment/getCommentProfile`, data).then(async res => {
             var x2 = res.data
             this.setState(
                 (prevState) => ({
                     searchCommenter : [...prevState.searchCommenter, ...x2],
                     finishDataCommenter: (res.data.length<listRefreshQtySmall || res.data.length===this.state.commentN) ? true : false,
+                    commentN: [...prevState.searchCommenter, ...x2].length
                 }),
                 () => {
                     this.mapAllCommenters(this.state.searchCommenter)
@@ -610,6 +565,7 @@ class StatisticsSub extends Component{
     }
 
     mapAllCommenters = async (commenters) => {
+        console.log('mapAllCommenters')
         var hr, star, deleteBtn, jobSummary, jobSummaryStyle, JLen, countryCode, comment, userCountry, userImage, tableInfo, like, view, viewLike, line
         const {w, } = this.state
         const {rtl, setLT, mainUserId, userId} = this.props
@@ -758,10 +714,11 @@ class StatisticsSub extends Component{
     }
 
 	render () {
-        const {w, toggleStatistics, gettingStatistics, likeN, commentN, viewCountAll, txBlack, likeViewChatWidth, 
+        const {w, toggleStatistics, likeN, commentN, viewCountAll, txBlack, likeViewChatWidth, 
             rating, ratingErrors, sendingComment, comment, commentErrors, loadingLiker, loadingViewer,
             loadingCommenter, finishDataLiker, finishDataViewer, finishDataCommenter, likerMap, viewerMap,
             commenterMap, gettingLike, topCountries, toggleLikeBtn, toggleCommentBtn, toggleLike,
+            gettingPageViewers, 
         } = this.state
         const {rtl, setLT, fc, viewN, gettingView, titleStyle, userType, mainUserId, userId } = this.props
 
@@ -771,23 +728,6 @@ class StatisticsSub extends Component{
         const loader02X = <div className='loader-02' style={{color:'red', margin:'5px', fontSize:'20px'}}></div>
         const loader02Y = <div className='loader-02' style={{color:'black'}}></div>
 
-        const statisticsLink = (
-            <div className='d-flex' style={{flexWrap:'wrap', alignItems:w<300 ? '' : 'flex-end', flexDirection: w<300 ? 'column' : ''}}>
-                <div className='d-flex'>
-                    <GiGlobe style={{width:'27px', fontSize:'27px', color:'', margin:'0px', transform: rtl ? '' : 'scaleX(-1)'}}/>&nbsp;&nbsp;
-                    <FaEye style={{width:'20px', fontSize:'25px', color:'', margin:'0px 5px'}}/>
-                    <IoMdHeart style={{width:'22px', fontSize:'25px', color:'red', margin:'0px 5px'}}/>
-                    <FaStar style={{width:'19px', fontSize:'25px', color:'', margin:'0px 5px'}}/>
-                </div>
-                { gettingStatistics ? loader13 :
-                    <div className='nav' style={{textDecoration:'underline', margin:'0px'}} 
-                        onClick={() => this.onStatistics()}>
-                        Click here to view
-                    </div>
-                }
-            </div>
-        )
-        console.log('viewCountAll: ', viewCountAll)
         const ViewerBSMMap = (
             <div id='viewMap' className='center animated fadeIn' style={{animationDelay:'0s', width:'100%', margin:'0px'}}>
                 <div className='' style={{width:'100%', backgroundColor:'#ffffff00', overflow:'scroll', borderRadius:'10px'}}>
@@ -796,6 +736,7 @@ class StatisticsSub extends Component{
             </div>
         )
 
+        const loadingView = viewN===undefined ? true : false
         const viewNX = viewN ? dig3(viewN) : 0
         const likeNX = likeN ? dig3(likeN) : 0
         const commentNX = commentN ? dig3(commentN) : 0
@@ -829,7 +770,6 @@ class StatisticsSub extends Component{
             </div>
         )
 
-        console.log(likerMap)
         const likeNA = (
 			<div className='center'>
 				<div style={{textAlign:'center', margin:'30px 0px', padding:'10px 25px', borderRadius:'100px', border:'1px solid #00000030'}}>
@@ -975,7 +915,6 @@ class StatisticsSub extends Component{
                 {!loadingCommenter &&
                     <div className='mostly-customized-scrollbar' style= {{zIndex:'0', maxHeight:'400px'}}>
                         <div className="center" style={{flexWrap: 'wrap', width: '100%', padding:'0px 0px 20px'}}>
-                            {commenterMap}
                             {commenterMap.length>0 ? commenterMap : commentNA}
                         </div>
                     </div>
@@ -1002,9 +941,9 @@ class StatisticsSub extends Component{
         )
 
         const widthX = w<700 ? '100%' : '200px'
-        const views = <KPICards icon={pageViewsIcon} title="Page Views" value={viewNX} width={widthX}/>
-        const likes = <KPICards icon={likesIcon} title="Likes" value={likeNX} width={widthX}/>
-        const reviews = <KPICards icon={reviewsIcon} title="Reviews" value={commentNX} width={widthX}/>
+        const views = <KPICards icon={pageViewsIcon} title="Page Views" value={viewNX} width={widthX} loader={loadingView}/>
+        const likes = <KPICards icon={likesIcon} title="Likes" value={likeNX} width={widthX} loader={loadingLiker}/>
+        const reviews = <KPICards icon={reviewsIcon} title="Reviews" value={commentNX} width={widthX} loader={loadingCommenter}/>
         const kpiCards = (
             <div className='center' style={{width:'100%', flexWrap:'wrap', gap:'20px'}}>
                 {views}
@@ -1027,34 +966,39 @@ class StatisticsSub extends Component{
             </div>
         )
 
+        const worldmapTitle = (
+            <div className='d-flex' style={{fontSize:'18px', fontWeight:700, alignItems:'center', gap:'5px', margin:w<s ? '0px 15px' : ''}}>
+                <IoGlobeOutline style={{margin:'-10px 0px 0px', fontSize:'25px'}}/>
+                <h5 style={{fontWeight:650}}>Audience Map</h5>
+            </div>
+        )
+
+        const worldmapSection = (
+            <div className='d-flex cardShadow' style={{width:'100%', maxWidth:'1300px', height:w<s ? '' : '550px', flexDirection:w<s ? 'column' : '', justifyContent:w<s ? '' : 'space-between', marginBottom:'20px', padding:w<s ? '20px 0px 0px' : '20px', backgroundColor:'#ffffff', borderRadius:'10px', flexWrap:'wrap'}}>
+                <div id='' style={{marginBottom:w<s ? '20px' : ''}}>
+                    {worldmapTitle}
+                    {ViewerBSMMap}
+                </div>
+                {topCountriesSub}
+            </div>
+        )
+
         return (
             <div id='statisticsSub' className='center' style={{width:'100%', padding:'70px 10px', flexDirection:'column', position:'relative'}}>
-                <div className='center txWhite tx' style={{...titleStyle, marginBottom:'50px'}}>{setLT.statistics}&nbsp;&nbsp;&nbsp;<span style={{color:'#ffffff', fontSize:'16px'}}>{gettingStatistics ? loader13 : ''}</span></div>
+                <div className='center txWhite tx' style={{...titleStyle, marginBottom:'50px'}}>{setLT.statistics}</div>
                 {kpiCards}
-                {!toggleStatistics
-                    ? statisticsLink
-                    :
-                    <div className='center' style={{margin:'20px 0px 0px', backgroundColor:'', borderRadius:'10px', flexDirection:'column'}}>
-                        <div id='statisticsArea' className='center' style={{width:'100%', borderRadius:'10px', flexDirection:'column'}}>
-                            <div className='d-flex cardShadow' style={{width:'100%', maxWidth:'1300px', height:w<s ? '' : '550px', flexDirection:w<s ? 'column' : '', justifyContent:w<s ? '' : 'space-between', marginBottom:'20px', padding:w<s ? '20px 0px 0px' : '20px', backgroundColor:'#ffffff', borderRadius:'10px', flexWrap:'wrap'}}>
-                                <div id='' style={{marginBottom:w<s ? '20px' : ''}}>
-                                    <div className='d-flex' style={{fontSize:'18px', fontWeight:700, alignItems:'center', gap:'5px', margin:w<s ? '0px 15px' : ''}}>
-                                        <IoGlobeOutline style={{margin:'-10px 0px 0px', fontSize:'25px'}}/>
-                                        <h5 style={{fontWeight:650}}>Audience Map</h5>
-                                    </div>
-                                    {ViewerBSMMap}
-                                </div>
-                                {topCountriesSub}
-                            </div>
-                            <div className='stats-grid' style={{maxWidth:'1300px'}}>
-                                {viewersSub}
-                                {likersSub}
-                                {commentSub}
-                                {sendCommentSub}
-                            </div>
+                <div className='center' style={{width:'100%', margin:'20px 0px 0px', backgroundColor:'', borderRadius:'10px', flexDirection:'column'}}>
+                    <div id='statisticsArea' className='center' style={{width:'100%', borderRadius:'10px', flexDirection:'column'}}>
+                        {worldmapSection}
+                        <div className='stats-grid' style={{maxWidth:'1300px'}}>
+                            {viewersSub}
+                            {likersSub}
+                            {commentSub}
+                            {sendCommentSub}
                         </div>
                     </div>
-                }
+                </div>
+
                 {/* <RubyCollector id='adsH4' bottom={30} left={rtl ? 30 : ''} right={rtl ? '' : 30}/> */}
             </div>
         );
@@ -1066,6 +1010,7 @@ const mapStateToProps = (state) => {
         mainUser: state.userInfo,
         mainUserId: state.userInfo['_id'],
         userInfo: state.subUserInfo,
+        subUserInfo: state.subUserInfo,
         userId: state.subUserInfo._id,
         auth: state.auth,
         rtl: state.rtl,

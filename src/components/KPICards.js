@@ -1,6 +1,8 @@
 import React from 'react';
 
-const KPICards = ({ icon, title, value, width }) => {
+const KPICards = ({ icon, title, value, width, loader }) => {
+  const loader13 = <div className='loader-13' style={{margin: '-20px 20px 0px', color:'', fontSize:'14px'}}></div>
+
   return (
     <div className='d-flex cardShadow' style={{width, backgroundColor:'#ffffff', borderRadius:'10px', padding:'20px'}}>
       <div style={{marginRight:'15px'}}>
@@ -11,7 +13,7 @@ const KPICards = ({ icon, title, value, width }) => {
           {title}
         </div>
         <h3 style={{margin:'0px'}}>
-          {value}
+          {!loader ? value : loader13}
         </h3>
       </div>
     </div>
