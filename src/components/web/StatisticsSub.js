@@ -14,6 +14,7 @@ import { MdOutlineRateReview } from 'react-icons/md';
 import { IoMdHeartEmpty, IoMdHeart } from 'react-icons/io';
 import { FaRegPaperPlane, FaEye, FaStar } from 'react-icons/fa';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
+import { FiEdit } from "react-icons/fi";
 import { IoGlobeSharp, IoGlobeOutline } from "react-icons/io5";
 
 import RubyCollector from '../RubyCollector';
@@ -729,7 +730,7 @@ class StatisticsSub extends Component{
         const subTitleStyle = {fontSize:'20px', fontWeight:450, marginBottom:'10px', alignItems:'center', width:'100%', color:'#000000'}
         const loader13 = <div className='loader-13' style={{margin: '0px', color:''}}></div>
         const loader02 = <div className='loader-02' style={{color:'red', fontSize:'20px'}}></div>
-        const loader02X = <div className='loader-02' style={{color:'red', margin:'5px', fontSize:'20px'}}></div>
+        const loader02X = <div className='loader-02' style={{color:'red', margin:'0px 6px', fontSize:'20px'}}></div>
         const loader02Y = <div className='loader-02' style={{color:'black'}}></div>
 
         const ViewerBSMMap = (
@@ -757,15 +758,15 @@ class StatisticsSub extends Component{
 
         const likeThisPage = (
             <div className='d-flex underline' onClick={this.onToggleLike}>
-                <div className='d-flex' style={{alignItems:'center', marginTop:'-8px'}}>
-                    <span style={{marginRight:'5px', fontSize:'14px', whiteSpace:'nowrap', display:''}}>Like this page</span>
+                <div className='d-flex' style={{alignItems:'center', height:'30px', margin:'-8px 0px 10px'}}>
+                    <span style={{marginRight:'5px', fontSize:'14px', whiteSpace:'nowrap'}}>Like this page</span>
                     {gettingLike ? loader02X : heartClick}
                 </div>
             </div>
         )
 
         const likersTitleSub = (
-            <div style={subTitleStyle}>
+            <div className='d-flex' style={subTitleStyle}>
                 <div className='d-flex' style={{gap:'10px'}}>
                     <IoMdHeart style={{fontSize:'27px', color:'#D03169'}}/>
                     <span>Recent Likes</span>
@@ -784,8 +785,8 @@ class StatisticsSub extends Component{
 		)
         const likersSub = (
             <div className='animated fadeIn' style={{animationDelay:'0s', width:'100%', padding:'10px', borderRadius:'10px', backgroundColor:'#ffffff99'}}>
-                <div className='d-flex' style={{width:'100%', justifyContent:'space-between'}}>
-                    {likersTitleSub}
+                {likersTitleSub}
+                <div style={{width:'100%'}}>
                     {likeThisPage}
                 </div>
                 {!loadingLiker &&
@@ -878,10 +879,12 @@ class StatisticsSub extends Component{
         )
 
         const sendCommentTitleSub = (
-            <div style={subTitleStyle}>
-                Write a Review
+            <div className='d-flex' style={{...subTitleStyle, gap:'10px'}}>
+                <FiEdit style={{fontSize:'25px', marginTop:'-5px'}}/>
+                <span>Write a Review</span>
             </div>
         )
+
         const sendCommentSub = (
             <div className='animated fadeIn' style={{animationDelay:'0s', width:'100%', padding:'10px', borderRadius:'10px', backgroundColor:'#ffffff99'}}>
                 {sendCommentTitleSub}
