@@ -777,7 +777,7 @@ class StatisticsSub extends Component{
 
         const likeNA = (
 			<div className='center'>
-				<div style={{textAlign:'center', margin:'30px 0px', padding:'10px 25px', borderRadius:'100px', border:'1px solid #00000030'}}>
+				<div style={{textAlign:'center', marginBottom:'30px', padding:'10px 25px', borderRadius:'100px', border:'1px solid #00000030'}}>
 					<div>No likes yet.</div>
                     <div>Be the first to like this page!</div>
 				</div>
@@ -947,12 +947,12 @@ class StatisticsSub extends Component{
             </div>
         )
 
-        const widthX = w<700 ? '100%' : '200px'
+        const widthX = '100%'
         const views = <KPICards icon={pageViewsIcon} title="Page Views" value={viewNX} width={widthX} loader={loadingView}/>
         const likes = <KPICards icon={likesIcon} title="Likes" value={likeNX} width={widthX} loader={loadingLiker}/>
         const reviews = <KPICards icon={reviewsIcon} title="Reviews" value={commentNX} width={widthX} loader={loadingCommenter}/>
         const kpiCards = (
-            <div className='center' style={{width:'100%', flexWrap:'wrap', gap:'20px'}}>
+            <div className='center' style={{width:'100%', maxWidth:'1300px', flexWrap:w<620 ? 'wrap' : '', gap:'20px'}}>
                 {views}
                 {likes}
                 {reviews}
