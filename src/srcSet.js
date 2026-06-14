@@ -1,6 +1,5 @@
 module.exports = {
   siteName:'ShiningPage',
-  version:'2.4.5',
 
   googleAds: true,
 
