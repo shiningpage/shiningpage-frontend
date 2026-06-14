@@ -204,29 +204,6 @@ module.exports = {
     { index: 18, title: 'other' }
   ],
 
-  loadingBar: {
-    height: 10,
-    color:'linear-gradient(to right , #db5bff, #f2e489)',
-    //color:'linear-gradient(to left, yellow, orange, red, green, blue, indigo, violet)',
-    L0: '#BAC4D4',
-    L1: '#364CFF',
-    L2: '#4CD45D',
-    L3: '#FF9547',
-    L4: '#f2e489',
-    L5: '#B246D4',
-    L6: '#824400',
-    L7: '#000000',
-    L8: '#ff002e',
-    L9: '#D4A443',
-    L10: '#FD90E0',
-    L11: '#ffffff',
-    L12: '#00BFDD',
-    L13: '#77787A',
-    L14: '#D1A449',
-    L15: '#00194c',
-    L16: '#D8A9A4'
-  },
-
   psyCard: {
       width: 250,
       subWidth: 260,

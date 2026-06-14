@@ -9,17 +9,14 @@ import { connect } from 'react-redux';
 import { setAddress, setCountry, setSubject, setPageTitle,
     setPageName, setPage, setUserInfo, setAuth, setFullAccess,
     setBalance, setRuby, setRubyInterval, } from '../dataStore/actions';
-import LoadingBar from 'react-top-loading-bar';
 import toFarsi from '../modules/toFarsi';
 import CountrySelector from '../components/CountrySelector';
 import siteView from '../modules/siteView';
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { exist, checkSeen } from '../helper';
-import { serverURL, s, loadingBar } from '../srcSet';
+import { serverURL, s } from '../srcSet';
 
 var w = window.innerWidth
-var LBH = loadingBar.height
-var LBC = loadingBar.color
 
 const membershipOptions = [
     { value: 0},
@@ -139,7 +136,6 @@ class LoginPage extends Component {
                 recaptchaErr: infoErr.recaptchaErr,
             })
         } else {
-            this.LoadingBar.continuousStart()
             const user = {
                 userId: this.props.userId,
                 lang: this.props.lang,
@@ -165,13 +161,11 @@ class LoginPage extends Component {
                         fcErr: "",
                         recaptchaErr: ""
                     });
-                    this.LoadingBar.complete()
                 } else {
                     delete res.data.user.password
                     await this.props.dispatch(setUserInfo(res.data.user))
                     await this.props.dispatch(setAuth(true))
 
-                    this.LoadingBar.complete()
                     this.setState({
                         signedInUserErr: "",
                         usernameErr: "",
@@ -213,7 +207,6 @@ class LoginPage extends Component {
                 recaptchaErr: infoErr.recaptchaErr,
             })
         } else {
-            this.LoadingBar.continuousStart()
             const loginInfo = {
                 page:'login',
                 username:this.state.username, 
@@ -226,7 +219,6 @@ class LoginPage extends Component {
                         passwordErr:'',
                         recaptchaErr: ""
                     });
-                    this.LoadingBar.complete()
                 } else if(result.data==='Wrong password') {
                     this.setState({
                         userPassErr: this.props.setLT.userPassErr,
@@ -234,7 +226,6 @@ class LoginPage extends Component {
                         usernameErr: '',
                         recaptchaErr: ""
                     });
-                    this.LoadingBar.complete()
                 } else {
                     this.setState({
                         usernameErr: '',
@@ -253,7 +244,6 @@ class LoginPage extends Component {
                     const root = this.props.businessType>0 ? 'publisher' : 'user'
                     window.location.href = `/${root}/${this.props.username}`
                     // window.scrollTo(0, 0);
-                    // this.LoadingBar.complete()
                 }
             })
         }
@@ -303,14 +293,6 @@ class LoginPage extends Component {
             useRecaptchaNet: true,
             removeOnUnmount: false,
         };
-
-        const loadingBar = (
-            <LoadingBar
-                onRef={ref => (this.LoadingBar = ref)}
-                height={LBH}
-                background={LBC}
-            />
-        )
 
         const pageHeader = (
             <div className='center' style={{color:'',
@@ -531,7 +513,6 @@ class LoginPage extends Component {
         
         return (
             <div className='' style= {{marginBottom:'50px'}}>
-                {loadingBar}
                 <Container>
                     <div className='center' style={{flexDirection:'column', alignItems:'center'}}>
                         {header}

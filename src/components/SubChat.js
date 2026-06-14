@@ -10,14 +10,10 @@ import { MdClose } from 'react-icons/md';
 import { FaRegPaperPlane } from 'react-icons/fa';
 import { GrUpdate } from 'react-icons/gr';
 import jalaali from 'jalaali-js';
-import LoadingBar from 'react-top-loading-bar';
 import siteView from '../modules/siteView';
 import { exist } from '../helper';
 import { isoDateToDateTime, addNotification } from '../helper';
-import {serverURL, s, loadingBar, lightColors } from '../srcSet';
-
-var LBH = loadingBar.height
-var LBC = loadingBar.color
+import {serverURL, s, lightColors } from '../srcSet';
 
 class SubChat extends Component {
 
@@ -35,7 +31,6 @@ class SubChat extends Component {
         window.addEventListener("resize", this.onResize)
         await this.props.dispatch(setSubject('sub-chat'))
         siteView(this.props)
-        this.LoadingBar.continuousStart()
         await this.getMessage()
         setTimeout(() => {
             this.chatTableDown()
@@ -75,8 +70,6 @@ class SubChat extends Component {
     }
 
     deleteMsg = async (item, n) => {
-        this.LoadingBar.continuousStart()
-
         var data = {
             type: n,
             id: item._id,
@@ -87,8 +80,6 @@ class SubChat extends Component {
         if(Number(this.props.notSeenChatQTY)===0) await this.deleteNotification('chat', 'message')
 
         await this.getMessage()
-        if(this.LoadingBar) this.LoadingBar.complete()
-
     }
 
     onWriteMsg = (e) => {
@@ -141,7 +132,6 @@ class SubChat extends Component {
 
     onSendMsg = async () => {
         const { mainUser, subChatInfo, geo } = this.props
-        this.LoadingBar.continuousStart()
         var data = {
             senderId: mainUser._id,
             username: mainUser.username,
@@ -176,7 +166,6 @@ class SubChat extends Component {
                 behavior: x==='smooth' ? 'smooth' : 'auto'
             });
         }
-        if(this.LoadingBar) this.LoadingBar.complete()
     }
 
     dayFarsi = (x) => {
@@ -401,14 +390,6 @@ class SubChat extends Component {
             </div>
         )
 
-        const loadingBar = (
-            <LoadingBar
-                onRef={ref => (this.LoadingBar = ref)}
-                height={LBH}
-                background={LBC}
-            />
-        )
-
         const subUserImage = (
             <div className='d-flex' style={{alignItems:'center', cursor:'pointer'}}  onClick={() => this.subUserImagePanel(subChatInfo)}>
                 <img className={`C${fcSub}`}
@@ -459,7 +440,6 @@ class SubChat extends Component {
                     <div className='d-flex' style= {{height:h-150, flexDirection:'column', borderRadius:'10px'}}>
                         <div className='d-flex' style={{flex: 1, flexDirection:'column', overflow:'scroll'}}>
                             {chatBody}
-                            {loadingBar}
                         </div>
                         {subChatInfo.receiverId!=='unknown' && chatTape}
                     </div>

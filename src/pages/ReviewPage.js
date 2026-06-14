@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import 'chartjs-plugin-annotation';
 import { connect } from 'react-redux';
 import { setSubject, setPageTitle, setPageName, setMembership, setPage } from '../dataStore/actions';
-import LoadingBar from 'react-top-loading-bar'
 import male from '../assets/images/other/man2.png';
 import female from '../assets/images/other/woman2.png'; 
 import { MdClose } from 'react-icons/md';
@@ -16,10 +15,7 @@ import toFarsi from '../modules/toFarsi';
 import siteView from '../modules/siteView';
 import { AdsHorizontal } from '../components/GoogleAds'
 import { exist, checkSeen } from '../helper';
-import { serverURL, s, NavH, loadingBar, listRefreshQty, googleAds } from '../srcSet';
-
-var LBH = loadingBar.height
-var LBC = loadingBar.color
+import { serverURL, s, NavH, listRefreshQty, googleAds } from '../srcSet';
 
 class ReviewPage extends Component {
 
@@ -98,7 +94,6 @@ class ReviewPage extends Component {
               })
           } else {
 
-              this.LoadingBar.continuousStart()
               const info = {
                   userId: this.props.userId,
                   comment: this.state.comment,
@@ -116,7 +111,6 @@ class ReviewPage extends Component {
                       comment:'',
                       rating: 0
                   });
-                  this.LoadingBar.complete()
               })
               .catch((error) => {
                   if(error.response.status === 401) {
@@ -124,7 +118,6 @@ class ReviewPage extends Component {
                           messageFailed: this.props.setLT.userMessageFailed,
                           messageSuccess: ''
                       });
-                      this.LoadingBar.complete()
                   }
               });
           }
