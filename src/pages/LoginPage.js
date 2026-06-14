@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import { Container, CardBody } from 'react-bootstrap';
-import male from './../assets/images/other/man2.png';
-import female from './../assets/images/other/woman2.png';
+import male from '../assets/images/other/man2.png';
+import female from '../assets/images/other/woman2.png';
 import ReCAPTCHA from "react-google-recaptcha";
-import Select from 'react-select';
 import { connect } from 'react-redux';
 import { setAddress, setCountry, setSubject, setPageTitle,
     setPageName, setPage, setUserInfo, setAuth, setFullAccess,
@@ -22,10 +21,6 @@ var w = window.innerWidth
 var LBH = loadingBar.height
 var LBC = loadingBar.color
 
-const genderOptions = [
-    { value: 1},
-    { value: 0},
-];
 const membershipOptions = [
     { value: 0},
     { value: 1},
@@ -42,7 +37,7 @@ class LoginPage extends Component {
         username: '',
         password: '',
         email: '',
-        genderOption: '',
+        genderValue: '',
         membershipOption: '',
         toggleEye: false,
 }
@@ -57,8 +52,6 @@ class LoginPage extends Component {
 
         // if(this.props.auth && this.props.mainUser.ruby) checkSeen('login', this.props.seenStatus, this.props.dispatch)
         siteView(this.props)
-        genderOptions[0].label = this.props.setLT.male
-        genderOptions[1].label = this.props.setLT.female
         membershipOptions[0].label = 'Normal - Access to typical features'
         membershipOptions[1].label = 'Business - Access to special features and insert ads'
     }
@@ -76,11 +69,6 @@ class LoginPage extends Component {
         window.scrollTo(0, 0);
         window.location.reload();
         window.location.href = `/login`;
-    }
-    
-    genderChange = (genderOption) => {
-        this.setState({ genderOption });
-        // console.log(genderOption)
     }
 
     changeHandler = e => {
@@ -125,7 +113,7 @@ class LoginPage extends Component {
 
     checkRegisterNull = () => {
         var infoErr = {}
-        if(this.state.genderOption.value===undefined) infoErr.genderErr = this.props.setLT.genderErr
+        if(this.state.genderValue==='') infoErr.genderErr = this.props.setLT.genderErr
         // if(!this.state.fc) infoErr.fcErr = this.props.setLT.fcErr
         if(!this.props.country.countryCode) infoErr.countryErr = this.props.setLT.countryErr
         if(!this.state.username) {
@@ -162,11 +150,11 @@ class LoginPage extends Component {
                 countryCode: this.props.country.countryCode,
                 password: this.state.password,
                 recaptchaValue: this.state.recaptchaValue,
-                genderValue: this.state.genderOption.value,
+                genderValue: this.state.genderValue,
                 businessType: 0,
                 userType : 1,
             }
-            // console.log(user)
+            console.log(user.genderValue)
             axios.post(`${serverURL}/register/register`, user).then(async (res) => {
                 if(res.data.msg==='Registration failed. Username is already exist.') {
                     this.setState({
@@ -296,14 +284,19 @@ class LoginPage extends Component {
         })
     }
 
+    onGender = (x) => {
+        this.setState({
+            genderValue: x
+        })
+    }
+
     render() {
         const {fc, toggleEye, userPassErr, signedInUserErr, registerType, loginType, username, email, password,
                 usernameErr, emailErrors, recaptchaErr, passwordErr, genderErr, fcErr, countryErr,
-                genderOption, membershipOption, emailL, genderTitleL, membershipTitleL, 
+                genderValue, membershipOption, emailL, genderTitleL, membershipTitleL, 
             } = this.state;
 
         const {auth, rtl, lang, setLT, country, mainUser} = this.props;
-        const containerStyle = {padding:w<s ? '0px' : (rtl ? '0px 270px 0px 0px' : '0px 0px 0px 270px')}
 
         window.recaptchaOptions = {
             lang: lang,
@@ -332,63 +325,39 @@ class LoginPage extends Component {
             </div>
         )
 
-        const customStylesG = {
-            control: (base, state) => ({
-              ...base,
-              'border':'2px solid #999999',
-              'backgroundColor':'#ffffff99',
-              width:'100% !important',
-              height: 35,
-              minHeight: 35,
-              fontSize: '15px',
-              cursor: 'pointer',
-              padding: '3px 0px 0px'
-            }),
-            option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-              //const color = chroma(data.color);
-              return {
-                ...styles,
-                fontSize: '14px',
-                padding:'5px 10px',
-                textAlign: rtl ? 'right' : 'left',
-                //backgroundColor: isDisabled ? 'red' : 'blue',
-                //color: '#FFF',
-                //cursor: isDisabled ? 'not-allowed' : 'default',
-              }
-            },
-            dropdownIndicator: base => ({ ...base, padding: '2px 5px 5px' })
-        };
-
         const genderConst = (
             <div>
-                <div className='d-flex animated fadeIn sticky-top' style={{ animationDelay:'0.2s', height:'20px', width:'100%', margin:'0px 0px 50px', zIndex:'10000'}}>
-                    <label htmlFor="inp5" className={`${rtl ? 'inpRTL' : 'inpLTR' }`}>
-                        <Select
-                            components={
-                            {
-                                // DropdownIndicator: () => null,
-                                IndicatorSeparator: () => null
-                            }
-                            }
-                            value={genderOption}
-                            onChange={this.genderChange}
-                            options={genderOptions}
-                            placeholder= {setLT.gender}
-                            isSearchable={false}
-                            styles={customStylesG}
-                            theme={theme => ({
-                            ...theme,
-                            borderRadius: 3,
-                            colors: {
-                                ...theme.colors,
-                                //primary25: 'hotpink',
-                                primary: 'black',
-                            },
-                            })}
-                        />
-                        <input defaultValue={genderOption} style={{textAlign: 'center', visibility:'hidden', height:'0px'}} type="text" id="inp5" placeholder="&nbsp;"/>
-                        <span className="label" style={{visibility: genderOption ? 'visible' : 'hidden'}}>{genderTitleL}</span>
-                    </label>
+                <div className='center animated fadeIn' style={{margin:'10px 0px 50px', color:'#7d828e'}}>
+                    <div className="radio" style={{margin:'0px 10px'}} onClick={() => this.onGender(1)}>
+                        <label className='center' style={{margin:'0px', alignItems:'center', cursor:'pointer', flexWrap:'wrap'}}>
+                            <img className='' src={male} alt="male" style={{filter: genderValue===1 ? '' : 'grayscale(100%)', objectFit: 'contain', borderRadius:'100px', width:'35px', height:'35px', margin:'0px', padding:'0px'}} />
+                            <div className='d-flex' style={{alignItems:'center'}}>
+                            <span style={{marginTop:lang==='fa' ? '0px' : '5px'}}>{setLT.male}</span>
+                            <input
+                                type="radio"
+                                value="option2"
+                                checked={genderValue===1 ? true : false}
+                                style={{margin:'0px 5px', cursor:'pointer'}}
+                                onChange={() => null}
+                            />
+                            </div>
+                        </label>
+                    </div>
+                    <div className="radio" style={{margin:'0px 10px'}} onClick={() => this.onGender(0)}>
+                        <label className='center' style={{margin:'0px', alignItems:'center', cursor:'pointer', flexWrap:'wrap'}}>
+                            <img className='' src={female} alt="female" style={{filter: genderValue===0 ? '' : 'grayscale(100%)', objectFit: 'contain', borderRadius:'100px', width:'35px', height:'35px', margin:'0px', padding:'0px'}} />
+                            <div className='d-flex' style={{alignItems:'center'}}>
+                                <span style={{marginTop:lang==='fa' ? '0px' : '5px'}}>{setLT.female}</span>
+                                <input
+                                    type="radio"
+                                    value="option3"
+                                    checked={genderValue===0 ? true : false}
+                                    style={{margin:'0px 5px', cursor:'pointer'}}
+                                    onChange={() => null}
+                                />
+                            </div>
+                        </label>
+                    </div>
                 </div>
                 <span className='invalid-feedback' style={{ margin: '-30px 0px 0px 0px', display: genderErr ? 'block' : 'none', textAlign: rtl ? 'right' : 'left'}}>
                     {genderErr}
@@ -448,7 +417,7 @@ class LoginPage extends Component {
             </div>
         )
         const passwordConst = (
-            <div style={{}}>
+            <div style={{marginBottom:'20px'}}>
                 <div className='animated fadeIn' style={{animationDelay: loginType ? '.2s' : '1s', margin: '30px 0px 0px 0px', position:'relative'}}>
                     <label htmlFor="inp2" className={`${rtl ? 'inpRTL' : 'inpLTR' }`}>
                         <input type={ toggleEye ? '' : 'password' } value={password} autoComplete="off" style={{textAlign: 'center', fontSize:'15px'}} id="inp2" placeholder="&nbsp;" name="password" onChange={this.passwordHandler}/>
@@ -520,7 +489,7 @@ class LoginPage extends Component {
         )
 
         const countryConst = (
-            <div className='animated fadeIn sticky-top' style={{animationDelay:'.6s', margin:'20px 0px 50px', }}>
+            <div className='animated fadeIn sticky-top' style={{animationDelay:'0s', margin:'20px 0px 50px', }}>
                 <div className='d-flex' style={{marginBottom:'0px', color:'#7d828e', alignItems: 'flex-start'}}>
                     {setLT.country}&nbsp;
                     <div className='d-flex sticky-top' style={{direction:'ltr', }}>
