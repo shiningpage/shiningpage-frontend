@@ -20,7 +20,6 @@ import RubyCollector from '../RubyCollector';
 import { setId, formatFileSize, totalFileSize, attachmentLimitRemain } from '../../helper';
 import { s, serverURL, lightColors } from '../../srcSet';
 
-const path = require('path')
 const destX = "../pix.shiningpage.com/whoraly/attachment"
 
 const pdfType = ['pdf'];
@@ -131,7 +130,7 @@ const AttachmentSub = (props) => {
     const fileHandler = (e) => {
         const file = e.target.files[0];
         if(file) {
-            const extname = path.extname(file.name).replace('.', '').toLowerCase()
+            const extname = file.name.split('.').pop().toLowerCase();
             const fileType = setType(extname)
             setFile(file)
             setFileName(file.name)
