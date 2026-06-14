@@ -3,10 +3,10 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { Container } from 'react-bootstrap';
 import { setMembership, } from '../../dataStore/actions';
-import StarRatingComponent from 'react-star-rating-component';
 import KPICards from '../KPICards';
 import date from 'date-and-time';
 import toFarsi from '../../modules/toFarsi';
+import StarRating from '../../components/StarRating';
 import userN from '../../assets/images/other/user1.png';
 import male from '../../assets/images/other/man2.png';
 import female from '../../assets/images/other/woman2.png';
@@ -16,7 +16,6 @@ import { FaRegPaperPlane, FaEye, FaStar } from 'react-icons/fa';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
 import { FiEdit } from "react-icons/fi";
 import { IoGlobeSharp, IoGlobeOutline } from "react-icons/io5";
-
 import RubyCollector from '../RubyCollector';
 import { AdsHorizontal } from '../GoogleAds';
 import { exist, getPos, dig3, addNotification } from '../../helper';
@@ -636,11 +635,12 @@ class StatisticsSub extends Component{
                 ),
                 star = (
                     <div className='d-flex' style={{height:'20px', justifyContent:'flex-end', paddingTop: '5px'}}>
-                        <StarRatingComponent
+                        <StarRating
                             name={`comment-rate-${i}`}
                             starCount={5}
                             emptyStarColor={'#eaeaea'}
                             value={item.rating}
+                            size={16}
                         />
                     </div>
                 ),
@@ -843,12 +843,12 @@ class StatisticsSub extends Component{
                                 <ul>{commentErrors}</ul>
                             </span>
                             <div style={{marginTop:'30px', fontSize:'16px', fontWeight:500}}>Your Rating</div>
-                            <div className='text-center' style={{margin:'0px 0px 0px 0px', fontSize:'20px'}}>
-                                <StarRatingComponent
+                            <div className='text-center' style={{fontSize:'20px'}}>
+                                <StarRating
                                     name="rate1"
                                     starCount={5}
                                     value={rating}
-                                    onStarClick={this.onStarClick}
+                                    onChange={this.onStarClick}
                                 />
                             </div>
                             <span className='invalid-feedback'
@@ -861,7 +861,7 @@ class StatisticsSub extends Component{
                                 <div className={`C${fc} f${txBlack ? 7 : 11} btnShadow`}
                                     style={{width: '', textAlign:'center', 
                                         height: '30px',
-                                        margin: '10px', padding:'2px 10px',
+                                        margin: '20px 10px 10px', padding:'2px 10px',
                                         border: `3px solid ${[11].includes(fc) ? '#00000050' : '#ffffff80'}`,
                                         color: `${lightColors.includes(fc) ? '#000000' : '#ffffff'}`,
                                         borderRadius: '100px'}}

@@ -10,7 +10,7 @@ import male from '../assets/images/other/man2.png';
 import female from '../assets/images/other/woman2.png'; 
 import { MdClose } from 'react-icons/md';
 import { FaRegPaperPlane, FaAngleLeft } from 'react-icons/fa';
-import StarRatingComponent from 'react-star-rating-component';
+import StarRating from '../components/StarRating';
 import date from 'date-and-time';
 import toFarsi from '../modules/toFarsi';
 import siteView from '../modules/siteView';
@@ -266,10 +266,11 @@ class ReviewPage extends Component {
             star = (
                 <div className='d-flex' style={{height:'10px', justifyContent:'space-between'}}>
                     <div style={{fontSize:'13px'}}>{setLT.scoring}:</div>
-                    <StarRatingComponent
+                    <StarRating
                         name="rate1"
                         starCount={5}
                         value={item.rating}
+                        size={16}
                     />
                 </div>
             ),
@@ -388,11 +389,11 @@ class ReviewPage extends Component {
                           <ul>{commentErrors}</ul>
                       </span>
                       <div className='text-center' style={{margin:'20px 0px 0px 0px', fontSize:'25px'}}>
-                          <StarRatingComponent
+                          <StarRating
                               name="rate1"
                               starCount={5}
                               value={rating}
-                              onStarClick={this.onStarClick}
+                              onChange={this.onStarClick}
                           />
                       </div>
                       <span className='invalid-feedback'

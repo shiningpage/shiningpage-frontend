@@ -16,7 +16,7 @@ import { FaAngleRight, FaGlobe, FaRegPaperPlane, FaRegEye, FaAngleLeft } from 'r
 import { AiOutlineCloseCircle, AiOutlineZoomIn } from 'react-icons/ai';
 import { BsImages, BsChat } from 'react-icons/bs';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
-import StarRatingComponent from 'react-star-rating-component';
+import StarRating from '../components/StarRating';
 import date from 'date-and-time';
 import toFarsi from '../modules/toFarsi';
 import siteView from '../modules/siteView';
@@ -495,7 +495,7 @@ class ContentPage extends Component {
                 ),
                 star = (
                     <div className='d-flex' style={{height:'20px', justifyContent:'flex-end', paddingTop: '5px'}}>
-                        <StarRatingComponent
+                        <StarRating
                             name="rate1"
                             starCount={5}
                             emptyStarColor={'#eaeaea'}
@@ -1462,11 +1462,11 @@ class ContentPage extends Component {
                                 <ul>{commentErrors}</ul>
                             </span>
                             <div className='text-center' style={{margin:'15px 0px 0px 0px', fontSize:'20px'}}>
-                                <StarRatingComponent
+                                <StarRating
                                     name="rate1"
                                     starCount={5}
                                     value={rating}
-                                    onStarClick={this.onStarClick}
+                                    onChange={this.onStarClick}
                                 />
                             </div>
                             <span className='invalid-feedback'

@@ -11,7 +11,6 @@ import { MdClose } from 'react-icons/md';
 import { IoMdHeart, IoMdHeartEmpty } from 'react-icons/io';
 import { BsChat } from 'react-icons/bs';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
-import StarRatingComponent from 'react-star-rating-component';
 import date from 'date-and-time';
 import toFarsi from '../modules/toFarsi';
 import siteView from '../modules/siteView';
@@ -579,16 +578,6 @@ class VideoShow extends Component {
                     {item.comment}
                 </div>
             )
-            const star = (
-                <div className='d-flex' style={{height:'20px', justifyContent:'flex-end', paddingTop: '5px'}}>
-                    <StarRatingComponent
-                        name="rate1"
-                        starCount={5}
-                        emptyStarColor={'#eaeaea'}
-                        value={item.rating}
-                    />
-                </div>
-            )
             const deleteBtn = (
                 <div className={rtl ? 'dropdown' : 'dropleft'} style={{padding:'0px'}}>
                     <div className='center bin' id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="" aria-expanded="false"
@@ -615,7 +604,6 @@ class VideoShow extends Component {
                         <div className='d-flex' style={{width:'100%', justifyContent: 'space-between', alignItems:'center'}}>
                             {comment}
                         </div>
-                        {star}
                     </div>
                 </div>
             )
@@ -1012,14 +1000,6 @@ class VideoShow extends Component {
                                         display : commentErrors ? 'block' : 'none'}}>
                             <ul>{commentErrors}</ul>
                         </span>
-                        <div className='text-center' style={{margin:'15px 0px 0px 0px', fontSize:'20px'}}>
-                            <StarRatingComponent
-                                name="rate1"
-                                starCount={5}
-                                value={rating}
-                                onStarClick={this.onStarClick}
-                            />
-                        </div>
                         <span className='invalid-feedback'
                                 style={{ margin: '0px 0px 0px 0px', textAlign: rtl ? 'right' : 'left', color:'red', fontSize:'13px',
                                         display : ratingErrors ? 'block' : 'none'}}>
