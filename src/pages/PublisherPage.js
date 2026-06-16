@@ -1132,6 +1132,13 @@ class PublisherPage extends Component {
                     {profileData && <WebCarousel dataX={subUserInfo} fc={fc}/>}
                     {me && googleAds && subUserInfo.ads && adsBox1}
                     <FeaturesSub fc={fc} nx={subUserInfo.totalContents} me={me} mapStateToProps={this.props} viewN={viewN} dispatch={this.props.dispatch}/>
+                    
+                    { mainUserId==='5e91d60f5c21701b949aef3a' &&
+                        <div className='center' style={{padding:'20px'}}>
+                            <iframe src="https://html5.gamedistribution.com/e4af90c070cf499da371b44232a6aaca/?gd_sdk_referrer_url=https://www.example.com/games/{game-path}" width="800" height="600" scrolling="none" frameborder="0"></iframe>
+                        </div>
+                    }
+                    
                     {about}
                     {me && googleAds && subUserInfo.ads && adsBox2}
                     <PsSub fc={fc} me={me} nx={subUserInfo.totalContents} txBlack={txBlack} titleStyle={titleStyle} index={psSubActive} adsN={adsN} videoN={videoN} instaN={instaN} updatePsCount={this.updatePsCount} EditBtn={EditBtn} mapStateToProps={this.props} dispatch={this.props.dispatch}/>
