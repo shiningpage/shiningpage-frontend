@@ -233,7 +233,7 @@ class StatisticsSub extends Component{
 
         this.setState(
             () => ({
-                viewCountAll: cxArr,
+                viewCountAll: [...cxArr, { "country": "xx", "value": 0 }],
                 gettingPageViewers: false,
             })
         )
@@ -364,7 +364,7 @@ class StatisticsSub extends Component{
                                     <span style={{color:'#bb00f9', fontWeight:'bold'}}>{item.username}</span>&nbsp;
                                 </div>
                                 )
-                                : <span style={{color:'#999999', fontWeight:''}}>{setLT.unknown} ({item.view})</span>
+                                : <div style={{color:'#999999'}}>{setLT.unknown} ({item.view})</div>
                             }
                             <div>{jobSummary}</div>
                       </div>
@@ -391,8 +391,8 @@ class StatisticsSub extends Component{
                   </div>
                 ),
                 tableInfo = (
-                  <div className='d-flex' style={{padding:'10px', width:'100%', fontSize:'14px', justifyContent: 'space-between', alignItems:''}}>
-                      {userImage}&nbsp;&nbsp;&nbsp;
+                  <div className='d-flex' style={{padding:'10px', width:'100%', fontSize:'14px', justifyContent: 'space-between', alignItems:'', gap:'10px'}}>
+                      {userImage}
                       <div className='' style={{width:'100%'}}>
                           <div className='d-flex' style={{width:'100%', justifyContent: 'space-between', alignItems:'center'}}>
                               {userCountry}
@@ -962,7 +962,7 @@ class StatisticsSub extends Component{
         const topCountriesSub = (
             <div className="topCountriesCard" style={{height:'100%', width:w<s ? '100%' : '30%'}}>
                 <div className="cardHeader">
-                    <h3>Top Countries</h3>
+                    <h3>Top Countries <span style={{fontSize:'14px'}}>(Real time)</span></h3>
                 </div>
 
                 <div style= {{zIndex:'0', width:'100%', minWidth:topCountries.length>0 ? '' : '300px', maxHeight:'400px', overflowY:'scroll'}}>
