@@ -23,7 +23,7 @@ const CategorySection = (props) => {
     const [toggleNewCategory, setToggleNewCategory] = useState(false);
     const catExist = (categoryItems || []).length>0 ? true : false
     const catSubExist = categorySubs.length>0 ? true : false
-    const catTitle = categoryTitleX ? categoryTitleX : 'All'
+    const catTitle = categoryTitleX ? categoryTitleX : ((me || categoryList.length>0) ? 'All' : <span style={{fontSize:'25px', fontWeight:450, }}>Content</span>)
     const contentLoading = loadingAds && loadingVideo && loadingInsta ? true : false
 
     const countTotalSub = (data) => {
@@ -315,10 +315,10 @@ const CategorySection = (props) => {
 
     return (
         <div>
-            {categoryTitle}
-            {w<s && allCategoryList}
+            {(me || categoryList.length>0) && categoryTitle}
+            {w<s && (me || categoryList.length>0) && allCategoryList}
             <div>
-                {w>=s && allCategoryList}
+                {w>=s && (me || categoryList.length>0) && allCategoryList}
                 {me || catSubExist ? contentSectionWithSub : contentSectionWithoutSub}
             </div>
             {modalHanddleCategory}

@@ -1340,8 +1340,9 @@ const PsSub = (props) => {
     )
 
     const catExist = (categoryItems || []).length>0 ? true : false
+    // display: me || catExist ? '' : 'none'
     return (
-        <div id='psSub' style={{width:'100%', padding:'10px', backgroundColor:'#ffffff', display: me || catExist ? '' : 'none'}}>
+        <div id='psSub' style={{width:'100%', padding:'10px', backgroundColor:'#ffffff', }}>
             {categorySection}
         </div>
 

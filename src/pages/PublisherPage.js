@@ -164,7 +164,7 @@ class PublisherPage extends Component {
         const headerTop = header.getBoundingClientRect().top;
         this.setState({ headerTop })
         const categoryTape = document.getElementById("categoryTape");
-        const categoryTapeTop = categoryTape.getBoundingClientRect().top;
+        const categoryTapeTop = categoryTape ? categoryTape.getBoundingClientRect().top : 0;
 
         const menuBtn = document.getElementById('menuBtn')
         const psSub = document.getElementById('psSub');
