@@ -1100,15 +1100,16 @@ class PublisherPage extends Component {
         }
 
         const about = (
-            <div id='about' style={{backgroundImage:`url(${aboutImgSrc})`, backgroundSize: 'cover', backgroundPosition: 'right', position:'relative'}}>
-                <div style={{width:'100%', height:'100%', padding:'0px 0px', backgroundColor:'#ffffff99'}}>
-                <div style={{width:'100%', height:'100%', padding:'0px 0px', backgroundColor:'#ffffff99'}}>
-                    {aboutInfo}
-                </div>
-                </div>
-                {/* <RubyCollector id='adsH2' bottom={30} left={30}/> */}
+            <div id="about" style={{ position: 'relative', overflow: 'hidden' }}>
+                {/* Background Layer */}
+                <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${aboutImgSrc})`, backgroundSize: 'cover', backgroundPosition: 'center', filter: 'blur(10px)', transform: 'scale(1.1)', zIndex: 0 }}/>
+                {/* Overlay */}
+                <div style={{ position: 'absolute', inset: 0, backgroundColor: '#ffffff99', zIndex: 1 }}/>
+                {/* Content */}
+                <div style={{ position: 'relative', zIndex: 2 }}>{aboutInfo}</div>
+                //  {/* <RubyCollector id='adsH2' bottom={30} left={30}/> */}
             </div>
-        )
+        );
 
         const popups = (
             <div className='' style={{ position:'fixed', bottom:60, right:w<s ? 5 : 10, direction:'rtl', zIndex:'1000'}}>
