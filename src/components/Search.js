@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import 'chartjs-plugin-annotation';
 import { connect } from 'react-redux';
 import { setFullAccess, setUserInfo, setAuth, setPage, setCountry, setRuby,  } from '../dataStore/actions';
 import male from '../assets/images/other/man2.png';
