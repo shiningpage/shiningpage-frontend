@@ -6,8 +6,6 @@ module.exports = {
   // serverURL: 'http://localhost:4200',
   serverURL: 'https://api.shiningpage.com',
 
-  netAPIKey: 'dd12f93b99e6a599aa40cb690a38b643',
-
   noIndexPages: [
     'login',
     'register',

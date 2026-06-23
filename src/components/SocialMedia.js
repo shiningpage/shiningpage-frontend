@@ -13,11 +13,12 @@ import { ImFacebook2 } from "react-icons/im";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { AiFillTikTok } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
-import { serverURL, s, netAPIKey, colors, socialTopics } from '../srcSet';
+import { serverURL, s, colors, socialTopics } from '../srcSet';
 import { dig3, isoDateToNormal, serviceIdName, background, 
     countTopicsAndCategories, getBalance, } from '../helper';
 
 const underReview = <span style={{margin:'', padding:'0px 5px', fontSize:'14px', fontWeight:400, color:'#ffffff', backgroundColor:'#000000', borderRadius:'5px'}}>Under Review</span>
+const netAPIKey = process.env.REACT_APP_NETAPIKey
 
 class SocialMediaPage extends Component{
 
