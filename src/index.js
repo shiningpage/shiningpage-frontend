@@ -15,7 +15,6 @@ import './assets/css/vazir.css';
 // import 'animate.css/animate.min.css';
 import { loadState, saveState } from './localStorage';
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
 
 // بارگذاری وضعیت ذخیره‌شده
 const persistedState = loadState();
@@ -40,8 +39,6 @@ if (rootElement) {
 } else {
     console.error('Root element not found');
 }
-
-registerServiceWorker();
 
 // استخراج وضعیت استور برای استفاده‌های دیگر
 const storeX = store.getState();
