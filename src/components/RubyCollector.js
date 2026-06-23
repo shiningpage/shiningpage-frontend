@@ -55,7 +55,7 @@ const RubyCollector = ({ id, objects, top, bottom, left, right, mainUser, geo, s
                     city: geo.city,
                     subject,
                     lang,
-                    version: process.env.REACT_APP_VERSION,
+                    version: import.meta.env.VITE_VERSION,
                     siteName,
                     ip: geo.query,
                     isp: geo.isp,

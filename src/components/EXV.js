@@ -48,7 +48,7 @@ class EXV extends Component{
                 <div className='center' style={{ fontSize:'14px', fontWeight:450, alignItems:'center', flexDirection:'column' }}>
                     <span style={{fontSize:'18px', marginBottom:'-2px'}}>ShiningPage</span>
                     <div className='C14' style={{maxWidth:'130px', minWidth:'130px', height:'3px'}}></div>
-                    <span style={{marginTop:'2px'}}>Version {process.env.REACT_APP_VERSION}</span>
+                    <span style={{marginTop:'2px'}}>Version {import.meta.env.VITE_VERSION}</span>
                 </div>
             </Link>
         );

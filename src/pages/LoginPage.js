@@ -422,8 +422,8 @@ class LoginPage extends Component {
                     <div style={{margin: '20px 0px -5px 0px', transform:'scale(0.77)'}}>
                         <ReCAPTCHA
                             style={{margin: rtl ? '0px -38px 0px 0px' : '0px 0px 0px -38px'}}
-                            sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
-                            secretkey={process.env.REACT_APP_RECAPTCHA_SECRET_KEY}
+                            sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
+                            secretkey={import.meta.env.VITE_RECAPTCHA_SECRET_KEY}
                             onChange={this.onRecaptchaChange}
                         />
                     </div>

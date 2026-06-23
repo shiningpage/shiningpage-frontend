@@ -73,7 +73,7 @@ class ShiningpageCarousel extends Component{
         const versionConst = (
             <div className='center' style={{color:'#00b3e0', fontWeight:450, fontSize: w<s ? '' : '', margin: '0px 0px 20px', alignItems:'flex-end', whiteSpace:'nowrap', direction:'ltr' }}>
                 <span style={{}}>Version-</span>
-                <span style={{}}>{process.env.REACT_APP_VERSION}</span>
+                <span style={{}}>{import.meta.env.VITE_VERSION}</span>
             </div>
         )
         const logo = (

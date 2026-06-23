@@ -26,7 +26,7 @@ const siteView = async (props) => {
         lang: props.lang,
         viewDate: today,
         view: 1,
-        version: process.env.REACT_APP_VERSION,
+        version: import.meta.env.VITE_VERSION,
         siteName: local ? 'local - ' + siteName : siteName,
         platform: navigator.platform,
         userAgent: navigator.userAgent,

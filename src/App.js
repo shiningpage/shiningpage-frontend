@@ -298,7 +298,7 @@ class App extends Component {
             const limit = 10 * 60 * 1000 // 10min
             const checkTime = dateN - updateTime > limit ? true : false
 
-            if(process.env.REACT_APP_VERSION!==res.data.site && checkTime) {
+            if(import.meta.env.VITE_VERSION!==res.data.site && checkTime) {
                 // console.log(true)
                 this.props.dispatch(setUpdateVersionDate(dateN))
                 this.onUpdateVersion()
@@ -967,7 +967,7 @@ class App extends Component {
 
         const currentVersion = (
             <div className='center' style={{paddingTop:'10px'}}>
-                Current Version: {process.env.REACT_APP_VERSION}
+                Current Version: {import.meta.env.VITE_VERSION}
             </div>
         )
 
@@ -1189,7 +1189,7 @@ class App extends Component {
                 </div>
                 <div className="nav" style={titleStyle}>
                     SHINING PAGE &nbsp;
-                    <span style={{fontSize:'12px'}}>(Version: {process.env.REACT_APP_VERSION})</span>
+                    <span style={{fontSize:'12px'}}>(Version: {import.meta.env.VITE_VERSION})</span>
                 </div>
             </Link>
         )

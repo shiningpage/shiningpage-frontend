@@ -475,7 +475,7 @@ class WebPage extends Component {
                 <div className='center' style={{ fontSize:'14px', fontWeight:450, alignItems:'center', flexDirection:'column' }}>
                     <span style={{fontSize:'18px', marginBottom:'-2px'}}>ShiningPage</span>
                     <div className='C14' style={{maxWidth:'100px', minWidth:'100px', height:'3px'}}></div>
-                    <span style={{marginTop:'2px'}}>Version {process.env.REACT_APP_VERSION}</span>
+                    <span style={{marginTop:'2px'}}>Version {import.meta.env.VITE_VERSION}</span>
                 </div>
             </Link>
         )
@@ -760,7 +760,7 @@ class WebPage extends Component {
 
         const dot = (
             <div style={{fontWeight:'', width:'130px', textAlign:'right', color: lightColors.includes(fc) ? '#000000' : '#ffffff'}}>
-                <span style={{fontSize:w<s ? '13px' : '', fontWeight:450}}><span style={{fontSize:'18px'}}></span>{process.env.REACT_APP_VERSION}</span>
+                <span style={{fontSize:w<s ? '13px' : '', fontWeight:450}}><span style={{fontSize:'18px'}}></span>{import.meta.env.VITE_VERSION}</span>
             </div>
         )
 
@@ -884,7 +884,7 @@ class WebPage extends Component {
                 sections={sections}
                 shareSub={shareSub}
                 QRCode={QRCode}
-                version={process.env.REACT_APP_VERSION}
+                version={import.meta.env.VITE_VERSION}
                 updateVersion={updateVersion}
                 isOpen={isSidebarOpen}
                 toggleSidebar={this.onMenu}
