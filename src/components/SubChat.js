@@ -9,7 +9,6 @@ import userN from '../assets/images/other/user1.png';
 import { MdClose } from 'react-icons/md';
 import { FaRegPaperPlane } from 'react-icons/fa';
 import { GrUpdate } from 'react-icons/gr';
-import jalaali from 'jalaali-js';
 import siteView from '../modules/siteView';
 import { exist } from '../helper';
 import { isoDateToDateTime, addNotification } from '../helper';
@@ -180,13 +179,6 @@ class SubChat extends Component {
             default: x = '';
         }
         return x
-    }
-
-    dateShamsi = (x) => {
-        var localDateArray = x.split('/')
-        var dSh = jalaali.toJalaali(Number(localDateArray[2]), Number(localDateArray[0]), Number(localDateArray[1]))
-        var dShamsi = dSh.jy+'/'+dSh.jm+'/'+dSh.jd
-        return dShamsi
     }
 
     messageListMap = async (x) => {
