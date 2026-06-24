@@ -256,42 +256,42 @@ class NotificationPage extends Component{
                     </div>
                 ),
                 website = (
-                    <a className='d-flex' href={`http://${mainUser.website}`} target="_blank"
+                    <a className='d-flex' href={`http://${mainUser.website}`} target="_blank" rel="noopener noreferrer"
                         style={{textDecoration:'none', direction:rtl ? 'rtl' : 'ltr', alignItems:'flex-end'}}>
                         <FaGlobe className='' style={{fontSize:'25px', margin:'0px', color:'brown', minWidth:'20px', minHeight:'20px'}}/>&nbsp;
                         <span style={netStyle}>{mainUser.website}</span>
                     </a>
                 ),
                 instagram = (
-                    <a className='d-flex' href={`https://instagram.com/${mainUser.instagram}`} target="_blank"
+                    <a className='d-flex' href={`https://instagram.com/${mainUser.instagram}`} target="_blank" rel="noopener noreferrer"
                         style={{textDecoration:'none', direction:rtl ? 'rtl' : 'ltr', alignItems:'flex-end'}}>
                         <FaInstagram className='' style={{fontSize:'25px', width:'25px', height:'25px', borderRadius:'6px', color:'#ffffff', backgroundImage: 'linear-gradient(to right top, #fcac0f, #fd9522, #fa7f30, #f36a3c, #e85647, #e44751, #dd395b, #d42d65, #d12174, #ca1b85, #be1e96, #ae27a8)'}}/>&nbsp;
                         {/* <span style={netStyle}>{mainUser.instagram}</span> */}
                     </a>
                 ),
                 telegram = (
-                    <a className='d-flex' href={`https://t.me/${mainUser.telegram}`} target="_blank"
+                    <a className='d-flex' href={`https://t.me/${mainUser.telegram}`} target="_blank" rel="noopener noreferrer"
                         style={{textDecoration:'none', direction:rtl ? 'rtl' : 'ltr', alignItems:'flex-end'}}>
                         <FaTelegram className='' style={{fontSize:'25px', margin:'0px', color:'#56BFE1'}}/>&nbsp;
                         <span style={netStyle}>{mainUser.telegram}</span>
                     </a>
                 ),
                 facebook = (
-                    <a className='d-flex' href={`http://${mainUser.facebook}`} target="_blank"
+                    <a className='d-flex' href={`http://${mainUser.facebook}`} target="_blank" rel="noopener noreferrer"
                         style={{textDecoration:'none', direction:rtl ? 'rtl' : 'ltr', alignItems:'flex-end'}}>
                         <FaFacebook className='' style={{fontSize:'25px', margin:'0px', color:'#3b5998'}}/>&nbsp;
                         <span style={netStyle}>{mainUser.facebook}</span>
                     </a>
                 ),
                 youtube = (
-                    <a className='d-flex' href={`http://${mainUser.youtube}`} target="_blank"
+                    <a className='d-flex' href={`http://${mainUser.youtube}`} target="_blank" rel="noopener noreferrer"
                         style={{textDecoration:'none', direction:rtl ? 'rtl' : 'ltr', alignItems:'flex-end'}}>
                         <FaYoutube className='' style={{fontSize:'25px', margin:'0px', color:'#c4302b'}}/>&nbsp;
                         <div style={netStyle}>{mainUser.youtube}</div>
                     </a>
                 ),
                 linkedin = (
-                    <a className='d-flex' href={`http://${mainUser.linkedin}`} target="_blank"
+                    <a className='d-flex' href={`http://${mainUser.linkedin}`} target="_blank" rel="noopener noreferrer"
                         style={{textDecoration:'none', direction:rtl ? 'rtl' : 'ltr', alignItems:'flex-end'}}>
                         <FaLinkedin className='' style={{fontSize:'25px', margin:'0px', color:'#0e76a8'}}/>&nbsp;
                         <span style={netStyle}>{mainUser.linkedin}</span>

@@ -552,17 +552,6 @@ class App extends Component {
             />
         )
 
-        // const webLinkIcon = (
-        //     <div>
-        //         { !auth 
-        //             ? <Link to={`/login`} >{userProfileImage}</Link>
-        //             : page==='web'
-        //                 ? <a href={`/publisher/${username}`} >{userProfileImage}</a>
-        //                 : <Link to={`/publisher/${username}`} >{userProfileImage}</Link>
-        //         }
-        //     </div>
-        // )
-
         const unsNotificationQTY = (
             <div className={`${leaveNotificationList ? 'zoomOut' : 'zoomIn'}`} style={{backgroundColor: 'red', color: '#ffffff', fontSize:'11px', fontWeight:450, textAlign:'center', display: notSeenNotificationQTY ? '' : 'none',
                 minWidth: '18px', height: '18px', borderRadius: '100px', lineHeight: '20px', position:'absolute', top:-5, right:-5}}>
@@ -1157,20 +1146,20 @@ class App extends Component {
         )
 
         const instagramSub = (
-            <a className='d-flex' href={`https://www.instagram.com/whoraly_uk`} target="_blank" style={{}}>
+            <a className='d-flex' href={`https://www.instagram.com/whoraly_uk`} target="_blank" rel="noopener noreferrer">
                 <AiFillInstagram className='' style={{fontSize:'30px', margin:'0px', color:'#D5AD6D', borderRadius:'5px', border:'1px solid #D5AD6D', backgroundColor:'#ffffff99'}}/>
             </a>
         )
 
         const linkedinSub = (
-            <a className='d-flex' href={`https://www.linkedin.com/in/mahmoudsadollahi/`} target="_blank" style={{}}>
+            <a className='d-flex' href={`https://www.linkedin.com/in/mahmoudsadollahi/`} target="_blank" rel="noopener noreferrer">
                 <FaLinkedin className='' style={{fontSize:'30px', margin:'0px', color:'#D5AD6D', borderRadius:'5px', padding:'2px', border:'1px solid #D5AD6D', backgroundColor:'#ffffff99'}}/>
             </a>
         )
 
     //`https://www.youtube.com/channel/UCd2v5xsfTfhIeSUVWiv3WRA`
         const youtubeSub = (
-            <a className='d-flex' href={'https://www.youtube.com/@mahmoudsadollahi3377'} target="_blank" style={{}}>
+            <a className='d-flex' href={'https://www.youtube.com/@mahmoudsadollahi3377'} target="_blank" rel="noopener noreferrer">
                 <FaYoutube className='' style={{fontSize:'30px', margin:'0px', color:'#D5AD6D', borderRadius:'5px', border:'1px solid #D5AD6D', backgroundColor:'#ffffff99'}}/>
             </a>
         )

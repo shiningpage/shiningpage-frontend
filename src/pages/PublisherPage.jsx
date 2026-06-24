@@ -644,31 +644,31 @@ class PublisherPage extends Component {
 
         const xStyle = {margin:'10px', alignItems:'center', color:'black'}
         const instagramIconX = (
-            <a className='d-flex' href={`https://instagram.com/${instagram}`} target="_blank" style={xStyle}
+            <a className='d-flex' href={`https://instagram.com/${instagram}`} target="_blank" rel="noopener noreferrer" style={xStyle}
                 onClick={() => addNotification('instagram', 'click', fullAccess, mainUser, userId, geo)}>
                 <FaInstagram className='' style={{fontSize:'25px', margin:'0px 5px', borderRadius:'8px', color:'#ffffff', backgroundImage: 'linear-gradient(to right top, #fcac0f, #fd9522, #fa7f30, #f36a3c, #e85647, #e44751, #dd395b, #d42d65, #d12174, #ca1b85, #be1e96, #ae27a8)'}}/>
             </a>
         )
         const telegramIconX = (
-            <a className='d-flex' href={`https://t.me/${telegram}`} target="_blank" style={xStyle}
+            <a className='d-flex' href={`https://t.me/${telegram}`} target="_blank" rel="noopener noreferrer" style={xStyle}
                 onClick={() => addNotification('telegram', 'click', fullAccess, mainUser, userId, geo)}>
                 <FaTelegram style={{ fontSize:'25px', color:'#24A1DE' }}/>
             </a>
         )
         const facebookIconX = (
-            <a className='d-flex' href={`https://${facebook}`} target="_blank" style={xStyle}
+            <a className='d-flex' href={`https://${facebook}`} target="_blank" rel="noopener noreferrer" style={xStyle}
                 onClick={() => addNotification('facebook', 'click', fullAccess, mainUser, userId, geo)}>
                 <FaFacebook style={{ fontSize:'25px', color:'#3b5998' }}/>
             </a>
         )
         const youtubeIconX = (
-            <a className='d-flex' href={`https://${youtube}`} target="_blank" style={xStyle}
+            <a className='d-flex' href={`https://${youtube}`} target="_blank" rel="noopener noreferrer" style={xStyle}
                 onClick={() => addNotification('youtube', 'click', fullAccess, mainUser, userId, geo)}>
                 <FaYoutube style={{ fontSize:'25px', color:'#c4302b' }}/>
             </a>
         )
         const linkedinIconX = (
-            <a className='d-flex' href={`https://${linkedin}`} target="_blank" style={xStyle}
+            <a className='d-flex' href={`https://${linkedin}`} target="_blank" rel="noopener noreferrer" style={xStyle}
                 onClick={() => addNotification('linkedin', 'click', fullAccess, mainUser, userId, geo)}>
                 <FaLinkedin style={{ fontSize:'25px', color:'#0077B5' }}/>
             </a>

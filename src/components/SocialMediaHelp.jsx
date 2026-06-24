@@ -104,7 +104,7 @@ class SocialMediaHelp extends Component{
                 <strong>Spotlight : -------------------------------</strong>
                 <p>- Link = put the link to the post on the Spotlight Platform</p>
                 <p>- Example of explorer (share): &nbsp;
-                    <a href="https://prnt.sc/ezyqB0EABEce" target="_blank">https://prnt.sc/ezyqB0EABEce</a>
+                    <a href="https://prnt.sc/ezyqB0EABEce" target="_blank" rel="noopener noreferrer">https://prnt.sc/ezyqB0EABEce</a>
                 </p>
                 <br/>
                 <strong>Story Views : -------------------------------</strong>

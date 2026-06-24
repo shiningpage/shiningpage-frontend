@@ -118,7 +118,7 @@ class SitemapPage extends Component {
             )
 
             const link = (
-              <a className='d-flex' href={`/${root}/${item.username}`} target="_blank">
+              <a className='d-flex' href={`/${root}/${item.username}`} target="_blank" rel="noopener noreferrer">
                 <span style={{direction:'ltr'}}>{`https://shiningpage.com/${root}/${item.username}`}</span>
               </a>
             )
@@ -170,7 +170,7 @@ class SitemapPage extends Component {
             const link = (
               <a className='d-flex' href={item.slug ? `/publisher/${item.username}/${item.slug}` : `/ps/${item._id}`}
                 target="_blank"
-                style={{}}>
+                rel="noopener noreferrer">
                 <span style={{direction:'ltr'}}>{item.slug ? `https://shiningpage.com/publisher/${item.username}/${item.slug}` : `https://shiningpage.com/ps/${item._id}`}</span>
               </a>
             )

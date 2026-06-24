@@ -36,7 +36,6 @@ const AdsBoxSub = (props) => {
         </Button>
     )
 
-    // <a href={`https://www.SelfSheet.com/en?ref=${subUserInfo.username}`}
     return (
         <Container>
             <div style={{padding:'10px'}}>
