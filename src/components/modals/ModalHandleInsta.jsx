@@ -6,7 +6,7 @@ import { setCategoryX } from '../../dataStore/actions';
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { FaInstagram } from 'react-icons/fa';
 import toFarsi from '../../modules/toFarsi';
-import CategorySelector from '../../components/CategorySelector';
+import CategorySelector from '../CategorySelector';
 import { serverURL, s, } from '../../srcSet';
 
 class ModalHandleInsta extends Component {

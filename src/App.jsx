@@ -43,6 +43,7 @@ import Search from './components/Search';
 import ModalSidebarShiningpage from './components/modals/ModalSidebarShiningpage';
 import { identifyObj, exist, getBalance, scrollStatus, checkRubyInterval, } from './helper';
 import { serverURL, s, NavH, langArray, countryArr, noIndexPages } from './srcSet';
+import internationalImage from "./assets/images/other/international.jpg";
 
 class App extends Component {
 
@@ -1120,7 +1121,7 @@ class App extends Component {
                     alignItems: 'center', // قرار دادن در وسط عمودی
                     filter: 'blur(50px)',
                     zIndex: '-1',
-                    backgroundImage: `url(${require("./assets/images/other/international.jpg")})`, backgroundSize: 'cover', backgroundPosition: 'right center'
+                    backgroundImage: `url(${internationalImage})`, backgroundSize: 'cover', backgroundPosition: 'right center'
                 }}
             >
             </div>

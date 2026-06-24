@@ -7,6 +7,8 @@ import female from '../assets/images/other/woman2.png';
 import { Link } from "react-router-dom";
 import { MdLocationOn } from 'react-icons/md';
 import { FaYoutube, FaLinkedin } from 'react-icons/fa';
+import starXImage from "../assets/images/other/starX.png";
+import aparatImage from "../assets/images/other/aparat.png";
 
 import { serverURL, s } from '../srcSet';
 
@@ -69,7 +71,7 @@ class StarredVideo extends Component{
                     <img
                         className=''
                         style={{height:'20px', width:'20px'}}
-                        src={require('../assets/images/other/starX.png')}
+                        src={starXImage}
                         alt='star'
                     />
                 ),
@@ -91,7 +93,7 @@ class StarredVideo extends Component{
                     />
                 ),
                 YoutubeIcon = <FaYoutube style={{fontSize:'30px', margin:'10px', color:'#c4302b'}}/>,
-                AparatIcon = <img style={{width:'30px', height:'25px', margin:'10px'}} src={require('../assets/images/other/aparat.png')} alt="Aparat Icon"/>,
+                AparatIcon = <img style={{width:'30px', height:'25px', margin:'10px'}} src={aparatImage} alt="Aparat Icon"/>,
                 LinkedinIcon = <FaLinkedin className='' style={{fontSize:'25px', margin:'10px', color:'#0e76a8'}}/>,
                 userLine = (
                     <div className='d-flex' style={{alignItems:'center', cursor:'pointer', justifyContent:'space-between'}}

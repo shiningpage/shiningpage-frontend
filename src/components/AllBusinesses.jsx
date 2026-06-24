@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import male from '../assets/images/other/man2.png';
 import female from '../assets/images/other/woman2.png';
 import { exist } from '../helper';
-import RubyCollector from '../components/RubyCollector';
-import { AdsInArticle, AdsMultiplex, } from '../components/GoogleAds';
+import RubyCollector from './RubyCollector';
+import { AdsInArticle, AdsMultiplex, } from './GoogleAds';
 import { serverURL, s, googleAds } from '../srcSet';
 
 class AllBusinesses extends Component{

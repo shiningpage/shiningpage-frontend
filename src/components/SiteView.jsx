@@ -3,9 +3,9 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { Container } from 'react-bootstrap';
 import { FaAngleLeft } from 'react-icons/fa';
+import { WorldMap } from 'react-svg-worldmap';
 import { getPos, dig3 } from '../helper';
 import { serverURL, s, listRefreshQty, listRefreshQtySmall, colors, lightColors } from '../srcSet';
-const WorldMap = require('react-svg-worldmap').WorldMap;
 
 class SiteView extends Component {
 

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Button } from 'react-bootstrap';
 import { setUserInfo, setSubUserInfo } from '../../../dataStore/actions';
-import BeforAfter from '../../../components/BeforAfter';
+import BeforAfter from '../../BeforAfter';
 import pixSave from '../../../modules/pixSave';
 import pixDelete from '../../../modules/pixDelete';
 import pixHandler from '../../../modules/pixHandler';
@@ -17,6 +17,7 @@ import { TbSubtask } from 'react-icons/tb';
 import { BiCategory, BiChevronsRight } from 'react-icons/bi';
 import { serverURL, listRefreshQty, lightColors } from '../../../srcSet';
 import { getPos, dig3 } from '../../../helper';
+import aparatImage from "../../../assets/images/other/aparat.png";
 
 var destB = "../pix.shiningpage.com/whoraly/ads/big"
 
@@ -631,7 +632,7 @@ const mapAllVideo = (data, me, EditBtn, rtl, setLT, w, s,
                 </div>
             )
             const YoutubeIcon = <FaYoutube style={{fontSize:'30px', margin:'0px', color:'#c4302b'}}/>
-            const AparatIcon = <img style={{width:'30px', height:'25px', margin:'0px'}} src={require('../../../assets/images/other/aparat.png')} alt="Aparat Icon"/>
+            const AparatIcon = <img style={{width:'30px', height:'25px', margin:'0px'}} src={aparatImage} alt="Aparat Icon"/>
             const LinkedinIcon = <FaLinkedin className='' style={{fontSize:'25px', margin:'0px', color:'#0e76a8'}}/>
             const iframeStyle = {position:'', top: 0, left: 0, width: '100%', height:'100%', zIndex: '-1', border: 'none'}
             const more = (

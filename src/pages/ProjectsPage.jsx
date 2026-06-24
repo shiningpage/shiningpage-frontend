@@ -29,6 +29,7 @@ import pixResizer from '../modules/pixResizer';
 import { exist } from '../helper';
 import { serverURL, s, listRefreshQty, googleAds } from '../srcSet';
 import { AdsHorizontal, AdsHorizontalSmall } from '../components/GoogleAds'
+import loginImage from "../assets/images/other/login.png";
 
 var destB = "../pix.shiningpage.com/project/big"
 var destS = "../pix.shiningpage.com/project/small"
@@ -2352,7 +2353,7 @@ class ProjectManagement extends Component {
                         borderRadius:'100px', alignItems:'center', border:'2px solid #00CCFF', color:'#00CCFF'}}>
                   <img
                       style={{width:'20px', height:'20px'}}
-                      src={require('../assets/images/other/login.png')}
+                      src={loginImage}
                       alt="access image"
                   />&nbsp;
                   {setLT.access}

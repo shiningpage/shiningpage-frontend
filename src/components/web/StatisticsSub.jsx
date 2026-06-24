@@ -6,7 +6,7 @@ import { setMembership, } from '../../dataStore/actions';
 import KPICards from '../KPICards';
 import date from 'date-and-time';
 import toFarsi from '../../modules/toFarsi';
-import StarRating from '../../components/StarRating';
+import StarRating from '../StarRating';
 import userN from '../../assets/images/other/user1.png';
 import male from '../../assets/images/other/man2.png';
 import female from '../../assets/images/other/woman2.png';
@@ -18,9 +18,9 @@ import { FiEdit } from "react-icons/fi";
 import { IoGlobeSharp, IoGlobeOutline } from "react-icons/io5";
 import RubyCollector from '../RubyCollector';
 import { AdsHorizontal } from '../GoogleAds';
+import { WorldMap } from 'react-svg-worldmap';
 import { exist, getPos, dig3, addNotification } from '../../helper';
 import { serverURL, s, listRefreshQtySmall, mapColors, lightColors, googleAds } from '../../srcSet';
-const WorldMap = require('react-svg-worldmap').WorldMap;
 
 class StatisticsSub extends Component{
 
@@ -563,7 +563,6 @@ class StatisticsSub extends Component{
     }
 
     mapAllCommenters = async (commenters) => {
-        console.log('mapAllCommenters')
         var hr, star, deleteBtn, jobSummary, jobSummaryStyle, JLen, countryCode, comment, userCountry, userImage, tableInfo, like, view, viewLike, line
         const {w, } = this.state
         const {rtl, setLT, mainUserId, userId} = this.props

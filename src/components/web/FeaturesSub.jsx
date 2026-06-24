@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import EditBtn from '../EditBtn';
-import RubyCollector from '../../components/RubyCollector';
+import RubyCollector from '../RubyCollector';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
-import RoundStatistics from '../../components/RoundStatistics';
+import RoundStatistics from '../RoundStatistics';
 import ModalWebPageTheme from '../modals/ModalWebPageTheme';
 import { setSubUserInfo, setUserInfo } from '../../dataStore/actions';
 import { scrollTo } from '../../helper';

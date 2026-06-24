@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import { setStarredAds } from '../dataStore/actions';
 import { serverURL, s } from '../srcSet';
+import starXImage from "../assets/images/other/starX.png";
 
 class StarredAds extends Component{
 
@@ -69,7 +70,7 @@ class StarredAds extends Component{
                 <img
                     className=''
                     style={{height:'20px', width:'20px'}}
-                    src={require('../assets/images/other/starX.png')}
+                    src={starXImage}
                     alt='star'
                 />
               ),

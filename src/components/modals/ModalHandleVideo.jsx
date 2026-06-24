@@ -7,8 +7,9 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import { FaLinkedin, FaYoutube } from 'react-icons/fa';
 import date from 'date-and-time';
 import toFarsi from '../../modules/toFarsi';
-import CategorySelector from '../../components/CategorySelector';
+import CategorySelector from '../CategorySelector';
 import { serverURL, s } from '../../srcSet';
+import aparatImage from "../../assets/images/other/aparat.png";
 
 class ModalHandleVideo extends Component {
 
@@ -161,7 +162,7 @@ class ModalHandleVideo extends Component {
         const aparatRadio = (
             <div className="radio" style={{margin:'0px 10px'}} onClick={() => this.onVideoType(2)}>
                 <label className='center' style={{margin:'0px', alignItems:'center', cursor:'pointer', flexWrap:'wrap'}}>
-                    <img style={{width:'30px', height:'25px'}} src={require('../../assets/images/other/aparat.png')} alt="aparat"/>
+                    <img style={{width:'30px', height:'25px'}} src={aparatImage} alt="aparat"/>
                     <div className='d-flex' style={{alignItems:'center'}}>
                     <input type="radio" value="option3" checked={videoType===2 ? true : false} style={{margin:'0px 5px', cursor:'pointer'}}/>
                     </div>
@@ -207,7 +208,7 @@ class ModalHandleVideo extends Component {
                 <div className='d-flex' style={{alignItems:'center', margin:'0px 0px 5px', direction:'rtl'}}>
                     <img
                         style={{width:'30px', height:'25px'}}
-                        src={require('../../assets/images/other/aparat.png')}
+                        src={aparatImage}
                         alt="aparat"
                     />&nbsp;&nbsp;
                     {videoCodeInput}

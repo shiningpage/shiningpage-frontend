@@ -33,17 +33,21 @@
     "redux": "^5.0.1",
     "sass": "^1.58.0"
   },
-  "scripts": {
+ "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+
     "start": "react-scripts --openssl-legacy-provider start",
-    "build": "cross-env GENERATE_SOURCEMAP=false react-scripts --openssl-legacy-provider build",
-    "postbuild": "find build -type f -exec chmod 644 {} \\; && find build -type d -exec chmod 755 {} \\;",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "rename": "renamer --find App-clear.js --replace App.js ./src/App-clear.js"
   },
   "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.3",
     "cross-env": "^7.0.3",
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "vite": "^8.1.0"
   },
   "no-unused-expressions": [
     "error",

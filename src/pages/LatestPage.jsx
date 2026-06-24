@@ -17,6 +17,7 @@ import { FaAngleDown, FaRegPaperPlane, FaRegEye, FaLinkedin, FaYoutube, FaFacebo
 import { AdsHorizontal, AdsMultiplex } from '../components/GoogleAds';
 import { dig3, exist, checkSeen, goToWebPage } from '../helper';
 import { serverURL, s, googleAds } from '../srcSet';
+import aparatImage from "../assets/images/other/aparat.png";
 
 class LatestPage extends Component {
 
@@ -174,7 +175,7 @@ class LatestPage extends Component {
 				)
 			} else if (item.type === 'video') {
 				const YoutubeIcon = <FaYoutube style={{ fontSize: '30px', margin: '0px', color: '#c4302b' }} />
-				const AparatIcon = <img style={{ width: '30px', height: '25px', margin: '0px' }} src={require('../assets/images/other/aparat.png')} alt="Aparat Icon" />
+				const AparatIcon = <img style={{ width: '30px', height: '25px', margin: '0px' }} src={aparatImage} alt="Aparat Icon" />
 				const LinkedinIcon = <FaLinkedin className='' style={{ fontSize: '25px', margin: '0px', color: '#0e76a8' }} />
 				footer = (
 					<div style={{ padding: '10px' }}>

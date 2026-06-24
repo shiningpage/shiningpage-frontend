@@ -13,7 +13,7 @@ import pixDelete from '../../modules/pixDelete';
 import pixHandler from '../../modules/pixHandler';
 import { serverURL, s } from '../../srcSet';
 import { cleanEditorHtml } from '../../helper';
-import TextEditor from '../../components/TextEditor';
+import TextEditor from '../TextEditor';
 import { FaPlus, FaMinus } from "react-icons/fa6";
 
 var destB = "../pix.shiningpage.com/whoraly/ads/big"

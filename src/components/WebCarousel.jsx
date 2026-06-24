@@ -4,7 +4,7 @@ import { Carousel } from 'react-bootstrap';
 import EditBtn from './EditBtn';
 import { GiGlobe } from 'react-icons/gi';
 import '../assets/css/carousel.css';
-import ModalAboutImage from '../components/modals/ModalAboutImage';
+import ModalAboutImage from './modals/ModalAboutImage';
 import pixSave from '../modules/pixSave';
 import pixDelete from '../modules/pixDelete';
 import pixHandler from '../modules/pixHandler';
@@ -24,7 +24,7 @@ class WebCarousel extends Component{
         nextIcon: <GiGlobe/>,
         prevIcon: <GiGlobe/>,
         toggleAboutImage: false,
-
+        showTextSection: true,
     }
 
     componentDidMount = async () => {
@@ -39,16 +39,16 @@ class WebCarousel extends Component{
         data[0].subTitle = jobSummary ? jobSummary : ''
         data[0].source = aboutIndex ? aboutIndex : profileIndex
 
-        // for(var i=0; i<categoryItems.length; i++) {
-        //     var obj = {}
-        //     obj.id = 'psSub'
-        //     obj.type = 'cat'
-        //     obj.folder = 'category'
-        //     obj.title = categoryItems[i].title
-        //     obj.subTitle = ''//data[0].title
-        //     obj.source = categoryItems[i].pixId
-        //     data.push(obj)
-        // }
+        for(var i=0; i<categoryItems.length; i++) {
+            var obj = {}
+            obj.id = 'psSub'
+            obj.type = 'cat'
+            obj.folder = 'category'
+            obj.title = categoryItems[i].title
+            obj.subTitle = ''//data[0].title
+            obj.source = categoryItems[i].pixId
+            data.push(obj)
+        }
 
         await this.setState({
             carouselItems: data
@@ -82,9 +82,17 @@ class WebCarousel extends Component{
 
     textCarousel = (i, type) => {
         const { w, carouselItems } = this.state
-        const { subUserInfo, rtl, setLT, adsInfo } = this.props
+        const { subUserInfo, rtl, setLT } = this.props
         const fc = subUserInfo.fc
         const txBlack = lightColors.includes(fc) ? true : false
+        const closeBtn = (
+            <div
+                style={{ position: 'absolute', top: '10px', right: '10px', cursor: 'pointer', fontSize: '18px', color: '#fff', zIndex: 10 }}
+                onClick={this.closeTextSection}
+            >
+                ✕
+            </div>
+        )
         const textSection = (
             <div id='textCarousel'
                 className={`${ type==='out' ? 'fadeOut' : 'animated fadeIn' } backBlur`}
@@ -93,6 +101,7 @@ class WebCarousel extends Component{
                     animationDelay:type==='out' ? '2.5s' : '1s', position:'absolute'
                 }}
             >
+                {closeBtn}
                 <div className={`${ type==='out' ? 'fadeOutDown' : 'animated fadeInDown' } txWhiteThin tx f7`}
                     style={{fontSize:'25px', fontWeight:'bold', margin:'10px',
                         animationDelay:type==='out' ? '2s' : '1.5s'
@@ -105,7 +114,7 @@ class WebCarousel extends Component{
                         animationDelay:type==='out' ? '1.5s' : '2s'
                     }}
                 >
-                    {adsInfo.adsTitle}
+                    {carouselItems[i].subTitle}
                 </div>
                 <div className={`${ type==='out' ? 'fadeOutDown' : 'animated fadeIn' } center C${fc} underline`}
                     style={{width: carouselItems[i].id === 'aboutInfo' ? '60px' : '200px', minWidth:'100px', height: '', animationDelay:type==='out' ? '1s' : '2.5s',
@@ -123,7 +132,7 @@ class WebCarousel extends Component{
                             ?
                             setLT.about ? setLT.about.toUpperCase() : ''
                             :
-                            setLT.ProductsServices
+                            'CONTENTS'
                         }
                     </div>
                 </div>
@@ -162,15 +171,19 @@ class WebCarousel extends Component{
         });
     }
 
+    closeTextSection = () => {
+        this.setState({ showTextSection: false });
+    }
+
     onResize = async () => {
         this.setState({ w: window.innerWidth })
     }
 
     render () {
         const { w, toggleAboutImage, animatedText, interval, nextIcon, prevIcon, carouselItems, } = this.state
-        const { rtl, mainUser, subUserInfo, pageYOffset, adsInfo } = this.props
+        const { rtl, mainUser, subUserInfo, pageYOffset } = this.props
         const me = mainUser._id===subUserInfo._id ? true : false
-        const pIndx = adsInfo.pictureType===2 ? 1 : 0
+
         const modalAboutImage = (
             <ModalAboutImage
                 pixDelete={pixDelete}
@@ -187,7 +200,7 @@ class WebCarousel extends Component{
 
         return (
             <div style={{ position:'relative' }}>
-                {/* me && <EditBtn top={w<s ? 20 : 70} rtl={rtl} onClick={() => this.toggleAboutImage()}/> */}
+                {me && <EditBtn top={w<s ? 10 : 70} right={w<s ? 10 : 20} rtl={rtl} onClick={() => this.toggleAboutImage()}/>}
                 <Carousel
                     fade
                     interval={10000}
@@ -199,10 +212,10 @@ class WebCarousel extends Component{
                     prevIcon={prevIcon}
                     onSelect={carouselItems.length>1 ? this.handleSelect : null}
                 >
-                    { adsInfo.pictures &&
+                    {
                         carouselItems.map (
                             (item, i) => {
-                                const imageUrl = `https://www.pix.shiningpage.com/whoraly/ads/big/${adsInfo._id}-${adsInfo.pictures[pIndx]}.jpeg`;
+                                const imageUrl = `https://www.pix.shiningpage.com/whoraly/${item.type === 'cat' ? item.folder : item.folder + '/big'}/${subUserInfo._id}-${item.source}.jpeg`;
                                 // console.log(i)
                                 return (
                                     <Carousel.Item key={i} className="fadeIn" interval={item.type==='about' ? interval+1000 : interval}>
@@ -210,16 +223,16 @@ class WebCarousel extends Component{
                                             <img className={pageYOffset>200 ? '' : 'headerImgA'}
                                                 style={{objectFit: w<s ? 'cover' : 'cover', height: w<s ? '600px' : '600px', width:'100%', borderRadius:'0px', filter:w<s ? 'blur(5px)' : 'blur(0px)', transition:'.3s'}}
                                                 src={imageUrl}
-                                                alt={`${adsInfo.adsTitle} blur`}
+                                                alt={`${item.title} about blur`}
                                             />
                                             <div style={{height:w<s ? '550px' : '600px', width:'100%', position:'absolute', overflow:'hidden'}}>
                                                 <img className={pageYOffset>200 ? '' : 'headerImgB'}
                                                     style={{objectFit:'contain', height:'100%', width:'100%', borderRadius:'5px', transition:'.3s'}}
                                                     src={imageUrl}
-                                                    alt={`${adsInfo.adsTitle}`}
+                                                    alt={`${item.title} about`}
                                                 />
                                             </div>
-                                            {animatedText}
+                                            {this.state.showTextSection && animatedText}
                                         </div>
                                     </Carousel.Item>
                                 )
@@ -237,7 +250,6 @@ const mapStateToProps = (state) => {
     return {
         mainUser: state.userInfo,
         subUserInfo: state.subUserInfo,
-        adsInfo: state.adsInfo,
         lang: state.lang,
         rtl: state.rtl,
         page: state.page,

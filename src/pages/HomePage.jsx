@@ -22,6 +22,11 @@ import SiteView from '../components/SiteView';
 import { AdsHorizontal } from '../components/GoogleAds';
 import { exist, checkSeen } from '../helper';
 import { serverURL, s, categories, googleAds, countryArr } from '../srcSet';
+import ourServicesImage from "../assets/images/other/ourServices.jpg";
+import internationalImage from "../assets/images/other/international.jpg";
+import whyChooseUsImage from "../assets/images/other/whyChooseUs.jpg";
+import categoryImage from "../assets/images/other/category.jpg";
+
 const hrS = <hr style={{border:'heirline dashed #999999', width:'100%'}}/>
 
 class HomePage extends Component {
@@ -257,9 +262,9 @@ class HomePage extends Component {
                 <span>{setLT.welcomeToWhoraly}</span>
               </h1>
               <div>
-                <p style={{textAlign: 'justify', fontSize:w<s ? '14px' : '16px', lineHeight: '28px'}}>
+                <div style={{textAlign: 'justify', fontSize:w<s ? '14px' : '16px', lineHeight: '28px'}}>
                   <div dangerouslySetInnerHTML={{ __html: setLT.welcomeIntro }}></div>
-                </p>
+                </div>
                 <div style={{marginTop: '20px'}}>
                   <h2 style={{fontSize:'18px', fontWeight:450}}>
                     <span style={{fontSize:'20px'}}>{checkmark}</span>&nbsp;
@@ -310,7 +315,7 @@ class HomePage extends Component {
         <div className={`${w<s ? '' : 'sticky-top'}`} style={{top:70, zIndex:'1', margin:'0px 0px 20px', padding:'10px', width: w<s ? '100%' : '50%' , height: w<s ? '100%' : '50%'}}>
           <img
             style={{margin:'0px 0px 20px', width:'100%' , height:'300px'}}
-            src={require('../assets/images/other/ourServices.jpg')}
+            src={ourServicesImage}
             alt="box making"
           />
           {w>s && invite}
@@ -377,7 +382,7 @@ class HomePage extends Component {
     )
 
     const services = (
-      <div className='allShadow' style={{backgroundImage: `url(${require("../assets/images/other/ourServices.jpg")})`, backgroundSize: 'cover', backgroundPosition: 'right'}}>
+      <div className='allShadow' style={{backgroundImage: `url(${ourServicesImage})`, backgroundSize: 'cover', backgroundPosition: 'right'}}>
           <div style={{width:'100%', height:'100%', padding:'0px 0px', backgroundColor:'#ffffff99'}}>
             <div style={{width:'100%', height:'100%', padding:'70px 0px 40px', backgroundColor:'#ffffff99'}}>
                 {servicesHeader}
@@ -401,7 +406,7 @@ class HomePage extends Component {
           </div>
         </div>
 
-        <div style={{width: '100%', height: h+300, position:'fixed', marginTop:-top-h-70, backgroundImage: `url(${require("../assets/images/other/international.jpg")})`, backgroundSize: 'cover', backgroundPosition: 'center', zIndex:'-1'}}></div>
+        <div style={{width: '100%', height: h+300, position:'fixed', marginTop:-top-h-70, backgroundImage: `url(${internationalImage})`, backgroundSize: 'cover', backgroundPosition: 'center', zIndex:'-1'}}></div>
       </div>
     )
 
@@ -533,7 +538,7 @@ class HomePage extends Component {
         <div className={`d-flex ${w<s ? '' : 'sticky-top'}`} style={{top:70, zIndex:'1', margin:'0px 0px 20px', padding:'10px', width: w<s ? '100%' : '50%' , height: w<s ? '100%' : '50%', flexDirection:'column'}}>
           <img
             style={{margin:'0px 0px 20px', width:'100%' , height:'100%'}}
-            src={require('../assets/images/other/whyChooseUs.jpg')}
+            src={whyChooseUsImage}
             alt="ShiningPage Why Choose Us"
           />
           {w>s && invite2}
@@ -574,7 +579,7 @@ class HomePage extends Component {
     )
 
     const whyChooseUs = (
-      <div className='allShadow' style={{backgroundImage: `url(${require("../assets/images/other/whyChooseUs.jpg")})`, backgroundSize: 'cover', backgroundPosition: 'right'}}>
+      <div className='allShadow' style={{backgroundImage: `url(${whyChooseUsImage})`, backgroundSize: 'cover', backgroundPosition: 'right'}}>
           <div style={{width:'100%', height:'100%', padding:'0px 0px', backgroundColor:'#ffffff99'}}>
             <div style={{width:'100%', height:'100%', padding:'70px 0px 0px', backgroundColor:'#ffffff99'}}>
                 {whyChooseUsHeader}
@@ -613,7 +618,7 @@ class HomePage extends Component {
         <div className={`d-flex ${w<s ? '' : 'sticky-top'}`} style={{top:70, zIndex:'1', margin:'0px 0px 20px', padding:'10px', width: w<s ? '100%' : '40%' , height: w<s ? '100%' : '25%', flexDirection:'column'}}>
           <img
             style={{margin:'0px 0px 20px', width:'100%' , height:'300px'}}
-            src={require('../assets/images/other/category.jpg')}
+            src={categoryImage}
             alt="category"
           />
           <strong style={{fontSize:'15px', fontWeight:450, lineHeight:'25px', textAlign: rtl ? 'justify' : ''}}><span style={{fontSize:'20px'}}>{checkmark}</span>&nbsp;{setLT.businessOpportunity}</strong>
@@ -632,7 +637,7 @@ class HomePage extends Component {
     )
 
     const categoriesSection = (
-      <div className='allShadow' style={{backgroundImage: `url(${require("../assets/images/other/category.jpg")})`, backgroundSize: 'cover', backgroundPosition: 'right'}}>
+      <div className='allShadow' style={{backgroundImage: `url(${categoryImage})`, backgroundSize: 'cover', backgroundPosition: 'right'}}>
           <div style={{width:'100%', height:'100%', padding:'0px 0px', backgroundColor:'#ffffff99'}}>
             <div style={{width:'100%', height:'100%', padding:'70px 0px 40px', backgroundColor:'#ffffff99'}}>
                 {categoriesHeader}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Modal, Button } from 'react-bootstrap';
 import { setSubUserInfo, setUserInfo, setCountry } from '../../dataStore/actions';
-import CountrySelector from '../../components/CountrySelector';
+import CountrySelector from '../CountrySelector';
 import male from '../../assets/images/other/man2.png';
 import female from '../../assets/images/other/woman2.png';
 import { AiOutlineCloseCircle } from "react-icons/ai";

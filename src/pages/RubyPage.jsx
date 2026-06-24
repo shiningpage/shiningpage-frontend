@@ -19,6 +19,8 @@ import { FcStackOfPhotos } from "react-icons/fc";
 import { AdsHorizontal } from '../components/GoogleAds';
 import { exist, checkSeen } from '../helper';
 import { serverURL, s, googleAds } from '../srcSet';
+import videoImage from "../assets/images/other/video.png";
+import attachIcoImage from "../assets/images/file/attachIco.png";
 
 const rubySmall = (
     <img
@@ -199,7 +201,7 @@ class RubyPage extends Component {
             <div className={`d-flex`} style={{marginBottom:'10px', alignItems:'center'}}>
                 <img
                     style={{width:'25px', height:'25px', margin:'0px 5px'}}
-                    src={require(`../assets/images/other/video.png`)}
+                    src={videoImage}
                     alt="video icon"
                 />
                 <span style={{fontWeight:'bold'}}>{setLT.userVideos}:</span>
@@ -227,8 +229,8 @@ class RubyPage extends Component {
             <div className={`d-flex`} style={{marginBottom:'10px', alignItems:'center'}}>
                 <img
                     style={{width:'25px', height:'25px', margin:'0px 5px'}}
-                    src={require(`../assets/images/file/attachIco.png`)}
-                    alt="video icon"
+                    src={attachIcoImage}
+                    alt="attachment icon"
                 />
                 <span style={{fontWeight:'bold'}}>{setLT.attachments}:</span>
                 <div style={{margin:'0px 10px', direction:'ltr'}}>

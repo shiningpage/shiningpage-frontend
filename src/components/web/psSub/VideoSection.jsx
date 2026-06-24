@@ -9,6 +9,7 @@ import { MdClose } from 'react-icons/md';
 import { AdsHorizontal, AdsHorizontalSmall } from '../../GoogleAds'
 import {  } from './psHelper';
 import { s, lightColors, googleAds } from '../../../srcSet';
+import videoImage from "../../../assets/images/other/video.png";
 
 const VideoSection = (props) => {
     const { me, fc, loader, loadingVideo, subTitleStyleS, allVideo, activeType, categoryTitleX, categoryTitleXSub, categoryItems, catXRef, videoN, videoNCat, videoNCatSub, videoNSearch, searchVideo, psList, finishDataVideo, loader13, More, MoreX,  EditBtn, handleGetAllVideo, handleGetAllVideoSub, handleGetAllSearchVideo, toggleShowVideo, onToggleShowVideo, resetVideo, catQty, dispatch, mapStateToProps } = props;
@@ -60,7 +61,7 @@ const VideoSection = (props) => {
             {me && <EditBtn type={'add'} position={''} margin={'0px 10px'} onClick={() => onToggleVideo('new')}/>}
             <img
                 style={{width:'25px', height:'25px', margin:'0px 5px', filter: mainUser.businessType>=1 ? '' : 'grayscale(100%)'}}
-                src={require(`../../../assets/images/other/video.png`)}
+                src={videoImage}
                 alt="video icon"
             />
             <span>Video</span>

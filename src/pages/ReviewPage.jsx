@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Card, CardBody, Fa, Button, Modal} from "react-bootstrap";
+import { Container, Card, CardBody, Button, Modal} from "react-bootstrap";
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';

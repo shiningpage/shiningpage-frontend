@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
 import ModalAddImageToContent from './modals/ModalAddImageToContent';
 import '../assets/css/textEditor.css';
-import EditBtn from '../components/EditBtn';
+import EditBtn from './EditBtn';
 import { serverURL, s, } from '../srcSet';
 
 const TextEditor = ({

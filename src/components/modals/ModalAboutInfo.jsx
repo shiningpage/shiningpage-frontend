@@ -5,7 +5,7 @@ import { setSubUserInfo, setUserInfo } from '../../dataStore/actions';
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { serverURL, s } from '../../srcSet';
 import { cleanEditorHtml } from '../../helper';
-import TextEditor from '../../components/TextEditor';
+import TextEditor from '../TextEditor';
 
 const ModalAboutInfo = (props) => {
     const {mainUser, setLT, rtl, fullAccess} = props.mapStateToProps

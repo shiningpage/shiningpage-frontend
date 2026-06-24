@@ -17,6 +17,7 @@ import siteView from '../modules/siteView';
 import { AdsHorizontal } from './GoogleAds'
 import { exist, addNotification } from '../helper';
 import { serverURL, s, listRefreshQtySmall, googleAds } from '../srcSet';
+import aparatImage from "../assets/images/other/aparat.png";
 
 class VideoShow extends Component { 
  
@@ -1087,7 +1088,7 @@ class VideoShow extends Component {
     )
 
     const YoutubeIcon = <FaYoutube style={{fontSize:'30px', margin:'0px', color:'#c4302b'}}/>
-    const AparatIcon = <img style={{width:'30px', height:'25px', margin:'0px'}} src={require('../assets/images/other/aparat.png')} alt="aparat"/>
+    const AparatIcon = <img style={{width:'30px', height:'25px', margin:'0px'}} src={aparatImage} alt="aparat"/>
     const LinkedinIcon = <FaLinkedin className='' style={{fontSize:'25px', margin:'0px', color:'#0e76a8'}}/>
 
     const videoType = (

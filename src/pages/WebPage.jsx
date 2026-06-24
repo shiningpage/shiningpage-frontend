@@ -54,6 +54,7 @@ import { AdsHorizontal } from '../components/GoogleAds';
 import { exist, addNotification, totalFileSize, scrollTo, countAllAds, countAllVideo, countAllInsta, checkSeen } from '../helper';
 import { totalPrice, updateCategoryItems } from '../components/web/psSub/psHelper';
 import { serverURL, s, NavH, colors, mapColors, lightColors, designedByColors, googleAds } from '../srcSet';
+import internationalImage from "../assets/images/other/international.jpg";
 
 class WebPage extends Component {
 
@@ -975,7 +976,7 @@ class WebPage extends Component {
                     alignItems: 'center', // قرار دادن در وسط عمودی
                     filter: 'blur(50px)',
                     zIndex: '-1',
-                    backgroundImage: `url(${require("../assets/images/other/international.jpg")})`, backgroundSize: 'cover', backgroundPosition: 'right center'
+                    backgroundImage: `url(${internationalImage})`, backgroundSize: 'cover', backgroundPosition: 'right center'
                 }}
             >
             </div>

@@ -11,7 +11,7 @@ import '../../../assets/css/style.css';
 
 import { BiSolidCategory } from 'react-icons/bi';
 import { BsFillCaretLeftFill } from 'react-icons/bs';
-import { AdsHorizontal, AdsMultiplex } from '../../../components/GoogleAds';
+import { AdsHorizontal, AdsMultiplex } from '../../GoogleAds';
 import { filterCategory } from './psHelper';
 import { s, serverURL, googleAds } from '../../../srcSet';
 
