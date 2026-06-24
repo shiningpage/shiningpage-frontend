@@ -5,16 +5,14 @@
   "private": true,
   "dependencies": {
     "@fingerprintjs/fingerprintjs": "^4.6.0",
-    "axios": "^0.18.1",
+    "axios": "^1.18.1",
     "bootstrap": "^5.3.3",
     "connect-mongo": "^3.1.2",
     "date-and-time": "^0.10.0",
     "dotenv": "^16.3.2",
     "flag-icon-css": "^3.5.0",
-    "install": "^0.13.0",
     "jalaali-js": "^1.1.0",
     "mongoose": "^5.10.9",
-    "npm": "^6.14.8",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.9",
     "react-currency-input-field": "^3.9.0",
@@ -26,27 +24,26 @@
     "react-qr-code": "^2.0.15",
     "react-redux": "^9.3.0",
     "react-router-dom": "^6.28.0",
-    "react-scripts": "^5.0.1",
     "react-share": "^4.3.1",
     "react-svg-worldmap": "^1.0.44",
     "react-to-print": "^2.14.3",
     "redux": "^5.0.1",
     "sass": "^1.58.0"
   },
- "scripts": {
+  "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-
-    "start": "react-scripts --openssl-legacy-provider start",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
     "rename": "renamer --find App-clear.js --replace App.js ./src/App-clear.js"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^6.0.3",
     "cross-env": "^7.0.3",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
     "nodemon": "^2.0.22",
+    "prettier": "^3.8.4",
     "vite": "^8.1.0"
   },
   "no-unused-expressions": [
