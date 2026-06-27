@@ -75,7 +75,7 @@ class Search extends Component {
               <div>
                   <img
                       className={`C${item.fc>=0 ? item.fc : ''} btnShadow`}
-                      style={{objectFit: 'contain', width:"40px", height:"40px", borderRadius:item.businessType>0 ? '3px' : '100px', margin:'0px', border:'0px solid #ffffff40', padding:'2px', cursor:'pointer'}}
+                      style={{objectFit: 'contain', minWidth:"40px", minHeight:"40px", width:"40px", height:"40px", borderRadius:item.businessType>0 ? '3px' : '100px', margin:'0px', border:'0px solid #ffffff40', padding:'2px', cursor:'pointer'}}
                       src={ exist(item.profileIndex)
                           ? `https://www.pix.shiningpage.com/whoraly/profile/small/${item._id}-${item.profileIndex}.jpeg`
                           : item.genderValue===0 ? female : male
