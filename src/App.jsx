@@ -43,7 +43,7 @@ import Search from './components/Search';
 import ModalSidebarShiningpage from './components/modals/ModalSidebarShiningpage';
 import { identifyObj, exist, getBalance, scrollStatus, checkRubyInterval, } from './helper';
 import { serverURL, s, NavH, langArray, countryArr, noIndexPages } from './srcSet';
-import internationalImage from "./assets/images/other/international.jpg";
+import aiImage from "./assets/images/other/ai-background.jpg";
 
 class App extends Component {
 
@@ -867,7 +867,7 @@ class App extends Component {
 
         const header = (
             <div className='sticky-top cardShadow' style={{top:w<s ? (scrollDirection==='up' ? -45 : 0) : 0, transition:'.5s'}}>
-                <div className='backBlur' style={{height:NavHX, alignItems:'center', backgroundColor:'#ffffff99', borderBottom:'0px solid #d1a44a',
+                <div className='backBlur' style={{height:NavHX, alignItems:'center', backgroundColor:'#ffffff00', borderBottom:'0px solid #d1a44a',
                     justifyContent:'space-between', transition:'.5s'}}>
                     <div className='d-flex' style={{height:NavHX, alignItems:'center', padding:w<s ? '0px 5px' : '0px'}}>
                         <div className='d-flex' style={{justifyContent:'space-between', alignItems:'center', width:'100%', direction:'rtl'}}>{w<s ? headerAuthBoxM : headerAuthBox}</div>
@@ -1108,9 +1108,9 @@ class App extends Component {
                     display: 'flex',
                     justifyContent: 'center', // قرار دادن در وسط افقی
                     alignItems: 'center', // قرار دادن در وسط عمودی
-                    filter: 'blur(50px)',
+                    filter: 'blur(5px)',
                     zIndex: '-1',
-                    backgroundImage: `url(${internationalImage})`, backgroundSize: 'cover', backgroundPosition: 'right center'
+                    backgroundImage: `url(${aiImage})`, backgroundSize: 'cover', backgroundPosition: 'right center'
                 }}
             >
             </div>
