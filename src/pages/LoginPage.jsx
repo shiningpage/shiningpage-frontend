@@ -301,18 +301,18 @@ class LoginPage extends Component {
                     Gender
                 </label>
                 <div className='center animated fadeIn' style={{marginBottom:'50px', gap:'10px'}}>
-                    <div className="radio" style={{width:'100%', padding:'6px 20px', border:`1px solid ${genderValue===1 ? '#6D3EE3' : '#E1E4EC'}`, borderRadius:'8px', backgroundColor:`${genderValue===1 ? '#6D3EE310' : ''}`}} onClick={() => this.onGender(1)}>
-                        <label className='' style={{margin:'0px', alignItems:'center', cursor:'pointer', flexWrap:'wrap'}}>
-                            <div className='d-flex' style={{alignItems:'center', gap:'10px'}}>
+                    <div className="radio" style={{width:'100%', padding:w<400 ? '6px 10px' : '6px 20px', border:`1px solid ${genderValue===1 ? '#6D3EE3' : '#E1E4EC50'}`, borderRadius:'8px', backgroundColor:`${genderValue===1 ? '#6D3EE330' : ''}`, cursor:'pointer'}} onClick={() => this.onGender(1)}>
+                        <label className='' style={{margin:'0px', alignItems:'center', flexWrap:'wrap', cursor:'pointer'}}>
+                            <div className='d-flex' style={{alignItems:'center', gap:w<350 ? '5px' : '10px'}}>
                                 <input type="radio" value="option2" checked={genderValue===1 ? true : false} style={{cursor:'pointer'}} onChange={() => null} />
                                 <img src={male} alt="male" style={{filter: genderValue===1 ? '' : 'grayscale(100%)', objectFit: 'contain', borderRadius:'100px', width:'35px', height:'35px'}} />
                                 <span style={{marginTop:'5px'}}>Male</span>
                             </div>
                         </label>
                     </div>
-                    <div className="radio" style={{width:'100%', padding:'6px 20px', border:`1px solid ${genderValue===0 ? '#6D3EE3' : '#E1E4EC'}`, borderRadius:'8px', backgroundColor:`${genderValue===0 ? '#6D3EE310' : ''}`}} onClick={() => this.onGender(0)}>
-                        <label className='' style={{margin:'0px', alignItems:'center', cursor:'pointer', flexWrap:'wrap'}}>
-                            <div className='d-flex' style={{alignItems:'center', gap:'10px'}}>
+                    <div className="radio" style={{width:'100%', padding:w<400 ? '6px 10px' : '6px 20px', border:`1px solid ${genderValue===0 ? '#6D3EE3' : '#E1E4EC50'}`, borderRadius:'8px', backgroundColor:`${genderValue===0 ? '#6D3EE330' : ''}`, cursor:'pointer'}} onClick={() => this.onGender(0)}>
+                        <label className='' style={{margin:'0px', alignItems:'center', flexWrap:'wrap', cursor:'pointer'}}>
+                            <div className='d-flex' style={{alignItems:'center', gap:w<350 ? '5px' : '10px'}}>
                                 <input type="radio" value="option3" checked={genderValue===0 ? true : false} style={{cursor:'pointer'}} onChange={() => null} />
                                 <img className='' src={female} alt="female" style={{filter: genderValue===0 ? '' : 'grayscale(100%)', objectFit: 'contain', borderRadius:'100px', width:'35px', height:'35px'}} />
                                 <span style={{marginTop:'5px'}}>Female</span>
@@ -369,7 +369,7 @@ class LoginPage extends Component {
                     <FaUser className="absolute left-4 top-1/2 -translate-y-1/2 text-[#6D3EE3]" />
                     <input type="text" value={username} autoComplete="off" name="username"
                         placeholder="Enter your username"
-                        className="w-full h-12 border rounded-[8px] pl-12 pr-4 outline-none focus:ring-1 focus:ring-[#6D3EE3]"
+                        className="w-full h-12 border !border-[#E1E4EC50] rounded-[8px] pl-12 pr-4 outline-none focus:ring-1 focus:ring-[#6D3EE3]"
                         onChange={this.usernameHandler}
                     />
                 </div>
@@ -390,7 +390,7 @@ class LoginPage extends Component {
                     <FaLock className="absolute left-4 top-1/2 -translate-y-1/2 text-[#6D3EE3]" />
                     <input type={ toggleEye ? '' : 'password' } value={password} autoComplete="off" name="password"
                         placeholder="Enter your password"
-                        className="w-full h-12 border rounded-[8px] pl-12 pr-12 outline-none focus:ring-1 focus:ring-[#6D3EE3]"
+                        className="w-full h-12 border !border-[#E1E4EC50] rounded-[8px] pl-12 pr-12 outline-none focus:ring-1 focus:ring-[#6D3EE3]"
                         onChange={this.passwordHandler}
                     />
                     <div className="absolute right-4 top-1/2 -translate-y-1/2" onClick={() => this.onToggleEye()}
@@ -491,7 +491,7 @@ class LoginPage extends Component {
                     </span>
                 </h3>
 
-                <p className="text-sm text-slate-500 max-w-md mx-auto leading-relaxed">
+                <p className="text-sm text-slate-400 max-w-md mx-auto leading-relaxed">
                     Join us today! Fill in the details below to get started.
                 </p>
             </div>
@@ -503,28 +503,28 @@ class LoginPage extends Component {
                         Welcome back
                     </span>
                 </h3>
-                <p className="text-sm text-slate-500 max-w-md mx-auto leading-relaxed">
+                <p className="text-sm text-slate-400 max-w-md mx-auto leading-relaxed">
                     Login to your account to continue.
                 </p>
             </div>
         )
         const signupLink = (
             <div>
-                Already have an account? <span className='link-underline' style={{color:'#6D3EE3'}} onClick={() => this.onLoginX()}>Login</span>
+                Already have an account? <span className='link-underline text-[#0C6DFB] font-medium' onClick={() => this.onLoginX()}>Login</span>
             </div>
         )
         const loginLink = (
             <div>
-                {"Don't have an account?"} <span className='link-underline' style={{color:'#6D3EE3'}} onClick={() => this.onRegisterX()}>Sign up</span>
+                {"Don't have an account?"} <span className='link-underline text-[#0C6DFB] font-medium' onClick={() => this.onRegisterX()}>Sign up</span>
             </div>
         )
-        const forgetPassword = <div className='link-underline mt-5' style={{color:'#6D3EE3'}} onClick={() => null}>Forget Password?</div>
+        const forgetPassword = <div className='link-underline mt-5 text-[#0C6DFB] font-medium' onClick={() => null}>Forget Password?</div>
 
         return (
-            <Container style= {{padding:'50px'}}>
+            <Container className={`${w<s ? 'p-4' : 'p-10'} text-white`}>
                 <div className='center' style={{flexDirection:'column'}}>
                     <div className='center' style={{width:'100%'}}>
-                        <div className='animated fadeInUpX backBlur' style={{animationDelay:'.5s', backgroundColor: '#ffffff', width: '100%', maxWidth:'400px', borderRadius:'20px'}}>
+                        <div className='animated fadeInUpX backBlur' style={{animationDelay:'.5s', backgroundColor: '#ffffff10', width: '100%', maxWidth:'400px', borderRadius:'20px'}}>
                             { auth
                                 ?
                                 <div style={{padding:'30px 0px 10px'}}>
