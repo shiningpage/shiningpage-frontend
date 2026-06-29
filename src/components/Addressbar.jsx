@@ -38,7 +38,7 @@ class Addressbar extends Component {
     )
 
     return (
-      <div className='cardShadow'>
+      <div className=''>
         <div style={{padding:'10px', fontWeight:450, color:'#ffffff', backgroundColor:'#ffffff00'}}>
           <Container>
             <div className='d-flex'>
@@ -48,7 +48,6 @@ class Addressbar extends Component {
             </div>
           </Container>
         </div>
-        {hrC14}
       </div>
     );
   }
