@@ -12,7 +12,8 @@ import { setAddress, setCountry, setSubject, setPageTitle,
 import toFarsi from '../modules/toFarsi';
 import CountrySelector from '../components/CountrySelector';
 import siteView from '../modules/siteView';
-import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { FaRegEye, FaRegEyeSlash, FaUser, FaLock, FaShieldAlt, FaBolt,
+  FaStar, FaGlobe, } from "react-icons/fa";
 import { exist, checkSeen } from '../helper';
 import { serverURL, s } from '../srcSet';
 
@@ -69,12 +70,12 @@ class LoginPage extends Component {
     }
 
     changeHandler = e => {
-        var tx = this.props.lang==='fa' ? toFarsi(e.target.value) : e.target.value
+        var tx = e.target.value
         this.setState({ ...this.state, [e.target.name]: tx.toLowerCase().replace(/\s/g, '') });
     };
 
     passwordHandler = e => {
-        var tx = this.props.lang==='fa' ? toFarsi(e.target.value) : e.target.value
+        var tx = e.target.value
         this.setState({ ...this.state, [e.target.name]: tx.replace(/\s/g, '') });
     };
 
@@ -286,7 +287,7 @@ class LoginPage extends Component {
                 genderValue, membershipOption, emailL, genderTitleL, membershipTitleL, 
             } = this.state;
 
-        const {auth, rtl, lang, setLT, country, mainUser} = this.props;
+        const {auth, lang, setLT, country, mainUser} = this.props;
 
         window.recaptchaOptions = {
             lang: lang,
@@ -294,54 +295,32 @@ class LoginPage extends Component {
             removeOnUnmount: false,
         };
 
-        const pageHeader = (
-            <div className='center' style={{color:'',
-                fontSize: w<s ? '30px' : '40px', alignItems:'center'}}>
-                <span>{registerType
-                    ? <span className='animated fadeIn' style={{animationDelay:'.2s'}}>{/* setLT.signUpForm */}</span>
-                    : (loginType 
-                        ? <span className='animated zoomIn' style={{animationDelay:'.2s'}}>{/* setLT.loginForm */}</span>
-                        : <span className='animated zoomIn' style={{animationDelay:'.2s'}}>{auth ? 'ShiningPage' : "" }</span>
-                    )}
-                </span>
-            </div>
-        )
-
         const genderConst = (
             <div>
-                <div className='center animated fadeIn' style={{margin:'10px 0px 50px', color:'#7d828e'}}>
-                    <div className="radio" style={{margin:'0px 10px'}} onClick={() => this.onGender(1)}>
-                        <label className='center' style={{margin:'0px', alignItems:'center', cursor:'pointer', flexWrap:'wrap'}}>
-                            <img className='' src={male} alt="male" style={{filter: genderValue===1 ? '' : 'grayscale(100%)', objectFit: 'contain', borderRadius:'100px', width:'35px', height:'35px', margin:'0px', padding:'0px'}} />
-                            <div className='d-flex' style={{alignItems:'center'}}>
-                            <span style={{marginTop:lang==='fa' ? '0px' : '5px'}}>{setLT.male}</span>
-                            <input
-                                type="radio"
-                                value="option2"
-                                checked={genderValue===1 ? true : false}
-                                style={{margin:'0px 5px', cursor:'pointer'}}
-                                onChange={() => null}
-                            />
+                <label className="block mb-2 font-medium">
+                    Gender
+                </label>
+                <div className='center animated fadeIn' style={{marginBottom:'50px', gap:'10px'}}>
+                    <div className="radio" style={{width:'100%', padding:'6px 20px', border:`1px solid ${genderValue===1 ? '#6D3EE3' : '#E1E4EC'}`, borderRadius:'8px', backgroundColor:`${genderValue===1 ? '#6D3EE310' : ''}`}} onClick={() => this.onGender(1)}>
+                        <label className='' style={{margin:'0px', alignItems:'center', cursor:'pointer', flexWrap:'wrap'}}>
+                            <div className='d-flex' style={{alignItems:'center', gap:'10px'}}>
+                                <input type="radio" value="option2" checked={genderValue===1 ? true : false} style={{cursor:'pointer'}} onChange={() => null} />
+                                <img src={male} alt="male" style={{filter: genderValue===1 ? '' : 'grayscale(100%)', objectFit: 'contain', borderRadius:'100px', width:'35px', height:'35px'}} />
+                                <span style={{marginTop:'5px'}}>Male</span>
                             </div>
                         </label>
                     </div>
-                    <div className="radio" style={{margin:'0px 10px'}} onClick={() => this.onGender(0)}>
-                        <label className='center' style={{margin:'0px', alignItems:'center', cursor:'pointer', flexWrap:'wrap'}}>
-                            <img className='' src={female} alt="female" style={{filter: genderValue===0 ? '' : 'grayscale(100%)', objectFit: 'contain', borderRadius:'100px', width:'35px', height:'35px', margin:'0px', padding:'0px'}} />
-                            <div className='d-flex' style={{alignItems:'center'}}>
-                                <span style={{marginTop:lang==='fa' ? '0px' : '5px'}}>{setLT.female}</span>
-                                <input
-                                    type="radio"
-                                    value="option3"
-                                    checked={genderValue===0 ? true : false}
-                                    style={{margin:'0px 5px', cursor:'pointer'}}
-                                    onChange={() => null}
-                                />
+                    <div className="radio" style={{width:'100%', padding:'6px 20px', border:`1px solid ${genderValue===0 ? '#6D3EE3' : '#E1E4EC'}`, borderRadius:'8px', backgroundColor:`${genderValue===0 ? '#6D3EE310' : ''}`}} onClick={() => this.onGender(0)}>
+                        <label className='' style={{margin:'0px', alignItems:'center', cursor:'pointer', flexWrap:'wrap'}}>
+                            <div className='d-flex' style={{alignItems:'center', gap:'10px'}}>
+                                <input type="radio" value="option3" checked={genderValue===0 ? true : false} style={{cursor:'pointer'}} onChange={() => null} />
+                                <img className='' src={female} alt="female" style={{filter: genderValue===0 ? '' : 'grayscale(100%)', objectFit: 'contain', borderRadius:'100px', width:'35px', height:'35px'}} />
+                                <span style={{marginTop:'5px'}}>Female</span>
                             </div>
                         </label>
                     </div>
                 </div>
-                <span className='invalid-feedback' style={{ margin: '-30px 0px 0px 0px', display: genderErr ? 'block' : 'none', textAlign: rtl ? 'right' : 'left'}}>
+                <span className='invalid-feedback' style={{ marginTop: '-40px', display: genderErr ? 'block' : 'none'}}>
                     {genderErr}
                 </span>
             </div>
@@ -367,14 +346,14 @@ class LoginPage extends Component {
 
         const themeConst = (
             <div className='animated fadeIn' style={{animationDelay:'.4s', margin: '0px 0px 30px'}}>
-                <div className='d-flex' style={{color:'#7d828e', alignItems:'center'}}>
+                <div className='d-flex' style={{alignItems:'center'}}>
                     {setLT.favoriteTheme}&nbsp;
                     {scFc}
                 </div>
                 <div className='d-flex ' style={{width:'100%', margin: '0px 0px 0px', padding:'0px', borderRadius:'5px', flexWrap:'wrap'}}>
                     {buttons}
                 </div>
-                <span className='invalid-feedback' style={{ margin: '10px 0px 0px 0px', display: fcErr ? 'block' : 'none', textAlign: rtl ? 'right' : 'left'}}>
+                <span className='invalid-feedback' style={{ margin: '10px 0px 0px 0px', display: fcErr ? 'block' : 'none'}}>
                     {fcErr}
                 </span>
 
@@ -382,36 +361,44 @@ class LoginPage extends Component {
         )
 
         const usernameConst = (
-            <div>
-                <div className='animated fadeIn' style={{animationDelay:loginType ? '0s' : '.8s', margin: '10px 0px 0px 0px'}}>
-                    <label htmlFor="inp1" className={`${rtl ? 'inpRTL' : 'inpLTR' }`}>
-                        <input value={username} type="text" autoComplete="off" style={{textAlign: 'center', fontSize:'15px'}} id="inp1" placeholder="&nbsp;" name="username" onChange={this.usernameHandler}/>
-                        <span className="label" style={{fontSize:'15px'}}>{setLT.username}</span>
-                        <span className="border"></span>
-                    </label>
+            <div className='mb-4'>
+                <label className="block mb-2 font-medium">
+                    Username
+                </label>
+                <div className='animated fadeIn relative' style={{animationDelay:loginType ? '0s' : '.8s'}}>
+                    <FaUser className="absolute left-4 top-1/2 -translate-y-1/2 text-[#6D3EE3]" />
+                    <input type="text" value={username} autoComplete="off" name="username"
+                        placeholder="Enter your username"
+                        className="w-full h-12 border rounded-[8px] pl-12 pr-4 outline-none focus:ring-1 focus:ring-[#6D3EE3]"
+                        onChange={this.usernameHandler}
+                    />
                 </div>
-                <span className='invalid-feedback' style={{ display : usernameErr ? 'block' : 'none', textAlign: rtl ? 'right' : 'left'}}>
+                <span className='invalid-feedback' style={{ display : usernameErr ? 'block' : 'none'}}>
                     {usernameErr}
                 </span>
-                <span className='invalid-feedback' style={{ display : signedInUserErr ? 'block' : 'none', textAlign: rtl ? 'right' : 'left'}}>
+                <span className='invalid-feedback' style={{ display : signedInUserErr ? 'block' : 'none'}}>
                     {signedInUserErr}
                 </span>
             </div>
         )
         const passwordConst = (
             <div style={{marginBottom:'20px'}}>
-                <div className='animated fadeIn' style={{animationDelay: loginType ? '.2s' : '1s', margin: '30px 0px 0px 0px', position:'relative'}}>
-                    <label htmlFor="inp2" className={`${rtl ? 'inpRTL' : 'inpLTR' }`}>
-                        <input type={ toggleEye ? '' : 'password' } value={password} autoComplete="off" style={{textAlign: 'center', fontSize:'15px'}} id="inp2" placeholder="&nbsp;" name="password" onChange={this.passwordHandler}/>
-                        <span className="label" style={{fontSize:'15px'}}>{setLT.password}</span>
-                        <span className="border"></span>
-                    </label>
-                    <div className='' onClick={() => this.onToggleEye()}
-                        style={{ position:'absolute', top:0, right: !rtl ? 0 : '', left: rtl ? 0 : '', cursor:'pointer'}}>
+                <label className="block mb-2 font-medium">
+                    Password
+                </label>
+                <div className='animated fadeIn relative' style={{animationDelay: loginType ? '.2s' : '1s', position:'relative'}}>
+                    <FaLock className="absolute left-4 top-1/2 -translate-y-1/2 text-[#6D3EE3]" />
+                    <input type={ toggleEye ? '' : 'password' } value={password} autoComplete="off" name="password"
+                        placeholder="Enter your password"
+                        className="w-full h-12 border rounded-[8px] pl-12 pr-12 outline-none focus:ring-1 focus:ring-[#6D3EE3]"
+                        onChange={this.passwordHandler}
+                    />
+                    <div className="absolute right-4 top-1/2 -translate-y-1/2" onClick={() => this.onToggleEye()}
+                        style={{ cursor:'pointer'}}>
                         { toggleEye ? <FaRegEye /> : <FaRegEyeSlash /> }
                     </div>
                 </div>
-                <span className='invalid-feedback' style={{ display: passwordErr ? 'block' : 'none', textAlign: rtl ? 'right' : 'left'}}>
+                <span className='invalid-feedback' style={{ display: passwordErr ? 'block' : 'none'}}>
                     {passwordErr}
                 </span>
             </div>
@@ -421,14 +408,14 @@ class LoginPage extends Component {
                 <div className="d-flex justify-content-start animated fadeIn" style={{animationDelay: loginType ? '.4s' : '1.2s'}}>
                     <div style={{margin: '20px 0px -5px 0px', transform:'scale(0.77)'}}>
                         <ReCAPTCHA
-                            style={{margin: rtl ? '0px -38px 0px 0px' : '0px 0px 0px -38px'}}
+                            className='-ml-[38px]'
                             sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
                             secretkey={import.meta.env.VITE_RECAPTCHA_SECRET_KEY}
                             onChange={this.onRecaptchaChange}
                         />
                     </div>
                 </div>
-                <span className='invalid-feedback rtl' style={{ display : recaptchaErr ? 'block' : 'none', textAlign: rtl ? 'right' : 'left'}}>
+                <span className='invalid-feedback' style={{ display : recaptchaErr ? 'block' : 'none'}}>
                     {recaptchaErr}
                 </span>
             </div>
@@ -438,16 +425,7 @@ class LoginPage extends Component {
                 <span className='invalid-feedback' style={{ margin: '20px 0px 0px', display: userPassErr ? 'block' : 'none', textAlign:'center'}}>
                     {userPassErr}
                 </span>
-
-                <div className='center btnShadow'
-                    style={{width: '120px', alignItems:'center', 
-                            height: '35px',
-                            margin: '50px',
-                            //border: '2px solid #9e5dff',
-                            padding: '2px',
-                            color: '#ffffff',
-                            backgroundColor: registerType ? '#FFA502' : '#00CCFF',
-                            borderRadius: '5px'}}
+                <div className='center btnShadow w-full h-12 my-10 rounded-[8px] bg-gradient-to-r from-blue-600 to-purple-600 py-3 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:from-blue-700 hover:to-purple-700 hover:shadow-xl active:scale-98 focus:outline-none focus:ring-4 focus:ring-blue-300'
                     onClick = {() => registerType ? this.onRegister() : this.onLogin()}>
                     <span style={{fontSize:'16px'}}>{registerType ? setLT.signUp : setLT.login}</span>
                 </div>
@@ -472,13 +450,15 @@ class LoginPage extends Component {
 
         const countryConst = (
             <div className='animated fadeIn sticky-top' style={{animationDelay:'0s', margin:'20px 0px 50px', }}>
-                <div className='d-flex' style={{marginBottom:'0px', color:'#7d828e', alignItems: 'flex-start'}}>
-                    {setLT.country}&nbsp;
+                <label className="block mb-2 font-medium">
+                    Country
+                </label>
+                <div className='d-flex' style={{marginBottom:'0px', alignItems: 'flex-start', gap:'10px'}}>
                     <div className='d-flex sticky-top' style={{direction:'ltr', }}>
                         <CountrySelector/>
                     </div>
                 </div>
-                <span className='invalid-feedback' style={{ margin: '0px 0px 0px 0px', display: countryErr ? 'block' : 'none', textAlign: rtl ? 'right' : 'left'}}>
+                <span className='invalid-feedback' style={{ margin: '0px 0px 0px 0px', display: countryErr ? 'block' : 'none'}}>
                     {countryErr}
                 </span>
             </div>
@@ -503,31 +483,51 @@ class LoginPage extends Component {
             </div>
         )
 
-        const header = (
-            <div className='center' style={{alignItems:'center', flexDirection:'column', padding: '0px 10px'}}>
-                <div className='d-flex' style={{justifyContent:rtl ? 'space-between' : 'flex-end', alignItems:'center', width:'100%', direction:'rtl'}}>
-                    <h1 className='animated fadeInLeft tx' style={{animationDelay:'.5s', color:'#ffffff', fontWeight:'bold', fontSize: w<s ? '30px' : '', textAlign:'center', margin:'30px 10px 30px'}}>{setLT.signupLogin}</h1>
-                </div>
+        const signupHeader = (
+            <div className="text-center mb-10">
+                <h3 className="text-4xl font-extrabold tracking-tight">
+                    <span className="bg-gradient-to-r from-violet-600 via-indigo-500 to-sky-500 bg-clip-text text-transparent">
+                        Create your account
+                    </span>
+                </h3>
+
+                <p className="text-sm text-slate-500 max-w-md mx-auto leading-relaxed">
+                    Join us today! Fill in the details below to get started.
+                </p>
             </div>
         )
-        
+        const loginHeader = (
+            <div className="text-center mb-10">
+                <h3 className="text-4xl font-extrabold tracking-tight">
+                    <span className="bg-gradient-to-r from-violet-600 via-indigo-500 to-sky-500 bg-clip-text text-transparent">
+                        Welcome back
+                    </span>
+                </h3>
+                <p className="text-sm text-slate-500 max-w-md mx-auto leading-relaxed">
+                    Login to your account to continue.
+                </p>
+            </div>
+        )
+        const signupLink = (
+            <div>
+                Already have an account? <span className='link-underline' style={{color:'#6D3EE3'}} onClick={() => this.onLoginX()}>Login</span>
+            </div>
+        )
+        const loginLink = (
+            <div>
+                {"Don't have an account?"} <span className='link-underline' style={{color:'#6D3EE3'}} onClick={() => this.onRegisterX()}>Sign up</span>
+            </div>
+        )
+        const forgetPassword = <div className='link-underline mt-5' style={{color:'#6D3EE3'}} onClick={() => null}>Forget Password?</div>
+
         return (
-            <div className='' style= {{marginBottom:'50px'}}>
-                <Container>
-                    <div className='center' style={{flexDirection:'column', alignItems:'center'}}>
-                        {header}
-                    </div>
-    
+            <Container style= {{padding:'50px'}}>
                 <div className='center' style={{flexDirection:'column'}}>
                     <div className='center' style={{width:'100%'}}>
-                        <div className='animated fadeInUpX backBlur' style={{animationDelay:'.5s', backgroundColor: '#ffffff99', width: '100%', maxWidth:'500px', padding:'10px', borderRadius:'5px'}}>
-                        <div className='animated fadeInUpX backBlur' style={{animationDelay:'.5s', backgroundColor: '#ffffff99', width: '100%', maxWidth:'500px', borderRadius:'5px'}}>
-                            <div style={{padding:'0px'}}>
-                                {pageHeader}
-                            </div>
+                        <div className='animated fadeInUpX backBlur' style={{animationDelay:'.5s', backgroundColor: '#ffffff', width: '100%', maxWidth:'400px', borderRadius:'20px'}}>
                             { auth
                                 ?
-                                <CardBody style={{padding:'30px 0px 10px'}}>
+                                <div style={{padding:'30px 0px 10px'}}>
                                     <div className='center' style={{alignItems:'center', flexDirection:'column'}}>
                                         <Link to={`/`} className='center' style={{alignItems:'center', flexDirection:'column'}}>
                                             {UserImage}
@@ -536,34 +536,28 @@ class LoginPage extends Component {
                                         </Link>
                                         {signOutBtn}
                                     </div>
-                                </CardBody>
+                                </div>
                                 :
-                                <CardBody style={{padding: w<300 ? '10px 0px' :'10px'}}>
-                                    <div className='center' style={{margin:'30px 0px'}}>
-                                        {loginX}
-                                        {registerX}
+                                <div className='p-10px' style={{padding: w<300 ? '10px 0px' :'10px'}}>
+                                    <div className=' animated fadeInUpX' style={{padding:'25px 10px 5px'}}>
+                                        {registerType ? signupHeader : loginHeader}
+                                        {registerType && genderConst}
+                                        {/* registerType && themeConst */}
+                                        {registerType && countryConst}
+                                        {usernameConst}
+                                        {/* emailConst */}
+                                        {passwordConst}
+                                        {recaptchaConst}
+                                        { loginType && forgetPassword }
+                                        {registerBtn}
+                                        { registerType ? signupLink : loginLink }
                                     </div>
-                                    { (registerType || loginType) &&
-                                        <div className=' animated fadeInUpX' style={{borderTop: registerType ? '3px solid #FFA502' : '3px solid #00CCFF', borderRadius:'5px', padding:'25px 10px 5px'}}>
-                                            {/* registerType && membershipConst */}
-                                            {registerType && genderConst}
-                                            {/* registerType && themeConst */}
-                                            {registerType && countryConst}
-                                            {usernameConst}
-                                            {/* emailConst */}
-                                            {passwordConst}
-                                            {recaptchaConst}
-                                            {registerBtn}
-                                        </div>
-                                    }
-                                </CardBody>
+                                </div>
                             }
-                        </div>
                         </div>
                     </div>
                 </div>
-                </Container>
-            </div>
+            </Container>
         )
     }
 }
@@ -580,7 +574,6 @@ const mapStateToProps = (state) => {
         businessType: state.userInfo['businessType'],
         userImg: state.userInfo['imageData'],
         auth: state.auth,
-        rtl: state.rtl,
         page: state.page,
         subject: state.subject,
         lang: state.lang,
