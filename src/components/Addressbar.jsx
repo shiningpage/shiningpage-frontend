@@ -16,10 +16,10 @@ class Addressbar extends Component {
 
   render() {
     const { } = this.state
-    const {rtl, auth, setLT, lang, address} = this.props
+    const {auth, setLT, lang, address} = this.props
     const {content, user, fix} = address
     const UN = user?.bizName ? user?.bizName : user?.username
-    const indicator = <FaAngleRight style={{margin:'0px 5px', transform: rtl ? 'scaleX(-1)' : ''}}/>
+    const indicator = <FaAngleRight style={{margin:'0px 5px'}}/>
     const hrC14 = <div className='C14' style={{width:'100%', height:'2px'}}></div>
 
     const homeNav = (
@@ -44,7 +44,7 @@ class Addressbar extends Component {
             <div className='d-flex'>
               {homeNav}
               {user && userNav}
-              <span className='underline' onClick={() => window.location.reload()}>{fix}</span>
+              <span className='white-nav font-light ' onClick={() => window.location.reload()}>{fix}</span>
             </div>
           </Container>
         </div>
