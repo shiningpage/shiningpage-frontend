@@ -66,66 +66,66 @@ class Brands extends Component{
 
     mapCompany = async (company) => {
         const {w, } = this.state
-        const { rtl, lang } = this.props
+        const {} = this.props
           var allCompany = company.map(
             (item, i) => {
                 // console.log(12, item)
+                const usernameX = item.bizName ? item.bizName : item.username
                 const userImg = (
-                    <div className={`C${item.fc}`} style={{width:"45px", height:"45px", borderRadius: item.businessType>0 ? '3px' : '100px', border:'1px solid #99999940', padding:'2px', overflow:'hidden'}}>
+                    <div className={`C${item.fc} w-[45px] h-[45px] ${item.businessType > 0 ? 'rounded-[3px]' : 'rounded-full'} border overflow-hidden`}>
                         <img
-                            className='zoomImg'
-                            style={{objectFit: 'contain', width:'100%', height:'100%'}}
+                            className='zoomImg object-contain w-full h-full'
                             src={ exist(item.profileIndex)
                                 ? `https://www.pix.shiningpage.com/whoraly/profile/big/${item._id}-${item.profileIndex}.jpeg`
                                 : item.genderValue===0 ? female : male
                             }
-                            alt={item.username}
+                            alt={usernameX}
                         />
                     </div>
                 )
                 const aboutImg = (
-                    <div style={{width:"20vw", height:"calc(6vh + 7vw)", minWidth:'220px', minHeight:'140px', borderRadius:'10px', border:'1px solid #99999930', overflow:'hidden'}}>
+                    <div className='w-[20vw] h-[calc(6vh+7vw)] min-w-[220px] min-h-[140px] rounded-[10px_10px_0px_0px] overflow-hidden'>
                         <img
-                            className='zoomImg'
-                            style={{objectFit: 'cover', width:'100%', height:'100%'}}
+                            className='zoomImg object-cover w-full h-full'
                             src={ exist(item.aboutIndex)
                                 ? `https://www.pix.shiningpage.com/whoraly/about/big/${item._id}-${item.aboutIndex}.jpeg`
                                 : exist(item.profileIndex)
                                     ? `https://www.pix.shiningpage.com/whoraly/profile/big/${item._id}-${item.profileIndex}.jpeg`
                                     : item.genderValue===0 ? female : male
                             }
-                            alt={`${item.username} about`}
+                            alt={`${usernameX} about`}
                         />
                     </div>
                 )
                 const country = (
-                    <div className='d-flex' style={{alignItems:'center', height:'', justifyContent:'flex-start', margin:'0px 0px 0px', whiteSpace:'nowrap'}}>
-                        <div className={`flag-icon flag-icon-${item.countryCode ? item.countryCode.toLowerCase() : ''}`} style={{border:'1px solid #99999950', fontSize:'17px'}}></div>&nbsp;
-                        <div style={{fontSize:'12px', color: ''}}>{item.country ? item.country.toUpperCase() : ''}</div>
+                    <div className='flex items-center justify-start mb-1 whitespace-nowrap gap-2.5'>
+                        <div className={`flag-icon flag-icon-${item.countryCode ? item.countryCode.toLowerCase() : ''} border border-[#99999950] text-[17px]`}></div>
+                        <div className='text-[12px]'>{item.country ? item.country.toUpperCase() : ''}</div>
                     </div>
                 )
-                const usernameX = item.bizName ? item.bizName : item.username
                 const username = (
-                    <div className='' style={{width:w<s ? '' : '', fontSize:'14px', fontWeight:400, margin:'0px', color:'', whiteSpace:'nowrap', overflow:'scroll'}}>
+                    <div className='text-sm font-normal m-0 whitespace-nowrap overflow-scroll'>
                         {usernameX}
                     </div>
                 )
-                const jobSummaryStyle = {width:'100%', padding:'0px', fontSize:'16px', fontWeight:450, margin:'8px 0px 4px', overflow: 'hidden', textAlign: rtl ? 'right' : 'left', color:''}
-                const jobSummary = <div className='d-flex' style={jobSummaryStyle}>{item.jobSummary}</div>
+                const jobSummary = <div className='d-flex w-full h-20 p-0 text-[16px] overflow-hidden'>{item.jobSummary}</div>
                 const root = item.businessType>0 ? 'publisher' : 'user'
 
                 return (
-                    <Link to={`/${root}/${item.username}`} key={i} className='zoom'
-                        style={{textDecoration:'none', color:'#000000', position:'relative', padding:'10px', height:'300px', cursor:'pointer'}}
-                        // onClick={() => this.onToggleWebPage(item)}
-                    >
+                    <Link to={`/${root}/${item.username}`} key={i}
+                        className='zoom !no-underline !text-[#ffffff] font-thin relative cursor-pointer 
+                        bg-[#ffffff10] border !border-white/20 
+                        hover:!border-white hover:bg-[#ffffff20] hover:shadow-[0_10px_30px_rgba(255,255,255,0.15)] 
+                        transition-all duration-300 rounded-[10px]'>
                         {aboutImg}
-                        {jobSummary}
-                        <div className='d-flex' style={{position:'absolute', bottom:0, margin:'0px'}}>
-                            {userImg}&nbsp;&nbsp;
-                            <div>
-                                {country}
-                                {username}
+                        <div className='p-2.5'>
+                            {jobSummary}
+                            <div className='flex gap-2.5'>
+                                {userImg}
+                                <div>
+                                    {country}
+                                    {username}
+                                </div>
                             </div>
                         </div>
                     </Link>
@@ -141,23 +141,23 @@ class Brands extends Component{
 
 	render () {
         const {w, allCompany, loadingData} = this.state
-        const {starredCompany, rtl, setLT} = this.props
-        const loaderZ = <div className='loader-13' style={{margin: '0px', color:'#d1a44a', transform: rtl ? 'rotate(180deg)' : ''}}></div>
+        const {starredCompany} = this.props
+        const loaderZ = <div className='loader-13 m-0 text-[#d1a44a]'></div>
 
         const ColorLoadingCenter = (
-            <div className='center' style={{width:'100%', direction:rtl ? 'rtl' : 'ltr'}}>{loaderZ}</div>
+            <div className='center w-full'>{loaderZ}</div>
         )
 
         const allCompanyList = (
-            <div className={'d-flex'} style={{width:'100%', height:'100%', alignItems:'flex-start', zIndex:'0'}}>
+            <div className='flex w-full h-full items-start z-0 gap-4' >
                 {(loadingData && starredCompany.length===0) ? ColorLoadingCenter : allCompany}
             </div>
         )
     
         return (
-            <div className='d-flex animated fadeIn' style={{animationDelay:'1s', width: '100%', padding:w<s ? '10px 0px 30px' : '30px 10px 50px', flexDirection:'column'}}>
-                <h4 style={{ fontWeight:'bold', margin:'10px' }}>Sample ShiningPages</h4>
-                <div className='' style={{top:0, width:'100%', height:'', padding:'0px', flexDirection:'', direction:rtl ? 'rtl' : 'ltr', overflow:'scroll'}}>
+            <div className='flex animated fadeIn w-full flex flex-col px-[10px]' style={{animationDelay:'1s'}}>
+                <h4 className='text-white font-thin !mt-4'>Top Shining Pages</h4>
+                <div className='top-0 w-full overflow-scroll py-4'>
                     {allCompanyList}
                 </div>
             </div>
@@ -168,7 +168,6 @@ class Brands extends Component{
 const mapStateToProps = (state) => {
     return {
         mainUserId: state.userInfo['_id'],
-        rtl: state.rtl,
         lang: state.lang,
         page: state.page,
         setLT: state.setLT,
