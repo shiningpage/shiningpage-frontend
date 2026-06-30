@@ -962,8 +962,8 @@ class App extends Component {
         )
 
         const updateVersion = (
-            <div className='' style={{alignItems:'center', height:'40px', marginTop:'20px', padding:toggleSidebar ? '0px 20px' : ''}}>
-                <UpdateVersion color={toggleSidebar ? '#ffffff' : ''} fontWeight={toggleSidebar ? 450 : ''}/>
+            <div style={{alignItems:'center', height:'40px', marginTop:'20px', padding:toggleSidebar ? '0px 20px' : ''}}>
+                <UpdateVersion fontWeight={toggleSidebar ? 450 : ''}/>
             </div>
         )
 
@@ -1117,8 +1117,7 @@ class App extends Component {
         )
 
         const hrF = <hr className='C7' style={{height:'1px', margin:'0px 0px 15px', opacity:'1'}}/>
-        const footerStyle = {padding:'10px', width:'100%'}
-        const titleStyle = {fontWeight:'bold'}
+        const footerClass = 'w-full mb-10 p-2.5 text-white'
 
         const subStyle = {fontSize:'14px', margin: '0px', alignItems:'center', direction: rtl ? 'ltr' : 'ltr', color:''}
 
@@ -1173,11 +1172,11 @@ class App extends Component {
         )
 
         const shiningpage = (
-            <Link to={`/`} className='d-flex sticky-top' style={{textDecoration:'none', alignItems:'flex-start', marginBottom:'-7px', color:'#000000', zIndex:'1'}}>
+            <Link to={`/`} className='d-flex sticky-top' style={{textDecoration:'none', alignItems:'flex-start', marginBottom:'-7px', zIndex:'1'}}>
                 <div className='center C7' style={{width:'35px', height:'35px', borderRadius:'6px', alignItems:'center', padding:'2px', margin:'0px 5px -8px -5px'}}>
                     <div className='logo' style={{width:'100%', height:'100%'}}></div>
                 </div>
-                <div className="nav" style={titleStyle}>
+                <div className="white-nav">
                     SHINING PAGE &nbsp;
                     <span style={{fontSize:'12px'}}>(Version: {import.meta.env.VITE_VERSION})</span>
                 </div>
@@ -1201,7 +1200,7 @@ class App extends Component {
         )
 
         const footer1 = (
-            <div style={footerStyle}>
+            <div className={footerClass}>
                 {shiningpage}
                 {hrF}
                 {/* supportBtn */}
@@ -1210,40 +1209,26 @@ class App extends Component {
             </div>
         )
 
-        const footer2Style = {textDecoration:'none', marginBottom:'10px'}
+        const footer2Class = 'white-nav block !no-underline mb-2.5 font-thin'
         const footer2 = (
-            <div style={footerStyle}>
-                <div style={titleStyle}>SHORTCUTS</div>
+            <div className={footerClass}>
+                <div>SHORTCUTS</div>
                 {hrF}
-                <Link to={`/`} className='nav' onClick={() => this.onToggle('home')} style={footer2Style}>
-                    <span style={{whiteSpace:'nowrap'}}>{setLT.home}</span>
-                </Link>
-                <Link to={`/latest`} className='nav' onClick={() => this.onToggle('latest')} style={footer2Style}>
-                    <span style={{whiteSpace:'nowrap'}}>Latest posts</span>
-                </Link>
-                <Link to={`/contact`} className='nav' onClick={() => this.onToggle('contactUs')} style={footer2Style}>
-                    <span style={{whiteSpace:'nowrap'}}>{setLT.contact}</span>
-                </Link>
-                <Link to={`/about`} className='nav' style={footer2Style}>
-                    <span style={{whiteSpace:'nowrap'}}>{setLT.about}</span>
-                </Link>
-                <Link to={`/reviews`} className='nav' style={footer2Style}>
-                    <span style={{whiteSpace:'nowrap'}}>{setLT.memberReviews}</span>
-                </Link>
-                {/* <hr style={{width:'150px'}}/>
-                <Link to={`/login`} className='nav' style={{...footer2Style, marginBottom:'30px'}}>
-                    <span style={{whiteSpace:'nowrap'}}>{setLT.signupLogin}</span>
-                </Link> */}
+                <Link to={`/`} className={footer2Class} onClick={() => this.onToggle('home')}>{setLT.home}</Link>
+                <Link to={`/latest`} className={footer2Class} onClick={() => this.onToggle('latest')}>Latest posts</Link>
+                <Link to={`/contact`} className={footer2Class} onClick={() => this.onToggle('contactUs')}>{setLT.contact}</Link>
+                <Link to={`/about`} className={footer2Class}>{setLT.about}</Link>
+                <Link to={`/reviews`} className={footer2Class}>{setLT.memberReviews}</Link>
             </div>
         )
 
         const footer3 = (
-            <div style={footerStyle}>
-                <div style={titleStyle}>MISSION</div>
+            <div className={footerClass}>
+                <div>MISSION</div>
                 {hrF}
                 <div style={{marginBottom:'20px', fontSize:'14px', direction:rtl ? 'rtl' : '', textAlign:rtl ? 'justify' : ''}}>
-                    <div style={{fontWeight:450, marginBottom:'10px'}}>{setLT.missionT1}</div>
-                    <div style={{lineHeight:'25px'}}>{setLT.missionT2}</div>
+                    <div style={{marginBottom:'10px'}}>{setLT.missionT1}</div>
+                    <div className='font-thin' style={{lineHeight:'25px'}}>{setLT.missionT2}</div>
                 </div>
                 {/* <PsychologyBtn/> */}
             </div>
@@ -1301,7 +1286,7 @@ class App extends Component {
         )
 
         const footer = (
-            <div className="backBlur" style={{marginTop: w<s && ['web', 'ps'].includes(page) ? '' : '0px', backgroundColor:'#ffffff99', borderTop:'0px solid #d1a44a', direction:'ltr'}}>
+            <div className="backBlur" style={{marginTop: w<s && ['web', 'ps'].includes(page) ? '' : '0px', color:'#ffffff', backgroundColor:'#01033d', borderTop:'0px solid #d1a44a'}}>
                 {hrC14}
                 <Container style={{padding:'10px 0px 0px'}}>
                     <div className='d-flex' style={{padding:'0px 10px', flexWrap:w<s ? 'wrap' : ''}}>

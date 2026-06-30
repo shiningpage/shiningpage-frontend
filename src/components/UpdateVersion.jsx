@@ -31,7 +31,7 @@ class UpdateVersion extends Component{
         const {setLT, color, fontWeight } = this.props
 
         return (
-            <div className='d-flex nav' style={{alignItems:'center', width:'100%', color, fontWeight}} onClick={() => this.onUpdateVersion()}>
+            <div className='d-flex white-nav' style={{alignItems:'center', width:'100%', color, fontWeight}} onClick={() => this.onUpdateVersion()}>
                 <HiOutlineRefresh style={{width:'18px', margin:'10px 0px', fontSize:'18px'}}/>
                 <div style={{margin:'0px 10px', fontSize:'15px'}}>{setLT.versionUpdate}</div>
             </div>
