@@ -108,7 +108,7 @@ class Brands extends Component{
                         {usernameX}
                     </div>
                 )
-                const jobSummary = <div className='d-flex w-full h-20 p-0 text-[16px] overflow-hidden'>{item.jobSummary}</div>
+                const jobSummary = <div className='d-flex w-full h-20 p-0 text-[14px] overflow-hidden'>{item.jobSummary}</div>
                 const root = item.businessType>0 ? 'publisher' : 'user'
 
                 return (
