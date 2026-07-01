@@ -67,7 +67,7 @@ class Search extends Component {
   searchMemberMap = async (x) => {
     var addUser, countryCode, userCountry, userImage, tableInfo
     const {w, n,} = this.state
-    const {rtl, setLT, fullAccess} = this.props
+    const {setLT, fullAccess} = this.props
     var dataRv = x.map (
         (item, i) => (
           //console.log(55555555, item),
@@ -227,7 +227,7 @@ class Search extends Component {
   
   render() {
     const {w, finishData, loadingData, searchUsers, searchMember, } = this.state
-    const {rtl, setLT, auth, fullAccess} = this.props;
+    const {setLT, auth, fullAccess} = this.props;
     const loaderZ = <div className='loader-13' style={{margin: '0px', color:'#d1a44a'}}></div>
 
     const more = (
@@ -263,18 +263,49 @@ class Search extends Component {
     )
 
     const searchTape = (
-      <div style={{position:'relative', margin:'0px', borderRadius:'3px', width:w<s ? '100%' : (w<1400 ? (w<992 ? '160px' : (auth ? '160px' : '230px')) : '230px'), fontSize:'13px'}}>
-        <input type="text" value={searchUsers} placeholder='Members ...' name='searchUsers' autoComplete="off"
-          className="form-control"
-          style={{textAlign: rtl ? 'right' : 'left', padding:rtl ? '0px 10px 0px 70px' : '0px 70px 0px 10px', backgroundColor:'#ffffff99',
-            width:'100%', height:'30px', fontSize:'13px', borderRadius:'8px', direction:rtl ? 'rtl' : 'ltr'}}
-          onChange={this.changeUsername} onKeyPress={this.startSearch} onFocus={this.startSearch}/>
-        <BsSearch color="" size="1.3em" onClick={this.startSearch}
-          style={{position:'absolute', top: '6px', right: rtl ? '' : '5px', left: rtl ? '5px' : '', width: w<s? '30px' : '35px'}}/>
-        <IoMdClose color="" size="1.3em" onClick={this.clearSearch}
-          style={{position:'absolute', top: '6px', left:rtl ? '40px' : '', right: rtl ? '' : '40px', width: w<s? '30px' : '35px', display: searchUsers.length>0 ? '' : 'none'}}/>
+      <div
+        className={`relative m-0 rounded-[3px] text-[13px] ${
+          w < s
+            ? "w-full"
+            : w < 1400
+            ? w < 992
+              ? "w-40"
+              : auth
+              ? "w-40"
+              : "w-[230px]"
+            : "w-[230px]"
+        }`}
+      >
+        <input
+          type="text"
+          value={searchUsers}
+          placeholder="Members ..."
+          name="searchUsers"
+          autoComplete="off"
+          onChange={this.changeUsername}
+          onKeyPress={this.startSearch}
+          onFocus={this.startSearch}
+          className="form-control w-full h-[30px] px-[70px] pl-[10px] !text-[14px] !font-light rounded-[8px] bg-transparent text-white placeholder:!text-white placeholder:opacity-70 [direction:ltr] outline-none border border-white/30"
+        />
+
+        <BsSearch
+          size="1.3em"
+          onClick={this.startSearch}
+          className={`absolute top-[6px] right-[5px] text-white ${
+            w < s ? "w-[30px]" : "w-[35px]"
+          }`}
+        />
+
+        <IoMdClose
+          size="1.3em"
+          onClick={this.clearSearch}
+          className={`absolute top-[6px] right-[40px] text-white ${
+            w < s ? "w-[30px]" : "w-[35px]"} ${
+            searchUsers.length > 0 ? "block" : "hidden"
+          }`}
+        />
       </div>
-    )
+    );
 
     return (
       <div className="btn-group" style={{padding:'0px', fontSize:'12px', fontWeight:'', margin:'0px 10px', cursor:'pointer'}}>
@@ -305,7 +336,6 @@ const mapStateToProps = (state) => {
     username: state.userInfo['username'],
     fc: state.userInfo.fc,
     auth: state.auth,
-    rtl: state.rtl,
     lang: state.lang,
     geo: state.geo,
     page: state.page,
