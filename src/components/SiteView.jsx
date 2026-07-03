@@ -3,9 +3,10 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { Container } from 'react-bootstrap';
 import { FaAngleLeft } from 'react-icons/fa';
+import { IoGlobeSharp, IoGlobeOutline } from "react-icons/io5";
 import { WorldMap } from 'react-svg-worldmap';
 import { getPos, dig3 } from '../helper';
-import { serverURL, s, listRefreshQty, listRefreshQtySmall, colors, lightColors } from '../srcSet';
+import { serverURL, s, countryArr, mapColors, listRefreshQty, listRefreshQtySmall, colors, lightColors } from '../srcSet';
 
 class SiteView extends Component {
 
@@ -15,7 +16,7 @@ class SiteView extends Component {
     likeViewChatWidth: 300,
     likeViewChatHeight: 450,
     viewCountAll: [],
-
+    topCountries:[],
   }
 
   componentDidMount = async () => {
@@ -23,7 +24,7 @@ class SiteView extends Component {
     const statisticsSub = document.getElementById('statisticsSub');
     const statisticsSubTop = statisticsSub.getBoundingClientRect().top;
     await this.getCountryViewers()
-    this.setStatisticsSize()
+    // this.setStatisticsSize()
     // await this.countLikers()
     // await this.countCommenters()
     // await this.getViewers()
@@ -46,100 +47,130 @@ class SiteView extends Component {
     }
   }
 
-  getCountryViewers = async (x) => {
-    this.setState({ 
-        gettingCountryViewers: true,
-        viewCountAll: []
-    })
+  getCountryViewers = async () => {
+    this.setState({
+      gettingPageViewers: true,
+      viewCountAll: []
+    });
 
-    var data = {
-        userId: this.props.userId,
-    }    
-    await axios.post(`${serverURL}/view/getSiteViewMainGroup`, data)
-    .then(async res => {
-        var cx = res.data
-        // console.log(1, cx)
+    const data = {
+      userId: this.props.userId,
+    };
 
-        var cxArr = [{country:'QQ', value:0}]
-        var x = 0
-        var maxView = 0
-        for(var i=0; i<cx.length; i++) {
-          if (cx[i].countryCode === "UM") {
-            cx[i].countryCode = "US";
-            cx[i].country = "United States";
-          }
-          if (cx[i].countryCode === "RU") {
-            cx[i].countryCode = "RU";
-            cx[i].country = "Russia";
-          }
-          if (cx[i].countryCode === "DO") {
-            cx[i].countryCode = "DO";
-            cx[i].country = "Dominican Republic";
-          }
-          if (cx[i].countryCode === "AE") {
-            cx[i].countryCode = "AE";
-            cx[i].country = "United Arab Emirates";
-          }
+    let cxArr = [];
 
+    await axios.post(`${serverURL}/view/getSiteViewMainGroup`, data).then(res => {
+
+      let cx = res.data;
+      console.log("cx:", cx);
+
+      // map سریع برای countryCode -> countryName
+      const countryMap = Object.fromEntries(
+        countryArr.map(item => [item.code, item.country])
+      );
+
+      // merge بر اساس countryCode
+      const merged = {};
+
+      cx.forEach(item => {
+        const code = item.countryCode;
+
+        if (!merged[code]) {
+          merged[code] = {
+            countryCode: code,
+            country: countryMap[code] || item.country,
+            value: item.view,
+          };
+        } else {
+          merged[code].value += item.view;
         }
-        // console.log(2, cx)
+      });
 
-        const cxGroup = cx.reduce((acc, { countryCode, country, view }) => {
-          const existingEntry = acc.find(entry => entry.countryCode === countryCode);
-          if (existingEntry) {
-              existingEntry.view += view;
-          } else {
-              acc.push({ countryCode, country, view });
-          }
-          return acc;
-        }, []);
-        await cxGroup.sort((a, b) => (a.view > b.view) ? -1 : 1)
+      const finalData = Object.values(merged);
+      const totalViews = finalData.reduce(
+        (sum, item) => sum + item.value,
+        0
+      );
 
-        // console.log(3, cxGroup)
+      this.setState({ totalViews });
+      console.log('totalViews: ', totalViews)
+      cxArr = finalData
+        .map(item => ({
+          country: item.countryCode,
+          value: item.value,
+          percentage: totalViews ? `${((item.value / totalViews) * 100).toFixed(1)}%` : "0%"
+        }))
+        .sort((a, b) => b.value - a.value);
 
-        for(var i=0; i<cxGroup.length; i++) {
-          cxArr.push({"country": cxGroup[i].countryCode, "value": cxGroup[i].view})
-          x += cxGroup[i].view
-          if (cxGroup[i].view > maxView) {
-              maxView = cxGroup[i].view
-          }
-        }
+      console.log("cxArr:", cxArr);
+    });
 
-        // console.log(cxGroup)
-        await this.setState({
-            viewCountAll: cxArr,
-            gettingCountryViewers: false,
-            totalView: dig3(x),
-            maxView: maxView,
-            countryQTY: cxArr.length-1,
-        })
+    this.makeCountriesData(cxArr);
 
-        this.mapCountries(cxGroup, maxView)
-    })
+    console.log('viewCountAll: ', [...cxArr, { country: "xx", value: 0 }])
+    this.setState(
+      {
+        viewCountAll: [...cxArr, { country: "xx", value: 0 }],
+        gettingPageViewers: false,
+      }
+    );
+  };
 
-  }
+  makeCountriesData = (countries) => {
+    console.log('countries: ', countries)
+    // تبدیل کد کشور به اسم
+    const countryNames = new Intl.DisplayNames(["en"], {
+      type: "region",
+    });
 
-  mapCountries = (data, maxView) => {
-    const countriesList = data.map(
-      (item, i) => {
-        const p = (item.view/maxView)*100
+    // تبدیل کد کشور به پرچم
+    const getFlagEmoji = (countryCode) => {
+      if (countryCode === "QQ") return "🌍";
+
+      return countryCode
+        .toUpperCase()
+        .replace(/./g, (char) =>
+          String.fromCodePoint(127397 + char.charCodeAt())
+        );
+    };
+
+    const maxValue = Math.max(...countries.map((c) => c.value));
+
+    const topCountries = countries.map(
+      (item, index) => {
+        const percentage = (item.value / maxValue) * 100;
         return (
-          <div key={i} className='d-flex' style={{width:'100%', alignItems:'flex-start', justifyContent: '', flexDirection:'column', overflow:'hidden'}}>
-              <span className='d-flex' style={{width:'100%', margin:'15px 0px -2px', fontSize:'15px', alignItems:'center', justifyContent:'space-between', textAlign:'left'}}>
-                {item.country}
-                <div className='d-flex'>
-                  <div style={{fontSize:'12px', margin:'0px 10px', alignItems:'center', marginTop:'3px'}}>{dig3(item.view)}</div>
-                  <div className={`cardShadow flag-icon flag-icon-${item.countryCode ? item.countryCode.toLowerCase() : ''}`} style={{border:'0px solid #99999930', fontSize:'17px'}}></div>
-                </div>
-              </span>
-              <hr style={{margin:'3px 0px 5px', width: '100%', height:'hairline', backgroundColor:'#99999999', marginBottom:'-7px'}}/>
-              <hr className={this.props.rtl ? 'right' : 'left'} style={{margin:'5px 0px 5px', width: `calc(${p}%)`, height:'2px', backgroundColor:'green', opacity:'1'}}/>
-              <hr className='sticky-top' style={{margin:'-12px -22px 0px', width: '20px', height:'10px', backgroundColor:'#ffffff', border:'1px solid #ffffff'}}/>
+          <div className="width-full mb-4" key={index}>
+            <div className="flex items-start justify-between text-[#ffffff]">
+              <div className="flex items-center gap-2.5 -mt-1">
+                <span className="text-[20px]">
+                  {getFlagEmoji(item.country)}
+                </span>
+
+                <span className="text-[15px] font-medium">
+                  {item.country === "QQ"
+                    ? "Unknown"
+                    : countryNames.of(item.country)}
+                </span>
+              </div>
+
+              <div>
+                <div className="text-[14px] font-light -mb-1">{item.value.toLocaleString()}</div>
+                <div className='text-right text-[12px] text-[#858BAD]'>{item.percentage}</div>
+              </div>
+            </div>
+
+            <div className="w-full h-2 bg-[#1B2D61] rounded-full overflow-hidden">
+              <div className="h-full rounded-full bg-gradient-to-r from-[#3072E9] via-[#CA3DD8] to-[#FCBD2F] transition-[width] duration-400 ease-in-out" style={{ width: `${percentage}%` }}/>
+            </div>
           </div>
-        )
+        );
       }
     )
-    this.setState({ countriesList })
+
+    this.setState({
+      topCountries
+    })
   }
 
   onResize = async () => {
@@ -147,45 +178,53 @@ class SiteView extends Component {
   }
 
   render() {
-    const { w, h, gettingCountryViewers, likeViewChatWidth, likeViewChatHeight, viewCountAll, totalView, countriesList, countryQTY } = this.state
+    const { w, h, topCountries, totalViews, gettingCountryViewers, likeViewChatWidth, likeViewChatHeight, viewCountAll, totalView, countriesList, countryQTY } = this.state
     const {setLT, rtl, fc} = this.props
     const titleStyle = {fontSize:  w<s ? '25px' : '30px', fontWeight:450, margin:'0px 0px 15px', textAlign: rtl ? 'right' : 'left', alignItems:'center', whiteSpace:'', color:'', width:'100%'}
     const loader13 = <div className='loader-13' style={{margin: rtl ? '35px 20px -25px' : '0px 20px 0px', color:'#000000', transform: rtl ? 'rotate(180deg)' : '', fontSize:'14px'}}></div>
 
     const ViewerBSMMap = (
-      <div id='worldmap' className='center animated fadeIn' style={{animationDelay:'0s', width:'100%', height:'', padding:'0px', margin:'0px', backgroundColor:''}}>
-        <div className='cardShadow' style={{width:'100%', backgroundColor:'#ffffff', overflow:'scroll', borderRadius:'10px'}}>
-          {/* gettingCountryViewers && loaderX */}
-          <div className='' style={{width:'100%', backgroundColor:'#ffffff00'}}>
-            <WorldMap color={`${colors[`C${14}`]}`} backgroundColor='#ffffff00' title='' borderColor='#000000' size={w<s ? "lg" : "xl"} data={viewCountAll}/>
+      <div id='viewMap' className='center animated fadeIn [&_path]:!fill-[#f2ba4b] [&_*]:!bg-[#020D7000]' style={{animationDelay:'0s', width:'100%', margin:'0px'}}>
+        <div className='' style={{width:'100%', overflow:'scroll', borderRadius:'10px'}}>
+          <WorldMap color='#0066ff' borderColor='#f2ba4b' size={w<1000 ? "lg" : "xl"} data={viewCountAll}/>
+        </div>
+      </div>
+    )
+
+    const topCountriesSub = (
+      <div className={`bg-[#010E36] rounded-[22px] p-[22px] shadow-[0_6px_20px_rgba(0,0,0,0.06)] h-full ${w < s ? "w-full" : "w-[30%]"}`}>
+        <div className="flex mb-6 text-white items-center justify-between">
+          <h3 className='!text-[22px]'>Audience views</h3>
+          <h4 className='!text-[18px]'>{Number(totalViews).toLocaleString()}</h4>
+        </div>
+        <div className={`z-0 w-full max-h-[400px] overflow-y-scroll ${topCountries.length > 0 ? "" : "min-w-[300px]"} mostly-customized-scrollbar`}>
+          <div className="countriesList">
+            {topCountries}
           </div>
         </div>
       </div>
-  )
+    )
+
+    const worldmapTitle = (
+      <div className='d-flex text-white' style={{fontSize:'18px', fontWeight:700, alignItems:'center', gap:'5px', margin:w<s ? '0px 15px' : ''}}>
+        <IoGlobeOutline className="-mt-2.5 text-[25px]"/>
+        <h5 className='font-[650] !font-light'>Audience Map</h5>
+      </div>
+    )
+
+    const worldmapSection = (
+      <div className='d-flex cardShadow backBlur' style={{width:'100%', maxWidth:'1100px', height:w<s ? '' : '550px', flexDirection:w<s ? 'column' : '', justifyContent:w<s ? '' : 'space-between', marginBottom:'20px', padding:w<s ? '20px 0px 0px' : '20px', backgroundColor:'#00000080', borderRadius:'20px', flexWrap:'wrap'}}>
+        <div id='' style={{marginBottom:w<s ? '20px' : ''}}>
+          {worldmapTitle}
+          {ViewerBSMMap}
+        </div>
+        {topCountriesSub}
+      </div>
+    )
 
     return (
-      <div id='statisticsSub' style={{width:'100%', padding:'70px 0px'}}>
-        <Container>
-          <div className={`${w<s ? 'center' : 'd-flex'} txWhite tx`} style={{...titleStyle, marginBottom:'50px'}}>{setLT.viewersStatistics} : {gettingCountryViewers ? loader13 : totalView}</div>
-          <div style={{margin:'20px 0px 0px', backgroundColor:'#ffffff50', borderRadius:'10px'}}>
-            <div id='statisticsArea' style={{padding:w<s ? '0px' : '10px', backgroundColor:'#ffffff50', borderRadius:'10px'}}>
-              <div className='d-flex' style={{width:'100%', flexDirection:w<1000 ? 'column' : '', justifyContent:'space-between'}}>
-                <div id='worldmap'>
-                  {ViewerBSMMap}
-                </div>&nbsp;&nbsp;
-                <div className='cardShadow' style={{height:w<s ? '250px' : likeViewChatHeight, width:w<s ? '100%' : likeViewChatWidth, padding:'10px', overflow:'scroll', backgroundColor:'#ffffff', borderRadius:'10px'}}>
-                  <div className='d-flex justify-content-between' style={{width:'100%'}}>
-                    <div>{setLT.totalCountries}: {gettingCountryViewers ? loader13 : countryQTY}</div>
-                    <div>{gettingCountryViewers ? loader13 : totalView} {setLT.views}</div>
-                  </div>
-                  <div style={{minHeight:'350px'}}>
-                    {countriesList}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Container>
+      <div id='statisticsSub' className='center' style={{width:'100%', padding:'70px 10px'}}>
+          {worldmapSection}
       </div>
     );
   }
