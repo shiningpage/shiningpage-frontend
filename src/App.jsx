@@ -1272,7 +1272,7 @@ class App extends Component {
         )
 
         const footer = (
-            <div className="backBlur" style={{marginTop: w<s && ['web', 'ps'].includes(page) ? '' : '0px', color:'#ffffff', backgroundColor:'#01033d', borderTop:'0px solid #d1a44a'}}>
+            <div className="backBlur" style={{marginTop: w<s && ['web', 'ps'].includes(page) ? '' : '0px', color:'#ffffff', backgroundColor:'#01033d20', borderTop:'0px solid #d1a44a'}}>
                 {hrC14}
                 <Container style={{padding:'10px 0px 0px'}}>
                     <div className='d-flex' style={{padding:'0px 10px', flexWrap:w<s ? 'wrap' : ''}}>
