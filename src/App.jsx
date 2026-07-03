@@ -1096,25 +1096,11 @@ class App extends Component {
                 </Modal.Body>
             </Modal>
         )
-
         const backG = (
-            <div
-                style={{
-                    position: 'fixed',
-                    top: 0,
-                    left: 0,
-                    width: w<s ? '300%' : '100%',
-                    height: '100%',
-                    display: 'flex',
-                    justifyContent: 'center', // قرار دادن در وسط افقی
-                    alignItems: 'center', // قرار دادن در وسط عمودی
-                    filter: 'blur(5px)',
-                    zIndex: '-1',
-                    backgroundImage: `url(${aiImage})`, backgroundSize: 'cover', backgroundPosition: 'right center'
-                }}
-            >
+            <div className="fixed inset-0 overflow-hidden -z-10">
+                <div className="absolute -inset-8 bg-cover bg-right blur-sm" style={{ backgroundImage: `url(${aiImage})` }}/>
             </div>
-        )
+        );
 
         const hrF = <hr className='C7' style={{height:'1px', margin:'0px 0px 15px', opacity:'1'}}/>
         const footerClass = 'w-full mb-10 p-2.5 text-white'
