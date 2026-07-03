@@ -1332,7 +1332,7 @@ class App extends Component {
                             {!['publisher', 'user', 'content', 'web', 'ps', ''].includes(page) && backG}
                             {header}
                             {/* !['web', 'ps'].includes(page) && header */}
-                            {!['publisher', 'user', 'content', 'web', 'ps'].includes(page) && <Addressbar content={[]} fix={address.fix}/>}
+                            {!['home', 'publisher', 'user', 'content', 'web', 'ps'].includes(page) && <Addressbar content={[]} fix={address.fix}/>}
 
                             {/*  page404
                             ?
