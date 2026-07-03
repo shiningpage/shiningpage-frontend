@@ -192,9 +192,9 @@ class SiteView extends Component {
     )
 
     const topCountriesSub = (
-      <div className={`bg-[#010E36] rounded-[22px] p-[22px] shadow-[0_6px_20px_rgba(0,0,0,0.06)] h-full ${w < s ? "w-full" : "w-[30%]"}`}>
+      <div className={`bg-[#02011B99] rounded-[22px] p-[22px] shadow-[0_1px_20px_#ffffff30] h-full ${w < s ? "w-full" : "w-[30%]"}`}>
         <div className="flex mb-6 text-white items-center justify-between">
-          <h3 className='!text-[22px]'>Audience views</h3>
+          <h5 className='font-[650] font-light'>Audience views</h5>
           <h4 className='!text-[18px]'>{Number(totalViews).toLocaleString()}</h4>
         </div>
         <div className={`z-0 w-full max-h-[400px] overflow-y-scroll ${topCountries.length > 0 ? "" : "min-w-[300px]"} mostly-customized-scrollbar`}>
@@ -213,8 +213,8 @@ class SiteView extends Component {
     )
 
     const worldmapSection = (
-      <div className='d-flex cardShadow backBlur' style={{width:'100%', maxWidth:'1100px', height:w<s ? '' : '550px', flexDirection:w<s ? 'column' : '', justifyContent:w<s ? '' : 'space-between', marginBottom:'20px', padding:w<s ? '20px 0px 0px' : '20px', backgroundColor:'#00000080', borderRadius:'20px', flexWrap:'wrap'}}>
-        <div id='' style={{marginBottom:w<s ? '20px' : ''}}>
+      <div className='flex cardShadow backBlur border !border-white/20' style={{width:'100%', maxWidth:'1100px', height:w<s ? '' : '550px', flexDirection:w<s ? 'column' : '', justifyContent:w<s ? '' : 'space-between', marginBottom:'20px', padding:w<s ? '20px 0px 0px' : '20px', backgroundColor:'#ffffff10', borderRadius:'20px', flexWrap:'wrap'}}>
+        <div>
           {worldmapTitle}
           {ViewerBSMMap}
         </div>
