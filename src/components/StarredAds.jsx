@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import { setStarredAds } from '../dataStore/actions';
 import { serverURL, s } from '../srcSet';
-import starXImage from "../assets/images/other/starX.png";
+import star from "../assets/images/other/starX.png";
 
 class StarredAds extends Component{
 
@@ -43,7 +43,6 @@ class StarredAds extends Component{
         var dx = {lx}
         await axios.post(`${serverURL}/ads/getStarredAds`, dx).then(async res => {
             var x2 = res.data
-            // console.log(4455, x2)
             var x1 = this.state.searchData
             this.setState({
               searchData : [...x1, ...x2],
@@ -58,98 +57,75 @@ class StarredAds extends Component{
     }
 
     mapAds = async (ads) => {
-        const {w, } = this.state
-        const {rtl, lang, setLT} = this.props
-          var root, countryCode, address, ads, adsComment, special, specialSystem, adsTitleStyle, adsCommentStyle, adsTime, starIcon, star, starSystem, img, TLen, CLen, adsTitle
-          var allAds = ads.map(
-            (item, i) => (
-            // console.log(12, item),
-            root = item.businessType>0 ? 'publisher' : 'user',
-            adsTime = <span style={{margin:'-5px 0px 0px', fontSize:'13px'}}>{/* this.duration(item.updatedAt) */}ShiningPage</span>,
-              starIcon = (
-                <img
-                    className=''
-                    style={{height:'20px', width:'20px'}}
-                    src={starXImage}
-                    alt='star'
-                />
-              ),
-              star = (
-                <div className='d-flex' style={{height:'10px', float:'right', direction:'ltr', color:'#d1a44a', fontWeight:'450'}}>
-                    { item &&
-                        <div>
-                            {item.star > 1 && item.star}
-                            {starIcon}
-                        </div>
-                    }
-                </div>
-              ),
-              starSystem = (
-                <div style={{ visibility: item ? (item.status===1 ? 'visible' : 'hidden') : 'hidden'}}>
-                    <div className='d-flex' style={{margin:'-5px 0px 15px', direction:'ltr'}}>
-                        {star}
+        const {} = this.state
+        const {} = this.props
+        var allAds = ads.map(
+            (item, i) => {
+                // console.log(12, item)
+                const starRate = (
+                    <div className='absolute center items-center w-10 text-[#d1a44a] font-[450] bg-[#090728] rounded-2 px-2 py-1 m-1 z-10'>
+                        <img className='h-4 w-4' src={star} alt='star'/>
+                        <div className='text-[16px] leading-[10px] mt-1'>{item.star > 1 && item.star}</div>
                     </div>
-                </div>
-              ),
-              img = (
-                <div>
-                    {starSystem}
-                    <img  key={i}
-                        className=''
-                        style={{objectFit: 'cover', width:'150px', minWidth:'150px', height:'150px', minHeight:'150px', borderRadius:'5px', opacity: item.status===1 ? 1 : .3}}
-                        src={`https://www.pix.shiningpage.com/whoraly/ads/big/${item._id}-${item.pictures ? item.pictures[0] : ''}.jpeg`}
-                        alt={item.adsTitle}
-                    />
-                </div>
-            ),
-
-            TLen = item.adsTitle ? item.adsTitle.length : 0,
-            adsTitleStyle = {width:'100%', padding:'3px', fontSize:'12px', fontWeight:'', marginBottom:'5px', overflow: 'hidden', textAlign: rtl ? 'right' : 'left'},
-            adsTitle = <div className='d-flex ' style={adsTitleStyle}>{TLen>30 ? item.adsTitle.substr(0, 25) + ' ...' : item.adsTitle}</div>,
-
-            CLen = item.adsComment ? item.adsComment.length : 0,
-            adsCommentStyle = {width:'100%', padding:'3px', fontSize:'12px', marginBottom:'0px', overflow: 'hidden', textAlign: rtl ? 'right' : 'left'},
-            adsComment = <div className='d-flex ' style={adsCommentStyle}>{CLen>60 ? item.adsComment.substr(0, 55) + ' ...' : item.adsComment}</div>,
-              special = (
-                <div style={{backgroundColor:'red', fontWeight:'bold', color:'#ffffff', border:'2px solid #d40000', width:'130px', textAlign:'center'}}>
-                    {setLT.special}
-                </div>
-            ),
-              specialSystem = (
-                <div style={{position:'', visibility:item.status===1 ? 'visible' : 'hidden', transform: 'rotate(45deg)', margin:'-25px -100px 0px 0px' }}>
-                    <div className='d-flex' style={{marginBottom:'10px', justifyContent:'space-between'}}>
-                        {special}
-                    </div>
-                </div>
-              ), 
-              countryCode = item.countryCode ? item.countryCode.toLowerCase() : '',
-              address = (
-                <div className='d-flex' style={{margin: '5px 0px -8px', direction:'ltr', alignItems:'flex-start'}}>
-                    <span className={`flag-icon flag-icon-${countryCode} cardShadow`}></span> &nbsp;
-                    <div style={{margin: '0px', fontSize:'12px', textAlign:'center'}}>{item.country}</div>
-                </div>
-              ),
-            ads = (
-                <div className='d-flex ' style={{height:'', width:'100%', padding:'10px', margin:'0px'}}>
-                    <div className='center btnShadowX' // onClick={() => this.onTogglePSPage(item)}
-                        style={{width:'100%', height:'240px', padding:'5px', overflow:'hidden', flexDirection:'column', alignItems:'center', backgroundColor:'#ffffff', borderRadius:'5px', margin:'0px'}}>
-                        {specialSystem}
-                        <div className='center' style={{width:'100%', margin:'-40px 0px 0px'}}>{img}</div>
-                        <div style={{width:'100%', height:'30px', maxHeight:'30px', direction: rtl ? 'rtl' : 'ltr'}}>
-                            {address}
-                            {adsTitle}
-                        </div>
-                    </div>
-                </div>
-            ),
-                <Link to={item.slug ? `/publisher/${item.username}/${item.slug}` : `/ps/${item._id}`} key={i}
-                    className={`d-flex`}
-                    style={{animationDelay:'', textDecoration:'none', transition:'0s', width:'100%', margin: '0px', padding: item.status===1 ? (w<s ? '0px' : '0px') : '0px', flexDirection:'column', alignItems:'', borderRadius:'', color:'black', cursor:'default'}}
-                >
-                    {ads}
-                </Link>
                 )
-          )
+
+                const SpecialRibbon = (
+                    <div className="absolute top-0 right-0 z-20">
+                        <div className="w-20 h-20 overflow-hidden absolute top-0 right-0">
+                            <div className="absolute top-2 right-[-35px] rotate-45
+                                bg-gradient-to-r from-purple-500 to-indigo-700
+                                text-white text-[12px] font-semibold
+                                w-28 text-center py-1 shadow-lg">
+                                Special
+                            </div>
+                        </div>
+                    </div>
+                )
+
+                const adsImg = (
+                    <div className='relative mb-4'>
+                        {starRate}
+                        {SpecialRibbon}
+                        <div className='w-[170px] min-w-[170px] h-[170px] min-h-[170px] rounded-[10px] overflow-hidden'>
+                            <img
+                                className={`zoomImg w-full h-full object-cover rounded-[10px] ${
+                                    item.status === 1 ? "opacity-100" : "opacity-30"
+                                }`}
+                                src={`https://www.pix.shiningpage.com/whoraly/ads/big/${item._id}-${item.pictures ? item.pictures[0] : ''}.jpeg`}
+                                alt={item.adsTitle}
+                            />
+                        </div>
+
+                    </div>
+                )
+
+                const countryCode = item.countryCode ? item.countryCode.toLowerCase() : ''
+                const country = (
+                    <div className='flex mb-3 gap-1'>
+                        <span className={`flag-icon flag-icon-${countryCode} cardShadow`}></span>
+                        <div style={{margin: '0px', fontSize:'12px', textAlign:'center'}}>{item.country}</div>
+                    </div>
+                )
+
+                const adsTitle = <div className='flex w-full p-[3px] text-[14px] font-[500] mb-[5px] overflow-hidden'>{item.adsTitle}</div>
+
+                const root = item.slug ? `/publisher/${item.username}/${item.slug}` : `/ps/${item._id}`
+
+                return (
+                    <div key={i} className='flex w-full px-2.5'>
+                        <Link to={root} target="_blank" rel="noopener noreferrer"
+                            className='zoom !no-underline !text-[#ffffff] font-thin h-[300px] min-h-[300px] relative cursor-pointer 
+                            bg-[#ffffff10] border !border-white/20 p-2.5
+                            hover:!border-white hover:bg-[#ffffff20] hover:shadow-[0_10px_30px_#ffffff35]
+                            transition-all duration-300 rounded-[15px]'>
+                            {adsImg}
+                            {country}
+                            {adsTitle}
+                        </Link>
+                    </div>
+                )
+            }
+        )
         this.setState({
             allAds,
             loadingData:false,
@@ -157,23 +133,23 @@ class StarredAds extends Component{
     }
 
 	render () {
-        const {w, allAds, loadingData} = this.state
-        const {rtl, setLT, starredAds} = this.props
-        const loaderZ = <div className='loader-13' style={{margin: '0px', color:'#d1a44a', transform: rtl ? 'rotate(180deg)' : ''}}></div>
+        const { w, allAds, loadingData } = this.state
+        const { starredAds } = this.props
+        const loaderZ = <div className='loader-13 m-0 text-[#d1a44a]'></div>
 
         const ColorLoadingCenter = (
-            <div className='center' style={{width:'100%', direction:rtl ? 'rtl' : 'ltr'}}>{loaderZ}</div>
+            <div className='center w-full'>{loaderZ}</div>
         )
         const allAdsList = (
-            <div className={'d-flex'} style={{width:'100%', height:'100%', alignItems:'center', padding:w<s ? '0px' : '0px', zIndex:'0', backgroundColor:''}}>
-                {(loadingData  && starredAds.length===0) ? ColorLoadingCenter : allAds}
+            <div className='flex w-full h-full py-[30px] items-center'>
+                { (loadingData  && starredAds.length===0) ? ColorLoadingCenter : allAds }
             </div>
         )
 
         return (
-            <div className='d-flex animated fadeIn' style={{animationDelay:'1.5s', width: '100%', padding:w<s ? '10px 0px 30px' : '30px 10px 30px', flexDirection:'column'}}>
-                <h4 style={{ fontWeight:'bold', margin:'10px 10px 0px' }}>{setLT.specialPS}</h4>
-                <div className='' style={{width:'100%', height:'280px', direction:rtl ? 'rtl' : 'ltr', overflow:'scroll'}}>
+            <div className={`flex animated fadeIn w-full flex flex-col ${w < s ? "pt-[10px] pb-[30px]" : "py-[30px]"}`} style={{animationDelay:'1.5s'}}>
+                <h4 className='text-white font-thin !mt-4 px-3'>Top Products & Services</h4>
+                <div className='w-full overflow-scroll'>
                     {allAdsList}
                 </div>
             </div>
@@ -184,11 +160,8 @@ class StarredAds extends Component{
 const mapStateToProps = (state) => {
     return {
         mainUserId: state.userInfo['_id'],
-        rtl: state.rtl,
-        lang: state.lang,
         auth: state.auth, 
         page: state.page,
-        setLT: state.setLT,
         starredAds: state.starredAds,
     }
 }
