@@ -71,10 +71,10 @@ class Brands extends Component{
             (item, i) => {
                 // console.log(12, item)
                 const usernameX = item.bizName ? item.bizName : item.username
-                const userImg = (
-                    <div className={`C${item.fc} w-[45px] h-[45px] ${item.businessType > 0 ? 'rounded-[3px]' : 'rounded-full'} border overflow-hidden`}>
+                const profileImg = (
+                    <div className={`C${item.fc} w-[45px] h-[45px] p-[3px] ${item.businessType > 0 ? 'rounded-[5px]' : 'rounded-full'} overflow-hidden`}>
                         <img
-                            className='zoomImg object-contain w-full h-full'
+                            className='zoomImg object-cover w-full h-full rounded-[3px]'
                             src={ exist(item.profileIndex)
                                 ? `https://www.pix.shiningpage.com/whoraly/profile/big/${item._id}-${item.profileIndex}.jpeg`
                                 : item.genderValue===0 ? female : male
@@ -112,23 +112,25 @@ class Brands extends Component{
                 const root = item.businessType>0 ? 'publisher' : 'user'
 
                 return (
-                    <Link to={`/${root}/${item.username}`} key={i}
-                        className='zoom !no-underline !text-[#ffffff] font-thin relative cursor-pointer 
-                        bg-[#ffffff10] border !border-white/20 
-                        hover:!border-white hover:bg-[#ffffff20] hover:shadow-[0_10px_30px_rgba(255,255,255,0.15)] 
-                        transition-all duration-300 rounded-[10px]'>
-                        {aboutImg}
-                        <div className='p-2.5'>
-                            {jobSummary}
-                            <div className='flex gap-2.5'>
-                                {userImg}
-                                <div>
-                                    {country}
-                                    {username}
+                    <div key={i} className='flex w-full px-2.5'>
+                        <Link to={`/${root}/${item.username}`}
+                            className='zoom !no-underline !text-[#ffffff] font-thin relative cursor-pointer 
+                            bg-[#ffffff10] border !border-white/20 
+                            hover:!border-white hover:bg-[#ffffff20] hover:shadow-[0_10px_30px_#ffffff35] 
+                            transition-all duration-300 rounded-[10px]'>
+                            {aboutImg}
+                            <div className='p-2.5'>
+                                {jobSummary}
+                                <div className='flex gap-2.5'>
+                                    {profileImg}
+                                    <div>
+                                        {country}
+                                        {username}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </Link>
+                        </Link>
+                    </div>
                 )
             }
         )
@@ -149,15 +151,15 @@ class Brands extends Component{
         )
 
         const allCompanyList = (
-            <div className='flex w-full h-full items-start z-0 gap-4' >
+            <div className='flex w-full h-full items-start z-0' >
                 {(loadingData && starredCompany.length===0) ? ColorLoadingCenter : allCompany}
             </div>
         )
     
         return (
-            <div className='flex animated fadeIn w-full flex flex-col px-[10px]' style={{animationDelay:'1s'}}>
-                <h4 className='text-white font-thin !mt-4'>Top Shining Pages</h4>
-                <div className='top-0 w-full overflow-scroll py-4'>
+            <div className='flex animated fadeIn w-full flex flex-col' style={{animationDelay:'1s'}}>
+                <h4 className='text-white font-thin !mt-4 px-3'>Top Shining Pages</h4>
+                <div className='top-0 w-full overflow-scroll py-[30px]'>
                     {allCompanyList}
                 </div>
             </div>
