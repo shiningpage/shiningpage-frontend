@@ -521,42 +521,36 @@ class LoginPage extends Component {
         const forgetPassword = <div className='link-underline mt-5 text-[#0C6DFB] font-medium' onClick={() => null}>Forget Password?</div>
 
         return (
-            <Container className={`${w<s ? 'p-4' : 'p-10'} text-white`}>
-                <div className='center' style={{flexDirection:'column'}}>
-                    <div className='center' style={{width:'100%'}}>
-                        <div className='animated fadeInUpX backBlur' style={{animationDelay:'.5s', backgroundColor: '#ffffff10', width: '100%', maxWidth:'400px', borderRadius:'20px'}}>
-                            { auth
-                                ?
-                                <div style={{padding:'30px 0px 10px'}}>
-                                    <div className='center' style={{alignItems:'center', flexDirection:'column'}}>
-                                        <Link to={`/`} className='center' style={{alignItems:'center', flexDirection:'column'}}>
-                                            {UserImage}
-                                            {setLT.home}
-                                            {/* mainUser.username */}
-                                        </Link>
-                                        {signOutBtn}
-                                    </div>
+            <Container className={`center ${w<s ? 'p-4' : 'px-2.5 pt-10 pb-20'} text-white`}>
+                    <div className='animated fadeInUpX [animation-delay:.5s] backdrop-blur-[20px] bg-[#ffffff10] border !border-white/20 w-full max-w-[400px] rounded-[20px]'>
+                        { auth
+                            ?
+                            <div className='center flex-col items-center pt-[30px] px-0 pb-2.5'>
+                                <Link to={`/`} className='center flex-col items-center'>
+                                    {UserImage}
+                                    {setLT.home}
+                                    {/* mainUser.username */}
+                                </Link>
+                                {signOutBtn}
+                            </div>
+                            :
+                            <div className={`p-10px ${w < 300 ? "py-2.5 px-0" : "p-2.5"}`}>
+                                <div className=' animated fadeInUpX pt-[25px] px-2.5 pb-[5px]'>
+                                    {registerType ? signupHeader : loginHeader}
+                                    {registerType && genderConst}
+                                    {/* registerType && themeConst */}
+                                    {registerType && countryConst}
+                                    {usernameConst}
+                                    {/* emailConst */}
+                                    {passwordConst}
+                                    {recaptchaConst}
+                                    { loginType && forgetPassword }
+                                    {registerBtn}
+                                    { registerType ? signupLink : loginLink }
                                 </div>
-                                :
-                                <div className='p-10px' style={{padding: w<300 ? '10px 0px' :'10px'}}>
-                                    <div className=' animated fadeInUpX' style={{padding:'25px 10px 5px'}}>
-                                        {registerType ? signupHeader : loginHeader}
-                                        {registerType && genderConst}
-                                        {/* registerType && themeConst */}
-                                        {registerType && countryConst}
-                                        {usernameConst}
-                                        {/* emailConst */}
-                                        {passwordConst}
-                                        {recaptchaConst}
-                                        { loginType && forgetPassword }
-                                        {registerBtn}
-                                        { registerType ? signupLink : loginLink }
-                                    </div>
-                                </div>
-                            }
-                        </div>
+                            </div>
+                        }
                     </div>
-                </div>
             </Container>
         )
     }
