@@ -25,7 +25,9 @@ import EXV from './components/EXV';
 import Addressbar from './components/Addressbar';
 import ModalViewStatus from './components/modals/ModalViewStatus';
 import ChatList from './components/modals/ModalChatList';
-import { FaBell, FaYoutube, FaLinkedin, FaUser, FaBars } from 'react-icons/fa';
+import { FaBell, FaYoutube, FaLinkedin, FaUser, FaBars, FaRegCopyright, FaRegStar } from 'react-icons/fa';
+import { FaAngleRight } from "react-icons/fa6";
+import { RiHome9Line } from "react-icons/ri";
 import { MdReviews, MdEmail, MdClose } from 'react-icons/md';
 import { HiOutlineUsers, HiUsers } from "react-icons/hi2";
 import { AiOutlineDashboard, AiFillMessage, AiFillInstagram, AiFillHome, AiOutlineHome } from 'react-icons/ai';
@@ -33,7 +35,7 @@ import { BiSupport } from 'react-icons/bi';
 import { AiFillDashboard, AiFillProduct, AiOutlineProduct } from "react-icons/ai";
 import { PiSquaresFourLight } from "react-icons/pi";
 import { BiBookContent, BiSolidBookContent } from "react-icons/bi";
-import { IoMailOutline, IoMailSharp } from "react-icons/io5";
+import { IoMailOutline, IoMailSharp, IoLocationOutline } from "react-icons/io5";
 import { GrDashboard } from "react-icons/gr";
 import { VscDashboard } from "react-icons/vsc";
 import UpdateVersion from './components/UpdateVersion';
@@ -524,6 +526,7 @@ class App extends Component {
         const NavHX = w<s ? 45 : NavH
         const colorX = [0, 4, 11].includes(fc) ? '#00000099' : '#ffffff'
         const hrC14 = <div className='C14' style={{width:'100%', height:'3px'}}></div>
+        const hrC14Short = <div className='C14 w-15 h-[2px] mb-4'></div>
 
         const loginBox = (
             <Link to={`/login`} className='center C14'
@@ -700,7 +703,7 @@ class App extends Component {
                     />
                     :
                     <div style={{ margin:'10px' }}>
-                        <FaBars className='btnShadow' style={{width:'22px', height:'22px' }}/>
+                        <FaBars className='btnShadow text-[#ffffff]' style={{width:'22px', height:'22px' }}/>
                     </div>
                 }
             </div>
@@ -1103,7 +1106,7 @@ class App extends Component {
         );
 
         const hrF = <hr className='C7' style={{height:'1px', margin:'0px 0px 15px', opacity:'1'}}/>
-        const footerClass = 'w-full mb-10 p-2.5 text-white'
+        const footerClass = 'w-full max-w-[400px] mb-4 p-2.5 text-white'
 
         const subStyle = {fontSize:'14px', margin: '0px', alignItems:'center', direction: rtl ? 'ltr' : 'ltr', color:''}
 
@@ -1187,98 +1190,133 @@ class App extends Component {
 
         const footer1 = (
             <div className={footerClass}>
-                {shiningpage}
-                {hrF}
+                <Link to={`/`} className='flex mb-10 text-[#ba851b] items-start !no-underline gap-2'>
+                    <img className='w-11 h-11'
+                        src='https://www.pix.shiningpage.com/whoraly/site/logo.png'
+                        alt="Shiningpage logo"
+                    />
+                    <div>
+                        <div className='goldenText text-[20px] font-bold'>Shiningpage</div>
+                        <div className='text-[11px] text-[#ffffff] font-thin'>Shine with us – A digital presence beyond borders</div>
+                    </div>
+                </Link>
+                <p className='font-thin text-[14px] !mb-[30px]'>
+                    Our mission is to transform you into a star in the digital space by providing innovative tools and cutting-edge solutions. Whether you are an entrepreneur, an established brand, a social organization, or a talented individual—ShiningPage makes your path to success brighter than ever.
+                </p>
+                <div className='flex mb-3 items-center gap-2'>
+                    <IoLocationOutline className='-mt-1 text-[#F5C73D] text-[20px]'/>
+                    <span className='text-[15px]'>UK, London</span>
+                </div>
+                <div className='flex items-center gap-2'>
+                    <IoMailOutline className='-mt-1 text-[#F5C73D] text-[20px]'/>
+                    <span className='text-[15px]'>hello@shiningpage.com</span>
+                </div>
+
                 {/* supportBtn */}
                 {/* socialMedia */}
-                {updateVersion}
+                {/* updateVersion */}
             </div>
         )
 
-        const footer2Class = 'white-nav block !no-underline mb-2.5 font-thin'
+        const footer2Class = 'flex white-nav block !no-underline mb-3 font-thin items-center group'
+        const shortcuts = [
+            { to: '/', text: setLT.home },
+            { to: '/latest', text: 'Latest posts' },
+            { to: '/contact', text: setLT.contact },
+            { to: '/about', text: setLT.about },
+            { to: '/reviews', text: setLT.memberReviews },
+            { to: '/sitemap', text: 'Sitemap' },
+        ]
+
         const footer2 = (
             <div className={footerClass}>
-                <div>SHORTCUTS</div>
-                {hrF}
-                <Link to={`/`} className={footer2Class} onClick={() => this.onToggle('home')}>{setLT.home}</Link>
-                <Link to={`/latest`} className={footer2Class} onClick={() => this.onToggle('latest')}>Latest posts</Link>
-                <Link to={`/contact`} className={footer2Class} onClick={() => this.onToggle('contactUs')}>{setLT.contact}</Link>
-                <Link to={`/about`} className={footer2Class}>{setLT.about}</Link>
-                <Link to={`/reviews`} className={footer2Class}>{setLT.memberReviews}</Link>
+                <div className="text-[16px] font-[500]">Quick Links</div>
+                {hrC14Short}
+                {shortcuts.map(({ to, text }) => (
+                    <Link key={to} to={to} className={footer2Class}>
+                        <div className="flex items-center">
+                            <FaAngleRight />
+                            <span className="ml-2 transition-transform duration-300 ease-out group-hover:translate-x-2">
+                                {text}
+                            </span>
+                        </div>
+                    </Link>
+                ))}
             </div>
         )
+
+        const legal = [
+            { to: '/tos', text: 'ToS' },
+            { to: '/privacy', text: 'Privacy' },
+            { to: '/disclaimer', text: 'Disclaimer' },
+            { to: '/sitemap', text: 'Sitemap' },
+        ]
 
         const footer3 = (
             <div className={footerClass}>
-                <div>MISSION</div>
-                {hrF}
-                <div style={{marginBottom:'20px', fontSize:'14px', direction:rtl ? 'rtl' : '', textAlign:rtl ? 'justify' : ''}}>
-                    <div style={{marginBottom:'10px'}}>{setLT.missionT1}</div>
-                    <div className='font-thin' style={{lineHeight:'25px'}}>{setLT.missionT2}</div>
-                </div>
-                {/* <PsychologyBtn/> */}
+                <div className="text-[16px] font-[500]">LEGAL</div>
+                {hrC14Short}
+                {legal.map(({ to, text }) => (
+                    <Link key={to} to={to} className={footer2Class}>
+                        <div className="flex items-center">
+                            <FaAngleRight />
+                            <span className="ml-2 transition-transform duration-300 ease-out group-hover:translate-x-2">
+                                {text}
+                            </span>
+                        </div>
+                    </Link>
+                ))}
             </div>
         )
+
+        // const footer3 = (
+        //     <div className={footerClass}>
+        //         <div>MISSION</div>
+        //         {hrF}
+        //         <div style={{marginBottom:'20px', fontSize:'14px', direction:rtl ? 'rtl' : '', textAlign:rtl ? 'justify' : ''}}>
+        //             <div style={{marginBottom:'10px'}}>{setLT.missionT1}</div>
+        //             <div className='font-thin' style={{lineHeight:'25px'}}>{setLT.missionT2}</div>
+        //         </div>
+        //         {/* <PsychologyBtn/> */}
+        //     </div>
+        // )
 
         const copyRight = (
-            <div style={{width:'100%', height:'50px', backgroundColor:'#ffffff50', marginBottom:w<s && ['base', 'home'].includes(page) ? '50px' : ''}}>
-                <Container className='d-flex' style={{height:'100%', padding:'10px', alignItems:'center'}}>
-                    <div style={{textAlign:w<s ? 'center' : 'left', width:'100%', padding:'0px', direction:rtl ? 'rtl' : 'ltr'}}>
-                        {setLT.copyRight}
-                    </div>
-                </Container>
+            <div className={`flex items-center gap-2 ${w<s ? 'mb-2' : 'm-0'} px-[10px]`}>
+                <FaRegCopyright className='-mt-1'/>
+                <span>{new Date().getFullYear()}</span>
+                <span className='text-[#F5C73D]'>
+                    Shiningpage
+                </span>
+                <span>All rights reserved.</span>
             </div>
         )
 
-        const tosNav = (
-            <Link to={`/tos`} className='box-c waves-effect waves-light btn-large'
-                style={{width:'200px', height:'100%'}}>
-                <span className="custom-underline" style={{width:'80%', fontSize:'12px', fontWeight:450, borderBottom: page==='tos' ? '1px solid #000000' : ''}}>ToS</span>
-            </Link>
-        )
-
-        const privacyNav = (
-            <Link to={`/privacy`} className='box-c waves-effect waves-light btn-large'
-                style={{width:'270px', height:'100%'}}>
-                <span className="custom-underline" style={{width:'80%', fontSize:'12px', fontWeight:450, borderBottom: page==='privacy' ? '1px solid #000000' : ''}}>Privacy</span>
-            </Link>
-        )
-
-        const disclaimerNav = (
-            <Link to={`/disclaimer`} className='box-c waves-effect waves-light btn-large'
-                style={{width:'340px', height:'100%'}}>
-                <span className="custom-underline" style={{width:'80%', fontSize:'12px', fontWeight:450, borderBottom: page==='disclaimer' ? '1px solid #000000' : ''}}>Disclaimer</span>
-            </Link>
-        )
-
-        const sitemapNav = (
-            <Link to={`/sitemap`} className='box-c waves-effect waves-light btn-large'
-                style={{width:'290px', height:'100%'}}>
-                <span className="custom-underline" style={{width:'80%', fontSize:'12px', fontWeight:450, borderBottom: page==='sitemap' ? '1px solid #000000' : ''}}>Sitemap</span>
-            </Link>
-        )
-
+        const seperator = <span className='text-[#F5C73D]'>|</span>
         const footbar = (
-            <div className='C14 d-flex justify-content-center'
-                style={{height:w<s ? '30px' : '40px', color:'#000000', alignItems:'center',
-                justifyContent:'space-between', padding: '0px', top:'500px', transition:'.5s'}}>
-                <div className='d-flex' style={{width: w<s ? '100%' : '350px', padding:'0px', justifyContent:'space-between', alignItems:'center', direction:'ltr'}}>
-                    {tosNav}|
-                    {privacyNav}|
-                    {disclaimerNav}|
-                    {sitemapNav}
-                </div>
+            <div className={`flex justify-between items-center gap-3 font-thin text-[12px] px-[10px]`}>
+                <Link to={`/tos`} className='white-nav !no-underline whitespace-nowrap'>Terms of service</Link>
+                {seperator}
+                <Link to={`/privacy`} className='white-nav !no-underline whitespace-nowrap'>Privacy Policy</Link>
+                {seperator}
+                <Link to={`/disclaimer`} className='white-nav !no-underline whitespace-nowrap'>Disclaimer</Link>
             </div>
         )
 
         const footer = (
-            <div className="backBlur" style={{marginTop: w<s && ['web', 'ps'].includes(page) ? '' : '0px', color:'#ffffff', backgroundColor:'#01033d20', borderTop:'0px solid #d1a44a'}}>
+            <div className={`bg-cover bg-right ${w < s && ["web", "ps"].includes(page) ? "mt-auto" : "mt-0"} text-white bg-[#01033d20] border-t-0 border-[#d1a44a] bg-cover bg-center`}
+                style={{ backgroundImage: `url(${aiImage})` }}>
                 {hrC14}
-                <Container style={{padding:'10px 0px 0px'}}>
-                    <div className='d-flex' style={{padding:'0px 10px', flexWrap:w<s ? 'wrap' : ''}}>
+                <Container className='pt-2.5'>
+                    <div className={`flex ${w < s ? "flex-wrap" : "flex-nowrap"} px-[10px]`}>
                         {footer1}
                         {footer2}
-                        {footer3}
+                        {/* footer3 */}
+                    </div>
+                    <div className="footer-divider"></div>
+                    <div className={`${w<s ? 'center' : 'flex'} items-center justify-between flex-wrap ${w<s ? 'my-4' : 'my-5'} px-[10px]`}>
+                        {copyRight}
+                        {footbar}
                     </div>
                 </Container>
             </div>
@@ -1341,10 +1379,10 @@ class App extends Component {
                                 {modalViewStatus}
                                 {modalChatList}
                             </div>
-                            {!['publisher', 'user', 'content', 'web', 'ps'].includes(page) && footer}
+                            {!['', '', 'content', 'web', 'ps'].includes(page) && footer}
                             {w<s && footerX}
                             {w<s && hrC14}
-                            {footbar}
+                            {/* footbar */}
                         </div>
                     </div>
                 </div>
