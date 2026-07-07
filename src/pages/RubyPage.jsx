@@ -145,7 +145,7 @@ class RubyPage extends Component {
         const header = (
             <div className='center' style={{alignItems:'center', flexDirection:'column', padding: '0px 10px'}}>
                 <div className='d-flex' style={{justifyContent:rtl ? 'space-between' : 'flex-end', alignItems:'center', width:'100%', direction:'rtl'}}>
-                    <h1 className='animated fadeInLeft tx' style={{animationDelay:'.5s', color:'#ffffff', fontWeight:'bold', fontSize: w<s ? '30px' : '', textAlign:'center', margin:'30px 10px'}}>{setLT.ruby}</h1>
+                    <h1 className='animated fadeInLeft tx' style={{animationDelay:'.5s', color:'#ffffff', fontWeight:450, fontSize: w<s ? '30px' : '', textAlign:'center', margin:'30px 10px'}}>{setLT.ruby}</h1>
                 </div>
             </div>
         )
@@ -162,22 +162,22 @@ class RubyPage extends Component {
         )
 
         const warning = (
-            <div style={{width:'100%', color:'#ffffff', marginBottom:'30px', padding:'10px', borderRadius:'10px', border:'1px solid #ffffff'}}>
-                <span style={{fontSize:'14px', fontWeight:'bold'}}>
-                    <span><IoIosWarning style={{fontSize:'22px', color:'#ffcc00'}}/></span>&nbsp;
+            <div className="mb-[30px] w-full rounded-[10px] border border-white p-[10px] text-white">
+                <span className="text-[14px] font-[450]">
+                    <IoIosWarning className="mr-1 inline text-[22px] align-middle text-yellow-400" />
                     {setLT.rubyWarning}
                 </span>
-                <div>
+                <div className="mt-2 font-light">
                     {setLT.rubyWarningText}
                 </div>
             </div>
-		)
+        );
 
         const category = (
             <div className={`d-flex`} style={{marginBottom:'10px', alignItems:'center'}}>
                 <BiSolidCategory style={{width:'25px', height:'25px', margin:'0px 5px'}}/>
-                <span style={{fontWeight:'bold'}}>{setLT.category}:</span>
-                <div style={{margin:'0px 10px', direction:'ltr'}}>
+                <span style={{fontWeight:450}}>{setLT.category}:</span>
+                <div className='flex' style={{margin:'0px 10px', direction:'ltr'}}>
                     5
                     {rubySmall}
                 </div>
@@ -188,8 +188,8 @@ class RubyPage extends Component {
         const ads = (
             <div className={`d-flex`} style={{marginBottom:'10px', alignItems:'center'}}>
                 <FcStackOfPhotos style={{width:'30px', height:'30px', margin:'0px 5px'}} />
-                <span style={{fontWeight:'bold'}}>{setLT.ProductsServices}:</span>
-                <div style={{margin:'0px 10px', direction:'ltr'}}>
+                <span style={{fontWeight:450}}>{setLT.ProductsServices}:</span>
+                <div className='flex' style={{margin:'0px 10px', direction:'ltr'}}>
                     3
                     {rubySmall}
                 </div>
@@ -204,8 +204,8 @@ class RubyPage extends Component {
                     src={videoImage}
                     alt="video icon"
                 />
-                <span style={{fontWeight:'bold'}}>{setLT.userVideos}:</span>
-                <div style={{margin:'0px 10px', direction:'ltr'}}>
+                <span style={{fontWeight:450}}>{setLT.userVideos}:</span>
+                <div className='flex' style={{margin:'0px 10px', direction:'ltr'}}>
                     1
                     {rubySmall}
                 </div>
@@ -216,8 +216,8 @@ class RubyPage extends Component {
         const insta = (
             <div className={`d-flex`} style={{marginBottom:'10px', alignItems:'center'}}>
                 <FaInstagram className='' style={{fontSize:'25px', margin:'0px 5px', borderRadius:'8px', color:'#ffffff', backgroundImage: 'linear-gradient(to right top, #fcac0f, #fd9522, #fa7f30, #f36a3c, #e85647, #e44751, #dd395b, #d42d65, #d12174, #ca1b85, #be1e96, #ae27a8)'}}/>
-                <span style={{fontWeight:'bold'}}>{setLT.instagram}:</span>
-                <div style={{margin:'0px 10px', direction:'ltr'}}>
+                <span style={{fontWeight:450}}>{setLT.instagram}:</span>
+                <div className='flex' style={{margin:'0px 10px', direction:'ltr'}}>
                     1
                     {rubySmall}
                 </div>
@@ -232,8 +232,8 @@ class RubyPage extends Component {
                     src={attachIcoImage}
                     alt="attachment icon"
                 />
-                <span style={{fontWeight:'bold'}}>{setLT.attachments}:</span>
-                <div style={{margin:'0px 10px', direction:'ltr'}}>
+                <span style={{fontWeight:450}}>{setLT.attachments}:</span>
+                <div className='flex' style={{margin:'0px 10px', direction:'ltr'}}>
                     2
                     {rubySmall}
                 </div>
@@ -308,7 +308,7 @@ class RubyPage extends Component {
                     {priceList}
                     {totalRubies}
                 </Container>
-                {googleAds && adsBox2}
+                {/* googleAds && adsBox2 */}
             </div>
         )
     }
