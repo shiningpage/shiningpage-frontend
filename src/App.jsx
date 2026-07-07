@@ -723,7 +723,7 @@ class App extends Component {
         )
 
         const notificationNav = (
-            <Link to={`/notification`} className='center nav'
+            <Link to={`/notification`} className='center white-nav'
                 style={{textDecoration:'none', width:'', height:'100%', marginTop:'5px', textAlign:'center', flexDirection:'column'}}>
                 {notificationIcon}
                 <span style={{fontSize:'12px', whiteSpace:'nowrap'}}>{setLT.notifications}</span>
@@ -731,7 +731,7 @@ class App extends Component {
         )
 
         const chatNav = (
-            <Link to={`/chat`} className='center nav'
+            <Link to={`/chat`} className='center white-nav'
                 style={{textDecoration:'none', width:'', height:'100%', marginTop:'5px', padding:'0px 0px', textAlign:'center', flexDirection:'column'}}>
                 {chatIcon}
                 <span style={{fontSize:'12px', whiteSpace: 'nowrap'}}>{setLT.chatList}</span>
@@ -740,7 +740,7 @@ class App extends Component {
 
         //  to={`/ruby`}
         const rubyNav = (
-            <Link to={`/ruby`} className='center nav'
+            <Link to={`/ruby`} className='center white-nav'
                 style={{textDecoration:'none', width:'50px', height:'100%', marginTop:'5px', padding:'0px 0px', textAlign:'center', flexDirection:'column'}}>
                 {rubyIconNav}
                 <span style={{fontSize:'12px', whiteSpace: 'nowrap'}}>{setLT.ruby}</span>
@@ -748,7 +748,7 @@ class App extends Component {
         )
 
         const homeNav = (
-            <Link to={`/`} className='box-c waves-effect waves-light btn-large' onClick={() => this.onToggle('home')}
+            <Link to={`/`} className=' box-c waves-effect waves-light btn-large' onClick={() => this.onToggle('home')}
                 style={{width:'100%', height:'100%', backgroundColor: page==='home' ? '#ffffff20' : ''}}>
                 <div className='center' style={{flexDirection:'column', alignItems:'center', margin: '5px 0px -5px'}}>
                     {page==='home'
@@ -756,7 +756,7 @@ class App extends Component {
                         : <AiOutlineHome style={{width:'20px', fontSize: '28px'}}/>
                     }
                 </div>
-                <span className="custom-underline" style={{width:'80%', fontSize:'12px', fontWeight:'', color:'', borderBottom: page==='home' ? '1px solid' : ''}}>{setLT.home}</span>
+                <span className="custom-underline" style={{width:'80%', fontSize:'12px', fontWeight:'', color:'#ffffff', borderBottom: page==='home' ? '1px solid' : ''}}>{setLT.home}</span>
             </Link>
         )
 
@@ -769,7 +769,7 @@ class App extends Component {
                         : <BiBookContent style={{width:'20px', fontSize: '28px'}}/>
                     }
                 </div>
-                <span className="custom-underline" style={{width:'80%', fontSize:'12px', fontWeight:'', color:'', borderBottom: page==='latest' ? '1px solid' : ''}}>Latest</span>
+                <span className="custom-underline" style={{width:'80%', fontSize:'12px', fontWeight:'', color:'#ffffff', borderBottom: page==='latest' ? '1px solid' : ''}}>Latest</span>
             </Link>
         )
 
@@ -782,7 +782,7 @@ class App extends Component {
                         : <div className='backProject' style={{width:"20px", height:"20px", borderRadius:'3px', margin:'5px'}}></div>
                     }
                 </div>
-                <span className="custom-underline" style={{width:'80%', fontSize:'12px', fontWeight:'', color:'', borderBottom: page==='projects' ? '1px solid' : ''}}>Projects</span>
+                <span className="custom-underline" style={{width:'80%', fontSize:'12px', fontWeight:'', color:'#ffffff', borderBottom: page==='projects' ? '1px solid' : ''}}>Projects</span>
             </Link>
         )
 
@@ -820,8 +820,8 @@ class App extends Component {
         )
 
         const headerAuthBox = (
-            <div className='d-flex' style={{alignItems:'center', width:'100%', justifyContent:'space-between', direction:'ltr'}}>
-                {sidebarIcon}
+            <div className='flex bg-cover bg-right px-[10px]' style={{alignItems:'center', width:'100%', justifyContent:'space-between', direction:'ltr'}}>
+                {/* sidebarIcon */}
                 <div className='d-flex' style={{alignItems:'center', direction:'ltr'}}>
                     {w>=s && <div style={{marginRight:'30px'}}>{logoX}</div>}
                 </div>
@@ -837,7 +837,7 @@ class App extends Component {
                                     {/* contactNav */}
                                 </div>
                                 {auth && w>1000 && <div style={{width:'30px'}}></div>}
-                                <div className='d-flex' style={{width: w<s ? '100%' : w>1200 ? '320px' : '320px', padding:'0px 10px', justifyContent:'space-between', alignItems:'center', direction:'ltr'}}>
+                                <div className='d-flex' style={{width: w<s ? '100%' : w>1200 ? '320px' : '320px', padding:'0px 10px', justifyContent:'space-between', alignItems:'center'}}>
                                     {notificationNav}
                                     {chatNav}
                                     {rubyNav}
@@ -870,8 +870,8 @@ class App extends Component {
 
         const header = (
             <div className='sticky-top cardShadow' style={{top:w<s ? (scrollDirection==='up' ? -45 : 0) : 0, transition:'.5s'}}>
-                <div className='backBlur' style={{height:NavHX, alignItems:'center', backgroundColor:'#ffffff00', borderBottom:'0px solid #d1a44a',
-                    justifyContent:'space-between', transition:'.5s'}}>
+                <div className='bg-cover bg-right backBlur' style={{height:NavHX, alignItems:'center', borderBottom:'0px solid #d1a44a',
+                    justifyContent:'space-between', transition:'.5s', backgroundImage: `url(${aiImage})`}}>
                     <div className='d-flex' style={{height:NavHX, alignItems:'center', padding:w<s ? '0px 5px' : '0px'}}>
                         <div className='d-flex' style={{justifyContent:'space-between', alignItems:'center', width:'100%', direction:'rtl'}}>{w<s ? headerAuthBoxM : headerAuthBox}</div>
                     </div>

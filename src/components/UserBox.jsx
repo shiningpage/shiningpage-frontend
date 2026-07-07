@@ -106,9 +106,9 @@ class UserBox extends Component{
             <div className='center nav' style={{width:'', height:'100%', marginTop:w<s ? '' : '3px', padding:w<s ? '' : '0px 15px', textAlign:'center', flexDirection:'column'}}>
                 {userProfileImage}
                 { w>=s &&
-                    <div className='d-flex' style={{direction:'ltr'}}>
-                        <span style={{fontSize:'12px', margin:'0px', whiteSpace: 'nowrap'}}>{auth ? 'Me' : setLT.login}</span>
-                        <FaCaretDown />
+                    <div className='flex'>
+                        <span style={{fontSize:'12px', margin:'0px', whiteSpace: 'nowrap', color:'#ffffff'}}>{auth ? 'Me' : 'Login'}</span>
+                        <FaCaretDown color='#ffffff'/>
                     </div>
                 }
             </div>
