@@ -103,12 +103,12 @@ class UserBox extends Component{
             </div>
         )
         const webLinkIcon = (
-            <div className='center nav' style={{width:'', height:'100%', marginTop:w<s ? '' : '3px', padding:w<s ? '' : '0px 15px', textAlign:'center', flexDirection:'column'}}>
+            <div className='center white-nav' style={{width:'', height:'100%', marginTop:w<s ? '' : '3px', padding:w<s ? '' : '0px 15px', textAlign:'center', flexDirection:'column'}}>
                 {userProfileImage}
                 { w>=s &&
                     <div className='flex'>
-                        <span style={{fontSize:'12px', margin:'0px', whiteSpace: 'nowrap', color:'#ffffff'}}>{auth ? 'Me' : 'Login'}</span>
-                        <FaCaretDown color='#ffffff'/>
+                        <span style={{fontSize:'12px', margin:'0px', whiteSpace: 'nowrap'}}>{auth ? 'Me' : 'Login'}</span>
+                        {auth && <FaCaretDown/>}
                     </div>
                 }
             </div>
