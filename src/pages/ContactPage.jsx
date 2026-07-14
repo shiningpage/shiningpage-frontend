@@ -81,11 +81,18 @@ class ContactPage extends Component {
   }
 
   changeHandler = async (e) => {
-    const name = e.target.name
-    this.setState({ [name]: e.target.value })
-    if(name==='name') this.setState({ nameErr: false })
-    if(name==='contactInfo') this.setState({ contactInfoErr: false })
-    if(name==='message') this.setState({ messageErr: false })
+    const name = e.target.name;
+
+    if (name === 'message') {
+      e.target.style.height = 'auto';
+      e.target.style.height = `${e.target.scrollHeight}px`;
+    }
+
+    this.setState({ [name]: e.target.value });
+
+    if(name==='name') this.setState({ nameErr: false });
+    if(name==='contactInfo') this.setState({ contactInfoErr: false });
+    if(name==='message') this.setState({ messageErr: false });
   }
 
   onResize = () => {
@@ -101,85 +108,80 @@ class ContactPage extends Component {
     const loader13 = <div className='loader-13' style={{margin: '0px', color:'#ffffff', transform: rtl ? 'rotate(180deg)' : ''}}></div>
 
     const header = (
-      <div className='center' style={{alignItems:'center', flexDirection:'column', padding: '0px 10px'}}>
-        <div className='d-flex' style={{justifyContent:rtl ? 'space-between' : 'flex-end', alignItems:'center', width:'100%', direction:'rtl'}}>
-          <h1 className='animated fadeInLeft tx' style={{animationDelay:'.5s', color:'#ffffff', fontWeight:'bold', fontSize: w<s ? '30px' : '', textAlign:'center', margin:'30px 10px 30px'}}>{setLT.contact}</h1>
-        </div>
-      </div>
-    )
-
-    const sendMessage = (
-      <div>
-        {setLT.name}
-        <input className='form-control' value={name} name="name" onChange={this.changeHandler}
-          style={{marginBottom:'15px', minHeight: '10px', height: 'unset', borderRadius:'5px', fontSize:'14px', border: `1px solid ${nameErr ? 'red' : '#CED4DA'}`}}
-        />
-        {setLT.email}
-        <textarea
-          onChange={this.changeHandler}
-          name="contactInfo"
-          value={contactInfo}
-          type="text"
-          className="form-control"
-          style={{marginBottom:'15px', minHeight: '10px', height: 'unset', borderRadius:'5px', fontSize:'14px', border: `1px solid ${contactInfoErr ? 'red' : '#CED4DA'}`}}
-          rows= '1'
-        />
-        {setLT.message}
-        <textarea
-          onChange={this.changeHandler}
-          name="message"
-          value={message}
-          type="text"
-          className="form-control"
-          placeholder={setLT.chatPlaceHolder}
-          style={{marginBottom:'15px', minHeight: '10px', height: 'unset', borderRadius:'5px', fontSize:'14px', border: `1px solid ${messageErr ? 'red' : '#CED4DA'}`}}
-          rows="5"
-        />
-        { !messageSuccess
-          ?
-          <div className='center'>
-            <div className={`btnShadow C14`}
-              style={{width:'100px', textAlign:'center', 
-                height:'30px', margin:'10px', padding:'2px',
-                border:`3px solid #ffffff99`,
-                borderRadius: '100px'}}
-              onClick = {() => this.onSendMessage()}>
-                { sendingMessage
-                  ? loader13
-                  :<div>
-                    <span style={{fontSize:'14x'}}>{setLT.send}</span>&nbsp;
-                    <FaRegPaperPlane/>
-                  </div>
-                }
-            </div>
-          </div>
-          :
-          <div>
-            <div className="alert alert-success animated fadeInDown" role="alert" style={{width:'100%', textAlign:rtl ? 'right' : 'left', fontSize:'15px', display: messageSuccess ? '' : 'none', margin:'0px' }}>{messageSuccess}</div>
-          </div>
-        }
+      <div className="animated fadeInLeft [animation-delay:.5s] text-4xl font-extrabold tracking-tight my-[30px]">
+        <span className="bg-gradient-to-r from-violet-600 via-indigo-500 to-sky-500 bg-clip-text text-transparent">
+          Contact Us
+        </span>
       </div>
     )
 
     const adsBox = <div className='adsbox'><AdsHorizontal id='adsH1' /></div>
 
+    const nameConst = (
+      <div className='mb-4'>
+        <label className="mb-2">
+            Name
+        </label>
+        <input 
+          className={`w-full h-12 border rounded-[8px] px-4 outline-none focus:ring-1 focus:ring-[#6D3EE3] ${nameErr ? '!border-red-500' : '!border-[#E1E4EC50]'}`}
+          value={name} name="name" onChange={this.changeHandler}
+        />
+      </div>
+    )
+
+    const contactConst = (
+      <div className='mb-4'>
+        <label className="mb-2">
+            Contact <span className='text-[10px]'>(Email, WhatsApp, ...)</span>
+        </label>
+        <input 
+          className={`w-full h-12 border rounded-[8px] px-4 outline-none focus:ring-1 focus:ring-[#6D3EE3] ${contactInfoErr ? '!border-red-500' : '!border-[#E1E4EC50]'}`}
+          value={contactInfo} name="contactInfo" onChange={this.changeHandler}
+        />
+      </div>
+    )
+
+    const messageConst = (
+      <div className='mb-4'>
+        <label className="mb-2">
+            Message
+        </label>
+        <textarea 
+          className={`w-full border rounded-[8px] px-4 py-2.5 !resize-none outline-none focus:ring-1 focus:ring-[#6D3EE3] ${messageErr ? '!border-red-500' : '!border-[#E1E4EC50]'}`}
+          value={message} name="message" onChange={this.changeHandler}
+          placeholder={setLT.chatPlaceHolder}
+          rows={5}
+        />
+      </div>
+    )
+
+    const sendBtn = (
+      <div className='center btnShadow w-full h-12 my-10 rounded-[8px] bg-gradient-to-r from-blue-600 to-purple-600 py-3 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:from-blue-700 hover:to-purple-700 hover:shadow-xl active:scale-98 focus:outline-none focus:ring-4 focus:ring-blue-300'
+        onClick = {() => this.onSendMessage()}>
+        <span style={{fontSize:'16px'}}>{sendingMessage ? loader13 : 'Submit'}</span>
+      </div>
+    )
+
+    const alertSuccess = <div className={`alert alert-success animated fadeInDown w-full my-10 text-[15px] ${messageSuccess ? '' : 'hidden'}`} role="alert">{messageSuccess}</div>
+
     return (
       <div>
-        {googleAds && adsBox}
+        {/* {googleAds && adsBox} */}
         <Container>
-          <div className='center' style={{flexDirection:'column', alignItems:'center'}}>
+          <div className='center flex-col'>
             {header}
-          </div>
-          <div className='center' style={{padding:'0px 10px'}}>
-            <div className='animated fadeInUpX' style={{animationDelay:'.5s', width:w<s ? '100%' : '800px', margin:'0px 0px 30px', padding:'10px', fontFamily:'Vazir', top:'50px', zIndex:'0', backgroundColor:'#ffffff99', borderRadius:'5px'}}>
-              <div style={{backgroundColor:'#ffffff99', borderRadius:'5px', padding:'10px', marginBottom:'20px', direction: rtl ? 'rtl' : 'ltr'}}>
-                {sendMessage}
+            <div className={`animated fadeInUpX [animation-elay:.5s] ${w<s ? 'w-full' : 'w-[800px]'} mb-[30px] p-[20px] text-white rounded-[20px] backdrop-blur-[20px] bg-[#ffffff10] border !border-white/20`}>
+              <div>
+                {nameConst}
+                {contactConst}
+                {messageConst}
+                { messageSuccess ? alertSuccess : sendBtn }
               </div>
               <div dangerouslySetInnerHTML={{ __html: setLT.referToEmail }}></div>
             </div>
           </div>
         </Container>
-        {googleAds && adsBox}
+        {/* {googleAds && adsBox} */}
       </div>
 
     );
