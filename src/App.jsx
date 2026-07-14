@@ -702,8 +702,10 @@ class App extends Component {
                         alt="logo"
                     />
                     :
-                    <div style={{ margin:'10px' }}>
-                        <FaBars className='btnShadow text-[#ffffff]' style={{width:'22px', height:'22px' }}/>
+                    <div className='mr-[10px]'>
+                        <button className="p-1 rounded-full border-0 !border-[#e5bc7b] transition-all duration-300 hover:bg-white/10 hover:shadow-lg hover:scale-110 active:scale-95">
+                            <FaBars className="w-6 h-6 text-[#e5bc7b]" />
+                        </button>
                     </div>
                 }
             </div>
@@ -821,7 +823,7 @@ class App extends Component {
 
         const headerAuthBox = (
             <div className='flex bg-cover bg-right px-[10px]' style={{alignItems:'center', width:'100%', justifyContent:'space-between', direction:'ltr'}}>
-                {/* sidebarIcon */}
+                {sidebarIcon}
                 <div className='d-flex' style={{alignItems:'center', direction:'ltr'}}>
                     {w>=s && <div style={{marginRight:'30px'}}>{logoX}</div>}
                 </div>
@@ -881,7 +883,7 @@ class App extends Component {
                     <div className='center' style={{ backgroundColor:'red', color:'#ffffff', fontWeight:450, textAlign:'center' }}
                         onClick={() => this.onToggleViewStatus()}
                     >
-                        <span className='underline'>
+                        <span className='hover:underline'>
                             {setLT.rubyCollectionList}
                         </span>
                         { !rubyDone &&
@@ -916,36 +918,36 @@ class App extends Component {
         const navItemsStyle = {textDecoration: "none", color:'#ffffff', alignItems:'center', height:'40px'}
 
         const homeBtn = (
-            <Link to={`/`} className={`d-flex ${page==='home' ? 'sidebarItemFix' : (w<s ? '' : 'sidebarItem')}`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen()}>
-                <AiFillHome style={{width:'23px', margin:'10px 20px', fontSize:'23px'}}/>
+            <Link to={`/`} className={`d-flex goldenText ${page==='home' ? 'sidebarItemFix' : (w<s ? '' : 'sidebarItem')}`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen()}>
+                <AiFillHome className='goldenText' style={{width:'23px', margin:'10px 20px', fontSize:'23px'}}/>
                 <div style={{margin:rtl ? '10px' : '13px 10px 10px', fontSize:'15px', fontWeight:450}}>{setLT.home}</div>
             </Link>
         )
 
         const aboutBtn = (
-            <Link to={`/about`} className={`d-flex ${page==='about' ? 'sidebarItemFix' : (w<s ? '' : 'sidebarItem')}`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen()}>
-                <HiUsers style={{width:'23px', margin:'10px 20px', fontSize:'23px'}}/>
+            <Link to={`/about`} className={`d-flex goldenText ${page==='about' ? 'sidebarItemFix' : (w<s ? '' : 'sidebarItem')}`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen()}>
+                <HiUsers className='goldenText' style={{width:'23px', margin:'10px 20px', fontSize:'23px'}}/>
                 <div style={{margin:rtl ? '10px' : '13px 10px 10px', fontSize:'15px', fontWeight:450}}>{setLT.about}</div>
             </Link>
         )
 
         const contactBtn = (
-            <Link to={`/contact`} className={`d-flex ${page==='contact' ? 'sidebarItemFix' : (w<s ? '' : 'sidebarItem')}`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen()}>
-                <IoMailSharp style={{width:'23px', margin:'10px 20px', fontSize:'23px'}}/>
+            <Link to={`/contact`} className={`d-flex goldenText ${page==='contact' ? 'sidebarItemFix' : (w<s ? '' : 'sidebarItem')}`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen()}>
+                <IoMailSharp className='goldenText' style={{width:'23px', margin:'10px 20px', fontSize:'23px'}}/>
                 <div style={{margin:rtl ? '10px' : '13px 10px 10px', fontSize:'15px', fontWeight:450}}>{setLT.contact}</div>
             </Link>
         )
 
         const reviewsBtn = (
-            <Link to={`/reviews`} className={`d-flex ${(page==='reviews') ? 'sidebarItemFix' : (w<s ? '' : 'sidebarItem')}`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen()}>
-                <MdReviews style={{width:'23px', margin:'10px 20px', fontSize:'23px'}}/>
+            <Link to={`/reviews`} className={`d-flex goldenText ${(page==='reviews') ? 'sidebarItemFix' : (w<s ? '' : 'sidebarItem')}`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen()}>
+                <MdReviews className='goldenText' style={{width:'23px', margin:'10px 20px', fontSize:'23px'}}/>
                 <div style={{margin:rtl ? '10px' : '13px 10px 10px', fontSize:'15px', fontWeight:450}}>{setLT.memberReviews}</div>
             </Link>
         )
 
         const dashboardBtn = (
-            <Link to={`/dashboard`} className={`d-flex ${(page==='dashboard') ? 'sidebarItemFix' : (w<s ? '' : 'sidebarItem')}`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen()}>
-                <AiOutlineDashboard style={{width:'23px', margin:'10px 20px', fontSize:'23px'}}/>
+            <Link to={`/dashboard`} className={`d-flex goldenText ${(page==='dashboard') ? 'sidebarItemFix' : (w<s ? '' : 'sidebarItem')}`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen()}>
+                <AiOutlineDashboard className='goldenText' style={{width:'23px', margin:'10px 20px', fontSize:'23px'}}/>
                 <div style={{margin:rtl ? '10px' : '13px 10px 10px', fontSize:'15px', fontWeight:450}}>Dashboard</div>
             </Link>
         )
@@ -1379,7 +1381,7 @@ class App extends Component {
                                 {modalViewStatus}
                                 {modalChatList}
                             </div>
-                            {!['', '', 'content', 'web', 'ps'].includes(page) && footer}
+                            {!['publisher', 'user', 'content', 'web', 'ps'].includes(page) && footer}
                             {w<s && footerX}
                             {w<s && hrC14}
                             {/* footbar */}
