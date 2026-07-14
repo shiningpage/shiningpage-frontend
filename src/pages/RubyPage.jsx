@@ -13,7 +13,7 @@ import { setAddress, setCountry, setSubject, setPageTitle,
 import siteView from '../modules/siteView';
 import { FaInstagram } from 'react-icons/fa';
 import { IoIosWarning } from "react-icons/io";
-import { BiSolidCategory } from 'react-icons/bi';
+import { BiCategory, BiSolidCategory } from 'react-icons/bi';
 import { GrAttachment } from 'react-icons/gr';
 import { FcStackOfPhotos } from "react-icons/fc";
 import { AdsHorizontal } from '../components/GoogleAds';
@@ -143,11 +143,11 @@ class RubyPage extends Component {
         )
 
         const header = (
-            <div className='center' style={{alignItems:'center', flexDirection:'column', padding: '0px 10px'}}>
-                <div className='d-flex' style={{justifyContent:rtl ? 'space-between' : 'flex-end', alignItems:'center', width:'100%', direction:'rtl'}}>
-                    <h1 className='animated fadeInLeft tx' style={{animationDelay:'.5s', color:'#ffffff', fontWeight:450, fontSize: w<s ? '30px' : '', textAlign:'center', margin:'30px 10px'}}>{setLT.ruby}</h1>
-                </div>
-            </div>
+          <div className="animated fadeInLeft [animation-delay:.5s] text-4xl font-extrabold tracking-tight my-[30px]">
+            <span className="bg-gradient-to-r from-violet-600 via-indigo-500 to-sky-500 bg-clip-text text-transparent">
+              Ruby
+            </span>
+          </div>
         )
         
         const rubyBig = (
@@ -175,7 +175,7 @@ class RubyPage extends Component {
 
         const category = (
             <div className={`d-flex`} style={{marginBottom:'10px', alignItems:'center'}}>
-                <BiSolidCategory style={{width:'25px', height:'25px', margin:'0px 5px'}}/>
+                <BiCategory style={{width:'25px', height:'25px', margin:'0px 5px'}}/>
                 <span style={{fontWeight:450}}>{setLT.category}:</span>
                 <div className='flex' style={{margin:'0px 10px', direction:'ltr'}}>
                     5
