@@ -5,22 +5,6 @@
   RewriteCond %{REQUEST_URI} ^/(en|fa|ar)(/.*)?$ [NC]
   RewriteRule ^(en|fa|ar)(/.*)?$ %2 [R=301,L,NE]
 
-  # Redirect parmisbeauty.ir and www.parmisbeauty.ir to new URL
-  RewriteCond %{HTTP_HOST} ^(www\.)?parmisbeauty\.ir$ [NC]
-  RewriteRule ^(.*)$ https://shiningpage.com/publisher/parmis_beauty [R=301,L]
-
-  # Redirect asooparts.ir and www.asooparts.ir to new URL
-  RewriteCond %{HTTP_HOST} ^(www\.)?asooparts\.ir$ [NC]
-  RewriteRule ^(.*)$ https://shiningpage.com/publisher/asooparts [R=301,L]
-
-  # Redirect mahooryadak.ir and www.mahooryadak.ir to new URL
-  RewriteCond %{HTTP_HOST} ^(www\.)?mahooryadak\.ir$ [NC]
-  RewriteRule ^(.*)$ https://shiningpage.com/publisher/mahooryadak [R=301,L]
-
-  # Redirect marisaarts.ir and www.marisaarts.ir to new URL
-  RewriteCond %{HTTP_HOST} ^(www\.)?marisaarts\.ir$ [NC]
-  RewriteRule ^(.*)$ https://shiningpage.com/publisher/marisaarts [R=301,L]
-
   # Redirect shahlaskincare.com and www.shahlaskincare.com to new URL
   RewriteCond %{HTTP_HOST} ^(www\.)?shahlaskincare\.com$ [NC]
   RewriteRule ^(.*)$ https://shiningpage.com/publisher/shahlaskincare [R=301,L]
