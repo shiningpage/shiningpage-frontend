@@ -14,20 +14,14 @@ class More extends Component {
     const {setLT, fc} = this.props
 
     return (
-        <div className='center'>
-            <div className={`C${fc} btnShadow`}
-                style={{minWidth: '100px', height: '30px', 
-                        textAlign:'center', 
-                        margin: '40px 0px 30px',
-                        border: `3px solid ${[11].includes(fc) ? '#00000050' : '#ffffff80'}`,
-                        padding: '0px 10px',
-                        color: `${lightColors.includes(fc) ? '#00000090' : '#ffffff'}`,
-                        borderRadius: '100px'}}
-            >
-                <span>{setLT.more}</span>
-                <FaAngleLeft style={{fontSize:'20px', margin:'2px 0px 0px 0px', transform:'rotate(-90deg)'}}/>
-            </div>
-        </div>
+      <div className={`center items-center C${fc} btnShadow min-w-[100px] h-[30px] text-centermy-[40px] mb-[30px] px-[10px] rounded-full border-[3px]
+          ${[11].includes(fc) ? "border-black/30" : "border-white/50"}
+          ${lightColors.includes(fc) ? "text-black/60" : "text-white"}
+        `}
+      >
+        <span>{setLT.more}</span>
+        <FaAngleLeft className="text-[20px] mt-[2px] -rotate-90"/>
+      </div>
     );
   }
 }
