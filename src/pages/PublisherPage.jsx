@@ -616,7 +616,7 @@ class PublisherPage extends Component {
             <div className='d-flex' onClick = {() => this.onToggleCall(phone)}
                 style = {{fontSize:w<s ? '15px' : '15px', fontWeight:'bold', padding:'0px 10px', alignItems:'center', direction: rtl ? 'ltr' : 'ltr'}}>
                 <MdPhoneInTalk className='' style={{ fontSize:'20px', margin:'0px', transform: 'rotate(10deg)' }}/>
-                <span className='underline' style={{margin:'0px 10px', whiteSpace:'nowrap'}}>{phone}</span>
+                <span className='hover:underline' style={{margin:'0px 10px', whiteSpace:'nowrap'}}>{phone}</span>
             </div>
         )
 
@@ -624,13 +624,13 @@ class PublisherPage extends Component {
             <div className='d-flex'  onClick = {() => this.onToggleCall(celphone)}
                 style = {{fontSize:w<s ? '15px' : '15px', fontWeight:'bold', padding:'0px 10px', alignItems:'center', direction: rtl ? 'ltr' : 'ltr'}}>
                 <MdPhonelinkRing className='' style={{ fontSize:'20px', margin:'0px', transform: 'rotate(10deg)' }}/>
-                <span className='underline' style={{margin:'0px 10px', whiteSpace:'nowrap'}}>{celphone}</span>
+                <span className='hover:underline' style={{margin:'0px 10px', whiteSpace:'nowrap'}}>{celphone}</span>
 
             </div>
         )
 
         const contactUs = (
-            <div className={w>s ? 'underline' : ''} style={{padding:'0px 10px', textDecoration:w<s ? 'underline' : ''}}
+            <div className={w>s ? 'hover:underline' : ''} style={{padding:'0px 10px', textDecoration:w<s ? 'hover:underline' : ''}}
                 onClick={() => this.onSetSidebarOpen('contactSub', true)}>
                 {setLT.contact}
             </div>
@@ -702,7 +702,7 @@ class PublisherPage extends Component {
 
         // , position:'fixed', bottom: whatsapp ? 140 : (w<s ? 50 : 80), right:w<s ? 5 : 10,
         const chatConst = (
-            <div className={`center C${fc} btnShadow underline`}
+            <div className={`center C${fc} btnShadow hover:underline`}
                 style={{width: '125px', height: '30px', marginTop:'10px',
                         textAlign:'center', fontWeight:400,
                         border: `3px solid ${[11].includes(fc) ? '#00000050' : '#ffffff80'}`,
@@ -726,7 +726,7 @@ class PublisherPage extends Component {
         )
 
         const whatsappPopup = (
-                <div className={`center C${fc} ${whatsapp ? 'btnShadow underline' : ''}`}
+                <div className={`center C${fc} ${whatsapp ? 'btnShadow hover:underline' : ''}`}
                     style={{width:'120px', height: '30px', marginTop: '10px',
                             textAlign:'center', fontWeight:400,
                             border: `3px solid ${whatsapp ? '#2aff00' : '#e0e6ed'}`,
@@ -897,42 +897,42 @@ class PublisherPage extends Component {
         const navItemsStyle = {color:'#000000', alignItems:'center', height:'40px'}
         const sidebarItemsStyle = {margin:rtl ? '10px' : '13px 10px 10px', fontSize:'16px', fontWeight:400}
         const homeBtn = (
-            <div className={`d-flex underline`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen()}>
+            <div className={`d-flex hover:underline`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen()}>
                 <AiFillHome style={{width:'23px', margin:'10px 16px', fontSize:'23px'}}/>
                 <div style={sidebarItemsStyle}>{setLT.home}</div>
             </div>
         )
 
         const aboutBtn = (
-            <div className={`d-flex underline`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen('about')}>
+            <div className={`d-flex hover:underline`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen('about')}>
                 <FaUsers style={{width:'23px', margin:'10px 16px', fontSize:'23px'}}/>
                 <div style={sidebarItemsStyle}>{setLT.about}</div>
             </div>
         )
 
         const psBtn = (
-            <div className={`d-flex underline`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen('psSub')}>
+            <div className={`d-flex hover:underline`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen('psSub')}>
                 <AiFillProduct style={{width:'23px', margin:'10px 16px', fontSize:'23px'}}/>
                 <div style={sidebarItemsStyle}>{setLT.ProductsServices}</div>
             </div>
         )
 
         const attachmentsBtn = (
-            <div className={`d-flex underline`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen('attachmentsSub')}>
+            <div className={`d-flex hover:underline`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen('attachmentsSub')}>
                 <MdAttachFile style={{width:'23px', margin:'10px 16px', fontSize:'23px'}}/>
                 <div style={sidebarItemsStyle}>{setLT.attachments}</div>
             </div>
         )
 
         const statisticsBtn = (
-            <div className={`d-flex underline`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen('statisticsSub')}>
+            <div className={`d-flex hover:underline`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen('statisticsSub')}>
                 <GiGlobe style={{width:'23px', margin:'10px 16px', fontSize:'23px'}}/>
                 <div style={sidebarItemsStyle}>{setLT.statistics}</div>
             </div>
         )
 
         const contactBtn = (
-            <div className={`d-flex underline`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen('contactSub')}>
+            <div className={`d-flex hover:underline`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen('contactSub')}>
                 <MdPhoneInTalk style={{width:'22px', margin:'10px 16px', fontSize:'23px'}}/>
                 <div style={sidebarItemsStyle}>{setLT.contact}</div>
             </div>

@@ -1288,7 +1288,7 @@ class PSPage extends Component {
                                 <Link to={`/${subUserInfo.businessType>0 ? 'publisher' : 'user'}/${subUserInfo.username}`} className='link-underline'>{subUserInfo.bizName ? subUserInfo.bizName : subUserInfo.username}</Link>
                                 <FaAngleRight style={{margin:'0px 5px', transform: rtl ? 'scaleX(-1)' : ''}}/>
                             </div>
-                            <span className='underline' onClick={() => window.location.reload()}>{adsInfo.adsTitle}</span>
+                            <span className='hover:underline' onClick={() => window.location.reload()}>{adsInfo.adsTitle}</span>
                         </div>
                     </Container>
                 </div>

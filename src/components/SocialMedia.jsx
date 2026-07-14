@@ -616,7 +616,7 @@ class SocialMediaPage extends Component{
         var serviceList = targetServices.map(
             (item, i) => {
                 // console.log(i+1, item.enable)
-                const edit = <span id='editBtn' className='underline' style={{margin:'0px 20px', color:'blue', display: fullAccess ? '' : 'none'}} onClick={() => this.onToggleEditService(item)}>Edit</span>
+                const edit = <span id='editBtn' className='hover:underline' style={{margin:'0px 20px', color:'blue', display: fullAccess ? '' : 'none'}} onClick={() => this.onToggleEditService(item)}>Edit</span>
                 return (
                     <div key={i} className={`${item.enable ? 'btnShadow' : ''}`}
                         style={item.name===service.name ? selectedStyle : (item.enable ? myStyle : {...myStyle, backgroundColor:'#99999920'})}
@@ -1137,8 +1137,8 @@ class SocialMediaPage extends Component{
         ];
             // { key: 'google', icon: googleIcon, label: 'Google', total: googleTotal, disabled: googleDisabled },
 
-        const help = <span className='underline' style={{fontWeight:300, color:'blue', cursor:'pointer'}} onClick={() => this.onToggleHelp()}>Help</span>
-        const activeAll = <span className='underline' style={{fontWeight:300, color:'blue', cursor:'pointer', margin:'0px 10px'}} onClick={() => this.onActiveAll()}>{activingAll ? loader13 : 'ActiveAll'}</span>
+        const help = <span className='hover:underline' style={{fontWeight:300, color:'blue', cursor:'pointer'}} onClick={() => this.onToggleHelp()}>Help</span>
+        const activeAll = <span className='hover:underline' style={{fontWeight:300, color:'blue', cursor:'pointer', margin:'0px 10px'}} onClick={() => this.onActiveAll()}>{activingAll ? loader13 : 'ActiveAll'}</span>
         const networkList = (
             <div style={{ width:'100%', marginBottom:'50px', borderRadius:'8px', overflow:'hidden', border:'2px solid #ffffff', backgroundColor:'#ffffff00' }}>
                 <div style={{ fontSize:'15px', fontWeight:450, width:'100%', padding:'10px', backgroundColor:'#ffffff', }}>
@@ -1166,7 +1166,7 @@ class SocialMediaPage extends Component{
             <div style={{ width:'100%', }}>
                 <div className='d-flex'>
                     <div className='' style={{ fontWeight:'450', marginBottom:'10px' }}>Orders: {SMRecordsLoading ? loader13 : SMRecords.length}</div>
-                    {SMRecords.length>0 && <span className='underline' style={{margin:'0px 20px', color:'blue', display: SMRecordsLoading ? 'none' : '', cursor:'pointer'}} onClick={() => this.updateOrders()}>{ ordersUpdating ? loader13 : 'Update' }</span>}
+                    {SMRecords.length>0 && <span className='hover:underline' style={{margin:'0px 20px', color:'blue', display: SMRecordsLoading ? 'none' : '', cursor:'pointer'}} onClick={() => this.updateOrders()}>{ ordersUpdating ? loader13 : 'Update' }</span>}
                 </div>
                 { SMRecords.length>0 &&
                     <LocalTable
@@ -1275,14 +1275,14 @@ class SocialMediaPage extends Component{
                 <Modal.Body style={{backgroundColor:'#ffffff99', padding:'10px'}}>
                     <section className='' style={{...itemStyle, fontWeight:400, border:'1px solid #CED4DA'}}>{category}</section>
                     <section className='' style={{...itemStyle, fontWeight:400, border:'1px solid #CED4DA'}}>{service.service + ' - ' + service.name + ' - ' + '£' + service.whoralyPrice}</section>
-                    <div className="d-flex underline" onClick={() => this.toggleServiceOption('active')}
+                    <div className="d-flex hover:underline" onClick={() => this.toggleServiceOption('active')}
                         style={{marginBottom:'10px', alignItems:'center', justifyContent:'flex-end', flexDirection:'row-reverse'}}>
                         <Form.Label className='pointer' style={{margin:'0px 5px'}}>
                             Active
                         </Form.Label>
                         <Form.Check className='pointer' type="switch" checked={service.active ? true : false} onChange={() => null}/>
                     </div>
-                    <div className="d-flex underline" onClick={() => this.toggleServiceOption('enable')}
+                    <div className="d-flex hover:underline" onClick={() => this.toggleServiceOption('enable')}
                         style={{marginBottom:'10px', alignItems:'center', justifyContent:'flex-end', flexDirection:'row-reverse'}}>
                         <Form.Label className='pointer' style={{margin:'0px 5px'}}>
                             Enable

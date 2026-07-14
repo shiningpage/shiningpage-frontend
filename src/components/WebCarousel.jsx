@@ -116,7 +116,7 @@ class WebCarousel extends Component{
                 >
                     {carouselItems[i].subTitle}
                 </div>
-                <div className={`${ type==='out' ? 'fadeOutDown' : 'animated fadeIn' } center C${fc} underline`}
+                <div className={`${ type==='out' ? 'fadeOutDown' : 'animated fadeIn' } center C${fc} hover:underline`}
                     style={{width: carouselItems[i].id === 'aboutInfo' ? '60px' : '200px', minWidth:'100px', height: '', animationDelay:type==='out' ? '1s' : '2.5s',
                             textAlign:'center', fontWeight:400,
                             margin: '0px',

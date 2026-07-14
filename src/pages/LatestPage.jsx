@@ -110,7 +110,7 @@ class LatestPage extends Component {
 			)
 	
 			const profileBox = (
-				<div className='d-flex underline' style={{ fontSize: '12px', padding: '10px' }}
+				<div className='flex hover:underline' style={{ fontSize: '12px', padding: '10px' }}
 					onClick={() => goToWebPage(item)}>
 					{UserProfileImage}
 					<div style={{ margin: '0px 10px' }}>
@@ -143,7 +143,7 @@ class LatestPage extends Component {
 				)
 				const root = item.businessType>0 ? 'publisher' : 'user'
 				const adsPageLink = (
-					<Link to={item.slug ? `/publisher/${item.username}/${item.slug}` : `/ps/${item._id}`} target="_blank" className='underline' style={{fontSize:'14px'}}>
+					<Link to={item.slug ? `/publisher/${item.username}/${item.slug}` : `/ps/${item._id}`} target="_blank" className='hover:underline' style={{fontSize:'14px'}}>
 						{setLT.showDetails}
 					</Link>
 				)
@@ -356,6 +356,14 @@ class LatestPage extends Component {
 			</div>
 		)
 
+		const header = (
+          <div className="animated fadeInLeft [animation-delay:.5s] text-4xl font-extrabold tracking-tight my-[30px] text-center">
+            <span className="bg-gradient-to-r from-violet-600 via-indigo-500 to-sky-500 bg-clip-text text-transparent">
+              Latest Posts
+            </span>
+          </div>
+        )
+
 		return (
 			<div>
 				<div  style= {{padding:w<1400 ? '0px 10px' : '0px 50px'}}>
@@ -368,7 +376,7 @@ class LatestPage extends Component {
 					<div className='d-flex' style={{marginBottom:'20px'}}>
 						{w>s && <AllBusinesses />}
 						<div style={{ width: '100%' }}>
-							<h1 className='animated fadeInLeft tx' style={{animationDelay:'.5s', color:'#ffffff', fontWeight:'bold', fontSize: w<s ? '30px' : '', textAlign:'center', margin:'30px 10px'}}>Latest Posts</h1>
+							{header}
 							{ allLatestList }
 							<div className='center' style={{width:'100%', height:!finishDataLatest ? '100px' : '0px', alignItems:'center'}}>
 								{(loadingLatest && !finishDataLatest) && loader13}

@@ -550,7 +550,7 @@ const mapAllPS = async (data, me, EditBtn, setLT, lang, rtl, w, s, ) => {
 
             const root = item.businessType>0 ? 'publisher' : 'user'
             const adsPageLink = (
-                <Link to={item.slug ? `/publisher/${item.username}/${item.slug}` : `/ps/${item._id}`} target="_blank" className='underline' style={{fontSize:'14px'}}>
+                <Link to={item.slug ? `/publisher/${item.username}/${item.slug}` : `/ps/${item._id}`} target="_blank" className='hover:underline' style={{fontSize:'14px'}}>
                     {setLT.showDetails}
                 </Link>
             )

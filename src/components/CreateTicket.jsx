@@ -46,7 +46,7 @@ class CreateTicket extends Component{
 
         return (
             <span
-                className='underline'
+                className='hover:underline'
                 style={{fontWeight:450, padding:'4px 16px', color:'blue'}}
                 onClick={() => this.onCreateTicket("607e9088bede482040af3574")}
             >

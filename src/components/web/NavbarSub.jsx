@@ -54,7 +54,7 @@ const NavbarSub = (props) => {
             (item, i) => {
                 const catName = item.title ? item.title.toUpperCase() : 'N/A'
                 return (
-                    <div key={i} className={`underline fontColor bl h${fc}`} style={{ maxHeight:'40px', padding: data.length<=5 ? '0px 20px' : '0px 10px', fontSize:'13px', fontWeight:450, }}
+                    <div key={i} className={`hover:underline fontColor bl h${fc}`} style={{ maxHeight:'40px', padding: data.length<=5 ? '0px 20px' : '0px 10px', fontSize:'13px', fontWeight:450, }}
                         onClick={() => handleCat()}>
                         {catName.length>25 ? catName.substr(0, 25) + ' ...' : catName}
                     </div>
@@ -92,7 +92,7 @@ const NavbarSub = (props) => {
         <div className='d-flex backBlur' style={{width:'100%', height:'50px', zIndex:'2', position:'absolute', backgroundColor:'#ffffff99'}}>
             <div className='center' style={{width:'100%', height:'100%', margin:'0px 10px', justifyContent:'start', alignItems:'center'}}>
                 {productAndServices}&nbsp;&nbsp;
-                <div className='d-flex f11' style={{ width:window.innerWidth-310, overflow: 'scroll'}}>
+                <div className='flex f11' style={{ width:window.innerWidth-310, overflow: 'scroll'}}>
                     {catNavbar}
                 </div>
             </div>

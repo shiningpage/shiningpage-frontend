@@ -94,7 +94,7 @@ const AttachmentSub = (props) => {
                     </div>
                     <div className="dropdown-menu" aria-labelledby="dropdownMenuButton"
                         style={{fontSize:'13px', cursor:'pointer', padding:'0px', backgroundColor:''}}>
-                        <div className="underline" style={{color:'red', padding:'5px 10px'}} onClick={() => onDelete(data, i)}>
+                        <div className="hover:underline" style={{color:'red', padding:'5px 10px'}} onClick={() => onDelete(data, i)}>
                             {setLT.delete}
                         </div>
                     </div>
@@ -107,7 +107,7 @@ const AttachmentSub = (props) => {
                     <div className="d-flex"
                         style={{ width: '100%', padding: '2px', borderRadius: '10px', backgroundColor: '#ffffff99', color: '#000000' }}
                     >
-                        <div className="d-flex underline" style={{ alignItems: 'center' }} onClick={() => download(item)}>
+                        <div className="flex hover:underline items-center cursor-pointer" onClick={() => download(item)}>
                             <img
                                 style={{ objectFit: 'cover', width: '40px', height: '40px', borderRadius: '10px' }}
                                 src={fileType}

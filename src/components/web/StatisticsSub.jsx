@@ -756,7 +756,7 @@ class StatisticsSub extends Component{
         )
 
         const likeThisPage = (
-            <div className='d-flex underline' onClick={this.onToggleLike}>
+            <div className='d-flex hover:underline cursor-pointer' onClick={this.onToggleLike}>
                 <div className='d-flex' style={{alignItems:'center', height:'30px', margin:'-8px 0px 10px'}}>
                     <span style={{marginRight:'5px', fontSize:'14px', whiteSpace:'nowrap'}}>Like this page</span>
                     {gettingLike ? loader02X : heartClick}

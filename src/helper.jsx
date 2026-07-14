@@ -1131,7 +1131,7 @@ const mapTeam = (team, w, s, onDeleteTeam, me) => {
                     </div>
                     <div className="dropdown-menu" aria-labelledby="dropdownMenuButton"
                         style={{fontSize:'13px', cursor:'pointer', padding:'0px', backgroundColor:''}}>
-                        <div className="underline" style={{color:'red', padding:'5px 10px'}} onClick={() => onDeleteTeam(i)}>
+                        <div className="hover:underline" style={{color:'red', padding:'5px 10px'}} onClick={() => onDeleteTeam(i)}>
                             delete
                         </div>
                     </div>

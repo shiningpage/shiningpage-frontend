@@ -120,7 +120,7 @@ class ContactSub extends Component{
         )
     
         const websiteSub = (
-            <div className='d-flex underline' style = {subStyle}>
+            <div className='d-flex hover:underline' style = {subStyle}>
                 <a href={`https://${website}`} target="_blank" rel="noopener noreferrer" className='d-flex' style={socialMediaStyle}
                     onClick={() => addNotification('website', 'click', fullAccess, mainUser, userId, geo)}>
                     <FaGlobe className={contactClass} style={{ ...contactStyle, fontSize:'21px' }}/>
@@ -137,7 +137,7 @@ class ContactSub extends Component{
         )
     
         const instagramSub = (
-            <div className='d-flex underline' style = {subStyle}>
+            <div className='d-flex hover:underline' style = {subStyle}>
                 <a className='d-flex' href={`https://instagram.com/${instagram}`} target="_blank" rel="noopener noreferrer" style={socialMediaStyle}
                     onClick={() => addNotification('instagram', 'click', fullAccess, mainUser, userId, geo)}>
                     <AiFillInstagram className={contactClass} style={{ ...contactStyle, fontSize:'27px', margin:'0px -2px' }}/>
@@ -147,7 +147,7 @@ class ContactSub extends Component{
         )
     
         const tikTokSub = (
-            <div className='d-flex underline' style = {subStyle}>
+            <div className='d-flex hover:underline' style = {subStyle}>
                 <a className='d-flex' href={`https://tiktok.com/@${tikTok}`} target="_blank" rel="noopener noreferrer" style={socialMediaStyle}
                     onClick={() => addNotification('tikTok', 'click', fullAccess, mainUser, userId, geo)}>
                     <AiFillTikTok className={contactClass} style={{ ...contactStyle, fontSize:'27px', margin:'0px -2px' }}/>
@@ -157,7 +157,7 @@ class ContactSub extends Component{
         )
     
         const telegramSub = (
-            <div className='d-flex underline' style = {subStyle}>
+            <div className='d-flex hover:underline' style = {subStyle}>
                 <a className='d-flex' href={`https://t.me/${telegram}`} target="_blank" rel="noopener noreferrer" style={socialMediaStyle}
                     onClick={() => addNotification('telegram', 'click', fullAccess, mainUser, userId, geo)}>
                     <FaTelegram className={contactClass} style={{ ...contactStyle, fontSize:'24px' }}/>
@@ -167,7 +167,7 @@ class ContactSub extends Component{
         )
 
         const facebookSub = (
-            <div className='d-flex underline' style = {subStyle}>
+            <div className='d-flex hover:underline' style = {subStyle}>
                 <a className='d-flex' href={`https://${facebook}`} target="_blank" rel="noopener noreferrer" style={socialMediaStyle}
                     onClick={() => addNotification('facebook', 'click', fullAccess, mainUser, userId, geo)}>
                     <FaFacebook className={contactClass} style={ contactStyle }/>
@@ -177,7 +177,7 @@ class ContactSub extends Component{
         )
 
         const youtubeSub = (
-            <div className='d-flex underline' style = {subStyle}>
+            <div className='d-flex hover:underline' style = {subStyle}>
                 <a className='d-flex' href={`https://${youtube}`} target="_blank" rel="noopener noreferrer" style={socialMediaStyle}
                     onClick={() => addNotification('youtube', 'click', fullAccess, mainUser, userId, geo)}>
                     <FaYoutube className={contactClass} style={ contactStyle }/>
@@ -187,7 +187,7 @@ class ContactSub extends Component{
         )
 
         const linkedinSub = (
-            <div className='d-flex underline' style = {subStyle}>
+            <div className='d-flex hover:underline' style = {subStyle}>
                 <a className='d-flex' href={`https://${linkedin}`} target="_blank" rel="noopener noreferrer" style={socialMediaStyle}
                     onClick={() => addNotification('linkedin', 'click', fullAccess, mainUser, userId, geo)}>
                     <FaLinkedin className={contactClass} style={ contactStyle }/>

@@ -339,13 +339,11 @@ class SubChat extends Component {
         )
 
         const sendBtn = (
-            <div className={`center`}>
-                <div className={`btnShadow C${fc} f${txBlack ? 7 : 11}`}
-                    style={{width: '40px', height: '40px', textAlign:'center', 
-                        padding: '2px', border: `2px solid #ffffff99`, borderRadius: '100px'}}
-                    onClick = {() => this.onSendMsg()}>
-                    <FaRegPaperPlane style={{margin:'7px 3px 0px 0px'}}/>
-                </div>
+            <div className={`center btnShadow C${fc} f${txBlack ? 7 : 11}`}
+                style={{width: '40px', height: '40px', textAlign:'center', 
+                    padding: '2px', border: `2px solid #ffffff99`, borderRadius: '100px'}}
+                onClick = {() => this.onSendMsg()}>
+                <FaRegPaperPlane/>
             </div>
         )
 
@@ -384,7 +382,7 @@ class SubChat extends Component {
 
         const subUserImage = (
             <div className='d-flex' style={{alignItems:'center', cursor:'pointer'}}  onClick={() => this.subUserImagePanel(subChatInfo)}>
-                <img className={`C${fcSub}`}
+                <img className={`btnShadow C${fcSub}`}
                     style={{objectFit: 'contain', width:"40px", height:"40px", borderRadius:subChatInfo.businessType>0 ? '3px' : '100px', border:'2px solid #ffffff40', padding:'2px'}}
                     src={ !auth
                         ? userN
@@ -396,7 +394,7 @@ class SubChat extends Component {
                     }
                     alt="sub user"
                 />&nbsp;
-                {subChatInfo.username}
+                <span className='hover:underline'>{subChatInfo.username}</span>
             </div>
         )
 
