@@ -50,14 +50,14 @@ class SitemapPage extends Component {
 
   mapCategories = async () => {
     const { w } = this.state
-    const { rtl, setLT, lang } = this.props;
-    const loader = <div className='loader-13' style={{margin: '0px', color:'', transform: rtl ? 'rotate(180deg)' : ''}}></div>
+    const { setLT } = this.props;
+    const loader = <div className='loader-13'></div>
 
     // console.log(this.state.cgCompany18)
     const categoriesItem = categories.map((item, i) => (
       // console.log(item.index),
-      <div key={i} style={{ marginBottom:'10px', padding:w<s ? '10px' : '10px 20px', backgroundColor:'#ffffff99', borderRadius:'5px' }}>
-        <li style={{ fontWeight:450, marginBottom:'20px' }}>{setLT[item.title]}</li>
+      <div key={i} className={`mb-[10px] ${w < s ? 'p-[10px]' : 'py-[10px] px-[20px]'} bg-[#ffffff10] rounded-[15px] border !border-white/20 `}>
+        <li className="font-[450] mb-[20px]">{setLT[item.title]}</li>
         {this.state[`cgCompany${item.index}`] ? this.state[`cgCompany${item.index}`] : loader}
       </div>
     ))
@@ -81,62 +81,60 @@ class SitemapPage extends Component {
   }
 
   mapCompany = async (x, company) => {
-    const {w, } = this.state
-    const {lang, rtl, setLT} = this.props
-      var allCompany = await company.map(
-        (item, i) => {
-            const root = item.businessType>0 ? 'publisher' : 'user'
-            const usernameX = item.bizName ? item.bizName : item.username
-            const userImg = (
-                <div className={`C${item.fc}`} style={{width:"35px", height:"35px", borderRadius: item.businessType>0 ? '3px' : '100px', border:'1px solid #99999940', padding:'1px', overflow:'hidden'}}>
-                    <img
-                        style={{objectFit: 'contain', width:'100%', height:'100%'}}
-                        src={ exist(item.profileIndex)
-                            ? `https://www.pix.shiningpage.com/whoraly/profile/big/${item._id}-${item.profileIndex}.jpeg`
-                            : item.genderValue===0 ? female : male
-                        }
-                        alt={usernameX}
-                    />
-                </div>
-            )
-            const country = (
-              <div className='d-flex' style={{alignItems:'center', height:'20px'}}>
-                <div className={`flag-icon flag-icon-${item.countryCode ? item.countryCode.toLowerCase() : ''}`} style={{border:'1px solid #99999950', fontSize:'17px'}}></div>&nbsp;
-                <div style={{fontSize:'12px', marginTop:'4px', lineHeight:'20px'}}>{item.country ? item.country.toUpperCase() : ''}</div>
+    var allCompany = await company.map(
+      (item, i) => {
+          const root = item.businessType>0 ? 'publisher' : 'user'
+          const usernameX = item.bizName ? item.bizName : item.username
+          const userImg = (
+              <div className={`C${item.fc} w-[35px] h-[35px] ${item.businessType > 0 ? 'rounded-[3px]' : 'rounded-full'} border border-[#99999940] p-[1px] overflow-hidden`}>
+                  <img
+                      className="object-contain w-full h-full"
+                      src={ exist(item.profileIndex)
+                          ? `https://www.pix.shiningpage.com/whoraly/profile/big/${item._id}-${item.profileIndex}.jpeg`
+                          : item.genderValue===0 ? female : male
+                      }
+                      alt={usernameX}
+                  />
               </div>
-            )
-            const username = (
-              <div className='' style={{margin:'0px', lineHeight:'20px'}}>
-                {usernameX}
+          )
+          const country = (
+            <div className='flex items-center h-[20px]'>
+              <div className={`flag-icon flag-icon-${item.countryCode ? item.countryCode.toLowerCase() : ''} border border-[#99999950] text-[17px]`}></div>&nbsp;
+              <div className="text-[12px] mt-[4px] leading-[20px]">{item.country ? item.country.toUpperCase() : ''}</div>
+            </div>
+          )
+          const username = (
+            <div className="m-0 leading-[20px]">
+              {usernameX}
+            </div>
+          )
+
+          const jobSummary = (
+            <div className="m-0 leading-[20px]">
+              {item.jobSummary}
+            </div>
+          )
+
+          const link = (
+            <a className='flex' href={`/${root}/${item.username}`} target="_blank" rel="noopener noreferrer">
+              <span>{`https://shiningpage.com/${root}/${item.username}`}</span>
+            </a>
+          )
+
+          return (
+              <div key={i} className="mb-[20px] overflow-hidden">
+                  <div className='flex'>
+                      {userImg}&nbsp;&nbsp;
+                      <div>
+                          {country}
+                          {username}
+                      </div>
+                  </div>
+                  {jobSummary}
+                  {link}
               </div>
-            )
-
-            const jobSummary = (
-              <div className='' style={{margin:'0px', lineHeight:'20px'}}>
-                {item.jobSummary}
-              </div>
-            )
-
-            const link = (
-              <a className='d-flex' href={`/${root}/${item.username}`} target="_blank" rel="noopener noreferrer">
-                <span style={{direction:'ltr'}}>{`https://shiningpage.com/${root}/${item.username}`}</span>
-              </a>
-            )
-
-            return (
-                <div key={i} style={{marginBottom:'20px', overflow:'hidden'}}>
-                    <div className='d-flex'>
-                        {userImg}&nbsp;&nbsp;
-                        <div>
-                            {country}
-                            {username}
-                        </div>
-                    </div>
-                    {jobSummary}
-                    {link}
-                </div>
-            )
-        }
+          )
+      }
     )
     
     this.state[`cgCompany${x}`] = allCompany
@@ -150,44 +148,42 @@ class SitemapPage extends Component {
   }
 
   mapPS = (data) => {
-    const {w, } = this.state
-    const {lang, rtl, setLT} = this.props
-      var allPS = data.map(
-        (item, i) => {
-            const psImg = (
-              <img
-                  style={{objectFit: 'cover', width:'35px', height:'35px', borderRadius:'3px'}}
-                  src={`https://www.pix.shiningpage.com/whoraly/ads/big/${item._id}-${item.pictureType === 1 ? item.pictures[0] : item.pictures[1]}.jpeg`}
-                  alt={item.adsTitle}
-              />
-            )
-            const title = (
-              <div className='' style={{marginTop:'15px', lineHeight:'20px'}}>
-                {item.adsTitle}
+    var allPS = data.map(
+      (item, i) => {
+          const psImg = (
+            <img
+                className="object-cover w-[35px] h-[35px] rounded-[3px]"
+                src={`https://www.pix.shiningpage.com/whoraly/ads/big/${item._id}-${item.pictureType === 1 ? item.pictures[0] : item.pictures[1]}.jpeg`}
+                alt={item.adsTitle}
+            />
+          )
+          const title = (
+            <div className="mt-[15px] leading-[20px]">
+              {item.adsTitle}
+            </div>
+          )
+
+          const link = (
+            <a className='flex' href={item.slug ? `/publisher/${item.username}/${item.slug}` : `/ps/${item._id}`}
+              target="_blank"
+              rel="noopener noreferrer">
+              <span>{item.slug ? `https://shiningpage.com/publisher/${item.username}/${item.slug}` : `https://shiningpage.com/ps/${item._id}`}</span>
+            </a>
+          )
+
+          return (
+              <div key={i} className="mb-[20px] overflow-hidden">
+                  <div className='flex'>
+                      {psImg}&nbsp;&nbsp;
+                      <div>
+                          {/* country */}
+                          {title}
+                      </div>
+                  </div>
+                  {link}
               </div>
-            )
-
-            const link = (
-              <a className='d-flex' href={item.slug ? `/publisher/${item.username}/${item.slug}` : `/ps/${item._id}`}
-                target="_blank"
-                rel="noopener noreferrer">
-                <span style={{direction:'ltr'}}>{item.slug ? `https://shiningpage.com/publisher/${item.username}/${item.slug}` : `https://shiningpage.com/ps/${item._id}`}</span>
-              </a>
-            )
-
-            return (
-                <div key={i} style={{marginBottom:'20px', overflow:'hidden'}}>
-                    <div className='d-flex'>
-                        {psImg}&nbsp;&nbsp;
-                        <div>
-                            {/* country */}
-                            {title}
-                        </div>
-                    </div>
-                    {link}
-                </div>
-            )
-        }
+          )
+      }
     )
 
     this.setState({ allPS })
@@ -202,19 +198,19 @@ class SitemapPage extends Component {
   }
 
   render() {
-    const { w, h, categoriesItem, allPS} = this.state
-    const { rtl, lang, setLT, } = this.props
+    const { w, categoriesItem, allPS} = this.state
+    const { setLT } = this.props
 
     const header = (
-      <div className='center' style={{alignItems:'center', flexDirection:'column', padding: '0px 10px'}}>
-        <div className='d-flex' style={{justifyContent:rtl ? 'space-between' : 'flex-end', alignItems:'center', width:'100%', direction:'rtl'}}>
-          <h1 className='animated fadeInLeft tx' style={{animationDelay:'.5s', color:'#ffffff', fontWeight:'bold', fontSize: w<s ? '30px' : '', textAlign:'center', margin:'30px 10px 30px'}}>{setLT.sitemap}</h1>
-        </div>
+      <div className="center animated fadeInLeft [animation-delay:.5s] text-4xl font-extrabold tracking-tight my-[30px]">
+        <span className="bg-gradient-to-r from-violet-600 via-indigo-500 to-sky-500 bg-clip-text text-transparent">
+          Sitemap
+        </span>
       </div>
     )
 
     const psItems = (
-      <div style={{ marginBottom:'10px', padding:w<s ? '10px' : '10px 20px', backgroundColor:'#ffffff99', borderRadius:'5px' }}>
+      <div className={`mb-[10px] ${w < s ? 'p-[10px]' : 'py-[10px] px-[20px]'} bg-[#ffffff10] rounded-[15px] border !border-white/20`}>
         {allPS}
       </div>
     )
@@ -226,44 +222,40 @@ class SitemapPage extends Component {
     const adsBox5 = <div className='adsbox'><AdsHorizontal id='adsH5' /></div>
 
     return (
-      <div style= {{direction:'ltr'}}>
-        {googleAds && adsBox1}
-        <Container style={{padding:w<s ? '0px' : ''}}>
-          <div className='center' style={{flexDirection:'column', alignItems:'center'}}>
-            {header}
-          </div>
-          <div className='animated fadeInUpX' style={{animationDelay:'.5s', margin:'0px 5px 30px', padding:'10px', fontFamily:'Vazir', top:'50px', zIndex:'0', backgroundColor:'#ffffff99', borderRadius:'5px'}}>
-            <div style={{backgroundColor:'#ffffff99', borderRadius:'5px', padding:w<s ? '10px' : '20px 30px', lineHeight:'30px'}}>
-              {this.linkMaker(setLT.home, '/')}
-              <li>{setLT.publicSection}</li>
-              <ul>
-                <li>{this.linkMaker('Latest posts', `/latest`)}</li>
-                <li>{this.linkMaker(setLT.about, `/about`)}</li>
-                <li>{this.linkMaker(setLT.contact, `/contact`)}</li>
-                <li>{this.linkMaker(setLT.memberReviews, `/reviews`)}</li>
-                <li>{this.linkMaker(setLT.ruby, `/ruby`)}</li>
-                <li>{this.linkMaker(setLT.notifications, `/notification`)}</li>
-                <li>{this.linkMaker(setLT.chatList, `/chat`)}</li>
-                <li>{this.linkMaker(setLT.tos, `/tos`)}</li>
-                <li>{this.linkMaker(setLT.privacyPolicy, `/privacy`)}</li>
-                <li>{this.linkMaker(setLT.disclaimer, `/disclaimer`)}</li>
-                <li>{this.linkMaker(setLT.sitemap, `/sitemap`)}</li>
-              </ul>
+      <div>
+        {/* {googleAds && adsBox1} */}
+        <Container>
+          {header}
+          <div className={`animated fadeInUpX animated [animation-delay:.5s] mb-[30px] text-white font-thin bg-[#ffffff10] rounded-[20px] ${w < s ? 'p-[10px]' : 'py-[20px] px-[30px]'} leading-[30px] border !border-white/20`}>
+            {this.linkMaker(setLT.home, '/')}
+            <li>{setLT.publicSection}</li>
+            <ul>
+              <li>{this.linkMaker('Latest posts', `/latest`)}</li>
+              <li>{this.linkMaker(setLT.about, `/about`)}</li>
+              <li>{this.linkMaker(setLT.contact, `/contact`)}</li>
+              <li>{this.linkMaker(setLT.memberReviews, `/reviews`)}</li>
+              <li>{this.linkMaker(setLT.ruby, `/ruby`)}</li>
+              <li>{this.linkMaker(setLT.notifications, `/notification`)}</li>
+              <li>{this.linkMaker(setLT.chatList, `/chat`)}</li>
+              <li>{this.linkMaker(setLT.tos, `/tos`)}</li>
+              <li>{this.linkMaker(setLT.privacyPolicy, `/privacy`)}</li>
+              <li>{this.linkMaker(setLT.disclaimer, `/disclaimer`)}</li>
+              <li>{this.linkMaker(setLT.sitemap, `/sitemap`)}</li>
+            </ul>
 
-              <li>Business Members / Owners</li>
-              {categoriesItem}
+            <li>Business Members / Owners</li>
+            {categoriesItem}
 
-              <div style={{margin:'30px 0px'}}>
-                {googleAds && adsBox2}
-              </div>
-
-              <li>Contents/Products/Services</li>
-              {psItems}
-
+            <div className="my-[30px]">
+              {/* {googleAds && adsBox2} */}
             </div>
+
+            <li>Contents/Products/Services</li>
+            {psItems}
+
           </div>
         </Container>
-        {googleAds && adsBox3}
+        {/* {googleAds && adsBox3} */}
       </div>
     );
   }
@@ -274,7 +266,6 @@ const mapStateToProps = (state) => {
     mainUserId: state.userInfo['_id'],
     mainUser: state.userInfo,
     auth: state.auth,
-    rtl: state.rtl,
     lang: state.lang,
     geo: state.geo,
     page: state.page,
