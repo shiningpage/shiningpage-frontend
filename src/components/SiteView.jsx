@@ -206,9 +206,9 @@ class SiteView extends Component {
     )
 
     const worldmapTitle = (
-      <div className='d-flex text-white' style={{fontSize:'18px', fontWeight:700, alignItems:'center', gap:'5px', margin:w<s ? '0px 15px' : ''}}>
-        <IoGlobeOutline className="-mt-2.5 text-[25px]"/>
-        <h5 className='font-[650] !font-light'>Audience Map</h5>
+      <div className={`flex text-white text-[18px] font-bold items-center gap-[5px] ${w < s ? 'mx-[15px]' : ''}`}>
+        <IoGlobeOutline className="goldenText -mt-2.5 text-[25px]"/>
+        <h5 className='goldenText font-[650] !font-light'>Audience Map</h5>
       </div>
     )
 
