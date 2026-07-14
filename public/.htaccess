@@ -1,9 +1,6 @@
+# اگر خطای ۴۰۴ موقع ریفرش پیش آمد باید در هاست ، پرمیشن این فایل روی ۰۶۴۴ قرار بگیرد
 <IfModule mod_rewrite.c>
   RewriteEngine On
-
-  # اگر مسیر با /en یا /fa یا /ar شروع میشه، حذفش کن
-  RewriteCond %{REQUEST_URI} ^/(en|fa|ar)(/.*)?$ [NC]
-  RewriteRule ^(en|fa|ar)(/.*)?$ %2 [R=301,L,NE]
 
   # Redirect shahlaskincare.com and www.shahlaskincare.com to new URL
   RewriteCond %{HTTP_HOST} ^(www\.)?shahlaskincare\.com$ [NC]
