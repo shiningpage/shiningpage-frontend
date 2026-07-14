@@ -134,26 +134,16 @@ class NotificationPage extends Component{
     }
 
     mapAllNotifications = async (notifications, name) => {
-        var countryCode, userCountry, userImage, tableInfo, NTFIcon, netStyle, textStyle,
-        website, instagram, telegram, facebook, youtube, linkedin,
-        eye, heart, comment, message, click, hr,
-        profile, bizPage, adImage, adPage, video, chatPage, actionIcon
-        const {w, } = this.state
-        const {rtl, lang, setLT, mainUser} = this.props
+        const { w } = this.state
+        const { mainUser } = this.props
         var dataRv = notifications.map (
-            (item, i) => (
-                // console.log(111, item),
-                netStyle = {width:w<s ? w-160 : '100%', overflow:'hidden', fontSize:'12px', fontWeight:350, color:'grey', textAlign:rtl ? 'right' : 'left', direction:'ltr', whiteSpace:'nowrap'},
-                textStyle = {overflow:'hidden', fontSize:'12px', fontWeight:350, color:'grey', textAlign:rtl ? 'right' : 'left', direction:'ltr'},
-                countryCode = item.countryCode ? item.countryCode.toLowerCase() : '',
-                userImage = (
-                    <div className='d-flex' onClick={() => item.visitor!=='unknown' ? this.onBizPage(item) : ''}
-                        style={{flexDirection:'column', justifyContent:'flex-start', marginTop:'-15px'}}
-                    >
-                        <span className={`flag-icon flag-icon-${countryCode} sticky-top`} style={{right: !rtl ? 5 : '', left: rtl ? 5 : '', top:9}}></span>
-                        <img
-                            className={`C${item.fc} btnShadowX waves-effect waves-light btn-large`}
-                            style={{objectFit: 'contain', width:"50px", height:"50px", borderRadius:item.businessType>0 ? '3px' : '100px', margin:'0px', border:'2px solid #ffffff40', padding:'2px'}}
+            (item, i) => {
+                const netClass = `${w < s ? 'w-40' : 'w-full'} overflow-hidden text-[12px] font-[350] whitespace-nowrap ltr`
+                const textClass = "overflow-hidden text-[12px] font-[350] text-[#1897F8]"
+                const countryCode = item.countryCode ? item.countryCode.toLowerCase() : ''
+                const userImage = (
+                    <div className='relative flex flex-col justify-start' onClick={() => item.visitor!=='unknown' ? this.onBizPage(item) : ''}>
+                        <img className={`C${item.fc} btnShadowX object-contain w-[50px] h-[50px] ${item.businessType > 0 ? 'rounded-[3px]' : 'rounded-full'} m-0 border-2 border-[#ffffff40] p-[2px]`}
                             src={item.visitor==='unknown'
                                 ? userN
                                 :(
@@ -164,31 +154,28 @@ class NotificationPage extends Component{
                             }
                             alt="user"
                         />
-                        {!item.username && <span style={{maxWidth:'50px', fontSize:'9px', margin:'0px 0px -10px', textAlign:'center'}}>{countryName(item.countryCode, item.country)}</span>}
+                        <span className={`!absolute flag-icon flag-icon-${countryCode}`}></span>
+                        {/* <span className="max-w-[50px] text-[9px] mx-0 text-center">{countryName(item.countryCode, item.country)}</span> */}
                     </div>
-                ),
-                profile = (
-                    <div className='d-flex' onClick={() => this.onBizPageNTF(item)}
-                    style={{direction:rtl ? 'rtl' : 'ltr', alignItems:'flex-end', cursor:'pointer'}}>
+                )
+                const profile = (
+                    <div className='flex items-end cursor-pointer' onClick={() => this.onBizPageNTF(item)}>
                         <img
-                            className={`C${mainUser.fc} btnShadow waves-effect waves-light btn-large`}
-                            style={{objectFit: 'contain', width:"30px", height:"30px", borderRadius:mainUser.businessType>0 ? '3px' : '100px', margin:'0px', border:'1px solid #ffffff40', padding:'1px'}}
+                            className={`C${mainUser.fc} btnShadow object-contain w-[30px] h-[30px] ${mainUser.businessType > 0 ? 'rounded-[3px]' : 'rounded-full'} m-0 border border-[#ffffff40] p-[1px]`}
                             src={ exist(mainUser.profileIndex)
                                 ? `https://www.pix.shiningpage.com/whoraly/profile/small/${mainUser._id}-${mainUser.profileIndex}.jpeg`
                                 : mainUser.genderValue===0 ? female : male
                             }
                             alt="main user"
                         />&nbsp;
-                        <span style={textStyle}>{mainUser.username}</span>
+                        <span className={textClass}>{mainUser.username}</span>
                     </div>
-                ),
-                chatPage = (
-                    <div className='d-flex' onClick={() => this.onToggleChat(item)}
-                    style={{direction:rtl ? 'rtl' : 'ltr', alignItems:'flex-end', cursor:'pointer'}}>
-                        <div style={{}}>
+                )
+                const chatPage = (
+                    <div className='flex items-end cursor-pointer' onClick={() => this.onToggleChat(item)}>
+                        <div className='relative'>
                             <img
-                                className={`C${item.fc} btnShadowX waves-effect waves-light btn-large`}
-                                style={{objectFit: 'contain', width:"30px", height:"30px", borderRadius:item.businessType>0 ? '3px' : '100px', margin:'0px', border:'2px solid #ffffff40', padding:'2px'}}
+                                className={`C${item.fc} btnShadowX object-contain w-[30px] h-[30px] ${item.businessType > 0 ? 'rounded-[3px]' : 'rounded-full'} m-0 border-2 border-[#ffffff40] p-[2px]`}
                                 src={ 
                                     exist(item.profileIndex)
                                     ? `https://www.pix.shiningpage.com/whoraly/profile/small/${item.visitor}-${item.profileIndex}.jpeg`
@@ -196,109 +183,93 @@ class NotificationPage extends Component{
                                 }
                                 alt="user"
                             />
-                            <BsChatDots className='sticky-top' style={{fontSize:'15px', padding:'1px', margin:rtl ? '-20px -35px 0px 24px' : '-20px 24px 0px -35px', color:'#ffffff', backgroundColor:'#3585F7', borderRadius:'100px'}}/>
+                            <BsChatDots className='absolute -left-[4px] -top-[4px] text-[15px] p-[1px] text-white bg-[#3585F7] rounded-full'/>
                         </div>&nbsp;
-                        <span style={textStyle}>Chat Box</span>
+                        <span className={textClass}>Chat Box</span>
                     </div>
-                ),
-                bizPage = (
-                    <div className='d-flex' onClick={() => this.onBizPageNTF(item)}
-                    style={{direction:rtl ? 'rtl' : 'ltr', alignItems:'flex-end', cursor:'pointer'}}>
-                        <div>
+                )
+                const bizPage = (
+                    <div className='flex items-end cursor-pointer gap-1' onClick={() => this.onBizPageNTF(item)}>
+                        <div className='relative'>
                             <img
-                                className={`C${mainUser.fc} btnShadow waves-effect waves-light btn-large`}
-                                style={{objectFit: 'contain', width:"30px", height:"30px", borderRadius:mainUser.businessType>0 ? '3px' : '100px', margin:'0px', border:'1px solid #ffffff40', padding:'1px'}}
+                                className={`C${mainUser.fc} btnShadow object-contain w-[30px] h-[30px] ${mainUser.businessType > 0 ? 'rounded-[3px]' : 'rounded-full'} m-0 border border-[#ffffff40] p-[1px]`}
                                 src={ exist(mainUser.profileIndex)
                                     ? `https://www.pix.shiningpage.com/whoraly/profile/small/${mainUser._id}-${mainUser.profileIndex}.jpeg`
                                     : mainUser.genderValue===0 ? female : male
                                 }
                                 alt="business page"
                             />
-                            <FaGlobe className='sticky-top' style={{fontSize:'15px', margin:rtl ? '-20px -35px 0px 24px' : '-20px 24px 0px -35px', color:'brown', backgroundColor:'#ffffff', borderRadius:'100px'}}/>
+                            <FaGlobe className='absolute -left-[4px] -top-[4px] text-[15px] text-[#A52A2A] bg-white rounded-full'/>
                         </div>
-                        <span style={textStyle}>{mainUser.username}</span>
+                        <span className={textClass}>{mainUser.username}</span>
                     </div>
-                ),
-                // console.log(500, `${item}`),
-                // console.log(500, `${item.subId}-${item.pictures ? item.pictures[0] : ''}`),
-                adImage = (
-                    <div className='d-flex' onClick={() => this.onOpenAdPage(item)}
-                    style={{direction:rtl ? 'rtl' : 'ltr', alignItems:'flex-end', cursor:'pointer'}}>
+                )
+                const adImage = (
+                    <div className='flex items-end cursor-pointer' onClick={() => this.onOpenAdPage(item)}>
                         <img
-                            className={`btnShadow waves-effect waves-light btn-large`}
-                            style={{objectFit: 'contain', width:"30px", height:"30px", borderRadius:'0px', margin:'0px', border:'1px solid #ffffff40', padding:'1px'}}
+                            className='btnShadow object-contain w-[30px] h-[30px] rounded-none m-0 border border-[#ffffff40] p-[1px]'
                             src={ `https://www.pix.shiningpage.com/whoraly/ads/small/${item.subId}-${item.adsPictures ? item.adsPictures[0] : ''}.jpeg` }
                             alt="ad image"
                         />&nbsp;
-                        <span style={textStyle}>{item.subTitle ? item.subTitle : ''}</span>
+                        <span className={textClass}>{item.subTitle ? item.subTitle : ''}</span>
                     </div>
-                ),
-                adPage = (
-                    <div className='d-flex' onClick={() => this.onOpenAdPage(item)}
-                    style={{direction:rtl ? 'rtl' : 'ltr', alignItems:'flex-end', cursor:'pointer'}}>
+                )
+                const adPage = (
+                    <div className='flex items-end cursor-pointer' onClick={() => this.onOpenAdPage(item)}>
                         <div>
                             <img
-                                className={`btnShadow waves-effect waves-light btn-large`}
-                                style={{objectFit: 'contain', width:"30px", height:"30px", borderRadius:'0px', margin:'0px', border:'1px solid #ffffff40', padding:'1px'}}
+                                className={`btnShadow object-contain w-[30px] h-[30px] rounded-none m-0 border border-[#ffffff40] p-[1px]`}
                                 src={ `https://www.pix.shiningpage.com/whoraly/ads/big/${item.subId}-${item.adsPictures ? item.adsPictures[0] : ''}.jpeg`}
                                 alt="ad page"
                             />
-                            <FaGlobe className='sticky-top' style={{fontSize:'15px', margin:rtl ? '-20px -35px 0px 24px' : '-20px 24px 0px -35px', color:'brown', backgroundColor:'#ffffff', borderRadius:'100px'}}/>
+                            <FaGlobe className='sticky-top text-[15px] m-[-20px_24px_0px_-35px] text-[#A52A2A] bg-white rounded-full'/>
                         </div>
-                        <span style={textStyle}>{item.subTitle ? item.subTitle : ''}</span>
+                        <span className={textClass}>{item.subTitle ? item.subTitle : ''}</span>
                     </div>
-                ),
-                video = (
-                    <div className='d-flex' onClick={() => this.onToggleShowVideoNTF(item)}
-                        style={{direction:rtl ? 'rtl' : 'ltr', alignItems:'flex-end', cursor:'pointer'}}>
-                        <MdOndemandVideo className='btnShadow' style={{fontSize:'27px', margin:'0px', color:'#031d8b'}}/>&nbsp;
-                        <span style={textStyle}>{item.subTitle ? item.subTitle : ''}</span>
+                )
+                const video = (
+                    <div className='flex items-end cursor-pointer' onClick={() => this.onToggleShowVideoNTF(item)}>
+                        <MdOndemandVideo className='btnShadow text-[27px] m-0 text-[#031d8b]'/>&nbsp;
+                        <span className={textClass}>{item.subTitle ? item.subTitle : ''}</span>
                     </div>
-                ),
-                website = (
-                    <a className='d-flex' href={`http://${mainUser.website}`} target="_blank" rel="noopener noreferrer"
-                        style={{textDecoration:'none', direction:rtl ? 'rtl' : 'ltr', alignItems:'flex-end'}}>
-                        <FaGlobe className='' style={{fontSize:'25px', margin:'0px', color:'brown', minWidth:'20px', minHeight:'20px'}}/>&nbsp;
-                        <span style={netStyle}>{mainUser.website}</span>
+                )
+                const website = (
+                    <a className='flex no-underline items-end' href={`http://${mainUser.website}`} target="_blank" rel="noopener noreferrer">
+                        <FaGlobe className="text-[25px] m-0 text-[#A52A2A] min-w-[20px] min-h-[20px]"/>&nbsp;
+                        <span className={netClass}>{mainUser.website}</span>
                     </a>
-                ),
-                instagram = (
-                    <a className='d-flex' href={`https://instagram.com/${mainUser.instagram}`} target="_blank" rel="noopener noreferrer"
-                        style={{textDecoration:'none', direction:rtl ? 'rtl' : 'ltr', alignItems:'flex-end'}}>
-                        <FaInstagram className='' style={{fontSize:'25px', width:'25px', height:'25px', borderRadius:'6px', color:'#ffffff', backgroundImage: 'linear-gradient(to right top, #fcac0f, #fd9522, #fa7f30, #f36a3c, #e85647, #e44751, #dd395b, #d42d65, #d12174, #ca1b85, #be1e96, #ae27a8)'}}/>&nbsp;
-                        {/* <span style={netStyle}>{mainUser.instagram}</span> */}
+                )
+                const instagram = (
+                    <a className='flex items-end no-underline' href={`https://instagram.com/${mainUser.instagram}`} target="_blank" rel="noopener noreferrer">
+                        <FaInstagram className="text-[25px] w-[25px] h-[25px] rounded-[6px] text-white bg-[linear-gradient(to_right_top,#fcac0f,#fd9522,#fa7f30,#f36a3c,#e85647,#e44751,#dd395b,#d42d65,#d12174,#ca1b85,#be1e96,#ae27a8)]"/>&nbsp;
                     </a>
-                ),
-                telegram = (
-                    <a className='d-flex' href={`https://t.me/${mainUser.telegram}`} target="_blank" rel="noopener noreferrer"
-                        style={{textDecoration:'none', direction:rtl ? 'rtl' : 'ltr', alignItems:'flex-end'}}>
-                        <FaTelegram className='' style={{fontSize:'25px', margin:'0px', color:'#56BFE1'}}/>&nbsp;
-                        <span style={netStyle}>{mainUser.telegram}</span>
+                )
+                const telegram = (
+                    <a className='flex items-end no-underline' href={`https://t.me/${mainUser.telegram}`} target="_blank" rel="noopener noreferrer">
+                        <FaTelegram className="text-[25px] m-0 text-[#56BFE1]"/>&nbsp;
+                        <span className={netClass}>{mainUser.telegram}</span>
                     </a>
-                ),
-                facebook = (
-                    <a className='d-flex' href={`http://${mainUser.facebook}`} target="_blank" rel="noopener noreferrer"
-                        style={{textDecoration:'none', direction:rtl ? 'rtl' : 'ltr', alignItems:'flex-end'}}>
-                        <FaFacebook className='' style={{fontSize:'25px', margin:'0px', color:'#3b5998'}}/>&nbsp;
-                        <span style={netStyle}>{mainUser.facebook}</span>
+                )
+                const facebook = (
+                    <a className='flex items-end no-underline' href={`http://${mainUser.facebook}`} target="_blank" rel="noopener noreferrer">
+                        <FaFacebook className="text-[25px] m-0 text-[#3b5998]"/>&nbsp;
+                        <span className={netClass}>{mainUser.facebook}</span>
                     </a>
-                ),
-                youtube = (
-                    <a className='d-flex' href={`http://${mainUser.youtube}`} target="_blank" rel="noopener noreferrer"
-                        style={{textDecoration:'none', direction:rtl ? 'rtl' : 'ltr', alignItems:'flex-end'}}>
-                        <FaYoutube className='' style={{fontSize:'25px', margin:'0px', color:'#c4302b'}}/>&nbsp;
-                        <div style={netStyle}>{mainUser.youtube}</div>
+                )
+                const youtube = (
+                    <a className='flex items-end no-underline' href={`http://${mainUser.youtube}`} target="_blank" rel="noopener noreferrer">
+                        <FaYoutube className="text-[25px] m-0 text-[#c4302b]"/>&nbsp;
+                        <div className={netClass}>{mainUser.youtube}</div>
                     </a>
-                ),
-                linkedin = (
-                    <a className='d-flex' href={`http://${mainUser.linkedin}`} target="_blank" rel="noopener noreferrer"
-                        style={{textDecoration:'none', direction:rtl ? 'rtl' : 'ltr', alignItems:'flex-end'}}>
-                        <FaLinkedin className='' style={{fontSize:'25px', margin:'0px', color:'#0e76a8'}}/>&nbsp;
-                        <span style={netStyle}>{mainUser.linkedin}</span>
+                )
+                const linkedin = (
+                    <a className='flex items-end no-underline' href={`http://${mainUser.linkedin}`} target="_blank" rel="noopener noreferrer">
+                        <FaLinkedin className="text-[25px] m-0 text-[#0e76a8]"/>&nbsp;
+                        <span className={netClass}>{mainUser.linkedin}</span>
                     </a>
-                ),
-                NTFIcon = (
-                    <div style={{width:''}}>
+                )
+                const NTFIcon = (
+                    <div>
                         {item.subject==='website' && website}
                         {item.subject==='instagram' && instagram}
                         {item.subject==='telegram' && telegram}
@@ -312,13 +283,13 @@ class NotificationPage extends Component{
                         {item.subject==='video' && video}
                         {item.subject==='chat' && chatPage}
                     </div>
-                ),
-                eye = <FaRegEye style={{width:'18px', fontSize:'20px', color:'black', margin:'0px'}}/>,
-                heart = <IoMdHeart style={{width:'20px', fontSize:'20px', color:'red'}}/>,
-                comment = <BsChat style={{width:'18px', fontSize:'20px', color:'black', margin:'0px'}}/>,
-                message = <MdMessage style={{width:'20px', fontSize:'20px', color:'black', margin:'0px'}}/>,
-                click = <HiOutlineCursorClick style={{width:'18px', fontSize:'20px', color:'black', margin:'0px'}}/>,
-                actionIcon = (
+                )
+                const eye = <FaRegEye className="w-[18px] text-[20px] text-black m-0 !text-[#00A3F5]" />
+                const heart = <IoMdHeart className="w-[20px] text-[20px] text-red-500" />
+                const comment = <BsChat className="w-[18px] text-[20px] text-black m-0 !text-[#00A3F5]" />
+                const message = <MdMessage className="w-[20px] text-[20px] text-black m-0 !text-[#00A3F5]" />
+                const click = <HiOutlineCursorClick className="w-[18px] text-[20px] text-black m-0 !text-[#00A3F5]" />
+                const actionIcon = (
                     <div>
                         {item.type==='view' && eye}
                         {item.type==='like' && heart}
@@ -326,34 +297,32 @@ class NotificationPage extends Component{
                         {item.type==='message' && message}
                         {item.type==='click' && click}
                     </div>
-                ),
-                tableInfo = (
-                    <div className='d-flex' style={{padding:'10px 0px', width:'100%', fontSize:'14px', justifyContent: 'space-between', alignItems:''}}>
-                        {userImage}&nbsp;&nbsp;&nbsp;
-                        <div className='d-flex' style={{width:'100%', flexDirection:'column'}}>
-                            <div className='d-flex' style={{width:'100%', justifyContent: 'space-between', alignItems:'flex-start'}}>
-                                <div style={{textAlign: rtl ? 'right' : 'left'}}>{item.xNote}</div>&nbsp;
-                                <div style={{direction:'ltr', fontSize:'11px'}}>{difDate(new Date(), item.createdAt)}</div>
-                            </div>
-                            <div className='d-flex' style={{width:'', justifyContent: 'space-between', alignItems:'center'}}>
-                                {NTFIcon}&nbsp;&nbsp;&nbsp;
-                                {actionIcon}
+                )
+                //${item.seen ? 'p-[1px]' : 'p-[5px]'} C${mainUser.fc === 11 ? '7' : mainUser.fc}
+                return (
+                    <div key={i} className="flex justify-center text-white font-thin mb-2">
+                        <div className={`flex flex-col justify-center items-center animated fadeInUpX w-full m-[2px] rounded-[5px] border ${item.seen ? '' : '!border-l-[5px] !border-l-white'} !border-white/50 bg-white/10`}>
+                            <div className="flex justify-center items-center animated fadeInUpX w-full px-[10px] py-0 rounded-[5px] border-0">
+                                <div className="flex py-[10px] w-full text-[14px] justify-between gap-3">
+                                    {userImage}
+                                    <div className="flex-1 flex flex-col">
+                                        <div className="w-full flex justify-between items-start">
+                                            {item.xNote}
+                                            <div className="text-[11px]">{difDate(new Date(), item.createdAt)}</div>
+                                        </div>
+                                        <div className="flex justify-between items-center">
+                                            {NTFIcon}
+                                            {actionIcon}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                ),
-                <div key={i} className='center'>
-                    <div className={`center animated fadeInUpX C${mainUser.fc===11 ? '7' : mainUser.fc}`} style={{flexDirection:'column', width:'100%', padding:item.seen ? '1px' : '5px', margin:'2px', borderRadius:'5px'}}>
-                        <div
-                            className={`center animated fadeInUpX`}
-                            style={{backgroundColor:'#ffffff', width: '100%', padding:'0px 10px', borderRadius:'5px', border:'0px solid'}}
-                        >
-                            {tableInfo}
-                        </div>
-                    </div>
-                </div>
-            )
-        )//backgroundColor:item.seen ? '#ffffff99' : '#7b5cff99', 
+                )
+            }
+        )
+
         this.setState({
             [name]: dataRv,
             // nNotification: this.state.nNotification + 1,
@@ -436,13 +405,13 @@ class NotificationPage extends Component{
 
   render () {
         const {w, itemLoaded, NData, unseenNotifications, seenNotifications, notificationMap, finishDataNotification, loadingNotification} = this.state
-        const {rtl, setLT, mainUser, toggleNotification} = this.props
-        const loader13 = <div className='loader-13' style={{margin: '70px 0px', color:'#ffffff', transform: rtl ? 'rotate(180deg)' : ''}}></div>
-        const moreNotification = <div style={{margin:'50px 0px'}} onClick={() => this.getNotification()}><More fc={mainUser.fc}/></div>
+        const {setLT, mainUser, toggleNotification} = this.props
+        const loader13 = <div className='loader-13 my-[70px] text-white'></div>
+        const moreNotification = <div className="my-[50px]" onClick={() => this.getNotification()}><More fc={mainUser.fc}/></div>
 
 		const NA = (
 			<div className='center'>
-				<div style={{width:'200px', textAlign:'center', color:'#ffffff', padding:'10px 15px', borderRadius:'100px', border:'1px solid #ffffff'}}>
+				<div className="w-[200px] text-center text-white py-[10px] px-[15px] rounded-full border border-white">
 					{setLT.noNotifications}
 				</div>
 			</div>
@@ -450,19 +419,19 @@ class NotificationPage extends Component{
 
         const notificationSub = (
             <div>
-				<div className='center' style={{marginBottom:NData.length>0 ? '50px' : ''}}>
+				<div className={`center ${NData.length > 0 ? 'mb-[50px]' : ''}`}>
                     {itemLoaded && 
                         ( NData.length>0
                             ? 
-                                <div style={{ width: w<s ? '100%' : '800px' }}>
+                                <div className={`${w < s ? 'w-full' : 'w-[800px]'}`}>
                                     { unseenNotifications.length>0 &&
-                                        <div key="new-header" style={{padding: '10px', fontWeight: 'bold', fontSize: '16px', color:'#ffffff'}}>
+                                        <div key="new-header" className="p-[10px] font-light text-[16px] text-white">
                                             🔔 New
                                         </div>
                                     }
                                     {unseenNotifications}
                                     { seenNotifications.length>0 &&
-                                        <hr key="seen-separator" style={{margin: '20px 10px', color:'#ffffff'}} />
+                                        <hr key="seen-separator" className="my-[20px] mx-[10px] text-white m-5 opacity-100" />
                                     }
                                     {seenNotifications}
                                 </div>
@@ -477,13 +446,13 @@ class NotificationPage extends Component{
             </div>
         )
 
-		const header = (
-			<div className='center' style={{alignItems:'center', flexDirection:'column', padding: '0px 10px'}}>
-				<div className='d-flex' style={{justifyContent:rtl ? 'space-between' : 'flex-end', alignItems:'center', width:'100%', direction:'rtl'}}>
-					<h1 className='animated fadeInLeft tx' style={{animationDelay:'.5s', color:'#ffffff', fontWeight:'bold', fontSize: w<s ? '30px' : '', textAlign:'center', margin:'30px 10px 30px'}}>{setLT.notificationsList}</h1>
-				</div>
-			</div>
-		)
+        const header = (
+          <div className="animated fadeInLeft [animation-delay:.5s] text-4xl font-extrabold tracking-tight my-[30px]">
+            <span className="bg-gradient-to-r from-violet-600 via-indigo-500 to-sky-500 bg-clip-text text-transparent">
+              Notifications List
+            </span>
+          </div>
+        )
 
         const adsBox1 = <div className='adsbox'><AdsHorizontal id='adsH1' /></div>
         const adsBox2 = <div className='adsbox'><AdsHorizontal id='adsH2' /></div>
@@ -492,12 +461,12 @@ class NotificationPage extends Component{
             <div>
             	{/* {googleAds && adsBox1} */}
                 <Container>
-                    <div className='center' style={{flexDirection:'column', alignItems:'center'}}>
+					<div className='center flex-col items-center'>
                       	{header}
                     </div>
 					{notificationSub}
 				</Container>
-				{googleAds && adsBox2}
+				{/* {googleAds && adsBox2} */}
 			</div>
         );
     }
@@ -510,8 +479,6 @@ const mapStateToProps = (state) => {
         userInfo: state.subUserInfo,
         userId: state.subUserInfo._id,
         auth: state.auth,
-        rtl: state.rtl,
-        lang: state.lang,
         geo: state.geo,
         page: state.page,
         subject: state.subject,
