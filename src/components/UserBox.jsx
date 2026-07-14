@@ -103,7 +103,8 @@ class UserBox extends Component{
             </div>
         )
         const webLinkIcon = (
-            <div className='center white-nav' style={{width:'', height:'100%', marginTop:w<s ? '' : '3px', padding:w<s ? '' : '0px 15px', textAlign:'center', flexDirection:'column'}}>
+            <div className='center white-nav' style={{width:'', height:'100%', marginTop:w<s ? '' : '3px', padding:w<s ? '' : '0px 15px', textAlign:'center', flexDirection:'column'}}
+                onClick={() => auth ? null : window.location.href = '/login'}>
                 {userProfileImage}
                 { w>=s &&
                     <div className='flex'>
@@ -140,8 +141,6 @@ class UserBox extends Component{
         const linkTarget = auth && hasUsername
             ? `/${root}/${mainUser.username}`
             : '/login'
-        // console.log('auth:', auth)
-        // console.log('linkTarget:', linkTarget)
         const userLink = (
             <a href={linkTarget} style={{textDecoration:'none', color:'#000000'}}
                 onClick={() => (page!=='web' && page!=='publisher')
@@ -230,11 +229,10 @@ class UserBox extends Component{
                 >
                     {webLinkIcon}
                 </div>
-
-                <div className="dropdown-menu animated fadeIn sticky-top" aria-labelledby="dropdownMenuButton"
-                    style={{ width:'250px', fontSize: '13px', cursor: 'pointer', margin: 230, padding:'10px', borderRadius:'10px' }}>
-                    {userLink}
-                    { auth ?
+                { auth &&
+                    <div className="dropdown-menu animated fadeIn sticky-top" aria-labelledby="dropdownMenuButton"
+                        style={{ width:'250px', fontSize: '13px', cursor: 'pointer', margin: 230, padding:'10px', borderRadius:'10px' }}>
+                        {userLink}
                         <div>
                             <br/>
                             {changeTheme}
@@ -249,13 +247,8 @@ class UserBox extends Component{
                             <hr/>
                             {signOut}
                         </div>
-                        :
-                        <div style={{fontSize:'14px', fontWeight:450, textAlign:'center'}}>
-                            <span style={{fontSize:'16px', color:'green'}}>✓</span>&nbsp;
-                            {setLT.makeBusinessPage}
-                        </div>
-                    }
-                </div>
+                    </div>
+                }
                 {modalWebPageTheme}
                 {modalChangePassword}
             </div>
