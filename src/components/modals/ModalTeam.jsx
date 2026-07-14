@@ -79,13 +79,13 @@ class ModalTeam extends Component{
 						userImage = (
 								<div>
 										<img
-												className={`C${item.fc>=0 ? item.fc : ''} btnShadow`}
-												style={{objectFit: 'contain', width:"50px", height:"50px", borderRadius:item.businessType>0 ? '3px' : '100px', margin:'0px', border:'2px solid #ffffff40', padding:'2px', cursor:'pointer'}}
-												src={ exist(item.profileIndex)
-														? `https://www.pix.shiningpage.com/whoraly/profile/small/${item._id}-${item.profileIndex}.jpeg`
-														: item.genderValue===0 ? female : male
-												}
-												alt="user"
+											className={`C${item.fc>=0 ? item.fc : ''} btnShadow`}
+											style={{objectFit: 'contain', minWidth:"50px", minHeight:"50px", width:"50px", height:"50px", borderRadius:item.businessType>0 ? '3px' : '100px', margin:'0px', border:'2px solid #ffffff40', padding:'2px', cursor:'pointer'}}
+											src={ exist(item.profileIndex)
+													? `https://www.pix.shiningpage.com/whoraly/profile/small/${item._id}-${item.profileIndex}.jpeg`
+													: item.genderValue===0 ? female : male
+											}
+											alt="user"
 										/>
 								</div>
 						),
@@ -212,7 +212,7 @@ class ModalTeam extends Component{
 				<Modal show={toggleTeam} onHide={onToggle}>
 					<Modal.Header className="d-flex justify-content-between">
 						<Modal.Title>Our Team</Modal.Title>
-						<AiOutlineCloseCircle onClick={onToggle} style={{ fontSize: 30 }} />
+						<AiOutlineCloseCircle className='sidebarIcon' onClick={onToggle} style={{ fontSize: 30 }} />
 					</Modal.Header>
 					<Modal.Body>
 						Add a team member
