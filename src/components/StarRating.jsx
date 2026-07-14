@@ -5,6 +5,7 @@ const StarRating = ({
     value = 0,
     max = 5,
     size = 24,
+    borderColor = '#e0e0e0',
     color = '#FFB400',
     readOnly = false,
     onChange = () => {}
@@ -29,7 +30,7 @@ const StarRating = ({
                             cursor: readOnly ? 'default' : 'pointer',
                             color: starValue <= value
                                 ? color
-                                : '#e0e0e0'
+                                : borderColor
                         }}
                         onClick={(e) => {
                             e.stopPropagation();
