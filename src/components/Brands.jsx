@@ -156,9 +156,11 @@ class Brands extends Component{
             </div>
         )
     
+        const header = <div className='goldenText animated fadeInLeft [animation-delay:.5s] text-[28px] font-[600] mt-[30px] ml-[10px]'>Top Shining Pages</div>
+
         return (
-            <div className='flex animated fadeIn w-full flex flex-col' style={{animationDelay:'1s'}}>
-                <h4 className='text-white font-thin !mt-4 px-3'>Top Shining Pages</h4>
+            <div className='flex animated [animation-delay:1s] fadeIn w-full flex flex-col'>
+                {header}
                 <div className='top-0 w-full overflow-scroll py-[30px]'>
                     {allCompanyList}
                 </div>
