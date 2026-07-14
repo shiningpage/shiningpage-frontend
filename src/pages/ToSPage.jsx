@@ -50,7 +50,7 @@ class ToSPage extends Component {
 
     return (
       <div style= {{lineHeight:'25px'}}>
-        {googleAds && adsBox1}
+        {/* {googleAds && adsBox1} */}
         <Container>
           <div className='center' style={{flexDirection:'column', alignItems:'center'}}>
             {header}
@@ -94,7 +94,7 @@ class ToSPage extends Component {
             </div>
           </div>
         </Container>
-        {googleAds && adsBox2}
+        {/* {googleAds && adsBox2} */}
       </div>
     );
   }

@@ -50,7 +50,7 @@ class DisclaimerPage extends Component {
 
     return (
         <div style={{ lineHeight: '30px' }}>
-          {googleAds && adsBox1}
+          {/* {googleAds && adsBox1} */}
           <Container>
             <div className='center'>{header}</div>
             <div className='animated fadeInUpX' style={{ animationDelay: '.5s', width: '', margin: '0px 5px 30px', padding: '10px', fontFamily: 'Vazir', top: '50px', zIndex: '0', backgroundColor: '#ffffff99', borderRadius: '5px' }}>
@@ -82,7 +82,7 @@ class DisclaimerPage extends Component {
               </div>
             </div>
           </Container>
-          {googleAds && adsBox2}
+          {/* {googleAds && adsBox2} */}
         </div>
       );
   }
