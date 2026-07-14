@@ -164,21 +164,18 @@ class ChatListPage extends Component{
 
     chatListMap = async (finalMsgX, ix, loading) => {
         const {w} = this.state
-        const {mainUserId, lang , rtl, setLT, mainUser} = this.props
+        const {mainUserId, lang, setLT, mainUser} = this.props
         var dataRv = finalMsgX.map (
             (item, i) => {
                 // console.log(i, item)
-                const loader = <div className='loader-13' style={{margin: '0px 20px', color:'', transform: rtl ? 'rotate(180deg)' : ''}}></div>
+                const loader = <div className='loader-13 mx-[20px] text-white'></div>
                 const index = item.senderUsername===mainUser.username ? true : false
                 item.userIdX = item.senderId===mainUserId ? item.receiverId : item.senderId
                 const countryCode = item.countryCode ? item.countryCode.toLowerCase() : ''
                 const userImage = (
-                    <div className='d-flex' style={{flexDirection:'column', justifyContent:'flex-start', marginTop:'-15px'}}>
-                        <span className={`flag-icon flag-icon-${countryCode} sticky-top`} style={{right: !rtl ? 3 : '', left: rtl ? 3 : '', top:9}}></span>
-                        <img
-                            className={`C${item.fc} cardShadow`}
-                            style={{objectFit: 'contain', width:"50px", height:"50px", borderRadius: item.businessType>0 ? '3px' : '100px', margin:'0px', border:'2px solid #ffffff40', padding:'2px'}}
-                            src={ item.receiverId==='unknown'
+                    <div className='flex flex-col justify-start -mt-[15px]'>
+                        <span className={`flag-icon flag-icon-${countryCode} absolute right-[3px] top-[9px] z-20`}></span>
+                        <img className={`C${item.fc} cardShadow object-contain w-[50px] h-[50px] ${item.businessType > 0 ? 'rounded-[3px]' : 'rounded-full'} m-0 border-2 border-[#ffffff40] p-[2px]`}                            src={ item.receiverId==='unknown'
                                     ? userN
                                     : exist(item.profileIndex)
                                         ? `https://www.pix.shiningpage.com/whoraly/profile/small/${item.userIdX}-${item.profileIndex}.jpeg`
@@ -188,34 +185,32 @@ class ChatListPage extends Component{
                         />
                     </div>
                 )
-                // console.log('notSeen: ', item.notSeen)
-                const cns = (
-                  <div style={{backgroundColor:'#04B803', color: '#ffffff', fontSize:'13px', textAlign:'center',
-                      width: '18px', height: '18px', borderRadius: '100px', lineHeight: '20px'
-                  }}>
-                      {item.notSeen}
-                  </div>
+
+								const cns = (
+									<div className="bg-[#04B803] text-white text-[13px] text-center w-[18px] h-[18px] rounded-full leading-[20px]">
+										{item.notSeen}
+									</div>
                 )
 
                 const iso = isoDateToDateTime(item.createdAt, lang)
                 const message = item.image
                     ? (
-                        <div className='d-flex'>
-                            <div>Picture</div>&nbsp;
+                        <div className='flex gap-2.5'>
+                            <div>Picture</div>
                             <BsImage/>
                         </div>
                       )
                     : ( w<s
-                        ? <div className='d-flex' style={{width:'100%', margin:'0px'}}>{item.message.length>30 ? item.message.substr(0,25)+'...' : item.message}</div>
+                        ? <div className='flex w-full'>{item.message.length>30 ? item.message.substr(0,25)+'...' : item.message}</div>
                         : <div>{item.message.length>100 ? item.message.substr(0,90)+'...' : item.message}</div>
                       )
                 const checkMarksMessage = (
-                  <div className='d-flex' style={{}}>
+                  <div className='flex text-white'>
                       { index &&
                         <span>
                             <span>
-                              <span className={`f${this.props.fc} C0`} style={{fontSize:'15px', lineHeight:'10px', margin:'4px -5px 0px 0px', textAlign:'center', textShadow:'.4px .4px 1px #999999'}}>✓</span>
-                              {item.seen && <span className={item.receiverSelected ? `f${item.receiverSelected[0]}` : 'f11 C0'} style={{fontSize:'15px', lineHeight:'10px', margin:'4px -5px 0px 0px', textAlign:'center', textShadow:'.4px .4px 1px #999999'}}>✓</span>}
+                              <span className={`f${this.props.fc} C0 text-[15px] leading-[10px] mt-[4px] mr-[-5px] mb-0 ml-0 text-center drop-shadow-[0.4px_0.4px_1px_#999999]`}>✓</span>
+                              {item.seen && <span className={`${item.receiverSelected ? `f${item.receiverSelected[0]}` : 'f11 C0'} text-[15px] leading-[10px] mt-[4px] mr-[-5px] mb-0 ml-0 text-center drop-shadow-[0.4px_0.4px_1px_#999999]`}>✓</span>}
                             </span>&nbsp;
                         </span>
                       }
@@ -223,65 +218,72 @@ class ChatListPage extends Component{
                   </div>
                 )
                 const userDate = (
-                    <div className='d-flex' style={{width:'100%', justifyContent:'space-between', alignItems:'center'}}>
+                    <div className='flex text-white w-full justify-between items-center'>
                       {item.username
                         ? (
-                            <div className='d-flex' style={{alignItems:'center'}}>
-                              <span style={{color:'#bb00f9', fontWeight:'bold'}}>{loading && i===ix ? loader : item.username}</span>&nbsp;
+                            <div className='flex items-center'>
+                              <span className="text-[#d863ff] font-[450]">{loading && i===ix ? loader : item.username}</span>&nbsp;
                             </div>
                           )
-                        : <span style={{color:'#999999', fontWeight:450}}>{setLT.unknown}</span>
+                        : <span className="text-[#999999] font-[450]">{setLT.unknown}</span>
                       }
-                      <span style={{margin:'0px 0px 0px', fontSize:'13px', color: item.notSeen>0 ? '#04B803' : 'black' }}>{iso.date}</span>
+                      <span className={`m-0 text-[13px] ${item.notSeen > 0 ? 'text-[#04B803]' : 'text-white font-thin'}`}>{iso.date}</span>
                     </div>
                 )
                 const messageCns = (
-                    <div className='d-flex' style={{width:'100%', justifyContent:'space-between', alignItems:'center'}}>
-                      <span style={{width:'', color:'#666666', fontSize:'13px'}}>{checkMarksMessage}</span>
-                      {(item.notSeen && !index) ? <span style={{margin:'0px', fontSize:'13px'}}>{cns}</span> : ''}
+                    <div className='flex w-full justify-between items-center'>
+                      <span className="text-[#666666] text-[13px]">{checkMarksMessage}</span>
+                      {(item.notSeen && !index) ? <span className="m-0 text-[13px]">{cns}</span> : ''}
                     </div>
                 )
                 const more = (
-                  <div className={`dropdown ${rtl ? 'dropend' : 'dropstart'}`} style={{padding:'0px'}}>
-                    <button className='center waves-effect waves-light btn-large'
+                  <div className='dropdown dropstart p-0'>
+                    <button className='center w-[20px] h-[70%] p-0 m-0 text-white border !border-[#ffffff10] hover:!border-[#ffffff99] rounded-[5px]'
                         type="" id="dropdownMenuButton" data-bs-toggle="dropdown" data-bs-auto-close="outside"
-                        aria-haspopup="true" aria-expanded="false" data-bs-offset={w<s ? "5,5" : "5,5"}
-                        style={{width:'20px', height:'70%', padding:'0px', margin:'0px', color:'#00000050', border:'1px solid #00000020', borderRadius:'5px'}}>
-                        <MdMoreVert style={{margin:'0px', fontSize:'20px', height:'58px'}}/>
+                        aria-haspopup="true" aria-expanded="false" data-bs-offset={w<s ? "5,5" : "5,5"}>
+                        <MdMoreVert className="m-0 text-[20px] h-[58px]"/>
                     </button>
-                    <div className="dropdown-menu" aria-labelledby="dropdownMenuButton"
-                          style={{fontSize:'13px', cursor:'pointer'}}>
-                        <div id='chatDelete' className="dropdown-item" style={{backgroundColor:'red', color:'#ffffff'}}
-                            onClick={(e) => this.deleteModal(item, i, e)}>
+                    <div className="dropdown-menu text-[13px] cursor-pointer" aria-labelledby="dropdownMenuButton">
+                        <div id='chatDelete' className="dropdown-item !bg-red-500 !text-white text-[12px]" onClick={(e) => this.deleteModal(item, i, e)}>
                             {setLT.delete}
                         </div>
                     </div>
                   </div>
                 )
-                const tableInfo = (
-                    <div className='d-flex' style={{width:'100%', alignItems:'center', backgroundColor:'#ffffff', borderRadius:'5px'}}>
-                        <div id='chat' className={`d-flex c${this.props.fc}`} onClick={(e) => this.onToggleChat(item, i, e)}
-                              style={{textDecoration: "none", padding:'5px', width:'100%', borderRadius:'3px', alignItems:'center', overflow:'hidden'}}>
-                            <div style={{padding:'0px', verticalAlign:'middle', width:'70px'}}>{userImage}</div>&nbsp;
-                            <div style={{width:'100%', height:''}}>
-                                <div style={{padding:'0px'}}>{userDate}</div>
-                                <div style={{padding:'0px'}}>{messageCns}</div> 
-                            </div>
-                        </div>&nbsp;
-                        {item._id!=='607e9088bede482040af3574' && more}
-                    </div>
-                )
+
                 return (
-					<div key={i} className={`center`}>
-						<div className={`center btnShadow animated fadeIn`}
-							style={{alignItems:'center', flexDirection:'column', whiteSpace:'nowrap', animationDelay: '0.44s', width: w<s ? '100%' : '800px', padding:'0px', marginBottom:'15px', borderRadius:'5px'}}
-						>
-							<div className={`center animated fadeInUpX`} style={{backgroundColor:'#ffffff99', flexDirection:'column', width:'100%', padding:'5px', margin:'2px', borderRadius:'5px'}}>
-								{tableInfo}
-							</div>
-						</div>
-					</div>
-                )
+									<div key={i} className="flex justify-center text-white">
+										<div className={`flex flex-col items-center btnShadow animated fadeIn [animation-delay: 0.44s] whitespace-nowrap ${ w < s ? 'w-full' : 'w-[800px]' } p-0 mb-[15px] rounded-[5px] bg-white/10`}>
+											<div className="flex flex-col items-center animated fadeInUpX w-full p-[5px] m-[2px] rounded-[10px] border !border-white/50">
+
+												<div className="flex items-center w-full rounded-[5px]">
+
+													<div id="chat" className={`flex items-center c${this.props.fc} w-full overflow-hidden no-underline p-[5px] rounded-[3px] text-gray-900 dark:text-gray-100`}
+														onClick={(e) => this.onToggleChat(item, i, e)}
+													>
+														<div className="w-[70px]">
+															{userImage}
+														</div>
+
+														<div className="flex-1">
+															<div className="p-0 text-white">
+																{userDate}
+															</div>
+
+															<div className="p-0 text-white">
+																{messageCns}
+															</div>
+														</div>
+													</div>
+
+													{item._id !== '607e9088bede482040af3574' && more}
+
+												</div>
+
+											</div>
+										</div>
+									</div>
+								)
             }
         )
         // console.log(77777, dataRv)
@@ -318,12 +320,12 @@ class ChatListPage extends Component{
     deleteModal = async (itemX, i, e) => {
         itemX.i = i
         if(itemX.notSeen>0) {
-            await this.onToggleChat(itemX, e)
-            this.setState({
-                deleteChat:true,
-                itemX
-            })
-        } else {
+            // await this.onToggleChat(itemX, e)
+            // this.setState({
+            //     deleteChat:true,
+            //     itemX
+            // })
+        // } else {
             this.setState({
                 deleteChat:true,
                 itemX
@@ -374,10 +376,10 @@ class ChatListPage extends Component{
     }
 
 	render() {
-        const {w, itemLoaded, ChatMap, finishDataChat, loadingChat, deleteChat, itemX, deletingChat} = this.state
-        const {rtl, setLT, mainUser} = this.props
-        const loader13 = <div className='loader-13' style={{margin: '70px 0px', color:'#ffffff', transform: rtl ? 'rotate(180deg)' : ''}}></div>
-        const moreChat = <div onClick={() => this.getChatList()}><More fc={mainUser.fc}/></div>
+		const {w, itemLoaded, ChatMap, finishDataChat, loadingChat, deleteChat, itemX, deletingChat} = this.state
+		const {setLT, mainUser} = this.props
+		const loader13 = <div className='loader-13' style={{margin: '70px 0px', color:'#ffffff'}}></div>
+		const moreChat = <div onClick={() => this.getChatList()}><More fc={mainUser.fc}/></div>
 
 		// console.log(88, itemLoaded, ChatMap, ChatMap.length)
 		const NA = (
@@ -387,89 +389,89 @@ class ChatListPage extends Component{
 				</div>
 			</div>
 		)
-        const chatSub = (
-            <div>
-            <div style={{marginBottom:ChatMap.length>0 ? '50px' : ''}}>{itemLoaded && (ChatMap.length>0 ? ChatMap : NA)}</div>
-                <div className='center' style={{width:'100%', height: !finishDataChat ? '0px' : '0px', alignItems:'center', marginBottom:'60px'}}>
-                    {(loadingChat && !finishDataChat) && loader13}
-                    {(!loadingChat && !finishDataChat) && moreChat}
-                </div>
-            </div>
-        )
+		const chatSub = (
+				<div>
+						<div style={{marginBottom:ChatMap.length>0 ? '50px' : ''}}>{itemLoaded && (ChatMap.length>0 ? ChatMap : NA)}</div>
+						<div className='center' style={{width:'100%', height: !finishDataChat ? '0px' : '0px', alignItems:'center', marginBottom:'60px'}}>
+								{(loadingChat && !finishDataChat) && loader13}
+								{(!loadingChat && !finishDataChat) && moreChat}
+						</div>
+				</div>
+		)
 
-        const modalDeleteChat = (
-            <Modal show={deleteChat} onHide={() => this.setState({deleteChat : false})}>
-                <Modal.Header className="d-flex justify-content-between" style={{fontFamily:'Vazir', padding:'10px'}}>
-                    <div style={{fontWeight:450}}>{setLT.deleteChat}</div>
-                    <AiOutlineCloseCircle className='sidebarIcon' style={{fontSize:'30px'}} onClick={() => this.setState({deleteChat : false})}/>
-                </Modal.Header>
-                <Modal.Body>
-                    <div className='center' style={{alignItems:'center', flexDirection:'column'}}>
-                        <img
-                            className={`C${itemX.fc} cardShadow`}
-                            style={{objectFit: 'contain', width:"50px", height:"50px", borderRadius: itemX.businessType>0 ? '3px' : '100px', margin:'0px', border:'2px solid #ffffff40', padding:'2px'}}
-                            src={ exist(itemX.profileIndex)
-                                ? `https://www.pix.shiningpage.com/whoraly/profile/small/${itemX.userIdX}-${itemX.profileIndex}.jpeg`
-                                : itemX.userIdX==='unknown'
-                                    ? userN
-                                    : itemX.genderValue===0 ? female : male
-                            }
-                            alt="user"
-                        />
-                        <div className='d-flex' style={{margin:'0px 0px 20px'}}>
-                            {itemX.username 
-                              ? <span style={{color:'#bb00f9', fontWeight:'bold'}}>{itemX.username}</span>
-                              : <span style={{color:'#999999', fontWeight:450}}>{setLT.unknown}</span>
-                            }
-                        </div>
-                        <div>
-                            <span>{setLT.deleteChatText}</span>
-                        </div>
-                    </div>
-                </Modal.Body>
+		const modalDeleteChat = (
+				<Modal show={deleteChat} onHide={() => this.setState({deleteChat : false})}>
+						<Modal.Header className="d-flex justify-content-between" style={{fontFamily:'Vazir', padding:'10px'}}>
+								<div style={{fontWeight:450}}>{setLT.deleteChat}</div>
+								<AiOutlineCloseCircle className='sidebarIcon' style={{fontSize:'30px'}} onClick={() => this.setState({deleteChat : false})}/>
+						</Modal.Header>
+						<Modal.Body>
+								<div className='center' style={{alignItems:'center', flexDirection:'column'}}>
+										<img
+												className={`C${itemX.fc} cardShadow`}
+												style={{objectFit: 'contain', width:"50px", height:"50px", borderRadius: itemX.businessType>0 ? '3px' : '100px', margin:'0px', border:'2px solid #ffffff40', padding:'2px'}}
+												src={ exist(itemX.profileIndex)
+														? `https://www.pix.shiningpage.com/whoraly/profile/small/${itemX.userIdX}-${itemX.profileIndex}.jpeg`
+														: itemX.userIdX==='unknown'
+																? userN
+																: itemX.genderValue===0 ? female : male
+												}
+												alt="user"
+										/>
+										<div className='d-flex' style={{margin:'0px 0px 20px'}}>
+												{itemX.username 
+													? <span style={{color:'#bb00f9', fontWeight:'bold'}}>{itemX.username}</span>
+													: <span style={{color:'#999999', fontWeight:450}}>{setLT.unknown}</span>
+												}
+										</div>
+										<div>
+												<span>{setLT.deleteChatText}</span>
+										</div>
+								</div>
+						</Modal.Body>
 
-                <Modal.Footer>
-                    <div className='center'>
-                        <div className='btnShadow'
-                            style={{width: '80px', textAlign:'center', 
-                                    height: '30px',
-                                    margin: '0px',
-                                    border: '2px solid red',
-                                    padding: '2px',
-                                    color: 'red',
-                                    borderRadius: '5px'}}
-                            onClick = {() => this.onDeleteChat(itemX)}>
-                            <span style={{fontSize:'13px'}}>{deletingChat ? loader13 : setLT.delete}</span>
-                        </div>
-                    </div>
-                </Modal.Footer>
-            </Modal>
-        )
+						<Modal.Footer>
+								<div className='center'>
+										<div className='btnShadow'
+												style={{width: '80px', textAlign:'center', 
+																height: '30px',
+																margin: '0px',
+																border: '2px solid red',
+																padding: '2px',
+																color: 'red',
+																borderRadius: '5px'}}
+												onClick = {() => this.onDeleteChat(itemX)}>
+												<span style={{fontSize:'13px'}}>{deletingChat ? loader13 : setLT.delete}</span>
+										</div>
+								</div>
+						</Modal.Footer>
+				</Modal>
+		)
 
-        const header = (
-          <div className='center' style={{alignItems:'center', flexDirection:'column', padding: '0px 10px'}}>
-            <div className='d-flex' style={{justifyContent:rtl ? 'space-between' : 'flex-end', alignItems:'center', width:'100%', direction:'rtl'}}>
-              <h1 className='animated fadeInLeft tx' style={{animationDelay:'.5s', color:'#ffffff', fontWeight:'bold', fontSize: w<s ? '30px' : '', textAlign:'center', margin:'30px 10px 30px'}}>{setLT.chatList}</h1>
-            </div>
-          </div>
-        )
+		const header = (
+			<div className="animated fadeInLeft [animation-delay:.5s] text-4xl font-extrabold tracking-tight my-[30px]">
+				<span className="bg-gradient-to-r from-violet-600 via-indigo-500 to-sky-500 bg-clip-text text-transparent">
+					Chat List
+				</span>
+			</div>
+		)
 
-        const adsBox = <div className='adsbox'><AdsHorizontal id='adsH1' /></div>
+		const adsBox = <div className='adsbox'><AdsHorizontal id='adsH1' /></div>
 
-        return (
+		return (
 			<div>
 				{/* {googleAds && adsBox} */}
 				<Container>
-					<div className='center' style={{flexDirection:'column', alignItems:'center'}}>
+					<div className='center flex-col items-center'>
 						{header}
 					</div>
 					{chatSub}
 				</Container>
-				{googleAds && adsBox}
-                {modalDeleteChat}
+				{/* {googleAds && adsBox} */}
+								{modalDeleteChat}
 			</div>
-        );
-    }
+		);
+	}
 }
 
 const mapStateToProps = (state) => {
@@ -479,7 +481,6 @@ const mapStateToProps = (state) => {
         userInfo: state.subUserInfo,
         userId: state.subUserInfo._id,
         auth: state.auth,
-        rtl: state.rtl,
         lang: state.lang,
         geo: state.geo,
         page: state.page,
