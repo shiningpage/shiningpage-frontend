@@ -2407,8 +2407,8 @@ class ProjectManagement extends Component {
                   </button>
                   <div className="dropdown-menu sticky-top" aria-labelledby="dropdownMenuButton" //data-bs-auto-close="inside"
                       style={{width:w<300 ? '170px' : '250px', fontSize:'13px', padding:'0px', margin:'-10px 0px 0px', backgroundColor:'#ffffff99', zIndex:'2'}}>
-                      <div className='d-flex backBlur sticky-top' style={{fontWeight:450, padding:'0px', alignItems:'center', flexDirection:'column', backgroundColor:'#ffffff99'}}>
-                          <div className='d-flex txt underline' onClick = {() => this.onNewProject('copy', item)}
+                      <div className='flex backBlur sticky-top' style={{fontWeight:450, padding:'0px', alignItems:'center', flexDirection:'column', backgroundColor:'#ffffff99'}}>
+                          <div className='flex txt hover:underline' onClick = {() => this.onNewProject('copy', item)}
                               style={{padding:'15px 10px', alignItems:'flex-start'}}>
                               <FaFolderPlus style={{width:'25px', fontSize:'22px', color:'#00a843', margin:'-5px 0px 0px'}}/>&nbsp;
                               Create a new project based on this project
@@ -2423,8 +2423,8 @@ class ProjectManagement extends Component {
             <div key={i} className='animated fadeIn' style={{width:w<s ? '100%' : '400px', padding:'5px', margin:'5px', border: item.taskName ? '' : '4px solid #ffd400'}}>
                 <div className="cardShadow"
                       style={{width:'100%', height:'100%', padding:'10px', backgroundColor:userProject ? (item.complete===100 ? '#058001' : '#000000') : (item.complete===100 ? '#05ad00' : '#00194c'), color:'#ffffff', borderRadius:'5px'}}>
-                    <div className='d-flex' style={{width:'100%', justifyContent:'space-between'}}>
-                        <div className='d-flex' style={{marginBottom:'10px'}}>
+                    <div className='flex' style={{width:'100%', justifyContent:'space-between'}}>
+                        <div className='flex' style={{marginBottom:'10px'}}>
                             {userImage}&nbsp;&nbsp;
                             {item.taskName}
                         </div>
@@ -2449,13 +2449,13 @@ class ProjectManagement extends Component {
                       ?
                       <div className='center' style={{margin:'30px 0px 20px', alignItems:'center'}}>
                           {accessBtn}
-                          <div className='d-flex' style={{flexWrap:'wrap'}}>
+                          <div className='flex' style={{flexWrap:'wrap'}}>
                               {accessUsers.reverse()}
                           </div>
                       </div>
                       :
                       <div className='center' style={{margin:'30px 0px 20px', alignItems:'center'}}>
-                          <div className='d-flex' style={{flexWrap:'wrap', color:'#00e5ff'}}>
+                          <div className='flex' style={{flexWrap:'wrap', color:'#00e5ff'}}>
                               {setLT.access} : &nbsp;&nbsp;&nbsp;
                               <span>✓ {setLT.view}</span>
                               {item.edit && <div style={{width:'15px'}}></div>}
@@ -2464,7 +2464,7 @@ class ProjectManagement extends Component {
                       </div>
                     }
                 </div>
-                <div className='d-flex sticky-top' style={{width:'100%', marginTop:'-30px', color:'#ffffff', padding:'0px 10px', justifyContent:'space-between'}}>
+                <div className='flex sticky-top' style={{width:'100%', marginTop:'-30px', color:'#ffffff', padding:'0px 10px', justifyContent:'space-between'}}>
                     {moreBtn}
                     {i+1}
                 </div>
@@ -2526,9 +2526,9 @@ class ProjectManagement extends Component {
                 <th rowSpan={i===0 ?'2' : ''} style={{top:item.top, minWidth:'50px', textAlign:'center', verticalAlign: 'middle', padding:'0px 4px', display: i===0 ? '' : 'none'}}><div className='center disable-select' style={titleStyle}>{item.C}</div></th>
                 <th rowSpan={i===0 ?'2' : ''} style={{top:item.top, minWidth:'80px', textAlign:'center', verticalAlign: 'middle',  padding:'0px 4px', display: i===0 ? '' : 'none'}}><div className='center disable-select' style={titleStyle}>{item.WBS}</div></th>
                 <th rowSpan={i===0 ?'2' : ''} style={{top:item.top, minWidth:`${taskWidth}px`, textAlign:'center', verticalAlign: 'middle', padding:'0px 4px', display: i===0 ? '' : 'none'}}>
-                    <div className='d-flex disable-select' style={{height:'100%', padding:'0px 5px', marginBottom:'0px', fontSize:'14px', fontWeight:400, position:'sticky', alignItems:'center', justifyContent:''}}>
+                    <div className='flex disable-select' style={{height:'100%', padding:'0px 5px', marginBottom:'0px', fontSize:'14px', fontWeight:400, position:'sticky', alignItems:'center', justifyContent:''}}>
                         {item.taskName}&nbsp;&nbsp;
-                        <div className='d-flex' style={{direction:'ltr'}}>
+                        <div className='flex' style={{direction:'ltr'}}>
                             <BsFillCaretLeftFill style={{width:'30px', transform:'rotate(0deg)', cursor:'pointer'}}
                                 onClick={() => this.onTaskWidth(pDays, rtl ? 10 : -10)}/>
                             <BsFillCaretLeftFill style={{width:'30px', transform:'rotate(180deg)', cursor:'pointer'}}
@@ -2701,7 +2701,7 @@ class ProjectManagement extends Component {
                     </button>
                     <div className="dropdown-menu sticky-top" aria-labelledby="dropdownMenuButton" //data-bs-auto-close="inside"
                           style={{fontSize:'13px', padding:'0px', margin:'-10px 0px 0px', backgroundColor:'#ffffff99', zIndex:'2'}}>
-                        <div className='d-flex backBlur' style={{padding:'10px', alignItems:'center', flexDirection:'column', backgroundColor:'#ffffff99'}}>
+                        <div className='flex backBlur' style={{padding:'10px', alignItems:'center', flexDirection:'column', backgroundColor:'#ffffff99'}}>
                             {addTask}
                             <hr style={{width:'90%', margin:'20px 0px 30px'}}/>
                             <div className='center' style={{width:'120px', height:'120px', alignItems:'center', flexDirection:'column'}}>
@@ -2737,7 +2737,7 @@ class ProjectManagement extends Component {
             )
             : [],
             docBox = (
-              <div className='d-flex' style={{width:i===0 ? '830px' : '750px', height:'50px', marginTop:-imgH, padding:'0px', backgroundColor:'#59b9ff00', position:'absolute', overflow:'scroll'}}>
+              <div className='flex' style={{width:i===0 ? '830px' : '750px', height:'50px', marginTop:-imgH, padding:'0px', backgroundColor:'#59b9ff00', position:'absolute', overflow:'scroll'}}>
                 {imgList}
               </div>
             ),
@@ -2943,12 +2943,12 @@ class ProjectManagement extends Component {
             ),
             countryCode = item.countryCode ? item.countryCode.toLowerCase() : '',
             userCountry = (
-              <div className='d-flex' style={{flexDirection:'column', textAlign:rtl ? 'right' : 'left'}}>
-                  <div className='d-flex' style={{margin: '0px 0px 5px', alignItems:'center', direction:rtl ? 'rtl' : 'ltr'}}>
+              <div className='flex' style={{flexDirection:'column', textAlign:rtl ? 'right' : 'left'}}>
+                  <div className='flex' style={{margin: '0px 0px 5px', alignItems:'center', direction:rtl ? 'rtl' : 'ltr'}}>
                       <span className={`flag-icon flag-icon-${countryCode}`}></span> &nbsp;
-                      <div className='d-flex ' style={{fontSize:'12px'}}>{item.country}{item.city && ( ' - ' + item.city)}</div>
+                      <div className='flex ' style={{fontSize:'12px'}}>{item.country}{item.city && ( ' - ' + item.city)}</div>
                   </div>
-                  <div className='d-flex' style={{justifyContent:'space-between', flexWrap:'wrap'}}>
+                  <div className='flex' style={{justifyContent:'space-between', flexWrap:'wrap'}}>
                       {item.username
                           ? (
                           <div>
@@ -2981,7 +2981,7 @@ class ProjectManagement extends Component {
                 </div>
             ),
             <div key={i}
-                className={`d-flex animated fadeInUpX`}
+                className={`flex animated fadeInUpX`}
                 style={{backgroundColor:'#ffffff99', textDecoration: "none", width:'800px', padding:'0px', borderRadius:'5px', margin:'2px', border: '1px #7b5cff40 solid'}}
             >
                 {tableInfo}
@@ -3038,12 +3038,12 @@ class ProjectManagement extends Component {
               </div>
             ),
             userCountry = (
-              <div className='d-flex' style={{flexDirection:'column', textAlign:rtl ? 'right' : 'left'}}>
-                  <div className='d-flex' style={{margin: '0px 0px 5px', alignItems:'center', direction:rtl ? 'rtl' : 'ltr'}}>
+              <div className='flex' style={{flexDirection:'column', textAlign:rtl ? 'right' : 'left'}}>
+                  <div className='flex' style={{margin: '0px 0px 5px', alignItems:'center', direction:rtl ? 'rtl' : 'ltr'}}>
                       <span className={`flag-icon flag-icon-${countryCode}`}></span> &nbsp;
-                      <div className='d-flex ' style={{fontSize:'12px'}}>{item.country}{item.city && ( ' - ' + item.city)}</div>
+                      <div className='flex ' style={{fontSize:'12px'}}>{item.country}{item.city && ( ' - ' + item.city)}</div>
                   </div>
-                  <div className='d-flex' style={{justifyContent:'space-between', flexWrap:'wrap'}}>
+                  <div className='flex' style={{justifyContent:'space-between', flexWrap:'wrap'}}>
                       {item.username
                           ? (
                           <div>
@@ -3063,13 +3063,13 @@ class ProjectManagement extends Component {
               </div>
             ),
             view = (
-              <div className='d-flex disable-select' style={{margin:'15px', alignItems:'center'}}>
+              <div className='flex disable-select' style={{margin:'15px', alignItems:'center'}}>
                   <input checked={true} type="checkbox" style={{textAlign:'center'}}/>&nbsp;
                   <span className="" style={{}}>{setLT.view}</span>
               </div>
             ),
             edit = (
-              <div className='d-flex disable-select' style={{margin:'15px', alignItems:'center', cursor:'pointer'}} onClick = {() => item.loading ? '' : this.onToggleUserEditAccess(allProjects, ix, item, i, itemX.edit)}>
+              <div className='flex disable-select' style={{margin:'15px', alignItems:'center', cursor:'pointer'}} onClick = {() => item.loading ? '' : this.onToggleUserEditAccess(allProjects, ix, item, i, itemX.edit)}>
                   { item.toggleEdit
                     ? loaderX
                     : <input checked={itemX.edit} type="checkbox" style={{textAlign:'center'}}/>
@@ -3109,11 +3109,11 @@ class ProjectManagement extends Component {
             ),
             btns = (
                 <div style={{margin:'10px 0px'}}>
-                    <div className='d-flex' style={{width:'100%', justifyContent:'space-between'}}>
+                    <div className='flex' style={{width:'100%', justifyContent:'space-between'}}>
                         {!item.toggleDelete && toggleDeleteUserBtn}
                     </div>
                     { item.toggleDelete &&
-                        <div className='d-flex' style={{width:'100%', justifyContent:'center'}}>
+                        <div className='flex' style={{width:'100%', justifyContent:'center'}}>
                             {deleteNoBtn}
                             {deleteYesBtn}
                         </div>
@@ -3517,14 +3517,14 @@ class ProjectManagement extends Component {
     const loaderImg = <div className='loader-40' style={{position:'absolute', width:'100px', height:'100px', margin: '0px', color:'#000000', transform: rtl ? 'rotate(180deg)' : '', backgroundColor:'#ffffff50'}}></div>
 
     const projectManagementTitle = (
-      <div className='d-flex' style={{marginBottom:'20px'}}>
+      <div className='flex' style={{marginBottom:'20px'}}>
         <div className='backProject' style={{width:"50px", height:"50px", borderRadius:'3px'}}></div>&nbsp;&nbsp;
         <div style={{fontSize:'22px', fontWeight:'bold', color:'#ffffff'}}>Project Management</div>
       </div>
     )
 
     const allProjectsList = (
-      <div className={'d-flex center'} style={{flexWrap: 'wrap', marginBottom:'20px', alignItems:'stretch'}}>
+      <div className={'flex center'} style={{flexWrap: 'wrap', marginBottom:'20px', alignItems:'stretch'}}>
           {projectsList}
           <div className='center' style={{width:'100%', height: gettingProjects ? '100px' : '0px', alignItems:'center'}}>
               {gettingProjects && 'Loading ...'}
@@ -3553,7 +3553,7 @@ class ProjectManagement extends Component {
         <tbody>
           <tr style={{}}>
             <td style={{width:'100%', position:'relative', position:'sticky', right:0, left:0}}>
-              <div className='d-flex' style={{margin:w<s ? '10px' : '0px 0px 10px', alignItems:'center'}}>
+              <div className='flex' style={{margin:w<s ? '10px' : '0px 0px 10px', alignItems:'center'}}>
                   {setLT.orderQty}
                   <textarea type="text" rows="1" value={q2Target} autoComplete="off"
                     className="form-control sticky-top"
@@ -3582,47 +3582,74 @@ class ProjectManagement extends Component {
       </div>
     )
 
-    const newProject = (//dropend
-      <div className='dropdown' data-bs-toggle="tooltip" data-bs-placement="bottom" title='Create New Project' style={{alignItems:'center', margin:'0px'}}>
-          <button className={`center animated fadeInDown btnShadow`}
-              type="button" id="dropdownMenuButton" data-bs-toggle={appAccess ? 'dropdown' : ''} data-bs-offset="0,5" //data-bs-auto-close="inside"
-            style={{animationDelay:'0s', width:'', height:'', padding:'3px 6px', marginBottom:'20px', textDecoration:'none', color:'#000000',
-              fontSize:'16px', alignItems:'flex-end', border:'2px solid #00CCFF',
-              backgroundColor: '#ffffff', borderRadius:'5px'
-            }}
-          >
-            <div className='center underline'>
-                {savingProjects ? loaderZ : <FaFolderPlus style={{fontSize:'25px', color:'#00a843', marginRight:'5px'}}/>}
-                <span className='' style={{fontSize:'12px', marginTop:'5px'}}>Create New Project</span>
-                {!appAccess && <span className='' style={{fontSize:'10px', color:'brown', margin:'5px 0px 0px 5px'}}>(You have no access.)</span>}
-            </div>
-          </button>
-          <div className="dropdown-menu sticky-top" aria-labelledby="dropdownMenuButton" //data-bs-auto-close="inside"
-              style={{width:w<300 ? '170px' : '200px', fontSize:'13px', padding:'0px', margin:'-10px 0px 0px', backgroundColor:'#ffffff99', zIndex:'2'}}>
-              <div className='d-flex backBlur sticky-top' style={{fontWeight:450, padding:'0px', alignItems:'center', flexDirection:'column', backgroundColor:'#ffffff99'}}>
-                  <div style={{padding:'10px'}}>Create New Project</div>
-                  <hr style={{width:'100%', margin:'0px', height:'2px'}}/>
-                  <div className='d-flex txt underline' onClick = {() => this.onNewProject('percentage')}
-                      style={{padding:'15px 10px', alignItems:'flex-start'}}>
-                    <FaPercent style={{width:'25px', marginTop:'2px'}}/>&nbsp;
-                    {setLT.percentageBased}
-                  </div>
-                  <hr style={{width:'90%', margin:'0px'}}/>
-                  <div className='d-flex txt underline' onClick = {() => this.onNewProject('quantity1')}
-                      style={{padding:'15px 10px', alignItems:'flex-start'}}>
-                    <MdDashboardCustomize style={{width:'25px', fontSize:'17px'}}/>&nbsp;
-                    {setLT.quantityBased} (1)
-                  </div>
-                  <hr style={{width:'90%', margin:'0px'}}/>
-                  <div className='d-flex txt underline' onClick = {() => this.onNewProject('quantity2')}
-                      style={{padding:'15px 10px', alignItems:'flex-start'}}>
-                    <AiOutlineCodeSandbox style={{width:'25px', fontSize:'17px'}}/>&nbsp;
-                    {setLT.quantityBased} (2)
-                  </div>
-              </div>
+    const projectTypes = [
+      {
+        key: "percentage",
+        label: setLT.percentageBased,
+        icon: <FaPercent />,
+        iconStyle: "bg-blue-100 text-blue-600",
+      },
+      {
+        key: "quantity1",
+        label: `${setLT.quantityBased} (1)`,
+        icon: <MdDashboardCustomize />,
+        iconStyle: "bg-green-100 text-green-600",
+      },
+      {
+        key: "quantity2",
+        label: `${setLT.quantityBased} (2)`,
+        icon: <AiOutlineCodeSandbox />,
+        iconStyle: "bg-orange-100 text-orange-600",
+      },
+    ];
+
+    const newProject = (
+      <div className="dropdown flex items-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Create New Project">
+
+        {/* Main Button */}
+        <button
+          id="dropdownMenuButton" type="button" data-bs-toggle="dropdown" data-bs-offset="0,8"
+          className="mb-5 flex items-center gap-3 rounded-xl border-0 bg-white/10 px-3 py-2 text-white backdrop-blur-md transition duration-300 ease-out hover:scale-105 hover:bg-white/20 hover:shadow-xl active:scale-95"
+        >
+          {savingProjects ? loaderZ : <div className="backProject h-9 w-9 mb-2 rounded-lg shadow-md transition duration-300 group-hover:rotate-3"/>}
+          <div className="flex flex-col items-start">
+            <span className="text-sm font-semibold">Create New Project</span>
+            <span className="text-[11px] text-white/70">Select project type</span>
           </div>
+        </button>
+
+        {/* Dropdown */}
+        <div className="dropdown-menu overflow-hidden rounded-2xl border border-white/30 bg-white/85 p-0 shadow-2xl backdrop-blur-xl transition duration-300 ease-out"
+          aria-labelledby="dropdownMenuButton"
+          style={{ width: w < 300 ? 210 : 250, marginTop: "-8px" }}
+        >
+          {/* Header */}
+          <div className="px-4 py-4 text-center">
+            <div className="text-base font-semibold text-gray-800">✨ Create Project</div>
+            <div className="mt-1 text-xs text-gray-500">Choose your project type</div>
+          </div>
+          <div className="h-px bg-gray-200"/>
+
+          {/* Items */}
+          {projectTypes.map((item, index) => (
+            <React.Fragment key={item.key}>
+              <div className="group flex cursor-pointer items-center gap-3 px-4 py-3 transition duration-200 ease-out hover:bg-blue-50 active:scale-[0.98]"
+                onClick={() => this.onNewProject(item.key)}>
+                <div className={`flex h-10 w-10 items-center justify-center rounded-full text-lg shadow-sm transition duration-300 group-hover:scale-110 group-hover:rotate-3 ${item.iconStyle}`}>
+                  {item.icon}
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-sm font-medium text-gray-800 transition duration-200 group-hover:text-blue-600">{item.label}</span>
+                  <span className="text-[11px] text-gray-500">Click to create</span>
+                </div>
+              </div>
+              {index !== projectTypes.length - 1 && <div className="mx-4 h-px bg-gray-200"/>}
+            </React.Fragment>
+          ))}
+        </div>
+
       </div>
-    )
+    );
 
     const undo = (
       <div className='center' style={{alignItems:'center', margin:w<s ? '0px 7px' : '0px 10px'}}>
@@ -3681,7 +3708,7 @@ class ProjectManagement extends Component {
 
     const modalDeleteProject =  (
       <Modal show={toggleDeleteProject} onHide={() => this.onToggleDeleteProject()}>
-        <div className='d-flex sticky-top' style={{width:'100%', padding:'5px', alignItems:'center', justifyContent:'space-between', direction:'rtl', backgroundColor:'#ffffff'}}>
+        <div className='flex sticky-top' style={{width:'100%', padding:'5px', alignItems:'center', justifyContent:'space-between', direction:'rtl', backgroundColor:'#ffffff'}}>
           <div className={`center`} onClick={() => this.onToggleDeleteProject()}
               style={{width:'30px', height:'30px', padding:'2px', margin:'0px', borderRadius:'100px', border: '3px solid #00000020'}}>
               <MdClose className='sidebarIcon' style={{marginTop:'0px', width:'20px', fontSize:'20px', fontWeight:'bold', cursor:'pointer', position:'absolute'}}/>
@@ -3694,7 +3721,7 @@ class ProjectManagement extends Component {
               <div className='center' style={{width:'100%', alignItems:'center', margin:'0px 0px 60px'}}>
                   <Button variant="" onClick = {() => deletingProject ? '' : this.onDeleteProject(projectDX)}
                       style={{backgroundColor:"#fe0202", color:'#ffffff', width:'100px', height:'30px', fontSize:'12px', margin:'5px', padding:'0px', }}>
-                      <span style={{fontSize:'15px'}}>{deletingProject ? loaderX : 'delete'}</span>
+                      <span style={{fontSize:'15px'}}>{deletingProject ? loaderX : 'Delete'}</span>
                   </Button>
                   <Button variant="" onClick = {() => this.onToggleDeleteProject()}
                       style={{backgroundColor:"#4285f4", color:'#ffffff', width:'100px', height:'30px', fontSize:'12px', margin:'5px', padding:'0px', }}>
@@ -3708,7 +3735,7 @@ class ProjectManagement extends Component {
 
     const modalDeleteTask =  (
       <Modal show={toggleDeleteTask} onHide={() => this.onToggleDeleteTask()}>
-        <div className='d-flex sticky-top' style={{width:'100%', padding:'5px', alignItems:'center', justifyContent:'space-between', direction:'rtl', backgroundColor:'#ffffff'}}>
+        <div className='flex sticky-top' style={{width:'100%', padding:'5px', alignItems:'center', justifyContent:'space-between', direction:'rtl', backgroundColor:'#ffffff'}}>
           <div className={`center`} onClick={() => this.onToggleDeleteTask()}
               style={{width:'30px', height:'30px', padding:'2px', margin:'0px', borderRadius:'100px', border: '3px solid #00000020'}}>
               <MdClose className='sidebarIcon' style={{marginTop:'0px', width:'20px', fontSize:'20px', fontWeight:'bold', cursor:'pointer', position:'absolute'}}/>
@@ -3735,7 +3762,7 @@ class ProjectManagement extends Component {
 
     const modalAccess =  (
       <Modal show={toggleAccess} onHide={() => this.onToggleAccess()}>
-        <div className='d-flex sticky-top' style={{width:'100%', padding:'5px', alignItems:'center', justifyContent:'space-between', direction:'rtl', backgroundColor:'#ffffff'}}>
+        <div className='flex sticky-top' style={{width:'100%', padding:'5px', alignItems:'center', justifyContent:'space-between', direction:'rtl', backgroundColor:'#ffffff'}}>
           <div className={`center`} onClick={() => this.onToggleAccess()}
               style={{width:'30px', height:'30px', padding:'2px', margin:'0px', borderRadius:'100px', border: '3px solid #00000020'}}>
               <MdClose className='sidebarIcon' style={{marginTop:'0px', width:'20px', fontSize:'20px', fontWeight:'bold', cursor:'pointer', position:'absolute'}}/>
@@ -3825,7 +3852,7 @@ class ProjectManagement extends Component {
 
     const modalProjectView =  (
       <Modal show={toggleProjectView} onHide={() => this.setState({toggleProjectView : true})} size='xl' fullscreen={false}>
-        <div className='d-flex sticky-top' style={{width:'100%', padding:w<s ? (projectX && projectX.type==='quantity2' ? '5px 0px' : '5px 0px 0px') : '15px 5px 10px', alignItems:'center', direction:'rtl', backgroundColor:'#ffffff', borderBottom: w<s && projectX && projectX.type==='quantity2' ? '1px solid' : ''}}>
+        <div className='flex sticky-top' style={{width:'100%', padding:w<s ? (projectX && projectX.type==='quantity2' ? '5px 0px' : '5px 0px 0px') : '15px 5px 10px', alignItems:'center', direction:'rtl', backgroundColor:'#ffffff', borderBottom: w<s && projectX && projectX.type==='quantity2' ? '1px solid' : ''}}>
           {closeProjectView}
           {undo}
           {saveProject}
@@ -3893,7 +3920,7 @@ class ProjectManagement extends Component {
 
     const modalAddImage =  (
       <Modal show={toggleNewImage} onHide={() => this.setState({toggleNewImage : true})}>
-        <div className='d-flex sticky-top' style={{width:'100%', padding:'5px', alignItems:'center', justifyContent:'space-between', direction:'rtl', backgroundColor:'#ffffff', borderBottom:'1px solid #dddddd'}}>
+        <div className='flex sticky-top' style={{width:'100%', padding:'5px', alignItems:'center', justifyContent:'space-between', direction:'rtl', backgroundColor:'#ffffff', borderBottom:'1px solid #dddddd'}}>
           <div className={`center`} onClick={() => this.onToggleNewImage()}
               style={{width:'30px', height:'30px', padding:'2px', margin:'0px', borderRadius:'100px', border: '3px solid #00000020'}}>
               <MdClose className='sidebarIcon' style={{marginTop:'0px', width:'20px', fontSize:'20px', fontWeight:'bold', cursor:'pointer', position:'absolute'}}/>
@@ -3970,14 +3997,14 @@ class ProjectManagement extends Component {
           </button>
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" //data-bs-auto-close="inside"
                 style={{fontSize:'13px', padding:'0px', margin:'-10px 0px 0px', backgroundColor:'#ffffff99', zIndex:'2'}}>
-                <div className='d-flex backBlur' style={{padding:'10px', alignItems:'center', flexDirection:'column', backgroundColor:'#ffffff99'}}>
+                <div className='flex backBlur' style={{padding:'10px', alignItems:'center', flexDirection:'column', backgroundColor:'#ffffff99'}}>
                     <RiImageAddFill style={{fontSize:'35px', color:'#59b9ff', cursor:'pointer'}} onClick={() => this.onToggleNewImage(projects[tIndex], tIndex)}/>
                     <hr style={{width:'90%', margin:'10px 0px'}}/>
                     {editImageBtn}
                     <hr style={{width:'90%', margin:'10px 0px'}}/>
                     {!toggleDeleteImage
                       ? deleteImageBtn
-                      : <div className='d-flex' style={{justifyContent:'center'}}>
+                      : <div className='flex' style={{justifyContent:'center'}}>
                           {deleteImageNoBtn}
                           {deleteImageYesBtn}
                         </div>
@@ -3989,7 +4016,7 @@ class ProjectManagement extends Component {
 
     const modalImageShow =  (
       <Modal show={toggleImageShow} onHide={() => this.onToggleImageShow()} size='lg'>
-        <div className='d-flex sticky-top' style={{width:'100%', padding: w<s ? '5px' : '10px', alignItems:'center', justifyContent:'space-between', direction:'rtl', backgroundColor:'#ffffff', borderBottom:'0px solid #dddddd'}}>
+        <div className='flex sticky-top' style={{width:'100%', padding: w<s ? '5px' : '10px', alignItems:'center', justifyContent:'space-between', direction:'rtl', backgroundColor:'#ffffff', borderBottom:'0px solid #dddddd'}}>
             <div className={`center`} onClick={() => this.onToggleImageShow()}
                 style={{width:'30px', height:'30px', minWidth:'30px', padding:'2px', margin:'0px', borderRadius:'100px', border: '3px solid #00000020'}}>
                 <MdClose className='sidebarIcon' style={{marginTop:'0px', width:'20px', fontSize:'20px', fontWeight:'bold', cursor:'pointer', position:'absolute'}}/>
@@ -4007,7 +4034,7 @@ class ProjectManagement extends Component {
 
     const modalEditImage = (
       <Modal show={toggleEditImage} onHide={() => this.setState({toggleEditImage : true})}>
-        <div className='d-flex sticky-top' style={{width:'100%', padding:'5px', alignItems:'center', justifyContent:'space-between', direction:'rtl', backgroundColor:'#ffffff', borderBottom:'1px solid #dddddd'}}>
+        <div className='flex sticky-top' style={{width:'100%', padding:'5px', alignItems:'center', justifyContent:'space-between', direction:'rtl', backgroundColor:'#ffffff', borderBottom:'1px solid #dddddd'}}>
           <div className={`center`} onClick={() => this.onToggleEditImage()}
               style={{width:'30px', height:'30px', padding:'2px', margin:'0px', borderRadius:'100px', border: '3px solid #00000020'}}>
               <MdClose className='sidebarIcon' style={{marginTop:'0px', width:'20px', fontSize:'20px', fontWeight:'bold', cursor:'pointer', position:'absolute'}}/>
@@ -4026,11 +4053,19 @@ class ProjectManagement extends Component {
 
     const adsBox = <div className='adsbox'><AdsHorizontal id='adsProject' /></div>
 
+    const header = (
+      <div className="center animated fadeInLeft [animation-delay:.5s] text-4xl font-extrabold tracking-tight my-[30px]">
+        <span className="bg-gradient-to-r from-violet-600 via-indigo-500 to-sky-500 bg-clip-text text-transparent">
+          Project Management
+        </span>
+      </div>
+    )
+
     return (
       <div>
         <Container>
+          {header}
           <div style={{marginTop:'20px'}}>
-            {projectManagementTitle}
             {newProject}
             {allProjectsList}
             {/* projects */}
@@ -4045,7 +4080,7 @@ class ProjectManagement extends Component {
           {modalAddImage}
           {modalEditImage}
         </Container>
-        {googleAds && adsBox}
+        {/* {googleAds && adsBox} */}
       </div>
     );
   }
