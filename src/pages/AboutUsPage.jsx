@@ -81,29 +81,29 @@ class AboutUsPage extends Component {
         const {rtl, setLT, lang, auth } = this.props;
 
         const header = (
-          <div className='center' style={{alignItems:'center', flexDirection:'column', padding: '0px 10px'}}>
-            <div className='d-flex' style={{justifyContent:rtl ? 'space-between' : 'flex-end', alignItems:'center', width:'100%', direction:'rtl'}}>
-              <h1 className='animated fadeInLeft tx' style={{animationDelay:'.5s', color:'#ffffff', fontWeight:'bold', fontSize: w<s ? '30px' : '', textAlign:'center', margin:'30px 10px 30px'}}>{setLT.about}</h1>
-            </div>
+          <div className="animated fadeInLeft [animation-delay:.5s] text-4xl font-extrabold tracking-tight my-[30px]">
+            <span className="bg-gradient-to-r from-violet-600 via-indigo-500 to-sky-500 bg-clip-text text-transparent">
+              About
+            </span>
           </div>
         )
 
         const adsBox = <div className='adsbox'><AdsHorizontal id='adsH1' /></div>
 
         return (
-          <div>
-            {googleAds && adsBox}
+          <div className='text-[#ffffff] font-thin'>
+            {/* {googleAds && adsBox} */}
             <Container>
               <div className='center' style={{flexDirection:'column', alignItems:'center'}}>
                 {header}
               </div>
-              <div className='animated fadeInUpX' style={{animationDelay:'.5s', margin:'0px 5px 30px', padding:'10px', backgroundColor:'#ffffff99', borderRadius:'5px'}}>
-                <div style={{backgroundColor:'#ffffff99', borderRadius:'5px', padding:'10px', direction: rtl ? 'rtl' : 'ltr'}}>
+              <div className='animated fadeInUpX' style={{animationDelay:'.5s', margin:'0px 5px 30px', padding:'10px', backgroundColor:'#ffffff00', borderRadius:'5px'}}>
+                <div className='' style={{backgroundColor:'#ffffff00', borderRadius:'5px', padding:'10px'}}>
                   <Manager />
                 </div>
               </div>
             </Container>
-            {googleAds && adsBox}
+            {/* {googleAds && adsBox} */}
           </div>
         )
 
