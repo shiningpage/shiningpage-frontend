@@ -92,6 +92,9 @@ class ReviewPage extends Component {
                   ratingErrors: infoErr.userRatingErr,
               })
           } else {
+							this.setState({
+								sendingReview: true,
+							})
 
               const info = {
                   userId: this.props.userId,
@@ -108,7 +111,8 @@ class ReviewPage extends Component {
                       ratingErrors: '',
                       modal:true,
                       comment:'',
-                      rating: 0
+                      rating: 0,
+											sendingReview: false,
                   });
               })
               .catch((error) => {
@@ -187,112 +191,109 @@ class ReviewPage extends Component {
   commentMap = async (x) => {
     var star, comments, userTime, userImage, tableInfo, userLocation, jobSummary, countryCode, countryCodeZ, JLen, jobSummaryStyle, unknown, userCountry
     const {w, pagArray} = this.state
-    const {rtl, setLT} = this.props
+    const {setLT} = this.props
 
     var dataRv = x.map (
-        (item, i) => (
-            // console.log(item),
-            userImage = (
-                <div>
-                    <img
-                        className={`C${item.fc} ${item.userId!==this.props.mainUserId ? 'btnShadow' : ''}`}
-                        style={{objectFit: 'contain', width:"50px", height:"50px", borderRadius:item.businessType>0 ? '3px' : '100px', margin:'0px', border:'2px solid #ffffff40', padding:'2px', cursor:'pointer'}}
-                        src={ exist(item.profileIndex)
-                            ? `https://www.pix.shiningpage.com/whoraly/profile/big/${item.userId}-${item.profileIndex}.jpeg`
-                            : item.genderValue===0 ? female : male
-                        }
-                        alt={`${item.username} image`}
-                        onClick={() => this.onToggleWebPage(item)}
-                    />
-                </div>
-            ),
-            countryCode = item.countryCode ? item.countryCode.toLowerCase() : '',
-            countryCodeZ = item.countryCodeZ ? item.countryCodeZ.toLowerCase() : '',
+      (item, i) => (
+				// console.log(item),
+				userImage = (
+						<div>
+								<img
+										className={`C${item.fc} ${item.userId!==this.props.mainUserId ? 'btnShadow' : ''}`}
+										style={{objectFit: 'contain', width:"50px", height:"50px", borderRadius:item.businessType>0 ? '3px' : '100px', margin:'0px', border:'2px solid #ffffff40', padding:'2px', cursor:'pointer'}}
+										src={ exist(item.profileIndex)
+												? `https://www.pix.shiningpage.com/whoraly/profile/big/${item.userId}-${item.profileIndex}.jpeg`
+												: item.genderValue===0 ? female : male
+										}
+										alt={`${item.username} image`}
+										onClick={() => this.onToggleWebPage(item)}
+								/>
+						</div>
+				),
+				countryCode = item.countryCode ? item.countryCode.toLowerCase() : '',
+				countryCodeZ = item.countryCodeZ ? item.countryCodeZ.toLowerCase() : '',
 
-            JLen = item.jobSummary ? item.jobSummary.length : 0,
-            jobSummaryStyle = {width:'100%', padding:'0px', fontSize:'13px', fontWeight:'', lineHeight:'', marginTop:'0px', overflow: 'hidden', textAlign: rtl ? 'right' : 'left', color:''},
-            jobSummary = <div className='d-flex' style={jobSummaryStyle}>{item.jobSummary}</div>,
+				JLen = item.jobSummary ? item.jobSummary.length : 0,
+				jobSummaryStyle = {width:'100%', padding:'0px', fontSize:'13px', fontWeight:'', lineHeight:'', marginTop:'0px', overflow: 'hidden'},
+				jobSummary = <div className='d-flex' style={jobSummaryStyle}>{item.jobSummary}</div>,
 
-            userCountry = (
-              <div className='d-flex' style={{flexDirection:'column', textAlign:rtl ? 'right' : 'left'}}>
-                  <div className='d-flex' style={{margin: '0px 0px 5px', alignItems:'center', direction:rtl ? 'rtl' : 'ltr'}}>
-                      <span className={`flag-icon flag-icon-${unknown ? countryCodeZ : countryCode}`}></span> &nbsp;
-                      <div className='d-flex ' style={{fontSize:'12px'}}>{unknown ? item.countryZ : item.country}</div>
-                  </div>
-                  <div className='d-flex' style={{justifyContent:'space-between', flexWrap:'wrap'}}>
-                        {item.username
-                            ? (
-                            <div>
-                                <span style={{color:'#bb00f9', fontWeight:'bold'}}>{item.username}</span>&nbsp;
-                            </div>
-                            )
-                            : <span style={{color:'#999999', fontWeight:''}}>{setLT.unknown} ({item.view})</span>
-                        }
-                        <div>{jobSummary}</div>
-                  </div>
-              </div>
-            ),
-            userLocation = <span style={{margin:'0px 5px', fontSize:'13px'}}>{item.country}{/* item.city && <span> - {item.city}</span> */}</span>
-            ,
-            userTime = (
-                <div className='d-flex' style={{flexDirection:'column'}}>
-                    {/* <span style={{margin:'5px 0px 0px', fontSize:'13px', textAlign:rtl ? 'right' : 'left'}}>{this.duration(item.createdAt)}</span> */}
-                    {item.username 
-                        ? 
-                          <div style={{direction: rtl ? 'rtl' : 'ltr', textAlign:rtl ? 'right' : 'left'}}>
-                            <span className='d-flex' style={{color:'#003eba', fontWeight:'bold'}}>
-                                {item.username}
-                                <span style={{color:'#000000'}}>{userLocation}</span>
-                            </span>
-                            <span style={{fontSize:'12px', fontWeight:450}}>{item.jobSummary}</span>
-                          </div>
-                        : <span style={{color:'#999999', fontWeight:450}}>ناشناس</span>
-                    }
-                </div>
-            ),
-            comments = (
-                <div style={{whiteSpace:'pre-wrap'}}>
-                    {item.comment}
-                </div>
-            ),
-            star = (
-                <div className='d-flex' style={{height:'10px', justifyContent:'space-between'}}>
-                    <div style={{fontSize:'13px'}}>{setLT.scoring}:</div>
-                    <StarRating
-                        name="rate1"
-                        starCount={5}
-                        value={item.rating}
-                        size={16}
-                    />
-                </div>
-            ),
-            tableInfo = (
-                <div style={{padding:'10px', width:'100%'}}>
-                    <table className="table table-borderless" style={{height:'60px', margin:'0px'}}>
-                        <tbody>
-                            <tr>
-                                <td style={{padding:'0px', verticalAlign:'top', width:'50px'}}>{userImage}</td>
-                                <td style={{width:'5px', verticalAlign:'bottom'}}></td>
-                                <td style={{padding:'0px', verticalAlign:'middle'}}>{userCountry}</td>
-                            </tr>
-                            <tr style={{borderBottom:'0.1px solid #999999'}}>
-                                <td colSpan="5" style={{padding:'10px 0px 5px', textAlign:'justify'}}>{comments}</td>
-                            </tr>
-                            <tr>
-                                <td colSpan="5" style={{padding:'5px 0px 0px', textAlign:'justify'}}>{star}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            ),
-            <div key={i}
-                className='d-flex cardShadow animated fadeInUpX'
-                style={{textDecoration:'none', width:'100%', padding:'0px', borderRadius:'5px', margin:'5px 0px', border: '1px #7b5cff40 solid',
-                        backgroundColor:'#ffffff', cursor:'default'}}
-            >
-                {tableInfo}
-            </div>
-        )
+				userCountry = (
+					<div className='d-flex' style={{flexDirection:'column'}}>
+							<div className='d-flex' style={{margin: '0px 0px 5px', alignItems:'center'}}>
+									<span className={`flag-icon flag-icon-${unknown ? countryCodeZ : countryCode}`}></span> &nbsp;
+									<div className='d-flex ' style={{fontSize:'12px'}}>{unknown ? item.countryZ : item.country}</div>
+							</div>
+							<div className='d-flex' style={{justifyContent:'space-between', flexWrap:'wrap'}}>
+										{item.username
+												? (
+												<div>
+														<span style={{color:'#bb00f9', fontWeight:'bold'}}>{item.username}</span>&nbsp;
+												</div>
+												)
+												: <span style={{color:'#999999', fontWeight:''}}>{setLT.unknown} ({item.view})</span>
+										}
+										<div>{jobSummary}</div>
+							</div>
+					</div>
+				),
+				userLocation = <span style={{margin:'0px 5px', fontSize:'13px'}}>{item.country}{/* item.city && <span> - {item.city}</span> */}</span>
+				,
+				userTime = (
+						<div className='d-flex' style={{flexDirection:'column'}}>
+								{item.username 
+										? 
+											<div>
+												<span className='d-flex' style={{color:'#003eba', fontWeight:'bold'}}>
+														{item.username}
+														<span style={{color:'#000000'}}>{userLocation}</span>
+												</span>
+												<span style={{fontSize:'12px', fontWeight:450}}>{item.jobSummary}</span>
+											</div>
+										: <span style={{color:'#999999', fontWeight:450}}>ناشناس</span>
+								}
+						</div>
+				),
+				comments = (
+						<div style={{whiteSpace:'pre-wrap'}}>
+								{item.comment}
+						</div>
+				),
+				star = (
+						<div className='d-flex' style={{height:'10px', justifyContent:'space-between'}}>
+								<div style={{fontSize:'13px'}}>{setLT.scoring}:</div>
+								<StarRating
+										name="rate1"
+										starCount={5}
+										value={item.rating}
+										size={16}
+								/>
+						</div>
+				),
+
+				<div key={i} className="cardShadow animated fadeInUpX w-full mb-[30px] rounded-[5px] border border-[#7b5cff40] bg-[#ffffff10]">
+					<div className="w-full p-2.5 text-white">
+						<div className="flex h-[60px] items-center">
+							<div className="w-[50px]">
+								{userImage}
+							</div>
+
+							<div className="w-[5px]" />
+
+							<div className="flex-1">
+								{userCountry}
+							</div>
+						</div>
+
+						<div className="border-b-[0.1px] border-[#999999] pt-[10px] pb-[5px] text-justify">
+							{comments}
+						</div>
+
+						<div className="pt-[5px] text-justify">
+							{star}
+						</div>
+					</div>
+				</div>
+			)
     )
     this.setState({commentList: dataRv})
   }
@@ -305,14 +306,14 @@ class ReviewPage extends Component {
   render() {
     const {w, loadingData, finishData, commentList,
             modal, rating, comment, commentErrors,
-            ratingErrors,
+            ratingErrors, sendingReview,
           } = this.state
-    const {rtl, auth, lang, setLT} = this.props;
-    const containerStyle = {padding:w<s ? '0px' : (rtl ? '0px 270px 0px 0px' : '0px 0px 0px 270px')}
+    const {auth, setLT} = this.props;
+		const loader13 = <div className='loader-13' style={{margin: '0px', color:'#ffffff'}}></div>
 
     const loaderX = (
       <div className='center'>
-          <div className='loader-13' style={{margin: rtl ? '55px 0px 40px' : '20px 0px 40px', color:'#ffffff', transform: rtl ? 'rotate(180deg)' : ''}}></div>
+          <div className='loader-13' style={{margin: '20px 0px 40px', color:'#ffffff'}}></div>
       </div>
     )
 
@@ -362,61 +363,48 @@ class ReviewPage extends Component {
       </Modal>
     )
 
-    const sendComment = (
-      <div className='center animated fadeInUpX' style={{animationDelay:'0s' , width:'100%',}}>
-          <div style={{padding:'0px', backgroundColor:'#', top:'50px', width:w<s ? '100%' : '800px', zIndex:''}}>
-              <Card style={{backgroundColor:'#ffffff99'}}>
-                  <CardBody className='backBlur' style={{padding:'20px'}}>
-                      <textarea
-                          onChange={this.onComment}
-                          value={comment}
-                          type="text"
-                          id="defaultFormContactMessageEx"
-                          className="form-control"
-                          rows="7"
-                      />
-                      <span className='invalid-feedback'
-                              style={{ margin: '10px 0px 0px 0px', textAlign: rtl ? 'right' : 'left', color:'red', fontSize:'13px',
-                                      display : commentErrors ? 'block' : 'none'}}>
-                          <ul>{commentErrors}</ul>
-                      </span>
-                      <div className='text-center' style={{margin:'20px 0px 0px 0px', fontSize:'25px'}}>
-                          <StarRating
-                              name="rate1"
-                              starCount={5}
-                              value={rating}
-                              onChange={this.onStarClick}
-                          />
-                      </div>
-                      <span className='invalid-feedback'
-                              style={{ textAlign: rtl ? 'right' : 'left', color:'red', fontSize:'13px',
-                                      display : ratingErrors ? 'block' : 'none'}}>
-                          <ul>{ratingErrors}</ul>
-                      </span>
+    const reviewConst = (
+			<div className={`animated fadeInUpX [animation-elay:.5s] ${w<s ? 'w-full' : 'w-[800px]'} mb-[30px] p-[20px] text-white rounded-[20px] backdrop-blur-[20px] bg-[#ffffff10] border !border-white/50`}>
+        {/* Review box */}
+				<textarea 
+          className={`w-full border rounded-[8px] px-4 py-2.5 !resize-none outline-none !border-[#E1E4EC50] focus:ring-1 focus:ring-[#6D3EE3]`}
+          value={comment} name="message" onChange={this.onComment}
+          placeholder='Write your review here ...'
+          rows={5}
+        />
+				<span className={`invalid-feedback mt-[10px] text-red-600 text-[13px] ${commentErrors ? '!block' : 'hidden'}`}>
+						{commentErrors}
+				</span>
 
-                      <div className='center'>
-                          <div className='btnShadow C14'
-                              style={{width:'100px', textAlign:'center', 
-                                height:'30px', margin:'10px', padding:'2px',
-                                border:`3px solid #ffffff99`,
-                                borderRadius: '100px'}}
-                              onClick = {() => this.onSubmit()}>
-                              <span style={{fontSize:'13px'}}>{setLT.send}</span>&nbsp;
-                              <FaRegPaperPlane style={{fontSize:'13px'}}/>
-                          </div>
-                      </div>
-                  </CardBody>
-              </Card>
-          </div>
-      </div>
+				{/* rating */}
+				<div className='text-center' style={{margin:'20px 0px 0px 0px', fontSize:'25px'}}>
+						<StarRating
+								name="rate1"
+								starCount={5}
+								value={rating}
+								onChange={this.onStarClick}
+								borderColor='#E1E4EC50'
+						/>
+				</div>
+				<span className={`invalid-feedback text-red-600 text-[13px] ${ratingErrors ? '!block' : 'hidden'}`}>
+						{ratingErrors}
+				</span>
+
+				{/* Submit Button */}
+				<div className='center btnShadow w-full h-12 mt-10 rounded-[8px] bg-gradient-to-r from-blue-600 to-purple-600 py-3 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:from-blue-700 hover:to-purple-700 hover:shadow-xl active:scale-98 focus:outline-none focus:ring-4 focus:ring-blue-300'
+					onClick = {() => this.onSubmit()}>
+					<span style={{fontSize:'16px'}}>{sendingReview ? loader13 : 'Submit'}</span>
+				</div>
+
+			</div>
     )
 
     const header = (
-      <div className='center' style={{alignItems:'center', flexDirection:'column', padding: '0px 10px'}}>
-        <div className='d-flex' style={{justifyContent:rtl ? 'space-between' : 'flex-end', alignItems:'center', width:'100%', direction:'rtl'}}>
-          <h1 className='animated fadeInLeft tx' style={{animationDelay:'.5s', color:'#ffffff', fontWeight:'bold', fontSize: w<s ? '30px' : '', textAlign:'center', margin:'30px 10px 30px'}}>{setLT.memberReviews}</h1>
+        <div className="animated fadeInLeft [animation-delay:.5s] text-4xl font-extrabold tracking-tight my-[30px]">
+        <span className="bg-gradient-to-r from-violet-600 via-indigo-500 to-sky-500 bg-clip-text text-transparent">
+            Reviews
+        </span>
         </div>
-      </div>
     )
 
     const adsBox1 = <div className='adsbox'><AdsHorizontal id='adsH1' /></div>
@@ -424,20 +412,18 @@ class ReviewPage extends Component {
 
     return (
       <div>
-        {googleAds && adsBox1}
-        <Container style={{}}>
-          <div className='' style={{marginBottom:'50px', zIndex:'1'}}>
-            <div className='center' style={{flexDirection:'column', alignItems:'center'}}>
-              {header}
-            </div>
-            {sendComment}
+        {/* {googleAds && adsBox1} */}
+        <Container>
+          <div className='center flex-col'>
+            {header}
+            {reviewConst}
             {comments}
             {(loadingData && !finishData) && loaderX}
             {(!loadingData && !finishData) && more}
             {modalSend}
           </div>
         </Container>
-        {googleAds && adsBox2}
+        {/* {googleAds && adsBox2} */}
       </div>
     )
   }
@@ -451,7 +437,6 @@ const mapStateToProps = (state) => {
     userId: state.userInfo['_id'],
     username: state.userInfo['username'],
     auth: state.auth,
-    rtl: state.rtl,
     page: state.page,
     subject: state.subject,
     lang: state.lang,
