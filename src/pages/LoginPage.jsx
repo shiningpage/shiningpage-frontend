@@ -476,13 +476,6 @@ class LoginPage extends Component {
             />
         )
       
-        const signOutBtn = (
-            <div className='d-flex center btnShadow' onClick={this.logout}
-                style={{width:'140px', margin:'30px 10px 40px', fontSize:'15px', border: '2px solid red', borderRadius:'3px', padding: auth ? '' : '0px 5px', alignItems:'center', color: '#000000'}}>
-                {setLT.exit}
-            </div>
-        )
-
         const signupHeader = (
             <div className="text-center mb-10">
                 <h3 className="text-4xl font-extrabold tracking-tight">
@@ -531,7 +524,10 @@ class LoginPage extends Component {
                                     {setLT.home}
                                     {/* mainUser.username */}
                                 </Link>
-                                {signOutBtn}
+                                <Link to={`/`} className='my-10' onClick={this.logout}>
+                                    {setLT.exit}
+                                </Link>
+
                             </div>
                             :
                             <div className={`p-10px ${w < 300 ? "py-2.5 px-0" : "p-2.5"}`}>
