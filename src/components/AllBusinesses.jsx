@@ -177,7 +177,7 @@ class AllBusinesses extends Component{
 
         return (
             <div className='d-flex animated fadeIn' style={{animationDelay:'1s', width: '50%', flexDirection:'column'}}>
-                <h1 className='animated fadeIn tx' style={{animationDelay:'.5s', color:'#ffffff', fontWeight:'bold', fontSize:'30px', textAlign:'', margin:'43px 10px 30px'}}>Business Members</h1>
+                <h1 className='animated fadeIn tx' style={{animationDelay:'.5s', color:'#ffffff', fontWeight:450, fontSize:'25px', textAlign:'', margin:'43px 10px 30px'}}>Business Members</h1>
                 <div className='' style={{top:0, width:'100%', height:'', padding:'0px', flexDirection:'', direction:rtl ? 'rtl' : 'ltr', overflow:'scroll'}}>
                     {allCompanyList}
                 </div>
