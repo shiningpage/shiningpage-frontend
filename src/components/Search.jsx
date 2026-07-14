@@ -65,13 +65,12 @@ class Search extends Component {
   }
 
   searchMemberMap = async (x) => {
-    var addUser, countryCode, userCountry, userImage, tableInfo
     const {w, n,} = this.state
     const {setLT, fullAccess} = this.props
     var dataRv = x.map (
-        (item, i) => (
+        (item, i) => {
           //console.log(55555555, item),
-          userImage = (
+          const userImage = (
               <div>
                   <img
                       className={`C${item.fc>=0 ? item.fc : ''} btnShadow`}
@@ -83,46 +82,63 @@ class Search extends Component {
                       alt={item.username}
                   />
               </div>
-          ),
-          countryCode = item.countryCode ? item.countryCode.toLowerCase() : '',
-          userCountry = (
-            <div className='d-flex' style={{flexDirection:'column', textAlign:'left'}}>
-                <div className='d-flex' style={{margin: '0px 3px', alignItems:'center', direction:'rtl'}}>
-                    <span className={`flag-icon flag-icon-${countryCode}`}></span> &nbsp;
-                    <div className='d-flex ' style={{fontSize:'12px',}}>{item.country}</div>
+          )
+          const countryCode = item.countryCode ? item.countryCode.toLowerCase() : ''
+          const userCountry = (
+            <div className="flex flex-col w-full text-left">
+              <div className="flex w-full justify-end items-center">
+                <div className="flex items-center gap-[5px] [direction:rtl]">
+                  <span className={`flag-icon flag-icon-${countryCode}`}></span>
+                  <span className="text-[12px] text-[#ffffff99]">
+                    {item.country}
+                  </span>
                 </div>
-                <div className='d-flex' style={{justifyContent:'space-between', flexWrap:'wrap', fontSize:'12px'}}>
-                    {item.username
-                        ? (
-                        <div>
-                            <span style={{color:'#bb00f9', fontWeight:450}}>{item.username}</span>&nbsp;
-                        </div>
-                        )
-                        : <span style={{color:'#999999', fontWeight:450}}>{setLT.unknown} ({item.view})</span>
-                    }
-                </div>
-            </div>
-          ),
-          tableInfo = (
-              <div className='' style={{backgroundColor:'#ffffff99', textDecoration:'none', padding:'3px', width:'100%'}}>
-                  <table className="table table-borderless" style={{margin:'0px'}}>
-                      <tbody>
-                          <tr>
-                              <td style={{padding:'0px', verticalAlign:'middle', width:'50px'}}>{userImage}</td>
-                              <td style={{padding:'0px 3px'}}></td>
-                              <td style={{padding:'0px 0px', verticalAlign:'middle', width:'100%'}}>{userCountry}</td>
-                          </tr>
-                      </tbody>
-                  </table>
               </div>
-          ),
-          <div key={i}
-              className={`d-flex animated fadeInUpX btnShadowX`} onClick={() => fullAccess ? this.onToggleUser(item) : goToWebPage(item)}
-              style={{backgroundColor:'#ffffff', textDecoration: "none", width:w<s ? '230px' : '250px', padding:'0px', borderRadius:'5px', margin:'2px', border: fullAccess ? '1px green solid' : '1px #7b5cff40 solid', direction:'ltr'}}
-          >
-              {tableInfo}
-          </div>
-      )
+
+              <div className="flex justify-between flex-wrap text-[12px]">
+                {item.username
+                  ? item.username
+                  : <span>{setLT.unknown} ({item.view})</span>
+                }
+              </div>
+            </div>
+          )
+          return (
+            <div
+              key={i}
+              className={`flex animated fadeInUpX btnShadow text-white no-underline
+                ${w < s ? 'w-[230px]' : 'w-[250px]'}
+                p-1 rounded-[3px] m-[5px]
+                border-[0.5px] border-l-[5px]
+
+                transition-all duration-300 ease-out
+
+                hover:-translate-y-1
+                hover:scale-[1.02]
+                hover:shadow-xl
+
+                active:translate-y-1
+                active:scale-[0.98]
+                active:shadow-md
+
+                ${
+                  fullAccess
+                    ? 'border-[#03c61a60] border-l-[#03c61a] hover:border-[#03c61a] hover:shadow-[#03c61a40]'
+                    : 'border-[#d5ad6d60] border-l-[#d5ad6d] hover:border-[#d5ad6d] hover:shadow-[#d5ad6d40]'
+                }
+
+                [direction:ltr]`}
+              onClick={() => fullAccess ? this.onToggleUser(item) : goToWebPage(item)}
+            >
+              <div className="no-underline p-[3px] w-full">
+                <div className="flex items-center gap-1">
+                  <div className="p-0 w-[50px] flex items-center">{userImage}</div>
+                  <div className="p-0 w-full flex items-center">{userCountry}</div>
+                </div>
+              </div>
+            </div>
+          )
+        }
     )
 
     this.setState({
@@ -285,13 +301,13 @@ class Search extends Component {
           onChange={this.changeUsername}
           onKeyPress={this.startSearch}
           onFocus={this.startSearch}
-          className="form-control w-full h-[30px] px-[70px] pl-[10px] !text-[14px] !font-light rounded-[8px] bg-transparent text-white placeholder:!text-white placeholder:opacity-70 [direction:ltr] outline-none border border-white/30"
+          className="form-control w-full h-[30px] px-[70px] pl-[10px] !text-[14px] !font-medium !rounded-[100px] bg-transparent !text-[#e5bc7b] placeholder:!text-[#d5ad6d] placeholder:opacity-80 [direction:ltr] outline-none !border-1 !border-[#d5ad6d] !bg-[#00000030] !shadow-[0_0_8px_rgba(213,173,109,0.45)]"
         />
 
         <BsSearch
           size="1.3em"
           onClick={this.startSearch}
-          className={`absolute top-[6px] right-[5px] text-white ${
+          className={`absolute top-[6px] right-[5px] text-[#e5bc7b] drop-shadow-[0_0_4px_rgba(213,173,109,0.8)] ${
             w < s ? "w-[30px]" : "w-[35px]"
           }`}
         />
@@ -299,8 +315,9 @@ class Search extends Component {
         <IoMdClose
           size="1.3em"
           onClick={this.clearSearch}
-          className={`absolute top-[6px] right-[40px] text-white ${
-            w < s ? "w-[30px]" : "w-[35px]"} ${
+          className={`absolute top-[6px] right-[40px] text-[#e5bc7b] drop-shadow-[0_0_4px_rgba(213,173,109,0.8)] ${
+            w < s ? "w-[30px]" : "w-[35px]"
+          } ${
             searchUsers.length > 0 ? "block" : "hidden"
           }`}
         />
@@ -308,7 +325,7 @@ class Search extends Component {
     );
 
     return (
-      <div className="btn-group" style={{padding:'0px', fontSize:'12px', fontWeight:'', margin:'0px 10px', cursor:'pointer'}}>
+      <div className="btn-group p-0 text-[12px] mx-[10px] cursor-pointer">
         <div className='dropdown' color=''
             type="" id="dropdownMenuButton" data-bs-toggle="dropdown" data-bs-auto-close="outside"
             aria-haspopup="false" aria-expanded="false" data-bs-offset="0,10"
@@ -316,9 +333,9 @@ class Search extends Component {
         >
           {searchTape}
         </div>
-        <div className="dropdown-menu animated fadeIn" aria-labelledby="dropdownMenuButton"
-            style={{fontSize:'13px', cursor:'pointer', margin:'', padding:'0px', backgroundColor:'transparent'}}>
-          <div className='' style={{width:'', height:w<s ? '300px' : '400px', overflow:'scroll', padding:'5px', flexDirection:'column', backgroundColor:'#ffffff', border:'2px solid #d1a44a', borderRadius:'5px'}}>
+        <div className="dropdown-menu animated fadeIn text-[13px] cursor-pointer p-0 bg-transparent"
+            aria-labelledby="dropdownMenuButton">
+          <div className={`${w < s ? 'h-[300px]' : 'h-[400px]'} overflow-scroll p-[5px] flex-col bg-[url('/src/assets/images/other/ai-background.jpg')] border-[0.5px] border-[#d1a44a00] rounded-[5px]`}>
             {searchMemberConst}
           </div>
         </div>
