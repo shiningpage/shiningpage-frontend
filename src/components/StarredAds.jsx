@@ -71,12 +71,18 @@ class StarredAds extends Component{
 
                 const SpecialRibbon = (
                     <div className="absolute top-0 right-0 z-20">
-                        <div className="w-20 h-20 overflow-hidden absolute top-0 right-0">
-                            <div className="absolute top-2 right-[-35px] rotate-45
-                                bg-gradient-to-r from-purple-500 to-indigo-700
-                                text-white text-[12px] font-semibold
-                                w-28 text-center py-1 shadow-lg">
-                                Special
+                        <div className="w-24 h-24 overflow-hidden absolute top-0 right-0">
+                            <div
+                                className="absolute top-[13.3px] right-[-38px] rotate-45
+                                bg-gradient-to-r from-[#b8860b] via-[#f5d77a] to-[#d4a017]
+                                text-[#4a2b00] text-[8px] font-extrabold
+                                tracking-[2px]
+                                w-32 text-center py-[5px]
+                                drop-shadow-[0_2px_2px_rgba(255,255,255,0.5)]
+                                shadow-[0_0_10px_rgba(213,173,109,0.8)]
+                                border-y-[3px] border-[#8b0000]"
+                            >
+                                ✦ SPECIAL ✦
                             </div>
                         </div>
                     </div>
@@ -146,9 +152,11 @@ class StarredAds extends Component{
             </div>
         )
 
+        const header = <div className='goldenText animated fadeInLeft [animation-delay:.5s] text-[28px] font-[600] mt-[30px] ml-[10px]'>Top Products & Services</div>
+
         return (
             <div className={`flex animated fadeIn w-full flex flex-col ${w < s ? "pt-[10px] pb-[30px]" : "py-[30px]"}`} style={{animationDelay:'1.5s'}}>
-                <h4 className='text-white font-thin !mt-4 px-3'>Top Products & Services</h4>
+                {header}
                 <div className='w-full overflow-scroll'>
                     {allAdsList}
                 </div>
