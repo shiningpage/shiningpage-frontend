@@ -31,10 +31,10 @@ class EXV extends Component{
         const {lang, page} = this.props
 
         const logoBox = (
-            <div className='center C11'
-                style={{minWidth:'45px', maxWidth:'45px', minHeight:'45px', maxHeight:'45px', borderRadius:'6px', alignItems:'center', padding:'2px'}}>
+            <div className='center'
+                style={{minWidth:'45px', maxWidth:'45px', minHeight:'45px', maxHeight:'45px', borderRadius:'6px', alignItems:'center'}}>
                 <img
-                    style={{width:'100%', height:'100%', marginTop:'0px'}}
+                    style={{width:'100%', height:'100%'}}
                     src='https://www.pix.shiningpage.com/whoraly/site/logo.png'
                     alt="ShiningPage Logo"
                 />
@@ -42,13 +42,13 @@ class EXV extends Component{
         )
 
         return (
-            <Link to='/' className='d-flex' style={{textDecoration:'none', color:'#ffffff', alignItems:'center'}}
+            <Link to='/' className='flex font-light' style={{textDecoration:'none', color:'#ffffff', alignItems:'center'}}
                 onClick={() => this.onSetSidebarOpen()}>
                 {logoBox}
-                <div className='center' style={{ fontSize:'14px', fontWeight:450, alignItems:'center', flexDirection:'column' }}>
-                    <span style={{fontSize:'18px', marginBottom:'-2px'}}>ShiningPage</span>
-                    <div className='C14' style={{maxWidth:'130px', minWidth:'130px', height:'3px'}}></div>
-                    <span style={{marginTop:'2px'}}>Version {import.meta.env.VITE_VERSION}</span>
+                <div className='center' style={{ fontSize:'14px', alignItems:'center', flexDirection:'column' }}>
+                    <span className='goldenText' style={{fontSize:'18px', marginBottom:'-2px'}}>ShiningPage</span>
+                    <div className='C14' style={{maxWidth:'130px', minWidth:'130px', height:'2px'}}></div>
+                    <span className='goldenText' style={{marginTop:'2px'}}>Version {import.meta.env.VITE_VERSION}</span>
                 </div>
             </Link>
         );
