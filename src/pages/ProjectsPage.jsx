@@ -109,7 +109,7 @@ class ProjectManagement extends Component {
   checkAppAccess = async () => {
     const {mainUser, lang} = this.props
     var application = mainUser.application
-    console.log(111, application)
+    // console.log(111, application)
     if( application && application.includes(4) ) this.setState({ appAccess: true })
   }
 
@@ -131,7 +131,7 @@ class ProjectManagement extends Component {
     const accessProjects = accessRes.data
 
     var allProjectsX = [...userProjects, ...accessProjects]
-    console.log(44, allProjectsX)
+    // console.log(44, allProjectsX)
 
     await allProjectsX.sort((a, b) => (a._id > b._id) ? -1 : 1)
 
@@ -961,7 +961,7 @@ class ProjectManagement extends Component {
 
   onToggleNewImage = async (task, i) => {
     const {projects, allProjects, pIndex} = this.state
-    console.log(projects, allProjects, pIndex, task, i)
+    // console.log(projects, allProjects, pIndex, task, i)
 
     if(task) {
       this.setState({
@@ -1076,7 +1076,7 @@ class ProjectManagement extends Component {
   }
 
   onToggleEditImage = async () => {
-    console.log(this.state)
+    // console.log(this.state)
     this.setState({
       toggleEditImage: !this.state.toggleEditImage,
       imgArray: [this.state.imageX],
@@ -1090,7 +1090,7 @@ class ProjectManagement extends Component {
     const {projects, tIndex, pImageIndex, pImageId, pImageData, pImageDataX, imageComment} = this.state
     await this.onImg(projects[tIndex], pImageIndex, projects, tIndex)
     this.setState({ isFile: false })
-    console.log(1000, projects[tIndex])
+    // console.log(1000, projects[tIndex])
   }
 
   onToggleDeleteImage = async () => {
@@ -1221,7 +1221,7 @@ class ProjectManagement extends Component {
 
   onDeleteProject = async (projectDX) => {
     this.setState({ deletingProject: true })
-    console.log(88, projectDX)
+    // console.log(88, projectDX)
 
     var projects = this.dataUncompress([projectDX])
     // console.log(projects)
@@ -1230,7 +1230,7 @@ class ProjectManagement extends Component {
       var imageArray = projects[i].image
       for(var x=0; x<imageArray.length; x++) {
         var dateNX = imageArray[x].dateN
-        console.log(dateNX)
+        // console.log(dateNX)
         pixDelete({dest: destB + "/" + projectDX._id + "-" + dateNX + ".jpeg"})
         pixDelete({dest: destS + "/" + projectDX._id + "-" + dateNX + ".jpeg"})
       }
@@ -1374,6 +1374,7 @@ class ProjectManagement extends Component {
 
   onNewProject = async (type, item) => {
     var today = this.today()
+    console.log(today)
     var todayT = today.dateT
     var todayN = today.dateN
     // console.log(item)
@@ -1463,30 +1464,16 @@ class ProjectManagement extends Component {
   }
 
   today = () => {
-    var isoDateTime = new Date()
-    var localDate = isoDateTime.toLocaleDateString()
-    var localDateArray = localDate.split('/')
+    const now = new Date();
 
-    if(this.props.lang==='fa') {
-      var shd = jalaali.toJalaali(Number(localDateArray[2]), Number(localDateArray[0]), Number(localDateArray[1]))
-      if(shd.jm.toString().length<2) shd.jm = '0' + shd.jm
-      if(shd.jd.toString().length<2) shd.jd = '0' + shd.jd
-      var dateT = shd.jy+'/'+shd.jm+'/'+shd.jd
-      var dateN = jalaali.j2d(Number(shd.jy), Number(shd.jm), Number(shd.jd))
+    const yy = now.getFullYear();
+    const mm = String(now.getMonth() + 1).padStart(2, '0');
+    const dd = String(now.getDate()).padStart(2, '0');
 
-    } else {
-      // console.log(localDateArray)
-      var yy = localDateArray[2]
-      var mm = localDateArray[0]
-      var dd = localDateArray[1]
+    const dateT = `${yy}-${mm}-${dd}`;
+    const dateN = jalaali.g2d(yy, Number(mm), Number(dd));
 
-      if(mm.length<2) mm = '0' + mm
-      if(dd.length<2) dd = '0' + dd
-      var dateT = yy + '-' + mm + '-' + dd
-      var dateN = jalaali.g2d(Number(yy), Number(mm), Number(dd))
-    }
-
-    return {dateT, dateN}
+    return { dateT, dateN };
   }
 
   actionCheck = async () => {
@@ -1509,7 +1496,7 @@ class ProjectManagement extends Component {
   }
 
   onMore =  async (data, i) => { // یافتن زیر سطح ها و عملیات دیگر
-      console.log(data)
+      // console.log(data)
       data[i].toggleDelete=false
       var wbsDot  = data[i].wbs + '.'
 
@@ -2378,7 +2365,7 @@ class ProjectManagement extends Component {
             accessUsers = userProject
               ? item.access.map (
                   (userX, i) => (
-                    console.log(user),
+                    // console.log(user),
                     user = userX.user,
                     <div key={i} className={`b${user.fc!==7 ? user.fc : 11} btnShadow`} style={{margin:'5px', borderWidth:userX.edit ? '2px' : '0px', borderRadius:user.businessType>0 ? '3px' : '100px'}}>
                         <img
@@ -2748,17 +2735,17 @@ class ProjectManagement extends Component {
                     </td>
 
                     { item.level===1 &&
-                      <td colSpan="2" style={{position:'relative', padding:'4px', verticalAlign: 'middle', direction:lang==='fa' ? 'rtl' : ''}} onClick={() => this.actionCheck()}>
-                          <div style={{position:'', margin: rtl ? `9px ${spx+4}px -35px 10px` : `9px 10px -35px ${spx+4}px`}}>{userImage}</div>
-                          { item.checkSub && <div style={{position:'', margin: rtl ? `9px ${spx+lx}px -30px 10px` : `9px 10px -30px ${spx+lx}px`}}>{caret}</div> }
+                      <td colSpan="2" style={{position:'relative', padding:'4px', verticalAlign: 'middle'}} onClick={() => this.actionCheck()}>
+                          <div style={{position:'', margin:`9px 10px -35px ${spx+4}px`}}>{userImage}</div>
+                          { item.checkSub && <div style={{position:'', margin:`15px 10px -30px ${spx+lx}px`}}>{caret}</div> }
                           <textarea
                               id={`taskName${i}`}
                               type="text"
                               rows="1"
-                              placeholder={setLT.enterProjectName}
+                              placeholder='Enter Project Name ...'
                               value={item.taskName}
-                              className="form-control"
-                              style={{width:'100%', height:item.height, resize: 'none', marginBottom: docx ? imgH : '', padding: rtl ? `6px ${sp+lx}px 6px 12px` : `6px 12px 6px ${sp+lx}px`, backgroundColor:bColor, color:fColor}}
+                              className="form-control placeholder:text-white placeholder:opacity-100"
+                              style={{width:'100%', height:item.height, resize: 'none', marginBottom: docx ? imgH : '', padding:`6px 12px 6px ${sp+lx}px`, backgroundColor:bColor, color:fColor}}
                               onChange={(e) => pEdit ? this.changeTaskName(e, x, i, pDays) : this.onToggleUnAccess()}
                               onFocus={(e) => this.focusTaskName(e, x, i, pDays)}
                           />
@@ -2931,7 +2918,7 @@ class ProjectManagement extends Component {
                 <div>
                     <img
                         className={`C${item.fc>=0 ? item.fc : ''} btnShadow`}
-                        style={{objectFit: 'contain', width:"50px", height:"50px", borderRadius:item.businessType>0 ? '3px' : '100px', margin:'0px', border:'2px solid #ffffff40', padding:'2px', cursor:'pointer'}}
+                        style={{objectFit: 'contain', minWidth:"50px", minHeight:"50px", width:"50px", height:"50px", borderRadius:item.businessType>0 ? '3px' : '100px', margin:'0px', border:'2px solid #ffffff40', padding:'2px', cursor:'pointer'}}
                         src={ exist(item.profileIndex)
                             ? `https://www.pix.shiningpage.com/whoraly/profile/small/${item._id}-${item.profileIndex}.jpeg`
                             : item.genderValue===0 ? female : male
@@ -3027,7 +3014,7 @@ class ProjectManagement extends Component {
                   <span className={`flag-icon flag-icon-${countryCode} sticky-top`} style={{right: !rtl ? 20 : '', left: rtl ? 20 : '', top:9}}></span>
                   <img
                       className={`C${item.fc} btnShadowX waves-effect waves-light btn-large`}
-                      style={{objectFit: 'contain', width:"50px", height:"50px", borderRadius:item.businessType>0 ? '3px' : '100px', margin:'0px', border:'2px solid #ffffff40', padding:'2px'}}
+                      style={{objectFit: 'contain', minWidth:"50px", minHeight:"50px", width:"50px", height:"50px", borderRadius:item.businessType>0 ? '3px' : '100px', margin:'0px', border:'2px solid #ffffff40', padding:'2px'}}
                       src={ exist(item.profileIndex)
                         ? `https://www.pix.shiningpage.com/whoraly/profile/small/${item._id}-${item.profileIndex}.jpeg`
                         : item.genderValue===0 ? female : male
@@ -3428,7 +3415,7 @@ class ProjectManagement extends Component {
         projects[tIndex].image.splice(pImageIndex, 1, imgInfo)
         imageX.comment = imageComment
 
-        console.log(fileBArr)
+        // console.log(fileBArr)
         if(fileBArr.length>0) {
           imgInfo.dateN = dateN
           var imgList = this.imgMap(projects[tIndex], pImageIndex, projects, tIndex)
@@ -3850,7 +3837,7 @@ class ProjectManagement extends Component {
       </div>
     )
 
-    const modalProjectView =  (
+    const modalProjectView = (
       <Modal show={toggleProjectView} onHide={() => this.setState({toggleProjectView : true})} size='xl' fullscreen={false}>
         <div className='flex sticky-top' style={{width:'100%', padding:w<s ? (projectX && projectX.type==='quantity2' ? '5px 0px' : '5px 0px 0px') : '15px 5px 10px', alignItems:'center', direction:'rtl', backgroundColor:'#ffffff', borderBottom: w<s && projectX && projectX.type==='quantity2' ? '1px solid' : ''}}>
           {closeProjectView}
