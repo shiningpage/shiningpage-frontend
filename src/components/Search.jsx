@@ -280,17 +280,7 @@ class Search extends Component {
 
     const searchTape = (
       <div
-        className={`relative m-0 rounded-[3px] text-[13px] ${
-          w < s
-            ? "w-full"
-            : w < 1400
-            ? w < 992
-              ? "w-40"
-              : auth
-              ? "w-40"
-              : "w-[230px]"
-            : "w-[230px]"
-        }`}
+        className='relative m-0 rounded-[3px] text-[13px] w-[200px]'
       >
         <input
           type="text"
@@ -326,7 +316,7 @@ class Search extends Component {
 
     return (
       <div className="btn-group p-0 text-[12px] mx-[10px] cursor-pointer">
-        <div className='dropdown' color=''
+        <div className='dropdown'
             type="" id="dropdownMenuButton" data-bs-toggle="dropdown" data-bs-auto-close="outside"
             aria-haspopup="false" aria-expanded="false" data-bs-offset="0,10"
             //style={{borderRadius:'3px'}}
