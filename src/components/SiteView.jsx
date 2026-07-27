@@ -62,7 +62,7 @@ class SiteView extends Component {
     await axios.post(`${serverURL}/view/getSiteViewMainGroup`, data).then(res => {
 
       let cx = res.data;
-      console.log("cx:", cx);
+      // conskole.log("cx:", cx);
 
       // map سریع برای countryCode -> countryName
       const countryMap = Object.fromEntries(
@@ -93,7 +93,7 @@ class SiteView extends Component {
       );
 
       this.setState({ totalViews });
-      console.log('totalViews: ', totalViews)
+      // console.log('totalViews: ', totalViews)
       cxArr = finalData
         .map(item => ({
           country: item.countryCode,
@@ -102,12 +102,12 @@ class SiteView extends Component {
         }))
         .sort((a, b) => b.value - a.value);
 
-      console.log("cxArr:", cxArr);
+      // console.log("cxArr:", cxArr);
     });
 
     this.makeCountriesData(cxArr);
 
-    console.log('viewCountAll: ', [...cxArr, { country: "xx", value: 0 }])
+    // console.log('viewCountAll: ', [...cxArr, { country: "xx", value: 0 }])
     this.setState(
       {
         viewCountAll: [...cxArr, { country: "xx", value: 0 }],
@@ -117,7 +117,7 @@ class SiteView extends Component {
   };
 
   makeCountriesData = (countries) => {
-    console.log('countries: ', countries)
+    // console.log('countries: ', countries)
     // تبدیل کد کشور به اسم
     const countryNames = new Intl.DisplayNames(["en"], {
       type: "region",
