@@ -186,13 +186,13 @@ class SiteView extends Component {
     const ViewerBSMMap = (
       <div id='viewMap' className='center animated fadeIn [&_path]:!fill-[#f2ba4b] [&_*]:!bg-[#020D7000]' style={{animationDelay:'0s', width:'100%', margin:'0px'}}>
         <div className='' style={{width:'100%', overflow:'scroll', borderRadius:'10px'}}>
-          <WorldMap color='#0066ff' borderColor='#f2ba4b' size={w<1000 ? "lg" : "xl"} data={viewCountAll}/>
+          <WorldMap color='#0066ff' borderColor='#f2ba4b' size={w<1300 ? (w<850 ? "sm" : "lg") : "xl"} data={viewCountAll}/>
         </div>
       </div>
     )
 
     const topCountriesSub = (
-      <div className={`bg-[#02011B99] rounded-[22px] p-[22px] shadow-[0_1px_20px_#ffffff30] h-full ${w < s ? "w-full" : "w-[30%]"}`}>
+      <div className={`bg-[#02011B99] rounded-[22px] p-[22px] shadow-[0_1px_20px_#ffffff30] h-full ${w < 1100 ? "w-full" : "w-[30%]"}`}>
         <div className="flex mb-6 text-white items-center justify-between">
           <h5 className='font-[650] font-light'>Audience views</h5>
           <h4 className='!text-[18px]'>{Number(totalViews).toLocaleString()}</h4>
@@ -213,7 +213,7 @@ class SiteView extends Component {
     )
 
     const worldmapSection = (
-      <div className='flex cardShadow backBlur border !border-white/20' style={{width:'100%', maxWidth:'1100px', height:w<s ? '' : '550px', flexDirection:w<s ? 'column' : '', justifyContent:w<s ? '' : 'space-between', marginBottom:'20px', padding:w<s ? '20px 0px 0px' : '20px', backgroundColor:'#ffffff10', borderRadius:'20px', flexWrap:'wrap'}}>
+      <div className='flex cardShadow backBlur border !border-white/20' style={{width:'100%', maxWidth:'1100px', height:w<1100 ? '' : '550px', flexDirection:w<1100 ? 'column' : '', justifyContent:w<s ? '' : 'space-between', marginBottom:'20px', padding:w<s ? '20px 0px 0px' : '20px', backgroundColor:'#ffffff10', borderRadius:'20px', flexWrap:'wrap'}}>
         <div>
           {worldmapTitle}
           {ViewerBSMMap}
@@ -223,7 +223,7 @@ class SiteView extends Component {
     )
 
     return (
-      <div id='statisticsSub' className='center' style={{width:'100%', padding:'70px 10px'}}>
+      <div id='statisticsSub' className='center' style={{width:'100%', padding:'70px 30px'}}>
           {worldmapSection}
       </div>
     );
