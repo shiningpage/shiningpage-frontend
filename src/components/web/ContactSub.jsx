@@ -11,6 +11,8 @@ import pixSave from '../../modules/pixSave';
 import pixDelete from '../../modules/pixDelete';
 import pixHandler from '../../modules/pixHandler';
 import pixResizer from '../../modules/pixResizer';
+import SharePage from '../../components/SharePage';
+import QRCodeX from '../../components/QRCodeX';
 import { IoLogoWhatsapp } from 'react-icons/io';
 import { FaLinkedin, FaYoutube, FaFacebook, FaGlobe, FaTelegram } from 'react-icons/fa';
 import { AiFillInstagram, AiFillTikTok } from 'react-icons/ai';
@@ -65,7 +67,7 @@ class ContactSub extends Component{
         const {w, toggleLocationImage, toggleContactsInfo, toggleGoogleMap} = this.state
         const {rtl, setLT, me, hr, titleStyle, subUserInfo, fullAccess, mainUser, userId, geo} = this.props
         const { fc, email, phone, celphone, whatsapp, website, telegram, instagram, tikTok, 
-            facebook, youtube, linkedin, city, country, address, lat, lon,  } = subUserInfo
+            facebook, youtube, linkedin, city, country, address, lat, lon, siteLink } = subUserInfo
 
         const contactClass = `i${fc}`
         const contactStyle = { fontSize:'23px', margin:'0px' }
@@ -260,6 +262,16 @@ class ContactSub extends Component{
             />
         )
 
+        const bizLink = `https://shiningpage.com/${subUserInfo.businessType>0 ? 'publisher' : 'user'}/${subUserInfo.username}`
+        const usernameX = subUserInfo.bizName ? subUserInfo.bizName : subUserInfo.username
+        const shareSub = (
+            <div className='p-0' style={{ width:'100%', backgroundColor:`${colors[`C${fc}`]}00` }}>
+                <SharePage url={ exist(siteLink) ? siteLink : bizLink } mainTitle={usernameX} subTitle={subUserInfo.jobSummary}/>
+            </div>
+        )
+
+        const QRCode = <QRCodeX size="180px" url={`https://shiningpage.com/${subUserInfo.businessType>0 ? 'publisher' : 'user'}/${subUserInfo.username}`}/>
+
         const adsBox = <div className='adsbox' style={{marginTop:'10px'}}><AdsHorizontal id='adsContact'/></div>
 
         return (
@@ -267,32 +279,40 @@ class ContactSub extends Component{
                 {me && <EditBtn rtl={rtl} onClick={() => this.toggleContactsInfo()}/>}
                 <Container className={`center`} style={{fontSize:'14px', alignItems:'flex-start', width:'100%', maxWidth:'1000px', height:'100%', padding:'0px 10px', justifyContent:w>s ? 'space-between' : '', flexDirection:w<s ? 'column' : '', direction:'ltr'}}>
                     <div style={{width:w<s ? '100%' : '33%', padding:w<s ? '20px 0px' : '0px 20px'}}>
-                        <div style={{...titleStyle, fontSize:'16px', marginBottom:'3px'}}>{setLT.contact ? setLT.contact.toUpperCase() : ''}</div>
-                        {hr}
-                        {phone && phoneSub}
-                        {celphone && celphoneSub}
-                        {whatsapp && whatsappSub}
-                        {website && websiteSub}
-                        {email && emailSub}
+                        <div className='pb-[20px]'>
+                            <div style={{...titleStyle, fontSize:'16px', marginBottom:'3px'}}>{setLT.contact ? setLT.contact.toUpperCase() : ''}</div>
+                            {hr}
+                            {phone && phoneSub}
+                            {celphone && celphoneSub}
+                            {whatsapp && whatsappSub}
+                            {website && websiteSub}
+                            {email && emailSub}
+                        </div>
+                        <div>
+                            <div style={{...titleStyle, fontSize:'16px', marginBottom:'3px'}}>{setLT.socialMedia ? setLT.socialMedia.toUpperCase() : ''}</div>
+                            {hr}
+                            {telegram && telegramSub}
+                            {instagram && instagramSub}
+                            {tikTok && tikTokSub}
+                            {facebook && facebookSub}
+                            {youtube && youtubeSub}
+                            {linkedin && linkedinSub}
+                        </div>
                     </div>
                     <div style={{width:w<s ? '100%' : '33%', padding:w<s ? '20px 0px' : '0px 20px'}}>
-                        <div style={{...titleStyle, fontSize:'16px', marginBottom:'3px'}}>{setLT.socialMedia ? setLT.socialMedia.toUpperCase() : ''}</div>
-                        {hr}
-                        {telegram && telegramSub}
-                        {instagram && instagramSub}
-                        {tikTok && tikTokSub}
-                        {facebook && facebookSub}
-                        {youtube && youtubeSub}
-                        {linkedin && linkedinSub}
-                    </div>
-                    <div style={{width:w<s ? '100%' : '33%', padding:w<s ? '20px 0px' : '0px 20px', position:'relative'}}>
                         <div style={{...titleStyle, fontSize:'16px', marginBottom:'0px'}}>{setLT.address ? setLT.address.toUpperCase() : ''}</div>
                         {hr}
                         {addressSub}
                     </div>
+                    <div style={{width:w<s ? '100%' : '33%', padding:w<s ? '20px 0px' : '0px 20px', position:'relative'}}>
+                        <div style={{...titleStyle, fontSize:'16px', marginBottom:'0px'}}>SHARING</div>
+                        {hr}
+                        {shareSub}
+                        {QRCode}
+                    </div>
                 </Container>
                 <Container>
-                    {me && googleAds && subUserInfo.ads && adsBox}
+                    {googleAds && subUserInfo.ads && adsBox}
                 </Container>
                 {/* <RubyCollector id='adsContact' bottom={5} left={20}/> */}
                 {modalLocationImage}
