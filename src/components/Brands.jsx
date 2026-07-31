@@ -84,7 +84,7 @@ class Brands extends Component{
                     </div>
                 )
                 const aboutImg = (
-                    <div className='w-[20vw] h-[calc(6vh+7vw)] min-w-[220px] min-h-[140px] rounded-[10px_10px_0px_0px] overflow-hidden'>
+                    <div className='w-[17vw] h-[calc(6vh+7vw)] min-w-[220px] min-h-[140px] rounded-[10px_10px_0px_0px] overflow-hidden'>
                         <img
                             className='zoomImg object-cover w-full h-full'
                             src={ exist(item.aboutIndex)
@@ -112,7 +112,7 @@ class Brands extends Component{
                 const root = item.businessType>0 ? 'publisher' : 'user'
 
                 return (
-                    <div key={i} className='flex w-full px-2.5'>
+                    <div key={i} className='flex px-2.5'>
                         <Link to={`/${root}/${item.username}`}
                             className='zoom !no-underline !text-[#ffffff] font-thin relative cursor-pointer 
                             bg-[#ffffff10] border !border-white/20 
@@ -151,15 +151,15 @@ class Brands extends Component{
         )
 
         const allCompanyList = (
-            <div className='flex w-full h-full items-start z-0' >
+            <div className='flex w-full h-full pl-[15px] items-start z-0' >
                 {(loadingData && starredCompany.length===0) ? ColorLoadingCenter : allCompany}
             </div>
         )
     
-        const header = <div className='goldenText animated fadeInLeft [animation-delay:.5s] text-[28px] font-[600] mt-[30px] ml-[10px]'>Top Shining Pages</div>
+        const header = <div className='goldenText animated fadeInLeft [animation-delay:.5s] text-[25px] font-[600] pt-[25px] pl-[25px]'>Top Shining Pages</div>
 
         return (
-            <div className='flex animated [animation-delay:1s] fadeIn w-full flex flex-col'>
+            <div className='flex animated [animation-delay:1s] fadeIn w-full flex-col'>
                 {header}
                 <div className='top-0 w-full overflow-scroll py-[30px]'>
                     {allCompanyList}
