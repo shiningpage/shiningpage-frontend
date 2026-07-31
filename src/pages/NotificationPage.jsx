@@ -417,6 +417,7 @@ class NotificationPage extends Component{
 			</div>
 		)
 
+        console.log('seenNotifications: ', seenNotifications.length)
         const notificationSub = (
             <div>
 				<div className={`center ${NData.length > 0 ? 'mb-[50px]' : ''}`}>
@@ -430,7 +431,7 @@ class NotificationPage extends Component{
                                         </div>
                                     }
                                     {unseenNotifications}
-                                    { seenNotifications.length>0 &&
+                                    { unseenNotifications.length>0 &&
                                         <hr key="seen-separator" className="my-[20px] mx-[10px] text-white m-5 opacity-100" />
                                     }
                                     {seenNotifications}
