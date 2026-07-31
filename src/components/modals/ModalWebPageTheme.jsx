@@ -47,7 +47,7 @@ const ModalWebPageTheme = (props) => {
                             height: w<400 ? '40px' : '50px',
                             width: '100%',
                             padding: fc === item ? '3px' : '', // تغییر padding
-                            borderWidth: '1px',
+                            borderWidth: fc === item ? '1px' : '',
                             borderRadius: '7px',
                             alignItems: 'center',
                         }}
