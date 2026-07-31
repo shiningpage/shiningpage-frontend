@@ -19,6 +19,7 @@ import BookingPage from './pages/BookingPage';
 // import PjPage from './pages/PjPage';
 import AboutUsPage from './pages/AboutUsPage';
 import ContactPage from './pages/ContactPage';
+import PricingPage from './pages/PricingPage';
 import DashboardPage from './pages/DashboardPage';
 
 import ToSPage from './pages/ToSPage';
@@ -45,6 +46,7 @@ class AppRoutes extends React.Component {
         {/* <Route path="/pj/:id" element={<PjPage />} /> */}
         <Route path="/about" element={<AboutUsPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/pricing" element={<PricingPage />} />
         <Route path="/404" element={<Page404 />} />
         <Route path="/ruby" element={<RubyPage />} />
         {/* <Route path="/social-media" element={<SocialMediaPage />} /> */}
