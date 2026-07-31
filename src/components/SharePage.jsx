@@ -301,19 +301,19 @@ ${subTitle}
         {/* instagram */}
         {linkedin}
         {pinterest}
-        {vk}
-        {okIcon}
-        {reddit}
-        {tumblr}
-        {livejournal}
-        {mailru}
+        {/* vk */}
+        {/* okIcon */}
+        {/* reddit */}
+        {/* tumblr */}
+        {/* livejournal */}
+        {/* mailru */}
         {/* email */}
-        {viber}
-        {workplace}
-        {line}
+        {/* viber */}
+        {/* workplace */}
+        {/* line */}
         {/* weibo */}
-        {pocket}
-        {instapaper}
+        {/* pocket */}
+        {/* instapaper */}
       </div>
     )
 
@@ -329,7 +329,7 @@ ${subTitle}
     return (
         <div>
           <div className='' style={{margin: '0px', textAlign: rtl ? 'right' : 'left'}}>
-            <div className='center' style={titleStyle}>Sharing</div>
+            {/* <div className='center' style={titleStyle}>Sharing</div> */}
             {share}
             {bizLinkConst}
             <div className='d-flex' style={{justifyContent:rtl ? 'flex-end' : ''}}>
