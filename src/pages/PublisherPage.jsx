@@ -17,7 +17,7 @@ import { FaUsers, FaLinkedin, FaYoutube, FaFacebook, FaWhatsapp,
     FaBars, FaInstagram, FaTelegram } from 'react-icons/fa';
 import { BsChat } from 'react-icons/bs';
 import { GiGlobe } from 'react-icons/gi';
-import { AiFillProduct, AiFillHome } from 'react-icons/ai';
+import { AiFillProduct, AiFillHome, AiOutlineHome } from 'react-icons/ai';
 import { TbBrandBooking } from "react-icons/tb";
 import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
 import siteView from '../modules/siteView';
@@ -96,14 +96,14 @@ class PublisherPage extends Component {
             username: '',
             email: this.props.email,
 
-            isSidebarOpen: false,
+            // isSidebarOpen: false,
             notFound: false,
             team: [],
             teamMembers: [],
 
         };
 
-        this.sidebarRef = createRef(); // مرجع برای سایدبار
+        // this.sidebarRef = createRef(); // مرجع برای سایدبار
     }
 
     async componentDidMount() {
@@ -120,7 +120,7 @@ class PublisherPage extends Component {
         //     return;
         // }
         setTimeout(async() => { // setTimeout برای اجرای کامل scrollToTop است
-            document.addEventListener('mousedown', this.handleClickOutside); // ثبت event listener
+            // document.addEventListener('mousedown', this.handleClickOutside); // ثبت event listener
             window.addEventListener("resize", this.onResize)
             window.addEventListener('scroll', this.handleScroll)
             await this.props.dispatch(setPage('publisher'))
@@ -133,7 +133,7 @@ class PublisherPage extends Component {
 
     componentWillUnmount() {
         window.removeEventListener("scroll", this.handleScroll);
-        document.removeEventListener('mousedown', this.handleClickOutside); // حذف event listener
+        // document.removeEventListener('mousedown', this.handleClickOutside); // حذف event listener
     }
 
     componentDidUpdate = async (prevProps) => {
@@ -148,32 +148,37 @@ class PublisherPage extends Component {
         }
     };
 
-    handleClickOutside = (event) => {
-        if (
-            this.sidebarRef.current && // اگر مرجع وجود دارد
-            !this.sidebarRef.current.contains(event.target) // و کلیک خارج از سایدبار است
-        ) {
-            this.setState({ isSidebarOpen: false }); // بستن سایدبار
-        }
-    };
+    // handleClickOutside = (event) => {
+    //     if (
+    //         this.sidebarRef.current && // اگر مرجع وجود دارد
+    //         !this.sidebarRef.current.contains(event.target) // و کلیک خارج از سایدبار است
+    //     ) {
+    //         this.setState({ isSidebarOpen: false }); // بستن سایدبار
+    //     }
+    // };
 
     handleScroll = async () => {
         const w = window.innerWidth
         const h = window.innerHeight
-        const scrollDirection = this.props.scrollDirection
+        // const scrollDirection = this.props.scrollDirection
         const header = document.getElementById("header");
         const headerTop = header.getBoundingClientRect().top;
         this.setState({ headerTop })
         const categoryTape = document.getElementById("categoryTape");
         const categoryTapeTop = categoryTape ? categoryTape.getBoundingClientRect().top : 0;
 
-        const menuBtn = document.getElementById('menuBtn')
+        // const menuBtn = document.getElementById('menuBtn')
         const psSub = document.getElementById('psSub');
         const psSubTop = psSub.getBoundingClientRect().top;
         const attachmentsSub = document.getElementById('attachmentsSub');
         const attachmentsSubTop = attachmentsSub ? attachmentsSub.getBoundingClientRect().top : 0;
         const statisticsSub = document.getElementById('statisticsSub');
         const statisticsSubTop = statisticsSub ? statisticsSub.getBoundingClientRect().top : 0;
+        const goToSection = document.getElementById('goToSection');
+        const goToSectionTop = goToSection ? goToSection.getBoundingClientRect().top : 0;
+        // console.log('goToSectionTop: ', goToSectionTop)
+        this.setState({ goToSectionTop })
+
         const { categoryItems, psSubActive, statisticsSubActive, attachmentItems, attachmentsSubActive } = this.state
         if(psSubTop < h - 100 && categoryItems && (this.state.adsN!==undefined && this.state.videoN!==undefined && this.state.instaN!==undefined) && !psSubActive) {
             this.setState({ psSubActive: true })
@@ -185,23 +190,23 @@ class PublisherPage extends Component {
             this.setState({ statisticsSubActive: true })
         }
 
-        if(headerTop<-100) {
-            menuBtn.classList.add('animated');
-            menuBtn.classList.add('fadeInDown');
-            menuBtn.classList.add('btnShadow');
-            menuBtn.style.width = '50px'
-            menuBtn.style.zIndex = '1000'
-            menuBtn.style.margin = `${w<s ? (scrollDirection==='up' ? 57 - 46 : 57) : NavH + 10}px ${w<s ? 10 : 0}px 0px`
-            // if(categoryTapeTop < 100 && categoryTapeTop > -100) {
-            //     menuBtn.style.margin = '3px'
-            // }
-        } else {
-            menuBtn.classList.remove('animated');
-            menuBtn.classList.remove('fadeInDown');
-            menuBtn.classList.remove('btnShadow');
-            menuBtn.style.margin = '0px'
-            menuBtn.style.zIndex = ''
-        }
+        // if(headerTop<-100) {
+        //     menuBtn.classList.add('animated');
+        //     menuBtn.classList.add('fadeInDown');
+        //     menuBtn.classList.add('btnShadow');
+        //     menuBtn.style.width = '50px'
+        //     menuBtn.style.zIndex = '1000'
+        //     menuBtn.style.margin = `${w<s ? (scrollDirection==='up' ? 57 - 46 : 57) : NavH + 10}px ${w<s ? 10 : 0}px 0px`
+        //     // if(categoryTapeTop < 100 && categoryTapeTop > -100) {
+        //     //     menuBtn.style.margin = '3px'
+        //     // }
+        // } else {
+        //     menuBtn.classList.remove('animated');
+        //     menuBtn.classList.remove('fadeInDown');
+        //     menuBtn.classList.remove('btnShadow');
+        //     menuBtn.style.margin = '0px'
+        //     menuBtn.style.zIndex = ''
+        // }
 
     }
 
@@ -434,15 +439,15 @@ class PublisherPage extends Component {
     }
 
     onSetSidebarOpen = async (section, sidebarOff) => {
-        if(!sidebarOff) this.onMenu()
+        // if(!sidebarOff) this.onMenu()
         setTimeout(async () => {
             scrollTo(section)
         }, 300);
     }
 
-    onMenu = async () => {
-        this.setState((prevState) => ({ isSidebarOpen: !prevState.isSidebarOpen }));
-    }
+    // onMenu = async () => {
+    //     this.setState((prevState) => ({ isSidebarOpen: !prevState.isSidebarOpen }));
+    // }
 
     toggleZoomProfileImage = () => {
         this.setState({
@@ -505,13 +510,15 @@ class PublisherPage extends Component {
             attachmentsSubActive, siteLink, profileData, txBlack, adsN, videoN, instaN, viewN, businessTypeBiz,
             countryCode, country, jobSummary, biography, phone, celphone, whatsapp,toggleZoomProfileImage,
             toggleBasicInformation, toggleAboutInfo, toggleActivitySummary, toggleTeam, instagram, telegram,
-            facebook, youtube, linkedin, team, teamMembers, 
+            facebook, youtube, linkedin, team, teamMembers, goToSectionTop, 
         } = this.state;
         const {rtl, lang, setLT, pageYOffset, fullAccess, geo, userId, mainUser, mainUserId, subUserInfo, auth,
             userServiceSelected, 
          } = this.props;
         // var fc = 16
         // console.log(fc)
+
+        console.log('pageYOffset: ', pageYOffset)
 
         const me = mainUser._id && subUserInfo._id && mainUser._id===subUserInfo._id ? true : false
         // console.log(mainUser._id, subUserInfo._id)
@@ -603,19 +610,19 @@ class PublisherPage extends Component {
             </div>
         )
 
-        const menu = (
-            <div id='menuBtn' className={`center web-menu fontColor h${fc===11 ? 0 : fc}`}
-                style={{ width:'50px', height:'50px', margin:'0px', position: headerTop<-100 ? 'fixed' : ''}}
-                onClick={() => this.onMenu()}>
-                <FaBars style={{width:'20px', height:'20px', }}/>
-                <span style={{fontSize:'10px', fontWeight:10}}>MENU</span>
-            </div>
-        )
+        // const menu = (
+        //     <div id='menuBtn' className={`center web-menu fontColor h${fc===11 ? 0 : fc}`}
+        //         style={{ width:'50px', height:'50px', margin:'0px', position: headerTop<-100 ? 'fixed' : ''}}
+        //         onClick={() => this.onMenu()}>
+        //         <FaBars style={{width:'20px', height:'20px', }}/>
+        //         <span style={{fontSize:'10px', fontWeight:10}}>MENU</span>
+        //     </div>
+        // )
 
         const phoneHead = (
             <div className='d-flex' onClick = {() => this.onToggleCall(phone)}
                 style = {{fontSize:w<s ? '15px' : '15px', fontWeight:'bold', padding:'0px 10px', alignItems:'center', direction: rtl ? 'ltr' : 'ltr'}}>
-                <MdPhoneInTalk className='' style={{ fontSize:'20px', margin:'0px', transform: 'rotate(10deg)' }}/>
+                <MdPhoneInTalk className='transition-all duration-300 hover:rotate-12 hover:scale-110' style={{ fontSize:'20px', margin:'0px', transform: 'rotate(10deg)' }}/>
                 <span className='hover:underline' style={{margin:'0px 10px', whiteSpace:'nowrap'}}>{phone}</span>
             </div>
         )
@@ -623,7 +630,7 @@ class PublisherPage extends Component {
         const celphoneHead = (
             <div className='d-flex'  onClick = {() => this.onToggleCall(celphone)}
                 style = {{fontSize:w<s ? '15px' : '15px', fontWeight:'bold', padding:'0px 10px', alignItems:'center', direction: rtl ? 'ltr' : 'ltr'}}>
-                <MdPhonelinkRing className='' style={{ fontSize:'20px', margin:'0px', transform: 'rotate(10deg)' }}/>
+                <MdPhonelinkRing className='transition-all duration-300 hover:rotate-12 hover:scale-110' style={{ fontSize:'20px', margin:'0px', transform: 'rotate(10deg)' }}/>
                 <span className='hover:underline' style={{margin:'0px 10px', whiteSpace:'nowrap'}}>{celphone}</span>
 
             </div>
@@ -644,33 +651,33 @@ class PublisherPage extends Component {
 
         const xStyle = {margin:'10px', alignItems:'center', color:'black'}
         const instagramIconX = (
-            <a className='d-flex' href={`https://instagram.com/${instagram}`} target="_blank" rel="noopener noreferrer" style={xStyle}
+            <a className='flex' href={`https://instagram.com/${instagram}`} target="_blank" rel="noopener noreferrer" style={xStyle}
                 onClick={() => addNotification('instagram', 'click', fullAccess, mainUser, userId, geo)}>
-                <FaInstagram className='' style={{fontSize:'25px', margin:'0px 5px', borderRadius:'8px', color:'#ffffff', backgroundImage: 'linear-gradient(to right top, #fcac0f, #fd9522, #fa7f30, #f36a3c, #e85647, #e44751, #dd395b, #d42d65, #d12174, #ca1b85, #be1e96, #ae27a8)'}}/>
+                <FaInstagram className='transition-all duration-300 hover:rotate-12 hover:scale-110' style={{fontSize:'25px', margin:'0px 5px', borderRadius:'8px', color:'#ffffff', backgroundImage: 'linear-gradient(to right top, #fcac0f, #fd9522, #fa7f30, #f36a3c, #e85647, #e44751, #dd395b, #d42d65, #d12174, #ca1b85, #be1e96, #ae27a8)'}}/>
             </a>
         )
         const telegramIconX = (
-            <a className='d-flex' href={`https://t.me/${telegram}`} target="_blank" rel="noopener noreferrer" style={xStyle}
+            <a className='flex' href={`https://t.me/${telegram}`} target="_blank" rel="noopener noreferrer" style={xStyle}
                 onClick={() => addNotification('telegram', 'click', fullAccess, mainUser, userId, geo)}>
-                <FaTelegram style={{ fontSize:'25px', color:'#24A1DE' }}/>
+                <FaTelegram className='transition-all duration-300 hover:rotate-12 hover:scale-110' style={{ fontSize:'25px', color:'#24A1DE' }}/>
             </a>
         )
         const facebookIconX = (
-            <a className='d-flex' href={`https://${facebook}`} target="_blank" rel="noopener noreferrer" style={xStyle}
+            <a className='flex' href={`https://${facebook}`} target="_blank" rel="noopener noreferrer" style={xStyle}
                 onClick={() => addNotification('facebook', 'click', fullAccess, mainUser, userId, geo)}>
-                <FaFacebook style={{ fontSize:'25px', color:'#3b5998' }}/>
+                <FaFacebook className='transition-all duration-300 hover:rotate-12 hover:scale-110' style={{ fontSize:'25px', color:'#3b5998' }}/>
             </a>
         )
         const youtubeIconX = (
-            <a className='d-flex' href={`https://${youtube}`} target="_blank" rel="noopener noreferrer" style={xStyle}
+            <a className='flex' href={`https://${youtube}`} target="_blank" rel="noopener noreferrer" style={xStyle}
                 onClick={() => addNotification('youtube', 'click', fullAccess, mainUser, userId, geo)}>
-                <FaYoutube style={{ fontSize:'25px', color:'#c4302b' }}/>
+                <FaYoutube className='transition-all duration-300 hover:rotate-12 hover:scale-110' style={{ fontSize:'25px', color:'#c4302b' }}/>
             </a>
         )
         const linkedinIconX = (
-            <a className='d-flex' href={`https://${linkedin}`} target="_blank" rel="noopener noreferrer" style={xStyle}
+            <a className='flex' href={`https://${linkedin}`} target="_blank" rel="noopener noreferrer" style={xStyle}
                 onClick={() => addNotification('linkedin', 'click', fullAccess, mainUser, userId, geo)}>
-                <FaLinkedin style={{ fontSize:'25px', color:'#0077B5' }}/>
+                <FaLinkedin className='transition-all duration-300 hover:rotate-12 hover:scale-110' style={{ fontSize:'25px', color:'#0077B5' }}/>
             </a>
         )
         const contactHead = (
@@ -684,8 +691,8 @@ class PublisherPage extends Component {
                         {linkedin && linkedinIconX}
                     </div>
                 }
-                <div style={{margin: w>s ? '0px 20px' : ''}}>{phoneX}</div>
-                {subUserInfo.type!=='content' &&  contactUs}
+                <div className={`${w > s ? 'mx-[20px]' : ''} cursor-pointer`}>{phoneX}</div>
+                {/* {subUserInfo.type!=='content' &&  contactUs} */}
                 {/* w<s && alertWhite */}
             </div>
         )
@@ -773,18 +780,23 @@ class PublisherPage extends Component {
 
         var bizLink = `https://shiningpage.com/${subUserInfo.businessType>0 ? 'publisher' : 'user'}/${subUserInfo.username}`
 
+        // const backG = (
+        //     <div>
+        //         <img
+        //             style={{position:'fixed', filter:'blur(50px)', zIndex:'-1'}}
+        //             height='100%'
+        //             width={w<s ? '300%' : '100%'}
+        //             src={aboutImgSrc}
+        //             alt="world background"
+        //         />
+        //     </div>
+        // )
         const backG = (
-            <div>
-                <img
-                    style={{position:'fixed', filter:'blur(50px)', zIndex:'-1'}}
-                    height='100%'
-                    width={w<s ? '300%' : '100%'}
-                    src={aboutImgSrc}
-                    alt="world background"
-                />
+            <div className="fixed inset-0 overflow-hidden -z-10">
+                <div className="absolute -inset-8 bg-cover bg-right blur-[50px]" style={{ backgroundImage: `url(${aboutImgSrc})` }}/>
             </div>
-        )
-
+        );
+        
         const aboutInfo = (
             <div id='aboutInfo' style={{padding:'70px 0px', fontSize:w<s ? '16px' : '18px', fontWeight:100, backgroundColor:`${colors[`C${fc===11 ? 0 : fc}`]}00`}}>
                 <Container className='center' style={{alignItems:'center', flexDirection:'column'}}>
@@ -885,53 +897,51 @@ class PublisherPage extends Component {
         )
 
         const shareSub = (
-            <div className='' style={{ width:'100%', padding:'0px', backgroundColor:`${colors[`C${fc}`]}00` }}>
-                <Container>
-                    <SharePage url={ exist(siteLink) ? siteLink : bizLink } mainTitle={usernameX} subTitle={subUserInfo.jobSummary}/>
-                </Container>
+            <div className='p-5' style={{ width:'100%', padding:'0px', backgroundColor:`${colors[`C${fc}`]}00` }}>
+                <SharePage url={ exist(siteLink) ? siteLink : bizLink } mainTitle={usernameX} subTitle={subUserInfo.jobSummary}/>
             </div>
         )
 
         const QRCode = <QRCodeX size="180px" url={`https://shiningpage.com/${subUserInfo.businessType>0 ? 'publisher' : 'user'}/${subUserInfo.username}`}/>
 
         const navItemsStyle = {color:'#000000', alignItems:'center', height:'40px'}
-        const sidebarItemsStyle = {margin:rtl ? '10px' : '13px 10px 10px', fontSize:'16px', fontWeight:400}
-        const homeBtn = (
+        const sidebarItemsStyle = {margin:'13px 10px 10px', fontSize:'16px', fontWeight:400}
+        const homeSide = (
             <div className={`d-flex hover:underline`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen()}>
                 <AiFillHome style={{width:'23px', margin:'10px 16px', fontSize:'23px'}}/>
                 <div style={sidebarItemsStyle}>{setLT.home}</div>
             </div>
         )
 
-        const aboutBtn = (
+        const aboutSide = (
             <div className={`d-flex hover:underline`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen('about')}>
                 <FaUsers style={{width:'23px', margin:'10px 16px', fontSize:'23px'}}/>
                 <div style={sidebarItemsStyle}>{setLT.about}</div>
             </div>
         )
 
-        const psBtn = (
+        const psSide = (
             <div className={`d-flex hover:underline`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen('psSub')}>
                 <AiFillProduct style={{width:'23px', margin:'10px 16px', fontSize:'23px'}}/>
                 <div style={sidebarItemsStyle}>{setLT.ProductsServices}</div>
             </div>
         )
 
-        const attachmentsBtn = (
+        const attachmentsSide = (
             <div className={`d-flex hover:underline`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen('attachmentsSub')}>
                 <MdAttachFile style={{width:'23px', margin:'10px 16px', fontSize:'23px'}}/>
                 <div style={sidebarItemsStyle}>{setLT.attachments}</div>
             </div>
         )
 
-        const statisticsBtn = (
+        const statisticsSide = (
             <div className={`d-flex hover:underline`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen('statisticsSub')}>
                 <GiGlobe style={{width:'23px', margin:'10px 16px', fontSize:'23px'}}/>
                 <div style={sidebarItemsStyle}>{setLT.statistics}</div>
             </div>
         )
 
-        const contactBtn = (
+        const contactSide = (
             <div className={`d-flex hover:underline`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen('contactSub')}>
                 <MdPhoneInTalk style={{width:'22px', margin:'10px 16px', fontSize:'23px'}}/>
                 <div style={sidebarItemsStyle}>{setLT.contact}</div>
@@ -941,12 +951,12 @@ class PublisherPage extends Component {
         const sections = (
             <div style={{backgroundColor: '#ffffff99'}}>
             <div style={{padding:'20px 0px', backgroundColor: '#ffffff99'}}>
-                {homeBtn}
-                {aboutBtn}
-                {psBtn}
-                {attachmentsBtn}
-                {statisticsBtn}
-                {contactBtn}
+                {homeSide}
+                {aboutSide}
+                {psSide}
+                {attachmentsSide}
+                {statisticsSide}
+                {contactSide}
             </div>
             </div>
         )
@@ -964,7 +974,7 @@ class PublisherPage extends Component {
 
         const modalSidebarWeb = (
             <ModalSidebarWeb
-                ref={this.sidebarRef}
+                // ref={this.sidebarRef}
                 mobile={w<s ? true : false}
                 rtl={rtl}
                 headerTop={headerTop}
@@ -978,14 +988,14 @@ class PublisherPage extends Component {
                 version={import.meta.env.VITE_VERSION}
                 updateVersion={updateVersion}
                 isOpen={isSidebarOpen}
-                toggleSidebar={this.onMenu}
+                // toggleSidebar={this.onMenu}
             />
         )
 
         const userHeader = (
             <div id='header' className='center' style={{width:'100%', height:'70px', justifyContent:'space-between', alignItems:'center', padding:w<s ? '10px 0px' : '10px', zIndex:'2'}}>
                 <div className='d-flex'>
-                    {menu}&nbsp;&nbsp;
+                    {/* {menu}&nbsp;&nbsp; */}
                     {profileBox}
                 </div>
                 {w>s && contactHead}
@@ -1108,7 +1118,7 @@ class PublisherPage extends Component {
                 <div style={{ position: 'absolute', inset: 0, backgroundColor: '#ffffff99', zIndex: 1 }}/>
                 {/* Content */}
                 <div style={{ position: 'relative', zIndex: 2 }}>{aboutInfo}</div>
-                //  {/* <RubyCollector id='adsH2' bottom={30} left={30}/> */}
+                {/* <RubyCollector id='adsH2' bottom={30} left={30}/> */}
             </div>
         );
 
@@ -1120,18 +1130,52 @@ class PublisherPage extends Component {
             </div>
         )
 
-        // console.log('googleAds: ', googleAds)
-        // console.log('subUserInfo.ads: ', subUserInfo.ads)
+        const sectionButtons = [
+            { id: 'home', icon: AiFillHome, label: setLT.home },
+            { id: 'about', icon: FaUsers, label: setLT.about },
+            { id: 'psSub', icon: AiFillProduct, label: 'Category' },
+            { id: 'attachmentsSub', icon: MdAttachFile, label: setLT.attachments },
+            { id: 'statisticsSub', icon: GiGlobe, label: setLT.statistics },
+            { id: 'contactSub', icon: MdPhoneInTalk, label: setLT.contact },
+        ];
+
+        const goToSection = (
+            <div id="goToSection"
+                className={`flex gap-2 cardShadow sticky top-[60px] w-full p-${pageYOffset > 250 ? 2 : 0} z-[1000] bg-white/50 overflow-hidden transition-all duration-${pageYOffset > 250 ? 500 : 0} ease-in-out ${pageYOffset > 250 ? 'h-[45px] opacity-100 translate-y-0 visible' : 'h-0 opacity-0 -translate-y-5 invisible pointer-events-none'}`}
+            >
+                {sectionButtons.map(({ id, icon: Icon, label }) => (
+                    <div key={id} className="btnShadow flex items-center bg-white gap-2 p-2 rounded-5" onClick={() => this.onSetSidebarOpen(id, true)}>
+                        <Icon className="w-[18px] text-[23px]" />
+                        <div className="mt-1">{label}</div>
+                    </div>
+                ))}
+            </div>
+        );
+
+        const goToSection2 = (
+            <div id="goToSection"
+                className={`flex justify-center gap-2 cardShadow sticky top-[63px] w-full h-[35px] p-1 z-[1000] bg-white/50 overflow-hidden transition-all duration-${pageYOffset > 250 ? 500 : 0} ease-in-out ${pageYOffset > 250 ? 'translate-y-0 visible' : '-translate-y-0 visible'}`}
+            >
+                {sectionButtons.map(({ id, icon: Icon, label }) => (
+                    <div key={id} className="btnShadow flex items-center bg-white gap-2 p-2 rounded-5" onClick={() => this.onSetSidebarOpen(id, true)}>
+                        <Icon className="w-[18px] text-[23px]" />
+                        <div className="mt-1">{label}</div>
+                    </div>
+                ))}
+            </div>
+        );
+
         return (
             <div>
-                <div style={{top:'50px', zIndex:'0', color:'', }}>
+                <div className="top-[0px] z-0">
                     {profileData && backG}
-                    <div style={{height:'70px', transition:'.5s', marginBottom:'0px', top: 0, zIndex:'3', backgroundColor:'#ffffff'}}>
+                    {goToSection}
+                    <div className="relative h-[70px] z-[3] bg-white transition-all duration-500">
                         {userHeader}
                     </div>
                     {w<s && contactHead}
-                    {w>s && <NavbarSub fc={fc} txBlack={txBlack} mapStateToProps={this.props} />}
-                    {profileData && <WebCarousel dataX={subUserInfo} fc={fc}/>}
+{/*                     {w>s && <NavbarSub fc={fc} txBlack={txBlack} mapStateToProps={this.props} />}
+ */}                    {profileData && <WebCarousel dataX={subUserInfo} fc={fc}/>}
                     {me && googleAds && subUserInfo.ads && adsBox1}
                     <FeaturesSub fc={fc} nx={subUserInfo.totalContents} me={me} mapStateToProps={this.props} viewN={viewN} dispatch={this.props.dispatch}/>                    
                     {about}
@@ -1144,18 +1188,19 @@ class PublisherPage extends Component {
                     {me && googleAds && subUserInfo.ads && adsBox4}
                     <div style={{backgroundColor:'#ffffff'}}>
                         {subUserInfo.type!=='content' && <ContactSub fc={fc} me={me} hr={hr} titleStyle={titleStyle} phone={phone}/>}
-                        {modalZoomProfileImage}
-                        {modalBasicInformation}
-                        {modalAboutInfo}
-                        {modalActivitySummary}
-                        {modalTeam}
-                        {modalSidebarWeb}
                     </div>
+
                     {/* me && googleAds && w<s && adsBox5 */}
                     {footer}
                     {/* me && subUserInfo.ads && <AdsBoxSub mapStateToProps={this.props}/> */}
                 </div>
                 {subUserInfo.type!=='content' && popups}
+                {modalZoomProfileImage}
+                {modalBasicInformation}
+                {modalAboutInfo}
+                {modalActivitySummary}
+                {modalTeam}
+                {w<s && modalSidebarWeb}
             </div>
         )
 
