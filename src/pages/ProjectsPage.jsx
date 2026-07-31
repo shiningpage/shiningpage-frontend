@@ -1374,7 +1374,6 @@ class ProjectManagement extends Component {
 
   onNewProject = async (type, item) => {
     var today = this.today()
-    console.log(today)
     var todayT = today.dateT
     var todayN = today.dateN
     // console.log(item)
