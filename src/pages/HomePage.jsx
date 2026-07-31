@@ -649,21 +649,21 @@ class HomePage extends Component {
 
     return (
       <div>
-        <ShiningpageCarousel />
+        {/* <ShiningpageCarousel /> */}
         {/* {googleAds && adsBox} */}
-        {welcome}
+        {/* welcome */}
         {/* {googleAds && adsBox} */}
         <Brands/>
         {/* {googleAds && adsBox} */}
-        {categoriesSection}
+        {/* categoriesSection */}
         {/* {googleAds && adsBox} */}
-        {services}
+        {/* services */}
         {/* {googleAds && adsBox} */}
-        {logoMiddle}
-        {whyChooseUs}
+        {/* logoMiddle */}
+        {/* whyChooseUs */}
         {/* {googleAds && adsBox} */}
-        <StarredAds/>
         <SiteView />
+        <StarredAds/>
         {/* {googleAds && adsBox} */}
       </div>
     );
