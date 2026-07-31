@@ -3,20 +3,20 @@ import { Helmet } from "react-helmet";
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Container, Modal } from 'react-bootstrap';
-import { BrowserRouter as Router , Link } from "react-router-dom";
+import { BrowserRouter as Router , Link, NavLink } from "react-router-dom";
 import rubyS from './assets/images/other/rubyS.png';
 import userN from './assets/images/other/user1.png';
 import male from './assets/images/other/man2.png';
 import female from './assets/images/other/woman2.png';
 import Routes from "./Routes";
 import { setToggleLoading, setCountry, setSetLT, setToggleChat,
-        setToggleSidebar, setToggleShowVideo, setPageYOffset,
-        setMembership, setGeo, setSendMessage, setToggleViewStatus,
-        setLang, setRtl,setUpdateVersionDate, setToggleChatList,
-        setScrollDirection, setToggleAds, setAdsInfo, setRuby,
-        setToggleVideo, setVideoInfo, setToggleInsta, setInstaInfo,
-        setObjects, setRubyInterval, 
-    } from './dataStore/actions';
+    setToggleSidebar, setToggleShowVideo, setPageYOffset,
+    setMembership, setGeo, setSendMessage, setToggleViewStatus,
+    setLang, setRtl,setUpdateVersionDate, setToggleChatList,
+    setScrollDirection, setToggleAds, setAdsInfo, setRuby,
+    setToggleVideo, setVideoInfo, setToggleInsta, setInstaInfo,
+    setObjects, setRubyInterval, 
+} from './dataStore/actions';
 import SubChat from './components/SubChat';
 import SendMessage from './components/SendMessage';
 import setLangText from './modules/setLangText';
@@ -25,27 +25,35 @@ import EXV from './components/EXV';
 import Addressbar from './components/Addressbar';
 import ModalViewStatus from './components/modals/ModalViewStatus';
 import ChatList from './components/modals/ModalChatList';
-import { FaBell, FaYoutube, FaLinkedin, FaUser, FaBars, FaRegCopyright, FaRegStar } from 'react-icons/fa';
+import { FaCrown, FaBell, FaRegBell, FaYoutube, FaLinkedin, FaUser, FaBars, FaRegCopyright, FaRegStar } from 'react-icons/fa';
 import { FaAngleRight } from "react-icons/fa6";
-import { RiHome9Line } from "react-icons/ri";
-import { MdReviews, MdEmail, MdClose } from 'react-icons/md';
+import { RiPagesLine, RiLogoutCircleLine, RiLogoutCircleRLine } from "react-icons/ri";
+import { FiBell } from "react-icons/fi";
+import { TbLockPassword } from "react-icons/tb";
+import { MdOutlineRateReview, MdReviews, MdEmail, MdOutlineMailOutline, MdClose } from 'react-icons/md';
 import { HiOutlineUsers, HiUsers } from "react-icons/hi2";
-import { AiOutlineDashboard, AiFillMessage, AiFillInstagram, AiFillHome, AiOutlineHome } from 'react-icons/ai';
+import { AiOutlineRuby, AiOutlineHome, AiOutlineDashboard, AiFillMessage, AiFillInstagram, AiFillHome } from 'react-icons/ai';
 import { BiSupport } from 'react-icons/bi';
 import { AiFillDashboard, AiFillProduct, AiOutlineProduct } from "react-icons/ai";
 import { PiSquaresFourLight } from "react-icons/pi";
+import { CiBellOn } from "react-icons/ci";
 import { BiBookContent, BiSolidBookContent } from "react-icons/bi";
-import { IoMailOutline, IoMailSharp, IoLocationOutline } from "react-icons/io5";
-import { GrDashboard } from "react-icons/gr";
+import { IoColorPaletteOutline, IoChatbubbleEllipsesOutline, IoMailOutline, IoMailSharp, IoLocationOutline } from "react-icons/io5";
+
+import { GrProjects, GrDashboard } from "react-icons/gr";
 import { VscDashboard } from "react-icons/vsc";
 import UpdateVersion from './components/UpdateVersion';
+import ModalWebPageTheme from './components/modals/ModalWebPageTheme';
+import ModalChangePassword from './components/modals/ModalChangePassword';
 import LangBox from './components/LangBox';
 import UserBox from './components/UserBox';
 import Search from './components/Search';
 import ModalSidebarShiningpage from './components/modals/ModalSidebarShiningpage';
-import { identifyObj, exist, getBalance, scrollStatus, checkRubyInterval, } from './helper';
+import { logout, identifyObj, exist, getBalance, scrollStatus, checkRubyInterval, } from './helper';
 import { serverURL, s, NavH, langArray, countryArr, noIndexPages } from './srcSet';
 import aiImage from "./assets/images/other/ai-background.jpg";
+
+const sw = 280
 
 class App extends Component {
 
@@ -58,7 +66,6 @@ class App extends Component {
             modal: false,
             n: 0,
             open: false,
-            loginItems: false,
             lastScrollTop: 0,
             notSeenChatQTY: 0,
             notSeenNotificationQTY: 0,
@@ -325,7 +332,7 @@ class App extends Component {
     }
 
     onToggleSidebar = () => {
-        this.props.dispatch(setToggleSidebar(false))
+        this.props.dispatch(setToggleSidebar(!this.props.toggleSidebar))
     }
 
     language = async () => {
@@ -401,13 +408,6 @@ class App extends Component {
 
     toggleSendMessage = () => {
         this.props.dispatch(setSendMessage(!this.props.sendMessage))
-    }
-
-    onSetSidebarOpen = async () => {
-        // if(this.state.w<s) {
-            this.setState({loginItems: false})
-            this.props.dispatch(setToggleSidebar(!this.props.toggleSidebar))
-        // }
     }
 
     onLogin = async () => {
@@ -511,12 +511,26 @@ class App extends Component {
         window.open(`/${this.props.mainUser.username}#${section}`, '_blank');
     }
 
+    toggleWebPageTheme = () => {
+        this.setState({
+            toggleWebPageTheme: !this.state.toggleWebPageTheme,
+        });
+    }
+
+    toggleChangePassword = () => {
+        this.setState({
+            toggleChangePassword: !this.state.toggleChangePassword,
+        });
+    }
+
     render() {
-        const { w, h, notFound, scrollDirection, leaveChatList, leaveNotificationList, notSeenNotificationQTY, notSeenChatQTY, loginItems } = this.state
-        const { auth, address, fc, setLT, mainUser, toggleSidebar, toggleShowVideo, fullAccess, 
+        const { w, h, toggleChangePassword, toggleWebPageTheme, notFound, scrollDirection, leaveChatList, leaveNotificationList, notSeenNotificationQTY, notSeenChatQTY } = this.state
+        const { auth, address, fc, setLT, mainUser, subUserInfo, toggleSidebar, toggleShowVideo, fullAccess, 
             toggleLoading, membership, sendMessage, toggleChat, username, slug, genderValue, lang, rtl, page,
-            businessType, toggleViewStatus, toggleChatList, ruby, rubyInterval, 
+            businessType, toggleViewStatus, toggleChatList, ruby, rubyInterval, balance, 
         } = this.props
+        const me = mainUser._id===subUserInfo._id ? true : false
+
         // var fc = 13
         const rubyDone = rubyInterval.done!==0 && rubyInterval.done >= rubyInterval.ruby ? true : false
 
@@ -526,6 +540,7 @@ class App extends Component {
         const NavHX = w<s ? 45 : NavH
         const colorX = [0, 4, 11].includes(fc) ? '#00000099' : '#ffffff'
         const hrC14 = <div className='C14' style={{width:'100%', height:'3px'}}></div>
+        const hrC14Thin = <div className='C14' style={{width:'100%', height:'1px', opecity:'.1'}}></div>
         const hrC14Short = <div className='C14 w-15 h-[2px] mb-4'></div>
 
         const loginBox = (
@@ -692,7 +707,7 @@ class App extends Component {
         const logoSide = <EXV subTitle='Marketing Platform' width='100%' fc={16}/>
 
         const sidebarIcon = (
-            <div className='sticky-top center' onClick={this.onSetSidebarOpen}
+            <div className='sticky-top center' onClick={() => this.onToggleSidebar()}
                 style={{borderRadius:'6px', alignItems:'center', padding:'2px'}}>
                 { w<s
                     ?
@@ -821,38 +836,56 @@ class App extends Component {
             </Link>
         )
 
+        const navLinks = [
+            { key: "home", to: "/", label: "Home" },
+            { key: "latest", to: "/latest", label: "Latest Posts" },
+            { key: "about", to: "/about", label: "About" },
+            { key: "contact", to: "/contact", label: "Contact" },
+            { key: "pricing", to: "/pricing", label: "Pricing" },
+        ];
+
+        const navbar = (
+            <div className="flex gap-10">
+                {navLinks.map(({ key, to, label }) => (
+                    <NavLink
+                        key={key}
+                        to={to}
+                        className={`relative !no-underline text-[14px] font-medium transition-all duration-300 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:origin-center after:rounded-full after:bg-[#d5ad6d] after:transition-transform after:duration-300 hover:text-[#d5ad6d] hover:after:scale-x-100 ${
+                            page === key
+                                ? "goldenText after:scale-x-100"
+                                : "text-white after:scale-x-0"
+                        }`}
+                    >
+                        {label}
+                    </NavLink>
+                ))}
+            </div>
+        );
+
+        const plan = (
+            <Link to={auth ? '/pricing' : '/login'} className="!no-underline group flex items-center gap-3 px-3 py-1 rounded-lg border border-[#d5ad6d] text-white cursor-pointer select-none transition-all duration-300 ease-out hover:scale-105 hover:bg-[#d5ad6d]/10 hover:shadow-[0_0_18px_rgba(213,173,109,0.55)] active:scale-95 active:bg-[#d5ad6d]/20 active:shadow-[0_0_8px_rgba(213,173,109,0.8)] focus:outline-none focus:ring-2 focus:ring-[#d5ad6d]/60">
+                {auth && <FaCrown className="goldenText w-6 h-6 -mt-1 transition-all duration-300 group-hover:rotate-12 group-hover:scale-110 group-active:scale-95" />}
+                <div>
+                    <div className="text-[12px] -mb-1">
+                        Free Plan
+                    </div>
+                    <div className="goldenText text-[14px] font-semibold transition-all duration-300 group-hover:tracking-wide group-active:scale-95">
+                        {auth ? 'Upgrade' : 'Sign up / Login'}
+                    </div>
+                </div>
+                <FaAngleRight className="transition-all duration-300 group-hover:translate-x-1 group-active:translate-x-2" />
+            </Link>
+        )
+
         const headerAuthBox = (
             <div className='flex bg-cover bg-right px-[10px]' style={{alignItems:'center', width:'100%', justifyContent:'space-between', direction:'ltr'}}>
-                {sidebarIcon}
-                <div className='d-flex' style={{alignItems:'center', direction:'ltr'}}>
-                    {w>=s && <div style={{marginRight:'30px'}}>{logoX}</div>}
-                </div>
-                <div className='d-flex' style={{width:'100%', alignItems:'center', }}>
-                    <div className="d-flex" style={{width:'100%', alignItems:'center', direction:'rtl', justifyContent:'space-between'}}>
-                        <div className="d-flex" style={{width:'100%', alignItems:'center', justifyContent:'flex-end', direction:'ltr'}}>
-                            <div className="d-flex" style={{alignItems:'center'}}>
-                                <div className='d-flex' style={{width: w<s ? '100%' : (w>1200 ? '300px' : '300px'), padding:'0px 10px', justifyContent:'space-between', alignItems:'center', direction: rtl ? 'rtl' : 'ltr'}}>
-                                    {homeNav}
-                                    {latestNav}
-                                    {projectsNav}
-                                    {/* aboutNav */}
-                                    {/* contactNav */}
-                                </div>
-                                {auth && w>1000 && <div style={{width:'30px'}}></div>}
-                                <div className='d-flex' style={{width: w<s ? '100%' : w>1200 ? '320px' : '320px', padding:'0px 10px', justifyContent:'space-between', alignItems:'center'}}>
-                                    {notificationNav}
-                                    {chatNav}
-                                    {rubyNav}
-                                    <UserBox/>
-                                </div>
-                                {auth && w>1000 && <div style={{width:'30px'}}></div>}
-                                {/* !auth && loginNav */}
-                                {/* !auth && <div>|</div> */}
-                                {/* <LangBox/> */}
-                            </div>
-                        </div>
-                        <Search/>
+                {w<s && sidebarIcon}
+                <div className="relative flex items-center w-full justify-between">
+                    <Search />
+                    <div className="absolute left-1/2 -translate-x-1/2">
+                        {navbar}
                     </div>
+                    {plan}
                 </div>
             </div>
         )
@@ -905,58 +938,43 @@ class App extends Component {
 
         const sidebarHeader = (
             <div className='center sticky-top cardShadow'
-                style={{height: '90px', top:'0px', padding:'0px 10px', borderRight:rtl ? '' : '1px solid #ffffff40', borderLeft:rtl ? '1px solid #ffffff40' : '',
+                style={{height: '90px', top:'0px', padding:'0px 10px', borderRight:'1px solid #ffffff40',
                     position:'fixed', top:0, flexDirection:'column', alignItems:'center', width:'100%'}}>
-                <MdClose style={{width:'20px', fontSize:'20px', cursor:'pointer', position:'absolute', //display:w<s ? '' : 'none',
+                <MdClose style={{width:'20px', fontSize:'20px', cursor:'pointer', position:'absolute',
                     top:'10px', left:'10px', border:'1px', color:'#ffffff'}}
-                    onClick={() => this.onSetSidebarOpen()}
+                    onClick={() => this.onToggleSidebar()}
                 />
                 {logoSide}
             </div>
         )
 
-        const navItemsStyle = {textDecoration: "none", color:'#ffffff', alignItems:'center', height:'40px'}
+        const sidebarButtons = [
+            ...(w < s
+                ? [
+                    { key: "home", to: "/", label: setLT.home, icon: AiOutlineHome },
+                    { key: "latest", to: "/latest", label: "Latest Posts", icon: BiSolidBookContent },
+                    { key: "about", to: "/about", label: setLT.about, icon: HiOutlineUsers },
+                    { key: "contact", to: "/contact", label: setLT.contact, icon: MdOutlineMailOutline },
+                ]
+                : []),
 
-        const homeBtn = (
-            <Link to={`/`} className={`d-flex goldenText ${page==='home' ? 'sidebarItemFix' : (w<s ? '' : 'sidebarItem')}`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen()}>
-                <AiFillHome className='goldenText' style={{width:'23px', margin:'10px 20px', fontSize:'23px'}}/>
-                <div style={{margin:rtl ? '10px' : '13px 10px 10px', fontSize:'15px', fontWeight:450}}>{setLT.home}</div>
-            </Link>
-        )
+            { key: "reviews", to: "/reviews", label: "Site Reviews", icon: MdOutlineRateReview },
 
-        const aboutBtn = (
-            <Link to={`/about`} className={`d-flex goldenText ${page==='about' ? 'sidebarItemFix' : (w<s ? '' : 'sidebarItem')}`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen()}>
-                <HiUsers className='goldenText' style={{width:'23px', margin:'10px 20px', fontSize:'23px'}}/>
-                <div style={{margin:rtl ? '10px' : '13px 10px 10px', fontSize:'15px', fontWeight:450}}>{setLT.about}</div>
-            </Link>
-        )
+            ...(fullAccess
+                ? [
+                    { key: "dashboard", to: "/dashboard", label: "Dashboard", icon: AiOutlineDashboard },
+                ]
+                : []),
+        ];
 
-        const contactBtn = (
-            <Link to={`/contact`} className={`d-flex goldenText ${page==='contact' ? 'sidebarItemFix' : (w<s ? '' : 'sidebarItem')}`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen()}>
-                <IoMailSharp className='goldenText' style={{width:'23px', margin:'10px 20px', fontSize:'23px'}}/>
-                <div style={{margin:rtl ? '10px' : '13px 10px 10px', fontSize:'15px', fontWeight:450}}>{setLT.contact}</div>
-            </Link>
-        )
+        const navItemsClass = "!no-underline text-white items-center h-[50px]"
 
-        const reviewsBtn = (
-            <Link to={`/reviews`} className={`d-flex goldenText ${(page==='reviews') ? 'sidebarItemFix' : (w<s ? '' : 'sidebarItem')}`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen()}>
-                <MdReviews className='goldenText' style={{width:'23px', margin:'10px 20px', fontSize:'23px'}}/>
-                <div style={{margin:rtl ? '10px' : '13px 10px 10px', fontSize:'15px', fontWeight:450}}>{setLT.memberReviews}</div>
-            </Link>
-        )
-
-        const dashboardBtn = (
-            <Link to={`/dashboard`} className={`d-flex goldenText ${(page==='dashboard') ? 'sidebarItemFix' : (w<s ? '' : 'sidebarItem')}`} style={navItemsStyle} onClick={() => this.onSetSidebarOpen()}>
-                <AiOutlineDashboard className='goldenText' style={{width:'23px', margin:'10px 20px', fontSize:'23px'}}/>
-                <div style={{margin:rtl ? '10px' : '13px 10px 10px', fontSize:'15px', fontWeight:450}}>Dashboard</div>
-            </Link>
-        )
 
         const signInBtn = (
-            <Link to={`/login`} className={`d-flex sidebarItem`} style={navItemsStyle}>{/*  onClick={() => this.setState({loginItems: !this.state.loginItems})} */}
+            <Link to={`/login`} className={`d-flex sidebarItem ${navItemsClass}`}>
                 {/* n1 */}
                 <FaUser style={{width:'20px', margin:'10px 18px', fontSize:'18px'}}/>
-                <div className='' style={{width:'140px', margin:'10px', fontSize:'13px', border: !loginItems ? '2px solid #00CCFF' : '', backgroundColor:'#00CCFF99', borderRadius:'3px', padding: auth ? '' : '0px 0px', textAlign:!loginItems ? 'center' : ''}} onClick={() => this.onLogin()}>{setLT.signupLogin}{/* &nbsp;openIcon */}</div>
+                <div className='' style={{width:'140px', margin:'10px', fontSize:'13px', border:'2px solid #00CCFF', backgroundColor:'#00CCFF99', borderRadius:'3px', padding: auth ? '' : '0px 0px', textAlign:'center'}} onClick={() => this.onLogin()}>{setLT.signupLogin}{/* &nbsp;openIcon */}</div>
             </Link>
         )
 
@@ -983,16 +1001,219 @@ class App extends Component {
         const hrS = <hr style={{border:'.5px solid #ffffff', opacity:'1'}}/>
 
         const sidebarItems = (
-            <div style={{padding:'100px 0px 10px', fontWeight:'', height:h, overflow:'scroll'}}>
-                {homeBtn}
-                {aboutBtn}
-                {contactBtn}
-                {reviewsBtn}
-                {fullAccess && dashboardBtn}
-                {hrS}
-                {updateVersion}
-                {/* signInBtn */}
-                {/* signOutBtn */}
+            <div className="relative z-10 pr-[10px] overflow-scroll">
+                {sidebarButtons.map(({ key, to, label, icon: Icon }) => (
+                    <Link key={key} to={to} onClick={() => this.onToggleSidebar()}
+                        className={`group flex w-full items-center justify-between rounded-[8px] border-2 border-transparent transition-all duration-300 ease-out hover:bg-white/10 hover:border-white/20 hover:shadow-md !no-underline text-white items-center h-[50px]
+                            ${ page === key ? "sidebarSelectedItem" : "" }`}
+                        >
+                        <div className="center">
+                            <Icon className="w-[20px] mx-[20px] my-[10px] text-[23px] transition-transform duration-300 group-hover:scale-110"/>
+                            <span className="ml-0 transition-all duration-300 ease-out group-hover:translate-x-2">
+                                {label}
+                            </span>
+                        </div>
+                        <FaAngleRight className="text-[14px] m-[10px] transition-transform duration-300 group-hover:translate-x-1"/>
+                    </Link>
+                    ))
+                }
+            </div>
+        )
+
+        const hasUsername = !!mainUser?.username
+        const root = mainUser.businessType>0 ? 'publisher' : 'user'
+        const linkTarget = auth && hasUsername
+            ? `/${root}/${mainUser.username}`
+            : '/login'
+
+        const myPage = (
+            <a href={linkTarget}
+                onClick={() => (page!=='web' && page!=='publisher')
+                    ? null
+                    : me
+                        ? window.scroll(0, 0)
+                        : goToWebPage(mainUser)
+                }
+
+                className={`group flex w-full items-center justify-between rounded-[8px] border-2 border-transparent transition-all duration-300 ease-out hover:bg-white/10 hover:border-white/20 hover:shadow-md !no-underline text-white items-center h-[50px]
+                    ${ me && ['publisher', 'user'].includes(page) ? "sidebarSelectedItem" : "" }`}
+                >
+                <div className="center">
+                    <RiPagesLine className="w-[20px] mx-[20px] my-[10px] text-[23px] transition-transform duration-300 group-hover:scale-110"/>
+                    <span className="ml-0 transition-all duration-300 ease-out group-hover:translate-x-2">
+                        My Page
+                    </span>
+                </div>
+                <FaAngleRight className="text-[14px] m-[10px] transition-transform duration-300 group-hover:translate-x-1"/>
+            </a>
+        )
+
+
+        const notifications = (
+            <Link to="/notification" onClick={() => this.onToggleSidebar()}
+                className={`group flex w-full items-center justify-between rounded-[8px] border-2 border-transparent transition-all duration-300 ease-out hover:bg-white/10 hover:border-white/20 hover:shadow-md !no-underline text-white items-center h-[50px]
+                    ${ page === 'notification' ? "sidebarSelectedItem" : "" }`}
+                >
+                <div className="center">
+                    <FiBell className="w-[20px] mx-[20px] my-[10px] text-[23px] transition-transform duration-300 group-hover:scale-110"/>
+                    <span className="ml-0 transition-all duration-300 ease-out group-hover:translate-x-2">
+                        {setLT.notifications}
+                    </span>
+                </div>
+                <div className='flex items-center'>
+                    <div className={`${leaveNotificationList ? "zoomOut" : "zoomIn"} bg-gradient-to-r from-[#94358e99] to-[#c900bb] text-white text-[11px] font-[450] text-center w-[25px] min-w-[18px] h-[18px] px-[5px] rounded-[4px] leading-[20px] ${notSeenNotificationQTY ? "block" : "hidden"} transition-transform duration-300 group-hover:translate-x-1`}>
+                        {notSeenNotificationQTY}
+                    </div>
+                    <FaAngleRight className="text-[14px] m-[10px] transition-transform duration-300 group-hover:translate-x-1"/>
+                </div>
+            </Link>
+        )
+
+        const messages = (
+            <Link to="/chat" onClick={() => this.onToggleSidebar()}
+                className={`group flex w-full items-center justify-between rounded-[8px] border-2 border-transparent transition-all duration-300 ease-out hover:bg-white/10 hover:border-white/20 hover:shadow-md !no-underline text-white items-center h-[50px]
+                    ${ page === 'chat' ? "sidebarSelectedItem" : "" }`}
+                >
+                <div className="center">
+                    <IoChatbubbleEllipsesOutline className="w-[20px] mx-[20px] my-[10px] text-[23px] transition-transform duration-300 group-hover:scale-110"/>
+                    <span className="ml-0 transition-all duration-300 ease-out group-hover:translate-x-2">
+                        Messages
+                    </span>
+                </div>
+                <div className='flex items-center'>
+                    <div className={`${leaveChatList ? "zoomOut" : "zoomIn"} bg-gradient-to-r from-[#94358e99] to-[#c900bb] text-white text-[11px] font-[450] text-center w-[25px] min-w-[18px] h-[18px] px-[5px] rounded-[4px] leading-[20px] ${notSeenChatQTY ? "block" : "hidden"} transition-transform duration-300 group-hover:translate-x-1`}>
+                        {notSeenChatQTY}
+                    </div>
+                    <FaAngleRight className="text-[14px] m-[10px] transition-transform duration-300 group-hover:translate-x-1"/>
+                </div>
+            </Link>
+        )
+
+        const rubies = (
+            <Link to="/ruby" onClick={() => this.onToggleSidebar()}
+                className={`group flex w-full items-center justify-between rounded-[8px] border-2 border-transparent transition-all duration-300 ease-out hover:bg-white/10 hover:border-white/20 hover:shadow-md !no-underline text-white items-center h-[50px]
+                    ${ page === 'ruby' ? "sidebarSelectedItem" : "" }`}
+                >
+                <div className="center">
+                    <AiOutlineRuby className="w-[20px] mx-[20px] my-[10px] text-[23px] transition-transform duration-300 group-hover:scale-110"/>
+                    <span className="ml-0 transition-all duration-300 ease-out group-hover:translate-x-2">
+                        {setLT.ruby}
+                    </span>
+                </div>
+                <div className='flex items-center'>
+                    <div className={`zoomIn bg-gradient-to-r from-[#94358e99] to-[#c900bb] text-white text-[11px] font-[450] text-center min-w-[18px] h-[18px] px-[5px] rounded-[4px] leading-[20px] ${ruby ? "block" : "hidden"} transition-transform duration-300 group-hover:translate-x-1`}>
+                        {ruby}
+                    </div>
+                    <FaAngleRight className="text-[14px] m-[10px] transition-transform duration-300 group-hover:translate-x-1"/>
+                </div>
+            </Link>
+        )
+
+        const projects = (
+            <Link to={`/projects/${username}`} onClick={() => this.onToggleSidebar()}
+                className={`group flex w-full items-center justify-between rounded-[8px] border-2 border-transparent transition-all duration-300 ease-out hover:bg-white/10 hover:border-white/20 hover:shadow-md !no-underline text-white items-center h-[50px]
+                    ${ page === 'projects' ? "sidebarSelectedItem" : "" }`}
+                >
+                <div className="center">
+                    <GrProjects className="w-[20px] mx-[20px] my-[10px] text-[23px] transition-transform duration-300 group-hover:scale-110"/>
+                    <span className="ml-0 transition-all duration-300 ease-out group-hover:translate-x-2">
+                        Projects
+                    </span>
+                </div>
+                <FaAngleRight className="text-[14px] m-[10px] transition-transform duration-300 group-hover:translate-x-1"/>
+            </Link>
+        )
+
+        const currentBalance = (
+            <div className='!mx-[15px] text-white'>
+                <hr className="h-px border-0 bg-white" />
+                <span className="w-full flex justify-between ml-0 transition-all duration-300 ease-out group-hover:translate-x-2">
+                    <span>{setLT.balance}</span>
+                    <span>{'£' + balance}</span>
+                </span>
+                <hr className="h-px border-0 bg-white" />
+            </div>
+        )
+
+        const changeTheme = (
+            <div onClick={() => this.toggleWebPageTheme()}
+                className={`group flex w-full items-center justify-between rounded-[8px] border-2 border-transparent transition-all duration-300 ease-out hover:bg-white/10 hover:border-white/20 hover:shadow-md !no-underline text-white items-center h-[50px]
+                    ${ toggleWebPageTheme ? "sidebarSelectedItem" : "" } cursor-pointer`}
+                >
+                <div className="center">
+                    <IoColorPaletteOutline className="w-[20px] mx-[20px] my-[10px] text-[23px] transition-transform duration-300 group-hover:scale-110"/>
+                    <span className="ml-0 transition-all duration-300 ease-out group-hover:translate-x-2">
+                        {setLT.changeTheme}
+                    </span>
+                </div>
+                <FaAngleRight className="text-[14px] m-[10px] transition-transform duration-300 group-hover:translate-x-1"/>
+            </div>
+        )
+
+        const modalWebPageTheme = (
+            <ModalWebPageTheme
+                me={me}
+                dispatch={this.props.dispatch}
+                // EditBtn={EditBtn}
+                toggleWebPageTheme={toggleWebPageTheme}
+                onToggle={this.toggleWebPageTheme}
+                mapStateToProps={this.props}
+            />
+        )
+
+
+        const changePassword = (
+            <div onClick={() => this.toggleChangePassword()}
+                className={`group flex w-full items-center justify-between rounded-[8px] border-2 border-transparent transition-all duration-300 ease-out hover:bg-white/10 hover:border-white/20 hover:shadow-md !no-underline text-white items-center h-[50px]
+                    ${ toggleChangePassword ? "sidebarSelectedItem" : "" } cursor-pointer`}
+                >
+                <div className="center">
+                    <TbLockPassword className="w-[20px] mx-[20px] my-[10px] text-[23px] transition-transform duration-300 group-hover:scale-110"/>
+                    <span className="ml-0 transition-all duration-300 ease-out group-hover:translate-x-2">
+                        {setLT.changePassword}
+                    </span>
+                </div>
+                <FaAngleRight className="text-[14px] m-[10px] transition-transform duration-300 group-hover:translate-x-1"/>
+            </div>
+        )
+
+        const modalChangePassword = (
+            <ModalChangePassword
+                dispatch={this.props.dispatch}
+                // EditBtn={EditBtn}
+                toggleChangePassword={toggleChangePassword}
+                onToggle={this.toggleChangePassword}
+                mapStateToProps={this.props}
+            />
+        )
+
+        const signOut = (
+            <div onClick={() => logout(lang, this.props.dispatch)}
+                className={`group flex w-full items-center justify-between rounded-[8px] border-2 border-transparent transition-all duration-300 ease-out hover:bg-white/10 hover:border-white/20 hover:shadow-md !no-underline text-white items-center h-[50px]
+                    cursor-pointer`}
+                >
+                <div className="center">
+                    <RiLogoutCircleRLine className="w-[20px] mx-[20px] my-[10px] text-[23px] transition-transform duration-300 group-hover:scale-110"/>
+                    <span className="ml-0 transition-all duration-300 ease-out group-hover:translate-x-2">
+                        {setLT.exit}
+                    </span>
+                </div>
+                <FaAngleRight className="text-[14px] m-[10px] transition-transform duration-300 group-hover:translate-x-1"/>
+            </div>
+        )
+
+
+        const userItems = (
+            <div className="relative z-10 p-[10px] overflow-scroll">
+                {auth && myPage}
+                {notifications}
+                {messages}
+                {projects}
+                {rubies}
+                {auth && currentBalance}
+                {auth && changeTheme}
+                {auth && changePassword}
+                {auth && signOut}
             </div>
         )
 
@@ -1023,6 +1244,88 @@ class App extends Component {
                         {sidebarHeader}
                         {sidebarItems}
                     </div>
+                </div>
+            </div>
+        )
+
+        const userInfo = (
+            <a href={linkTarget} className="!no-underline flex items-start p-[20px] gap-2"
+                onClick={() => (page!=='web' && page!=='publisher')
+                                    ? null
+                                    : me
+                                        ? window.scroll(0, 0)
+                                        : goToWebPage(mainUser)
+                }
+            >
+
+                {/* User Image */}
+                <div className={`p-[1px] bg-gradient-to-r from-yellow-400 via-amber-500 to-purple-600 ${
+                        mainUser.businessType > 0 ? "rounded-[4px]" : (!auth ? "" : "rounded-full")
+                    }`}
+                >
+                    <img
+                        className={`C${mainUser.fc} block object-cover min-w-[70px] min-h-[70px] max-w-[70px] max-h-[70px] p-[3px] ${
+                            mainUser.businessType > 0 ? "rounded-[3px]" : (!auth ? "" : "rounded-full")
+                        }`}
+                        src={
+                            exist(mainUser.profileIndex)
+                                    ? `https://www.pix.shiningpage.com/whoraly/profile/small/${mainUser._id}-${mainUser.profileIndex}.jpeg`
+                                    : mainUser.genderValue === 0
+                                        ? female
+                                        : male
+                        }
+                        alt="user"
+                    />
+                </div>
+
+                {/* User Info */}
+                <div>
+                    <div className="text-[14px] text-white font-[450]">
+                        {mainUser.bizName ? mainUser.bizName : mainUser.username}
+                    </div>
+                    <div className="text-[12px] text-white/60 font-[450]">
+                        {mainUser.jobSummary ? mainUser.jobSummary : ""}
+                    </div>
+                </div>
+            </a>
+        )
+
+        const inviteToJoin = (
+            <div className='text-center text-white px-3 py-4'>
+                <span className='mr-2'>Create your free account to get started.</span>
+                <Link to='/login' className='goldenText !no-underline'>Sign up / Login</Link>
+            </div>
+        )
+
+        const userAuth = (
+            <div className="gradient-border relative z-10 my-[20px] bg-gradient-to-r from-[#00000010] via-transparent to-[#00000010]">
+                {auth ? userInfo : inviteToJoin}
+                {userItems}
+            </div>
+        )
+
+        const shiningpageLogo = (
+            <Link to="/" className="flex items-end relative z-10 text-[#ba851b] hover:!text-[#ba851b]">
+                {logoBoxSide}
+                <span className="goldenText text-[22px] font-bold mx-[10px] underline decoration-[#ba851b]">Shiningpage</span>
+            </Link>
+        )
+
+        const desktopSidebar = (
+            <div className={`relative overflow-hidden w-[280px] shrink-0 border-r-2 border-[#D2B45E] sticky top-0 h-screen p-[10px] z-[100]`}>
+                <div className="absolute inset-0 bg-center rotate-90 scale-400 blur-[3px]"
+                    style={{ backgroundImage: `url(${aiImage})` }}
+                />
+                <div className='h-[60px]'>
+                    {shiningpageLogo}
+                    <div className="golden-divider"></div>
+                </div>
+                <div className='overflow-y-scroll h-[calc(100vh-60px)]'>
+                    {userAuth}
+                    <div className="golden-divider"></div>
+                    {sidebarItems}
+                    <div className="golden-divider"></div>
+                    <br/>
                 </div>
             </div>
         )
@@ -1114,7 +1417,7 @@ class App extends Component {
 
         const supportBtn = (
             <div>
-                <div className={`d-flex`} style={{...navItemsStyle, color:''}}>
+                <div className={`flex ${navItemsClass}`}>
                     <BiSupport style={{width:'22px', margin:'10px 0px', fontSize:'22px', color:''}}/>
                     <div style={{margin:rtl ? '10px 7px' : '13px 7px 10px', fontSize:'15px', color:''}}>{setLT.supportContacts}</div>
                 </div>
@@ -1186,7 +1489,7 @@ class App extends Component {
                 content={sidebarConst}
                 updateVersion={updateVersion}
                 isOpen={toggleSidebar}
-                toggleSidebar={this.onSetSidebarOpen}
+                toggleSidebar={this.onToggleSidebar}
             />
         )
 
@@ -1223,7 +1526,7 @@ class App extends Component {
         const footer2Class = 'flex white-nav block !no-underline mb-3 font-thin items-center group'
         const shortcuts = [
             { to: '/', text: setLT.home },
-            { to: '/latest', text: 'Latest posts' },
+            { to: '/latest', text: 'Latest Posts' },
             { to: '/contact', text: setLT.contact },
             { to: '/about', text: setLT.about },
             { to: '/reviews', text: setLT.memberReviews },
@@ -1287,7 +1590,7 @@ class App extends Component {
             <div className={`flex items-center gap-2 ${w<s ? 'mb-2' : 'm-0'} px-[10px]`}>
                 <FaRegCopyright className='-mt-1'/>
                 <span>{new Date().getFullYear()}</span>
-                <span className='text-[#F5C73D]'>
+                <span className='goldenText'>
                     Shiningpage
                 </span>
                 <span>All rights reserved.</span>
@@ -1306,16 +1609,17 @@ class App extends Component {
         )
 
         const footer = (
-            <div className={`bg-cover bg-right ${w < s && ["web", "ps"].includes(page) ? "mt-auto" : "mt-0"} text-white bg-[#01033d20] border-t-0 border-[#d1a44a] bg-cover bg-center`}
+            <div className={`mt-[50px] text-white bg-[#01033d20] border-t-0 border-[#d1a44a] bg-cover bg-center`}
                 style={{ backgroundImage: `url(${aiImage})` }}>
-                {hrC14}
+                {/* hrC14 */}
+                {hrC14Thin}
                 <Container className='pt-2.5'>
                     <div className={`flex ${w < s ? "flex-wrap" : "flex-nowrap"} px-[10px]`}>
                         {footer1}
                         {footer2}
                         {/* footer3 */}
                     </div>
-                    <div className="footer-divider"></div>
+                    <div className="golden-divider"></div>
                     <div className={`${w<s ? 'center' : 'flex'} items-center justify-between flex-wrap ${w<s ? 'my-4' : 'my-5'} px-[10px]`}>
                         {copyRight}
                         {footbar}
@@ -1335,57 +1639,65 @@ class App extends Component {
             </Container>
         )
 
-        // console.log('page: ', this.props.page)
+        const helmet = (
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>{this.props.pageTitle}</title>
+                {noIndexPages.includes(page) && (
+                    <meta name="robots" content="noindex, follow" />
+                )}
+                {page==='publisher' && username && !noIndexPages.includes(page) && (
+                    <link rel="canonical" href={`https://www.shiningpage.com/publisher/${username}`} />
+                )}
+                {page==='content' && username && slug && (
+                    <link rel="canonical" href={`https://www.shiningpage.com/publisher/${username}/${slug}`} />
+                )}
+            </Helmet>
+        )
 
+        const bodyContent = (
+            <div className={`flex-1 min-w-0 flex flex-col`}>
+                {!['publisher', 'user', 'content', 'web', 'ps', ''].includes(page) && backG}
+                {header}
+                {/* !['web', 'ps'].includes(page) && header */}
+                {!['home', 'publisher', 'user', 'content', 'web', 'ps'].includes(page) && <Addressbar content={[]} fix={address.fix}/>}
+
+                {/*  page404
+                ?
+                <h1 className='fadeInDown' style={{animationDelay:'1s', margin:'30px 10px', color:'#ffffff'}}>
+                    Page Not Found
+                </h1>
+                :
+                <main style={{ marginTop: "0rem" }}><Routes/></main>
+                */}
+                {!notFound ? <main><Routes/></main> : NotFound}
+
+                {/* (w>s && !['web', 'ps'].includes(page) ) && sidebarConst */}
+                <div>
+                    {modalLoading}
+                    {w<s && modalSidebar}
+                    {modalChat}
+                    {modalShowVideo}
+                    {modalMembership}
+                    {modalSendMessage}
+                    {modalViewStatus}
+                    {modalChatList}
+                    {modalWebPageTheme}
+                    {modalChangePassword}
+                </div>
+                {!['publisher', 'user', 'content', 'web', 'ps'].includes(page) && footer}
+                {w<s && footerX}
+                {w<s && hrC14}
+                {/* footbar */}
+            </div>
+        )
         return (
             <Router>
-                <div className='' style={{fontSize:'14px', fontFamily:'Vazir', minHeight:h, direction: rtl ? 'rtl' : 'ltr', backgroundColor:''}}>{/* `${colors[`C${subUserInfo.fc}`]}00` */}
-                    <Helmet>
-                        <meta charSet="utf-8" />
-                        <title>{this.props.pageTitle}</title>
-                        {noIndexPages.includes(page) && (
-                            <meta name="robots" content="noindex, follow" />
-                        )}
-                        {page==='publisher' && username && !noIndexPages.includes(page) && (
-                            <link rel="canonical" href={`https://www.shiningpage.com/publisher/${username}`} />
-                        )}
-                        {page==='content' && username && slug && (
-                            <link rel="canonical" href={`https://www.shiningpage.com/publisher/${username}/${slug}`} />
-                        )}
-                    </Helmet>
-                    <div className=''>
-                        <div className='d-flex' style={{width:'100%', flexDirection:'column'}}>
-                            {!['publisher', 'user', 'content', 'web', 'ps', ''].includes(page) && backG}
-                            {header}
-                            {/* !['web', 'ps'].includes(page) && header */}
-                            {!['home', 'publisher', 'user', 'content', 'web', 'ps'].includes(page) && <Addressbar content={[]} fix={address.fix}/>}
-
-                            {/*  page404
-                            ?
-                            <h1 className='fadeInDown' style={{animationDelay:'1s', margin:'30px 10px', color:'#ffffff'}}>
-                                Page Not Found
-                            </h1>
-                            :
-                            <main style={{ marginTop: "0rem" }}><Routes/></main>
-                            */}
-                            {!notFound ? <main><Routes/></main> : NotFound}
-
-                            {/* (w>s && !['web', 'ps'].includes(page) ) && sidebarConst */}
-                            <div>
-                                {modalLoading}
-                                {modalSidebar}
-                                {modalChat}
-                                {modalShowVideo}
-                                {modalMembership}
-                                {modalSendMessage}
-                                {modalViewStatus}
-                                {modalChatList}
-                            </div>
-                            {!['publisher', 'user', 'content', 'web', 'ps'].includes(page) && footer}
-                            {w<s && footerX}
-                            {w<s && hrC14}
-                            {/* footbar */}
-                        </div>
+                <div className='' style={{fontSize:'14px', fontFamily:'Vazir', minHeight:h, backgroundColor:''}}>{/* `${colors[`C${subUserInfo.fc}`]}00` */}
+                    {helmet}
+                    <div className='flex w-full'>
+                        {desktopSidebar}
+                        {bodyContent}
                     </div>
                 </div>
             </Router>
@@ -1419,6 +1731,7 @@ const mapStateToProps = (state) => {
         pageName: state.pageName,
         pageTitle: state.pageTitle,
 
+        subUserInfo: state.subUserInfo,
         subSelected: state.subUserInfo.selected,
         subUserId: state.subUserInfo['_id'],
         subUserType: state.subUserInfo['subUserType'],
@@ -1452,6 +1765,8 @@ const mapStateToProps = (state) => {
         objects: state.objects,
         toggleViewStatus: state.toggleViewStatus,
         rubyInterval: state.rubyInterval,
+        balance: state.balance,
+
     }
 }
 export default connect (mapStateToProps)(App);
