@@ -18,16 +18,17 @@ var w = window.innerWidth
 class AboutUsPage extends Component {
 
     state = {
-        w: window.innerWidth,
-        uc: 0,
-        // selectedFile: [],
-        zx: 1000,
+      w: window.innerWidth,
+      pageName: 'About',
+      uc: 0,
+      // selectedFile: [],
+      zx: 1000,
     }
 
     async componentDidMount() {
         window.scrollTo(0, 0)
         await this.props.dispatch(setPageName('About'))
-        await this.props.dispatch(setPageTitle(`${this.props.pageName} | Whoraly | ${this.props.lang.toLowerCase()}`))
+		    await this.props.dispatch(setPageTitle(`${this.state.pageName} | ShiningPage`))
         await this.props.dispatch(setPage('about'))
         await this.props.dispatch(setSubject('about'))
         await this.props.dispatch(setAddress({ content:[], fix:this.props.pageName }))
