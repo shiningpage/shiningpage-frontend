@@ -66,7 +66,7 @@ class LatestPage extends Component {
 
 		const res = await axios.post(`${serverURL}/latest/getAllLatest/`, data);
 		const x2 = res.data
-		console.log(x2)
+		// console.log(x2)
 		this.setState({
 			searchLatest : [...searchLatest, ...x2],
 			finishDataLatest: (x2.length<listRefreshQty || x2.length===this.state.latestN) ? true : false,
