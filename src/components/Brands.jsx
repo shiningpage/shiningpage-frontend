@@ -151,7 +151,7 @@ class Brands extends Component{
         )
 
         const allCompanyList = (
-            <div className='flex w-full h-full pl-[15px] items-start z-0' >
+            <div className={`flex w-full h-full pl-[${w<s ? 10 : 15}px] items-start`}>
                 {(loadingData && starredCompany.length===0) ? ColorLoadingCenter : allCompany}
             </div>
         )
@@ -161,7 +161,7 @@ class Brands extends Component{
         return (
             <div className='flex animated [animation-delay:1s] fadeIn w-full flex-col'>
                 {header}
-                <div className='top-0 w-full overflow-scroll py-[30px]'>
+                <div className='overflow-scroll py-[30px]'>
                     {allCompanyList}
                 </div>
             </div>
