@@ -895,7 +895,7 @@ class App extends Component {
                 onClick={() => this.onToggleSidebar()}
             >
                 <img
-                    className={`C${mainUser.fc} block object-cover min-w-[35px] min-h-[35px] max-w-[35px] max-h-[35px] p-[3px] ${
+                    className={`C${mainUser.fc} block object-cover min-w-[35px] min-h-[35px] max-w-[35px] max-h-[35px] p-[2px] ${
                         mainUser.businessType > 0 ? "rounded-[3px]" : (!auth ? "" : "rounded-full")
                     }`}
                     src={
