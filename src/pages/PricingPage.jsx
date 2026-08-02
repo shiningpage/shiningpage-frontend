@@ -48,7 +48,7 @@ class PricingPage extends Component {
               </div>
               <div className='animated fadeInUpX' style={{animationDelay:'.5s', margin:'0px 5px 30px', padding:'10px', backgroundColor:'#ffffff00', borderRadius:'5px'}}>
                 <div className='' style={{backgroundColor:'#ffffff00', borderRadius:'5px', padding:'10px'}}>
-                  Coming soon ...
+                  Pricing Coming Soon
                 </div>
               </div>
             </Container>
