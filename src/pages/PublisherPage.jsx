@@ -512,13 +512,13 @@ class PublisherPage extends Component {
             toggleBasicInformation, toggleAboutInfo, toggleActivitySummary, toggleTeam, instagram, telegram,
             facebook, youtube, linkedin, team, teamMembers, goToSectionTop, 
         } = this.state;
-        const {rtl, lang, setLT, pageYOffset, fullAccess, geo, userId, mainUser, mainUserId, subUserInfo, auth,
-            userServiceSelected, 
-         } = this.props;
+        const {rtl, lang, setLT, pageYOffset, fullAccess, geo, userId, mainUser, mainUserId, subUserInfo, auth, userServiceSelected, 
+         scrollDirection } = this.props;
         // var fc = 16
         // console.log(fc)
 
-        console.log('pageYOffset: ', pageYOffset)
+        // console.log('pageYOffset: ', pageYOffset)
+        // console.log('scrollDirection: ', scrollDirection)
 
         const me = mainUser._id && subUserInfo._id && mainUser._id===subUserInfo._id ? true : false
         // console.log(mainUser._id, subUserInfo._id)
@@ -1141,10 +1141,10 @@ class PublisherPage extends Component {
 
         const goToSection = (
             <div id="goToSection"
-                className={`flex gap-2 cardShadow sticky top-[60px] w-full p-${pageYOffset > 250 ? 2 : 0} z-[1000] bg-white/50 overflow-hidden transition-all duration-${pageYOffset > 250 ? 500 : 0} ease-in-out ${pageYOffset > 250 ? 'h-[45px] opacity-100 translate-y-0 visible' : 'h-0 opacity-0 -translate-y-5 invisible pointer-events-none'}`}
+                className={`flex gap-2 cardShadow backBlur sticky ${w < s ? (scrollDirection==='up' ? 'top-0' : 'top-[45px]') : 'top-[60px]'} w-full p-${pageYOffset > 250 ? 2 : 0} z-[1000] bg-[#ffffff99] transition-all duration-${pageYOffset > 250 ? 500 : 0} ease-in-out ${pageYOffset > 250 ? 'h-[45px] opacity-100 translate-y-0 visible' : 'h-0 opacity-0 -translate-y-5 invisible pointer-events-none'} overflow-scroll`}
             >
                 {sectionButtons.map(({ id, icon: Icon, label }) => (
-                    <div key={id} className="btnShadow flex items-center bg-white gap-2 p-2 rounded-5" onClick={() => this.onSetSidebarOpen(id, true)}>
+                    <div key={id} className="btnShadow flex items-center bg-white/70 gap-2 p-2 rounded-5" onClick={() => this.onSetSidebarOpen(id, true)}>
                         <Icon className="w-[18px] text-[23px]" />
                         <div className="mt-1">{label}</div>
                     </div>
