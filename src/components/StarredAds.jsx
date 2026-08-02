@@ -147,7 +147,7 @@ class StarredAds extends Component{
             <div className='center w-full'>{loaderZ}</div>
         )
         const allAdsList = (
-            <div className='flex w-full h-full py-[30px] pl-[15px] items-center'>
+            <div className={`flex w-full h-full pl-[${w<s ? 10 : 15}px] items-start`}>
                 { (loadingData  && starredAds.length===0) ? ColorLoadingCenter : allAds }
             </div>
         )
@@ -155,9 +155,9 @@ class StarredAds extends Component{
         const header = <div className='goldenText animated fadeInLeft [animation-delay:.5s] text-[25px] font-[600] pt-[25px] pl-[25px]'>Top Products & Services</div>
 
         return (
-            <div className={`flex animated fadeIn w-full flex flex-col ${w < s ? "pt-[10px] pb-[30px]" : "py-[30px]"}`} style={{animationDelay:'1.5s'}}>
+            <div className='flex animated [animation-delay:1s] fadeIn w-full flex-col'>
                 {header}
-                <div className='w-full overflow-scroll'>
+                <div className='overflow-scroll py-[30px]'>
                     {allAdsList}
                 </div>
             </div>
