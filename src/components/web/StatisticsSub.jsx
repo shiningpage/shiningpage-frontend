@@ -990,7 +990,7 @@ class StatisticsSub extends Component{
         )
 
         return (
-            <div id='statisticsSub' className='center' style={{width:'100%', padding:'70px 10px', flexDirection:'column', position:'relative'}}>
+            <div id='statisticsSub' className='center' style={{width:'100%', padding:'70px 10px', flexDirection:'column', position:'relative', overflow:'hidden'}}>
                 <div className='center txWhite tx' style={{...titleStyle, marginBottom:'50px'}}>{setLT.statistics}</div>
                 {kpiCards}
                 <div className='center' style={{width:'100%', margin:'20px 0px 0px', backgroundColor:'', borderRadius:'10px', flexDirection:'column'}}>
