@@ -993,18 +993,9 @@ class PublisherPage extends Component {
         )
 
         const userHeader = (
-            <div id='header' className='center' style={{width:'100%', height:'70px', justifyContent:'space-between', alignItems:'center', padding:w<s ? '10px 0px' : '10px', zIndex:'2'}}>
-                <div className='d-flex'>
-                    {/* {menu}&nbsp;&nbsp; */}
-                    {profileBox}
-                </div>
+            <div id='header' className='center bg-white' style={{width:'100%', height:'', justifyContent:'space-between', alignItems:'center', padding:w<s ? '5px' : '10px', zIndex:'2'}}>
+                {profileBox}
                 {w>s && contactHead}
-                {/*  userWebPage &&
-                    <div className='d-flex' style={{margin:'0px 10px'}}>
-                        <UserSettings /> 
-                        <LangBox />
-                    </div>
-                 */}
             </div>
         )
 
@@ -1170,12 +1161,10 @@ class PublisherPage extends Component {
                 <div className="top-[0px] z-0">
                     {profileData && backG}
                     {goToSection}
-                    <div className="relative h-[70px] z-[3] bg-white transition-all duration-500">
-                        {userHeader}
-                    </div>
+                    {userHeader}
                     {w<s && contactHead}
-{/*                     {w>s && <NavbarSub fc={fc} txBlack={txBlack} mapStateToProps={this.props} />}
- */}                    {profileData && <WebCarousel dataX={subUserInfo} fc={fc}/>}
+                    {/* w>s && <NavbarSub fc={fc} txBlack={txBlack} mapStateToProps={this.props}/> */}
+                    {profileData && <WebCarousel dataX={subUserInfo} fc={fc}/>}
                     {me && googleAds && subUserInfo.ads && adsBox1}
                     <FeaturesSub fc={fc} nx={subUserInfo.totalContents} me={me} mapStateToProps={this.props} viewN={viewN} dispatch={this.props.dispatch}/>                    
                     {about}
