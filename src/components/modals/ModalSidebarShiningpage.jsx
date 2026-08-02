@@ -20,7 +20,7 @@ const ModalSidebarShiningpage = forwardRef(({ rtl, content, isOpen, dispatch }, 
             }}
             onClick={(e) => onOutside(e)}
         >
-            <div className='cardShadow sidebarBack' style={{width:'300px', backgroundSize: 'cover',}}>
+            <div style={{width:'200px'}}>
                 {content}
             </div>
         </div>
