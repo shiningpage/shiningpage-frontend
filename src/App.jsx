@@ -1623,8 +1623,8 @@ class App extends Component {
                 style={{ backgroundImage: `url(${aiImage})` }}>
                 {/* hrC14 */}
                 {hrC14Thin}
-                <Container className='pt-2.5'>
-                    <div className={`flex ${w < s ? "flex-wrap" : "flex-nowrap"} px-[10px]`}>
+                <div>
+                    <div className={`flex ${w < s ? "flex-wrap" : "flex-nowrap"} p-[10px]`}>
                         {footer1}
                         {footer2}
                         {/* footer3 */}
@@ -1634,7 +1634,7 @@ class App extends Component {
                         {copyRight}
                         {footbar}
                     </div>
-                </Container>
+                </div>
             </div>
         )
 
