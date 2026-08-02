@@ -863,17 +863,15 @@ class App extends Component {
         );
 
         const plan = (
-            <Link to={auth ? '/pricing' : '/login'} className="!no-underline group flex items-center gap-3 px-3 py-1 rounded-lg border border-[#d5ad6d] text-white cursor-pointer select-none transition-all duration-300 ease-out hover:scale-105 hover:bg-[#d5ad6d]/10 hover:shadow-[0_0_18px_rgba(213,173,109,0.55)] active:scale-95 active:bg-[#d5ad6d]/20 active:shadow-[0_0_8px_rgba(213,173,109,0.8)] focus:outline-none focus:ring-2 focus:ring-[#d5ad6d]/60">
-                {auth && <FaCrown className="goldenText w-6 h-6 -mt-1 transition-all duration-300 group-hover:rotate-12 group-hover:scale-110 group-active:scale-95" />}
+            <Link to={auth ? '/pricing' : '/login'} className={`!no-underline group flex items-center gap-${w<s ? 1 : 3} px-${w<s ? 2 : 3} py-1 rounded-lg ${w<s ? '' : 'border'} border-[#d5ad6d] text-white cursor-pointer select-none transition-all duration-300 ease-out hover:scale-105 hover:bg-[#d5ad6d]/10 hover:shadow-[0_0_18px_rgba(213,173,109,0.55)] active:scale-95 active:bg-[#d5ad6d]/20 active:shadow-[0_0_8px_rgba(213,173,109,0.8)] focus:outline-none focus:ring-${w<s ? 0 : 2} focus:ring-[#d5ad6d]/60`}>
+                {w>s && auth && <FaCrown className="goldenText w-6 h-6 -mt-1 transition-all duration-300 group-hover:rotate-12 group-hover:scale-110 group-active:scale-95" />}
                 <div>
-                    <div className="text-[12px] -mb-1">
-                        Free Plan
-                    </div>
+                    {auth && <div className="text-[12px] -mb-1">Free Plan</div>}
                     <div className="goldenText text-[14px] font-semibold transition-all duration-300 group-hover:tracking-wide group-active:scale-95">
-                        {auth ? 'Upgrade' : 'Sign up / Login'}
+                        {auth ? 'Upgrade' : 'Sign up | Login'}
                     </div>
                 </div>
-                <FaAngleRight className="transition-all duration-300 group-hover:translate-x-1 group-active:translate-x-2" />
+                {w>s && auth && <FaAngleRight className="transition-all duration-300 group-hover:translate-x-1 group-active:translate-x-2" />}
             </Link>
         )
 
@@ -890,15 +888,38 @@ class App extends Component {
             </div>
         )
 
+        const userAuthImg = (
+            <div className={`p-[1px] bg-gradient-to-r from-yellow-400 via-amber-500 to-purple-600 ${
+                    mainUser.businessType > 0 ? "rounded-[4px]" : (!auth ? "" : "rounded-full")
+                }`}
+                onClick={() => this.onToggleSidebar()}
+            >
+                <img
+                    className={`C${mainUser.fc} block object-cover min-w-[35px] min-h-[35px] max-w-[35px] max-h-[35px] p-[3px] ${
+                        mainUser.businessType > 0 ? "rounded-[3px]" : (!auth ? "" : "rounded-full")
+                    }`}
+                    src={
+                        exist(mainUser.profileIndex)
+                                ? `https://www.pix.shiningpage.com/whoraly/profile/small/${mainUser._id}-${mainUser.profileIndex}.jpeg`
+                                : mainUser.genderValue === 0
+                                    ? female
+                                    : male
+                    }
+                    alt="user"
+                />
+            </div>
+        )
+
         const headerAuthBoxM = (
             <div className='d-flex' style={{alignItems:'center', width:'100%', justifyContent:'space-between', direction:'ltr'}}>
                 <div className='d-flex' style={{alignItems:'center'}}>
-                    {sidebarIcon}
+                    {auth ? userAuthImg : sidebarIcon}
                     <Search/>
                 </div>
                 <div className='d-flex' style={{alignItems:'center', gap:'10px'}}>
                     {/* <div style={{margin:'0px 5px'}}><LangBox/></div> */}
-                    {auth ? <UserBox/> : loginBox}
+                    {/* auth ? <UserBox/> : loginBox */}
+                    {plan}
                 </div>
             </div>
         )
@@ -1236,18 +1257,6 @@ class App extends Component {
             </div>
         )
 
-        const sidebarConst = (
-            <div className='sticky-top'
-                style={{top:0, left:0, minHeight: window.innerHeight}}>
-                <div className='backBlur' style={{backgroundColor:'#C5DAF500' }}>
-                    <div style={{minHeight: window.innerHeight}}>
-                        {sidebarHeader}
-                        {sidebarItems}
-                    </div>
-                </div>
-            </div>
-        )
-
         const userInfo = (
             <a href={linkTarget} className="!no-underline flex items-start p-[20px] gap-2"
                 onClick={() => (page!=='web' && page!=='publisher')
@@ -1305,7 +1314,8 @@ class App extends Component {
         )
 
         const shiningpageLogo = (
-            <Link to="/" className="flex items-end relative z-10 text-[#ba851b] hover:!text-[#ba851b]">
+            <Link to="/" className="flex items-end relative z-10 text-[#ba851b] hover:!text-[#ba851b]"
+                onClick={() => this.onToggleSidebar()}>
                 {logoBoxSide}
                 <span className="goldenText text-[22px] font-bold mx-[10px] underline decoration-[#ba851b]">Shiningpage</span>
             </Link>
@@ -1486,7 +1496,7 @@ class App extends Component {
                 fc={fc}
                 logoSide={logoSide}
                 loginNav={loginNav}
-                content={sidebarConst}
+                content={desktopSidebar}
                 updateVersion={updateVersion}
                 isOpen={toggleSidebar}
                 toggleSidebar={this.onToggleSidebar}
@@ -1696,7 +1706,7 @@ class App extends Component {
                 <div className='' style={{fontSize:'14px', fontFamily:'Vazir', minHeight:h, backgroundColor:''}}>{/* `${colors[`C${subUserInfo.fc}`]}00` */}
                     {helmet}
                     <div className='flex w-full'>
-                        {desktopSidebar}
+                        {w>s && desktopSidebar}
                         {bodyContent}
                     </div>
                 </div>
