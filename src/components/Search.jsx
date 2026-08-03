@@ -280,7 +280,7 @@ class Search extends Component {
 
     const searchTape = (
       <div
-        className='relative m-0 rounded-[3px] text-[13px] w-[200px]'
+        className={`relative m-0 rounded-[3px] text-[13px] ${w<400 ? 'w-[160px]' : 'w-[200px]'}`}
       >
         <input
           type="text"
