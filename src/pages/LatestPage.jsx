@@ -348,6 +348,9 @@ class LatestPage extends Component {
 				<div style={{marginBottom:'10px'}}>
 					{googleAds && adsBox1}
 				</div>
+				<div style={{marginBottom:'10px'}}>
+					{googleAds && adsBox1}
+				</div>
 				{/* <div style={{width:'100%', height:'30px', margin:'15px 0px', position:'ralative'}}>
 					<RubyCollector id='adsH2' left={20}/>
 				</div> */}
