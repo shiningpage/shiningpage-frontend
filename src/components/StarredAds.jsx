@@ -147,7 +147,7 @@ class StarredAds extends Component{
             <div className='center w-full'>{loaderZ}</div>
         )
         const allAdsList = (
-            <div className={`flex w-full h-full pl-[${w<s ? 10 : 15}px] items-start`}>
+            <div className={`flex w-full h-full ${w<s ? 'pl-[10px]' : 'pl-[15px]'} items-start`}>
                 { (loadingData  && starredAds.length===0) ? ColorLoadingCenter : allAds }
             </div>
         )
