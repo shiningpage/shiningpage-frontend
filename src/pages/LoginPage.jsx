@@ -14,6 +14,7 @@ import CountrySelector from '../components/CountrySelector';
 import siteView from '../modules/siteView';
 import { FaRegEye, FaRegEyeSlash, FaUser, FaLock, FaShieldAlt, FaBolt,
   FaStar, FaGlobe, } from "react-icons/fa";
+import { RiLogoutCircleRLine } from "react-icons/ri";
 import { exist, checkSeen } from '../helper';
 import { serverURL, s } from '../srcSet';
 
@@ -513,21 +514,29 @@ class LoginPage extends Component {
         )
         const forgetPassword = <div className='link-underline mt-5 text-[#0C6DFB] font-medium' onClick={() => null}>Forget Password?</div>
 
+        const createYourPageBtn = (
+            <Link to='/' className={`C11 center w-[170px] h-[45px] !no-underline group flex items-center gap-2 py-1 rounded-lg cursor-pointer select-none transition-all duration-300 ease-out hover:scale-105 hover:bg-[#d5ad6d]/10 hover:shadow-[0_0_18px_rgba(213,173,109,0.55)] active:scale-95 active:bg-[#d5ad6d]/20 active:shadow-[0_0_8px_rgba(213,173,109,0.8)] focus:outline-none focus:ring-[#d5ad6d]/60`}
+                onClick={this.logout}
+            >
+                <RiLogoutCircleRLine className="text-red-700 w-[20px] text-[23px] transition-transform duration-300 group-hover:scale-110"/>
+                <div className="text-red-700 font-[500] mt-1 transition-all duration-300 group-hover:tracking-wide group-active:scale-95">
+                    {setLT.exit}
+                </div>
+            </Link>
+        )
+
         return (
             <Container className={`center ${w<s ? 'p-4' : 'px-2.5 pt-10 pb-20'} text-white`}>
                     <div className='animated fadeInUpX [animation-delay:.5s] backdrop-blur-[20px] bg-[#ffffff10] border !border-white/20 w-full max-w-[400px] rounded-[20px]'>
                         { auth
                             ?
-                            <div className='center flex-col items-center pt-[30px] px-0 pb-2.5'>
-                                <Link to={`/`} className='center flex-col items-center'>
-                                    {UserImage}
-                                    {setLT.home}
-                                    {/* mainUser.username */}
-                                </Link>
-                                <Link to={`/`} className='my-10' onClick={this.logout}>
-                                    {setLT.exit}
-                                </Link>
-
+                            <div className='p-3'>
+                                <span className=' text-white/90'>
+                                    To login to another account or create a new one, please sign out first.
+                                </span>
+                                <div className='center flex-col items-center pt-[30px] px-0 pb-2.5'>
+                                    {createYourPageBtn}
+                                </div>
                             </div>
                             :
                             <div className={`p-10px ${w < 300 ? "py-2.5 px-0" : "p-2.5"}`}>
