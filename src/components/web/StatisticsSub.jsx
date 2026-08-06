@@ -664,19 +664,19 @@ class StatisticsSub extends Component{
                     </div>
                 ),
                 tableInfo = (
-                    <div className='d-flex' style={{padding:'10px', width:'100%', fontSize:'14px', justifyContent: 'space-between', alignItems:''}}>
-                        {userImage}&nbsp;&nbsp;&nbsp;
-                        <div className='' style={{width:'100%'}}>
+                    <div className='' style={{padding:'10px', width:'100%', fontSize:'14px', justifyContent: 'space-between', alignItems:''}}>
+                        <div className='flex gap-2' style={{width:'100%'}}>
+                            {userImage}
                             <div className='d-flex' style={{width:'100%', justifyContent: 'space-between', alignItems:'center'}}>
                                 {userCountry}
                                 {/* viewLike */}
                                 {(mainUserId===userId || mainUserId===item.commenter) && deleteBtn}
                             </div>
-                            <div className='d-flex' style={{width:'100%', justifyContent: 'space-between', alignItems:'center'}}>
-                                {comment}
-                            </div>
-                            {star}
                         </div>
+                        <div className='d-flex' style={{width:'100%', justifyContent: 'space-between', alignItems:'center'}}>
+                            {comment}
+                        </div>
+                        {star}
                     </div>
                 ),
                 <div key={i} className='d-flex btnShadow' onClick={() => this.onReactor(item)}
