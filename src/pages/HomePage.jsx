@@ -658,7 +658,7 @@ class HomePage extends Component {
           <div className="text-[#6E543B] font-semibold transition-all duration-300 group-hover:tracking-wide group-active:scale-95">
             Create Your Page
           </div>
-          {w>s && auth && <FaAngleRight className="text-[#6E543B] transition-all duration-300 group-hover:translate-x-1 group-active:translate-x-2" />}
+          <FaAngleRight className="text-[#6E543B] transition-all duration-300 group-hover:translate-x-1 group-active:translate-x-2" />
       </Link>
     )
 
