@@ -5,8 +5,14 @@ import { Link } from "react-router-dom";
 import { Container } from 'react-bootstrap';
 import { setAddress, setSubject, setGeo, setPageName, setPageTitle, setPage, setUserInfo } from '../dataStore/actions';
 import siteView from '../modules/siteView';
-import { MdPhonelinkRing, MdPhoneInTalk, MdEmail } from 'react-icons/md';
+import { MdOutlinePages, MdPhonelinkRing, MdPhoneInTalk, MdEmail } from 'react-icons/md';
 import { GiCheckMark } from "react-icons/gi";
+import { LuBriefcaseBusiness } from "react-icons/lu";
+import { GoShareAndroid } from "react-icons/go";
+import { AiOutlineCloudDownload, AiOutlineBarChart } from "react-icons/ai";
+import { HiOutlineGlobeAlt } from "react-icons/hi2";
+import { FaAngleRight } from "react-icons/fa6";
+import showcaseSample from '../assets/images/other/showcaseSample.jpg';
 import userN from '../assets/images/other/user1.png';
 import male from '../assets/images/other/man2.png';
 import female from '../assets/images/other/woman2.png';
@@ -647,8 +653,95 @@ class HomePage extends Component {
       </div>
     )
 
+    const createYourPageBtn = (
+      <Link to='/login' className={`C14 center w-[170px] h-[45px] !no-underline group flex items-center gap-2 py-1 rounded-lg cursor-pointer select-none transition-all duration-300 ease-out hover:scale-105 hover:bg-[#d5ad6d]/10 hover:shadow-[0_0_18px_rgba(213,173,109,0.55)] active:scale-95 active:bg-[#d5ad6d]/20 active:shadow-[0_0_8px_rgba(213,173,109,0.8)] focus:outline-none focus:ring-[#d5ad6d]/60`}>
+          <div className="text-[#6E543B] font-semibold transition-all duration-300 group-hover:tracking-wide group-active:scale-95">
+            Create Your Page
+          </div>
+          {w>s && auth && <FaAngleRight className="text-[#6E543B] transition-all duration-300 group-hover:translate-x-1 group-active:translate-x-2" />}
+      </Link>
+    )
+
+    const createYourPageText = (
+      <div className={`w-[100%] text-white ${w<950 ? 'p-[30px]' : 'p-[0px]'}`}>
+        <p className='goldenText text-[16px] font-[500] mb-1'>Your Complete Business Presence in One Place</p>
+        <p className='!mb-[30px]'>Create a beautiful business page, showcase your services,
+                      grow your audience, manage your business, and connect everything
+                      under one professional platform.</p>
+        {createYourPageBtn}
+      </div>
+    )
+
+    const introText = (
+      <div className={`${w<950 ? '' : 'w-[40%]'} ${w<s ? '' : 'min-w-[400px]'} ${w<s ? 'p-[10px]' : 'p-[30px]'} ${w<950 ? '' : '-mr-[200px]'} z-1`}>
+        <h1 className='goldenText !font-semibold !mb-[30px]'>
+          ShiningPage
+        </h1>
+        <h3 className={`!font-semibold ${w<950 ? '' : '!mb-[70px]'}`}>
+          <span>All-in-One Business Platform </span>
+          <span>for </span>
+          <span className="font-bold bg-gradient-to-r from-violet-600 via-indigo-500 to-sky-500 bg-clip-text text-transparent">
+            Small Businesses
+          </span>
+            {' & '}
+          <span className="font-bold bg-gradient-to-r from-violet-600 via-indigo-500 to-sky-500 bg-clip-text text-transparent">
+            Startups
+          </span>
+        </h3>
+        {w>=950 && createYourPageText}
+      </div>
+    )
+
+    const showcase = (
+      <div className='w-[100%]'>
+        <img
+          src={showcaseSample}
+          alt="showcase Sample"
+          className="w-[100%] fade-edges"
+        />
+      </div>
+    )
+
+    const intro = (
+      <div className={`${w<950 ? '' : 'flex'} gap-5 items-start text-white ${w<s ? 'p-[10px]' : 'p-[0px]'}`}>
+        {introText}
+        {showcase}
+      </div>
+    )
+
+    const introFeaturesData = [
+      { icon: MdOutlinePages, title: "Professional Business Pages" },
+      { icon: LuBriefcaseBusiness, title: "Business Management Tools" },
+      { icon: GoShareAndroid, title: "Social Media Integration" },
+      { icon: AiOutlineBarChart, title: "Analytics & World Map" },
+      { icon: AiOutlineCloudDownload, title: "Attachments & Downloads" },
+      { icon: HiOutlineGlobeAlt, title: "Custom Domains & 60+ Themes" },
+    ];
+
+    const introFeatures = (
+      <div className={`flex flex-wrap justify-between w-full max-w-[800px] mx-auto text-white ${w<1120 ? 'px-[30px]' : ''}`}>
+        {introFeaturesData.map(({ icon: Icon, title }, index) => (
+          <div
+            key={index}
+            className={`${w<600 && 'basis-1/3'} flex flex-col items-center ${w<950 ? 'w-20' : 'w-26'} h-35 mb-4`}
+          >
+            <div className="golden-border center min-w-15 min-h-15 p-2 mb-3">
+              <Icon className="text-[25px]" />
+            </div>
+            <p className={`text-center font-light text-[13px] ${w<600 && 'max-w-[100px]'} m-0`}>{title}</p>
+          </div>
+        ))}
+      </div>
+    )
+
+
     return (
       <div>
+        <div className='mb-[50px]'>
+          {intro}
+          {w<950 && createYourPageText}
+        </div>
+        {introFeatures}
         {/* <ShiningpageCarousel /> */}
         {/* {googleAds && adsBox} */}
         {/* welcome */}

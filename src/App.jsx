@@ -53,8 +53,6 @@ import { logout, identifyObj, exist, getBalance, scrollStatus, checkRubyInterval
 import { serverURL, s, NavH, langArray, countryArr, noIndexPages } from './srcSet';
 import aiImage from "./assets/images/other/ai-background.jpg";
 
-const sw = 280
-
 class App extends Component {
 
     constructor(props) {
@@ -844,23 +842,23 @@ class App extends Component {
             { key: "pricing", to: "/pricing", label: "Pricing" },
         ];
 
+        const navGap = w >= 1600
+                        ? 40
+                        : Math.max(10, 40 - Math.floor((1600 - w) / 100) * 5);
+
         const navbar = (
-            <div className="flex gap-10">
+            <div className="flex" style={{ gap: `${navGap}px` }}>
                 {navLinks.map(({ key, to, label }) => (
-                    <NavLink
-                        key={key}
-                        to={to}
-                        className={`relative !no-underline text-[14px] font-medium transition-all duration-300 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:origin-center after:rounded-full after:bg-[#d5ad6d] after:transition-transform after:duration-300 hover:text-[#d5ad6d] hover:after:scale-x-100 ${
-                            page === key
-                                ? "goldenText after:scale-x-100"
-                                : "text-white after:scale-x-0"
-                        }`}
+                    <NavLink key={key} to={to}
+                        className={`relative !no-underline text-[14px] font-medium transition-all duration-300 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:origin-center after:rounded-full after:bg-[#d5ad6d] after:transition-transform after:duration-300 hover:text-[#d5ad6d] hover:after:scale-x-100
+                            ${page === key ? "goldenText after:scale-x-100" : "text-white after:scale-x-0"}`
+                        }
                     >
                         {label}
                     </NavLink>
                 ))}
             </div>
-        );
+        )
 
         const plan = (
             <Link to={auth ? '/pricing' : '/login'} className={`!no-underline group flex items-center gap-${w<s ? 1 : 3} px-${w<s ? 2 : 3} py-1 rounded-lg ${w<s ? '' : 'border'} border-[#d5ad6d] text-white cursor-pointer select-none transition-all duration-300 ease-out hover:scale-105 hover:bg-[#d5ad6d]/10 hover:shadow-[0_0_18px_rgba(213,173,109,0.55)] active:scale-95 active:bg-[#d5ad6d]/20 active:shadow-[0_0_8px_rgba(213,173,109,0.8)] focus:outline-none focus:ring-${w<s ? 0 : 2} focus:ring-[#d5ad6d]/60`}>
@@ -880,9 +878,7 @@ class App extends Component {
                 {w<s && sidebarIcon}
                 <div className="relative flex items-center w-full justify-between">
                     <Search />
-                    <div className="absolute left-1/2 -translate-x-1/2">
-                        {navbar}
-                    </div>
+                    {w>1050 && <div className="absolute left-1/2 -translate-x-1/2">{navbar}</div>}
                     {plan}
                 </div>
             </div>
@@ -970,7 +966,7 @@ class App extends Component {
         )
 
         const sidebarButtons = [
-            ...(w < s
+            ...(w < 1050
                 ? [
                     { key: "home", to: "/", label: setLT.home, icon: AiOutlineHome },
                     { key: "latest", to: "/latest", label: "Latest Posts", icon: BiSolidBookContent },
