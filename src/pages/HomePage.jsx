@@ -654,7 +654,7 @@ class HomePage extends Component {
     )
 
     const createYourPageBtn = (
-      <Link to='/login' className={`C14 center w-[170px] h-[45px] !no-underline group flex items-center gap-2 py-1 rounded-lg cursor-pointer select-none transition-all duration-300 ease-out hover:scale-105 hover:bg-[#d5ad6d]/10 hover:shadow-[0_0_18px_rgba(213,173,109,0.55)] active:scale-95 active:bg-[#d5ad6d]/20 active:shadow-[0_0_8px_rgba(213,173,109,0.8)] focus:outline-none focus:ring-[#d5ad6d]/60`}>
+      <Link to='/login' className={`animated fadeInLeft ![animation-delay:.4s] C14 center w-[170px] h-[45px] !no-underline group flex items-center gap-2 py-1 rounded-lg cursor-pointer select-none transition-all duration-300 ease-out hover:scale-105 hover:bg-[#d5ad6d]/10 hover:shadow-[0_0_18px_rgba(213,173,109,0.55)] active:scale-95 active:bg-[#d5ad6d]/20 active:shadow-[0_0_8px_rgba(213,173,109,0.8)] focus:outline-none focus:ring-[#d5ad6d]/60`}>
           <div className="text-[#6E543B] font-semibold transition-all duration-300 group-hover:tracking-wide group-active:scale-95">
             Create Your Page
           </div>
@@ -664,8 +664,8 @@ class HomePage extends Component {
 
     const createYourPageText = (
       <div className={`w-[100%] text-white ${w<950 ? 'p-[30px]' : 'p-[0px]'}`}>
-        <p className='goldenText text-[16px] font-[500] mb-1'>Your Complete Business Presence in One Place</p>
-        <p className='!mb-[30px]'>Create a beautiful business page, showcase your services,
+        <p className='animated fadeInUp ![animation-delay:.3s] goldenText text-[16px] font-[500] mb-1'>Your Complete Business Presence in One Place</p>
+        <p className='animated fadeInUp ![animation-delay:.4s] !mb-[30px]'>Create a beautiful business page, showcase your services,
                       grow your audience, manage your business, and connect everything
                       under one professional platform.</p>
         {createYourPageBtn}
@@ -674,16 +674,16 @@ class HomePage extends Component {
 
     const introText = (
       <div className={`${w<950 ? '' : 'w-[40%]'} ${w<s ? '' : 'min-w-[400px]'} ${w<s ? 'p-[10px]' : 'p-[30px]'} ${w<950 ? '' : '-mr-[200px]'} z-1`}>
-        <h1 className='goldenText !font-semibold !mb-[30px]'>
+        <h1 className='animated fadeInUp ![animation-delay:.0s] goldenText !font-semibold !mb-[30px]'>
           ShiningPage
         </h1>
-        <h3 className={`!font-semibold ${w<950 ? '' : '!mb-[70px]'}`}>
-          <span>All-in-One Business Platform </span>
-          <span>for </span>
+        <h3 className={`animated fadeInUp ![animation-delay:.1s] !font-semibold ${w<950 ? '' : '!mb-[70px]'}`}>
+          <span className='text-white/90'>All-in-One Business Platform </span>
+          <span className='text-white/90'>for </span>
           <span className="font-bold bg-gradient-to-r from-violet-600 via-indigo-500 to-sky-500 bg-clip-text text-transparent">
             Small Businesses
           </span>
-            {' & '}
+            <span className='text-white/90'>{' & '}</span>
           <span className="font-bold bg-gradient-to-r from-violet-600 via-indigo-500 to-sky-500 bg-clip-text text-transparent">
             Startups
           </span>
@@ -693,7 +693,7 @@ class HomePage extends Component {
     )
 
     const showcase = (
-      <div className='w-[100%]'>
+      <div className='animated fadeInLeft ![animation-delay:.2s] w-[100%]'>
         <img
           src={showcaseSample}
           alt="showcase Sample"
@@ -720,10 +720,11 @@ class HomePage extends Component {
 
     const introFeatures = (
       <div className={`flex flex-wrap justify-between w-full max-w-[800px] mx-auto text-white ${w<1120 ? 'px-[30px]' : ''}`}>
-        {introFeaturesData.map(({ icon: Icon, title }, index) => (
+        {introFeaturesData.map(({ icon: Icon, title }, i) => (
+          console.log('index: ', `![animation-delay:.${i+3}s]`),
           <div
-            key={index}
-            className={`${w<600 && 'basis-1/3'} flex flex-col items-center ${w<950 ? 'w-20' : 'w-26'} h-35 mb-4`}
+            key={i} style={{ animationDelay: `.${i + 3}s` }}
+            className={`animated zoomIn ${w<600 && 'basis-1/3'} flex flex-col items-center ${w<950 ? 'w-20' : 'w-26'} h-35 mb-4`}
           >
             <div className="golden-border center min-w-15 min-h-15 p-2 mb-3">
               <Icon className="text-[25px]" />
