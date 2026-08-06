@@ -1298,7 +1298,7 @@ class App extends Component {
         const inviteToJoin = (
             <div className='text-center text-white px-3 py-4'>
                 <span className='mr-2'>Create your free account to get started.</span>
-                <Link to='/login' className='goldenText !no-underline' onClick={() => this.onToggleSidebar()}>Sign up | Login</Link>
+                <Link to='/login' className='goldenText !no-underline hover:!underline' onClick={() => this.onToggleSidebar()}>Sign up | Login</Link>
             </div>
         )
 
