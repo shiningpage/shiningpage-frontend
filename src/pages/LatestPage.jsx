@@ -326,7 +326,12 @@ class LatestPage extends Component {
 			></span>
 		);
 
-		const moreLatest = <div onClick={() => this.getAllLatest()}><More fc={14}/></div>
+        const moreLatest = (
+            <div className={`center btnShadow ${w<s ? 'w-[80%]' : 'w-[200px]'} h-12 my-[30px] rounded-[8px] bg-gradient-to-r from-blue-600 to-purple-600 py-3 text-lg text-white shadow-lg transition-all duration-300 hover:from-blue-700 hover:to-purple-700 hover:shadow-xl active:scale-98 focus:outline-none focus:ring-4 focus:ring-blue-300`}
+                onClick = {() => this.getAllLatest()}>
+                <span>More</span>
+            </div>
+        )
 
 		const adsBox1 = <div className=''><AdsHorizontal id='adsH1' /></div>
 		const adsBox2 = <div className='adsbox2'><AdsHorizontal id='adsH2' left={20} /></div>

@@ -407,9 +407,15 @@ class NotificationPage extends Component{
         const {w, itemLoaded, NData, unseenNotifications, seenNotifications, notificationMap, finishDataNotification, loadingNotification} = this.state
         const {setLT, mainUser, toggleNotification} = this.props
         const loader13 = <div className='loader-13 my-[70px] text-white'></div>
-        const moreNotification = <div className="my-[50px]" onClick={() => this.getNotification()}><More fc={mainUser.fc}/></div>
 
-		const NA = (
+        const moreNotification = (
+            <div className={`center btnShadow ${w<s ? 'w-[80%]' : 'w-[200px]'} h-12 my-10 rounded-[8px] bg-gradient-to-r from-blue-600 to-purple-600 py-3 text-lg text-white shadow-lg transition-all duration-300 hover:from-blue-700 hover:to-purple-700 hover:shadow-xl active:scale-98 focus:outline-none focus:ring-4 focus:ring-blue-300`}
+                onClick = {() => this.getNotification()}>
+                <span>More</span>
+            </div>
+        )
+
+        const NA = (
 			<div className='center'>
 				<div className="w-[200px] text-center text-white py-[10px] px-[15px] rounded-full border border-white">
 					{setLT.noNotifications}

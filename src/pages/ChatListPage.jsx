@@ -379,7 +379,13 @@ class ChatListPage extends Component{
 		const {w, itemLoaded, ChatMap, finishDataChat, loadingChat, deleteChat, itemX, deletingChat} = this.state
 		const {setLT, mainUser} = this.props
 		const loader13 = <div className='loader-13' style={{margin: '70px 0px', color:'#ffffff'}}></div>
-		const moreChat = <div onClick={() => this.getChatList()}><More fc={mainUser.fc}/></div>
+		
+        const moreChat = (
+            <div className={`center btnShadow ${w<s ? 'w-[80%]' : 'w-[200px]'} h-12 my-10 rounded-[8px] bg-gradient-to-r from-blue-600 to-purple-600 py-3 text-lg text-white shadow-lg transition-all duration-300 hover:from-blue-700 hover:to-purple-700 hover:shadow-xl active:scale-98 focus:outline-none focus:ring-4 focus:ring-blue-300`}
+                onClick = {() => this.getChatList()}>
+                <span>More</span>
+            </div>
+        )
 
 		// console.log(88, itemLoaded, ChatMap, ChatMap.length)
 		const NA = (
