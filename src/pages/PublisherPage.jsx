@@ -780,86 +780,103 @@ class PublisherPage extends Component {
 
         var bizLink = `https://shiningpage.com/${subUserInfo.businessType>0 ? 'publisher' : 'user'}/${subUserInfo.username}`
 
-        // const backG = (
-        //     <div>
-        //         <img
-        //             style={{position:'fixed', filter:'blur(50px)', zIndex:'-1'}}
-        //             height='100%'
-        //             width={w<s ? '300%' : '100%'}
-        //             src={aboutImgSrc}
-        //             alt="world background"
-        //         />
-        //     </div>
-        // )
         const backG = (
             <div className="fixed inset-0 overflow-hidden -z-10">
                 <div className="absolute -inset-8 bg-cover bg-right blur-[50px]" style={{ backgroundImage: `url(${aboutImgSrc})` }}/>
             </div>
         );
         
-        const aboutInfo = (
-            <div id='aboutInfo' style={{padding:'70px 0px', fontSize:w<s ? '16px' : '18px', fontWeight:100, backgroundColor:`${colors[`C${fc===11 ? 0 : fc}`]}00`}}>
-                <Container className='center' style={{alignItems:'center', flexDirection:'column'}}>
-                    <div className='d-flex'>
-                        {userX}
-                        {me && <EditBtn size={35} position='' margin='-5px 0px 0px 10px' padding='4px' onClick={() => this.onToggleActivitySummary()}/>}
-                    </div>
-                    <div style={{position:'relative'}}>
-                        <div className={`C${fc===11 ? 7 : fc}`} style={{width:'200px', height:'2px', margin:'10px 0px 30px'}}></div>
-                        {/* {me && <EditBtn size={35} top={-7} right={-40} padding='4px' onClick={() => this.onToggleActivitySummary()}/>} */}
-                    </div>
-                    <div className='d-flex'>
-                        {jobSummary &&
-                            <div style={{whiteSpace:'pre-wrap', textAlign:'center', lineHeight:'30px', marginBottom:w<s ? '50px' : '70px'}}>
-                                <strong style={{fontSize:'20px', fontWeight:'bold'}}>{jobSummary}</strong>
-                            </div>
-                        }
-                        {me && !jobSummary && <div style={{fontSize:'14px', fontWeight:400, margin:'-10px 0px 70px'}}>Add your business activity in one line.</div>}
-                        {/* {me && !jobSummary && <EditBtn size={35} text='Activity Summary' fontSize='12px' fontWeight={450} margin='-10px 0px 65px 5px' padding='4px' position='' onClick={() => this.onToggleActivitySummary()}/>} */}
-                    </div>
-                    <div className='d-flex' style={{flexDirection:w<s ? 'column' : ''}}>
-                        <div style={{minWidth: w<s ? '100%' : '300px', marginRight: w<s ? 0 : '70px'}}>
-                            { profileData &&
-                                <img
-                                    className={w<s ? '' : 'sticky-top'}
-                                    style={{top: w<s ? '' : NavH + 10, zIndex:1, objectFit:'cover', height:'300px', width:'100%', borderRadius:'0px 100px', marginBottom:w<s ? '50px' : 0, border:'1px solid #99999930'}}
-                                    src={aboutImgSrc}
-                                    alt={`${subUserInfo.username} about`}
-                                />
-                            }
-                        </div>
-                        <div>
-                            <div style={{ fontWeight:400, marginBottom:'50px' }}>
-                                <div className='d-flex'>
-                                    About
-                                    {me && <EditBtn size={35} position='' margin='-10px 0px 0px 10px' padding='4px' onClick={() => this.onToggleAboutInfo()}/>}
-                                </div>
-                                <div style={{marginBottom:'40px'}}>{userX}</div>
-                                {me && (biography==='' || biography==='<br>') && <div style={{fontSize:'14px', fontWeight:400, margin:'-30px 0px 70px'}}>Share the mission, vision, and values of your business to introduce your company to visitors.</div>}
-                                <div style={{whiteSpace:'pre-wrap'}}>
-                                    {RenderContent(biography)}
-                                </div>
-                            </div>
-                            { subUserInfo.businessType > 0 && (me || teamMembers.length > 0) &&
-                                <div style={{ fontWeight:400, marginBottom:'0px' }}>
-                                    <div className='d-flex'>
-                                        <div className={`tx f${fc===11 ? 7 : fc}`} style={{fontSize:'20px', fontWeight:'bold', margin:'', color:''}}>Our Team</div>
-                                        {me && <EditBtn size={35} type='add' position='' margin='-5px 0px 0px 10px' padding='4px' onClick={() => this.onToggleTeam()}/>}
-                                    </div>
-                                    <div className={`C${fc===11 ? 7 : fc}`} style={{width:'130px', height:'2px', margin:'10px 0px 30px'}}></div>
-                                    {me && teamMembers.length===0 && <div style={{fontSize:'14px', fontWeight:400, margin:'-10px 0px 70px'}}>Highlight your team members, their roles, and key contributions to your business.</div>}
-                                    {teamMembers.length>0 && 
-                                        <div className={w<s ? 'center' : 'd-flex'} style={{ width:w<s ? w-20 : '', flexWrap:'wrap'}}>
-                                            {teamMembers}
-                                        </div>
-                                    }
-                                </div>
-                            }
-                        </div>
-                    </div>
-                </Container>
+        const aboutImgSection = (
+            <div style={{minWidth: w<s ? '100%' : '300px', marginRight: w<s ? 0 : '70px'}}>
+                { profileData &&
+                    <img
+                        className={w<s ? '' : 'sticky-top'}
+                        style={{top: w<s ? '' : NavH + 70, zIndex:1, objectFit:'cover', height:'300px', width:'100%', borderRadius:'0px 100px', marginBottom:w<s ? '50px' : 0, border:'1px solid #99999930'}}
+                        src={aboutImgSrc}
+                        alt={`${subUserInfo.username} about`}
+                    />
+                }
             </div>
         )
+
+        const jobSummarySection = (
+            <div className='center flex-col'>
+                <div className='flex'>
+                    {userX}
+                    {me && <EditBtn size={35} position='' margin='-5px 0px 0px 10px' padding='4px' onClick={() => this.onToggleActivitySummary()}/>}
+                </div>
+                <div style={{position:'relative'}}>
+                    <div className={`C${fc===11 ? 7 : fc}`} style={{width:'200px', height:'2px', margin:'10px 0px 30px'}}></div>
+                    {/* {me && <EditBtn size={35} top={-7} right={-40} padding='4px' onClick={() => this.onToggleActivitySummary()}/>} */}
+                </div>
+                <div className='d-flex'>
+                    {jobSummary &&
+                        <div style={{whiteSpace:'pre-wrap', textAlign:'center', lineHeight:'30px', marginBottom:w<s ? '50px' : '70px'}}>
+                            <strong style={{fontSize:'20px', fontWeight:'bold'}}>{jobSummary}</strong>
+                        </div>
+                    }
+                    {me && !jobSummary && <div style={{fontSize:'14px', fontWeight:400, margin:'-10px 0px 70px'}}>Add your business activity in one line.</div>}
+                    {/* {me && !jobSummary && <EditBtn size={35} text='Activity Summary' fontSize='12px' fontWeight={450} margin='-10px 0px 65px 5px' padding='4px' position='' onClick={() => this.onToggleActivitySummary()}/>} */}
+                </div>
+            </div>
+        )
+
+        const aboutInformation = (
+            <div style={{fontWeight:400, marginBottom:'50px'}}>
+                <div className='sticky-top d-flex justify-content-end' style={{top:w<s ? 50 : 130, zIndex:10, marginBottom:'-35px'}}>
+                    {me && <EditBtn size={35} position='' text='Edit About' padding='4px' onClick={() => this.onToggleAboutInfo()}/>}
+                </div>
+                <div>About</div>
+                <div style={{marginBottom:'40px'}}>{userX}</div>
+                {me && (biography==='' || biography==='<br>') &&
+                    <div style={{fontSize:'14px', fontWeight:400, margin:'-30px 0px 70px'}}>
+                        Share the mission, vision, and values of your business to introduce your company to visitors.
+                    </div>
+                }
+                <div style={{whiteSpace:'pre-wrap'}}>{RenderContent(biography)}</div>
+            </div>
+        )
+
+        const teamSection = (
+            <div style={{ fontWeight:400, marginBottom:'0px' }}>
+                <div className='d-flex'>
+                    <div className={`tx f${fc===11 ? 7 : fc}`} style={{fontSize:'20px', fontWeight:'bold', margin:'', color:''}}>Our Team</div>
+                    {me && <EditBtn size={35} type='add' position='' margin='-5px 0px 0px 10px' padding='4px' onClick={() => this.onToggleTeam()}/>}
+                </div>
+                <div className={`C${fc===11 ? 7 : fc}`} style={{width:'130px', height:'2px', margin:'10px 0px 30px'}}></div>
+                {me && teamMembers.length===0 && <div style={{fontSize:'14px', fontWeight:400, margin:'-10px 0px 70px'}}>Highlight your team members, their roles, and key contributions to your business.</div>}
+                {teamMembers.length>0 && 
+                    <div className={w<s ? 'center' : 'd-flex'} style={{ width:w<s ? w-20 : '', flexWrap:'wrap'}}>
+                        {teamMembers}
+                    </div>
+                }
+            </div>
+        )
+
+        const aboutInfo = (
+            <div id='aboutInfo' style={{padding:'70px 0px', fontSize:w<s ? '16px' : '18px', fontWeight:100, backgroundColor:`${colors[`C${fc===11 ? 0 : fc}`]}00`}}>
+                <div className='center px-[20px]' style={{alignItems:'center', flexDirection:'column'}}>
+                    {jobSummarySection}
+                    <div className='flex' style={{flexDirection:w<s ? 'column' : ''}}>
+                        {aboutImgSection}
+                        <div>
+                            {aboutInformation}
+                            { subUserInfo.businessType > 0 && (me || teamMembers.length > 0) && teamSection}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+
+        const about = (
+            <div id="about" style={{position:'relative'}}>
+                <div style={{position:'absolute',inset:'0px',overflow:'hidden',pointerEvents:'none'}}>
+                    <div style={{position:'absolute',inset:0,backgroundImage:`url(${aboutImgSrc})`,backgroundSize:'cover',backgroundPosition:'center',filter:'blur(10px)',transform:'scale(1.1)'}}/>
+                </div>
+                <div className='bg-white/85' style={{position:'absolute',inset:0,pointerEvents:'none'}}/>
+                <div style={{position:'relative',zIndex:2}}>{aboutInfo}</div>
+            </div>
+        );
 
         const dot = (
             <div style={{fontWeight:'', width:'130px', textAlign:'right', color: lightColors.includes(fc) ? '#000000' : '#ffffff'}}>
@@ -1100,18 +1117,6 @@ class PublisherPage extends Component {
                 </div>
             );
         }
-
-        const about = (
-            <div id="about" style={{ position: 'relative', overflow: 'hidden' }}>
-                {/* Background Layer */}
-                <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${aboutImgSrc})`, backgroundSize: 'cover', backgroundPosition: 'center', filter: 'blur(10px)', transform: 'scale(1.1)', zIndex: 0 }}/>
-                {/* Overlay */}
-                <div style={{ position: 'absolute', inset: 0, backgroundColor: '#ffffff99', zIndex: 1 }}/>
-                {/* Content */}
-                <div style={{ position: 'relative', zIndex: 2 }}>{aboutInfo}</div>
-                {/* <RubyCollector id='adsH2' bottom={30} left={30}/> */}
-            </div>
-        );
 
         const popups = (
             <div className='' style={{ position:'fixed', bottom:60, right:w<s ? 5 : 10, direction:'rtl', zIndex:'1000'}}>
