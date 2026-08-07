@@ -39,7 +39,7 @@ const EditBtn = ({ rtl, size=40, top=20, right=20, padding='2px', margin, type='
 
     //  animated fadeIn
     return (
-        <div className='center btnShadow sticky-top rainbow'
+        <div className='center btnShadow rainbow'
             style={myStyle}
             onClick={onClick}
         >
