@@ -1704,10 +1704,8 @@ class ContentPage extends Component {
         )
 
         const mainAds = (
-            <div id='aboutInfo' style={{backgroundImage:`url(${aboutImgSrc})`, backgroundSize: 'cover', backgroundPosition: 'right', position:'relative'}}>
+            <div>
                 <div className='sticky-top' style={{top:w<s ? 50 : 70, zIndex:'1'}}>{me && <EditBtn rtl={rtl} stickyTop='on' onClick={() => this.onToggleEditAds()}/>}</div>
-                <div style={{width:'100%', height:'100%', backgroundColor:'#ffffff99'}}>
-                <div style={{width:'100%', height:'100%', backgroundColor:'#ffffff99'}}>
                     <div style={{padding:w<s ? '50px 0px' : '70px 0px', fontSize:w<s ? '16px' : '18px'}}>
                         <Container className='center' style={{alignItems:'center', flexDirection:'column'}}>
                             <h1 style={{marginBottom:'50px', textAlign:'center'}}>{adsInfo.adsTitle}</h1>
@@ -1748,11 +1746,19 @@ class ContentPage extends Component {
                             </div>
                         </Container>
                     </div>
-                </div>
-                </div>
             </div>
         )
     
+        const about = (
+            <div id="about" style={{position:'relative'}}>
+                <div style={{position:'absolute',inset:'0px',overflow:'hidden',pointerEvents:'none'}}>
+                    <div style={{position:'absolute',inset:0,backgroundImage:`url(${aboutImgSrc})`,backgroundSize:'cover',backgroundPosition:'center',filter:'blur(10px)',transform:'scale(1.1)'}}/>
+                </div>
+                <div className='bg-white/85' style={{position:'absolute',inset:0,pointerEvents:'none'}}/>
+                <div style={{position:'relative',zIndex:2}}>{mainAds}</div>
+            </div>
+        );
+
         const likeNX = likeN ? likeN.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') : 0
         const heart = toggleLike
                         ? <IoMdHeart style={{width:'20px', fontSize:'20px', color:(toggleLikeBtn && fc===8) ? '#ffffff' : 'red'}}/>
@@ -1912,7 +1918,7 @@ class ContentPage extends Component {
                 {addressbar}
                 <PsCarousel adsInfo={adsInfo} fc={fc}/>
                 {googleAds && adsBox1}
-                {mainAds}
+                {about}
                 {googleAds && adsBox2}
                 <Container>
                     {userHeader}
