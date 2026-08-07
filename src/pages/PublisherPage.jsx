@@ -823,7 +823,7 @@ class PublisherPage extends Component {
 
         const aboutInformation = (
             <div style={{fontWeight:400, marginBottom:'50px'}}>
-                <div className='sticky-top d-flex justify-content-end' style={{top:w<s ? 50 : 130, zIndex:10, marginBottom:'-35px'}}>
+                <div className='sticky-top d-flex justify-content-end' style={{top:w<s ? (scrollDirection==='up' ? 55 : 100) : 130, zIndex:10, marginBottom:'-35px', transition:'.5s'}}>
                     {me && <EditBtn size={35} position='' text='Edit About' padding='4px' onClick={() => this.onToggleAboutInfo()}/>}
                 </div>
                 <div>About</div>
@@ -1136,7 +1136,7 @@ class PublisherPage extends Component {
         ];
 
         const goToSection = (
-            <div id="goToSection"
+            <div id="goToSection" style={{transition:'.5s'}}
                 className={`flex gap-2 cardShadow backBlur sticky ${w < s ? (scrollDirection==='up' ? 'top-0' : 'top-[45px]') : 'top-[60px]'} w-full p-${pageYOffset > 250 ? 2 : 0} z-[1000] bg-[#ffffff99] transition-all duration-${pageYOffset > 250 ? 500 : 0} ease-in-out ${pageYOffset > 250 ? 'h-[45px] opacity-100 translate-y-0 visible' : 'h-0 opacity-0 -translate-y-5 invisible pointer-events-none'} overflow-scroll`}
             >
                 {sectionButtons.map(({ id, icon: Icon, label }) => (
