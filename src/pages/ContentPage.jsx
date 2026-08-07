@@ -1230,19 +1230,17 @@ class ContentPage extends Component {
         )
 
         const moreAds = (
-            <div className='center'>
-                <div className={`C${fc} btnShadow`}
-                    style={{minWidth: '100px', height: '30px', 
-                            textAlign:'center', 
-                            margin: '40px 0px 30px',
-                            border: `3px solid ${(fc===11 || fc===4 || fc===14 || fc===undefined) ? '#00000020' : '#ffffff99'}`,
-                            padding: '0px 10px',
-                            color: `${(fc===11 || fc===4 || fc===13 || fc===14 || fc===undefined) ? '#00000090' : '#ffffff'}`,
-                            borderRadius: '100px'}}
-                    onClick = {() => this.getAllAds()}>
-                    <span>{setLT.more}</span>
-                    <FaAngleLeft style={{fontSize:'20px', margin:'2px 0px 0px 0px', transform:'rotate(-90deg)'}}/>
-                </div>
+            <div className={`center C${fc} btnShadow`}
+                style={{minWidth: '100px', height: '30px', 
+                        textAlign:'center', 
+                        margin: '40px 0px 30px',
+                        border: `3px solid ${(fc===11 || fc===4 || fc===14 || fc===undefined) ? '#00000020' : '#ffffff99'}`,
+                        padding: '0px 10px',
+                        color: `${(fc===11 || fc===4 || fc===13 || fc===14 || fc===undefined) ? '#00000090' : '#ffffff'}`,
+                        borderRadius: '100px'}}
+                onClick = {() => this.getAllAds()}>
+                <span>{setLT.more}</span>
+                <FaAngleLeft style={{fontSize:'20px', margin:'2px 0px 0px 0px', transform:'rotate(-90deg)'}}/>
             </div>
         )
 
