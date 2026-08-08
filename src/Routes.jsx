@@ -5,7 +5,7 @@ import HomePage from './pages/HomePage';
 import ReviewPage from './pages/ReviewPage';
 import LoginPage from './pages/LoginPage';
 import RubyPage from './pages/RubyPage';
-import SocialMediaPage from './components/SocialMedia';
+import SocialMediaPage from './pages/SocialMediaPage';
 import LatestPage from './pages/LatestPage';
 import NotificationPage from './pages/NotificationPage';
 import ChatListPage from './pages/ChatListPage';
@@ -49,7 +49,7 @@ class AppRoutes extends React.Component {
         <Route path="/pricing" element={<PricingPage />} />
         <Route path="/404" element={<Page404 />} />
         <Route path="/ruby" element={<RubyPage />} />
-        {/* <Route path="/social-media" element={<SocialMediaPage />} /> */}
+        <Route path="/social-media" element={<SocialMediaPage />} />
         <Route path="/latest" element={<LatestPage />} />
         <Route path="/notification" element={<NotificationPage />} />
         <Route path="/chat" element={<ChatListPage />} />
