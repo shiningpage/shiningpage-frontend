@@ -28,6 +28,7 @@ import ChatList from './components/modals/ModalChatList';
 import { FaCrown, FaBell, FaRegBell, FaYoutube, FaLinkedin, FaUser, FaBars, FaRegCopyright, FaRegStar } from 'react-icons/fa';
 import { FaAngleRight } from "react-icons/fa6";
 import { RiPagesLine, RiLogoutCircleLine, RiLogoutCircleRLine } from "react-icons/ri";
+import { IoIosGitNetwork } from "react-icons/io";
 import { FiBell } from "react-icons/fi";
 import { TbLockPassword } from "react-icons/tb";
 import { MdOutlineRateReview, MdReviews, MdEmail, MdOutlineMailOutline, MdClose } from 'react-icons/md';
@@ -39,7 +40,6 @@ import { PiSquaresFourLight } from "react-icons/pi";
 import { CiBellOn } from "react-icons/ci";
 import { BiBookContent, BiSolidBookContent } from "react-icons/bi";
 import { IoColorPaletteOutline, IoChatbubbleEllipsesOutline, IoMailOutline, IoMailSharp, IoLocationOutline } from "react-icons/io5";
-
 import { GrProjects, GrDashboard } from "react-icons/gr";
 import { VscDashboard } from "react-icons/vsc";
 import UpdateVersion from './components/UpdateVersion';
@@ -71,6 +71,7 @@ class App extends Component {
             notFound: false,
             objects: [],
             seenElements: new Map(), // نگه‌داری المنت‌هایی که یک بار کامل دیده شده‌اند
+            socialMediaIndex: false,
         };
 
         this.sidebarRef = createRef(); // مرجع برای سایدبار
@@ -95,7 +96,9 @@ class App extends Component {
             this.notSeenChat()
             this.notSeenNotification()
         }
-
+        if(this.props.mainUser?.access?.includes('socialMedia')) {
+            this.setState({ socialMediaIndex: true })
+        }
         await this.props.dispatch(setGeo([]))
         identifyObj(this.props.dispatch)
         await this.getGeo()
@@ -522,7 +525,7 @@ class App extends Component {
     }
 
     render() {
-        const { w, h, toggleChangePassword, toggleWebPageTheme, notFound, scrollDirection, leaveChatList, leaveNotificationList, notSeenNotificationQTY, notSeenChatQTY } = this.state
+        const { w, h, socialMediaIndex, toggleChangePassword, toggleWebPageTheme, notFound, scrollDirection, leaveChatList, leaveNotificationList, notSeenNotificationQTY, notSeenChatQTY } = this.state
         const { auth, address, fc, setLT, mainUser, subUserInfo, toggleSidebar, toggleShowVideo, fullAccess, 
             toggleLoading, membership, sendMessage, toggleChat, username, slug, genderValue, lang, rtl, page,
             businessType, toggleViewStatus, toggleChatList, ruby, rubyInterval, balance, 
@@ -1126,6 +1129,21 @@ class App extends Component {
             </Link>
         )
 
+        const socialMedia = (
+            <Link to="/social-media" onClick={() => this.onToggleSidebar()}
+                className={`group flex w-full items-center justify-between rounded-[8px] border-2 border-transparent transition-all duration-300 ease-out hover:bg-white/10 hover:border-white/20 hover:shadow-md !no-underline text-white items-center h-[50px]
+                    ${ page === 'social-media' ? "sidebarSelectedItem" : "" }`}
+                >
+                <div className="center">
+                    <IoIosGitNetwork className="w-[20px] mx-[20px] my-[10px] text-[23px] transition-transform duration-300 group-hover:scale-110"/>
+                    <span className="ml-0 transition-all duration-300 ease-out group-hover:translate-x-2">
+                        Social Media
+                    </span>
+                </div>
+                <FaAngleRight className="text-[14px] m-[10px] transition-transform duration-300 group-hover:translate-x-1"/>
+            </Link>
+        )
+
         const projects = (
             <Link to={`/projects/${username}`} onClick={() => this.onToggleSidebar()}
                 className={`group flex w-full items-center justify-between rounded-[8px] border-2 border-transparent transition-all duration-300 ease-out hover:bg-white/10 hover:border-white/20 hover:shadow-md !no-underline text-white items-center h-[50px]
@@ -1219,7 +1237,6 @@ class App extends Component {
             </div>
         )
 
-
         const userItems = (
             <div className="relative z-10 p-[10px] overflow-scroll">
                 {auth && myPage}
@@ -1227,6 +1244,7 @@ class App extends Component {
                 {messages}
                 {projects}
                 {rubies}
+                {auth && socialMediaIndex && socialMedia}
                 {auth && currentBalance}
                 {auth && changeTheme}
                 {auth && changePassword}
@@ -1463,13 +1481,13 @@ class App extends Component {
             </a>
         )
 
-        const socialMedia = (
-            <div className='d-flex' style={{margin:'30px 0px', alignItems:'center'}}>
-                {instagramSub}&nbsp;&nbsp;&nbsp;
-                {linkedinSub}&nbsp;&nbsp;&nbsp;
-                {youtubeSub}
-            </div>
-        )
+        // const socialMedia = (
+        //     <div className='d-flex' style={{margin:'30px 0px', alignItems:'center'}}>
+        //         {instagramSub}&nbsp;&nbsp;&nbsp;
+        //         {linkedinSub}&nbsp;&nbsp;&nbsp;
+        //         {youtubeSub}
+        //     </div>
+        // )
 
         const shiningpage = (
             <Link to={`/`} className='d-flex sticky-top' style={{textDecoration:'none', alignItems:'flex-start', marginBottom:'-7px', zIndex:'1'}}>
