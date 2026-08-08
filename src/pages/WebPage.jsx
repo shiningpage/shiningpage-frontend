@@ -29,7 +29,6 @@ import pixResizer from '../modules/pixResizer';
 
 import QRCodeX from '../components/QRCodeX';
 import StatisticsSub from '../components/web/StatisticsSub';
-import SocialMedia from '../components/SocialMedia';
 import ContactSub from '../components/web/ContactSub';
 import AttachmentSub from '../components/web/AttachmentSub';
 import FeaturesSub from '../components/web/FeaturesSub';
@@ -1035,7 +1034,6 @@ class WebPage extends Component {
                     <AttachmentSub fc={fc} titleStyle={titleStyle} index={attachmentsSubActive} me={me} mapStateToProps={this.props} dispatch={this.props.dispatch}/>
                     {googleAds && subUserInfo.ads && adsBox3}
                     <StatisticsSub fc={fc} titleStyle={titleStyle} index={statisticsSubActive} viewN={viewN} gettingView={gettingView}/>
-                    { me && mainUser.access.includes('socialMedia') && <SocialMedia /> }
                     {googleAds && subUserInfo.ads && adsBox4}
                     <div style={{backgroundColor:'#ffffff'}}>
                         <ContactSub fc={fc} me={me} hr={hr} titleStyle={titleStyle} phone={phone}/>

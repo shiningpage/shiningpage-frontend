@@ -29,7 +29,6 @@ import pixResizer from '../modules/pixResizer';
 
 import QRCodeX from '../components/QRCodeX';
 import StatisticsSub from '../components/web/StatisticsSub';
-import SocialMedia from '../components/SocialMedia';
 import ContactSub from '../components/web/ContactSub';
 import AttachmentSub from '../components/web/AttachmentSub';
 import FeaturesSub from '../components/web/FeaturesSub';
@@ -1178,7 +1177,6 @@ class PublisherPage extends Component {
                     <AttachmentSub fc={fc} titleStyle={titleStyle} index={attachmentsSubActive} me={me} mapStateToProps={this.props} dispatch={this.props.dispatch}/>
                     {me && googleAds && subUserInfo.ads && adsBox3}
                     <StatisticsSub fc={fc} titleStyle={titleStyle} index={statisticsSubActive} viewN={viewN} gettingView={gettingView}/>
-                    {me && mainUser.access.includes('socialMedia') && <SocialMedia /> }
                     {me && googleAds && subUserInfo.ads && adsBox4}
                     <div style={{backgroundColor:'#ffffff'}}>
                         {subUserInfo.type!=='content' && <ContactSub fc={fc} me={me} hr={hr} titleStyle={titleStyle} phone={phone}/>}
