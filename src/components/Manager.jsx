@@ -65,7 +65,7 @@ class Manager extends Component{
                     <div style={{fontWeight:400}}>{subUserInfo.jobSummary}</div>
                     <div className='d-flex' style={{alignItems:'center'}}>
                         { loading ? loaderZ : <HiArrowNarrowLeft style={{transform: rtl ? 'scaleX(1)' : 'scaleX(-1)'}}/>}&nbsp;
-                        <span className='link-underline' style={{color:'#0057F6'}} onClick={() => this.onToggleWebPage()}>Mahmoud Sadollahi</span>
+                        <span className='link-underline !text-[#0C6DFB]' onClick={() => this.onToggleWebPage()}>Mahmoud Sadollahi</span>
                     </div>
                 </div>
               </div>
