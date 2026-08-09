@@ -4041,7 +4041,7 @@ class ProjectManagement extends Component {
 
     const header = (
       <div className="center animated fadeInLeft [animation-delay:.5s] text-4xl font-extrabold tracking-tight my-[30px]">
-        <span className="bg-gradient-to-r from-violet-600 via-indigo-500 to-sky-500 bg-clip-text text-transparent">
+        <span className="purple-blue">
           Project Management
         </span>
       </div>

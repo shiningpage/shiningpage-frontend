@@ -674,17 +674,17 @@ class HomePage extends Component {
 
     const introText = (
       <div className={`${w<950 ? '' : 'w-[40%]'} ${w<s ? '' : 'min-w-[400px]'} ${w<s ? 'p-[10px]' : 'p-[30px]'} ${w<950 ? '' : '-mr-[200px]'} z-1`}>
-        <h1 className='animated fadeInUp ![animation-delay:.0s] goldenText !font-semibold !mb-[30px]'>
+        <h1 className='animated fadeInUp ![animation-delay:.0s] gold2 !font-semibold !mb-[30px]'>
           ShiningPage
         </h1>
         <h3 className={`animated fadeInUp ![animation-delay:.1s] !font-semibold ${w<950 ? '' : '!mb-[70px]'}`}>
           <span className='text-white/90'>All-in-One Business Platform </span>
           <span className='text-white/90'>for </span>
-          <span className="font-bold bg-gradient-to-r from-violet-600 via-indigo-500 to-sky-500 bg-clip-text text-transparent">
+          <span className="font-bold purple-blue">
             Small Businesses
           </span>
             <span className='text-white/90'>{' & '}</span>
-          <span className="font-bold bg-gradient-to-r from-violet-600 via-indigo-500 to-sky-500 bg-clip-text text-transparent">
+          <span className="font-bold purple-blue">
             Startups
           </span>
         </h3>

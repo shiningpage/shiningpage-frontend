@@ -480,7 +480,7 @@ class LoginPage extends Component {
         const signupHeader = (
             <div className="text-center mb-10">
                 <h3 className="text-4xl font-extrabold tracking-tight">
-                    <span className="bg-gradient-to-r from-violet-600 via-indigo-500 to-sky-500 bg-clip-text text-transparent">
+                    <span className="purple-blue">
                         Create your account
                     </span>
                 </h3>
@@ -493,7 +493,7 @@ class LoginPage extends Component {
         const loginHeader = (
             <div className="text-center mb-10">
                 <h3 className="text-4xl font-extrabold tracking-tight">
-                    <span className="bg-gradient-to-r from-violet-600 via-indigo-500 to-sky-500 bg-clip-text text-transparent">
+                    <span className="purple-blue">
                         Welcome back
                     </span>
                 </h3>
