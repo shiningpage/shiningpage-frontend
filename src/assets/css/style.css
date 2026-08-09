@@ -988,6 +988,14 @@ box-shadow: inset 0px 0px 7px 0px rgba(0,0,0,0.6);
   -webkit-text-fill-color: transparent;
 }
 
+.goldenText2 {
+  color: #d8bd6a;
+  background: linear-gradient(to top, #a4864b 0%, #d8bd6a 25%, #f5e6a8 50%, #d8bd6a 75%, #a4864b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .cover-child{
   transition: all 0.3s ease;
 }
@@ -1511,6 +1519,33 @@ box-shadow: inset 0px 0px 7px 0px rgba(0,0,0,0.6);
     pointer-events: none;
 }
 
+.blue-border {
+    position: relative;
+    border-radius: 15px;
+}
+
+.blue-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(
+    90deg,
+    #1d4ed899,
+    #3b82f6,
+    #06b6d499,
+    #3b82f6,
+    #1d4ed899
+    );
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
 .golden-border {
     position: relative;
     border-radius: 15px;
@@ -1553,3 +1588,41 @@ box-shadow: inset 0px 0px 7px 0px rgba(0,0,0,0.6);
   mask-composite: intersect;
 }
 
+.purple-blue {
+  background: linear-gradient(
+    to right,
+    #7c3aed,
+    #6366f1,
+    #0ea5e9
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gold {
+  background: linear-gradient(
+    90deg,
+    #a4864b,
+    #d8bd6a,
+    #f5e6a8,
+    #d8bd6a,
+    #a4864b
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gold2 {
+  background: linear-gradient(
+    90deg,
+    #f8e9a8 0%,
+    #e5c86a 30%,
+    #c5a94d 60%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
