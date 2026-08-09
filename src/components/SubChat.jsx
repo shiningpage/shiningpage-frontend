@@ -279,7 +279,7 @@ class SubChat extends Component {
                         {item.message}{item.image!==null && imageX}
                         <div className='d-flex' style={{alignItems:'center', justifyContent:'space-between'}}>
                             {checkMarksTime}
-                            <span style={{fontSize:'10px', lineHeight:'10px', margin:'3px 0px', color:'#999999', textAlign:'center'}}>{!(item.receiverId==='607e9088bede482040af3574' || item.senderId==='607e9088bede482040af3574') && more}</span>
+                            <span style={{fontSize:'10px', lineHeight:'10px', margin:'3px 0px', color:'#999999', textAlign:'center'}}>{more}</span>
                             {/* <span style={{fontSize:'10px', lineHeight:'10px', margin:'3px 0px', color:'#999999', textAlign:'center'}}>{more}</span> */}
                         </div>
                     </div>
