@@ -1192,7 +1192,7 @@ class App extends Component {
         const sendTicket = (
             <div onClick={() => this.onCreateTicket("607e9088bede482040af3574")}
                 className={`group flex w-full items-center justify-between rounded-[8px] border-2 border-transparent transition-all duration-300 ease-out hover:bg-white/10 hover:border-white/20 hover:shadow-md !no-underline text-white items-center h-[50px]
-                    ${ toggleChangePassword ? "sidebarSelectedItem" : "" } cursor-pointer`}
+                    ${ toggleChat ? "sidebarSelectedItem" : "" } cursor-pointer`}
                 >
                 <div className="center">
                     <BiMessageSquareEdit className="w-[20px] mx-[20px] my-[10px] text-[23px] transition-transform duration-300 group-hover:scale-110"/>
