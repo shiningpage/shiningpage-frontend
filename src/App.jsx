@@ -15,7 +15,7 @@ import { setToggleLoading, setCountry, setSetLT, setToggleChat,
     setLang, setRtl,setUpdateVersionDate, setToggleChatList,
     setScrollDirection, setToggleAds, setAdsInfo, setRuby,
     setToggleVideo, setVideoInfo, setToggleInsta, setInstaInfo,
-    setObjects, setRubyInterval, 
+    setObjects, setRubyInterval, setSubChatInfo, 
 } from './dataStore/actions';
 import SubChat from './components/SubChat';
 import SendMessage from './components/SendMessage';
@@ -34,7 +34,7 @@ import { TbLockPassword } from "react-icons/tb";
 import { MdOutlineRateReview, MdReviews, MdEmail, MdOutlineMailOutline, MdClose } from 'react-icons/md';
 import { HiOutlineUsers, HiUsers } from "react-icons/hi2";
 import { AiOutlineRuby, AiOutlineHome, AiOutlineDashboard, AiFillMessage, AiFillInstagram, AiFillHome } from 'react-icons/ai';
-import { BiSupport } from 'react-icons/bi';
+import { BiSupport, BiMessageSquareEdit } from 'react-icons/bi';
 import { AiFillDashboard, AiFillProduct, AiOutlineProduct } from "react-icons/ai";
 import { PiSquaresFourLight } from "react-icons/pi";
 import { CiBellOn } from "react-icons/ci";
@@ -524,12 +524,31 @@ class App extends Component {
         });
     }
 
+    onCreateTicket = async (ID, e) => {
+        const index = e?.target?.id==='chatDelete' ? false : true
+        if(index) {
+            this.setState({loadingTicket:true})
+            if(ID.receiverId!=='unknown') {
+                var user = await axios.post(`${serverURL}/user/getUserInfo`, { _id: ID })
+                var item = user.data
+                delete item.password
+                if(item) this.props.dispatch(setSubChatInfo(item))
+            } else {
+                ID._id='unknown'
+                this.props.dispatch(setSubChatInfo(ID))
+            }
+            this.props.dispatch(setToggleChat(true))
+            this.setState({loadingTicket:false})
+        }
+    }
+
     render() {
-        const { w, h, socialMediaIndex, toggleChangePassword, toggleWebPageTheme, notFound, scrollDirection, leaveChatList, leaveNotificationList, notSeenNotificationQTY, notSeenChatQTY } = this.state
+        const { w, h, loadingTicket, socialMediaIndex, toggleChangePassword, toggleWebPageTheme, notFound, scrollDirection, leaveChatList, leaveNotificationList, notSeenNotificationQTY, notSeenChatQTY } = this.state
         const { auth, address, fc, setLT, mainUser, subUserInfo, toggleSidebar, toggleShowVideo, fullAccess, 
             toggleLoading, membership, sendMessage, toggleChat, username, slug, genderValue, lang, rtl, page,
             businessType, toggleViewStatus, toggleChatList, ruby, rubyInterval, balance, 
         } = this.props
+        const loader13 = <div className='loader-13' style={{margin: '0px 20px', color:''}}></div>
         const me = mainUser._id===subUserInfo._id ? true : false
 
         // var fc = 13
@@ -1170,6 +1189,21 @@ class App extends Component {
             </div>
         )
 
+        const sendTicket = (
+            <div onClick={() => this.onCreateTicket("607e9088bede482040af3574")}
+                className={`group flex w-full items-center justify-between rounded-[8px] border-2 border-transparent transition-all duration-300 ease-out hover:bg-white/10 hover:border-white/20 hover:shadow-md !no-underline text-white items-center h-[50px]
+                    ${ toggleChangePassword ? "sidebarSelectedItem" : "" } cursor-pointer`}
+                >
+                <div className="center">
+                    <BiMessageSquareEdit className="w-[20px] mx-[20px] my-[10px] text-[23px] transition-transform duration-300 group-hover:scale-110"/>
+                    <span className="ml-0 transition-all duration-300 ease-out group-hover:translate-x-2">
+                        {loadingTicket ? loader13 : setLT.sendTicket}
+                    </span>
+                </div>
+                <FaAngleRight className="text-[14px] m-[10px] transition-transform duration-300 group-hover:translate-x-1"/>
+            </div>
+        )
+
         const changeTheme = (
             <div onClick={() => this.toggleWebPageTheme()}
                 className={`group flex w-full items-center justify-between rounded-[8px] border-2 border-transparent transition-all duration-300 ease-out hover:bg-white/10 hover:border-white/20 hover:shadow-md !no-underline text-white items-center h-[50px]
@@ -1246,6 +1280,7 @@ class App extends Component {
                 {rubies}
                 {auth && socialMediaIndex && socialMedia}
                 {auth && currentBalance}
+                {auth && sendTicket}
                 {auth && changeTheme}
                 {auth && changePassword}
                 {auth && signOut}
