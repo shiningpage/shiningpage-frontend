@@ -420,7 +420,7 @@ class SubChat extends Component {
             </div>
         )
 
-        console.log('subChatInfo: ', subChatInfo.receiverId)
+        // console.log('subChatInfo: ', subChatInfo.receiverId)
         return (
             <div>
                 <Modal.Header>

@@ -721,7 +721,7 @@ class HomePage extends Component {
     const introFeatures = (
       <div className={`flex flex-wrap justify-between w-full max-w-[800px] mx-auto text-white ${w<1120 ? 'px-[30px]' : ''}`}>
         {introFeaturesData.map(({ icon: Icon, title }, i) => (
-          console.log('index: ', `![animation-delay:.${i+3}s]`),
+          // console.log('index: ', `![animation-delay:.${i+3}s]`),
           <div
             key={i} style={{ animationDelay: `.${i + 3}s` }}
             className={`animated zoomIn ${w<600 && 'basis-1/3'} flex flex-col items-center ${w<950 ? 'w-20' : 'w-26'} h-35 mb-4`}
