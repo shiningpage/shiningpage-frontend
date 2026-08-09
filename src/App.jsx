@@ -1197,7 +1197,7 @@ class App extends Component {
                 <div className="center">
                     <BiMessageSquareEdit className="w-[20px] mx-[20px] my-[10px] text-[23px] transition-transform duration-300 group-hover:scale-110"/>
                     <span className="ml-0 transition-all duration-300 ease-out group-hover:translate-x-2">
-                        {loadingTicket ? loader13 : setLT.sendTicket}
+                        {loadingTicket ? loader13 : 'Submit a Ticket'}
                     </span>
                 </div>
                 <FaAngleRight className="text-[14px] m-[10px] transition-transform duration-300 group-hover:translate-x-1"/>
