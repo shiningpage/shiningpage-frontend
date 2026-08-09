@@ -33,6 +33,7 @@ import { FiBell } from "react-icons/fi";
 import { TbLockPassword } from "react-icons/tb";
 import { MdOutlineRateReview, MdReviews, MdEmail, MdOutlineMailOutline, MdClose } from 'react-icons/md';
 import { HiOutlineUsers, HiUsers } from "react-icons/hi2";
+import { LuReceiptPoundSterling } from "react-icons/lu";
 import { AiOutlineRuby, AiOutlineHome, AiOutlineDashboard, AiFillMessage, AiFillInstagram, AiFillHome } from 'react-icons/ai';
 import { BiSupport, BiMessageSquareEdit } from 'react-icons/bi';
 import { AiFillDashboard, AiFillProduct, AiOutlineProduct } from "react-icons/ai";
@@ -994,6 +995,7 @@ class App extends Component {
                     { key: "latest", to: "/latest", label: "Latest Posts", icon: BiSolidBookContent },
                     { key: "about", to: "/about", label: setLT.about, icon: HiOutlineUsers },
                     { key: "contact", to: "/contact", label: setLT.contact, icon: MdOutlineMailOutline },
+                    { key: "pricing", to: "/pricing", label: 'Pricing', icon: LuReceiptPoundSterling },
                 ]
                 : []),
 
