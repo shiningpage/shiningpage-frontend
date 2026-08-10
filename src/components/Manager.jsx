@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 import { Col } from "react-bootstrap";
 import { connect } from 'react-redux';
 import { setSubUserInfo } from '../dataStore/actions'; 
@@ -65,7 +66,7 @@ class Manager extends Component{
                     <div style={{fontWeight:400}}>{subUserInfo.jobSummary}</div>
                     <div className='d-flex' style={{alignItems:'center'}}>
                         { loading ? loaderZ : <HiArrowNarrowLeft style={{transform: rtl ? 'scaleX(1)' : 'scaleX(-1)'}}/>}&nbsp;
-                        <span className='link-underline !text-[#0C6DFB]' onClick={() => this.onToggleWebPage()}>Mahmoud Sadollahi</span>
+                        <span className='link-underline !text-[#60A5FA] hover:!text-[#93C5FD]' onClick={() => this.onToggleWebPage()}>Mahmoud Sadollahi</span>
                     </div>
                 </div>
               </div>
@@ -78,7 +79,11 @@ class Manager extends Component{
                 <div style={{padding:'30px 10px 0px'}}>
                     <div style={{lineHeight:'25px', borderRadius:'5px', padding:w<s ? '' : '20px', borderRight:'10px', border:'2px solid #ffffff', textAlign: rtl ? 'justify' : 'left', direction: rtl ? 'rtl' : 'ltr'}}>
                         <div style={{ padding: '20px' }}>
-                            <p dangerouslySetInnerHTML={{ __html: setLT.aboutIntro }}></p>
+                            <p>
+                                <span>Welcome to </span>
+                                <Link to='/' className='link-underline !text-[#60A5FA] hover:!text-[#93C5FD]'>ShiningPage.com</Link>
+                                , where individuals, businesses, organizations, and communities can showcase their identities. ShiningPage is designed to provide a unique platform for presentation, networking, and connection in the digital world.
+                            </p>
 
                             <h5>{setLT.missionTitle}</h5>
                             <p>{setLT.mission}</p>
@@ -103,7 +108,11 @@ class Manager extends Component{
                             <p>{setLT.commitment}</p>
                         
                             <h5>{setLT.joinUsTitle}</h5>
-                            <p dangerouslySetInnerHTML={{ __html: setLT.joinUs }}></p>
+                            <p>
+                                <span>Take the first step in showcasing your digital identity. Join ShiningPage and establish your presence in the digital world. For more information or assistance, you can contact us via the </span>
+                                <Link to='/contact' className='link-underline !text-[#60A5FA] hover:!text-[#93C5FD]'>Contact</Link>
+                                <span> page.</span>
+                            </p>
                         </div>
                     </div>
                 </div>
