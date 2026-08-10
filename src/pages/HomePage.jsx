@@ -664,10 +664,8 @@ class HomePage extends Component {
 
     const createYourPageText = (
       <div className={`w-[100%] text-white ${w<950 ? 'p-[30px]' : 'p-[0px]'}`}>
-        <p className='animated fadeInUp ![animation-delay:.3s] goldenText text-[16px] font-[500] mb-1'>Your Complete Business Presence in One Place</p>
-        <p className='animated fadeInUp ![animation-delay:.4s] !mb-[30px]'>Create a beautiful business page, showcase your services,
-                      grow your audience, manage your business, and connect everything
-                      under one professional platform.</p>
+        <p className='animated fadeInUp ![animation-delay:.3s] gold2 text-[16px] font-[500] mb-1'>Build your presence. Get discovered. Connect. Grow.</p>
+        <p className='animated fadeInUp ![animation-delay:.4s] !mb-[30px]'>Create a powerful digital presence, showcase your products and services, connect your social channels, manage your business, and get discovered by customers and other businesses — all in one professional platform.</p>
         {createYourPageBtn}
       </div>
     )
@@ -678,15 +676,9 @@ class HomePage extends Component {
           ShiningPage
         </h1>
         <h3 className={`animated fadeInUp ![animation-delay:.1s] !font-semibold ${w<950 ? '' : '!mb-[70px]'}`}>
-          <span className='text-white/90'>All-in-One Business Platform </span>
+          <span className='text-white/90'>All-in-One Digital Platform </span>
           <span className='text-white/90'>for </span>
-          <span className="font-bold purple-blue">
-            Small Businesses
-          </span>
-            <span className='text-white/90'>{' & '}</span>
-          <span className="font-bold purple-blue">
-            Startups
-          </span>
+          <span className="font-bold purple-blue">Modern Businesses</span>
         </h3>
         {w>=950 && createYourPageText}
       </div>
