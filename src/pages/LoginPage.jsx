@@ -14,6 +14,7 @@ import CountrySelector from '../components/CountrySelector';
 import siteView from '../modules/siteView';
 import { FaRegEye, FaRegEyeSlash, FaUser, FaLock, FaShieldAlt, FaBolt,
   FaStar, FaGlobe, } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { exist, checkSeen } from '../helper';
 import { serverURL, s } from '../srcSet';
@@ -34,6 +35,7 @@ class LoginPage extends Component {
         loginType: true,
         passwordView: false,
         username: '',
+        email: '',
         password: '',
         email: '',
         genderValue: '',
@@ -75,6 +77,34 @@ class LoginPage extends Component {
         this.setState({ ...this.state, [e.target.name]: tx.toLowerCase().replace(/\s/g, '') });
     };
 
+    emailHandler = (e) => {
+        const email = e.target.value;
+
+        this.setState({
+            email,
+            signedInUserErr: ''
+        });
+
+        if (!email) {
+            this.setState({
+                emailErr: 'Email is required'
+            });
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(email)) {
+            this.setState({
+                emailErr: 'Please enter a valid email address'
+            });
+        } else {
+            this.setState({
+                emailErr: ''
+            });
+        }
+    };
+
     passwordHandler = e => {
         var tx = e.target.value
         this.setState({ ...this.state, [e.target.name]: tx.replace(/\s/g, '') });
@@ -110,146 +140,223 @@ class LoginPage extends Component {
         this.setState({ recaptchaValue: value })
     }
 
-    checkRegisterNull = () => {
+    checkNull = () => {
+        const { registerType } = this.state
         var infoErr = {}
-        if(this.state.genderValue==='') infoErr.genderErr = this.props.setLT.genderErr
-        // if(!this.state.fc) infoErr.fcErr = this.props.setLT.fcErr
-        if(!this.props.country.countryCode) infoErr.countryErr = this.props.setLT.countryErr
-        if(!this.state.username) {
-            infoErr.usernameErr = this.props.setLT.usernameNullErr
-        } else if(this.state.username.length<3) {
-            infoErr.usernameErr = this.props.setLT.usernameCharErr
+        if(registerType) {
+            if(this.state.genderValue==='') infoErr.genderErr = 'Gender is required'
+            // if(!this.state.fc) infoErr.fcErr = this.props.setLT.fcErr
+            // console.log('country: ', this.props.country.countryCode)
+            if(!this.props.country.countryCode) infoErr.countryErr = 'Country is required'
+            if(!this.state.username) {
+                infoErr.usernameErr = 'Username is required'
+            } else if(this.state.username.length<3) {
+                infoErr.usernameErr = 'Username must be at least three characters long'
+            }
         }
-        if(this.state.password.trim()==='') infoErr.passwordErr = this.props.setLT.passwordErr
-        if(!this.state.recaptchaValue) infoErr.recaptchaErr = this.props.setLT.recaptchaErr
+        if(this.state.email.trim()==='') infoErr.emailErr = 'Email is required'
+        if(this.state.password.trim()==='') infoErr.passwordErr = 'Password is required'
+        if(!this.state.recaptchaValue) infoErr.recaptchaErr = 'Please confirm that you’re not a robot'
 
         return infoErr
     }
 
     onRegister = async () => {
-        var infoErr = this.checkRegisterNull()
-        if(Object.keys(infoErr).length>0) {
+        const infoErr = this.checkNull();
+
+        if (Object.keys(infoErr).length > 0) {
             this.setState({
                 genderErr: infoErr.genderErr,
                 countryErr: infoErr.countryErr,
                 fcErr: infoErr.fcErr,
+                emailErr: infoErr.emailErr,
                 usernameErr: infoErr.usernameErr,
                 passwordErr: infoErr.passwordErr,
                 recaptchaErr: infoErr.recaptchaErr,
-            })
-        } else {
-            const user = {
-                userId: this.props.userId,
-                lang: this.props.lang,
-                username: this.state.username,
-                fc: 11,//this.state.fc,
-                continent: this.props.country.continent,
-                country: this.props.country.country,
-                countryCode: this.props.country.countryCode,
-                password: this.state.password,
-                recaptchaValue: this.state.recaptchaValue,
-                genderValue: this.state.genderValue,
-                businessType: 0,
-                userType : 1,
+            });
+
+            return;
+        }
+
+        const user = {
+            userId: this.props.userId,
+            lang: this.props.lang,
+            username: this.state.username,
+            email: this.state.email,
+            fc: 11, // this.state.fc,
+            continent: this.props.country.continent,
+            country: this.props.country.country,
+            countryCode: this.props.country.countryCode,
+            password: this.state.password,
+            recaptchaValue: this.state.recaptchaValue,
+            genderValue: this.state.genderValue,
+            businessType: 0,
+            userType: 1,
+        };
+
+        try {
+            const res = await axios.post(`${serverURL}/register/register`,user);
+
+            // ثبت نام موفق
+            if (res.data.success) {
+                delete res.data.user.password;
+                await this.props.dispatch(setUserInfo(res.data.user));
+                await this.props.dispatch(setAuth(true));
+
+                this.setState({
+                    signedInUserErr: "",
+                    usernameErr: "",
+                    emailErr: "",
+                    passwordErr: "",
+                    genderErr: "",
+                    fcErr: "",
+                    recaptchaErr: ""
+                });
+
+                window.scrollTo(0, 0);
+                window.location.href = `/user/${res.data.user.username}`;
             }
-            console.log(user.genderValue)
-            axios.post(`${serverURL}/register/register`, user).then(async (res) => {
-                if(res.data.msg==='Registration failed. Username is already exist.') {
-                    this.setState({
-                        signedInUserErr: this.props.setLT.signedInUserErr,
-                        usernameErr: "",
-                        passwordErr: "",
-                        genderErr: "",
-                        fcErr: "",
-                        recaptchaErr: ""
-                    });
-                } else {
-                    delete res.data.user.password
-                    await this.props.dispatch(setUserInfo(res.data.user))
-                    await this.props.dispatch(setAuth(true))
 
-                    this.setState({
-                        signedInUserErr: "",
-                        usernameErr: "",
-                        passwordErr: "",
-                        genderErr: "",
-                        fcErr: "",
-                        recaptchaErr: ""
-                    });
-                    window.scrollTo(0, 0);
-                    window.location.href = `/user/${this.props.username}`
-                }
+        } catch (err) {
 
-            })
+            const errorData = err.response?.data;
+
+            // Email تکراری
+            if (errorData?.code === 'EMAIL_EXISTS') {
+                this.setState({
+                    signedInEmailErr: "This email is already registered.",
+                    usernameErr: "",
+                    emailErr: "",
+                    passwordErr: "",
+                    genderErr: "",
+                    fcErr: "",
+                    recaptchaErr: ""
+                });
+
+                return;
+            }
+
+            // Username تکراری
+            if (errorData?.code === 'USERNAME_EXISTS') {
+                this.setState({
+                    signedInUsernameErr: "This username is taken. Try another.",
+                    usernameErr: "",
+                    emailErr: "",
+                    passwordErr: "",
+                    genderErr: "",
+                    fcErr: "",
+                    recaptchaErr: ""
+                });
+
+                return;
+            }
+
+            // سایر خطاها
+            this.setState({
+                signedInUserErr: "Registration failed. Please try again.",
+            });
         }
-    }
+    };
 
-    checkLoginNull = () => {
-        var infoErr = {}
-        if(!this.state.username) {
-            infoErr.usernameErr = this.props.setLT.usernameNullErr
-        } else if(this.state.username.length<3) {
-            infoErr.usernameErr = this.props.setLT.usernameCharErr
-        }
-        if(this.state.password.trim()==='') infoErr.passwordErr = this.props.setLT.passwordErr
-        if(!this.state.recaptchaValue) infoErr.recaptchaErr = this.props.setLT.recaptchaErr
+    onLogin = async () => {
+        const infoErr = this.checkNull();
 
-        return infoErr
-    }
-
-    onLogin = async() => {
-        var infoErr = this.checkLoginNull()
-        if(Object.keys(infoErr).length>0) {
+        if (Object.keys(infoErr).length > 0) {
             this.setState({
                 genderErr: infoErr.genderErr,
                 countryErr: infoErr.countryErr,
                 fcErr: infoErr.fcErr,
+                emailErr: infoErr.emailErr,
                 usernameErr: infoErr.usernameErr,
                 passwordErr: infoErr.passwordErr,
                 recaptchaErr: infoErr.recaptchaErr,
-            })
-        } else {
-            const loginInfo = {
-                page:'login',
-                username:this.state.username, 
-                password:this.state.password,
-            }
-            axios.post(`${serverURL}/login/login`, loginInfo).then(async(result) => {
-                if(result.data==='User not found') {
-                    this.setState({
-                        userPassErr: this.props.setLT.userPassErr,
-                        passwordErr:'',
-                        recaptchaErr: ""
-                    });
-                } else if(result.data==='Wrong password') {
-                    this.setState({
-                        userPassErr: this.props.setLT.userPassErr,
-                        passwordErr: this.state.passwordNotOK,
-                        usernameErr: '',
-                        recaptchaErr: ""
-                    });
-                } else {
-                    this.setState({
-                        usernameErr: '',
-                        passwordErr:'',
-                        recaptchaErr: ""
-                    });
+            });
 
-                    // console.log(result.data.user)
-                    delete result.data.user.password
-                    await this.props.dispatch(setUserInfo(result.data.user))
-                    // await this.props.dispatch(token(result.data.token))
-                    await this.props.dispatch(setAuth(true))
-                    if(this.props.userId==='607e9088bede482040af3574') await this.props.dispatch(setFullAccess(true))
-                    // this.props.history.push(`/`)
-
-                    const root = this.props.businessType>0 ? 'publisher' : 'user'
-                    window.location.href = `/${root}/${this.props.username}`
-                    // window.scrollTo(0, 0);
-                }
-            })
+            return;
         }
-    }
+
+        const loginInfo = {
+            page: 'login',
+            email: this.state.email,
+            password: this.state.password,
+        };
+
+        try {
+            const res = await axios.post(`${serverURL}/login/login`,loginInfo);
+
+            // ورود موفق
+            if (res.data.success) {
+                delete res.data.user.password;
+
+                await this.props.dispatch(
+                    setUserInfo(res.data.user)
+                );
+
+                await this.props.dispatch(
+                    setAuth(true)
+                );
+
+                if (this.props.userId === '607e9088bede482040af3574') {
+                    await this.props.dispatch(
+                        setFullAccess(true)
+                    );
+                }
+
+                this.setState({
+                    userPassErr: "",
+                    signedInUserErr: "",
+                    emailErr: "",
+                    usernameErr: "",
+                    passwordErr: "",
+                    genderErr: "",
+                    fcErr: "",
+                    recaptchaErr: ""
+                });
+
+                const root =
+                    this.props.businessType > 0
+                        ? 'publisher'
+                        : 'user';
+
+                window.location.href =
+                    `/${root}/${res.data.user.username}`;
+            }
+
+        } catch (err) {
+            const errorData = err.response?.data;
+
+            // کاربر با این ایمیل پیدا نشد
+            if (errorData?.code === 'USER_NOT_FOUND') {
+                this.setState({
+                    userPassErr: this.props.setLT.userPassErr,
+                    emailErr: "",
+                    usernameErr: "",
+                    passwordErr: "",
+                    recaptchaErr: ""
+                });
+
+                return;
+            }
+
+            // رمز عبور اشتباه است
+            if (errorData?.code === 'WRONG_PASSWORD') {
+                this.setState({
+                    userPassErr: this.props.setLT.userPassErr,
+                    emailErr: "",
+                    usernameErr: "",
+                    passwordErr: this.state.passwordNotOK,
+                    recaptchaErr: ""
+                });
+
+                return;
+            }
+
+            // سایر خطاها
+            this.setState({
+                userPassErr: "Login failed. Please try again.",
+            });
+        }
+    };
 
     onRegisterX = () => {
         this.setState({
@@ -283,8 +390,8 @@ class LoginPage extends Component {
     }
 
     render() {
-        const {fc, toggleEye, userPassErr, signedInUserErr, registerType, loginType, username, email, password,
-                usernameErr, emailErrors, recaptchaErr, passwordErr, genderErr, fcErr, countryErr,
+        const {fc, toggleEye, userPassErr, signedInEmailErr, signedInUsernameErr, registerType, loginType, username, email, password,
+                usernameErr, emailErr, recaptchaErr, passwordErr, genderErr, fcErr, countryErr,
                 genderValue, membershipOption, emailL, genderTitleL, membershipTitleL, 
             } = this.state;
 
@@ -361,12 +468,47 @@ class LoginPage extends Component {
             </div>
         )
 
-        const usernameConst = (
+        const emailConst = (
             <div className='mb-4'>
                 <label className="block mb-2 font-medium">
-                    Username
+                    Email
                 </label>
                 <div className='animated fadeIn relative' style={{animationDelay:loginType ? '0s' : '.8s'}}>
+                    <MdEmail className="absolute left-4 top-1/2 -translate-y-1/2 text-[#6D3EE3] text-[16px]" />
+                    <input
+                        type="text"
+                        value={email}
+                        autoComplete="off"
+                        name="email"
+                        placeholder="Enter your email"
+                        onChange={this.emailHandler}
+                        className="
+                            w-full h-12 border !border-[#E1E4EC50] rounded-[8px] pl-12 pr-4 outline-none bg-transparent text-white focus:ring-1 focus:ring-[#6D3EE3]
+
+                            [&:-webkit-autofill]:!text-white
+                            [&:-webkit-autofill]:[-webkit-text-fill-color:white]
+                            [&:-webkit-autofill]:[transition:background-color_9999s_ease-out_0s]
+                            [&:-webkit-autofill]:[box-shadow:0_0_0px_1000px_transparent_inset]
+
+                            [&:-webkit-autofill:hover]:[-webkit-text-fill-color:white]
+                            [&:-webkit-autofill:focus]:[-webkit-text-fill-color:white]
+                            [&:-webkit-autofill:active]:[-webkit-text-fill-color:white]
+                        "
+                    />
+                </div>
+                <span className='invalid-feedback' style={{ display : emailErr ? 'block' : 'none'}}>
+                    {emailErr}
+                </span>
+                <span className='invalid-feedback' style={{ display : signedInEmailErr ? 'block' : 'none'}}>
+                    {signedInEmailErr}
+                </span>
+            </div>
+        )
+
+        const usernameConst = (
+            <div className='mb-4'>
+                <label className="block mb-2 font-medium">Username</label>
+                <div className='animated fadeIn relative' style={{animationDelay:'0s'}}>
                     <FaUser className="absolute left-4 top-1/2 -translate-y-1/2 text-[#6D3EE3]" />
                     <input type="text" value={username} autoComplete="off" name="username"
                         placeholder="Enter your username"
@@ -377,11 +519,12 @@ class LoginPage extends Component {
                 <span className='invalid-feedback' style={{ display : usernameErr ? 'block' : 'none'}}>
                     {usernameErr}
                 </span>
-                <span className='invalid-feedback' style={{ display : signedInUserErr ? 'block' : 'none'}}>
-                    {signedInUserErr}
+                <span className='invalid-feedback' style={{ display : signedInUsernameErr ? 'block' : 'none'}}>
+                    {signedInUsernameErr}
                 </span>
             </div>
         )
+
         const passwordConst = (
             <div style={{marginBottom:'20px'}}>
                 <label className="block mb-2 font-medium">
@@ -451,12 +594,12 @@ class LoginPage extends Component {
 
         const countryConst = (
             <div className='animated fadeIn sticky-top' style={{animationDelay:'0s', margin:'20px 0px 50px', }}>
-                <label className="block mb-2 font-medium">
-                    Country
-                </label>
-                <div className='d-flex' style={{marginBottom:'0px', alignItems: 'flex-start', gap:'10px'}}>
-                    <div className='d-flex sticky-top' style={{direction:'ltr', }}>
-                        <CountrySelector/>
+                <div className='flex items-start gap-3 '>
+                    <label className="block font-medium">Country</label>
+                    <div className='d-flex' style={{marginBottom:'0px', alignItems: 'flex-start', gap:'10px'}}>
+                        <div className='d-flex sticky-top' style={{direction:'ltr', }}>
+                            <CountrySelector/>
+                        </div>
                     </div>
                 </div>
                 <span className='invalid-feedback' style={{ margin: '0px 0px 0px 0px', display: countryErr ? 'block' : 'none'}}>
@@ -485,7 +628,7 @@ class LoginPage extends Component {
                     </span>
                 </h3>
 
-                <p className="text-sm text-slate-400 max-w-md mx-auto leading-relaxed">
+                <p className="text-sm text-white/70 max-w-md mx-auto leading-relaxed">
                     Join us today! Fill in the details below to get started.
                 </p>
             </div>
@@ -497,7 +640,7 @@ class LoginPage extends Component {
                         Welcome back
                     </span>
                 </h3>
-                <p className="text-sm text-slate-400 max-w-md mx-auto leading-relaxed">
+                <p className="text-sm text-white/70 max-w-md mx-auto leading-relaxed">
                     Login to your account to continue.
                 </p>
             </div>
@@ -531,6 +674,7 @@ class LoginPage extends Component {
                         { auth
                             ?
                             <div className='p-3'>
+                                <h1 className='gold text-center py-[20px]'>You are logged in</h1>
                                 <span className=' text-white/90'>
                                     To login to another account or create a new one, please sign out first.
                                 </span>
@@ -545,7 +689,8 @@ class LoginPage extends Component {
                                     {registerType && genderConst}
                                     {/* registerType && themeConst */}
                                     {registerType && countryConst}
-                                    {usernameConst}
+                                    {emailConst}
+                                    {registerType && usernameConst}
                                     {/* emailConst */}
                                     {passwordConst}
                                     {recaptchaConst}
