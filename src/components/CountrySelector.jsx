@@ -58,21 +58,17 @@ class CountrySelector extends Component {
     const {w, country, countryCode, countryList, searchCountry} = this.state
     const {rtl, lang, setLT} = this.props
 
-    const langBox = (
+    return (
       <div className={ w<s ? "dropleft" : 'dropdown'} style={{padding:'0px', fontSize:'15px', margin:'3px 10px 0px', cursor:'pointer',}}>
-        <div className='d-flex' color=''
+        <div className='flex gap-2' color=''
             type="" id="dropdownMenuButton" data-bs-toggle="dropdown"
             aria-haspopup="false" aria-expanded="false"
             style={{margin:'0px', padding:'0px', borderRadius:'3px'}}>
-            <div className='d-flex' style={{flexDirection:'column', alignItems:'center', fontSize:'15px'}}>
-                <div className='d-flex' style={{marginBottom:'-5px', alignItems:'flex-start'}}>
-                    {countryCode && <span className={`flag-icon flag-icon-${countryCode} cardShadow`}></span>} &nbsp;
-                    {country}
-                </div>
-                {!countryCode && <BsChevronCompactDown/>}
-            </div>&nbsp;
-            <FaCaretDown />
-
+          <div className='flex gap-2 -mt-[3px]' style={{marginBottom:'-5px', alignItems:'flex-start'}}>
+              {countryCode && <span className={`flag-icon flag-icon-${countryCode} cardShadow`}></span>}
+              {country}
+          </div>
+          {!countryCode && <FaCaretDown />}
         </div>
         <div className="dropdown-menu animated fadeIn" aria-labelledby="dropdownMenuButton"
               style={{fontSize:'13px', cursor:'pointer', margin:rtl ? '30px 0px 0px -50px' : '30px 0px 0px 0px', padding:'5px', height:'200px', overflow:'scroll'}}>
@@ -84,12 +80,6 @@ class CountrySelector extends Component {
             {countryList}
         </div>
       </div>
-    )
-
-    return (
-        <div>
-          {langBox}
-        </div>
     );
   }
 }
