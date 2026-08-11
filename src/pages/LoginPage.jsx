@@ -221,6 +221,31 @@ class LoginPage extends Component {
 
             const errorData = err.response?.data;
 
+            // reCAPTCHA failed
+            if (errorData?.code === 'RECAPTCHA_REQUIRED') {
+                this.setState({
+                    recaptchaErr: 'Please confirm that you’re not a robot.',
+                    userPassErr: "",
+                    emailErr: "",
+                    usernameErr: "",
+                    passwordErr: ""
+                });
+
+                return;
+            }
+
+            if (errorData?.code === 'RECAPTCHA_FAILED') {
+                this.setState({
+                    recaptchaErr: 'reCAPTCHA verification failed.',
+                    userPassErr: "",
+                    emailErr: "",
+                    usernameErr: "",
+                    passwordErr: ""
+                });
+
+                return;
+            }            
+            
             // Email تکراری
             if (errorData?.code === 'EMAIL_EXISTS') {
                 this.setState({
@@ -279,6 +304,7 @@ class LoginPage extends Component {
             page: 'login',
             email: this.state.email,
             password: this.state.password,
+            recaptchaValue: this.state.recaptchaValue,
         };
 
         try {
@@ -324,6 +350,31 @@ class LoginPage extends Component {
 
         } catch (err) {
             const errorData = err.response?.data;
+
+            // reCAPTCHA failed
+            if (errorData?.code === 'RECAPTCHA_REQUIRED') {
+                this.setState({
+                    recaptchaErr: 'Please confirm that you’re not a robot.',
+                    userPassErr: "",
+                    emailErr: "",
+                    usernameErr: "",
+                    passwordErr: ""
+                });
+
+                return;
+            }
+
+            if (errorData?.code === 'RECAPTCHA_FAILED') {
+                this.setState({
+                    recaptchaErr: 'reCAPTCHA verification failed.',
+                    userPassErr: "",
+                    emailErr: "",
+                    usernameErr: "",
+                    passwordErr: ""
+                });
+
+                return;
+            }
 
             // کاربر با این ایمیل پیدا نشد
             if (errorData?.code === 'USER_NOT_FOUND') {
@@ -554,7 +605,6 @@ class LoginPage extends Component {
                         <ReCAPTCHA
                             className='-ml-[38px]'
                             sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
-                            secretkey={import.meta.env.VITE_RECAPTCHA_SECRET_KEY}
                             onChange={this.onRecaptchaChange}
                         />
                     </div>
