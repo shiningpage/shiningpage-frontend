@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Container, Modal} from "react-bootstrap";
 import { Link } from 'react-router-dom';
-import aboutUsImg from '../assets/images/other/aboutUs.jpeg';
+import aboutUsImg from '../assets/images/other/aboutUs.jpg';
 import userN from '../assets/images/other/user1.png';
 import male from '../assets/images/other/man2.png';
 import female from '../assets/images/other/woman2.png';

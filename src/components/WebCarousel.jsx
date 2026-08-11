@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Carousel } from 'react-bootstrap';
-import aboutUsImg from '../assets/images/other/aboutUs.jpeg';
+import aboutUsImg from '../assets/images/other/aboutUs.jpg';
 import EditBtn from './EditBtn';
 import { GiGlobe } from 'react-icons/gi';
 import '../assets/css/carousel.css';

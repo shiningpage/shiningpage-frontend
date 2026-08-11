@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../assets/css/webPage.css';
-import aboutUsImg from '../assets/images/other/aboutUs.jpeg';
+import aboutUsImg from '../assets/images/other/aboutUs.jpg';
 import userN from '../assets/images/other/user1.png';
 import rubyS from '../assets/images/other/rubyS.png';
 import male from '../assets/images/other/man2.png';

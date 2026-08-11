@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Modal, Button } from 'react-bootstrap';
 import { setSubUserInfo, setUserInfo } from '../../dataStore/actions';
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import aboutImg from '../../assets/images/other/aboutUs.jpeg';
+import aboutImg from '../../assets/images/other/aboutUs.jpg';
 
 const destBAbout = "../pix.shiningpage.com/whoraly/about/big"
 const destSAbout = "../pix.shiningpage.com/whoraly/about/small"
