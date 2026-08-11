@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Carousel } from 'react-bootstrap';
+import aboutUsImg from '../assets/images/other/aboutUs.jpeg';
 import EditBtn from './EditBtn';
 import { GiGlobe } from 'react-icons/gi';
 import '../assets/css/carousel.css';
@@ -215,7 +216,11 @@ class WebCarousel extends Component{
                     {
                         carouselItems.map (
                             (item, i) => {
-                                const imageUrl = `https://www.pix.shiningpage.com/whoraly/${item.type === 'cat' ? item.folder : item.folder + '/big'}/${subUserInfo._id}-${item.source}.jpeg`;
+                                const imageUrl = (!subUserInfo.aboutIndex && !subUserInfo.profileIndex)
+                                ? aboutUsImg
+                                : `https://www.pix.shiningpage.com/whoraly/${item.type === 'cat' 
+                                    ? item.folder 
+                                    : item.folder + '/big'}/${subUserInfo._id}-${item.source}.jpeg`;
                                 // console.log(i)
                                 return (
                                     <Carousel.Item key={i} className="fadeIn" interval={item.type==='about' ? interval+1000 : interval}>
