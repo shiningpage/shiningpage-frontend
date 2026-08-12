@@ -1387,6 +1387,7 @@ class App extends Component {
                     {sidebarItems}
                     <div className="golden-divider"></div>
                     <br/>
+                    <div className='gold sticky text-center text-[12px]'>V-{import.meta.env.VITE_VERSION}</div>
                 </div>
             </div>
         )
