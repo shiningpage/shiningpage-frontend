@@ -224,7 +224,7 @@ class LoginPage extends Component {
             // reCAPTCHA failed
             if (errorData?.code === 'RECAPTCHA_REQUIRED') {
                 this.setState({
-                    recaptchaErr: 'Please confirm that you’re not a robot.',
+                    recaptchaErr: errorData?.msg,
                     userPassErr: "",
                     emailErr: "",
                     usernameErr: "",
@@ -236,7 +236,7 @@ class LoginPage extends Component {
 
             if (errorData?.code === 'RECAPTCHA_FAILED') {
                 this.setState({
-                    recaptchaErr: 'reCAPTCHA verification failed.',
+                    recaptchaErr: errorData?.msg,
                     userPassErr: "",
                     emailErr: "",
                     usernameErr: "",
@@ -244,12 +244,12 @@ class LoginPage extends Component {
                 });
 
                 return;
-            }            
+            }
             
             // Email تکراری
             if (errorData?.code === 'EMAIL_EXISTS') {
                 this.setState({
-                    signedInEmailErr: "This email is already registered.",
+                    signedInEmailErr: errorData?.msg,
                     usernameErr: "",
                     emailErr: "",
                     passwordErr: "",
@@ -264,7 +264,7 @@ class LoginPage extends Component {
             // Username تکراری
             if (errorData?.code === 'USERNAME_EXISTS') {
                 this.setState({
-                    signedInUsernameErr: "This username is taken. Try another.",
+                    signedInUsernameErr: errorData?.msg,
                     usernameErr: "",
                     emailErr: "",
                     passwordErr: "",
@@ -277,9 +277,7 @@ class LoginPage extends Component {
             }
 
             // سایر خطاها
-            this.setState({
-                signedInUserErr: "Registration failed. Please try again.",
-            });
+            this.setState({ signedInUserErr: "Registration failed. Please try again.", });
         }
     };
 
@@ -314,18 +312,11 @@ class LoginPage extends Component {
             if (res.data.success) {
                 delete res.data.user.password;
 
-                await this.props.dispatch(
-                    setUserInfo(res.data.user)
-                );
-
-                await this.props.dispatch(
-                    setAuth(true)
-                );
+                await this.props.dispatch(setUserInfo(res.data.user));
+                await this.props.dispatch(setAuth(true));
 
                 if (this.props.userId === '607e9088bede482040af3574') {
-                    await this.props.dispatch(
-                        setFullAccess(true)
-                    );
+                    await this.props.dispatch(setFullAccess(true));
                 }
 
                 this.setState({
@@ -339,22 +330,18 @@ class LoginPage extends Component {
                     recaptchaErr: ""
                 });
 
-                const root =
-                    this.props.businessType > 0
-                        ? 'publisher'
-                        : 'user';
+                const root = this.props.businessType > 0 ? 'publisher' : 'user';
 
-                window.location.href =
-                    `/${root}/${res.data.user.username}`;
+                window.location.href = `/${root}/${res.data.user.username}`;
             }
 
         } catch (err) {
             const errorData = err.response?.data;
-
+            // console.log('errorData: ', errorData)
             // reCAPTCHA failed
             if (errorData?.code === 'RECAPTCHA_REQUIRED') {
                 this.setState({
-                    recaptchaErr: 'Please confirm that you’re not a robot.',
+                    recaptchaErr: errorData?.msg,
                     userPassErr: "",
                     emailErr: "",
                     usernameErr: "",
@@ -366,7 +353,7 @@ class LoginPage extends Component {
 
             if (errorData?.code === 'RECAPTCHA_FAILED') {
                 this.setState({
-                    recaptchaErr: 'reCAPTCHA verification failed.',
+                    recaptchaErr: errorData?.msg,
                     userPassErr: "",
                     emailErr: "",
                     usernameErr: "",
@@ -379,7 +366,7 @@ class LoginPage extends Component {
             // کاربر با این ایمیل پیدا نشد
             if (errorData?.code === 'USER_NOT_FOUND') {
                 this.setState({
-                    userPassErr: this.props.setLT.userPassErr,
+                    userPassErr: errorData?.msg,
                     emailErr: "",
                     usernameErr: "",
                     passwordErr: "",
@@ -392,10 +379,10 @@ class LoginPage extends Component {
             // رمز عبور اشتباه است
             if (errorData?.code === 'WRONG_PASSWORD') {
                 this.setState({
-                    userPassErr: this.props.setLT.userPassErr,
+                    userPassErr: errorData?.msg,
                     emailErr: "",
                     usernameErr: "",
-                    passwordErr: this.state.passwordNotOK,
+                    passwordErr: "",
                     recaptchaErr: ""
                 });
 
