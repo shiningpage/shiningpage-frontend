@@ -168,69 +168,10 @@ class Search extends Component {
   }
 
   onToggleUser = async (item) => {
-    const root = item.businessType>0 ? 'publisher' : 'user'
-    // بدلیل اینکه پس از انتخاب کاربر FullAccess از بین می رفت این بخش غیر فعال شد.
-    // localStorage.removeItem('jwtToken');
-    // this.props.dispatch(setPage(''))
-    // this.props.dispatch(setAuth(false))
-    // this.props.dispatch(setFullAccess(false))
-    // this.props.dispatch(setUserInfo([]))
-    // this.props.dispatch(setCountry({}))
-    // this.props.dispatch(setBalance('0.00'))
-    // this.props.dispatch(setRuby('0.00'))
-
-    this.setState({
-      loadingUser: true
-    })
-    const loginInfo = {
-        username:item.username,
-        page:this.props.page,
-    }
-    axios.post(`${serverURL}/login/login`, loginInfo)
-    .then(async(result) => {
-          console.log(888, result.data)
-
-        if(result.data==='User not found'){
-            this.setState({
-                loginModal: true,
-                userPassErr: this.props.setLT.userPassErr,
-                emailErrors:'',
-                passwordErrors:'',
-                recaptchaErrors: '',
-                loadingUser: false,
-            });
-        } else if(result.data==='Wrong password') {
-            this.setState({
-                loginModal: true,
-                userPassErr: this.props.setLT.userPassErr,
-                passwordErrors: this.state.passwordNotOK,
-                usernameErrors: '',
-                recaptchaErrors: '',
-                loadingUser: false,
-            });
-        } else {
-            this.setState({
-                messageFailed: '',
-                loginModal: false,
-                loginError: '',
-                usernameErrors: '',
-                passwordErrors:'',
-                recaptchaErrors: ''
-            });
-            await this.props.dispatch(setUserInfo(result.data.user))
-            // console.log(111, this.props.mainUserId)
-            await this.props.dispatch(setAuth(true))
-            if(this.props.userId==='607e9088bede482040af3574') await this.props.dispatch(setFullAccess(true))
-            // this.props.history.push(`/`)
-            // window.location.reload();
-            window.location.href=`/${root}/${item.username}`
-            window.scrollTo(0, 0);
-            this.setState({
-              loadingUser: false
-            })
-        }
-    })
-
+    if(!item.username) return;
+    await this.props.dispatch(setUserInfo(item))
+    goToWebPage(item)
+    window.scrollTo(0, 0);
   }
 
   onResize = () => {
