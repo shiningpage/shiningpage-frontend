@@ -341,7 +341,7 @@ class PublisherPage extends Component {
             await setStateAsync(() => ({
                 txBlack,
                 username, bizName, fc, genderValue, email, phone, celphone, whatsapp,
-                website, telegram, instagram, facebook, youtube, linkedin, jobSummary,
+                website, telegram, instagram, facebook, youtube, linkedin, jobSummary, 
                 biography, continent, country, countryCode, city, address, categoryItems,
                 attachmentItems, siteLink, application,
                 userId: _id,
@@ -799,7 +799,7 @@ class PublisherPage extends Component {
         )
 
         const jobSummarySection = (
-            <div className='center flex-col'>
+            <div className={`center flex-col ${w<s ? 'mb-[50px]' : 'mb-[70px]'}`}>
                 <div className='flex'>
                     {userX}
                     {me && <EditBtn size={35} position='' margin='-5px 0px 0px 10px' padding='4px' onClick={() => this.onToggleActivitySummary()}/>}
@@ -808,13 +808,13 @@ class PublisherPage extends Component {
                     <div className={`C${fc===11 ? 7 : fc}`} style={{width:'200px', height:'2px', margin:'10px 0px 30px'}}></div>
                     {/* {me && <EditBtn size={35} top={-7} right={-40} padding='4px' onClick={() => this.onToggleActivitySummary()}/>} */}
                 </div>
-                <div className='d-flex'>
+                <div className='flex'>
                     {jobSummary &&
-                        <div style={{whiteSpace:'pre-wrap', textAlign:'center', lineHeight:'30px', marginBottom:w<s ? '50px' : '70px'}}>
+                        <div style={{whiteSpace:'pre-wrap', textAlign:'center', lineHeight:'30px'}}>
                             <strong style={{fontSize:'20px', fontWeight:'bold'}}>{jobSummary}</strong>
                         </div>
                     }
-                    {me && !jobSummary && <div style={{fontSize:'14px', fontWeight:400, margin:'-10px 0px 70px'}}>Add your business activity in one line.</div>}
+                    {me && !jobSummary && <div className="text-[14px] font-normal -mt-[10px]">Add your business activity in one line.</div>}
                     {/* {me && !jobSummary && <EditBtn size={35} text='Activity Summary' fontSize='12px' fontWeight={450} margin='-10px 0px 65px 5px' padding='4px' position='' onClick={() => this.onToggleActivitySummary()}/>} */}
                 </div>
             </div>
@@ -822,9 +822,11 @@ class PublisherPage extends Component {
 
         const aboutInformation = (
             <div style={{fontWeight:400, marginBottom:'50px'}}>
-                <div className='sticky-top d-flex justify-content-end' style={{top:w<s ? (scrollDirection==='up' ? 55 : 100) : 130, zIndex:10, marginBottom:'-35px', transition:'.5s'}}>
-                    {me && <EditBtn size={35} position='' text='Edit About' padding='4px' onClick={() => this.onToggleAboutInfo()}/>}
-                </div>
+                {me &&
+                    <div className='sticky-top d-flex justify-content-end' style={{top:w<s ? (scrollDirection==='up' ? 55 : 100) : 130, zIndex:10, marginBottom:'-35px', transition:'.5s'}}>
+                        <EditBtn size={35} position='' text='Edit About' padding='4px' onClick={() => this.onToggleAboutInfo()}/>
+                    </div>
+                }
                 <div>About</div>
                 <div style={{marginBottom:'40px'}}>{userX}</div>
                 {me && (biography==='' || biography==='<br>') &&
@@ -858,7 +860,7 @@ class PublisherPage extends Component {
                     {jobSummarySection}
                     <div className='flex' style={{flexDirection:w<s ? 'column' : ''}}>
                         {aboutImgSection}
-                        <div>
+                        <div className='flex flex-col w-full'>
                             {aboutInformation}
                             { subUserInfo.businessType > 0 && (me || teamMembers.length > 0) && teamSection}
                         </div>
