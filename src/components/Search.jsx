@@ -185,22 +185,18 @@ class Search extends Component {
   render() {
     const {w, finishData, loadingData, searchUsers, searchMember, } = this.state
     const {setLT, auth, fullAccess} = this.props;
-    const loaderZ = <div className='loader-13' style={{margin: '0px', color:'#d1a44a'}}></div>
+    const loaderZ = <div className='loader-13' style={{margin:'0px', color:'#d1a44a'}}></div>
 
     const more = (
-      <div className='center'>
+      <div className='center golden-border btn-glow focus:outline-none focus:ring-[#d5ad6d]/60'>
           <div className='center btnShadow'
               style={{minWidth: '100px', height: '25px',
                   textAlign:'center', alignItems:'center',
-                  margin: '0px 0px 0px',
-                  border: `1px solid #f2ba4b`,
-                  backgroundColor: '',
                   padding: '0px 10px',
-                  color: `#d1a44a`,
                   fontWeight:450,
                   borderRadius: '100px'}}
               onClick = {() => this.scrollSearch()}>
-              <span style={{}}>{setLT.more}</span>
+              <span className='gold'>{setLT.more}</span>
           </div>
       </div>
     )

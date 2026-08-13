@@ -694,8 +694,8 @@ class LoginPage extends Component {
         )
         const forgetPassword = <div className='link-underline mt-5 text-[#0C6DFB] font-medium' onClick={() => null}>Forget Password?</div>
 
-        const createYourPageBtn = (
-            <Link to='/' className={`C11 center w-[170px] h-[45px] !no-underline group flex items-center gap-2 py-1 rounded-lg cursor-pointer select-none transition-all duration-300 ease-out hover:scale-105 hover:bg-[#d5ad6d]/10 hover:shadow-[0_0_18px_rgba(213,173,109,0.55)] active:scale-95 active:bg-[#d5ad6d]/20 active:shadow-[0_0_8px_rgba(213,173,109,0.8)] focus:outline-none focus:ring-[#d5ad6d]/60`}
+        const signOutBtn = (
+            <Link to='/' className={`C11 center w-[170px] h-[45px] bg-white !no-underline group flex items-center gap-2 py-1 rounded-lg cursor-pointer select-none btn-glow`}
                 onClick={this.logout}
             >
                 <RiLogoutCircleRLine className="text-red-700 w-[20px] text-[23px] transition-transform duration-300 group-hover:scale-110"/>
@@ -716,7 +716,7 @@ class LoginPage extends Component {
                                     To login to another account or create a new one, please sign out first.
                                 </span>
                                 <div className='center flex-col items-center pt-[30px] px-0 pb-2.5'>
-                                    {createYourPageBtn}
+                                    {signOutBtn}
                                 </div>
                             </div>
                             :

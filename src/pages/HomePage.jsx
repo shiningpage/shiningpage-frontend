@@ -654,7 +654,7 @@ class HomePage extends Component {
     )
 
     const createYourPageBtn = (
-      <Link to='/login' className={`animated fadeInLeft ![animation-delay:.4s] C14 center w-[170px] h-[45px] !no-underline group flex items-center gap-2 py-1 rounded-lg cursor-pointer select-none transition-all duration-300 ease-out hover:scale-105 hover:bg-[#d5ad6d]/10 hover:shadow-[0_0_18px_rgba(213,173,109,0.55)] active:scale-95 active:bg-[#d5ad6d]/20 active:shadow-[0_0_8px_rgba(213,173,109,0.8)] focus:outline-none focus:ring-[#d5ad6d]/60`}>
+      <Link to='/login' className={`animated fadeInLeft ![animation-delay:.4s] C14 center w-[170px] h-[45px] !no-underline group flex items-center gap-2 py-1 rounded-lg cursor-pointer select-none btn-glow`}>
           <div className="text-[#6E543B] font-semibold transition-all duration-300 group-hover:tracking-wide group-active:scale-95">
             Create Your Page
           </div>

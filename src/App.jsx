@@ -884,7 +884,7 @@ class App extends Component {
         )
 
         const plan = (
-            <Link to={auth ? '/pricing' : '/login'} className={`!no-underline group flex items-center gap-${w<s ? 1 : 3} px-${w<s ? 2 : 3} py-1 rounded-lg ${w<s ? '' : 'border'} border-[#d5ad6d] text-white cursor-pointer select-none transition-all duration-300 ease-out hover:scale-105 hover:bg-[#d5ad6d]/10 hover:shadow-[0_0_18px_rgba(213,173,109,0.55)] active:scale-95 active:bg-[#d5ad6d]/20 active:shadow-[0_0_8px_rgba(213,173,109,0.8)] focus:outline-none focus:ring-${w<s ? 0 : 2} focus:ring-[#d5ad6d]/60`}>
+            <Link to={auth ? '/pricing' : '/login'} className={`!no-underline group flex items-center gap-${w<s ? 1 : 3} px-${w<s ? 2 : 3} py-1 rounded-lg ${w<s ? '' : 'border'} border-[#d5ad6d] text-white cursor-pointer select-none btn-glow`}>
                 {w>s && auth && <FaCrown className="goldenText w-6 h-6 -mt-1 transition-all duration-300 group-hover:rotate-12 group-hover:scale-110 group-active:scale-95" />}
                 <div>
                     {auth && <div className="text-[12px] -mb-1">Free Plan</div>}

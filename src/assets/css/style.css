@@ -1632,3 +1632,24 @@ box-shadow: inset 0px 0px 7px 0px rgba(0,0,0,0.6);
     font-weight: 500;
     padding: 6px 10px;
 }
+
+.btn-glow {
+  transition: all 300ms ease-out;
+}
+
+.btn-glow:hover {
+  transform: scale(1.05);
+  background-color: rgba(213, 173, 109, 0.1);
+  box-shadow: 0 0 18px rgba(213, 173, 109, 0.55);
+}
+
+.btn-glow:active {
+  transform: scale(0.95);
+  background-color: rgba(213, 173, 109, 0.2);
+  box-shadow: 0 0 8px rgba(213, 173, 109, 0.8);
+}
+
+.btn-glow:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(213, 173, 109, 0.6);
+}
