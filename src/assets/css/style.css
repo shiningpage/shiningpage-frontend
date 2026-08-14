@@ -1627,6 +1627,35 @@ box-shadow: inset 0px 0px 7px 0px rgba(0,0,0,0.6);
   color: transparent;
 }
 
+.silver {
+  background: linear-gradient(
+    90deg,
+    #707070,
+    #b8b8b8,
+    #f5f5f5,
+    #d0d0d0,
+    #888888,
+    #707070
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.rosegold {
+  background: linear-gradient(
+    90deg,
+    #b76e79,
+    #d89a9e,
+    #f4c2c2,
+    #d89a9e,
+    #b76e79
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 .invalid-feedback {
     color: #ff4d4f;
     font-weight: 500;
