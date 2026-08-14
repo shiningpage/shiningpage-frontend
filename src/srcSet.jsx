@@ -3,8 +3,8 @@ const config = {
 
   googleAds: true,
 
-  // serverURL: 'http://localhost:4200',
-  serverURL: 'https://api.shiningpage.com',
+  serverURL: 'http://localhost:4200',
+  // serverURL: 'https://api.shiningpage.com',
 
   noIndexPages: [
     'login',
