@@ -41,7 +41,9 @@ class LoginPage extends Component {
         genderValue: '',
         membershipOption: '',
         toggleEye: false,
-}
+        registrationStep: 'form',
+        verificationEmail: '',
+    }
 
     componentDidMount = async () => {
         window.scrollTo(0, 0)
@@ -195,16 +197,35 @@ class LoginPage extends Component {
         };
 
         try {
-            const res = await axios.post(`${serverURL}/register/register`,user);
+            const res = await axios.post(`${serverURL}/register/register`, user);
 
             // ثبت نام موفق
-            if (res.data.success) {
-                delete res.data.user.password;
-                await this.props.dispatch(setUserInfo(res.data.user));
-                await this.props.dispatch(setAuth(true));
+            // if (res.data.success) {
+            //     delete res.data.user.password;
+            //     await this.props.dispatch(setUserInfo(res.data.user));
+            //     await this.props.dispatch(setAuth(true));
 
+            //     this.setState({
+            //         signedInUserErr: "",
+            //         usernameErr: "",
+            //         emailErr: "",
+            //         passwordErr: "",
+            //         genderErr: "",
+            //         fcErr: "",
+            //         recaptchaErr: ""
+            //     });
+
+            //     window.scrollTo(0, 0);
+            //     window.location.href = `/user/${res.data.user.username}`;
+            // }
+
+            if (res.data.success) {
                 this.setState({
+                    registrationStep: 'checkEmail',
+                    verificationEmail: res.data.email,
                     signedInUserErr: "",
+                    signedInEmailErr: "",
+                    signedInUsernameErr: "",
                     usernameErr: "",
                     emailErr: "",
                     passwordErr: "",
@@ -212,9 +233,7 @@ class LoginPage extends Component {
                     fcErr: "",
                     recaptchaErr: ""
                 });
-
                 window.scrollTo(0, 0);
-                window.location.href = `/user/${res.data.user.username}`;
             }
 
         } catch (err) {
@@ -431,9 +450,26 @@ class LoginPage extends Component {
         const {fc, toggleEye, userPassErr, signedInEmailErr, signedInUsernameErr, registerType, loginType, username, email, password,
                 usernameErr, emailErr, recaptchaErr, passwordErr, genderErr, fcErr, countryErr,
                 genderValue, membershipOption, emailL, genderTitleL, membershipTitleL, 
+                registrationStep, verificationEmail
             } = this.state;
 
         const {auth, lang, setLT, country, mainUser} = this.props;
+
+        const checkEmailConst = (
+            <div className="text-center py-10 px-5">
+                <div className="text-5xl mb-6">📧</div>
+                <h3 className="text-3xl font-bold mb-4">Check your email</h3>
+                <p className="text-white/70 leading-7">We've sent a verification link to:</p>
+                <p className="font-semibold text-[#6D3EE3] mt-2">{verificationEmail}</p>
+                <p className="text-white/60 text-sm mt-5 leading-6">
+                    Please click the verification link in your email
+                    to complete your registration.
+                </p>
+                <p className="text-white/50 text-sm mt-4">
+                    The verification link expires in 30 minutes.
+                </p>
+            </div>
+        );
 
         window.recaptchaOptions = {
             lang: lang,
@@ -705,39 +741,42 @@ class LoginPage extends Component {
             </Link>
         )
 
+        const mainForm = (
+            <div className='animated fadeInUpX [animation-delay:.5s] backdrop-blur-[20px] bg-[#ffffff10] border !border-white/20 w-full max-w-[400px] rounded-[20px]'>
+                { auth
+                    ?
+                    <div className='p-3'>
+                        <h1 className='gold text-center py-[20px]'>You are logged in</h1>
+                        <span className=' text-white/90'>
+                            To login to another account or create a new one, please sign out first.
+                        </span>
+                        <div className='center flex-col items-center pt-[30px] px-0 pb-2.5'>
+                            {signOutBtn}
+                        </div>
+                    </div>
+                    :
+                    <div className={`p-10px ${w < 300 ? "py-2.5 px-0" : "p-2.5"}`}>
+                        <div className=' animated fadeInUpX pt-[25px] px-2.5 pb-[5px]'>
+                            {registerType ? signupHeader : loginHeader}
+                            {registerType && genderConst}
+                            {/* registerType && themeConst */}
+                            {registerType && countryConst}
+                            {emailConst}
+                            {registerType && usernameConst}
+                            {/* emailConst */}
+                            {passwordConst}
+                            {recaptchaConst}
+                            { loginType && forgetPassword }
+                            {registerBtn}
+                            { registerType ? signupLink : loginLink }
+                        </div>
+                    </div>
+                }
+            </div>
+        )
         return (
             <Container className={`center ${w<s ? 'p-4' : 'px-2.5 pt-10 pb-20'} text-white`}>
-                    <div className='animated fadeInUpX [animation-delay:.5s] backdrop-blur-[20px] bg-[#ffffff10] border !border-white/20 w-full max-w-[400px] rounded-[20px]'>
-                        { auth
-                            ?
-                            <div className='p-3'>
-                                <h1 className='gold text-center py-[20px]'>You are logged in</h1>
-                                <span className=' text-white/90'>
-                                    To login to another account or create a new one, please sign out first.
-                                </span>
-                                <div className='center flex-col items-center pt-[30px] px-0 pb-2.5'>
-                                    {signOutBtn}
-                                </div>
-                            </div>
-                            :
-                            <div className={`p-10px ${w < 300 ? "py-2.5 px-0" : "p-2.5"}`}>
-                                <div className=' animated fadeInUpX pt-[25px] px-2.5 pb-[5px]'>
-                                    {registerType ? signupHeader : loginHeader}
-                                    {registerType && genderConst}
-                                    {/* registerType && themeConst */}
-                                    {registerType && countryConst}
-                                    {emailConst}
-                                    {registerType && usernameConst}
-                                    {/* emailConst */}
-                                    {passwordConst}
-                                    {recaptchaConst}
-                                    { loginType && forgetPassword }
-                                    {registerBtn}
-                                    { registerType ? signupLink : loginLink }
-                                </div>
-                            </div>
-                        }
-                    </div>
+                { registrationStep === 'checkEmail' ? checkEmailConst : mainForm }
             </Container>
         )
     }
