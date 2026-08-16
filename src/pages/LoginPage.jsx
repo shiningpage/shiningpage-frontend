@@ -43,6 +43,7 @@ class LoginPage extends Component {
         toggleEye: false,
         registrationStep: 'form',
         verificationEmail: '',
+        loading: false,
     }
 
     componentDidMount = async () => {
@@ -197,27 +198,8 @@ class LoginPage extends Component {
         };
 
         try {
+            this.setState({ loading: true })
             const res = await axios.post(`${serverURL}/register/register`, user);
-
-            // ثبت نام موفق
-            // if (res.data.success) {
-            //     delete res.data.user.password;
-            //     await this.props.dispatch(setUserInfo(res.data.user));
-            //     await this.props.dispatch(setAuth(true));
-
-            //     this.setState({
-            //         signedInUserErr: "",
-            //         usernameErr: "",
-            //         emailErr: "",
-            //         passwordErr: "",
-            //         genderErr: "",
-            //         fcErr: "",
-            //         recaptchaErr: ""
-            //     });
-
-            //     window.scrollTo(0, 0);
-            //     window.location.href = `/user/${res.data.user.username}`;
-            // }
 
             if (res.data.success) {
                 this.setState({
@@ -231,7 +213,8 @@ class LoginPage extends Component {
                     passwordErr: "",
                     genderErr: "",
                     fcErr: "",
-                    recaptchaErr: ""
+                    recaptchaErr: "",
+                    loading: false,
                 });
                 window.scrollTo(0, 0);
             }
@@ -325,6 +308,7 @@ class LoginPage extends Component {
         };
 
         try {
+            this.setState({ loading: true })
             const res = await axios.post(`${serverURL}/login/login`,loginInfo);
 
             // ورود موفق
@@ -346,7 +330,8 @@ class LoginPage extends Component {
                     passwordErr: "",
                     genderErr: "",
                     fcErr: "",
-                    recaptchaErr: ""
+                    recaptchaErr: "",
+                    loading: false,
                 });
 
                 const root = this.props.businessType > 0 ? 'publisher' : 'user';
@@ -447,25 +432,30 @@ class LoginPage extends Component {
     }
 
     render() {
-        const {fc, toggleEye, userPassErr, signedInEmailErr, signedInUsernameErr, registerType, loginType, username, email, password,
+        const {fc, loading, toggleEye, userPassErr, signedInEmailErr, signedInUsernameErr, registerType, loginType, username, email, password,
                 usernameErr, emailErr, recaptchaErr, passwordErr, genderErr, fcErr, countryErr,
                 genderValue, membershipOption, emailL, genderTitleL, membershipTitleL, 
                 registrationStep, verificationEmail
             } = this.state;
 
         const {auth, lang, setLT, country, mainUser} = this.props;
+        const loader13 = <div className='loader-13' style={{margin: '0px 20px'}}></div>
 
         const checkEmailConst = (
-            <div className="text-center py-10 px-5">
-                <div className="text-5xl mb-6">📧</div>
-                <h3 className="text-3xl font-bold mb-4">Check your email</h3>
-                <p className="text-white/70 leading-7">We've sent a verification link to:</p>
-                <p className="font-semibold text-[#6D3EE3] mt-2">{verificationEmail}</p>
-                <p className="text-white/60 text-sm mt-5 leading-6">
+            <div className="text-center">
+                <div className="animated zoomIn ![animation-delay:0s] text-5xl my-6">📧</div>
+
+                <div className="animated fadeInUp ![animation-delay:0s] text-3xl font-extrabold tracking-tight my-[30px]">
+                    <span className="purple-blue">Check your email</span>
+                </div>
+
+                <p className="animated fadeInUp ![animation-delay:.2s] text-white/90 leading-7">We have sent a verification link to:</p>
+                <p className="animated zoomIn ![animation-delay:.2s] text-[15px] font-semibold gold mt-2">{verificationEmail}</p>
+                <p className="animated fadeInUp ![animation-delay:.4s] text-white/80 text-sm mt-5 leading-6">
                     Please click the verification link in your email
                     to complete your registration.
                 </p>
-                <p className="text-white/50 text-sm mt-4">
+                <p className="animated fadeInUp ![animation-delay:.6s] text-white/80 text-sm mt-4">
                     The verification link expires in 30 minutes.
                 </p>
             </div>
@@ -644,7 +634,7 @@ class LoginPage extends Component {
                 </span>
                 <div className='center btnShadow w-full h-12 my-10 rounded-[8px] bg-gradient-to-r from-blue-600 to-purple-600 py-3 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:from-blue-700 hover:to-purple-700 hover:shadow-xl active:scale-98 focus:outline-none focus:ring-4 focus:ring-blue-300'
                     onClick = {() => registerType ? this.onRegister() : this.onLogin()}>
-                    <span style={{fontSize:'16px'}}>{registerType ? setLT.signUp : setLT.login}</span>
+                    <span style={{fontSize:'16px'}}>{loading ? loader13 : registerType ? setLT.signUp : setLT.login}</span>
                 </div>
             </div>
         )
