@@ -442,7 +442,7 @@ class LoginPage extends Component {
         const loader13 = <div className='loader-13' style={{margin: '0px 20px'}}></div>
 
         const checkEmailConst = (
-            <div className="text-center">
+            <div className="text-center p-3">
                 <div className="animated zoomIn ![animation-delay:0s] text-5xl my-6">📧</div>
 
                 <div className="animated fadeInUp ![animation-delay:0s] text-3xl font-extrabold tracking-tight my-[30px]">
@@ -452,8 +452,7 @@ class LoginPage extends Component {
                 <p className="animated fadeInUp ![animation-delay:.2s] text-white/90 leading-7">We have sent a verification link to:</p>
                 <p className="animated zoomIn ![animation-delay:.2s] text-[15px] font-semibold gold mt-2">{verificationEmail}</p>
                 <p className="animated fadeInUp ![animation-delay:.4s] text-white/80 text-sm mt-5 leading-6">
-                    Please click the verification link in your email
-                    to complete your registration.
+                    Please click the verification link in your email to complete your registration.
                 </p>
                 <p className="animated fadeInUp ![animation-delay:.6s] text-white/80 text-sm mt-4">
                     The verification link expires in 30 minutes.
