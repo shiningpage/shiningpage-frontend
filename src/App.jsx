@@ -103,7 +103,7 @@ class App extends Component {
         await this.props.dispatch(setGeo([]))
         identifyObj(this.props.dispatch)
         await this.getGeo()
-        this.getVersion()
+        // this.getVersion()
         // getLocalIPs().then((ips) => console.log("آدرس‌های IP کاربر:", ips));
         // const id = await getFingerprint()
         // const ips = await getLocalIPs()
@@ -285,40 +285,40 @@ class App extends Component {
         })
     }
 
-    onUpdateVersion = () => {
+    // onUpdateVersion = () => {
 
-        caches.keys().then((keyList) => Promise.all(keyList.map((key) => caches.delete(key))))
+    //     caches.keys().then((keyList) => Promise.all(keyList.map((key) => caches.delete(key))))
 
-        if('caches' in window){
-            caches.keys().then((names) => {
-                // Delete all the cache files
-                names.forEach(name => {
-                    caches.delete(name);
-                })
-            });
-            window.location.reload()
-        }
+    //     if('caches' in window){
+    //         caches.keys().then((names) => {
+    //             // Delete all the cache files
+    //             names.forEach(name => {
+    //                 caches.delete(name);
+    //             })
+    //         });
+    //         window.location.reload()
+    //     }
 
-    }
+    // }
 
-    getVersion = () => {
-        axios.get(`${serverURL}/user/getVersion/`)
-        .then(async(res) => {
-            const date = new Date()
-            const dateN = date.getTime()
-            var updateTime = this.props.updateVersionDate
-            const limit = 10 * 60 * 1000 // 10min
-            const checkTime = dateN - updateTime > limit ? true : false
+    // getVersion = () => {
+    //     axios.get(`${serverURL}/user/getVersion/`)
+    //     .then(async(res) => {
+    //         const date = new Date()
+    //         const dateN = date.getTime()
+    //         var updateTime = this.props.updateVersionDate
+    //         const limit = 10 * 60 * 1000 // 10min
+    //         const checkTime = dateN - updateTime > limit ? true : false
 
-            if(import.meta.env.VITE_VERSION!==res.data.site && checkTime) {
-                // console.log(true)
-                this.props.dispatch(setUpdateVersionDate(dateN))
-                this.onUpdateVersion()
-            } else {
-                // console.log(false)
-            }
-        })
-    }
+    //         if(import.meta.env.VITE_VERSION!==res.data.site && checkTime) {
+    //             // console.log(true)
+    //             this.props.dispatch(setUpdateVersionDate(dateN))
+    //             this.onUpdateVersion()
+    //         } else {
+    //             // console.log(false)
+    //         }
+    //     })
+    // }
 
     onToggleShowVideo = async () => {
         this.props.dispatch(setToggleShowVideo(!this.props.toggleShowVideo))
@@ -1386,8 +1386,7 @@ class App extends Component {
                     <div className="golden-divider"></div>
                     {sidebarItems}
                     <div className="golden-divider"></div>
-                    <br/>
-                    <div className='gold sticky text-center text-[12px]'>V-{import.meta.env.VITE_VERSION}</div>
+                    <div className='gold sticky text-center text-[12px] mt-[20px] mb-[70px]'>V-{import.meta.env.VITE_VERSION}</div>
                 </div>
             </div>
         )
