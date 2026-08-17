@@ -1386,7 +1386,7 @@ class App extends Component {
                     <div className="golden-divider"></div>
                     {sidebarItems}
                     <div className="golden-divider"></div>
-                    <div className='gold sticky text-center text-[12px] mt-[20px] mb-[100px]'>V-{import.meta.env.VITE_VERSION}</div>
+                    <div className='gold sticky text-center text-[12px] mt-[20px] mb-[150px]'>V-{import.meta.env.VITE_VERSION}</div>
                 </div>
             </div>
         )
@@ -1466,8 +1466,8 @@ class App extends Component {
             </Modal>
         )
         const backG = (
-            <div className="fixed inset-0 overflow-hidden -z-10">
-                <div className="absolute -inset-8 bg-cover bg-right blur-sm" style={{ backgroundImage: `url(${aiImage})`, minHeight: '100lvh' }}/>
+            <div className="fixed top-0 left-0 w-full overflow-hidden -z-10" style={{ height: h }}>
+                <div className="absolute -inset-8 bg-cover bg-right blur-sm" style={{ backgroundImage: `url(${aiImage})` }}/>
             </div>
         );
 

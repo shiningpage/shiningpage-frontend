@@ -62,7 +62,7 @@ class PublisherPage extends Component {
         super(props);
         this.state = {
             w: document.body.clientWidth,
-            h: document.body.clientHeight,
+            h: window.innerHeight,
             userWebPage: false,
             searchData: [],
             searchItems:'',
@@ -780,11 +780,11 @@ class PublisherPage extends Component {
         var bizLink = `https://shiningpage.com/${subUserInfo.businessType>0 ? 'publisher' : 'user'}/${subUserInfo.username}`
 
         const backG = (
-            <div className="fixed inset-0 overflow-hidden -z-10">
+            <div className="fixed top-0 left-0 w-full overflow-hidden -z-10" style={{ height: h }}>
                 <div className="absolute -inset-8 bg-cover bg-right blur-[50px]" style={{ backgroundImage: `url(${aboutImgSrc})` }}/>
             </div>
         );
-        
+
         const aboutImgSection = (
             <div style={{minWidth: w<s ? '100%' : '300px', marginRight: w<s ? 0 : '70px'}}>
                 { profileData &&
@@ -1138,7 +1138,7 @@ class PublisherPage extends Component {
 
         const goToSection = (
             <div id="goToSection" style={{transition:'.5s'}}
-                className={`flex gap-2 cardShadow backBlur sticky ${w < s ? (scrollDirection==='up' ? 'top-0' : 'top-[45px]') : 'top-[60px]'} w-full p-${pageYOffset > 250 ? 2 : 0} z-[1000] bg-[#ffffff99] transition-all duration-${pageYOffset > 250 ? 500 : 0} ease-in-out ${pageYOffset > 250 ? 'h-[45px] opacity-100 translate-y-0 visible' : 'h-0 opacity-0 -translate-y-5 invisible pointer-events-none'} overflow-scroll`}
+                className={`flex gap-2 cardShadow backBlur sticky ${w < s ? (scrollDirection==='down' ? 'top-0' : 'top-[45px]') : 'top-[60px]'} w-full p-${pageYOffset > 250 ? 2 : 0} z-[1000] bg-[#ffffff99] transition-all duration-${pageYOffset > 250 ? 500 : 0} ease-in-out ${pageYOffset > 250 ? 'h-[45px] opacity-100 translate-y-0 visible' : 'h-0 opacity-0 -translate-y-5 invisible pointer-events-none'} overflow-scroll`}
             >
                 {sectionButtons.map(({ id, icon: Icon, label }) => (
                     <div key={id} className="btnShadow flex items-center bg-white/70 gap-2 p-2 rounded-5" onClick={() => this.onSetSidebarOpen(id, true)}>
