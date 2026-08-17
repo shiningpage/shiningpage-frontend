@@ -55,6 +55,7 @@ import { exist, mapTeam, addNotification, totalFileSize, scrollTo, countAllAds, 
 import { totalPrice, updateCategoryItems } from '../components/web/psSub/psHelper';
 import { serverURL, s, NavH, colors, mapColors, lightColors, designedByColors, googleAds } from '../srcSet';
 import internationalImage from "../assets/images/other/international.jpg";
+const hx = window.innerHeight + 200
 
 class PublisherPage extends Component {
 
@@ -162,10 +163,7 @@ class PublisherPage extends Component {
         // const scrollDirection = this.props.scrollDirection
         const header = document.getElementById("header");
         const headerTop = header.getBoundingClientRect().top;
-        this.setState({
-            headerTop,
-            h: window.innerHeight,
-        })
+        this.setState({ headerTop })
         const categoryTape = document.getElementById("categoryTape");
         const categoryTapeTop = categoryTape ? categoryTape.getBoundingClientRect().top : 0;
 
@@ -507,6 +505,7 @@ class PublisherPage extends Component {
         this.setState({
             w: document.body.clientWidth,
             h: window.innerHeight,
+            dh: document.body.clientHeight
         })
     }
 
@@ -786,7 +785,7 @@ class PublisherPage extends Component {
         var bizLink = `https://shiningpage.com/${subUserInfo.businessType>0 ? 'publisher' : 'user'}/${subUserInfo.username}`
 
         const backG = (
-            <div className="fixed top-0 left-0 w-full overflow-hidden -z-10" style={{ height: h }}>
+            <div className="fixed top-0 left-0 w-full overflow-hidden -z-10" style={{ height: w<s ? hx : h }}>
                 <div className="absolute -inset-8 bg-cover bg-right blur-[50px]" style={{ backgroundImage: `url(${aboutImgSrc})` }}/>
             </div>
         );
