@@ -293,9 +293,10 @@ const AttachmentSub = (props) => {
         </Modal>
     )
 
+    // , display: me || attachmentExist ? '' : 'none'
     return (
         <div id="attachmentsSub" className={`C${fc}`}
-            style={{ width: '100%', color: lightColors.includes(fc) ? '#000000' : '#ffffff', position: 'relative', display: me || attachmentExist ? '' : 'none' }}
+            style={{ width: '100%', color: lightColors.includes(fc) ? '#000000' : '#ffffff', position: 'relative' }}
         >
             {me && <EditBtn rtl={rtl} type="add" onClick={toggleModal} />}
             <div style={{ width: '100%', padding: '70px 0px', backgroundColor: '#ffffff00' }}>
