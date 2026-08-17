@@ -53,6 +53,7 @@ import ModalSidebarShiningpage from './components/modals/ModalSidebarShiningpage
 import { logout, identifyObj, exist, getBalance, scrollStatus, checkRubyInterval, } from './helper';
 import { serverURL, s, NavH, langArray, countryArr, noIndexPages } from './srcSet';
 import aiImage from "./assets/images/other/ai-background.jpg";
+const hx = window.innerHeight + 200
 
 class App extends Component {
 
@@ -145,11 +146,7 @@ class App extends Component {
     handleScroll = async () => {
         this.props.dispatch(setPageYOffset(window.scrollY))
         const { scrollDirection, lastScrollTop } = scrollStatus(this.state.lastScrollTop);
-        this.setState({
-            scrollDirection,
-            lastScrollTop,
-            h: window.innerHeight,
-        });
+        this.setState({ scrollDirection, lastScrollTop });
         this.props.dispatch(setScrollDirection(scrollDirection))
         // console.log(this.props.pageYOffset)
 
@@ -1470,7 +1467,7 @@ class App extends Component {
             </Modal>
         )
         const backG = (
-            <div className="fixed top-0 left-0 w-full overflow-hidden -z-10" style={{ height: h }}>
+            <div className="fixed top-0 left-0 w-full overflow-hidden -z-10" style={{ height: w<s ? hx : h }}>
                 <div className="absolute -inset-8 bg-cover bg-right blur-sm" style={{ backgroundImage: `url(${aiImage})` }}/>
             </div>
         );
