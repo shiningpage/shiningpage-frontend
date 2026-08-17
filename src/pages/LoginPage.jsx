@@ -81,27 +81,51 @@ class LoginPage extends Component {
     };
 
     emailHandler = (e) => {
-        const email = e.target.value;
+
+        let email = e.target.value;
+
+        // تبدیل حروف بزرگ به حروف کوچک
+        email = email.toLowerCase();
+
+        // فقط کاراکترهای مجاز ایمیل
+        email = email.replace(/[^a-z0-9.!#$%&'*+/=?^_`{|}~@-]/g, '');
 
         this.setState({
             email,
             signedInUserErr: ''
         });
 
+
+        // =========================================
+        // Required
+        // =========================================
+
         if (!email) {
+
             this.setState({
                 emailErr: 'Email is required'
             });
+
             return;
         }
 
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        // =========================================
+        // Validate email
+        // =========================================
+
+        const emailRegex =
+            /^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)+$/;
+
 
         if (!emailRegex.test(email)) {
+
             this.setState({
                 emailErr: 'Please enter a valid email address'
             });
+
         } else {
+
             this.setState({
                 emailErr: ''
             });
