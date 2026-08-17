@@ -162,7 +162,10 @@ class PublisherPage extends Component {
         // const scrollDirection = this.props.scrollDirection
         const header = document.getElementById("header");
         const headerTop = header.getBoundingClientRect().top;
-        this.setState({ headerTop })
+        this.setState({
+            headerTop,
+            h: window.innerHeight,
+        })
         const categoryTape = document.getElementById("categoryTape");
         const categoryTapeTop = categoryTape ? categoryTape.getBoundingClientRect().top : 0;
 
@@ -501,7 +504,10 @@ class PublisherPage extends Component {
     }
 
     onResize = async () => {
-        this.setState({ w: document.body.clientWidth })
+        this.setState({
+            w: document.body.clientWidth,
+            h: window.innerHeight,
+        })
     }
 
     render() {

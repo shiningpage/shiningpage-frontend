@@ -145,7 +145,11 @@ class App extends Component {
     handleScroll = async () => {
         this.props.dispatch(setPageYOffset(window.scrollY))
         const { scrollDirection, lastScrollTop } = scrollStatus(this.state.lastScrollTop);
-        this.setState({ scrollDirection, lastScrollTop });
+        this.setState({
+            scrollDirection,
+            lastScrollTop,
+            h: window.innerHeight,
+        });
         this.props.dispatch(setScrollDirection(scrollDirection))
         // console.log(this.props.pageYOffset)
 
