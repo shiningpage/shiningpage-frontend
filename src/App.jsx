@@ -889,7 +889,7 @@ class App extends Component {
                 <div>
                     {auth && <div className="text-[12px] -mb-1">Free Plan</div>}
                     <div className="goldenText text-[14px] font-semibold transition-all duration-300 group-hover:tracking-wide group-active:scale-95">
-                        {auth ? 'Upgrade' : 'Sign up | Login'}
+                        {auth ? 'Upgrade' : (w<345 ? 'Login' : 'Sign up | Login')}
                     </div>
                 </div>
                 {w>s && auth && <FaAngleRight className="transition-all duration-300 group-hover:translate-x-1 group-active:translate-x-2" />}
@@ -944,7 +944,7 @@ class App extends Component {
         )
 
         const header = (
-            <div className='sticky-top cardShadow' style={{top:w<s ? (scrollDirection==='up' ? -45 : 0) : 0, transition:'.5s'}}>
+            <div className='sticky-top cardShadow' style={{top:w<s ? (scrollDirection==='down' ? -45 : 0) : 0, transition:'.2s'}}>
                 <div className='bg-cover bg-right backBlur' style={{height:NavHX, alignItems:'center', borderBottom:'0px solid #d1a44a',
                     justifyContent:'space-between', transition:'.5s', backgroundImage: `url(${aiImage})`}}>
                     <div className='d-flex' style={{height:NavHX, alignItems:'center', padding:w<s ? '0px 5px' : '0px'}}>
@@ -1292,7 +1292,7 @@ class App extends Component {
         // display: pageX ? '' : 'none'
         var pageX = ['base', 'home'].includes(page) ? true : false
         const footerX = (
-            <div className='cardShadow backBlur' style={{width:'100%', height:'45px', position:'fixed', bottom:scrollDirection==='down' ? -43 : 0, right:0, left:0, backgroundColor:'#ffffff99', zIndex:'1050', transition:'.5s'}}>
+            <div className='cardShadow backBlur' style={{width:'100%', height:'45px', position:'fixed', bottom:scrollDirection==='down' ? -43 : 0, right:0, left:0, backgroundColor:'#ffffff99', zIndex:'1050', transition:'.2s'}}>
                 {hrC14}
                 <div className='center'
                     style={{width:'100%', height:'100%', padding: '0px 10px', marginTop:'-2px', alignItems:'center', justifyContent:'space-between', direction:'ltr'}}
@@ -1386,7 +1386,7 @@ class App extends Component {
                     <div className="golden-divider"></div>
                     {sidebarItems}
                     <div className="golden-divider"></div>
-                    <div className='gold sticky text-center text-[12px] mt-[20px] mb-[70px]'>V-{import.meta.env.VITE_VERSION}</div>
+                    <div className='gold sticky text-center text-[12px] mt-[20px] mb-[100px]'>V-{import.meta.env.VITE_VERSION}</div>
                 </div>
             </div>
         )
@@ -1467,7 +1467,7 @@ class App extends Component {
         )
         const backG = (
             <div className="fixed inset-0 overflow-hidden -z-10">
-                <div className="absolute -inset-8 bg-cover bg-right blur-sm" style={{ backgroundImage: `url(${aiImage})` }}/>
+                <div className="absolute -inset-8 bg-cover bg-right blur-sm" style={{ backgroundImage: `url(${aiImage})`, minHeight: '100lvh' }}/>
             </div>
         );
 
@@ -1747,7 +1747,7 @@ class App extends Component {
                     {modalChangePassword}
                 </div>
                 {!['publisher', 'user', 'content', 'web', 'ps'].includes(page) && footer}
-                {w<s && footerX}
+                {w<s && auth && footerX}
                 {w<s && hrC14}
                 {/* footbar */}
             </div>
