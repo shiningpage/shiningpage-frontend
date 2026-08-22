@@ -5,6 +5,8 @@ import HomePage from './pages/HomePage';
 import ReviewPage from './pages/ReviewPage';
 import LoginPage from './pages/LoginPage';
 import VerifyEmailPage from './pages/VerifyEmailPage';
+import ForgotPasswordPage from './pages/ForgotPasswordPage';
+import ResetPasswordPage from './pages/ResetPasswordPage';
 import RubyPage from './pages/RubyPage';
 import SocialMediaPage from './pages/SocialMediaPage';
 import LatestPage from './pages/LatestPage';
@@ -38,6 +40,8 @@ class AppRoutes extends React.Component {
         <Route path="/reviews" element={<ReviewPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/verify-email" element={<VerifyEmailPage />} />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="/reset-password" element={<ResetPasswordPage />} />
         <Route path="/web/:username" element={<WebPage />} />
         <Route path="/publisher/:username" element={<PublisherPage />} />
         <Route path="/user/:username" element={<PublisherPage />} />
