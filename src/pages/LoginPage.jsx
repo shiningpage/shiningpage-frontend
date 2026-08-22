@@ -339,6 +339,8 @@ class LoginPage extends Component {
             if (res.data.success) {
                 delete res.data.user.password;
 
+                window.scrollTo(0, 0);
+
                 await this.props.dispatch(setUserInfo(res.data.user));
                 await this.props.dispatch(setAuth(true));
 
@@ -360,7 +362,9 @@ class LoginPage extends Component {
 
                 const root = this.props.businessType > 0 ? 'publisher' : 'user';
 
-                window.location.href = `/${root}/${res.data.user.username}`;
+                setTimeout(() => {
+                    window.location.href = `/${root}/${res.data.user.username}`;
+                }, 1000);
             }
 
         } catch (err) {
@@ -425,6 +429,7 @@ class LoginPage extends Component {
     };
 
     onRegisterX = () => {
+        window.scrollTo(0, 0);
         this.setState({
             registerType: true,
             loginType: false,
@@ -433,6 +438,7 @@ class LoginPage extends Component {
     }
 
     onLoginX = () => {
+        window.scrollTo(0, 0);
         this.setState({
             loginType: true,
             registerType: false,
@@ -635,7 +641,7 @@ class LoginPage extends Component {
             </div>
         )
         const recaptchaConst = (
-            <div>
+            <div className='mb-5'>
                 <div className="d-flex justify-content-start animated fadeIn" style={{animationDelay: loginType ? '.4s' : '1.2s'}}>
                     <div style={{margin: '20px 0px -5px 0px', transform:'scale(0.77)'}}>
                         <ReCAPTCHA
@@ -741,8 +747,11 @@ class LoginPage extends Component {
                 {"Don't have an account?"} <span className='link-underline text-[#0C6DFB] font-medium' onClick={() => this.onRegisterX()}>Sign up</span>
             </div>
         )
-        const forgetPassword = <div className='link-underline mt-5 text-[#0C6DFB] font-medium' onClick={() => null}>Forget Password?</div>
-
+        const forgetPassword = (
+            <Link to="/forgot-password" className='link-underline text-[#0C6DFB] font-medium'>
+                Forgot Password?
+            </Link>
+        );
         const signOutBtn = (
             <Link to='/' className={`C11 center w-[170px] h-[45px] bg-white !no-underline group flex items-center gap-2 py-1 rounded-lg cursor-pointer select-none btn-glow`}
                 onClick={this.logout}
