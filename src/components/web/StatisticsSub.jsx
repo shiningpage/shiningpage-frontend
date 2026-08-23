@@ -726,6 +726,14 @@ class StatisticsSub extends Component{
         } = this.state
         const {rtl, setLT, fc, viewN, gettingView, titleStyle, userType, mainUserId, userId } = this.props
 
+        const sidebarWidth = 280
+        const sidebarExistWidth = w>=s ? sidebarWidth : 0
+        const worldmapSize = 1000 + sidebarExistWidth
+        const worldmapPaddingIndex = 500
+        const kpiCardsReact = 620 + sidebarExistWidth
+        const topCountriesFlexDirection = w<1125 ? true : false
+        const topCountriesWidth = topCountriesFlexDirection ? '100%' : (w<worldmapSize ? '38%' : '30%')
+
         const subTitleStyle = {fontSize:'20px', fontWeight:450, marginBottom:'10px', alignItems:'center', width:'100%', color:'#000000'}
         const loader13 = <div className='loader-13' style={{margin: '0px', color:''}}></div>
         const loader02 = <div className='loader-02' style={{color:'red', fontSize:'20px'}}></div>
@@ -735,7 +743,7 @@ class StatisticsSub extends Component{
         const ViewerBSMMap = (
             <div id='viewMap' className='center animated fadeIn' style={{animationDelay:'0s', width:'100%', margin:'0px'}}>
                 <div className='' style={{width:'100%', backgroundColor:'#ffffff00', overflow:'scroll', borderRadius:'10px'}}>
-                    <WorldMap color={`${mapColors[`C${fc}`]}`} borderColor='#000000' size={w<1000 ? "lg" : "xl"} data={viewCountAll}/>
+                    <WorldMap color={`${mapColors[`C${fc}`]}`} borderColor='#000000' size={w<worldmapSize ? (w<355 ? "sm" : "lg") : "xl"} data={viewCountAll}/>
                 </div>
             </div>
         )
@@ -951,7 +959,7 @@ class StatisticsSub extends Component{
         const likes = <KPICards icon={likesIcon} title="Likes" value={likeNX} width={widthX} loader={loadingLiker}/>
         const reviews = <KPICards icon={reviewsIcon} title="Reviews" value={commentNX} width={widthX} loader={loadingCommenter}/>
         const kpiCards = (
-            <div className='center' style={{width:'100%', maxWidth:'1300px', flexWrap:w<620 ? 'wrap' : '', gap:'20px'}}>
+            <div className='center' style={{width:'100%', maxWidth:'1300px', flexWrap:w<kpiCardsReact ? 'wrap' : '', gap:'20px'}}>
                 {views}
                 {likes}
                 {reviews}
@@ -959,7 +967,7 @@ class StatisticsSub extends Component{
         )
 
         const topCountriesSub = (
-            <div className="topCountriesCard" style={{height:'100%', width:w<s ? '100%' : '30%'}}>
+            <div className="topCountriesCard" style={{height:'100%', width: topCountriesWidth}}>
                 <div className="cardHeader">
                     <h3>Top Countries <span style={{fontSize:'14px'}}>(Real time)</span></h3>
                 </div>
@@ -973,15 +981,15 @@ class StatisticsSub extends Component{
         )
 
         const worldmapTitle = (
-            <div className='d-flex' style={{fontSize:'18px', fontWeight:700, alignItems:'center', gap:'5px', margin:w<s ? '0px 15px' : ''}}>
+            <div className='d-flex' style={{fontSize:'18px', fontWeight:700, alignItems:'center', gap:'5px', margin:w<worldmapPaddingIndex ? '0px 15px' : ''}}>
                 <IoGlobeOutline style={{margin:'-10px 0px 0px', fontSize:'25px'}}/>
                 <h5 style={{fontWeight:650}}>Audience Map</h5>
             </div>
         )
 
         const worldmapSection = (
-            <div className='d-flex cardShadow' style={{width:'100%', maxWidth:'1300px', height:w<s ? '' : '550px', flexDirection:w<s ? 'column' : '', justifyContent:w<s ? '' : 'space-between', marginBottom:'20px', padding:w<s ? '20px 0px 0px' : '20px', backgroundColor:'#ffffff', borderRadius:'10px', flexWrap:'wrap'}}>
-                <div id='' style={{marginBottom:w<s ? '20px' : ''}}>
+            <div className='d-flex cardShadow' style={{width:'100%', maxWidth:'1300px', height:topCountriesFlexDirection ? '' : '550px', flexDirection:topCountriesFlexDirection ? 'column' : '', justifyContent:topCountriesFlexDirection ? '' : 'space-between', marginBottom:'20px', padding:w<worldmapPaddingIndex ? '20px 0px 0px' : '20px', backgroundColor:'#ffffff', borderRadius:'10px', flexWrap:'wrap'}}>
+                <div id='' style={{marginBottom:topCountriesFlexDirection ? '20px' : ''}}>
                     {worldmapTitle}
                     {ViewerBSMMap}
                 </div>
