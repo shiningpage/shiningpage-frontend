@@ -20,7 +20,7 @@ import RubyCollector from '../RubyCollector';
 import { AdsHorizontal } from '../GoogleAds';
 import { WorldMap } from 'react-svg-worldmap';
 import { exist, getPos, dig3, addNotification } from '../../helper';
-import { serverURL, s, listRefreshQtySmall, mapColors, lightColors, googleAds } from '../../srcSet';
+import { serverURL, s, sidebarWidth, listRefreshQtySmall, mapColors, lightColors, googleAds } from '../../srcSet';
 
 class StatisticsSub extends Component{
 
@@ -726,7 +726,6 @@ class StatisticsSub extends Component{
         } = this.state
         const {rtl, setLT, fc, viewN, gettingView, titleStyle, userType, mainUserId, userId } = this.props
 
-        const sidebarWidth = 280
         const sidebarExistWidth = w>=s ? sidebarWidth : 0
         const worldmapSize = 1000 + sidebarExistWidth
         const worldmapPaddingIndex = 500

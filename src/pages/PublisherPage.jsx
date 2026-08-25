@@ -53,7 +53,7 @@ import RenderContent from '../components/RenderContent';
 import { AdsHorizontal } from '../components/GoogleAds';
 import { exist, mapTeam, addNotification, totalFileSize, scrollTo, countAllAds, countAllVideo, countAllInsta, checkSeen } from '../helper';
 import { totalPrice, updateCategoryItems } from '../components/web/psSub/psHelper';
-import { serverURL, s, NavH, colors, mapColors, lightColors, designedByColors, googleAds } from '../srcSet';
+import { serverURL, s, sidebarWidth, NavH, colors, mapColors, lightColors, designedByColors, googleAds } from '../srcSet';
 import internationalImage from "../assets/images/other/international.jpg";
 const hx = window.innerHeight + 200
 
@@ -686,7 +686,7 @@ class PublisherPage extends Component {
         )
         const contactHead = (
             <div className='center' style={{width:'100%', backgroundColor:'#ffffff99', justifyContent: w<s ? (phoneX===null ? 'flex-end' : 'space-between') : 'flex-end'}}>
-                { w>s && 
+                { w>s+sidebarWidth && 
                     <div className='d-flex'>
                         {instagram && instagramIconX}
                         {telegram && telegramIconX}
@@ -695,7 +695,7 @@ class PublisherPage extends Component {
                         {linkedin && linkedinIconX}
                     </div>
                 }
-                <div className={`${w > s ? 'mx-[20px]' : ''} cursor-pointer`}>{phoneX}</div>
+                <div className={`${w > s+sidebarWidth ? 'mx-[20px]' : ''} cursor-pointer`}>{phoneX}</div>
                 {/* {subUserInfo.type!=='content' &&  contactUs} */}
                 {/* w<s && alertWhite */}
             </div>
@@ -791,7 +791,7 @@ class PublisherPage extends Component {
         );
 
         const aboutImgSection = (
-            <div style={{minWidth: w<s ? '100%' : '300px', marginRight: w<s ? 0 : '70px'}}>
+            <div style={{minWidth: w<s+sidebarWidth ? '100%' : '300px'}}>
                 { profileData &&
                     <img
                         className={w<s ? '' : 'sticky-top'}
@@ -863,7 +863,7 @@ class PublisherPage extends Component {
             <div id='aboutInfo' style={{padding:'70px 0px', fontSize:w<s ? '16px' : '18px', fontWeight:100, backgroundColor:`${colors[`C${fc===11 ? 0 : fc}`]}00`}}>
                 <div className='center px-[20px]' style={{alignItems:'center', flexDirection:'column'}}>
                     {jobSummarySection}
-                    <div className='flex' style={{flexDirection:w<s ? 'column' : ''}}>
+                    <div className='flex gap-4' style={{flexDirection:w<s+sidebarWidth ? 'column' : ''}}>
                         {aboutImgSection}
                         <div className='flex flex-col w-full'>
                             {aboutInformation}
@@ -1018,7 +1018,7 @@ class PublisherPage extends Component {
         const userHeader = (
             <div id='header' className='center bg-white' style={{width:'100%', height:'', justifyContent:'space-between', alignItems:'center', padding:w<s ? '5px' : '10px', zIndex:'2'}}>
                 {profileBox}
-                {w>s && contactHead}
+                {w>s+sidebarWidth && contactHead}
             </div>
         )
 
@@ -1173,7 +1173,7 @@ class PublisherPage extends Component {
                     {profileData && backG}
                     {goToSection}
                     {userHeader}
-                    {w<s && contactHead}
+                    {w<s+sidebarWidth && contactHead}
                     {/* w>s && <NavbarSub fc={fc} txBlack={txBlack} mapStateToProps={this.props}/> */}
                     {profileData && <WebCarousel dataX={subUserInfo} fc={fc}/>}
                     {me && googleAds && subUserInfo.ads && adsBox1}

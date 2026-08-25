@@ -42,6 +42,7 @@ const config = {
   },
 
   s: 825,
+  sidebarWidth: 280,
   NavH: 60,
   langArray: ['fa', 'en', 'ar', ''],
   //subNavH: 70,
@@ -1458,7 +1459,7 @@ const config = {
 };
 
 export const {
-  siteName, googleAds, serverURL, noIndexPages, socialTopics, s, NavH, langArray,
+  siteName, googleAds, serverURL, noIndexPages, socialTopics, s, sidebarWidth, NavH, langArray,
   headerColor1, headerColor2, totalBorder, listRefreshQty, listRefreshQtyBig,
   listRefreshQtySmall, adsSpace, copyRightText, sideBlackIcon, lightColors, 
   designedByColors, colors, mapColors, categories, psyCard, countryArr, 
