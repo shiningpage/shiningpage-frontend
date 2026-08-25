@@ -319,9 +319,9 @@ ${subTitle}
 
     const bizLinkConst = (
       <div className='d-flex' style={{direction:'ltr'}}>
-        <div className='d-flex' style={{maxWidth:w<s ? '250px' : '', direction:'ltr', margin:'20px 0px 10px', textAlign:'center'}}>
-            <FaGlobe className='' style={{fontSize:'25px', margin:'0px', color:'brown'}}/>&nbsp;&nbsp;
-            <div id="myText" style={{width:'240px', marginTop:'2px', textAlign:'left', border:'1px solid #99999999', borderRadius:'3px', padding:'0px 5px', overflow:'scroll'}}>{url}</div>
+        <div className='flex gap-1' style={{maxWidth:w<s ? '250px' : '', direction:'ltr', margin:'20px 0px 10px', textAlign:'center'}}>
+            <FaGlobe className='' style={{fontSize:'25px', margin:'0px', color:'brown'}}/>
+            <div id="myText" style={{width:'220px', marginTop:'2px', textAlign:'left', border:'1px solid #99999999', borderRadius:'3px', padding:'0px 5px', overflow:'scroll'}}>{url}</div>
         </div>
       </div>
     )

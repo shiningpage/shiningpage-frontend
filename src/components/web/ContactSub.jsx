@@ -19,7 +19,7 @@ import { AiFillInstagram, AiFillTikTok } from 'react-icons/ai';
 import RubyCollector from '../RubyCollector';
 import { AdsHorizontal } from '../GoogleAds'
 import { exist, addNotification } from '../../helper';
-import { s, serverURL, colors, googleAds } from '../../srcSet';
+import { s, serverURL, colors, googleAds, sidebarWidth } from '../../srcSet';
 
 class ContactSub extends Component{
 
@@ -277,8 +277,8 @@ class ContactSub extends Component{
         return (
             <div id='contactSub' style={{padding:'70px 10px', fontWeight:400, backgroundColor:`${colors[`C${fc===11 ? 0 : fc}`]}00`, position:'relative'}}>
                 {me && <EditBtn rtl={rtl} onClick={() => this.toggleContactsInfo()}/>}
-                <Container className={`center`} style={{fontSize:'14px', alignItems:'flex-start', width:'100%', maxWidth:'1000px', height:'100%', padding:'0px 10px', justifyContent:w>s ? 'space-between' : '', flexDirection:w<s ? 'column' : '', direction:'ltr'}}>
-                    <div style={{width:w<s ? '100%' : '33%', padding:w<s ? '20px 0px' : '0px 20px'}}>
+                <Container className={`center gap-5 flex-wrap`} style={{fontSize:'14px', alignItems:'flex-start', width:'100%', maxWidth:'1000px', height:'100%', padding:'0px 10px', direction:'ltr'}}>
+                    <div style={{width:w<s+sidebarWidth ? '100%' : '28%'}}>
                         <div className='pb-[20px]'>
                             <div style={{...titleStyle, fontSize:'16px', marginBottom:'3px'}}>{setLT.contact ? setLT.contact.toUpperCase() : ''}</div>
                             {hr}
@@ -299,12 +299,12 @@ class ContactSub extends Component{
                             {linkedin && linkedinSub}
                         </div>
                     </div>
-                    <div style={{width:w<s ? '100%' : '33%', padding:w<s ? '20px 0px' : '0px 20px'}}>
+                    <div style={{width:w<s+sidebarWidth ? '100%' : '28%'}}>
                         <div style={{...titleStyle, fontSize:'16px', marginBottom:'0px'}}>{setLT.address ? setLT.address.toUpperCase() : ''}</div>
                         {hr}
                         {addressSub}
                     </div>
-                    <div style={{width:w<s ? '100%' : '33%', padding:w<s ? '20px 0px' : '0px 20px', position:'relative'}}>
+                    <div style={{width:w<s+sidebarWidth ? '100%' : '28%', position:'relative'}}>
                         <div style={{...titleStyle, fontSize:'16px', marginBottom:'0px'}}>SHARING</div>
                         {hr}
                         {shareSub}
