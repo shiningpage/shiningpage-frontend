@@ -13,7 +13,7 @@ import { BiSolidCategory } from 'react-icons/bi';
 import { BsFillCaretLeftFill } from 'react-icons/bs';
 import { AdsHorizontal, AdsMultiplex } from '../../GoogleAds';
 import { filterCategory } from './psHelper';
-import { s, serverURL, googleAds } from '../../../srcSet';
+import { serverURL, s, sidebarWidth, googleAds } from '../../../srcSet';
 
 const CategorySection = (props) => {
     const { me, fc, nx, action, saveService, txBlack, activeType, loadingAds, loadingVideo, loadingInsta, categoryTitleX, categorySubs, categoryTitleXSub, subTitleStyleS, loadingCategory, onAllCategory, mapCategoryFunction, mapModalCategoryFunction, subcatQty, categoryItems, categoryList, modalCategoryList, subcategoryList, serviceList, toggleEditCategory, onToggleEditCategory, catE, inputEditChangeHandler, serviceTitleChangeHandler, servicePriceChangeHandler, serviceOfferChangeHandler, serviceDurationHChangeHandler, serviceDurationMinChangeHandler, addSubCat, addService, allAds, allVideo, allInsta, catXRef, adsN, adsNCat, adsNCatSub, videoN, videoNCat, videoNCatSub, instaN, instaNCat, instaNCatSub, adsSection, videoSection, instaSection, EditBtn, dispatch, mapStateToProps } = props;
@@ -23,7 +23,7 @@ const CategorySection = (props) => {
     const [toggleNewCategory, setToggleNewCategory] = useState(false);
     const catExist = (categoryItems || []).length>0 ? true : false
     const catSubExist = categorySubs.length>0 ? true : false
-    const catTitle = categoryTitleX ? categoryTitleX : ((me || categoryList.length>0) ? 'All' : <span style={{fontSize:'25px', fontWeight:450, }}>Content</span>)
+    const catTitle = categoryTitleX ? categoryTitleX : ((me || categoryList.length>0) ? 'All' : <span style={{fontSize:'25px', fontWeight:450, }}>Products & Services</span>)
     const contentLoading = loadingAds && loadingVideo && loadingInsta ? true : false
 
     const countTotalSub = (data) => {
@@ -86,9 +86,9 @@ const CategorySection = (props) => {
     // )
 
     const categoryTitle = (
-        <div className='d-flex' style={{...subTitleStyleS, margin:'0px', alignItems:'center'}}>
+        <div className="flex items-center mb-[10px]">
             {me && <EditBtn type={catExist ? 'edit' : 'add'} margin='0px 10px 0px 5px' position={''} onClick={() => onToggleHandleCategory()}/>}
-            <span style={{fontSize:'22px', fontWeight:450}}>Category</span>
+            <span className="text-[22px] font-[450] mt-[4px]">Products & Services</span>
         </div>
     )
 
@@ -120,7 +120,7 @@ const CategorySection = (props) => {
     const subcategoryListWithGoogleAds = subcategoryList //w>=s && subUserInfo.ads ? [...subcategoryList, adsBox3] : subcategoryList;
 
     const allSubcategoryList = (
-        <div id='allSubcategories' style={{width:w<s ? '100%' : '350px', marginBottom:'30px', paddingRight: w<s ? '' : (subcategoryList.length>0 ? '50px' : '10px'), zIndex:1}}>
+        <div id='allSubcategories' style={{width:w<s+sidebarWidth ? '100%' : '280px', marginBottom:'30px', zIndex:1}}>
             { subcategoryList.length>0
                 ? subcategoryListWithGoogleAds
                 : (
@@ -141,7 +141,7 @@ const CategorySection = (props) => {
     )
 
     const allServiceList = (
-        <div id='services' style={{width:w<s ? '100%' : 'calc(100% - 350px)'}}>
+        <div id='services' style={{width:w<1370 ? '100%' : 'calc(100% - 280px)', maxWidth:w<1370 ? '' : '700px'}}>
             <div className={`C${fc}`} style={{ position:'relative', width:'100%', marginBottom:'20px', padding:'2px', borderRadius:'7px', }}>
                 <div style={{width:'100%', minHeight:'100px', padding:'20px 10px 10px', borderRadius:'5px', backgroundColor:'#ffffff'}}>
                     {serviceList}
@@ -156,36 +156,9 @@ const CategorySection = (props) => {
             <span>Contents</span>
         </div>
     )
-            // <div><BsFillCaretLeftFill style={{width:'20px', transform:'rotate(180deg)'}}/></div>
-            // {categoryTitleX ? categoryTitleX : 'All'}
-            // { activeType==='sub' &&
-            //     <div className='d-flex'>
-            //         <div className='d-flex' style={{alignItems:'center'}}>
-            //             <div><BsFillCaretLeftFill style={{width:'20px', transform:'rotate(180deg)'}}/></div>
-            //             {categoryTitleXSub}
-            //         </div>
-            //     </div>
-            // }
 
-    // console.log('activeType: ', activeType ? 'sub' : 'main ' + videoNCat)
-    // console.log('------------')
-    // console.log('allAds: ', allAds)
-    // console.log('allVideo: ', allVideo)
-    // console.log('allInsta: ', allInsta)
-
-    // console.log('adsN: ', adsN)
-    // console.log('videoN: ', videoN)
-    // console.log('instaN: ', instaN)
-    // console.log('------------')
-    // console.log('adsNCat: ', adsNCat)
-    // console.log('videoNCat: ', videoNCat)
-    // console.log('instaNCat: ', instaNCat)
-    // console.log('------------')
-    // console.log('adsNCatSub: ', adsNCatSub)
-    // console.log('videoNCatSub: ', videoNCatSub)
-    // console.log('instaNCatSub: ', instaNCatSub)
     const content = (
-        <div id='content' style={{width:w<s ? '100%' : 'calc(100% - 350px)'}}>
+        <div id='content' style={{width:w<s+sidebarWidth ? '100%' : 'calc(100% - 280px)'}}>
             {w>s && subUserInfo?.access?.includes("BookingSystem") && allServiceList}
             <div className={`C${fc}`} style={{ position:'relative', width:'100%', marginBottom:w<s ? '30px' : '', padding:'2px', borderRadius:'7px'}}>
                 <div style={{width:'100%', padding:'2px', borderRadius:'5px', backgroundColor:'#ffffff'}}>
@@ -211,13 +184,13 @@ const CategorySection = (props) => {
     )
 
     const contentSectionWithSub = (
-        <div id='container' className={w<s ? '' : 'd-flex'} style={{width:'100%'}}>
+        <div id='container' className={`flex ${subcategoryList.length>0 ? 'gap-8' : 'gap-2'} w-full ${w<s+sidebarWidth ? 'flex-col' : ''}`}>
             <div>
-                <div style={{marginBottom:'20px', fontWeight:450}}>
-                    <div style={{fontSize:'22px'}}>{catTitle}</div>
-                    <div style={{fontSize:'16px'}}>
-                        <span style={{marginRight:'5px'}}>Subcategories</span>
-                        <span style={{fontSize:'14px', fontWeight:''}}>({categorySubs.length})</span>
+                <div className="mb-5 font-[450]">
+                    <div className="text-[22px]">{catTitle}</div>
+                    <div className="flex gap-2 text-[16px]">
+                        <span>Subcategories</span>
+                        <span className="text-[14px]">({categorySubs.length})</span>
                     </div>
                 </div>
                 {/* subUserInfo?.access?.includes("BookingSystem") && <div style={{fontSize:'20px', fontWeight:450, marginBottom:'0px', textAlign: w<s ? 'center' : ''}}>Select a service</div> */}

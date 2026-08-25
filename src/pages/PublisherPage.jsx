@@ -1135,7 +1135,7 @@ class PublisherPage extends Component {
         const sectionButtons = [
             { id: 'home', icon: AiFillHome, label: setLT.home },
             { id: 'about', icon: FaUsers, label: setLT.about },
-            { id: 'psSub', icon: AiFillProduct, label: 'Category' },
+            { id: 'psSub', icon: AiFillProduct, label: w<1000 ? 'P & S': 'Products & Services' },
             { id: 'attachmentsSub', icon: MdAttachFile, label: setLT.attachments },
             { id: 'statisticsSub', icon: GiGlobe, label: setLT.statistics },
             { id: 'contactSub', icon: MdPhoneInTalk, label: setLT.contact },
@@ -1146,7 +1146,7 @@ class PublisherPage extends Component {
                 className={`flex gap-2 cardShadow backBlur sticky ${w < s ? (scrollDirection==='down' ? 'top-0' : 'top-[45px]') : 'top-[60px]'} w-full p-${pageYOffset > 250 ? 2 : 0} z-[1000] bg-[#ffffff99] transition-all duration-${pageYOffset > 250 ? 500 : 0} ease-in-out ${pageYOffset > 250 ? 'h-[45px] opacity-100 translate-y-0 visible' : 'h-0 opacity-0 -translate-y-5 invisible pointer-events-none'} overflow-scroll`}
             >
                 {sectionButtons.map(({ id, icon: Icon, label }) => (
-                    <div key={id} className="btnShadow flex items-center bg-white/70 gap-2 p-2 rounded-5" onClick={() => this.onSetSidebarOpen(id, true)}>
+                    <div key={id} className="btnShadow flex items-center whitespace-nowrap bg-white/70 gap-2 p-2 rounded-5" onClick={() => this.onSetSidebarOpen(id, true)}>
                         <Icon className="w-[18px] text-[23px]" />
                         <div className="mt-1">{label}</div>
                     </div>

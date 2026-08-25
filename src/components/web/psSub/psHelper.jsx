@@ -15,7 +15,7 @@ import { AiOutlineCloseCircle, AiOutlineZoomIn } from 'react-icons/ai';
 import { FaTrash, FaLinkedin, FaYoutube, FaInstagram } from 'react-icons/fa';
 import { TbSubtask } from 'react-icons/tb';
 import { BiCategory, BiChevronsRight } from 'react-icons/bi';
-import { serverURL, listRefreshQty, lightColors } from '../../../srcSet';
+import { serverURL, listRefreshQty, lightColors, sidebarWidth } from '../../../srcSet';
 import { getPos, dig3 } from '../../../helper';
 import aparatImage from "../../../assets/images/other/aparat.png";
 
@@ -158,7 +158,7 @@ const mapSubcategory = (ex, item, i, data, subUserInfo, setLT, w, s, onSubcatego
             const index = ix===ex ? true : false
             const hasSelected = itemx.sub?.some(s => s.selected === true);
             const txBlack = lightColors.includes(fc) ? true : false
-            const title = <div style={{fontSize:w<s ? '15px' : '14px', margin:'0px 5px'}}>{itemx.title}</div>
+            const title = <div style={{fontSize:w<s+sidebarWidth ? '15px' : '14px', margin:'0px 5px'}}>{itemx.title}</div>
             const serviceCount = subUserInfo?.access?.includes("BookingSystem")
                                 ? `(${itemx?.sub?.length || 0})`
                                 : false;
@@ -171,8 +171,8 @@ const mapSubcategory = (ex, item, i, data, subUserInfo, setLT, w, s, onSubcatego
             const corner = <div id={`subcategoryCorner-${i}-${ix}`}
                                 className={`C${fc} b${fc===7 ? 0 : fc}`}
                                 style={{position:'absolute', width:'37px', height:'37px', borderRadius:'3px',
-                                borderWidth:'0px', transform:'rotate(45deg)', margin: index ? (w<s ? '15px 0px 0px' : '0px -8px 0px 0px') : '0px', 
-                                transition:'.3s', top:w<s ? 15 : 6.5, right:w<s ? 12 : -5, zIndex:0}}>
+                                borderWidth:'0px', transform:'rotate(45deg)', margin: index ? (w<s+sidebarWidth ? '15px 0px 0px' : '0px -8px 0px 0px') : '0px', 
+                                transition:'.3s', top:w<s+sidebarWidth ? 15 : 6.5, right:w<s+sidebarWidth ? 12 : -5, zIndex:0}}>
                             </div>
             const whiteCover = <div id={`subcategoryWhiteCover-${i}-${ix}`}
                                     className='d-flex justify-content-start'
@@ -188,11 +188,11 @@ const mapSubcategory = (ex, item, i, data, subUserInfo, setLT, w, s, onSubcatego
             return (
                 <div key={ix}>
                     <div className='d-flex'
-                        style={{position:'relative', marginTop: w<s && ix>0 && ix===ex ? '20px' : ''}}
+                        style={{position:'relative', marginTop: w<s+sidebarWidth && ix>0 && ix===ex ? '20px' : ''}}
                         onClick={() => onSubcategory(item, i, itemx, ix)}>
                         <div id={`subcategory-${i}-${ix}`}
                             className={`d-flex justify-content-end btnShadow C${index ? fc : 11}`}
-                            style={{width:'100%', height:'50px', marginBottom:w<s && index ? '25px' : '10px',
+                            style={{width:'100%', height:'50px', marginBottom:w<s+sidebarWidth && index ? '25px' : '10px',
                             padding:'2px', borderRadius:'7px', alignItems:'center', transition:'.2s',
                             backgroundColor:'#ffffff', zIndex:'1'}}
                         >
@@ -202,7 +202,7 @@ const mapSubcategory = (ex, item, i, data, subUserInfo, setLT, w, s, onSubcatego
                         </div>
                         {corner}
                     </div>
-                    { w<s && ix===ex && itemx.sub.length>0 &&
+                    { w<s+sidebarWidth && ix===ex && itemx.sub.length>0 &&
                         <div className={`C${fc}`}
                             style={{ margin:'5px 0px 30px', padding:'2px', borderRadius:'7px', }}>
                             <div style={{padding:'2px', borderRadius:'5px', backgroundColor:'#ffffff'}}>
