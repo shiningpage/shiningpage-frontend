@@ -1223,7 +1223,7 @@ box-shadow: inset 0px 0px 7px 0px rgba(0,0,0,0.6);
 }
 
 /* زیر 1150px => دو ستون */
-@media (max-width: 1150px) {
+@media (max-width: 1350px) {
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
     }

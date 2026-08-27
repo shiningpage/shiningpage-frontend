@@ -853,6 +853,7 @@ class StatisticsSub extends Component{
                                 <StarRating
                                     name="rate1"
                                     starCount={5}
+                                    borderColor={'#00000050'}
                                     value={rating}
                                     onChange={this.onStarClick}
                                 />
