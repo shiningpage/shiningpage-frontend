@@ -1376,7 +1376,7 @@ const config = {
       },
       {
         "code": "AE",
-        "country": "Emirates",
+        "country": "United Arab Emirates",
         "continent": "Asia",
       },
       {
