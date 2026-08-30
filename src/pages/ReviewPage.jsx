@@ -3,7 +3,7 @@ import { Container, Card, CardBody, Button, Modal} from "react-bootstrap";
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
-import { setSubject, setPageTitle, setPageName, setMembership, setPage } from '../dataStore/actions';
+import { setSubject, setPageTitle, setPageName, setToggleMembership, setPage } from '../dataStore/actions';
 import male from '../assets/images/other/man2.png';
 import female from '../assets/images/other/woman2.png'; 
 import { MdClose } from 'react-icons/md';
@@ -52,7 +52,7 @@ class ReviewPage extends Component {
   }
 
   toggleMembership() {
-      this.props.dispatch(setMembership(!this.props.membership))
+      this.props.dispatch(setToggleMembership(!this.props.toggleMembership))
   }
 
   onStarClick = (nextValue) => {
@@ -443,7 +443,7 @@ const mapStateToProps = (state) => {
     geo: state.geo,
     chSp: state.chSp,
     genderValue: state.userInfo['genderValue'],
-    membership: state.membership,
+    toggleMembership: state.toggleMembership,
     setLT: state.setLT,
     pageName: state.pageName,
     seenStatus: state.seenStatus,

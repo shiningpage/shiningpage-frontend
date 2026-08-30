@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Container } from 'react-bootstrap';
-import { setMembership, } from '../../dataStore/actions';
+import { setToggleMembership, } from '../../dataStore/actions';
 import KPICards from '../KPICards';
 import date from 'date-and-time';
 import toFarsi from '../../modules/toFarsi';
@@ -70,7 +70,7 @@ class StatisticsSub extends Component{
         const { toggleLike, likeN } = this.state
         const { auth, mainUser, userId, fullAccess, geo } = this.props
         if(!auth) {
-            this.props.dispatch(setMembership(true))
+            this.props.dispatch(setToggleMembership(true))
         } else {
             this.setState({
                 nLiker: 1,
@@ -116,7 +116,7 @@ class StatisticsSub extends Component{
         const { mainUser, userId, auth, fullAccess, geo } = this.props
 
         if(!auth) {
-            this.props.dispatch(setMembership(true))
+            this.props.dispatch(setToggleMembership(true))
         } else {
             var infoErr = this.checkNull()
             if(Object.keys(infoErr).length>0) {

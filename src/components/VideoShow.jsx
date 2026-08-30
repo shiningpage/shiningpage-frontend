@@ -5,7 +5,7 @@ import { Container } from 'react-bootstrap';
 import userN from '../assets/images/other/user1.png';
 import male from '../assets/images/other/man2.png'; 
 import female from '../assets/images/other/woman2.png';
-import { setSubject, setMembership, setToggleLoading, setPage, setToggleShowVideo, setSubUserInfo } from '../dataStore/actions'; 
+import { setSubject, setToggleMembership, setToggleLoading, setPage, setToggleShowVideo, setSubUserInfo } from '../dataStore/actions'; 
 import { FaRegPaperPlane, FaRegEye, FaAngleLeft, FaYoutube, FaLinkedin } from 'react-icons/fa';
 import { MdClose } from 'react-icons/md';
 import { IoMdHeart, IoMdHeartEmpty } from 'react-icons/io';
@@ -221,7 +221,7 @@ class VideoShow extends Component {
   onToggleLike = async () => {
     const { auth, mainUser, subChatInfo, videoInfo, geo, fullAccess } = this.props
       if(!auth) {
-          this.props.dispatch(setMembership(true))
+          this.props.dispatch(setToggleMembership(true))
       } else {
           this.setState({
               nLiker: 1,
@@ -664,7 +664,7 @@ class VideoShow extends Component {
   onSendComment = async() => { 
     const { auth, mainUser, subChatInfo, videoInfo, geo, fullAccess } = this.props
     if(!auth) {
-        this.props.dispatch(setMembership(true))
+        this.props.dispatch(setToggleMembership(true))
     } else {
         var infoErr = this.checkNull()
         // console.log(1, infoErr)

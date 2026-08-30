@@ -8,7 +8,7 @@ import { pageTitle } from './other/pageTitle';
 import { lang } from './other/lang';
 import { rtl } from './other/rtl';
 import { auth } from './user/auth';
-import { membership } from './user/membership';
+import { toggleMembership } from './user/toggleMembership';
 import { sendMessage } from './other/sendMessage';
 import { notSeenChatQTY } from './other/notSeenChatQTY';
 import { toggleSidebar } from './other/toggleSidebar';
@@ -53,7 +53,7 @@ export default combineReducers({
     adsInfo, videoInfo, instaInfo, toggleChat, fullAccess, toggleShowVideo, setLT, 
     subject, page, geo, pageTitle, lang, rtl, seenStatus, 
     page404, pageYOffset, address, toggleViewStatus, 
-    auth, membership, country, toggleChatList, scrollDirection,
+    auth, toggleMembership, country, toggleChatList, scrollDirection,
     subChatInfo, starredVideo, categoryX, toggleAds, toggleVideo,
     toggleInsta, pageRubyTime, rubyBlock, rubyInterval,
     userServiceSelected,

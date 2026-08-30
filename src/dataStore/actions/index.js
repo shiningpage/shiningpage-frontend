@@ -224,9 +224,9 @@ export const setAuth = auth => ({
     auth
 })
 
-export const setMembership = membership => ({
-    type: 'MEMBERSHIP',
-    membership
+export const setToggleMembership = toggleMembership => ({
+    type: 'Toggle_Membership',
+    toggleMembership
 })
 
 export const setSendMessage = sendMessage => ({

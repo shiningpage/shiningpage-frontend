@@ -9,7 +9,7 @@ import female from '../assets/images/other/woman2.png';
 import locationImg from '../assets/images/other/location.png';
 import { connect } from 'react-redux';
 import { setSubject, setPageTitle, setToggleLoading, setToggleSidebar, setAdsInfo,
-    setMembership, setSubUserInfo, setPage, setToggleAds, setPageYOffset } from '../dataStore/actions';
+    setToggleMembership, setSubUserInfo, setPage, setToggleAds, setPageYOffset } from '../dataStore/actions';
 import { MdClose } from 'react-icons/md';
 import { IoMdHeart, IoMdHeartEmpty } from 'react-icons/io';
 import { FaAngleRight, FaGlobe, FaRegPaperPlane, FaRegEye, FaAngleLeft } from 'react-icons/fa';
@@ -909,7 +909,7 @@ class ContentPage extends Component {
     onToggleLike = async () => {
         const { auth, mainUser, subChatInfo, videoInfo, geo, fullAccess } = this.props
         if(!auth) {
-            this.props.dispatch(setMembership(true))
+            this.props.dispatch(setToggleMembership(true))
         } else {
             this.setState({
                 nLiker: 1,
@@ -985,7 +985,7 @@ class ContentPage extends Component {
     onSendComment = async() => { 
         const { auth, mainUser, subChatInfo, videoInfo, geo, fullAccess } = this.props
         if(!auth) {
-            this.props.dispatch(setMembership(true))
+            this.props.dispatch(setToggleMembership(true))
         } else {
             var infoErr = this.checkNull()
             // console.log(1, infoErr)
@@ -1971,7 +1971,7 @@ const mapStateToProps = (state) => {
         subject: state.subject,
         pageName: state.pageName,
         pageTitle: state.pageTitle,
-        membership: state.membership,
+        toggleMembership: state.toggleMembership,
         fullAccess: state.fullAccess,
         seenStatus: state.seenStatus,
         userServiceSelected: state.userServiceSelected,

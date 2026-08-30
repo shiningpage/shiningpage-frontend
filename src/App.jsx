@@ -11,7 +11,7 @@ import female from './assets/images/other/woman2.png';
 import Routes from "./Routes";
 import { setToggleLoading, setCountry, setSetLT, setToggleChat,
     setToggleSidebar, setToggleShowVideo, setPageYOffset,
-    setMembership, setGeo, setSendMessage, setToggleViewStatus,
+    setToggleMembership, setGeo, setSendMessage, setToggleViewStatus,
     setLang, setRtl,setUpdateVersionDate, setToggleChatList,
     setScrollDirection, setToggleAds, setAdsInfo, setRuby,
     setToggleVideo, setVideoInfo, setToggleInsta, setInstaInfo,
@@ -380,7 +380,7 @@ class App extends Component {
         this.props.dispatch(setToggleShowVideo(false))
         this.props.dispatch(setToggleChat(false))
         this.props.dispatch(setToggleLoading(false))
-        this.props.dispatch(setMembership(false))
+        this.props.dispatch(setToggleMembership(false))
         this.props.dispatch(setSendMessage(false))
         this.props.dispatch(setToggleChatList(false))
         this.props.dispatch(setToggleAds({type:false}))
@@ -406,7 +406,7 @@ class App extends Component {
     }
 
     toggleMembership = () => {
-        this.props.dispatch(setMembership(!this.props.membership))
+        this.props.dispatch(setToggleMembership(!this.props.toggleMembership))
     }
 
     toggleSendMessage = () => {
@@ -547,7 +547,7 @@ class App extends Component {
     render() {
         const { w, h, loadingTicket, socialMediaIndex, toggleChangePassword, toggleWebPageTheme, notFound, scrollDirection, leaveChatList, leaveNotificationList, notSeenNotificationQTY, notSeenChatQTY } = this.state
         const { auth, address, fc, setLT, mainUser, subUserInfo, toggleSidebar, toggleShowVideo, fullAccess, 
-            toggleLoading, membership, sendMessage, toggleChat, username, slug, genderValue, lang, rtl, page,
+            toggleLoading, toggleMembership, sendMessage, toggleChat, username, slug, genderValue, lang, rtl, page,
             businessType, toggleViewStatus, toggleChatList, ruby, rubyInterval, balance, 
         } = this.props
         const loader13 = <div className='loader-13' style={{margin: '0px 20px', color:''}}></div>
@@ -1011,15 +1011,6 @@ class App extends Component {
 
         const navItemsClass = "!no-underline text-white items-center h-[50px]"
 
-
-        const signInBtn = (
-            <Link to={`/login`} className={`d-flex sidebarItem ${navItemsClass}`}>
-                {/* n1 */}
-                <FaUser style={{width:'20px', margin:'10px 18px', fontSize:'18px'}}/>
-                <div className='' style={{width:'140px', margin:'10px', fontSize:'13px', border:'2px solid #00CCFF', backgroundColor:'#00CCFF99', borderRadius:'3px', padding: auth ? '' : '0px 0px', textAlign:'center'}} onClick={() => this.onLogin()}>{setLT.signupLogin}{/* &nbsp;openIcon */}</div>
-            </Link>
-        )
-
         const currentVersion = (
             <div className='center' style={{paddingTop:'10px'}}>
                 Current Version: {import.meta.env.VITE_VERSION}
@@ -1393,19 +1384,19 @@ class App extends Component {
         )
 
         const modalMembership = (
-            <Modal show={membership} onHide={() => this.toggleMembership()}>
+            <Modal show={toggleMembership} onHide={() => this.toggleMembership()}>
                 <Modal.Header style={{padding:'10px', backgroundColor:'#ffffff99'}}>
                     <MdClose style={{width:'20px', fontSize:'20px', cursor:'pointer'}} onClick={() => this.toggleMembership()}/>
                 </Modal.Header>
-                <Modal.Body style={{textAlign: rtl ? 'right' : 'left', backgroundColor:'#ffffff99'}}>
-                    <div style={{backgroundColor:'', padding:'10px', borderRadius:'5px', border:'1px solid #999999'}}>
-                        <p>{setLT.mustSignUp}</p>
-                        <h6>{setLT.freeSignUp}</h6>
-                    </div>
+                <Modal.Body className='p-4'>
+                    <p>Please login to access this section.</p>
+                        <div className='center p-2'>
+                            <Link to={`/login`}  onClick={() => this.toggleMembership()}
+                                className="center btnShadow !no-underline btn-glow focus:outline-none focus:ring-[#d5ad6d]/60 min-w-[100px] h-[25px] text-center items-center px-[10px] py-0 font-[450] rounded-full">
+                                <span className='goldenText'>Login</span>
+                            </Link>
+                        </div>
                 </Modal.Body>
-                <Modal.Footer className='center' style={{textAlign: rtl ? 'right' : 'left', backgroundColor:'#ffffff99'}}>
-                    <span onClick={() => this.setModals()}>{signInBtn}</span>
-                </Modal.Footer>
             </Modal>
         )
 
@@ -1784,7 +1775,7 @@ const mapStateToProps = (state) => {
         lang: state.lang,
         rtl: state.rtl,
         auth: state.auth,
-        membership: state.membership,
+        toggleMembership: state.toggleMembership,
         sendMessage: state.sendMessage,
 
         geo: state.geo,
