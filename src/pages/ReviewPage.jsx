@@ -3,7 +3,9 @@ import { Container, Card, CardBody, Button, Modal} from "react-bootstrap";
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
-import { setSubject, setPageTitle, setPageName, setToggleMembership, setPage } from '../dataStore/actions';
+import { setToggleMembership } from '../store/slices/authSlice';
+import { setPageName, setPageTitle } from '../store/slices/pageSlice';
+import { setSubject } from '../store/slices/appSlice';
 import male from '../assets/images/other/man2.png';
 import female from '../assets/images/other/woman2.png'; 
 import { MdClose } from 'react-icons/md';
@@ -20,6 +22,7 @@ class ReviewPage extends Component {
 
   state = {
     w: window.innerWidth,
+    page: this.props.setLT.memberReviews,
     n: 1,
     searchData:[],
     lx: listRefreshQty,
@@ -30,11 +33,9 @@ class ReviewPage extends Component {
 
   async componentDidMount () {
     window.scrollTo(0, 0)
-    await this.props.dispatch(setPageName(this.props.setLT.memberReviews))
-    await this.props.dispatch(setPageTitle(`${this.props.pageName} | ShiningPage`))
-    await this.props.dispatch(setPage('reviews'))
+    await this.props.dispatch(setPageTitle(`${this.state.page} | ShiningPage`))
+    await this.props.dispatch(setPageName('reviews'))
     await this.props.dispatch(setSubject('reviews'))
-    // if(this.props.auth && this.props.mainUser.ruby) checkSeen('reviews', this.props.seenStatus, this.props.dispatch)
     if(this.props.subject==='reviews') siteView(this.props)
     await this.getComments()
   }
@@ -79,7 +80,7 @@ class ReviewPage extends Component {
   }
 
   onSubmit = async() => { 
-      if(!this.props.auth) {
+      if(!this.props.isAuthenticated) {
           this.toggleMembership()
       } else {
           var infoErr = this.checkNull()
@@ -308,7 +309,7 @@ class ReviewPage extends Component {
             modal, rating, comment, commentErrors,
             ratingErrors, sendingReview,
           } = this.state
-    const {auth, setLT} = this.props;
+    const {setLT} = this.props;
 		const loader13 = <div className='loader-13' style={{margin: '0px', color:'#ffffff'}}></div>
 
     const loaderX = (
@@ -431,22 +432,19 @@ class ReviewPage extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    mainUserId: state.userInfo['_id'],
-    mainUser: state.userInfo,
-    userInfo: state.userInfo,
-    userId: state.userInfo['_id'],
-    username: state.userInfo['username'],
-    auth: state.auth,
-    page: state.page,
-    subject: state.subject,
-    lang: state.lang,
-    geo: state.geo,
-    chSp: state.chSp,
-    genderValue: state.userInfo['genderValue'],
-    toggleMembership: state.toggleMembership,
-    setLT: state.setLT,
-    pageName: state.pageName,
-    seenStatus: state.seenStatus,
+    mainUserId: state.user.userInfo['_id'],
+    mainUser: state.user.userInfo,
+    userInfo: state.user.userInfo,
+    userId: state.user.userInfo['_id'],
+    username: state.user.userInfo['username'],
+    isAuthenticated: state.auth.isAuthenticated,
+    subject: state.app.subject,
+    lang: state.app.lang,
+    geo: state.app.geo,
+    genderValue: state.user.userInfo['genderValue'],
+    toggleMembership: state.app.toggleMembership,
+    setLT: state.app.setLT,
+    seenStatus: state.app.seenStatus,
 
   }
 }

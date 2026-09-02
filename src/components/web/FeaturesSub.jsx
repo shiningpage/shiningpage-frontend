@@ -5,7 +5,6 @@ import RubyCollector from '../RubyCollector';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import RoundStatistics from '../RoundStatistics';
 import ModalWebPageTheme from '../modals/ModalWebPageTheme';
-import { setSubUserInfo, setUserInfo } from '../../dataStore/actions';
 import { scrollTo } from '../../helper';
 import { s } from '../../srcSet';
 

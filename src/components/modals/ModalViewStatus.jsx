@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Modal } from 'react-bootstrap';
-import { setToggleViewStatus, setRubyBlock } from '../../dataStore/actions';
+import { setRubyBlock } from '../../store/slices/rubySlice';
+import { setToggleViewStatus } from '../../store/slices/appSlice';
 import male from '../../assets/images/other/man2.png';
 import female from '../../assets/images/other/woman2.png';
 import rubyS from '../../assets/images/other/rubyS.png';
@@ -340,21 +341,19 @@ class ModalViewStatus extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    mainUserId: state.userInfo._id,
-    mainUser: state.userInfo,
-    userInfo: state.subUserInfo,
-    userId: state.subUserInfo._id,
-    rtl: state.rtl,
-    lang: state.lang,
-    geo: state.geo,
-    page: state.page,
-    setLT: state.setLT,
-    fullAccess: state.fullAccess,
-    toggleNotificationList: state.toggleNotificationList,
-    toggleViewStatus: state.toggleViewStatus,
-    pageRubyTime: state.pageRubyTime,
-    seenStatus: state.seenStatus,
-    rubyInterval: state.rubyInterval,
+    mainUserId: state.user.userInfo._id,
+    mainUser: state.user.userInfo,
+    userInfo: state.user.subUserInfo,
+    userId: state.user.subUserInfo._id,
+    rtl: state.app.rtl,
+    lang: state.app.lang,
+    geo: state.app.geo,
+    setLT: state.app.setLT,
+    fullAccess: state.auth.fullAccess,
+    toggleViewStatus: state.app.toggleViewStatus,
+    pageRubyTime: state.ruby.pageTime,
+    seenStatus: state.app.seenStatus,
+    rubyInterval: state.ruby.interval,
 });
 
 export default connect(mapStateToProps)(ModalViewStatus);

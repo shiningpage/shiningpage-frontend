@@ -9,14 +9,14 @@ import userN from './assets/images/other/user1.png';
 import male from './assets/images/other/man2.png';
 import female from './assets/images/other/woman2.png';
 import Routes from "./Routes";
-import { setToggleLoading, setCountry, setSetLT, setToggleChat,
-    setToggleSidebar, setToggleShowVideo, setPageYOffset,
-    setToggleMembership, setGeo, setSendMessage, setToggleViewStatus,
-    setLang, setRtl,setUpdateVersionDate, setToggleChatList,
-    setScrollDirection, setToggleAds, setAdsInfo, setRuby,
-    setToggleVideo, setVideoInfo, setToggleInsta, setInstaInfo,
-    setObjects, setRubyInterval, setSubChatInfo, 
-} from './dataStore/actions';
+import { setToggleMembership } from './store/slices/authSlice';
+import { setPageYOffset,  } from './store/slices/pageSlice';
+import { setToggleChat, setToggleChatList, setSendMessage, setSubChatInfo, } from './store/slices/chatSlice';
+import { setAdsInfo, setVideoInfo, setInstaInfo, setToggleAds, setToggleInsta, setToggleVideo, setToggleShowVideo } from './store/slices/mediaSlice';
+import { setRubyAmount, setRubyInterval } from './store/slices/rubySlice';
+import { setToggleLoading, setCountry, setSetLT, setToggleSidebar,  setGeo, 
+        setLang, setRtl, setScrollDirection, setObjects, setToggleViewStatus,
+    } from './store/slices/appSlice'
 import SubChat from './components/SubChat';
 import SendMessage from './components/SendMessage';
 import setLangText from './modules/setLangText';
@@ -91,7 +91,7 @@ class App extends Component {
         // await this.language()
         this.setModals()
         this.props.dispatch(setCountry({}))
-        if(this.props.auth) {
+        if(this.props.isAuthenticated) {
             checkRubyInterval(this.props.rubyInterval, this.props.dispatch)
             this.getRuby()
             getBalance(this.props.mainUserId, this.props.dispatch)
@@ -112,7 +112,7 @@ class App extends Component {
         // console.log(id)
         // console.log(ips)
 
-        // if(this.props.auth && this.props.page!=='web') {
+        // if(this.props.isAuthenticated && this.props.page!=='web') {
         //   window.location.href = `/publisher/${this.props.mainUser.username}`
         //   // window.open(`/publisher/${this.props.mainUser.username}`)
         // }
@@ -255,7 +255,7 @@ class App extends Component {
             // this.setState({
             //     rubyAmount: parseFloat(res.data).toFixed(2)
             // })
-            this.props.dispatch(setRuby(parseFloat(res.data).toFixed(3)))
+            this.props.dispatch(setRubyAmount(parseFloat(res.data).toFixed(3)))
         })
     }
 
@@ -454,7 +454,7 @@ class App extends Component {
     userImagePanel = () => {
         window.scrollTo(0,0)
         this.onToggle('toggleUserPanel')
-        if(this.props.page==='user-panel') window.location.reload()
+        if(this.props.pageName==='user-panel') window.location.reload()
     }
 
     changeLanguage = async (x) => {
@@ -484,7 +484,7 @@ class App extends Component {
 
     langText = (x) => {
         var w = this.state.w
-        var auth = this.props.auth
+        var isAuthenticated = this.props.isAuthenticated
         switch (this.props.lang) {
             case 'en': x = 'English'; break;
             case 'fa': x = 'فارسی'; break;
@@ -546,9 +546,9 @@ class App extends Component {
 
     render() {
         const { w, h, loadingTicket, socialMediaIndex, toggleChangePassword, toggleWebPageTheme, notFound, scrollDirection, leaveChatList, leaveNotificationList, notSeenNotificationQTY, notSeenChatQTY } = this.state
-        const { auth, address, fc, setLT, mainUser, subUserInfo, toggleSidebar, toggleShowVideo, fullAccess, 
-            toggleLoading, toggleMembership, sendMessage, toggleChat, username, slug, genderValue, lang, rtl, page,
-            businessType, toggleViewStatus, toggleChatList, ruby, rubyInterval, balance, 
+        const { isAuthenticated, address, fc, setLT, mainUser, subUserInfo, toggleSidebar, toggleShowVideo, fullAccess, 
+            toggleLoading, toggleMembership, sendMessage, toggleChat, username, slug, genderValue, lang, rtl, pageName,
+            businessType, toggleViewStatus, toggleChatList, rubyAmount, rubyInterval, balance, 
         } = this.props
         const loader13 = <div className='loader-13' style={{margin: '0px 20px', color:''}}></div>
         const me = mainUser._id===subUserInfo._id ? true : false
@@ -556,8 +556,8 @@ class App extends Component {
         // var fc = 13
         const rubyDone = rubyInterval.done!==0 && rubyInterval.done >= rubyInterval.ruby ? true : false
 
-        const rubyIndex = auth
-                            ? mainUser.access.includes('ruby') ? true : false 
+        const rubyIndex = isAuthenticated
+                            ? mainUser?.access?.includes('ruby') ? true : false 
                             : false
         const NavHX = w<s ? 45 : NavH
         const colorX = [0, 4, 11].includes(fc) ? '#00000099' : '#ffffff'
@@ -582,7 +582,7 @@ class App extends Component {
             <img
                 className={`btnShadow C${fc}`}
                 style={{objectFit: 'cover', width:'30px', height:'30px', borderRadius:businessType>0 ? '3px' : '100px', border:'2px solid #ffffff40', margin:'0px 10px', padding:'0px'}}
-                src={!auth
+                src={!isAuthenticated
                     ? userN
                     : exist(mainUser.profileIndex)
                         ? `https://www.pix.shiningpage.com/whoraly/profile/small/${mainUser._id}-${mainUser.profileIndex}.jpeg`
@@ -600,7 +600,7 @@ class App extends Component {
         )
 
         const notificationIcon = (
-            <div className={`center C${auth ? fc : 14}`}
+            <div className={`center C${isAuthenticated ? fc : 14}`}
                 style={{minWidth:w<s ? '30px' : '25px', width:w<s ? '30px' : '25px', height:w<s ? '30px' : '25px',
                     margin:'0px 10px', color: colorX, borderRadius:'100px', backgroundPosition: 'top right',
                     backgroundSize: '250% 250%', position:'relative'}}
@@ -619,7 +619,7 @@ class App extends Component {
 
         // console.log('fc', fc)
         const chatIcon = (
-            <div className={`center C${auth ? fc : 14}`} 
+            <div className={`center C${isAuthenticated ? fc : 14}`} 
                 style={{minWidth:w<s ? '30px' : '25px', width:w<s ? '30px' : '25px', height:w<s ? '30px' : '25px',
                     margin:'0px 10px', color: colorX, borderRadius:'100px', backgroundPosition: 'top right',
                     backgroundSize: '250% 250%', position:'relative'}}>
@@ -629,14 +629,14 @@ class App extends Component {
         )
 
         const unsRubyQTY = (
-            <div className={`${'zoomIn'}`} style={{backgroundColor: 'red', color: '#ffffff', fontSize:'11px', fontWeight:450, textAlign:'center', display: ruby>0 ? '' : 'none',
+            <div className={`${'zoomIn'}`} style={{backgroundColor: 'red', color: '#ffffff', fontSize:'11px', fontWeight:450, textAlign:'center', display: rubyAmount>0 ? '' : 'none',
                 minWidth: '18px', height: '18px', borderRadius: '100px', lineHeight: '20px', position:'absolute', top:-5, right:-5}}>
-                <span style={{margin:'0px 4px'}}>{ruby}</span>
+                <span style={{margin:'0px 4px'}}>{rubyAmount}</span>
             </div>
         )
 
         const rubyIconNav = (
-            <div className={`btnShadow C${auth ? fc : 14} center`}
+            <div className={`btnShadow C${isAuthenticated ? fc : 14} center`}
                 style={{minWidth:w<s ? '30px' : '25px', width:w<s ? '30px' : '25px', height:w<s ? '30px' : '25px', borderRadius:'100px', margin:'0px 10px', padding:'2px', position:'relative'}}
             >
                 <div className={`C${11} center`}
@@ -654,7 +654,7 @@ class App extends Component {
         )
 
         const projectsIconNav = (
-            <div className={`btnShadow C${auth ? fc : 14} center`}
+            <div className={`btnShadow C${isAuthenticated ? fc : 14} center`}
                 style={{minWidth:w<s ? '30px' : '25px', width:w<s ? '30px' : '25px', height:w<s ? '30px' : '25px', borderRadius:'100px', margin:'0px 10px', padding:'2px', position:'relative'}}
             >
                 <div className={`C${11} center`}
@@ -666,7 +666,7 @@ class App extends Component {
         )
 
         const latestIcon = (
-            <Link to={`/latest`} className={`center C${auth ? fc : 14}`}
+            <Link to={`/latest`} className={`center C${isAuthenticated ? fc : 14}`}
                 style={{minWidth:w<s ? '30px' : '25px', width:w<s ? '30px' : '25px', height:w<s ? '30px' : '25px',
                     margin:'0px 10px', color: colorX, borderRadius:'100px', backgroundPosition: 'top right',
                     backgroundSize: '250% 250%', position:'relative'}}
@@ -676,7 +676,7 @@ class App extends Component {
         )
 
         const projectsIcon = (
-            <Link to={`/projects/${username}`} className={`center C${auth ? fc : 14}`}
+            <Link to={`/projects/${username}`} className={`center C${isAuthenticated ? fc : 14}`}
                 style={{minWidth:w<s ? '30px' : '25px', width:w<s ? '30px' : '25px', height:w<s ? '30px' : '25px',
                     margin:'0px 10px', color: colorX, borderRadius:'100px', backgroundPosition: 'top right',
                     backgroundSize: '250% 250%', position:'relative'}}
@@ -752,12 +752,12 @@ class App extends Component {
             <Link to={`/`}  className='box-c waves-effect waves-light btn-large' onClick={() => this.onToggle('home')}
                 style={{width:'100%', height:'100%'}}>
                 <div className='center' style={{flexDirection:'column', alignItems:'center', margin: '10px 0px -5px'}}>
-                    {page==='home'
+                    {pageName==='home'
                         ? <AiFillHome style={{color: w<s ? '#ffd400' : '#ffffff', width:'23px', fontSize: '28px', transform: 'scaleX(-1)'}}/>
                         : <AiOutlineHome style={{color: '#ffffff', width:'23px', fontSize: '28px', transform: 'scaleX(-1)'}}/>
                     }
                 </div>
-                <span className="custom-underline" style={{width:'90%', fontSize:'10px', fontWeight:'', color: page==='home' && w<s ? '#ffd400' : '#ffffff', borderBottom: page==='home' && w>s ? '2px solid #ffffff' : ''}}>{setLT.home}</span>
+                <span className="custom-underline" style={{width:'90%', fontSize:'10px', fontWeight:'', color: pageName==='home' && w<s ? '#ffd400' : '#ffffff', borderBottom: pageName==='home' && w>s ? '2px solid #ffffff' : ''}}>{setLT.home}</span>
             </Link>
         )
 
@@ -788,73 +788,73 @@ class App extends Component {
 
         const homeNav = (
             <Link to={`/`} className=' box-c waves-effect waves-light btn-large' onClick={() => this.onToggle('home')}
-                style={{width:'100%', height:'100%', backgroundColor: page==='home' ? '#ffffff20' : ''}}>
+                style={{width:'100%', height:'100%', backgroundColor: pageName==='home' ? '#ffffff20' : ''}}>
                 <div className='center' style={{flexDirection:'column', alignItems:'center', margin: '5px 0px -5px'}}>
-                    {page==='home'
+                    {pageName==='home'
                         ? <AiFillHome style={{width:'20px', fontSize: '28px'}}/>
                         : <AiOutlineHome style={{width:'20px', fontSize: '28px'}}/>
                     }
                 </div>
-                <span className="custom-underline" style={{width:'80%', fontSize:'12px', fontWeight:'', color:'#ffffff', borderBottom: page==='home' ? '1px solid' : ''}}>{setLT.home}</span>
+                <span className="custom-underline" style={{width:'80%', fontSize:'12px', fontWeight:'', color:'#ffffff', borderBottom: pageName==='home' ? '1px solid' : ''}}>{setLT.home}</span>
             </Link>
         )
 
         const latestNav = (
             <Link to={`/latest`} className='box-c waves-effect waves-light btn-large' onClick={() => this.onToggle('latest')}
-                style={{width:'100%', height:'100%', backgroundColor: page==='latest' ? '#ffffff20' : ''}}>
+                style={{width:'100%', height:'100%', backgroundColor: pageName==='latest' ? '#ffffff20' : ''}}>
                 <div className='center' style={{flexDirection:'column', alignItems:'center', margin: '5px 0px -5px'}}>
-                    {page==='latest'
+                    {pageName==='latest'
                         ? <BiSolidBookContent style={{width:'20px', fontSize: '28px'}}/>
                         : <BiBookContent style={{width:'20px', fontSize: '28px'}}/>
                     }
                 </div>
-                <span className="custom-underline" style={{width:'80%', fontSize:'12px', fontWeight:'', color:'#ffffff', borderBottom: page==='latest' ? '1px solid' : ''}}>Latest</span>
+                <span className="custom-underline" style={{width:'80%', fontSize:'12px', fontWeight:'', color:'#ffffff', borderBottom: pageName==='latest' ? '1px solid' : ''}}>Latest</span>
             </Link>
         )
 
         const projectsNav = (
             <Link to={`/projects/${username}`} className='box-c waves-effect waves-light btn-large' onClick={() => this.onToggle('projects')}
-                style={{width:'100%', height:'100%', backgroundColor: page==='projects' ? '#ffffff20' : ''}}>
+                style={{width:'100%', height:'100%', backgroundColor: pageName==='projects' ? '#ffffff20' : ''}}>
                 <div className='center' style={{flexDirection:'column', alignItems:'center', margin: '5px 0px -5px'}}>
-                    {page==='projects'
+                    {pageName==='projects'
                         ? <div className='backProject' style={{width:"20px", height:"20px", borderRadius:'3px', margin:'5px'}}></div>
                         : <div className='backProject' style={{width:"20px", height:"20px", borderRadius:'3px', margin:'5px'}}></div>
                     }
                 </div>
-                <span className="custom-underline" style={{width:'80%', fontSize:'12px', fontWeight:'', color:'#ffffff', borderBottom: page==='projects' ? '1px solid' : ''}}>Projects</span>
+                <span className="custom-underline" style={{width:'80%', fontSize:'12px', fontWeight:'', color:'#ffffff', borderBottom: pageName==='projects' ? '1px solid' : ''}}>Projects</span>
             </Link>
         )
 
         const aboutNav = (
             <Link to={`/about`} className='box-c waves-effect waves-light btn-large' onClick={() => this.onToggle('about')}
-                style={{width:'100%', height:'100%', backgroundColor: page==='about' ? '#ffffff20' : ''}}>
+                style={{width:'100%', height:'100%', backgroundColor: pageName==='about' ? '#ffffff20' : ''}}>
                 <div className='center' style={{flexDirection:'column', alignItems:'center', margin: '5px 0px -5px'}}>
-                    {page==='about'
+                    {pageName==='about'
                         ? <HiUsers style={{width:'20px', fontSize: '28px'}}/>
                         : <HiOutlineUsers style={{width:'20px', fontSize: '28px'}}/>
                     } 
                 </div>
-                <span className="custom-underline" style={{width:'80%', fontSize:'12px', borderBottom: page==='about' ? '1px solid' : ''}}>{setLT.about}</span>
+                <span className="custom-underline" style={{width:'80%', fontSize:'12px', borderBottom: pageName==='about' ? '1px solid' : ''}}>{setLT.about}</span>
             </Link>
         )
 
         const contactNav = (
             <Link to={`/contact`} className='box-c waves-effect waves-light btn-large' onClick={() => this.onToggle('about')}
-                style={{width:'100%', height:'100%', backgroundColor: page==='contact' ? '#ffffff20' : ''}}>
+                style={{width:'100%', height:'100%', backgroundColor: pageName==='contact' ? '#ffffff20' : ''}}>
                 <div className='center' style={{flexDirection:'column', alignItems:'center', margin: '5px 0px -5px'}}>
-                    {page==='contact'
+                    {pageName==='contact'
                         ? <IoMailSharp style={{width:'20px', fontSize: '28px'}}/>
                         : <IoMailOutline style={{width:'20px', fontSize: '28px'}}/>
                     }
                 </div>
-                <span className="custom-underline" style={{width:'80%', fontSize:'12px', borderBottom: page==='contact' ? '1px solid' : ''}}>{setLT.contact}</span>
+                <span className="custom-underline" style={{width:'80%', fontSize:'12px', borderBottom: pageName==='contact' ? '1px solid' : ''}}>{setLT.contact}</span>
             </Link>
         )
 
         const loginNav = (
             <Link to={`/login`} className='nav'
                 style={{width:'', height:'100%', padding:'10px 15px' ,textAlign:'center'}}>
-                <span style={{fontSize:'14px', marginTop:'10px', margin:'0px', whiteSpace: 'nowrap'}}>{auth ? setLT.exit : setLT.login}</span>
+                <span style={{fontSize:'14px', marginTop:'10px', margin:'0px', whiteSpace: 'nowrap'}}>{isAuthenticated ? setLT.exit : setLT.login}</span>
             </Link>
         )
 
@@ -875,7 +875,7 @@ class App extends Component {
                 {navLinks.map(({ key, to, label }) => (
                     <NavLink key={key} to={to}
                         className={`relative !no-underline text-[14px] font-medium transition-all duration-300 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:origin-center after:rounded-full after:bg-[#d5ad6d] after:transition-transform after:duration-300 hover:text-[#d5ad6d] hover:after:scale-x-100
-                            ${page === key ? "goldenText after:scale-x-100" : "text-white after:scale-x-0"}`
+                            ${pageName === key ? "goldenText after:scale-x-100" : "text-white after:scale-x-0"}`
                         }
                     >
                         {label}
@@ -885,15 +885,15 @@ class App extends Component {
         )
 
         const plan = (
-            <Link to={auth ? '/pricing' : '/login'} className={`!no-underline group flex items-center gap-${w<s ? 1 : 3} px-${w<s ? 2 : 3} py-1 rounded-lg ${w<s ? '' : 'border'} border-[#d5ad6d] text-white cursor-pointer select-none btn-glow`}>
-                {w>s && auth && <FaCrown className="goldenText w-6 h-6 -mt-1 transition-all duration-300 group-hover:rotate-12 group-hover:scale-110 group-active:scale-95" />}
+            <Link to={isAuthenticated ? '/pricing' : '/login'} className={`!no-underline group flex items-center gap-${w<s ? 1 : 3} px-${w<s ? 2 : 3} py-1 rounded-lg ${w<s ? '' : 'border'} border-[#d5ad6d] text-white cursor-pointer select-none btn-glow`}>
+                {w>s && isAuthenticated && <FaCrown className="goldenText w-6 h-6 -mt-1 transition-all duration-300 group-hover:rotate-12 group-hover:scale-110 group-active:scale-95" />}
                 <div>
-                    {auth && <div className="text-[12px] -mb-1">Free Plan</div>}
+                    {isAuthenticated && <div className="text-[12px] -mb-1">Free Plan</div>}
                     <div className="goldenText text-[14px] font-semibold transition-all duration-300 group-hover:tracking-wide group-active:scale-95">
-                        {auth ? 'Upgrade' : (w<345 ? 'Login' : 'Sign up | Login')}
+                        {isAuthenticated ? 'Upgrade' : (w<345 ? 'Login' : 'Sign up | Login')}
                     </div>
                 </div>
-                {w>s && auth && <FaAngleRight className="transition-all duration-300 group-hover:translate-x-1 group-active:translate-x-2" />}
+                {w>s && isAuthenticated && <FaAngleRight className="transition-all duration-300 group-hover:translate-x-1 group-active:translate-x-2" />}
             </Link>
         )
 
@@ -910,13 +910,13 @@ class App extends Component {
 
         const userAuthImg = (
             <div className={`p-[1px] bg-gradient-to-r from-yellow-400 via-amber-500 to-purple-600 ${
-                    mainUser.businessType > 0 ? "rounded-[4px]" : (!auth ? "" : "rounded-full")
+                    mainUser.businessType > 0 ? "rounded-[4px]" : (!isAuthenticated ? "" : "rounded-full")
                 }`}
                 onClick={() => this.onToggleSidebar()}
             >
                 <img
                     className={`C${mainUser.fc} block object-cover min-w-[35px] min-h-[35px] max-w-[35px] max-h-[35px] p-[2px] ${
-                        mainUser.businessType > 0 ? "rounded-[3px]" : (!auth ? "" : "rounded-full")
+                        mainUser.businessType > 0 ? "rounded-[3px]" : (!isAuthenticated ? "" : "rounded-full")
                     }`}
                     src={
                         exist(mainUser.profileIndex)
@@ -933,12 +933,12 @@ class App extends Component {
         const headerAuthBoxM = (
             <div className='d-flex' style={{alignItems:'center', width:'100%', justifyContent:'space-between', direction:'ltr'}}>
                 <div className='d-flex' style={{alignItems:'center'}}>
-                    {auth ? userAuthImg : sidebarIcon}
+                    {isAuthenticated ? userAuthImg : sidebarIcon}
                     <Search/>
                 </div>
                 <div className='d-flex' style={{alignItems:'center', gap:'10px'}}>
                     {/* <div style={{margin:'0px 5px'}}><LangBox/></div> */}
-                    {/* auth ? <UserBox/> : loginBox */}
+                    {/* isAuthenticated ? <UserBox/> : loginBox */}
                     {plan}
                 </div>
             </div>
@@ -953,7 +953,7 @@ class App extends Component {
                     </div>
                 </div>
                 {hrC14}
-                { auth && mainUser.ruby &&
+                { isAuthenticated && mainUser.ruby &&
                     <div className='center' style={{ backgroundColor:'red', color:'#ffffff', fontWeight:450, textAlign:'center' }}
                         onClick={() => this.onToggleViewStatus()}
                     >
@@ -1038,7 +1038,7 @@ class App extends Component {
                 {sidebarButtons.map(({ key, to, label, icon: Icon }) => (
                     <Link key={key} to={to} onClick={() => this.onToggleSidebar()}
                         className={`group flex w-full items-center justify-between rounded-[8px] border-2 border-transparent transition-all duration-300 ease-out hover:bg-white/10 hover:border-white/20 hover:shadow-md !no-underline text-white items-center h-[50px]
-                            ${ page === key ? "sidebarSelectedItem" : "" }`}
+                            ${ pageName === key ? "sidebarSelectedItem" : "" }`}
                         >
                         <div className="center">
                             <Icon className="w-[20px] mx-[20px] my-[10px] text-[23px] transition-transform duration-300 group-hover:scale-110"/>
@@ -1055,13 +1055,13 @@ class App extends Component {
 
         const hasUsername = !!mainUser?.username
         const root = mainUser.businessType>0 ? 'publisher' : 'user'
-        const linkTarget = auth && hasUsername
+        const linkTarget = isAuthenticated && hasUsername
             ? `/${root}/${mainUser.username}`
             : '/login'
 
         const myPage = (
             <a href={linkTarget}
-                onClick={() => (page!=='web' && page!=='publisher')
+                onClick={() => (pageName!=='web' && pageName!=='publisher')
                     ? null
                     : me
                         ? window.scroll(0, 0)
@@ -1069,7 +1069,7 @@ class App extends Component {
                 }
 
                 className={`group flex w-full items-center justify-between rounded-[8px] border-2 border-transparent transition-all duration-300 ease-out hover:bg-white/10 hover:border-white/20 hover:shadow-md !no-underline text-white items-center h-[50px]
-                    ${ me && ['publisher', 'user'].includes(page) ? "sidebarSelectedItem" : "" }`}
+                    ${ me && ['publisher', 'user'].includes(pageName) ? "sidebarSelectedItem" : "" }`}
                 >
                 <div className="center">
                     <RiPagesLine className="w-[20px] mx-[20px] my-[10px] text-[23px] transition-transform duration-300 group-hover:scale-110"/>
@@ -1085,7 +1085,7 @@ class App extends Component {
         const notifications = (
             <Link to="/notification" onClick={() => this.onToggleSidebar()}
                 className={`group flex w-full items-center justify-between rounded-[8px] border-2 border-transparent transition-all duration-300 ease-out hover:bg-white/10 hover:border-white/20 hover:shadow-md !no-underline text-white items-center h-[50px]
-                    ${ page === 'notification' ? "sidebarSelectedItem" : "" }`}
+                    ${ pageName === 'notification' ? "sidebarSelectedItem" : "" }`}
                 >
                 <div className="center">
                     <FiBell className="w-[20px] mx-[20px] my-[10px] text-[23px] transition-transform duration-300 group-hover:scale-110"/>
@@ -1105,7 +1105,7 @@ class App extends Component {
         const messages = (
             <Link to="/chat" onClick={() => this.onToggleSidebar()}
                 className={`group flex w-full items-center justify-between rounded-[8px] border-2 border-transparent transition-all duration-300 ease-out hover:bg-white/10 hover:border-white/20 hover:shadow-md !no-underline text-white items-center h-[50px]
-                    ${ page === 'chat' ? "sidebarSelectedItem" : "" }`}
+                    ${ pageName === 'chat' ? "sidebarSelectedItem" : "" }`}
                 >
                 <div className="center">
                     <IoChatbubbleEllipsesOutline className="w-[20px] mx-[20px] my-[10px] text-[23px] transition-transform duration-300 group-hover:scale-110"/>
@@ -1125,7 +1125,7 @@ class App extends Component {
         const rubies = (
             <Link to="/ruby" onClick={() => this.onToggleSidebar()}
                 className={`group flex w-full items-center justify-between rounded-[8px] border-2 border-transparent transition-all duration-300 ease-out hover:bg-white/10 hover:border-white/20 hover:shadow-md !no-underline text-white items-center h-[50px]
-                    ${ page === 'ruby' ? "sidebarSelectedItem" : "" }`}
+                    ${ pageName === 'ruby' ? "sidebarSelectedItem" : "" }`}
                 >
                 <div className="center">
                     <AiOutlineRuby className="w-[20px] mx-[20px] my-[10px] text-[23px] transition-transform duration-300 group-hover:scale-110"/>
@@ -1134,8 +1134,8 @@ class App extends Component {
                     </span>
                 </div>
                 <div className='flex items-center'>
-                    <div className={`zoomIn bg-gradient-to-r from-[#94358e99] to-[#c900bb] text-white text-[11px] font-[450] text-center min-w-[18px] h-[18px] px-[5px] rounded-[4px] leading-[20px] ${ruby ? "block" : "hidden"} transition-transform duration-300 group-hover:translate-x-1`}>
-                        {ruby}
+                    <div className={`zoomIn bg-gradient-to-r from-[#94358e99] to-[#c900bb] text-white text-[11px] font-[450] text-center min-w-[18px] h-[18px] px-[5px] rounded-[4px] leading-[20px] ${rubyAmount ? "block" : "hidden"} transition-transform duration-300 group-hover:translate-x-1`}>
+                        {rubyAmount}
                     </div>
                     <FaAngleRight className="text-[14px] m-[10px] transition-transform duration-300 group-hover:translate-x-1"/>
                 </div>
@@ -1145,7 +1145,7 @@ class App extends Component {
         const socialMedia = (
             <Link to="/social-media" onClick={() => this.onToggleSidebar()}
                 className={`group flex w-full items-center justify-between rounded-[8px] border-2 border-transparent transition-all duration-300 ease-out hover:bg-white/10 hover:border-white/20 hover:shadow-md !no-underline text-white items-center h-[50px]
-                    ${ page === 'social-media' ? "sidebarSelectedItem" : "" }`}
+                    ${ pageName === 'social-media' ? "sidebarSelectedItem" : "" }`}
                 >
                 <div className="center">
                     <IoIosGitNetwork className="w-[20px] mx-[20px] my-[10px] text-[23px] transition-transform duration-300 group-hover:scale-110"/>
@@ -1160,7 +1160,7 @@ class App extends Component {
         const projects = (
             <Link to={`/projects/${username}`} onClick={() => this.onToggleSidebar()}
                 className={`group flex w-full items-center justify-between rounded-[8px] border-2 border-transparent transition-all duration-300 ease-out hover:bg-white/10 hover:border-white/20 hover:shadow-md !no-underline text-white items-center h-[50px]
-                    ${ page === 'projects' ? "sidebarSelectedItem" : "" }`}
+                    ${ pageName === 'projects' ? "sidebarSelectedItem" : "" }`}
                 >
                 <div className="center">
                     <GrProjects className="w-[20px] mx-[20px] my-[10px] text-[23px] transition-transform duration-300 group-hover:scale-110"/>
@@ -1267,22 +1267,20 @@ class App extends Component {
 
         const userItems = (
             <div className="relative z-10 p-[10px] overflow-scroll">
-                {auth && myPage}
+                {isAuthenticated && myPage}
                 {notifications}
                 {messages}
                 {projects}
                 {rubies}
-                {auth && socialMediaIndex && socialMedia}
-                {auth && currentBalance}
-                {auth && sendTicket}
-                {auth && changeTheme}
-                {auth && changePassword}
-                {auth && signOut}
+                {isAuthenticated && socialMediaIndex && socialMedia}
+                {isAuthenticated && currentBalance}
+                {isAuthenticated && sendTicket}
+                {isAuthenticated && changeTheme}
+                {isAuthenticated && changePassword}
+                {isAuthenticated && signOut}
             </div>
         )
 
-        // display: pageX ? '' : 'none'
-        var pageX = ['base', 'home'].includes(page) ? true : false
         const footerX = (
             <div className='cardShadow backBlur' style={{width:'100%', height:'45px', position:'fixed', bottom:scrollDirection==='down' ? -43 : 0, right:0, left:0, backgroundColor:'#ffffff99', zIndex:'1050', transition:'.2s'}}>
                 {hrC14}
@@ -1302,7 +1300,7 @@ class App extends Component {
 
         const userInfo = (
             <a href={linkTarget} className="!no-underline flex items-start p-[20px] gap-2"
-                onClick={() => (page!=='web' && page!=='publisher')
+                onClick={() => (pageName!=='web' && pageName!=='publisher')
                                     ? null
                                     : me
                                         ? window.scroll(0, 0)
@@ -1312,12 +1310,12 @@ class App extends Component {
 
                 {/* User Image */}
                 <div className={`p-[1px] bg-gradient-to-r from-yellow-400 via-amber-500 to-purple-600 ${
-                        mainUser.businessType > 0 ? "rounded-[4px]" : (!auth ? "" : "rounded-full")
+                        mainUser.businessType > 0 ? "rounded-[4px]" : (!isAuthenticated ? "" : "rounded-full")
                     }`}
                 >
                     <img
                         className={`C${mainUser.fc} block object-cover min-w-[70px] min-h-[70px] max-w-[70px] max-h-[70px] p-[3px] ${
-                            mainUser.businessType > 0 ? "rounded-[3px]" : (!auth ? "" : "rounded-full")
+                            mainUser.businessType > 0 ? "rounded-[3px]" : (!isAuthenticated ? "" : "rounded-full")
                         }`}
                         src={
                             exist(mainUser.profileIndex)
@@ -1351,7 +1349,7 @@ class App extends Component {
 
         const userAuth = (
             <div className="gradient-border relative z-10 my-[20px] bg-gradient-to-r from-[#00000010] via-transparent to-[#00000010]">
-                {auth ? userInfo : inviteToJoin}
+                {isAuthenticated ? userInfo : inviteToJoin}
                 {userItems}
             </div>
         )
@@ -1696,13 +1694,13 @@ class App extends Component {
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>{this.props.pageTitle}</title>
-                {noIndexPages.includes(page) && (
+                {noIndexPages.includes(pageName) && (
                     <meta name="robots" content="noindex, follow" />
                 )}
-                {page==='publisher' && username && !noIndexPages.includes(page) && (
+                {pageName==='publisher' && username && !noIndexPages.includes(pageName) && (
                     <link rel="canonical" href={`https://www.shiningpage.com/publisher/${username}`} />
                 )}
-                {page==='content' && username && slug && (
+                {pageName==='content' && username && slug && (
                     <link rel="canonical" href={`https://www.shiningpage.com/publisher/${username}/${slug}`} />
                 )}
             </Helmet>
@@ -1710,10 +1708,10 @@ class App extends Component {
 
         const bodyContent = (
             <div className={`flex-1 min-w-0 flex flex-col`}>
-                {!['publisher', 'user', 'content', 'web', 'ps', ''].includes(page) && backG}
+                {!['publisher', 'user', 'content', 'web', 'ps', ''].includes(pageName) && backG}
                 {header}
-                {/* !['web', 'ps'].includes(page) && header */}
-                {!['home', 'publisher', 'user', 'content', 'web', 'ps'].includes(page) && <Addressbar content={[]} fix={address.fix}/>}
+                {/* !['web', 'ps'].includes(pageName) && header */}
+                {!['home', 'publisher', 'user', 'content', 'web', 'ps'].includes(pageName) && <Addressbar content={[]} fix={address.fix}/>}
 
                 {/*  page404
                 ?
@@ -1725,7 +1723,7 @@ class App extends Component {
                 */}
                 {!notFound ? <main><Routes/></main> : NotFound}
 
-                {/* (w>s && !['web', 'ps'].includes(page) ) && sidebarConst */}
+                {/* (w>s && !['web', 'ps'].includes(pageName) ) && sidebarConst */}
                 <div>
                     {modalLoading}
                     {w<s && modalSidebar}
@@ -1738,8 +1736,8 @@ class App extends Component {
                     {modalWebPageTheme}
                     {modalChangePassword}
                 </div>
-                {!['publisher', 'user', 'content', 'web', 'ps'].includes(page) && footer}
-                {w<s && auth && footerX}
+                {!['publisher', 'user', 'content', 'web', 'ps'].includes(pageName) && footer}
+                {w<s && isAuthenticated && footerX}
                 {w<s && hrC14}
                 {/* footbar */}
             </div>
@@ -1761,64 +1759,61 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        mainUserId: state.userInfo['_id'],
-        mainUser: state.userInfo,
-        userId: state.userInfo['_id'],
-        username: state.userInfo['username'],
-        slug: state.userInfo['slug'],
-        fc: state.userInfo.fc,
-        access: state.userInfo.access,
-        businessType: state.userInfo.businessType,
-        mainName: state.userInfo['mainName'],
-        genderValue: state.userInfo['genderValue'],
-        userImg: state.userInfo['imageData'],
-        lang: state.lang,
-        rtl: state.rtl,
-        auth: state.auth,
-        toggleMembership: state.toggleMembership,
-        sendMessage: state.sendMessage,
+        mainUserId: state.user.userInfo['_id'],
+        mainUser: state.user.userInfo,
+        userId: state.user.userInfo['_id'],
+        username: state.user.userInfo['username'],
+        slug: state.user.userInfo['slug'],
+        fc: state.user.userInfo.fc,
+        access: state.user.userInfo.access,
+        businessType: state.user.userInfo.businessType,
+        mainName: state.user.userInfo['mainName'],
+        genderValue: state.user.userInfo['genderValue'],
+        userImg: state.user.userInfo['imageData'],
+        lang: state.app.lang,
+        rtl: state.app.rtl,
+        isAuthenticated: state.auth.isAuthenticated,
+        toggleMembership: state.auth.toggleMembership,
+        sendMessage: state.chat.sendMessage,
 
-        geo: state.geo,
-        page: state.page,
-        subject: state.subject,
-        pageName: state.pageName,
-        pageTitle: state.pageTitle,
+        geo: state.app.geo,
+        pageName: state.page.name,
+        subject: state.app.subject,
+        pageTitle: state.page.title,
 
-        subUserInfo: state.subUserInfo,
-        subSelected: state.subUserInfo.selected,
-        subUserId: state.subUserInfo['_id'],
-        subUserType: state.subUserInfo['subUserType'],
-        subMainName: state.subUserInfo['mainName'],
-        subUsername: state.subUserInfo['username'],
-        subBusinessType: state.subUserInfo.businessType,
-        subPassword: state.subUserInfo['password'],
-        subEmail: state.subUserInfo['email'],
-        subGenderValue: state.subUserInfo['genderValue'],
-        subBirthDate: state.subUserInfo['birthDate'],
-        subMotherName: state.subUserInfo['motherName'],
-        subCommonName: state.subUserInfo['commonName'],
-        subImageData: state.subUserInfo['imageData'],
-        userInfo: state.userInfo,
-        subUserInfo: state.subUserInfo,
-        notSeenChatQTY: state.notSeenChatQTY,
-        toggleShowVideo: state.toggleShowVideo,
-        toggleSidebar: state.toggleSidebar,
-        toggleChat: state.toggleChat,
-        toggleNotificationList: state.toggleNotificationList,
-        toggleChatList: state.toggleChatList,
-        setLT: state.setLT,
-        toggleLoading: state.toggleLoading,
-        access: state.userInfo.access,
-        fullAccess: state.fullAccess,
-        page404: state.page404,
-        updateVersionDate: state.updateVersionDate,
-        address: state.address,
-        pageYOffset: state.pageYOffset,
-        ruby: state.ruby,
-        objects: state.objects,
-        toggleViewStatus: state.toggleViewStatus,
-        rubyInterval: state.rubyInterval,
-        balance: state.balance,
+        subUserInfo: state.user.subUserInfo,
+        subSelected: state.user.subUserInfo.selected,
+        subUserId: state.user.subUserInfo['_id'],
+        subUserType: state.user.subUserInfo['subUserType'],
+        subMainName: state.user.subUserInfo['mainName'],
+        subUsername: state.user.subUserInfo['username'],
+        subBusinessType: state.user.subUserInfo.businessType,
+        subPassword: state.user.subUserInfo['password'],
+        subEmail: state.user.subUserInfo['email'],
+        subGenderValue: state.user.subUserInfo['genderValue'],
+        subBirthDate: state.user.subUserInfo['birthDate'],
+        subMotherName: state.user.subUserInfo['motherName'],
+        subCommonName: state.user.subUserInfo['commonName'],
+        subImageData: state.user.subUserInfo['imageData'],
+        userInfo: state.user.userInfo,
+        subUserInfo: state.user.subUserInfo,
+        toggleShowVideo: state.media.toggleShowVideo,
+        toggleSidebar: state.app.toggleSidebar,
+        toggleChat: state.chat.toggleChat,
+        toggleChatList: state.chat.toggleChatList,
+        setLT: state.app.setLT,
+        toggleLoading: state.app.toggleLoading,
+        access: state.user.userInfo.access,
+        fullAccess: state.auth.fullAccess,
+        page404: state.page.is404,
+        updateVersionDate: state.app.updateVersionDate,
+        address: state.app.address,
+        pageYOffset: state.page.yOffset,
+        rubyAmount: state.ruby.amount,
+        objects: state.app.objects,
+        toggleViewStatus: state.app.toggleViewStatus,
+        rubyInterval: state.ruby.interval,
+        balance: state.app.balance,
 
     }
 }

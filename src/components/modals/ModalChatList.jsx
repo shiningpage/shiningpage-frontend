@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Modal } from 'react-bootstrap';
-import { setToggleChatList, setSubChatInfo, setToggleChat } from '../../dataStore/actions';
+import { setToggleChatList, setSubChatInfo, setToggleChat } from '../../store/slices/chatSlice';
 import userN from '../../assets/images/other/user1.png';
 import male from '../../assets/images/other/man2.png';
 import female from '../../assets/images/other/woman2.png';
@@ -351,7 +351,6 @@ class ModalChatList extends Component{
             deleteChat: false,
             finishDataChat: true
         })
-        // this.onSinglePage('chat')
         this.chatListMap(finalMsgX)
     }
 
@@ -438,17 +437,16 @@ class ModalChatList extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        mainUserId: state.userInfo['_id'],
-        mainUser: state.userInfo,
-        userInfo: state.subUserInfo,
-        userId: state.subUserInfo._id,
-        rtl: state.rtl,
-        lang: state.lang,
-        geo: state.geo,
-        page: state.page,
-        setLT: state.setLT,
-        fullAccess: state.fullAccess,
-        toggleChatList: state.toggleChatList,
+        mainUserId: state.user.userInfo['_id'],
+        mainUser: state.user.userInfo,
+        userInfo: state.user.subUserInfo,
+        userId: state.user.subUserInfo._id,
+        rtl: state.app.rtl,
+        lang: state.app.lang,
+        geo: state.app.geo,
+        setLT: state.app.setLT,
+        fullAccess: state.auth.fullAccess,
+        toggleChatList: state.chat.toggleChatList,
     }
 }
 

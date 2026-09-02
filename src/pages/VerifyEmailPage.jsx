@@ -3,7 +3,10 @@ import axios from 'axios';
 import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { setAddress, setSubject, setPageTitle, setPageName, setPage, setUserInfo, setAuth } from '../dataStore/actions';
+import { setAuth } from '../store/slices/authSlice';
+import { setUserInfo } from '../store/slices/userSlice';
+import { setPageName, setPageTitle } from '../store/slices/pageSlice';
+import { setAddress, setSubject } from '../store/slices/appSlice';
 import Manager from '../components/Manager';
 import siteView from '../modules/siteView';
 import { AdsHorizontal } from '../components/GoogleAds';
@@ -16,7 +19,7 @@ class VerifyEmailPage extends Component {
 
     state = {
       w: window.innerWidth,
-      pageName: 'Verify Email',
+      page: 'Verify Email',
       loading: true,
       success: false,
       error: '',
@@ -26,12 +29,10 @@ class VerifyEmailPage extends Component {
 
     async componentDidMount() {
       window.scrollTo(0, 0)
+      await this.props.dispatch(setPageTitle(`${this.state.page} | ShiningPage`))
       await this.props.dispatch(setPageName('Verify Email'))
-      await this.props.dispatch(setPageTitle(`${this.state.pageName} | ShiningPage`))
-      await this.props.dispatch(setPage('Verify Email'))
       await this.props.dispatch(setSubject('Verify Email'))
-      await this.props.dispatch(setAddress({ content:[], fix:this.props.pageName }))
-      // if(this.props.auth && this.props.mainUser.ruby) checkSeen('about', this.props.seenStatus, this.props.dispatch)
+      await this.props.dispatch(setAddress({ content:[], fix:this.state.page }))
       siteView(this.props)
       await this.action()
     }
@@ -124,7 +125,7 @@ class VerifyEmailPage extends Component {
 
     render() {
         const {w, loading, success, error, countdown } = this.state;
-        const {auth} = this.props;
+        const { } = this.props;
 
         if(loading) return (
             <div className="flex justify-center items-center text-white text-center">
@@ -181,17 +182,14 @@ class VerifyEmailPage extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        mainUserId: state.userInfo['_id'],
-        mainUser: state.userInfo,
-        rtl: state.rtl,
-        lang: state.lang,
-        geo: state.geo,
-        auth: state.auth,
-        page: state.page,
-        subject: state.subject,
-        setLT: state.setLT,
-        pageName: state.pageName,
-        seenStatus: state.seenStatus,
+        mainUserId: state.user.userInfo['_id'],
+        mainUser: state.user.userInfo,
+        rtl: state.app.rtl,
+        lang: state.app.lang,
+        geo: state.app.geo,
+        subject: state.app.subject,
+        setLT: state.app.setLT,
+        seenStatus: state.app.seenStatus,
     }
   }
   export default connect (mapStateToProps)(VerifyEmailPage);

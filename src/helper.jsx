@@ -2,9 +2,11 @@ import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'; 
 import { Table, InputGroup, Form, Col, Row, DropdownButton, ButtonGroup, Dropdown } from 'react-bootstrap';
-import { setRubyBlock, setObjects, setCountry, setFullAccess, setUserInfo, setSubUserInfo, 
-    setAuth, setSeenStatus, setToggleViewStatus, setPage, setBalance, setRuby,
-    setPageRubyTime, setRubyInterval, } from './dataStore/actions';
+import { setAuth, setFullAccess } from './store/slices/authSlice';
+import { setUserInfo, setSubUserInfo } from './store/slices/userSlice';
+import { setPageName } from './store/slices/pageSlice';
+import { setRubyAmount, setRubyBlock, setRubyInterval, setPageRubyTime } from './store/slices/rubySlice';
+import { setObjects, setCountry, setToggleViewStatus, setBalance, } from './store/slices/appSlice';
 import male from './assets/images/other/man2.png';
 import female from './assets/images/other/woman2.png';
 import { TbTrashXFilled } from "react-icons/tb";
@@ -118,13 +120,13 @@ const addNotification = async (subject, type, fullAccess, mainUser, userId, geo,
 
 const logout = (lang, dispatch) => {
     localStorage.removeItem('jwtToken');
-    dispatch(setPage(''))
+    dispatch(setPageName(''))
     dispatch(setAuth(false))
     dispatch(setFullAccess(false))
     dispatch(setUserInfo([]))
     dispatch(setCountry({}))
     dispatch(setBalance('0.00'))
-    dispatch(setRuby('0.00'))
+    dispatch(setRubyAmount('0.00'))
     dispatch(setRubyInterval({ ruby:0, done:0, dateTime:'' }))
     window.scrollTo(0, 0);
     window.location.reload();

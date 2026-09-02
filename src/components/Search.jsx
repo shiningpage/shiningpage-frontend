@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { setFullAccess, setUserInfo, setAuth, setPage, setCountry, setRuby,  } from '../dataStore/actions';
+import { setUserInfo } from '../store/slices/userSlice';
 import male from '../assets/images/other/man2.png';
 import female from '../assets/images/other/woman2.png';
 import { IoMdClose } from 'react-icons/io';
@@ -67,6 +67,7 @@ class Search extends Component {
   searchMemberMap = async (x) => {
     const {w, n,} = this.state
     const {setLT, fullAccess} = this.props
+    console.log('fullAccess: ', fullAccess)
     var dataRv = x.map (
         (item, i) => {
           //console.log(55555555, item),
@@ -184,7 +185,7 @@ class Search extends Component {
   
   render() {
     const {w, finishData, loadingData, searchUsers, searchMember, } = this.state
-    const {setLT, auth, fullAccess} = this.props;
+    const {setLT, fullAccess} = this.props;
     const loaderZ = <div className='loader-13' style={{margin:'0px', color:'#d1a44a'}}></div>
 
     const more = (
@@ -273,20 +274,17 @@ class Search extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    mainUserId: state.userInfo['_id'],
-    mainUser: state.userInfo,
-    userInfo: state.userInfo,
-    userId: state.userInfo['_id'],
-    username: state.userInfo['username'],
-    fc: state.userInfo.fc,
-    auth: state.auth,
-    lang: state.lang,
-    geo: state.geo,
-    page: state.page,
-    subject: state.subject,
-    setLT: state.setLT,
-    pageName: state.pageName,
-    fullAccess: state.fullAccess,
+    mainUserId: state.user.userInfo['_id'],
+    mainUser: state.user.userInfo,
+    userInfo: state.user.userInfo,
+    userId: state.user.userInfo['_id'],
+    username: state.user.userInfo['username'],
+    fc: state.user.userInfo.fc,
+    lang: state.app.lang,
+    geo: state.app.geo,
+    subject: state.app.subject,
+    setLT: state.app.setLT,
+    fullAccess: state.auth.fullAccess,
 
   }
 }

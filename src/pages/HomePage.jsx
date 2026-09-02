@@ -3,7 +3,9 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import { Container } from 'react-bootstrap';
-import { setAddress, setSubject, setGeo, setPageName, setPageTitle, setPage, setUserInfo } from '../dataStore/actions';
+import { setUserInfo } from '../store/slices/userSlice';
+import { setPageName, setPageTitle } from '../store/slices/pageSlice';
+import { setAddress, setSubject, setGeo } from '../store/slices/appSlice';
 import siteView from '../modules/siteView';
 import { MdOutlinePages, MdPhonelinkRing, MdPhoneInTalk, MdEmail } from 'react-icons/md';
 import { GiCheckMark } from "react-icons/gi";
@@ -49,16 +51,14 @@ class HomePage extends Component {
   componentDidMount = async () => {
     window.scrollTo(0, 0)
     window.addEventListener("resize", this.onResize)
-    await this.props.dispatch(setPageName('ShiningPage'))
-    await this.props.dispatch(setPageTitle(`ShiningPage`))
-    await this.props.dispatch(setPage('home'))
+    await this.props.dispatch(setPageTitle('ShiningPage'))
+    await this.props.dispatch(setPageName('home'))
     await this.props.dispatch(setSubject('home'))
     await this.props.dispatch(setAddress({ content:[], fix:'' }))
 
-    // if(this.props.auth && this.props.mainUser.ruby) checkSeen('home', this.props.seenStatus, this.props.dispatch)
     this.getGeo()
     siteView(this.props)
-    if(this.props.auth) this.getUserInfo(this.props.mainUserId)
+    if(this.props.isAuthenticated) this.getUserInfo(this.props.mainUserId)
     this.mapColors()
     const indexArray = categories.map(category => category.index);
     for (let i = 0; i < indexArray.length; i++) {
@@ -217,9 +217,7 @@ class HomePage extends Component {
 
             return (
                 <Link to={`/${root}/${item.username}`} key={i} className='zoom'
-                    style={{textDecoration:'none', color:'#000000', position:'relative', padding:'10px', height:'290px', cursor:'pointer'}}
-                    // onClick={() => this.onToggleonWebPage(item)}
-				>
+                    style={{textDecoration:'none', color:'#000000', position:'relative', padding:'10px', height:'290px', cursor:'pointer'}}>
                     {aboutImg}
                     {jobSummary}
                     <div className='d-flex' style={{position:'absolute', bottom:0, margin:'0px'}}>
@@ -239,7 +237,7 @@ class HomePage extends Component {
 
   render() {
     const {w, h, colors, categoriesItem} = this.state
-    const {rtl, auth, setLT, lang, access, pageYOffset} = this.props;
+    const {rtl, setLT, lang, access, pageYOffset} = this.props;
     const loaderAlert = <div className='loader-07' style={{marginTop:'10px', color:'#d1a44a', width:'100px', height:'100px', position:'absolute'}}></div>
 
     // console.log(pageYOffset)
@@ -758,23 +756,21 @@ class HomePage extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    mainUserId: state.userInfo['_id'],
-    mainUser: state.userInfo,
-    userInfo: state.userInfo,
-    access: state.userInfo.access,
-    subUserInfo: state.subUserInfo,
-    userId: state.userInfo['_id'],
-    businessType: state.userInfo.businessType,
-    auth: state.auth,
-    rtl: state.rtl,
-    lang: state.lang,
-    geo: state.geo,
-    page: state.page,
-    subject: state.subject,
-    setLT: state.setLT,
-    pageName: state.pageName,
-    pageYOffset: state.pageYOffset,
-    seenStatus: state.seenStatus,
+    mainUserId: state.user.userInfo['_id'],
+    mainUser: state.user.userInfo,
+    userInfo: state.user.userInfo,
+    access: state.user.userInfo.access,
+    subUserInfo: state.user.subUserInfo,
+    userId: state.user.userInfo['_id'],
+    businessType: state.user.userInfo.businessType,
+    isAuthenticated: state.auth.isAuthenticated,
+    rtl: state.app.rtl,
+    lang: state.app.lang,
+    geo: state.app.geo,
+    subject: state.app.subject,
+    setLT: state.app.setLT,
+    pageYOffset: state.page.yOffset,
+    seenStatus: state.app.seenStatus,
 
   }
 }

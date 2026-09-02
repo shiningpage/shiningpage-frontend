@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Container, Modal } from 'react-bootstrap';
-import { setSubject, setAddress, setPageTitle, setPage, setToggleChatList, setSubChatInfo, setToggleChat } from '../dataStore/actions';
+import { setPageName, setPageTitle } from '../store/slices/pageSlice';
+import { setToggleChatList, setToggleChat, setSubChatInfo } from '../store/slices/chatSlice';
+import { setSubject, setAddress, } from '../store/slices/appSlice';
 import siteView from '../modules/siteView';
 import userN from '../assets/images/other/user1.png';
 import male from '../assets/images/other/man2.png';
@@ -22,7 +24,7 @@ class ChatListPage extends Component{
 
     state = {
         w: document.body.clientWidth,
-        pageName: this.props.setLT.chatList,
+        page: this.props.setLT.chatList,
         nChat:1,
         finalMsgX: [],
         itemX:'',
@@ -33,11 +35,10 @@ class ChatListPage extends Component{
     componentDidMount = async () => {
         window.scrollTo(0, 0)
         window.addEventListener("resize", this.onResize)
-        await this.props.dispatch(setPageTitle(`${this.state.pageName} | ShiningPage`))
-        await this.props.dispatch(setPage('chat'))
+        await this.props.dispatch(setPageTitle(`${this.state.page} | ShiningPage`))
+        await this.props.dispatch(setPageName('chat'))
         await this.props.dispatch(setSubject('chatList'))
-        await this.props.dispatch(setAddress({ content:[], fix:this.state.pageName }))
-        // if(this.props.auth && this.props.mainUser.ruby) checkSeen('chatList', this.props.seenStatus, this.props.dispatch)
+        await this.props.dispatch(setAddress({ content:[], fix:this.state.page }))
         siteView(this.props)
         this.getChatList()
     }
@@ -482,18 +483,17 @@ class ChatListPage extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        mainUserId: state.userInfo['_id'],
-        mainUser: state.userInfo,
-        userInfo: state.subUserInfo,
-        userId: state.subUserInfo._id,
-        auth: state.auth,
-        lang: state.lang,
-        geo: state.geo,
-        page: state.page,
-        setLT: state.setLT,
-        fullAccess: state.fullAccess,
-        toggleChatList: state.toggleChatList,
-        seenStatus: state.seenStatus,
+        mainUserId: state.user.userInfo['_id'],
+        mainUser: state.user.userInfo,
+        userInfo: state.user.subUserInfo,
+        userId: state.user.subUserInfo._id,
+        lang: state.app.lang,
+        geo: state.app.geo,
+        pageName: state.page.name,
+        setLT: state.app.setLT,
+        fullAccess: state.auth.fullAccess,
+        toggleChatList: state.chat.toggleChatList,
+        seenStatus: state.app.seenStatus,
     }
 }
 

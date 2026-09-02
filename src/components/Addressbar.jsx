@@ -16,7 +16,7 @@ class Addressbar extends Component {
 
   render() {
     const { } = this.state
-    const {auth, setLT, lang, address} = this.props
+    const {isAuthenticated, setLT, lang, address} = this.props
     const {content, user, fix} = address
     const UN = user?.bizName ? user?.bizName : user?.username
     const indicator = <FaAngleRight style={{margin:'0px 5px'}}/>
@@ -55,15 +55,13 @@ class Addressbar extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    rtl: state.rtl,
-    lang: state.lang,
-    auth: state.auth,
-    page: state.page,
-    genderChange: state.genderChange,
-    toggleGender: state.toggleGender,
-    PSYInfo: state.PSYInfo,
-    setLT: state.setLT,
-    address: state.address,
+    rtl: state.app.rtl,
+    lang: state.app.lang,
+    isAuthenticated: state.auth.isAuthenticated,
+    genderChange: state.app.genderChange,
+    toggleGender: state.app.toggleGender,
+    setLT: state.app.setLT,
+    address: state.app.address,
   }
 }
 

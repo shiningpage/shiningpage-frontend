@@ -8,8 +8,9 @@ import female from '../assets/images/other/woman2.png';
 import rubyS from '../assets/images/other/rubyS.png';
 import rubyB from '../assets/images/other/rubyB.png';
 import { connect } from 'react-redux';
-import { setAddress, setCountry, setSubject, setPageTitle,
-    setPageName, setPage, setUserInfo, setAuth, setFullAccess} from '../dataStore/actions';
+import { setUserInfo, setSubUserInfo } from '../store/slices/userSlice';
+import { setPageName, setPageTitle } from '../store/slices/pageSlice';
+import { setAddress, setCountry, setSubject } from '../store/slices/appSlice';
 import siteView from '../modules/siteView';
 import { FaInstagram } from 'react-icons/fa';
 import { IoIosWarning } from "react-icons/io";
@@ -35,18 +36,17 @@ class RubyPage extends Component {
 
     state = {
         w: document.body.clientWidth,
-        pageName: 'Ruby',
+        page: 'Ruby',
         rubyShare: 0.1,
     }
 
     componentDidMount = async () => {
         window.scrollTo(0, 0)
         window.addEventListener("resize", this.onResize)
-        await this.props.dispatch(setPageTitle(`${this.state.pageName} | ShiningPage`))
-        await this.props.dispatch(setPage('ruby'))
+        await this.props.dispatch(setPageTitle(`${this.state.page} | ShiningPage`))
+        await this.props.dispatch(setPageName('ruby'))
         await this.props.dispatch(setSubject('ruby'))
-        await this.props.dispatch(setAddress({ content:[], fix:this.state.pageName }))
-        // if(this.props.auth && this.props.mainUser.ruby) checkSeen('ruby', this.props.seenStatus, this.props.dispatch)
+        await this.props.dispatch(setAddress({ content:[], fix:this.state.page }))
         siteView(this.props)
         this.getSubRuby()
     }
@@ -64,7 +64,7 @@ class RubyPage extends Component {
             // console.log('totalRubyShareAmount: ', totalRubyShareAmount)
             this.setState({
                 totalShareRuby: Number(totalRubyShareAmount),
-                totalUserRuby: (Number(this.props.ruby) + Number(totalRubyShareAmount)).toFixed(3),
+                totalUserRuby: (Number(this.props.rubyAmount) + Number(totalRubyShareAmount)).toFixed(3),
             });
 
             // console.log('subRuby: ', updatedData)
@@ -123,7 +123,7 @@ class RubyPage extends Component {
 
     render() {
         const { w, subRuby, totalUserRuby, totalRubyShareAmount } = this.state;
-        const {auth, rtl, lang, setLT, country, mainUser, ruby} = this.props;
+        const {isAuthenticated, rtl, lang, setLT, country, mainUser, rubyAmount} = this.props;
         const root = mainUser.businessType>0 ? 'publisher' : 'user'
 
         const userImage = (
@@ -131,7 +131,7 @@ class RubyPage extends Component {
                 <img
                     className={`btnShadow C${mainUser.fc}`}
                     style={{objectFit: 'cover', width:'45px', height:'45px', borderRadius:mainUser.businessType>0 ? '3px' : '100px', padding:'2px'}}
-                    src={!auth
+                    src={!isAuthenticated
                         ? userN
                         : exist(mainUser.profileIndex)
                             ? `https://www.pix.shiningpage.com/whoraly/profile/small/${mainUser._id}-${mainUser.profileIndex}.jpeg`
@@ -254,7 +254,7 @@ class RubyPage extends Component {
 
         const userRuby = (
             <div className='d-flex'>
-                {ruby}
+                {rubyAmount}
                 {rubySmall}
             </div>
         )
@@ -316,27 +316,25 @@ class RubyPage extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        mainUserId: state.userInfo['_id'],
-        mainUser: state.userInfo,
-        userId: state.userInfo['_id'],
-        username: state.userInfo['username'],
-        password: state.userInfo['password'],
-        email: state.userInfo['email'],
-        genderValue: state.userInfo['genderValue'],
-        businessType: state.userInfo['businessType'],
-        userImg: state.userInfo['imageData'],
-        auth: state.auth,
-        rtl: state.rtl,
-        page: state.page,
-        subject: state.subject,
-        lang: state.lang,
-        geo: state.geo,
-        subUserId: state.subUserInfo['_id'],
-        setLT: state.setLT,
-        pageName: state.pageName,
-        country: state.country,
-        ruby: state.ruby,
-        seenStatus: state.seenStatus,
+        mainUserId: state.user.userInfo['_id'],
+        mainUser: state.user.userInfo,
+        userId: state.user.userInfo['_id'],
+        username: state.user.userInfo['username'],
+        password: state.user.userInfo['password'],
+        email: state.user.userInfo['email'],
+        genderValue: state.user.userInfo['genderValue'],
+        businessType: state.user.userInfo['businessType'],
+        userImg: state.user.userInfo['imageData'],
+        isAuthenticated: state.auth.isAuthenticated,
+        rtl: state.app.rtl,
+        subject: state.app.subject,
+        lang: state.app.lang,
+        geo: state.app.geo,
+        subUserId: state.user.subUserInfo['_id'],
+        setLT: state.app.setLT,
+        country: state.app.country,
+        rubyAmount: state.ruby.amount,
+        seenStatus: state.app.seenStatus,
     }
   }
   export default connect (mapStateToProps)(RubyPage);

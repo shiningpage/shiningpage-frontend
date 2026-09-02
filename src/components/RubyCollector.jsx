@@ -3,7 +3,8 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 // import { Link } from "react-router-dom";
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { setRuby, setToggleViewStatus, setRubyInterval, setRubyBlock } from '../dataStore/actions';
+import { setRubyAmount, setRubyBlock, setRubyInterval } from '../store/slices/rubySlice';
+import { setToggleViewStatus } from '../store/slices/appSlice';
 import rubyS from '../assets/images/other/rubyS.png';
 import { ImBlocked } from "react-icons/im";
 import { getFingerprint, countryAdsenseRate, createConfetti, checkRubyInterval } from '../helper';
@@ -68,7 +69,7 @@ const RubyCollector = ({ id, objects, top, bottom, left, right, mainUser, geo, s
                 const res = await axios.post(`${serverURL}/ruby/totalScore`, { userId: mainUser._id });
 
                 createConfetti();
-                dispatch(setRuby(parseFloat(res.data).toFixed(3)));
+                dispatch(setRubyAmount(parseFloat(res.data).toFixed(3)));
                 rubyInterval.done = rubyInterval.done+1
                 dispatch(setRubyInterval(rubyInterval))
                 // console.log('ruby: ', rubyInterval.ruby)
@@ -140,37 +141,30 @@ const RubyCollector = ({ id, objects, top, bottom, left, right, mainUser, geo, s
 
 const mapStateToProps = (state) => {
     return {
-        mainUserId: state.userInfo._id,
-        mainUser: state.userInfo,
-        userId: state.subUserInfo._id,
-        subUserInfo: state.subUserInfo,
-        fc: state.subUserInfo.fc,
-        username: state.subUserInfo.username,
-        businessType: state.subUserInfo.businessType,
-        email: state.subUserInfo.email,
-        genderValue: state.subUserInfo.genderValue,
-        jobSummary: state.subUserInfo.jobSummary,
-        biography: state.subUserInfo.biography,
-        lat: state.subUserInfo.lat,
-        lon: state.subUserInfo.lon,
-        rtl: state.rtl, 
-        lang: state.lang,
-        geo: state.geo,
-        auth: state.auth,
-        country: state.country,
-        page: state.page,
-        subject: state.subject,
-        pageTitle: state.pageTitle,
-        membership: state.membership,
-        setLT: state.setLT,
-        pageName: state.pageName,
-        pageYOffset: state.pageYOffset,
-        fullAccess: state.fullAccess,
-        scrollDirection: state.scrollDirection,
-        adsInfo: state.adsInfo,
-        objects: state.objects,
-        rubyBlock: state.rubyBlock,
-        rubyInterval: state.rubyInterval,
+        mainUserId: state.user.userInfo._id,
+        mainUser: state.user.userInfo,
+        userId: state.user.subUserInfo._id,
+        subUserInfo: state.user.subUserInfo,
+        fc: state.user.subUserInfo.fc,
+        username: state.user.subUserInfo.username,
+        businessType: state.user.subUserInfo.businessType,
+        email: state.user.subUserInfo.email,
+        genderValue: state.user.subUserInfo.genderValue,
+        jobSummary: state.user.subUserInfo.jobSummary,
+        biography: state.user.subUserInfo.biography,
+        lat: state.user.subUserInfo.lat,
+        lon: state.user.subUserInfo.lon,
+        rtl: state.app.rtl, 
+        lang: state.app.lang,
+        geo: state.app.geo,
+        country: state.app.country,
+        subject: state.app.subject,
+        setLT: state.app.setLT,
+        fullAccess: state.auth.fullAccess,
+        scrollDirection: state.app.scrollDirection,
+        objects: state.app.objects,
+        rubyBlock: state.ruby.block,
+        rubyInterval: state.ruby.interval,
     }
 }
 

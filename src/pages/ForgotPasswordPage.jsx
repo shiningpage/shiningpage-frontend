@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
-import { setAddress } from '../dataStore/actions';
+import { setAddress } from '../store/slices/appSlice';
 import { serverURL } from '../srcSet';
 
 const ForgotPassword = () => {

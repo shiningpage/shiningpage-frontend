@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Container } from 'react-bootstrap';
-import { setToggleMembership, } from '../../dataStore/actions';
+import { setToggleMembership } from '../../store/slices/authSlice';
 import KPICards from '../KPICards';
 import date from 'date-and-time';
 import toFarsi from '../../modules/toFarsi';
@@ -68,8 +68,8 @@ class StatisticsSub extends Component{
 
     onToggleLike = async () => {
         const { toggleLike, likeN } = this.state
-        const { auth, mainUser, userId, fullAccess, geo } = this.props
-        if(!auth) {
+        const { isAuthenticated, mainUser, userId, fullAccess, geo } = this.props
+        if(!isAuthenticated) {
             this.props.dispatch(setToggleMembership(true))
         } else {
             this.setState({
@@ -113,9 +113,9 @@ class StatisticsSub extends Component{
 
     onSendComment = async() => { 
         const { comment, rating } = this.state
-        const { mainUser, userId, auth, fullAccess, geo } = this.props
+        const { mainUser, userId, isAuthenticated, fullAccess, geo } = this.props
 
-        if(!auth) {
+        if(!isAuthenticated) {
             this.props.dispatch(setToggleMembership(true))
         } else {
             var infoErr = this.checkNull()
@@ -1021,18 +1021,17 @@ class StatisticsSub extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        mainUser: state.userInfo,
-        mainUserId: state.userInfo['_id'],
-        userInfo: state.subUserInfo,
-        subUserInfo: state.subUserInfo,
-        userId: state.subUserInfo._id,
-        auth: state.auth,
-        rtl: state.rtl,
-        lang: state.lang,
-        geo: state.geo,
-        page: state.page,
-        setLT: state.setLT,
-        fullAccess: state.fullAccess,
+        mainUser: state.user.userInfo,
+        mainUserId: state.user.userInfo['_id'],
+        userInfo: state.user.subUserInfo,
+        subUserInfo: state.user.subUserInfo,
+        userId: state.user.subUserInfo._id,
+        isAuthenticated: state.auth.isAuthenticated,
+        rtl: state.app.rtl,
+        lang: state.app.lang,
+        geo: state.app.geo,
+        setLT: state.app.setLT,
+        fullAccess: state.auth.fullAccess,
     }
 }
 

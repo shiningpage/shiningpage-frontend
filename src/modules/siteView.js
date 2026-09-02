@@ -1,6 +1,6 @@
 import axios from 'axios';
 import date from 'date-and-time';
-import { setGeo } from '../dataStore/actions';
+import { setGeo } from '../store/slices/appSlice';
 import { getFingerprint, getLocalIPs } from '../helper';
 import { serverURL, s, siteName } from '../srcSet';
 import { exist } from '../helper';

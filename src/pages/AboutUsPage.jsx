@@ -3,7 +3,8 @@ import axios from 'axios';
 import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { setAddress, setSubject, setPageTitle, setPageName, setPage } from '../dataStore/actions';
+import { setPageName, setPageTitle } from '../store/slices/pageSlice';
+import { setAddress, setSubject } from '../store/slices/appSlice';
 import Manager from '../components/Manager';
 import siteView from '../modules/siteView';
 import pixSave from '../modules/pixSave';
@@ -19,7 +20,7 @@ class AboutUsPage extends Component {
 
     state = {
       w: window.innerWidth,
-      pageName: 'About',
+      page: 'About',
       uc: 0,
       // selectedFile: [],
       zx: 1000,
@@ -27,12 +28,10 @@ class AboutUsPage extends Component {
 
     async componentDidMount() {
         window.scrollTo(0, 0)
-        await this.props.dispatch(setPageName('About'))
-		    await this.props.dispatch(setPageTitle(`${this.state.pageName} | ShiningPage`))
-        await this.props.dispatch(setPage('about'))
+		    await this.props.dispatch(setPageTitle(`${this.state.page} | ShiningPage`))
+        await this.props.dispatch(setPageName('about'))
         await this.props.dispatch(setSubject('about'))
-        await this.props.dispatch(setAddress({ content:[], fix:this.props.pageName }))
-        // if(this.props.auth && this.props.mainUser.ruby) checkSeen('about', this.props.seenStatus, this.props.dispatch)
+        await this.props.dispatch(setAddress({ content:[], fix:this.state.page }))
         siteView(this.props)
     }
 
@@ -78,8 +77,8 @@ class AboutUsPage extends Component {
     }
 
     render() {
-        const {w, selectedFile, image, formatErr, refreshing} = this.state;
-        const {rtl, setLT, lang, auth } = this.props;
+        const { } = this.state;
+        const { } = this.props;
 
         const header = (
           <div className="animated fadeInLeft [animation-delay:.5s] text-4xl font-extrabold tracking-tight my-[30px]">
@@ -113,17 +112,15 @@ class AboutUsPage extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        mainUserId: state.userInfo['_id'],
-        mainUser: state.userInfo,
-        rtl: state.rtl,
-        lang: state.lang,
-        geo: state.geo,
-        auth: state.auth,
-        page: state.page,
-        subject: state.subject,
-        setLT: state.setLT,
-        pageName: state.pageName,
-        seenStatus: state.seenStatus,
+        mainUserId: state.user.userInfo['_id'],
+        mainUser: state.user.userInfo,
+        rtl: state.app.rtl,
+        lang: state.app.lang,
+        geo: state.app.geo,
+        pageName: state.page.name,
+        subject: state.app.subject,
+        setLT: state.app.setLT,
+        seenStatus: state.app.seenStatus,
     }
   }
   export default connect (mapStateToProps)(AboutUsPage);

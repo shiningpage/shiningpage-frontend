@@ -8,8 +8,11 @@ import male from '../assets/images/other/man2.png';
 import female from '../assets/images/other/woman2.png';
 import locationImg from '../assets/images/other/location.png';
 import { connect } from 'react-redux';
-import { setSubject, setPageTitle, setToggleLoading, setToggleSidebar, setAdsInfo,
-    setToggleMembership, setSubUserInfo, setPage, setToggleAds, setPageYOffset } from '../dataStore/actions';
+import { setToggleMembership } from '../store/slices/authSlice';
+import { setSubUserInfo } from '../store/slices/userSlice';
+import { setPageName, setPageTitle } from '../store/slices/pageSlice';
+import { setAdsInfo, setToggleAds,  } from '../store/slices/mediaSlice';
+import { setSubject, setToggleLoading, setToggleSidebar, } from '../store/slices/appSlice';
 import { MdClose } from 'react-icons/md';
 import { IoMdHeart, IoMdHeartEmpty } from 'react-icons/io';
 import { FaAngleRight, FaGlobe, FaRegPaperPlane, FaRegEye, FaAngleLeft } from 'react-icons/fa';
@@ -56,7 +59,7 @@ class ContentPage extends Component {
         comment: '',
         rating: 0,
         xImage: '',
-        adsImageData: '',//this.props.adsInfo.adsImageData,
+        adsImageData: '',
         adsImageDataX: '',
         locationDataX: '',
         personalInfo: true,
@@ -82,9 +85,9 @@ class ContentPage extends Component {
     async componentDidMount() {
         window.scrollTo(0, 0)
         // this.props.dispatch(setPageYOffset(0))
-        const { auth, mainUser, subChatInfo, videoInfo, geo, fullAccess } = this.props
+        const { mainUser, subChatInfo, videoInfo, geo, fullAccess } = this.props
         window.addEventListener("resize", this.onResize)
-        await this.props.dispatch(setPage('content'))
+        await this.props.dispatch(setPageName('content'))
         await this.props.dispatch(setAdsInfo([]))
         await this.props.dispatch(setSubUserInfo([]))
         await this.getProductService()
@@ -629,7 +632,7 @@ class ContentPage extends Component {
                         profileData: true,
                     })
                     
-                    if(this.props.auth && this.props.mainUser.ruby) checkSeen(`${p1}`, this.props.seenStatus, this.props.dispatch)
+                    if(this.props.isAuthenticated && this.props.mainUser.ruby) checkSeen(`${p1}`, this.props.seenStatus, this.props.dispatch)
                     await this.addViewAds() // یک view اضافه می کند
                     // await this.countItems()
                     // await this.getImgs(p1)
@@ -907,8 +910,8 @@ class ContentPage extends Component {
     }
 
     onToggleLike = async () => {
-        const { auth, mainUser, subChatInfo, videoInfo, geo, fullAccess } = this.props
-        if(!auth) {
+        const { isAuthenticated, mainUser, subChatInfo, videoInfo, geo, fullAccess } = this.props
+        if(!isAuthenticated) {
             this.props.dispatch(setToggleMembership(true))
         } else {
             this.setState({
@@ -983,8 +986,8 @@ class ContentPage extends Component {
     }
 
     onSendComment = async() => { 
-        const { auth, mainUser, subChatInfo, videoInfo, geo, fullAccess } = this.props
-        if(!auth) {
+        const { isAuthenticated, mainUser, subChatInfo, videoInfo, geo, fullAccess } = this.props
+        if(!isAuthenticated) {
             this.props.dispatch(setToggleMembership(true))
         } else {
             var infoErr = this.checkNull()
@@ -1153,11 +1156,11 @@ class ContentPage extends Component {
         const {w, fc, toggleZoomQRCode, toggleViewBtn, toggleLikeBtn, toggleCommentBtn, imgArray, gettingImgs, gettingImages,
             adsImageData, imgList, comment, commentErrors, rating, ratingErrors, sendingComment, commenterMap,
             finishDataCommenter, loadingCommenter, countryCode, gettingView, gettingLike, locationDataX,
-            country, jobSummary, loadingAds, finishDataAds, adsCount, pageY, username, allAds,
+            country, jobSummary, loadingAds, finishDataAds, adsCount, username, allAds,
             bigImage, likeN, viewN, commentN, toggleLike, toggleZoomProfileImage, toggleZoomLocationImage,
             profileData, businessTypeBiz, likerMap, viewerMap, loadingLiker, loadingViewer, finishDataLiker,
             finishDataViewer} = this.state;
-        const {rtl, lang, setLT, adsInfo, businessType, auth, mainUser, subUserInfo, userImg, genderValue, userId, mainUserId, userType,
+        const {rtl, lang, setLT, adsInfo, businessType, mainUser, subUserInfo, userImg, genderValue, userId, mainUserId, userType,
             advertiserId} = this.props
 
         const titleStyle = {fontSize:'22px', fontWeight:'bold', margin:'10px 0px 15px', alignItems:'center'}
@@ -1941,40 +1944,39 @@ class ContentPage extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        mainUserId: state.userInfo['_id'],
-        mainUser: state.userInfo,
-        userId: state.userInfo['_id'],
-        userInfo: state.userInfo,
-        subUserInfo: state.subUserInfo,
-        fc: state.subUserInfo.fc,
-        userType: state.subUserInfo['userType'],
-        lat: state.subUserInfo.lat,
-        lon: state.subUserInfo.lon,
-        likeN: state.userInfo['likeCount'],
-        viewN: state.userInfo['viewCount'],
-        username: state.userInfo['username'],
-        businessType: state.userInfo.businessType,
-        email: state.userInfo['email'],
-        genderValue: state.userInfo['genderValue'],
-        jobSummary: state.userInfo['jobSummary'],
-        biography: state.userInfo['biography'],
+        mainUserId: state.user.userInfo['_id'],
+        mainUser: state.user.userInfo,
+        userId: state.user.userInfo['_id'],
+        userInfo: state.user.userInfo,
+        subUserInfo: state.user.subUserInfo,
+        fc: state.user.subUserInfo.fc,
+        userType: state.user.subUserInfo['userType'],
+        lat: state.user.subUserInfo.lat,
+        lon: state.user.subUserInfo.lon,
+        likeN: state.user.userInfo['likeCount'],
+        viewN: state.user.userInfo['viewCount'],
+        username: state.user.userInfo['username'],
+        businessType: state.user.userInfo.businessType,
+        email: state.user.userInfo['email'],
+        genderValue: state.user.userInfo['genderValue'],
+        jobSummary: state.user.userInfo['jobSummary'],
+        biography: state.user.userInfo['biography'],
 
-        adsInfo: state.adsInfo,
-        setLT: state.setLT,
-        access: state.userInfo.access,
+        adsInfo: state.media.adsInfo,
+        setLT: state.app.setLT,
+        access: state.user.userInfo.access,
     
-        rtl: state.rtl, 
-        lang: state.lang,
-        geo: state.geo,
-        auth: state.auth,
-        page: state.page,
-        subject: state.subject,
-        pageName: state.pageName,
-        pageTitle: state.pageTitle,
-        toggleMembership: state.toggleMembership,
-        fullAccess: state.fullAccess,
-        seenStatus: state.seenStatus,
-        userServiceSelected: state.userServiceSelected,
+        rtl: state.app.rtl, 
+        lang: state.app.lang,
+        geo: state.app.geo,
+        isAuthenticated: state.auth.isAuthenticated,
+        pageName: state.page.name,
+        subject: state.app.subject,
+        pageTitle: state.page.title,
+        toggleMembership: state.app.toggleMembership,
+        fullAccess: state.auth.fullAccess,
+        seenStatus: state.app.seenStatus,
+        userServiceSelected: state.app.userServiceSelected,
     }
   }
   export default connect (mapStateToProps)(ContentPage);

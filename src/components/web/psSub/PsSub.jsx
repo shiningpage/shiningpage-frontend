@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { Container } from 'react-bootstrap';
-import { setUserServiceSelected, setToggleAds, setToggleShowVideo, setAdsInfo, setVideoInfo, setInstaInfo, setToggleVideo, setToggleInsta } from '../../../dataStore/actions';
+import { setAdsInfo, setVideoInfo, setInstaInfo, setToggleAds, setToggleInsta, setToggleVideo, setToggleShowVideo,  } from '../../../store/slices/mediaSlice';
+import { setUserServiceSelected } from '../../../store/slices/appSlice';
 import { BsImages, BsFillCheckCircleFill } from 'react-icons/bs';
 import More from '../../More';
 import MoreX from '../../MoreX';

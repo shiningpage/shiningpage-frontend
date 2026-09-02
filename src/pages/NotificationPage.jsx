@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Container } from 'react-bootstrap';
-import { setSubject, setAddress, setPageTitle, setPage, setToggleNotificationList, setSubChatInfo, setToggleChat, setVideoInfo, setToggleShowVideo } from '../dataStore/actions';
+import { setPageName, setPageTitle } from '../store/slices/pageSlice';
+import { setToggleChat, setSubChatInfo } from '../store/slices/chatSlice';
+import { setVideoInfo, setToggleShowVideo } from '../store/slices/mediaSlice';
+import { setSubject, setAddress } from '../store/slices/appSlice';
 import siteView from '../modules/siteView';
 import userN from '../assets/images/other/user1.png';
 import male from '../assets/images/other/man2.png';
@@ -21,7 +24,7 @@ class NotificationPage extends Component{
 
     state = {
         w: document.body.clientWidth,
-        pageName: this.props.setLT.notificationsList,
+        page: this.props.setLT.notificationsList,
         subAdsInfo:[],
         NData: [],
         searchNotification: [],
@@ -36,11 +39,10 @@ class NotificationPage extends Component{
     componentDidMount = async () => {
         window.scrollTo(0, 0)
         window.addEventListener("resize", this.onResize)
-		await this.props.dispatch(setPageTitle(`${this.state.pageName} | ShiningPage`))
-        await this.props.dispatch(setPage('notification'))
+		await this.props.dispatch(setPageTitle(`${this.state.page} | ShiningPage`))
+        await this.props.dispatch(setPageName('notification'))
         await this.props.dispatch(setSubject('notification'))
-        await this.props.dispatch(setAddress({ content:[], fix:this.state.pageName }))
-        // if(this.props.auth && this.props.mainUser.ruby) checkSeen('notification', this.props.seenStatus, this.props.dispatch)
+        await this.props.dispatch(setAddress({ content:[], fix:this.state.page }))
         siteView(this.props)
         this.getNotification()
     }
@@ -338,10 +340,6 @@ class NotificationPage extends Component{
         await axios.post(`${serverURL}/notification/updateSeen`, {userId})
     }
 
-    onToggleNotificationList = () => {
-        this.props.dispatch(setToggleNotificationList(!this.props.toggleNotificationList))
-    }
-
     onBizPage = (item) => {
         const root = item.businessType>0 ? 'publisher' : 'user'
         window.open(`https://shiningpage.com/${root}/${item.visitorName}`);
@@ -481,18 +479,15 @@ class NotificationPage extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        mainUserId: state.userInfo['_id'],
-        mainUser: state.userInfo,
-        userInfo: state.subUserInfo,
-        userId: state.subUserInfo._id,
-        auth: state.auth,
-        geo: state.geo,
-        page: state.page,
-        subject: state.subject,
-        setLT: state.setLT,
-        fullAccess: state.fullAccess,
-        toggleNotificationList: state.toggleNotificationList,
-        seenStatus: state.seenStatus,
+        mainUserId: state.user.userInfo['_id'],
+        mainUser: state.user.userInfo,
+        userInfo: state.user.subUserInfo,
+        userId: state.user.subUserInfo._id,
+        geo: state.app.geo,
+        subject: state.app.subject,
+        setLT: state.app.setLT,
+        fullAccess: state.auth.fullAccess,
+        seenStatus: state.app.seenStatus,
     }
 }
 

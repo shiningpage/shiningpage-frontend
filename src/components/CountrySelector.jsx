@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
-import { setCountry } from '../dataStore/actions';
+import { setCountry } from '../store/slices/appSlice';
 import setLangText from '../modules/setLangText';
 import { BsChevronCompactDown } from 'react-icons/bs';
 import { FaCaretDown } from "react-icons/fa";
@@ -11,8 +11,8 @@ class CountrySelector extends Component {
 
   state = {
     w: window.innerWidth,
-    country:this.props.auth ? this.props.userInfo.country : this.props.setLT.select,
-    countryCode:this.props.auth ? this.props.userInfo.countryCode.toLowerCase() : '',
+    country:this.props.isAuthenticated ? this.props.userInfo.country : this.props.setLT.select,
+    countryCode:this.props.isAuthenticated ? this.props.userInfo.countryCode.toLowerCase() : '',
   }
 
   componentDidMount () {
@@ -86,14 +86,13 @@ class CountrySelector extends Component {
 
 const mapStateToProps = (state) => {
   return {
-      mainUserId: state.userInfo['_id'],
-      userInfo: state.userInfo,
-      rtl: state.rtl,
-      lang: state.lang,
-      auth: state.auth, 
-      page: state.page, 
-      setLT: state.setLT,
-      country: state.country,
+      mainUserId: state.user.userInfo['_id'],
+      userInfo: state.user.userInfo,
+      rtl: state.app.rtl,
+      lang: state.app.lang,
+      isAuthenticated: state.auth.isAuthenticated, 
+      setLT: state.app.setLT,
+      country: state.app.country,
   }
 }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'; 
 import axios from 'axios';
 import { Button } from 'react-bootstrap';
-import { setUserInfo, setSubUserInfo } from '../../../dataStore/actions';
+import { setUserInfo, setSubUserInfo } from '../../../store/slices/userSlice';
 import BeforAfter from '../../BeforAfter';
 import pixSave from '../../../modules/pixSave';
 import pixDelete from '../../../modules/pixDelete';

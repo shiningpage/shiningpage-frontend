@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Modal, Button } from 'react-bootstrap';
-import { setSubUserInfo, setUserInfo } from '../../dataStore/actions';
+import { setUserInfo, setSubUserInfo } from '../../store/slices/userSlice';
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import locationImg from '../../assets/images/other/location.jpg';
 import { getUserInfo } from '../../helper';
@@ -176,16 +176,14 @@ const ModalLocationImage = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        mainUser: state.userInfo,
-        subUserInfo: state.subUserInfo,
-        userId: state.subUserInfo._id,
-        auth: state.auth,
-        rtl: state.rtl,
-        lang: state.lang,
-        geo: state.geo,
-        page: state.page,
-        setLT: state.setLT,
-        fullAccess: state.fullAccess,
+        mainUser: state.user.userInfo,
+        subUserInfo: state.user.subUserInfo,
+        userId: state.user.subUserInfo._id,
+        rtl: state.app.rtl,
+        lang: state.app.lang,
+        geo: state.app.geo,
+        setLT: state.app.setLT,
+        fullAccess: state.auth.fullAccess,
     };
 };
 

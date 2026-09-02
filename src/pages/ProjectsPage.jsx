@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Container, Button, Modal } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { setAddress, setCountry, setSubject, setPageTitle,
-    setPageName, setPage, setUserInfo, setAuth, setFullAccess} from '../dataStore/actions';
+import { setAuth, setFullAccess } from '../store/slices/authSlice';
+import { setUserInfo } from '../store/slices/userSlice';
+import { setPageName, setPageTitle } from '../store/slices/pageSlice';
+import { setAddress, setCountry, setSubject } from '../store/slices/appSlice';
 import siteView from '../modules/siteView';
 import male from '../assets/images/other/man2.png';
 import female from '../assets/images/other/woman2.png';
@@ -40,7 +42,7 @@ class ProjectManagement extends Component {
     n: 0,
     w: window.innerWidth,
     h: window.innerHeight,
-    pageName: 'Projects',
+    page: 'Projects',
     pjQTY: 0,
     projects: [],
     userProjects: [],
@@ -70,11 +72,10 @@ class ProjectManagement extends Component {
   async componentDidMount() {
     window.scrollTo(0, 0)
     window.addEventListener("resize", this.onResize)
-    await this.props.dispatch(setPageTitle(`${this.state.pageName} | ShiningPage`))
-    await this.props.dispatch(setPage('projects'))
+    await this.props.dispatch(setPageTitle(`${this.state.page} | ShiningPage`))
+    await this.props.dispatch(setPageName('projects'))
     await this.props.dispatch(setSubject('projects'))
-    await this.props.dispatch(setAddress({ content:[], fix:this.state.pageName }))
-    // if(this.props.auth && this.props.mainUser.ruby) checkSeen('ruby', this.props.seenStatus, this.props.dispatch)
+    await this.props.dispatch(setAddress({ content:[], fix:this.state.page }))
     siteView(this.props)
     this.checkAppAccess()
     this.getProjects()
@@ -3495,7 +3496,7 @@ class ProjectManagement extends Component {
       gantScale, pDays, saveNeed, projectsHeader, projectsBody, projectDX, toggleDeleteProject,
       toggleProjectView, deletingProject, projectsList, gettingProjects, savingProjects,
     } = this.state
-    const {auth, mainUser, rtl, lang, setLT, page} = this.props
+    const {isAuthenticated, mainUser, rtl, lang, setLT} = this.props
     const profileTitleStyle = {fontSize:'14px', fontWeight:'bold', margin:'15px 0px 0px 0px', textAlign: rtl ? 'right' : 'left'}
     const loaderX = <div className='loader-13' style={{margin: rtl ? '35px 20px -25px' : '0px 20px 0px', color:'#ffffff', transform: rtl ? 'rotate(180deg)' : ''}}></div>
     const loaderZ = <div className='loader-02' style={{margin: '0px', color:'#00CCFF', transform: rtl ? 'rotate(180deg)' : ''}}></div>
@@ -4074,18 +4075,16 @@ class ProjectManagement extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    mainUserId: state.userInfo._id,
-    mainUser: state.userInfo,
-    access: state.userInfo.access,
-    auth: state.auth,
-    rtl: state.rtl,
-    page: state.page,
-    subject: state.subject,
-    pageName: state.pageName,
-    lang: state.lang,
-    geo: state.geo,
-    access: state.userInfo.access,
-    setLT: state.setLT,
+    mainUserId: state.user.userInfo._id,
+    mainUser: state.user.userInfo,
+    access: state.user.userInfo.access,
+    isAuthenticated: state.auth.isAuthenticated,
+    rtl: state.app.rtl,
+    subject: state.app.subject,
+    lang: state.app.lang,
+    geo: state.app.geo,
+    access: state.user.userInfo.access,
+    setLT: state.app.setLT,
 
   }
 }

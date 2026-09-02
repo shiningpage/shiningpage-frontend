@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import EditBtn from '../EditBtn';
 import { Container, Modal, Button } from 'react-bootstrap';
-import { setSubUserInfo, setUserInfo } from '../../dataStore/actions';
+import { setUserInfo, setSubUserInfo } from '../../store/slices/userSlice';
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { GrAttachment } from 'react-icons/gr';
 import { TbTrashXFilled } from "react-icons/tb";
@@ -66,10 +66,6 @@ const AttachmentSub = (props) => {
         setFileType('')
         setFileSizeLimitErr(false)
     }, [toggleAttachment]);
-
-    useEffect(() => {
-        subUserInfo.attachmentsTotalSize = totalFileSize(subUserInfo.attachmentItems)
-    }, [mainUser]);
 
     const setType = (ext) => {
         if (pdfType.includes(ext)) return pdfIco;
@@ -149,7 +145,7 @@ const AttachmentSub = (props) => {
             fileSize,
         }
 
-        if(subUserInfo.attachmentsTotalSize + fileSize > subUserInfo.limits.attachment * 1024) {
+        if(totalFileSize(subUserInfo.attachmentItems || []) + fileSize > subUserInfo.limits.attachment * 1024) {
             setFileSizeLimitErr(true)
         } else {
             try {
@@ -281,7 +277,7 @@ const AttachmentSub = (props) => {
             <Modal.Header className="d-flex justify-content-between" style={{ padding: '10px' }}>
                 <Modal.Title>
                     <span>Attachments</span>&nbsp;
-                    <span style={{fontSize:'12px'}}>Limit {attachmentLimitRemain(subUserInfo.attachmentsTotalSize, (subUserInfo.limits || {attachment:100}).attachment)}</span>
+                    <span style={{fontSize:'12px'}}>Limit {attachmentLimitRemain(totalFileSize(subUserInfo.attachmentItems || []), (subUserInfo.limits || {attachment:100}).attachment)}</span>
                 </Modal.Title>
                 <AiOutlineCloseCircle className='sidebarIcon' style={{ fontSize: '30px' }} onClick={toggleModal} />
             </Modal.Header>

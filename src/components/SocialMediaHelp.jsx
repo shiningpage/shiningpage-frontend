@@ -25,7 +25,7 @@ class SocialMediaHelp extends Component{
 
 	render () {
         const {w, } = this.state
-        const {lang, page, topic, topicKey, icons} = this.props
+        const {lang, topic, topicKey, icons} = this.props
 
         const instagramHelp = (
             <section className='publicDescription'>
@@ -164,12 +164,10 @@ class SocialMediaHelp extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        mainUserId: state.userInfo['_id'],
-        lang: state.lang,
-        rtl: state.rtl,
-        page: state.page,
-        siteType: state.siteType,
-        toggleSidebar: state.toggleSidebar
+        mainUserId: state.user.userInfo['_id'],
+        lang: state.app.lang,
+        rtl: state.app.rtl,
+        toggleSidebar: state.app.toggleSidebar
     }
 }
 

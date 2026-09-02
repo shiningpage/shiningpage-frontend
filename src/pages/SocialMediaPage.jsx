@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Container, Button, Modal, Form } from 'react-bootstrap';
-import { setBalance, setSubject, setAddress, setPageTitle, setPage } from '../dataStore/actions';
+import { setPageName, setPageTitle } from '../store/slices/pageSlice';
+import { setBalance, setSubject, setAddress } from '../store/slices/appSlice';
 import LocalTable from '../components/LocalTable';
 import siteView from '../modules/siteView';
 import SocialMediaHelp from '../components/SocialMediaHelp';
@@ -24,7 +25,7 @@ class SocialMediaPage extends Component{
 
     state = {
         w: window.innerWidth,
-        pageName: this.props.setLT.socialMedia,
+        page: this.props.setLT.socialMedia,
         serverServices:[],
         updatedServerServices:[],
         whoralyServices:[],
@@ -100,10 +101,10 @@ class SocialMediaPage extends Component{
     componentDidMount = async () => {
         window.scrollTo(0, 0)
         window.addEventListener("resize", this.onResize)
-        await this.props.dispatch(setPageTitle(`${this.state.pageName} | ShiningPage`))
-        await this.props.dispatch(setPage('social-media'))
+        await this.props.dispatch(setPageTitle(`${this.state.page} | ShiningPage`))
+        await this.props.dispatch(setPageName('social-media'))
         await this.props.dispatch(setSubject('social-media'))
-        await this.props.dispatch(setAddress({ content:[], fix:this.state.pageName }))
+        await this.props.dispatch(setAddress({ content:[], fix:this.state.page }))
         siteView(this.props)
         if(this.props.mainUser?.access?.includes('socialMedia')) {
             this.setState({ socialMediaIndex: true })
@@ -1068,7 +1069,7 @@ class SocialMediaPage extends Component{
             snapchatDisabled, twitchDisabled, googleDisabled, spotifyDisabled,
             updatingServices, serverServices, updatedServerServices, socialMediaIndex,
         } = this.state
-        const { rtl, fc, mainUser, page, setLT, fullAccess, balance } = this.props
+        const { rtl, fc, mainUser, setLT, fullAccess, balance } = this.props
 
         const titleStyle = {fontSize:'18px', fontWeight:450, margin:'15px 0px 0px 0px', textAlign: rtl ? 'right' : 'left', alignItems:'center'}
         const boxStyle = { width:'100%', marginBottom:'20px' }
@@ -1376,18 +1377,16 @@ class SocialMediaPage extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        mainUserId: state.userInfo['_id'],
-        mainUser: state.userInfo,
-        userInfo: state.userInfo,
-        fc: state.userInfo.fc,
-        rtl: state.rtl,
-        lang: state.lang,
-        auth: state.auth, 
-        geo: state.geo, 
-        page: state.page,
-        setLT: state.setLT,
-        balance: state.balance,
-        fullAccess: state.fullAccess,
+        mainUserId: state.user.userInfo['_id'],
+        mainUser: state.user.userInfo,
+        userInfo: state.user.userInfo,
+        fc: state.user.userInfo.fc,
+        rtl: state.app.rtl,
+        lang: state.app.lang,
+        geo: state.app.geo, 
+        setLT: state.app.setLT,
+        balance: state.app.balance,
+        fullAccess: state.auth.fullAccess,
 
     }
 }

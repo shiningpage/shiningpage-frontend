@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Container } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { setSubject, setAddress, setPageTitle, setPage } from '../dataStore/actions';
+import { setPageName, setPageTitle } from '../store/slices/pageSlice';
+import { setSubject, setAddress } from '../store/slices/appSlice';
 import siteView from '../modules/siteView';
 import { AdsHorizontal } from '../components/GoogleAds';
 import { checkSeen } from '../helper';
@@ -13,20 +14,19 @@ class BookingPage extends Component {
   state = {
     w: window.innerWidth,
     h: window.innerHeight,
-    pageName: 'Booking',
+    page: 'Booking',
 }
 
   componentDidMount = async () => {
     window.scrollTo(0, 0)
     console.log(this.props.userInfo)
     window.addEventListener("resize", this.onResize)
-    await this.props.dispatch(setPageTitle(`${this.state.pageName} | ShiningPage`))
-    await this.props.dispatch(setPage('booking'))
+    await this.props.dispatch(setPageTitle(`${this.state.page} | ShiningPage`))
+    await this.props.dispatch(setPageName('booking'))
     await this.props.dispatch(setSubject('booking'))
     const user = this.props.userInfo
     // const user = this.props.userInfo.bizName ? this.props.userInfo.bizName : this.props.userInfo.username
-    await this.props.dispatch(setAddress({ content:[], user, fix:this.state.pageName }))
-    // if(this.props.auth && this.props.mainUser.ruby) checkSeen('privacy', this.props.seenStatus, this.props.dispatch)
+    await this.props.dispatch(setAddress({ content:[], user, fix:this.state.page }))
     siteView(this.props)
   }
 
@@ -72,18 +72,16 @@ class BookingPage extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    mainUserId: state.userInfo['_id'],
-    mainUser: state.userInfo,
-    userInfo: state.subUserInfo,
-    auth: state.auth,
-    rtl: state.rtl,
-    lang: state.lang,
-    geo: state.geo,
-    page: state.page,
-    subject: state.subject,
-    pageName: state.pageName,
-    setLT: state.setLT,
-    seenStatus: state.seenStatus,
+    mainUserId: state.user.userInfo['_id'],
+    mainUser: state.user.userInfo,
+    userInfo: state.user.subUserInfo,
+    rtl: state.app.rtl,
+    lang: state.app.lang,
+    geo: state.app.geo,
+    pageName: state.page.name,
+    subject: state.app.subject,
+    setLT: state.app.setLT,
+    seenStatus: state.app.seenStatus,
 
   }
 }

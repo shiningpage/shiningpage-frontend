@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Modal, Button } from 'react-bootstrap';
-import { setSubUserInfo, setUserInfo } from '../../dataStore/actions';
 import { FaTrash } from "react-icons/fa";
 import { TbSubtask } from 'react-icons/tb';
 import { AiOutlineCloseCircle } from "react-icons/ai";

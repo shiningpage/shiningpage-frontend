@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Modal, Button } from 'react-bootstrap';
-import { setSubUserInfo, setUserInfo } from '../../dataStore/actions';
+import { setUserInfo, setSubUserInfo } from '../../store/slices/userSlice';
 import { AiOutlineCloseCircle, AiFillTikTok } from "react-icons/ai";
 import { MdPhonelinkRing, MdEmail, MdPhoneInTalk } from 'react-icons/md';
 import { IoLogoWhatsapp } from 'react-icons/io';

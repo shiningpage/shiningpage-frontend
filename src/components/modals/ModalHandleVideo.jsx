@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Modal, Button } from 'react-bootstrap';
-import { setCategoryX } from '../../dataStore/actions';
+import { setCategoryX } from '../../store/slices/appSlice';
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { FaLinkedin, FaYoutube } from 'react-icons/fa';
 import date from 'date-and-time';
@@ -330,17 +330,15 @@ class ModalHandleVideo extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        mainUserId: state.userInfo['_id'],
-        userInfo: state.userInfo,
-        subUserInfo: state.subUserInfo,
-        rtl: state.rtl,
-        lang: state.lang,
-        auth: state.auth,
-        page: state.page,
-        videoInfo: state.videoInfo,
-        setLT: state.setLT,
-        toggleVideo: state.toggleVideo,
-        categoryX: state.categoryX,
+        mainUserId: state.user.userInfo['_id'],
+        userInfo: state.user.userInfo,
+        subUserInfo: state.user.subUserInfo,
+        rtl: state.app.rtl,
+        lang: state.app.lang,
+        videoInfo: state.media.videoInfo,
+        setLT: state.app.setLT,
+        toggleVideo: state.media.toggleVideo,
+        categoryX: state.app.categoryX,
 
     }
 }

@@ -15,7 +15,7 @@ class UserSettings extends Component{
 
 	render () {
         const {w, } = this.state
-        const {setLT, rtl, lang, page, fc} = this.props
+        const {setLT, rtl, lang, pageName, fc} = this.props
 
         return (
             <div className="btn-group" style={{padding:'0px', fontSize:'15px', fontWeight:'', cursor:'pointer'}}>
@@ -23,7 +23,7 @@ class UserSettings extends Component{
                     type="" id="dropdownMenuButton" data-bs-toggle="dropdown" //data-bs-auto-close="outside"
                     aria-haspopup="false" aria-expanded="false" data-bs-offset="0,0"
                 >
-                    <div className={`center ${['web', 'ps'].includes(page) ? `fontColor h${fc===11 ? 0 : fc}` : 'nav' }`}
+                    <div className={`center ${['web', 'ps'].includes(pageName) ? `fontColor h${fc===11 ? 0 : fc}` : 'nav' }`}
                         style={{fontSize:'14px', fontWeight:300, alignItems:'center', padding:'5px', margin: w<s ? '3px 0px 0px' : '0px 8px 0px', flexWrap:'nowrap'}}>
                         <span style={{fontSize:'18px'}}><RiUserSettingsFill /></span>
                         <FaCaretDown />
@@ -57,13 +57,13 @@ class UserSettings extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        mainUserId: state.userInfo['_id'],
-        subUserInfo: state.subUserInfo,
-        fc: state.subUserInfo.fc,
-        lang: state.lang,
-        rtl: state.rtl,
-        page: state.page,
-        setLT: state.setLT,
+        mainUserId: state.user.userInfo['_id'],
+        subUserInfo: state.user.subUserInfo,
+        fc: state.user.subUserInfo.fc,
+        lang: state.app.lang,
+        rtl: state.app.rtl,
+        pageName: state.page.name,
+        setLT: state.app.setLT,
     }
 }
 

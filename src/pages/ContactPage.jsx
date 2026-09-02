@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Container } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { setSubject, setAddress, setPageTitle, setPage } from '../dataStore/actions';
+import { setPageName, setPageTitle } from '../store/slices/pageSlice';
+import { setSubject, setAddress } from '../store/slices/appSlice';
 import { FaRegPaperPlane } from 'react-icons/fa';
 import siteView from '../modules/siteView';
 import { addNotification } from '../helper';
@@ -15,7 +16,7 @@ class ContactPage extends Component {
   state = {
     w: window.innerWidth,
     h: window.innerHeight,
-    pageName: this.props.setLT.contact,
+    page: this.props.setLT.contact,
     name:'',
     contactInfo:'',
     message:'',
@@ -25,11 +26,10 @@ class ContactPage extends Component {
   componentDidMount = async () => {
     window.scrollTo(0, 0)
     window.addEventListener("resize", this.onResize)
-    await this.props.dispatch(setPageTitle(`${this.state.pageName} | ShiningPage`))
-    await this.props.dispatch(setPage('contact'))
+    await this.props.dispatch(setPageTitle(`${this.state.page} | ShiningPage`))
+    await this.props.dispatch(setPageName('contact'))
     await this.props.dispatch(setSubject('contact'))
-    await this.props.dispatch(setAddress({ content:[], fix:this.state.pageName }))
-    // if(this.props.auth && this.props.mainUser.ruby) checkSeen('contact', this.props.seenStatus, this.props.dispatch)
+    await this.props.dispatch(setAddress({ content:[], fix:this.state.page }))
     siteView(this.props)
   }
 
@@ -104,7 +104,7 @@ class ContactPage extends Component {
 
   render() {
     const {w, h, messageSuccess, nameErr, contactInfoErr, messageErr, sendingMessage, name, contactInfo, message, } = this.state
-    const {auth, rtl, setLT, lang } = this.props;
+    const {rtl, setLT, lang } = this.props;
     const loader13 = <div className='loader-13' style={{margin: '0px', color:'#ffffff', transform: rtl ? 'rotate(180deg)' : ''}}></div>
 
     const header = (
@@ -190,26 +190,24 @@ class ContactPage extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    mainUserId: state.userInfo['_id'],
-    mainUser: state.userInfo,
-    userId: state.userInfo['_id'],
-    username: state.userInfo['username'],
-    password: state.userInfo['password'],
-    email: state.userInfo['email'],
-    genderValue: state.userInfo['genderValue'],
-    businessType: state.userInfo['businessType'],
-    userImg: state.userInfo['imageData'],
-    auth: state.auth,
-    rtl: state.rtl,
-    page: state.page,
-    subject: state.subject,
-    lang: state.lang,
-    geo: state.geo,
-    subUserId: state.subUserInfo['_id'],
-    setLT: state.setLT,
-    pageName: state.pageName,
-    country: state.country,
-    seenStatus: state.seenStatus,
+    mainUserId: state.user.userInfo['_id'],
+    mainUser: state.user.userInfo,
+    userId: state.user.userInfo['_id'],
+    username: state.user.userInfo['username'],
+    password: state.user.userInfo['password'],
+    email: state.user.userInfo['email'],
+    genderValue: state.user.userInfo['genderValue'],
+    businessType: state.user.userInfo['businessType'],
+    userImg: state.user.userInfo['imageData'],
+    rtl: state.app.rtl,
+    pageName: state.page.name,
+    subject: state.app.subject,
+    lang: state.app.lang,
+    geo: state.app.geo,
+    subUserId: state.user.subUserInfo['_id'],
+    setLT: state.app.setLT,
+    country: state.app.country,
+    seenStatus: state.app.seenStatus,
   }
 }
 

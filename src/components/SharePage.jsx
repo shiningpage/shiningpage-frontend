@@ -346,12 +346,10 @@ ${subTitle}
 
 const mapStateToProps = (state) => {
   return {
-      mainUserId: state.userInfo['_id'],
-      rtl: state.rtl,
-      lang: state.lang,
-      auth: state.auth, 
-      page: state.page,
-      setLT: state.setLT,
+      mainUserId: state.user.userInfo['_id'],
+      rtl: state.app.rtl,
+      lang: state.app.lang,
+      setLT: state.app.setLT,
   }
 }
 

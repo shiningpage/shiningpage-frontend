@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Button, Modal } from 'react-bootstrap';
-import { setCategoryX, setAdsInfo } from '../../dataStore/actions';
+import { setAdsInfo,  } from '../../store/slices/mediaSlice';
+import { setCategoryX } from '../../store/slices/appSlice';
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import date from 'date-and-time';
 import toFarsi from '../../modules/toFarsi';
@@ -26,7 +27,6 @@ class ModalHandleAds extends Component {
         szx: 1000,
         w: window.innerWidth,
         adsCommentTotal: this.props.fullAccess ? 10000 : 2000,
-        // negotiablePrice: true //toggleAds.type === 'new' ? false : undefined
     }
 
     componentDidMount = async () => {}
@@ -602,18 +602,16 @@ class ModalHandleAds extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        mainUserId: state.userInfo['_id'],
-        userInfo: state.userInfo,
-        subUserInfo: state.subUserInfo,
-        rtl: state.rtl,
-        lang: state.lang,
-        auth: state.auth,
-        page: state.page,
-        adsInfo: state.adsInfo,
-        setLT: state.setLT,
-        toggleAds: state.toggleAds,
-        categoryX: state.categoryX,
-        fullAccess: state.fullAccess,
+        mainUserId: state.user.userInfo['_id'],
+        userInfo: state.user.userInfo,
+        subUserInfo: state.user.subUserInfo,
+        rtl: state.app.rtl,
+        lang: state.app.lang,
+        adsInfo: state.media.adsInfo,
+        setLT: state.app.setLT,
+        toggleAds: state.media.toggleAds,
+        categoryX: state.app.categoryX,
+        fullAccess: state.auth.fullAccess,
     }
 }
 

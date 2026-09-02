@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Modal, Button } from 'react-bootstrap';
-import { setSubUserInfo, setUserInfo } from '../../dataStore/actions';
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { getUserInfo, exist } from '../../helper';
 import { serverURL } from '../../srcSet';

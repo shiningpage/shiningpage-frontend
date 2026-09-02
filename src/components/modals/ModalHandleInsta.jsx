@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Modal, Button } from 'react-bootstrap';
-import { setCategoryX } from '../../dataStore/actions';
+import { setCategoryX } from '../../store/slices/appSlice';
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { FaInstagram } from 'react-icons/fa';
 import toFarsi from '../../modules/toFarsi';
@@ -214,17 +214,15 @@ class ModalHandleInsta extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        mainUserId: state.userInfo['_id'],
-        userInfo: state.userInfo,
-        subUserInfo: state.subUserInfo,
-        rtl: state.rtl,
-        lang: state.lang,
-        auth: state.auth,
-        page: state.page,
-        instaInfo: state.instaInfo,
-        setLT: state.setLT,
-        toggleInsta: state.toggleInsta,
-        categoryX: state.categoryX,
+        mainUserId: state.user.userInfo['_id'],
+        userInfo: state.user.userInfo,
+        subUserInfo: state.user.subUserInfo,
+        rtl: state.app.rtl,
+        lang: state.app.lang,
+        instaInfo: state.media.instaInfo,
+        setLT: state.app.setLT,
+        toggleInsta: state.media.toggleInsta,
+        categoryX: state.app.categoryX,
     }
 }
 

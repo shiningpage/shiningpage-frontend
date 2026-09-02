@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
-import { setToggleChat, setSubChatInfo } from '../dataStore/actions';
+import { setToggleChat, setSubChatInfo } from '../store/slices/chatSlice';
 import EditBtn from './EditBtn';
 import ModalWebPageTheme from './modals/ModalWebPageTheme';
 import ModalChangePassword from './modals/ModalChangePassword';
@@ -14,7 +14,6 @@ import { FaCaretDown } from "react-icons/fa";
 import { SiMediamarkt } from "react-icons/si";
 import { logout, goToWebPage, exist } from '../helper';
 import { s, serverURL } from '../srcSet';
-import { fullAccess } from '../dataStore/reducers/other/fullAccess';
 
 class UserBox extends Component{
 
@@ -63,20 +62,20 @@ class UserBox extends Component{
 
 	render () {
         const {w, toggleWebPageTheme, toggleChangePassword} = this.state
-        const {auth, setLT, rtl, page, lang, fullAccess, mainUser, subUserInfo, loading, balance, ruby} = this.props
+        const {isAuthenticated, setLT, rtl, pageName, lang, fullAccess, mainUser, subUserInfo, loading, balance, rubyAmount} = this.props
         const loader13 = <div className='loader-13' style={{margin: '0px 20px', color:'', transform: rtl ? 'rotate(180deg)' : ''}}></div>
         const me = mainUser._id===subUserInfo._id ? true : false
 
-        const rubyIndex = auth
+        const rubyIndex = isAuthenticated
                         ? mainUser.access.includes('ruby') ? true : false 
                         : false
 
         const userImage = (
             <img
                 className={`C${mainUser.fc}`}
-                style={{objectFit: 'cover', width:'50px', height:'50px', borderRadius:mainUser.businessType>0 ? '3px' : (!auth ? '' : '100px'), border:'0px solid #99999920', margin:'0px', padding:'0px'}}
+                style={{objectFit: 'cover', width:'50px', height:'50px', borderRadius:mainUser.businessType>0 ? '3px' : (!isAuthenticated ? '' : '100px'), border:'0px solid #99999920', margin:'0px', padding:'0px'}}
                 src={
-                  !auth
+                  !isAuthenticated
                   ? 'https://www.pix.shiningpage.com/whoraly/site/login.png'
                   : exist(mainUser.profileIndex)
                     ? `https://www.pix.shiningpage.com/whoraly/profile/small/${mainUser._id}-${mainUser.profileIndex}.jpeg`
@@ -87,12 +86,12 @@ class UserBox extends Component{
         )
 
         const userProfileImage = (
-            <div className={`btnShadow C${auth ? mainUser.fc : 14}`} style={{width:w<s ? '35px' : '27px', height:w<s ? '35px' : '27px', minWidth:w<s ? '35px' : '27px', minHeight:w<s ? '35px' : '27px', borderRadius:mainUser.businessType>0 ? '2px' : '100px', border:`2 px solid #ffffff40`, padding:'2px'}}>
+            <div className={`btnShadow C${isAuthenticated ? mainUser.fc : 14}`} style={{width:w<s ? '35px' : '27px', height:w<s ? '35px' : '27px', minWidth:w<s ? '35px' : '27px', minHeight:w<s ? '35px' : '27px', borderRadius:mainUser.businessType>0 ? '2px' : '100px', border:`2 px solid #ffffff40`, padding:'2px'}}>
                 <img
-                    className={`btnShadow C${auth ? mainUser.fc : 11}`}
+                    className={`btnShadow C${isAuthenticated ? mainUser.fc : 11}`}
                     style={{objectFit: 'cover', width:'100%', height:'100%', borderRadius:mainUser.businessType>0 ? '2px' : '100px'}}
                     src={
-                        !auth
+                        !isAuthenticated
                         ? 'https://www.pix.shiningpage.com/whoraly/site/login.png'
                         : exist(mainUser.profileIndex)
                             ? `https://www.pix.shiningpage.com/whoraly/profile/small/${mainUser._id}-${mainUser.profileIndex}.jpeg`
@@ -104,12 +103,12 @@ class UserBox extends Component{
         )
         const webLinkIcon = (
             <div className='center white-nav' style={{width:'', height:'100%', marginTop:w<s ? '' : '3px', padding:w<s ? '' : '0px 15px', textAlign:'center', flexDirection:'column'}}
-                onClick={() => auth ? null : window.location.href = '/login'}>
+                onClick={() => isAuthenticated ? null : window.location.href = '/login'}>
                 {userProfileImage}
                 { w>=s &&
                     <div className='flex'>
-                        <span style={{fontSize:'12px', margin:'0px', whiteSpace: 'nowrap'}}>{auth ? 'Me' : 'Login'}</span>
-                        {auth && <FaCaretDown/>}
+                        <span style={{fontSize:'12px', margin:'0px', whiteSpace: 'nowrap'}}>{isAuthenticated ? 'Me' : 'Login'}</span>
+                        {isAuthenticated && <FaCaretDown/>}
                     </div>
                 }
             </div>
@@ -138,12 +137,12 @@ class UserBox extends Component{
 
         const hasUsername = !!mainUser?.username
         const root = mainUser.businessType>0 ? 'publisher' : 'user'
-        const linkTarget = auth && hasUsername
+        const linkTarget = isAuthenticated && hasUsername
             ? `/${root}/${mainUser.username}`
             : '/login'
         const userLink = (
             <a href={linkTarget} style={{textDecoration:'none', color:'#000000'}}
-                onClick={() => (page!=='web' && page!=='publisher')
+                onClick={() => (pageName!=='web' && pageName!=='publisher')
                                     ? null
                                     : me
                                         ? window.scroll(0, 0)
@@ -159,10 +158,10 @@ class UserBox extends Component{
                 </div>
                 { fullAccess && <div style={{fontSize:'12px', textAlign:'center'}}>{mainUser._id}</div>}
                 <div style={{padding:'4px 14px'}}>
-                    <div className={`C${auth ? mainUser.fc : 14} btnShadow`} style={{height:'30px', fontWeight:450, marginBottom:'5px', padding:'2px', borderRadius:'0px 10px'}}>
+                    <div className={`C${isAuthenticated ? mainUser.fc : 14} btnShadow`} style={{height:'30px', fontWeight:450, marginBottom:'5px', padding:'2px', borderRadius:'0px 10px'}}>
                         <div className={`center`} style={{height:'100%', width:'100%', textAlign:'center', padding:'2px', borderRadius:'0px 10px', backgroundColor:'#ffffff99', color:'#000000'}}>
                             <div className={`center`} style={{height:'100%', width:'100%', textAlign:'center', padding:'2px', borderRadius:'0px 10px', backgroundColor:'#ffffff', color:'#000000'}}>
-                                {auth ? setLT.viewWebPage : setLT.signupLogin}
+                                {isAuthenticated ? setLT.viewWebPage : setLT.signupLogin}
                             </div>
                         </div>
                     </div>
@@ -217,7 +216,7 @@ class UserBox extends Component{
                     src={rubyIcon}
                     alt="user"
                 />&nbsp;
-                {ruby}
+                {rubyAmount}
             </span>
         )
 
@@ -229,7 +228,7 @@ class UserBox extends Component{
                 >
                     {webLinkIcon}
                 </div>
-                { auth &&
+                { isAuthenticated &&
                     <div className="dropdown-menu animated fadeIn sticky-top" aria-labelledby="dropdownMenuButton"
                         style={{ width:'250px', fontSize: '13px', cursor: 'pointer', margin: 230, padding:'10px', borderRadius:'10px' }}>
                         {userLink}
@@ -258,17 +257,17 @@ class UserBox extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        mainUserId: state.userInfo._id,
-        mainUser: state.userInfo,
-        subUserInfo: state.subUserInfo,
-        lang: state.lang,
-        rtl: state.rtl,
-        page: state.page,
-        setLT: state.setLT,
-        auth: state.auth,
-        balance: state.balance,
-        ruby: state.ruby,
-        fullAccess: state.fullAccess,
+        mainUserId: state.user.userInfo._id,
+        mainUser: state.user.userInfo,
+        subUserInfo: state.user.subUserInfo,
+        lang: state.app.lang,
+        rtl: state.app.rtl,
+        pageName: state.page.name,
+        setLT: state.app.setLT,
+        isAuthenticated: state.auth.isAuthenticated,
+        balance: state.app.balance,
+        rubyAmount: state.ruby.amount,
+        fullAccess: state.auth.fullAccess,
     }
 }
 

@@ -441,9 +441,9 @@ const TextEditor = ({
 	};
 
 	const onToggleModalAddImage = () => {
-		console.log(adsInfo)
+		// console.log(adsInfo)
 		const arr = getAdsCommentArrFromCaret();
-		console.log('arr: ', arr)
+		// console.log('arr: ', arr)
   	setAdsCommentArr(arr);
 		setToggleModalAddImage(!toggleModalAddImage)
 		setImageArray([])
@@ -605,16 +605,14 @@ const TextEditor = ({
 
 const mapStateToProps = (state) => {
 		return {
-				mainUser: state.userInfo,
-				subUserInfo: state.subUserInfo,
-				userId: state.subUserInfo._id,
-				auth: state.auth,
-				rtl: state.rtl,
-				lang: state.lang,
-				geo: state.geo,
-				page: state.page,
-				adsInfo: state.adsInfo,
-				fullAccess: state.fullAccess,
+				mainUser: state.user.userInfo,
+				subUserInfo: state.user.subUserInfo,
+				userId: state.user.subUserInfo._id,
+				rtl: state.app.rtl,
+				lang: state.app.lang,
+				geo: state.app.geo,
+				adsInfo: state.media.adsInfo,
+				fullAccess: state.auth.fullAccess,
 		};
 };
 

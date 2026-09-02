@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Modal, Button } from 'react-bootstrap';
-import { setToggleInsta, setAdsInfo } from '../../../dataStore/actions';
+import { setToggleInsta } from '../../../store/slices/mediaSlice';
 import ModalHandleInsta from '../../modals/ModalHandleInsta';
 import RubyCollector from '../../RubyCollector';
 import { FcStackOfPhotos } from "react-icons/fc";

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
-import { setStarredAds } from '../dataStore/actions';
+import { setStarredAds } from '../store/slices/mediaSlice';
 import { serverURL, s } from '../srcSet';
 import star from "../assets/images/other/starX.png";
 
@@ -21,10 +21,6 @@ class StarredAds extends Component{
         await this.getStarredAds()
     }
 
-    // onTogglePSPage = async (item) => {
-    //     window.open(`/ps/${item._id}`)
-    // }
-
     onMore = async () => {
         const {n, lx} = this.state
         await this.setState({
@@ -38,7 +34,7 @@ class StarredAds extends Component{
         this.setState({
             loadingData:true,
         })
-  
+
         const {lx} = this.state
         var dx = {lx}
         await axios.post(`${serverURL}/ads/getStarredAds`, dx).then(async res => {
@@ -167,10 +163,8 @@ class StarredAds extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        mainUserId: state.userInfo['_id'],
-        auth: state.auth, 
-        page: state.page,
-        starredAds: state.starredAds,
+        mainUserId: state.user.userInfo['_id'],
+        starredAds: state.media.starredAds,
     }
 }
 

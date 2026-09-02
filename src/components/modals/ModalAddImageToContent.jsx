@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Modal, Button } from 'react-bootstrap';
-import { setAdsInfo, setToggleAds } from '../../dataStore/actions';
+import { setAdsInfo, setToggleAds } from '../../store/slices/mediaSlice';
 import pixSave from '../../modules/pixSave';
 import pixHandler from '../../modules/pixHandler';
 import pixResizer from '../../modules/pixResizer';
@@ -159,15 +159,13 @@ const ModalAddImageToContent = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        mainUser: state.userInfo,
-        subUserInfo: state.subUserInfo,
-        userId: state.subUserInfo._id,
-        auth: state.auth,
-        lang: state.lang,
-        geo: state.geo,
-        page: state.page,
-        setLT: state.setLT,
-        fullAccess: state.fullAccess,
+        mainUser: state.user.userInfo,
+        subUserInfo: state.user.subUserInfo,
+        userId: state.user.subUserInfo._id,
+        lang: state.app.lang,
+        geo: state.app.geo,
+        setLT: state.app.setLT,
+        fullAccess: state.auth.fullAccess,
     };
 };
 

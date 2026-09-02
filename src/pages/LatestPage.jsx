@@ -3,7 +3,8 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import { Container } from 'react-bootstrap';
-import { setSubject, setAddress, setPageTitle, setPage } from '../dataStore/actions';
+import { setPageName, setPageTitle } from '../store/slices/pageSlice';
+import { setSubject, setAddress } from '../store/slices/appSlice';
 import BeforAfter from '../components/BeforAfter';
 import More from '../components/More';
 import AllBusinesses from '../components/AllBusinesses';
@@ -24,7 +25,7 @@ class LatestPage extends Component {
 	state = {
 		w: window.innerWidth,
 		h: window.innerHeight,
-		pageName: 'Latest',
+		page: 'Latest',
 		nLatest: 1,
 		latestN: 0, 
 		allLatest:[],
@@ -36,11 +37,10 @@ class LatestPage extends Component {
 	componentDidMount = async () => {
 		window.scrollTo(0, 0)
 		window.addEventListener("resize", this.onResize)
-		await this.props.dispatch(setPageTitle(`${this.state.pageName} | ShiningPage`))
-		await this.props.dispatch(setPage('latest'))
+		await this.props.dispatch(setPageTitle(`${this.state.page} | ShiningPage`))
+		await this.props.dispatch(setPageName('latest'))
 		await this.props.dispatch(setSubject('latest'))
-		await this.props.dispatch(setAddress({ content:[], fix:this.state.pageName }))
-		// if(this.props.auth && this.props.mainUser.ruby) checkSeen('latest', this.props.seenStatus, this.props.dispatch)
+		await this.props.dispatch(setAddress({ content:[], fix:this.state.page }))
 		siteView(this.props)
 		await this.countAllLatest()
 		this.getAllLatest()
@@ -405,17 +405,14 @@ class LatestPage extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		mainUserId: state.userInfo['_id'],
-		mainUser: state.userInfo,
-		auth: state.auth,
-		rtl: state.rtl,
-		lang: state.lang,
-		geo: state.geo,
-		page: state.page,
-		subject: state.subject,
-		pageName: state.pageName,
-		setLT: state.setLT,
-		seenStatus: state.seenStatus,
+		mainUserId: state.user.userInfo['_id'],
+		mainUser: state.user.userInfo,
+		rtl: state.app.rtl,
+		lang: state.app.lang,
+		geo: state.app.geo,
+		subject: state.app.subject,
+		setLT: state.app.setLT,
+		seenStatus: state.app.seenStatus,
 	}
 }
 

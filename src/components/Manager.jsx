@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 import { Col } from "react-bootstrap";
 import { connect } from 'react-redux';
-import { setSubUserInfo } from '../dataStore/actions'; 
+import { setSubUserInfo } from '../store/slices/userSlice';
 import { HiArrowNarrowLeft } from 'react-icons/hi';
 
 import { serverURL, s } from '../srcSet';
@@ -44,7 +44,7 @@ class Manager extends Component{
 
 	render () {
         const {w, loading} = this.state
-        const {lang, rtl, setLT, page, subUserInfo} = this.props
+        const {lang, rtl, setLT, subUserInfo} = this.props
 
         const loaderZ = <div className='loader-02' style={{margin: '0px', color:'#000000', transform: rtl ? 'rotate(180deg)' : ''}}></div>
         const mahmoud = (
@@ -123,12 +123,11 @@ class Manager extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        mainUserId: state.userInfo['_id'],
-        subUserInfo: state.subUserInfo,
-        lang: state.lang,
-        rtl: state.rtl,
-        page: state.page,
-        setLT: state.setLT,
+        mainUserId: state.user.userInfo._id,
+        subUserInfo: state.user.subUserInfo,
+        lang: state.app.lang,
+        rtl: state.app.rtl,
+        setLT: state.app.setLT,
     }
 }
 

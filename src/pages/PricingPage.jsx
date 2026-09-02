@@ -3,7 +3,8 @@ import axios from 'axios';
 import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { setAddress, setSubject, setPageTitle, setPageName, setPage } from '../dataStore/actions';
+import { setPageName, setPageTitle } from '../store/slices/pageSlice';
+import { setAddress, setSubject } from '../store/slices/appSlice';
 import siteView from '../modules/siteView';
 import { AdsHorizontal } from '../components/GoogleAds';
 import { FaRegStar } from "react-icons/fa";
@@ -26,17 +27,16 @@ class PricingPage extends Component {
 
     state = {
       w: window.innerWidth,
-      pageName: 'Pricing',
+      page: 'Pricing',
       isYearly: false,
     }
 
     async componentDidMount() {
       window.scrollTo(0, 0)
-      await this.props.dispatch(setPageName('Pricing'))
-      await this.props.dispatch(setPageTitle(`${this.state.pageName} | ShiningPage`))
-      await this.props.dispatch(setPage('pricing'))
+      await this.props.dispatch(setPageTitle(`${this.state.page} | ShiningPage`))
+      await this.props.dispatch(setPageName('pricing'))
       await this.props.dispatch(setSubject('pricing'))
-      await this.props.dispatch(setAddress({ content:[], fix:this.props.pageName }))
+      await this.props.dispatch(setAddress({ content:[], fix:this.state.page }))
       siteView(this.props)
     }
 
@@ -46,7 +46,7 @@ class PricingPage extends Component {
 
     render() {
         const { w, isYearly } = this.state;
-        const { auth } = this.props;
+        const { isAuthenticated } = this.props;
 
         const header = (
           <div className="animated fadeInLeft ![animation-delay:.0s] text-4xl font-extrabold tracking-tight my-[30px]">
@@ -179,7 +179,7 @@ class PricingPage extends Component {
                       </ul>
                     </div>
 
-                    <Link to={!auth ? '/login' : '/contact'} className={`!no-underline absolute bottom-0 left-0 w-full flex justify-center pb-10`}>
+                    <Link to={!isAuthenticated ? '/login' : '/contact'} className={`!no-underline absolute bottom-0 left-0 w-full flex justify-center pb-10`}>
                       <div className={`group center btnShadow w-[80%] h-12 rounded-[8px] ${plan.typeClass} py-3 text-[15px] font-semibold text-center shadow-lg transition-all duration-300 ease-out cursor-pointer hover:scale-105 hover:shadow-[0_12px_30px_rgba(79,70,229,0.25)] hover:brightness-105 active:translate-y-0 active:scale-[0.97] active:shadow-md`}>
                         <span className="inline-flex items-center justify-center gap-2">
                           <span>{plan.buttonText}</span>
@@ -229,7 +229,7 @@ class PricingPage extends Component {
             </div>
 
             {/* button */}
-            <Link to={!auth ? '/login' : '/contact'} className={`!no-underline flex justify-center`}>
+            <Link to={!isAuthenticated ? '/login' : '/contact'} className={`!no-underline flex justify-center`}>
               <div className={`group center py-3 text-[15px] font-semibold text-center shadow-lg transition-all duration-300 ease-out cursor-pointer hover:scale-105 hover:shadow-[0_12px_30px_rgba(79,70,229,0.25)] hover:brightness-105 active:translate-y-0 active:scale-[0.97] active:shadow-md`}>
                 <span className="inline-flex items-center justify-center gap-2">
                   <span className='purple-blue'>Get Professional Setup</span>
@@ -264,15 +264,13 @@ class PricingPage extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        mainUserId: state.userInfo['_id'],
-        mainUser: state.userInfo,
-        geo: state.geo,
-        auth: state.auth,
-        page: state.page,
-        subject: state.subject,
-        setLT: state.setLT,
-        pageName: state.pageName,
-        seenStatus: state.seenStatus,
+        mainUserId: state.user.userInfo['_id'],
+        mainUser: state.user.userInfo,
+        geo: state.app.geo,
+        isAuthenticated: state.auth.isAuthenticated,
+        subject: state.app.subject,
+        setLT: state.app.setLT,
+        seenStatus: state.app.seenStatus,
     }
   }
   export default connect (mapStateToProps)(PricingPage);

@@ -29,10 +29,9 @@ class QRCodeX extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    rtl: state.rtl,
-    lang: state.lang,
-    auth: state.auth,
-    setLT: state.setLT,
+    rtl: state.app.rtl,
+    lang: state.app.lang,
+    setLT: state.app.setLT,
   }
 }
 

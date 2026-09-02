@@ -157,8 +157,8 @@ class ShiningpageCarousel extends Component{
 
     render () {
         const { w, animatedText, interval, nextIcon, prevIcon, carouselItems, } = this.state
-        const { subUserInfo, pageYOffset } = this.props
-        // console.log(pageYOffset)
+        const { pageYOffset } = this.props
+
         return (
             <Carousel
                 fade
@@ -203,13 +203,12 @@ class ShiningpageCarousel extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        subUserInfo: state.subUserInfo,
-        lang: state.lang,
-        rtl: state.rtl,
-        page: state.page,
-        setLT: state.setLT,
-        toggleSidebar: state.toggleSidebar,
-        pageYOffset: state.pageYOffset,
+        subUserInfo: state.user.subUserInfo,
+        lang: state.app.lang,
+        rtl: state.app.rtl,
+        setLT: state.app.setLT,
+        toggleSidebar: state.app.toggleSidebar,
+        pageYOffset: state.page.yOffset,
     }
 }
 

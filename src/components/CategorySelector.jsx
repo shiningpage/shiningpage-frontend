@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import setLangText from '../modules/setLangText';
 import { BsChevronCompactDown } from 'react-icons/bs';
-import { setCategoryX } from '../dataStore/actions';
+import { setCategoryX } from '../store/slices/appSlice';
 import { filterCategory } from './web/psSub/psHelper';
 import { serverURL, s } from '../srcSet';
 
@@ -241,28 +241,26 @@ class CategorySelector extends Component {
 
 const mapStateToProps = (state) => {
   return {
-      mainUserId: state.userInfo['_id'],
-      mainUser: state.userInfo,
-      subUserInfo: state.subUserInfo,
-      lang: state.lang,
-      auth: state.auth, 
-      page: state.page, 
-      setLT: state.setLT,
+      mainUserId: state.user.userInfo['_id'],
+      mainUser: state.user.userInfo,
+      subUserInfo: state.user.subUserInfo,
+      lang: state.app.lang,
+      setLT: state.app.setLT,
 
-      adsInfo: state.adsInfo,
-      toggleAds: state.toggleAds,
+      adsInfo: state.media.adsInfo,
+      toggleAds: state.media.toggleAds,
 
-      videoInfo: state.videoInfo,
-      toggleNewVideo: state.toggleNewVideo,
-      toggleEditVideo: state.toggleEditVideo,
+      videoInfo: state.media.videoInfo,
+      toggleNewVideo: state.app.toggleNewVideo,
+      toggleEditVideo: state.app.toggleEditVideo,
 
-      instaInfo: state.instaInfo,
-      toggleNewInsta: state.toggleNewInsta,
-      toggleEditInsta: state.toggleEditInsta,
-      toggleVideo: state.toggleVideo,
-      toggleInsta: state.toggleInsta,
+      instaInfo: state.media.instaInfo,
+      toggleNewInsta: state.app.toggleNewInsta,
+      toggleEditInsta: state.app.toggleEditInsta,
+      toggleVideo: state.media.toggleVideo,
+      toggleInsta: state.media.toggleInsta,
 
-      categoryX: state.categoryX,
+      categoryX: state.app.categoryX,
   }
 }
 

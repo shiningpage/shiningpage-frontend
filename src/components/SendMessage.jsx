@@ -86,7 +86,7 @@ class SendMessage extends Component {
 
   render() {
     const {w, h, messageSuccess, nameErr, contactInfoErr, messageErr, sendingMessage, name, contactInfo, message, } = this.state
-    const {auth, rtl, setLT, subUserInfo } = this.props;
+    const {rtl, setLT, subUserInfo } = this.props;
     const txBlack = lightColors.includes(subUserInfo.fc) ? true : false
     const loader13 = <div className='loader-13' style={{margin: '0px', color:'', transform: rtl ? 'rotate(180deg)' : ''}}></div>
 
@@ -149,21 +149,15 @@ class SendMessage extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    mainUser: state.userInfo,
-    subUserInfo: state.subUserInfo,
-    fc: state.userInfo.fc,
-    subChatInfo: state.subChatInfo,
-    auth: state.auth,
-    rtl: state.rtl,
-    lang: state.lang,
-    geo: state.geo,
-    page: state.page,
-    subject: state.subject,
-    pageName: state.pageName,
-    msgDraft: state.msgDraft,
-    activityStatus: state.activityStatus,
-    setLT: state.setLT,
-    fullAccess: state.fullAccess,
+    mainUser: state.user.userInfo,
+    subUserInfo: state.user.subUserInfo,
+    fc: state.user.userInfo.fc,
+    rtl: state.app.rtl,
+    lang: state.app.lang,
+    geo: state.app.geo,
+    subject: state.app.subject,
+    setLT: state.app.setLT,
+    fullAccess: state.auth.fullAccess,
   }
 }
 

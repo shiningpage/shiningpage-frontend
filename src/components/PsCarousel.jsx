@@ -235,15 +235,14 @@ class WebCarousel extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        mainUser: state.userInfo,
-        subUserInfo: state.subUserInfo,
-        adsInfo: state.adsInfo,
-        lang: state.lang,
-        rtl: state.rtl,
-        page: state.page,
-        setLT: state.setLT,
-        toggleSidebar: state.toggleSidebar,
-        pageYOffset: state.pageYOffset,
+        mainUser: state.user.userInfo,
+        subUserInfo: state.user.subUserInfo,
+        adsInfo: state.media.adsInfo,
+        lang: state.app.lang,
+        rtl: state.app.rtl,
+        setLT: state.app.setLT,
+        toggleSidebar: state.app.toggleSidebar,
+        pageYOffset: state.page.yOffset,
     }
 }
 

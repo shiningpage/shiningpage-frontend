@@ -9,8 +9,10 @@ import userN from '../assets/images/other/user1.png';
 import rubyS from '../assets/images/other/rubyS.png';
 import male from '../assets/images/other/man2.png';
 import female from '../assets/images/other/woman2.png';
-import { setUserInfo, setSubUserInfo, setSubChatInfo, setToggleChat, setSubject, setPageTitle, setPage,
-    setSendMessage, setPageYOffset } from '../dataStore/actions';
+import { setUserInfo, setSubUserInfo } from '../store/slices/userSlice';
+import { setPageName, setPageTitle } from '../store/slices/pageSlice';
+import { setToggleChat, setSubChatInfo, setSendMessage } from '../store/slices/chatSlice';
+import { setSubject } from '../store/slices/appSlice';
 import {MdAttachFile, MdPhoneInTalk, MdPhonelinkRing } from 'react-icons/md';
 import { IoLogoWhatsapp } from 'react-icons/io';
 import { FaUsers, FaLinkedin, FaYoutube, FaFacebook, FaWhatsapp,
@@ -108,7 +110,6 @@ class PublisherPage extends Component {
 
     async componentDidMount() {
         window.scrollTo(0, 0)
-        // this.props.dispatch(setPageYOffset(0))
         const userInfo = this.getUsername()
 
         const userName = userInfo.p1
@@ -123,7 +124,7 @@ class PublisherPage extends Component {
             // document.addEventListener('mousedown', this.handleClickOutside); // ثبت event listener
             window.addEventListener("resize", this.onResize)
             window.addEventListener('scroll', this.handleScroll)
-            await this.props.dispatch(setPage('publisher'))
+            await this.props.dispatch(setPageName('publisher'))
             await this.props.dispatch(setSubUserInfo([]))
             await this.getProfile(userName, root)
             await this.props.dispatch(setSubject(`${this.props.page}-${this.state.username}`))
@@ -291,7 +292,7 @@ class PublisherPage extends Component {
                 window.location.href = `/user/${res.data.username}`;
             }
             if (root==='user') {
-                this.props.dispatch(setPage('user'))
+                this.props.dispatch(setPageName('user'))
             }
             res.data.attachmentsTotalSize = totalFileSize(res.data.attachmentItems)
 
@@ -310,7 +311,7 @@ class PublisherPage extends Component {
             const txBlack = lightColors.includes(res.data.fc) ? true : false
             // console.log('mainUserId',this.props.mainUserId)
             // console.log('subUserId',this.props.userId)
-            // console.log('auth',this.props.auth)
+            // console.log('isAuthenticated',this.props.isAuthenticated)
     
             // بعلت امنیت در دسترسیی به ویرایش اطلاعات ، این بخش غیر فعال شد.
             // if(this.props.mainUserId===this.props.userId) {
@@ -333,7 +334,7 @@ class PublisherPage extends Component {
                 youtube, linkedin, jobSummary, biography, continent, country, countryCode,
                 city, address, categoryItems, attachmentItems, siteLink, } = res.data
 
-            if(this.props.auth && this.props.mainUser.ruby) checkSeen(`${username}`, this.props.seenStatus, this.props.dispatch)
+            if(this.props.isAuthenticated && this.props.mainUser.ruby) checkSeen(`${username}`, this.props.seenStatus, this.props.dispatch)
             const setStateAsync = (stateUpdate) => {
                 return new Promise((resolve) => {
                     this.setState(stateUpdate, resolve);
@@ -406,7 +407,7 @@ class PublisherPage extends Component {
     }
 
     onToggleChat = async () => {
-        if(!this.props.auth) {
+        if(!this.props.isAuthenticated) {
             this.props.dispatch(setSendMessage(true))
         } else {
             this.props.dispatch(setSubChatInfo(this.props.subUserInfo))
@@ -516,7 +517,7 @@ class PublisherPage extends Component {
             toggleBasicInformation, toggleAboutInfo, toggleActivitySummary, toggleTeam, instagram, telegram,
             facebook, youtube, linkedin, team, teamMembers, goToSectionTop, 
         } = this.state;
-        const {rtl, lang, setLT, pageYOffset, fullAccess, geo, userId, mainUser, mainUserId, subUserInfo, auth, userServiceSelected, 
+        const {rtl, lang, setLT, pageYOffset, fullAccess, geo, userId, mainUser, mainUserId, subUserInfo, isAuthenticated, userServiceSelected, 
          scrollDirection } = this.props;
         // var fc = 16
         // console.log(fc)
@@ -1208,37 +1209,33 @@ class PublisherPage extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        mainUserId: state.userInfo._id,
-        mainUser: state.userInfo,
-        userId: state.subUserInfo._id,
-        subUserInfo: state.subUserInfo,
-        fc: state.subUserInfo.fc,
-        username: state.subUserInfo.username,
-        businessType: state.subUserInfo.businessType,
-        email: state.subUserInfo.email,
-        genderValue: state.subUserInfo.genderValue,
-        jobSummary: state.subUserInfo.jobSummary,
-        biography: state.subUserInfo.biography,
-        lat: state.subUserInfo.lat,
-        lon: state.subUserInfo.lon,
-        rtl: state.rtl, 
-        lang: state.lang,
-        geo: state.geo,
-        auth: state.auth,
-        country: state.country,
-        page: state.page,
-        subject: state.subject,
-        pageTitle: state.pageTitle,
-        membership: state.membership,
-        setLT: state.setLT,
-        pageName: state.pageName,
-        pageYOffset: state.pageYOffset,
-        fullAccess: state.fullAccess,
-        scrollDirection: state.scrollDirection,
-        adsInfo: state.adsInfo,
-        objects: state.objects,
-        seenStatus: state.seenStatus,
-        userServiceSelected: state.userServiceSelected,
+        mainUserId: state.user.userInfo._id,
+        mainUser: state.user.userInfo,
+        userId: state.user.subUserInfo._id,
+        subUserInfo: state.user.subUserInfo,
+        fc: state.user.subUserInfo.fc,
+        username: state.user.subUserInfo.username,
+        businessType: state.user.subUserInfo.businessType,
+        email: state.user.subUserInfo.email,
+        genderValue: state.user.subUserInfo.genderValue,
+        jobSummary: state.user.subUserInfo.jobSummary,
+        biography: state.user.subUserInfo.biography,
+        lat: state.user.subUserInfo.lat,
+        lon: state.user.subUserInfo.lon,
+        rtl: state.app.rtl, 
+        lang: state.app.lang,
+        geo: state.app.geo,
+        isAuthenticated: state.auth.isAuthenticated,
+        country: state.app.country,
+        subject: state.app.subject,
+        toggleMembership: state.auth.toggleMembership,
+        setLT: state.app.setLT,
+        pageYOffset: state.page.yOffset,
+        fullAccess: state.auth.fullAccess,
+        scrollDirection: state.app.scrollDirection,
+        objects: state.app.objects,
+        seenStatus: state.app.seenStatus,
+        userServiceSelected: state.app.userServiceSelected,
     }
   }
   export default connect (mapStateToProps)(PublisherPage);

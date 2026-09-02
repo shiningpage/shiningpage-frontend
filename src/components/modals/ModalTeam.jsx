@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Modal, Button } from 'react-bootstrap';
-import { setUserInfo, setSubUserInfo} from '../../dataStore/actions';
+import { setUserInfo, setSubUserInfo } from '../../store/slices/userSlice';
 import male from '../../assets/images/other/man2.png';
 import female from '../../assets/images/other/woman2.png';
 import { AiOutlineCloseCircle } from "react-icons/ai";
@@ -228,16 +228,15 @@ class ModalTeam extends Component{
 
 const mapStateToProps = (state) => {
 	return {
-		mainUser: state.userInfo,
-		mainUserId: state.userInfo['_id'],
-		userInfo: state.subUserInfo,
-		userId: state.subUserInfo._id,
-		rtl: state.rtl,
-		lang: state.lang,
-		geo: state.geo,
-		page: state.page,
-		setLT: state.setLT,
-		fullAccess: state.fullAccess,
+		mainUser: state.user.userInfo,
+		mainUserId: state.user.userInfo['_id'],
+		userInfo: state.user.subUserInfo,
+		userId: state.user.subUserInfo._id,
+		rtl: state.app.rtl,
+		lang: state.app.lang,
+		geo: state.app.geo,
+		setLT: state.app.setLT,
+		fullAccess: state.auth.fullAccess,
 	}
 }
 

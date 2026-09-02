@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import {setStarredCompany } from '../dataStore/actions'; 
+import { setStarredCompany } from '../store/slices/appSlice';
 import { Link } from "react-router-dom";
 import male from '../assets/images/other/man2.png';
 import female from '../assets/images/other/woman2.png';
@@ -171,11 +171,10 @@ class Brands extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        mainUserId: state.userInfo['_id'],
-        lang: state.lang,
-        page: state.page,
-        setLT: state.setLT,
-        starredCompany: state.starredCompany,
+        mainUserId: state.user.userInfo['_id'],
+        lang: state.app.lang,
+        setLT: state.app.setLT,
+        starredCompany: state.app.starredCompany,
     }
 }
 

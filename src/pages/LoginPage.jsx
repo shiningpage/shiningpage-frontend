@@ -6,9 +6,12 @@ import male from '../assets/images/other/man2.png';
 import female from '../assets/images/other/woman2.png';
 import ReCAPTCHA from "react-google-recaptcha";
 import { connect } from 'react-redux';
-import { setAddress, setCountry, setSubject, setPageTitle,
-    setPageName, setPage, setUserInfo, setAuth, setFullAccess,
-    setBalance, setRuby, setRubyInterval, } from '../dataStore/actions';
+import { setAuth, setFullAccess } from '../store/slices/authSlice';
+import { setUserInfo } from '../store/slices/userSlice';
+import { setPageName, setPageTitle } from '../store/slices/pageSlice';
+import { setRubyAmount, setRubyInterval } from '../store/slices/rubySlice';
+import { setAddress, setCountry, setSubject,
+    setBalance, } from '../store/slices/appSlice';
 import toFarsi from '../modules/toFarsi';
 import CountrySelector from '../components/CountrySelector';
 import siteView from '../modules/siteView';
@@ -29,6 +32,7 @@ const membershipOptions = [
 class LoginPage extends Component {
 
     state = {
+        page: this.props.setLT.signupLogin,
         genderTitleL: this.props.setLT.gender,
         membershipTitleL: 'Membership Type',
         registerType: false,
@@ -48,13 +52,11 @@ class LoginPage extends Component {
 
     componentDidMount = async () => {
         window.scrollTo(0, 0)
-        await this.props.dispatch(setPageName(this.props.setLT.signupLogin))
-        await this.props.dispatch(setPageTitle(`${this.props.pageName} | ShiningPage`))
-        await this.props.dispatch(setPage('login'))
+        await this.props.dispatch(setPageTitle(`${this.state.page} | ShiningPage`))
+        await this.props.dispatch(setPageName('login'))
         await this.props.dispatch(setSubject('login'))
-        await this.props.dispatch(setAddress({ content:[], fix:this.props.pageName }))
+        await this.props.dispatch(setAddress({ content:[], fix:this.state.page }))
 
-        // if(this.props.auth && this.props.mainUser.ruby) checkSeen('login', this.props.seenStatus, this.props.dispatch)
         siteView(this.props)
         membershipOptions[0].label = 'Normal - Access to typical features'
         membershipOptions[1].label = 'Business - Access to special features and insert ads'
@@ -62,13 +64,13 @@ class LoginPage extends Component {
 
     logout = () => {
         localStorage.removeItem('jwtToken');
-        this.props.dispatch(setPage(''))
+        this.props.dispatch(setPageName(''))
         this.props.dispatch(setAuth(false))
         this.props.dispatch(setFullAccess(false))
         this.props.dispatch(setUserInfo([]))
         this.props.dispatch(setCountry({}))
         this.props.dispatch(setBalance('0.00'))
-        this.props.dispatch(setRuby('0.00'))
+        this.props.dispatch(setRubyAmount('0.00'))
         this.props.dispatch(setRubyInterval({ ruby:0, done:0, dateTime:'' }))
         window.scrollTo(0, 0);
         window.location.reload();
@@ -369,7 +371,7 @@ class LoginPage extends Component {
 
         } catch (err) {
             const errorData = err.response?.data;
-            // console.log('errorData: ', errorData)
+            console.log('errorData: ', err)
             // reCAPTCHA failed
             if (errorData?.code === 'RECAPTCHA_REQUIRED') {
                 this.setState({
@@ -468,7 +470,7 @@ class LoginPage extends Component {
                 registrationStep, verificationEmail
             } = this.state;
 
-        const {auth, lang, setLT, country, mainUser} = this.props;
+        const {isAuthenticated, lang, setLT, country, mainUser} = this.props;
         const loader13 = <div className='loader-13' style={{margin: '0px 20px'}}></div>
 
         const checkEmailConst = (
@@ -765,7 +767,7 @@ class LoginPage extends Component {
 
         const mainForm = (
             <div className='animated fadeInUpX [animation-delay:.5s] backdrop-blur-[20px] bg-[#ffffff10] border !border-white/20 w-full max-w-[400px] rounded-[20px]'>
-                { auth
+                { isAuthenticated
                     ?
                     <div className='p-3'>
                         <h1 className='gold text-center py-[20px]'>You are logged in</h1>
@@ -806,25 +808,23 @@ class LoginPage extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        mainUserId: state.userInfo['_id'],
-        mainUser: state.userInfo,
-        userId: state.userInfo['_id'],
-        username: state.userInfo['username'],
-        password: state.userInfo['password'],
-        email: state.userInfo['email'],
-        genderValue: state.userInfo['genderValue'],
-        businessType: state.userInfo['businessType'],
-        userImg: state.userInfo['imageData'],
-        auth: state.auth,
-        page: state.page,
-        subject: state.subject,
-        lang: state.lang,
-        geo: state.geo,
-        subUserId: state.subUserInfo['_id'],
-        setLT: state.setLT,
-        pageName: state.pageName,
-        country: state.country,
-        seenStatus: state.seenStatus,
+        mainUserId: state.user.userInfo['_id'],
+        mainUser: state.user.userInfo,
+        userId: state.user.userInfo['_id'],
+        username: state.user.userInfo['username'],
+        password: state.user.userInfo['password'],
+        email: state.user.userInfo['email'],
+        genderValue: state.user.userInfo['genderValue'],
+        businessType: state.user.userInfo['businessType'],
+        userImg: state.user.userInfo['imageData'],
+        isAuthenticated: state.auth.isAuthenticated,
+        subject: state.app.subject,
+        lang: state.app.lang,
+        geo: state.app.geo,
+        subUserId: state.user.subUserInfo['_id'],
+        setLT: state.app.setLT,
+        country: state.app.country,
+        seenStatus: state.app.seenStatus,
 
     }
   }

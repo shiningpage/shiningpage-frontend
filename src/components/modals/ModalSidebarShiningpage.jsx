@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { setToggleSidebar } from '../../dataStore/actions';
+import { setToggleSidebar } from '../../store/slices/appSlice';
 
 const ModalSidebarShiningpage = forwardRef(({ rtl, content, isOpen, dispatch }, ref) => {
 

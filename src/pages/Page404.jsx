@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Container } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { setSubject, setPageTitle, setPageName, setPage } from '../dataStore/actions';
+import { setPageName, setPageTitle } from '../store/slices/pageSlice';
+import { setSubject } from '../store/slices/appSlice';
 import { s, serverURL, langArray } from '../srcSet';
 
 class Page404 extends Component {
@@ -13,9 +14,8 @@ class Page404 extends Component {
 
     componentDidMount = async () => {
         window.addEventListener("resize", this.onResize)
-        await this.props.dispatch(setPageName('page404'))
         await this.props.dispatch(setPageTitle(`page404 | ShiningPage`))
-        await this.props.dispatch(setPage('page404'))
+        await this.props.dispatch(setPageName('page404'))
         await this.props.dispatch(setSubject('page404'))
 
         var pth = window.location.pathname;
@@ -69,7 +69,6 @@ class Page404 extends Component {
         // }
         // setstate()
         // console.log(this.props.page)
-        // this.props.dispatch(setPageName(this.props.page))
         return (
             <Container style={containerStyle}>
                 <h1 className='animated fadeInDown' style={{animationDelay:'1s', margin:'30px 10px', color:'#ffffff'}}>
@@ -85,12 +84,11 @@ class Page404 extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        mainUserId: state.userInfo['_id'],
-        mainUser: state.userInfo,
-        userId: state.userInfo['_id'],
-        lang: state.lang,
-        rtl: state.rtl,
-        page: state.page,
+        mainUserId: state.user.userInfo['_id'],
+        mainUser: state.user.userInfo,
+        userId: state.user.userInfo['_id'],
+        lang: state.app.lang,
+        rtl: state.app.rtl,
 
     }
   }

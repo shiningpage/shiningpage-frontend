@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setSetLT, setLang, setRtl } from '../dataStore/actions'; 
+import { setSetLT, setLang, setRtl } from '../store/slices/appSlice'; 
 import setLangText from '../modules/setLangText';
 import { FaCaretDown } from "react-icons/fa";
 import { CiGlobe } from 'react-icons/ci';
@@ -17,7 +17,6 @@ class LangBox extends Component{
 
     langText = (x) => {
         var w = this.state.w
-        var auth = this.props.auth
         switch (this.props.lang) {
 
             case 'en': x = 'En'; break;
@@ -79,7 +78,7 @@ class LangBox extends Component{
     }
 
     langMap = () => {
-        const {setLT, rtl, page, lang, fc, subUserInfo} = this.props
+        const {setLT, rtl, lang, fc, subUserInfo} = this.props
 
         const languages = [
             { name:'English', code:'en', active: true},
@@ -108,7 +107,7 @@ class LangBox extends Component{
 
 	render () {
         const {w, } = this.state
-        const {setLT, rtl, page, fc} = this.props
+        const {setLT, rtl, pageName, fc} = this.props
 
         return (
             <div className="btn-group" style={{padding:'0px', fontSize:'15px', fontWeight:'', cursor:'pointer'}}>
@@ -116,7 +115,7 @@ class LangBox extends Component{
                     type="" id="dropdownMenuButton" data-bs-toggle="dropdown" //data-bs-auto-close="outside"
                     aria-haspopup="false" aria-expanded="false" data-bs-offset="0,0"
                 >
-                    <div className={`center ${['web', 'ps'].includes(page) ? `fontColor h14` : 'nav' }`}
+                    <div className={`center ${['web', 'ps'].includes(pageName) ? `fontColor h14` : 'nav' }`}
                         style={{fontSize:'14px', fontWeight:300, alignItems:'center', padding:'5px', margin: w<s ? '3px 0px 0px' : '0px 8px 0px', flexWrap:'nowrap'}}>
                         {this.langText()}
                         <FaCaretDown />
@@ -133,13 +132,13 @@ class LangBox extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        mainUserId: state.userInfo['_id'],
-        subUserInfo: state.subUserInfo,
-        fc: state.subUserInfo.fc,
-        lang: state.lang,
-        rtl: state.rtl,
-        page: state.page,
-        setLT: state.setLT,
+        mainUserId: state.user.userInfo['_id'],
+        subUserInfo: state.user.subUserInfo,
+        fc: state.user.subUserInfo.fc,
+        lang: state.app.lang,
+        rtl: state.app.rtl,
+        pageName: state.page.name,
+        setLT: state.app.setLT,
     }
 }
 

@@ -2,7 +2,8 @@ import React, { Component, } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Modal } from 'react-bootstrap';
-import { setSubject, setToggleChat, setNotSeenChatQTY } from '../dataStore/actions';
+import { setToggleChat } from '../store/slices/chatSlice';
+import { setSubject } from '../store/slices/appSlice';
 import male from '../assets/images/other/man2.png';
 import female from '../assets/images/other/woman2.png';
 import userN from '../assets/images/other/user1.png';
@@ -327,7 +328,7 @@ class SubChat extends Component {
 
     render() {
         const {w, h, messageMap, } = this.state
-        const {auth, rtl, setLT, mainUser, subChatInfo, fc, } = this.props;
+        const {isAuthenticated, rtl, setLT, mainUser, subChatInfo, fc, } = this.props;
         var fcSub = subChatInfo.fc
         const txBlack = lightColors.includes(mainUser.fc) ? true : false
 
@@ -384,7 +385,7 @@ class SubChat extends Component {
             <div className='d-flex' style={{alignItems:'center', cursor:'pointer'}}  onClick={() => this.subUserImagePanel(subChatInfo)}>
                 <img className={`btnShadow C${fcSub}`}
                     style={{objectFit: 'contain', width:"40px", height:"40px", borderRadius:subChatInfo.businessType>0 ? '3px' : '100px', border:'2px solid #ffffff40', padding:'2px'}}
-                    src={ !auth
+                    src={ !isAuthenticated
                         ? userN
                         :(exist(subChatInfo.profileIndex)
                             ? `https://www.pix.shiningpage.com/whoraly/profile/small/${subChatInfo._id}-${subChatInfo.profileIndex}.jpeg`
@@ -441,21 +442,18 @@ class SubChat extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        mainUser: state.userInfo,
-        fc: state.userInfo.fc,
-        subChatInfo: state.subChatInfo,
-        auth: state.auth,
-        rtl: state.rtl,
-        lang: state.lang,
-        geo: state.geo,
-        page: state.page,
-        subject: state.subject,
-        pageName: state.pageName,
-        msgDraft: state.msgDraft,
-        activityStatus: state.activityStatus,
-        setLT: state.setLT,
-        notSeenChatQTY: state.notSeenChatQTY,
-        fullAccess: state.fullAccess,
+        mainUser: state.user.userInfo,
+        fc: state.user.userInfo.fc,
+        subChatInfo: state.chat.subChatInfo,
+        isAuthenticated: state.auth.isAuthenticated,
+        rtl: state.app.rtl,
+        lang: state.app.lang,
+        geo: state.app.geo,
+        subject: state.app.subject,
+        activityStatus: state.app.activityStatus,
+        setLT: state.app.setLT,
+        notSeenChatQTY: state.chat.notSeenChatQTY,
+        fullAccess: state.auth.fullAccess,
     }
 }
 

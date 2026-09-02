@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { serverURL, s, } from '../srcSet';
-import { setToggleChat, setSubChatInfo } from '../dataStore/actions';
+import { setToggleChat, setSubChatInfo, } from '../store/slices/chatSlice';
 
 class CreateTicket extends Component{
 
@@ -58,14 +58,13 @@ class CreateTicket extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        mainUserId: state.userInfo['_id'],
-        userInfo: state.subUserInfo,
-        userId: state.subUserInfo._id,
-        rtl: state.rtl,
-        lang: state.lang,
-        page: state.page,
-        setLT: state.setLT,
-        fullAccess: state.fullAccess,
+        mainUserId: state.user.userInfo['_id'],
+        userInfo: state.user.subUserInfo,
+        userId: state.user.subUserInfo._id,
+        rtl: state.app.rtl,
+        lang: state.app.lang,
+        setLT: state.app.setLT,
+        fullAccess: state.auth.fullAccess,
     }
 }
 

@@ -5,7 +5,10 @@ import { Container } from 'react-bootstrap';
 import userN from '../assets/images/other/user1.png';
 import male from '../assets/images/other/man2.png'; 
 import female from '../assets/images/other/woman2.png';
-import { setSubject, setToggleMembership, setToggleLoading, setPage, setToggleShowVideo, setSubUserInfo } from '../dataStore/actions'; 
+import { setToggleMembership } from '../store/slices/authSlice';
+import { setSubUserInfo } from '../store/slices/userSlice';
+import { setToggleShowVideo } from '../store/slices/mediaSlice';
+import { setSubject, setToggleLoading } from '../store/slices/appSlice'; 
 import { FaRegPaperPlane, FaRegEye, FaAngleLeft, FaYoutube, FaLinkedin } from 'react-icons/fa';
 import { MdClose } from 'react-icons/md';
 import { IoMdHeart, IoMdHeartEmpty } from 'react-icons/io';
@@ -856,7 +859,7 @@ class VideoShow extends Component {
                     ? <IoMdHeart style={{width:'20px', fontSize:'20px', color:(toggleLikeBtn && fc===8) ? '#ffffff' : 'red'}}/>
                     : <IoMdHeartEmpty style={{width:'20px', fontSize:'20px', color:(toggleLikeBtn && fc===8) ? '#ffffff' : ((videoInfo.userId!==mainUserId && userType===1) ? 'red' : 'grey')}}/>
     const like = (
-        <div className={`center btnShadowX2 C${toggleLikeBtn ? fc : ''} backBlur`} onClick={ () => this.onLikeBtn() } // onClick={(adsInfo.userId!==mainUserId && userType===1) ? () => gettingLike ? '' : this.onToggleLike() : ''}
+        <div className={`center btnShadowX2 C${toggleLikeBtn ? fc : ''} backBlur`} onClick={ () => this.onLikeBtn() }
             style={{alignItems:'center', padding:'5px', margin:'0px 0px 0px', borderRadius:'100px', minWidth:'55px', minHeight:'55px', 
                 border: `3px solid ${(fc===4 || fc===14 || fc===undefined || !toggleLikeBtn) ? '#00000020' : '#ffffff99'}`,
                 color: `${(fc===11 || fc===4 || fc===13 || fc===14 || fc===undefined || !toggleLikeBtn) ? '#00000090' : '#ffffff'}`,
@@ -1161,43 +1164,28 @@ class VideoShow extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    mainUserId: state.userInfo['_id'],
-    mainUser: state.userInfo,
-    subUserInfo: state.subUserInfo,
-    userId: state.userInfo._id,
-    username: state.userInfo.username,
-    userImg: state.userInfo.imageData,
-    jobSummary: state.userInfo.jobSummary,
-    businessType: state.userInfo.businessType,
-    fc: state.userInfo.fc,
-    country: state.userInfo.country,
-    countryCode: state.subUserInfo.countryCode,
-    userType: state.subUserInfo.userType,
-    rtl: state.rtl,
-    lang: state.lang,
-    geo: state.geo,
-    auth: state.auth,
-    page: state.page,
-    subject: state.subject,
-    pageName: state.pageName,
-    videoInfo: state.videoInfo,
-    advertiserId: state.adsInfo.advertiserId,
-    adsId:state.adsInfo.adsId,
-    genderValue:state.adsInfo.genderValue,
-    adsTitle:state.adsInfo.adsTitle,
-    adsComment:state.adsInfo.adsComment,
-    negotiablePrice:state.adsInfo.negotiablePrice,
-    unitPrice:state.adsInfo.unitPrice,
-    currency:state.adsInfo.currency,
-    unitMeasurement:state.adsInfo.unitMeasurement,
-    adsImageData:state.adsInfo.adsImageData,
-    viewNX:state.adsInfo.viewNX,
-    likeNX:state.adsInfo.likeNX,
-    toggleLikeX: state.adsInfo.toggleLikeX,
-    toggleShowVideo: state.toggleShowVideo,
-    setLT: state.setLT,
-    access: state.userInfo.access,
-    fullAccess: state.fullAccess,
+    mainUserId: state.user.userInfo['_id'],
+    mainUser: state.user.userInfo,
+    subUserInfo: state.user.subUserInfo,
+    userId: state.user.userInfo._id,
+    username: state.user.userInfo.username,
+    userImg: state.user.userInfo.imageData,
+    jobSummary: state.user.userInfo.jobSummary,
+    businessType: state.user.userInfo.businessType,
+    fc: state.user.userInfo.fc,
+    country: state.user.userInfo.country,
+    countryCode: state.user.subUserInfo.countryCode,
+    userType: state.user.subUserInfo.userType,
+    rtl: state.app.rtl,
+    lang: state.app.lang,
+    geo: state.app.geo,
+    auth: state.auth.isAuthenticated,
+    subject: state.app.subject,
+    videoInfo: state.media.videoInfo,
+    toggleShowVideo: state.media.toggleShowVideo,
+    setLT: state.app.setLT,
+    access: state.user.userInfo.access,
+    fullAccess: state.auth.fullAccess,
   }
 }
 

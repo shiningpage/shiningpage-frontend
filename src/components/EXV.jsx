@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setToggleSidebar } from '../dataStore/actions';
+import { setToggleSidebar } from '../store/slices/appSlice';
 import { Link } from "react-router-dom";
 
 import { s } from '../srcSet';
@@ -28,7 +28,7 @@ class EXV extends Component{
     //☨
 	render () {
         const {w, } = this.state
-        const {lang, page} = this.props
+        const { } = this.props
 
         const logoBox = (
             <div className='center'
@@ -57,11 +57,10 @@ class EXV extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        mainUserId: state.userInfo['_id'],
-        lang: state.lang,
-        rtl: state.rtl,
-        page: state.page,
-        toggleSidebar: state.toggleSidebar
+        mainUserId: state.user.userInfo['_id'],
+        lang: state.app.lang,
+        rtl: state.app.rtl,
+        toggleSidebar: state.app.toggleSidebar
     }
 }
 

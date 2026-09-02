@@ -41,11 +41,10 @@ class UpdateVersion extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        mainUserId: state.userInfo['_id'],
-        lang: state.lang,
-        rtl: state.rtl,
-        page: state.page,
-        setLT: state.setLT,
+        mainUserId: state.user.userInfo['_id'],
+        lang: state.app.lang,
+        rtl: state.app.rtl,
+        setLT: state.app.setLT,
     }
 }
 
