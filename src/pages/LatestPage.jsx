@@ -6,7 +6,6 @@ import { Container } from 'react-bootstrap';
 import { setPageName, setPageTitle } from '../store/slices/pageSlice';
 import { setSubject, setAddress } from '../store/slices/appSlice';
 import BeforAfter from '../components/BeforAfter';
-import More from '../components/More';
 import AllBusinesses from '../components/AllBusinesses';
 import RubyCollector from '../components/RubyCollector';
 import siteView from '../modules/siteView';

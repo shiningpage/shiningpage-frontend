@@ -7,7 +7,6 @@ import { setBalance, setSubject, setAddress } from '../store/slices/appSlice';
 import LocalTable from '../components/LocalTable';
 import siteView from '../modules/siteView';
 import SocialMediaHelp from '../components/SocialMediaHelp';
-import toFarsi from '../modules/toFarsi';
 import { MdHelp, MdClose } from 'react-icons/md';
 import { FaTwitch, FaSnapchatGhost, FaDiscord, FaSpotify, FaGlobe, FaTelegram, FaLinkedin, FaYoutube, FaInstagram } from 'react-icons/fa';
 import { ImFacebook2 } from "react-icons/im";
@@ -733,8 +732,7 @@ class SocialMediaPage extends Component{
     }
 
     changeHandler = async (e, type) => {
-        const tx = toFarsi(e.target.value)
-        const formattedValue = type === 'number' ? tx.replace(/\D/g, '') : tx;
+        const formattedValue = type === 'number' ? e.target.value.replace(/\D/g, '') : e.target.value;
         const name = e.target.name
         await this.setState({ [name]: formattedValue });
 

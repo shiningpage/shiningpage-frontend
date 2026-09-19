@@ -15,7 +15,7 @@ class BookingPage extends Component {
     w: window.innerWidth,
     h: window.innerHeight,
     page: 'Booking',
-}
+  }
 
   componentDidMount = async () => {
     window.scrollTo(0, 0)

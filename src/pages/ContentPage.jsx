@@ -21,7 +21,6 @@ import { BsImages, BsChat } from 'react-icons/bs';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
 import StarRating from '../components/StarRating';
 import date from 'date-and-time';
-import toFarsi from '../modules/toFarsi';
 import siteView from '../modules/siteView';
 import BeforAfter from '../components/BeforAfter';
 import LangBox from '../components/LangBox';
@@ -584,7 +583,7 @@ class ContentPage extends Component {
         await axios.get(`${serverURL}/ads/getAdsSlugInfo/` + p1)
         .then(async(res) => {
             var data = res.data
-            // this.setState({adsImageData: res.data.adsImageData})
+            console.log('setAdsInfo: ', res.data)
 
             await this.props.dispatch(setAdsInfo(data))
             await axios.post(`${serverURL}/user/getUserInfo`, { _id: data.userId })
@@ -1073,9 +1072,8 @@ class ContentPage extends Component {
     }
     
     onComment = (e) => {
-        var tx = toFarsi(e.target.value)
         this.setState({
-            comment: tx
+            comment: e.target.value
         })
     }
 

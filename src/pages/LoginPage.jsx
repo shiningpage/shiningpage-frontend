@@ -12,7 +12,6 @@ import { setPageName, setPageTitle } from '../store/slices/pageSlice';
 import { setRubyAmount, setRubyInterval } from '../store/slices/rubySlice';
 import { setAddress, setCountry, setSubject,
     setBalance, } from '../store/slices/appSlice';
-import toFarsi from '../modules/toFarsi';
 import CountrySelector from '../components/CountrySelector';
 import siteView from '../modules/siteView';
 import { FaRegEye, FaRegEyeSlash, FaUser, FaLock, FaShieldAlt, FaBolt,

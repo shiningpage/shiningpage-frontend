@@ -1,6 +1,7 @@
-import langText from '../langText/text';
+import langText from '../langText/text.json';
+type LanguageCode = 'fa' | 'en' | 'ar';
 
-const setLangText = (x) => {
+const setLangText = (x: LanguageCode) => {
 
   var data = {
     searchPlaceholder: langText.searchPlaceholder[x],
@@ -139,7 +140,6 @@ const setLangText = (x) => {
     scoring: langText.scoring[x],
     minute: langText.minute[x],
     hour: langText.hour[x],
-    day: langText.day[x],
     month: langText.month[x],
     year: langText.year[x],
     ago: langText.ago[x],
@@ -252,7 +252,6 @@ const setLangText = (x) => {
     translators: langText.translators[x],
     websiteDesignerLogo: langText.websiteDesignerLogo[x],
     rules: langText.rules[x],
-    aboutUs: langText.aboutUs[x],
     aboutUsT1: langText.aboutUsT1[x],
     aboutUsT2: langText.aboutUsT2[x],
     aboutUsT3: langText.aboutUsT3[x],
@@ -498,7 +497,6 @@ const setLangText = (x) => {
     customizationOptionsDesc: langText.customizationOptionsDesc[x],
     businessColorsTagline: langText.businessColorsTagline[x],
     joinWhoralyNow: langText.joinWhoralyNow[x],
-    whyChooseUs: langText.whyChooseUs[x],
     whoralyTagline: langText.whoralyTagline[x],
     whyChooseUsDesc: langText.whyChooseUsDesc[x],
     ourAdvantages: langText.ourAdvantages[x],

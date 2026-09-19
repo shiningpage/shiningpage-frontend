@@ -5,7 +5,6 @@ import { Modal, Button } from 'react-bootstrap';
 import { setCategoryX } from '../../store/slices/appSlice';
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { FaInstagram } from 'react-icons/fa';
-import toFarsi from '../../modules/toFarsi';
 import CategorySelector from '../CategorySelector';
 import { serverURL, s, } from '../../srcSet';
 
@@ -46,8 +45,7 @@ class ModalHandleInsta extends Component {
 
     commentHandler = e => {
         const {lang} = this.props
-        var tx = lang==='fa' ? toFarsi(e.target.value) : e.target.value
-        var vx = tx.trim()==="" ?  null : tx
+        var vx = e.target.value.trim()==="" ?  null : e.target.value
         var vxl = vx ? vx.length : 0
         this.setState({
             comment: vx ? vx.substr(0, this.state.commentTotal) : '',

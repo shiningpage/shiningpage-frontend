@@ -21,7 +21,6 @@ import { BsImages, BsChat } from 'react-icons/bs';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
 import StarRating from '../components/StarRating';
 import date from 'date-and-time';
-import toFarsi from '../modules/toFarsi';
 import siteView from '../modules/siteView';
 import BeforAfter from '../components/BeforAfter';
 import LangBox from '../components/LangBox';
@@ -1063,9 +1062,8 @@ class PSPage extends Component {
     }
     
     onComment = (e) => {
-        var tx = toFarsi(e.target.value)
         this.setState({
-            comment: tx
+            comment: e.target.value
         })
     }
 

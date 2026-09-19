@@ -6,7 +6,6 @@ import { setAdsInfo,  } from '../../store/slices/mediaSlice';
 import { setCategoryX } from '../../store/slices/appSlice';
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import date from 'date-and-time';
-import toFarsi from '../../modules/toFarsi';
 import CurrencyInput from 'react-currency-input-field';
 import CategorySelector from '../CategorySelector';
 import pixSave from '../../modules/pixSave';

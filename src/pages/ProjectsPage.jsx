@@ -9,7 +9,6 @@ import { setAddress, setCountry, setSubject } from '../store/slices/appSlice';
 import siteView from '../modules/siteView';
 import male from '../assets/images/other/man2.png';
 import female from '../assets/images/other/woman2.png';
-import toFarsi from '../modules/toFarsi';
 import jalaali from 'jalaali-js';
 import Resizer from 'react-image-file-resizer';
 import { FaPercent, FaFolderPlus } from 'react-icons/fa';
@@ -202,8 +201,7 @@ class ProjectManagement extends Component {
   }
 
   changeHandler = e => {
-    var tx = toFarsi(e.target.value)
-    this.setState({ ...this.state, [e.target.name]: tx });
+    this.setState({ ...this.state, [e.target.name]: e.target.value });
   };
 
   onCheckFix = async (data, i, pDays) => {
@@ -2869,9 +2867,8 @@ class ProjectManagement extends Component {
   }
 
   changeUsername = (e) => {
-    var tx = toFarsi(e.target.value)
     this.setState({
-      searchUsers: e.target ? tx.toLowerCase() : e,
+      searchUsers: e.target ? e.target.value.toLowerCase() : e,
       n:0,
     })
   }
@@ -3196,8 +3193,7 @@ class ProjectManagement extends Component {
 
   commentHandler = e => {
     const {lang} = this.props
-    var tx = lang==='fa' ? toFarsi(e.target.value) : e.target.value
-    var vx = tx.trim()==="" ?  null : tx
+    var vx = e.target.value.trim()==="" ?  null : e.target.value
     var vxl = vx ? vx.length : 0
     this.setState({
         imageComment: vx ? vx.substr(0, this.state.imageCommentTotal) : '',

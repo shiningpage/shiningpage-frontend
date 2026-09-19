@@ -15,7 +15,6 @@ import { IoMdHeart, IoMdHeartEmpty } from 'react-icons/io';
 import { BsChat } from 'react-icons/bs';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
 import date from 'date-and-time';
-import toFarsi from '../modules/toFarsi';
 import siteView from '../modules/siteView';
 import { AdsHorizontal } from './GoogleAds'
 import { exist, addNotification } from '../helper';
@@ -642,9 +641,8 @@ class VideoShow extends Component {
   }
 
   onComment = (e) => {
-    var tx = toFarsi(e.target.value)
     this.setState({
-        comment: tx
+        comment: e.target.value
     })
   }
 

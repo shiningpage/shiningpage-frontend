@@ -309,7 +309,7 @@ class PublisherPage extends Component {
             await this.props.dispatch(setSubUserInfo(res.data))
             // res.data.fc = fcIndex
             const txBlack = lightColors.includes(res.data.fc) ? true : false
-            // console.log('mainUserId',this.props.mainUserId)
+            // console.log('subUserInfo: ',res.data)
             // console.log('subUserId',this.props.userId)
             // console.log('isAuthenticated',this.props.isAuthenticated)
     

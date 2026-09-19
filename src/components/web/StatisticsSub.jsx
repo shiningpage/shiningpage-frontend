@@ -5,7 +5,6 @@ import { Container } from 'react-bootstrap';
 import { setToggleMembership } from '../../store/slices/authSlice';
 import KPICards from '../KPICards';
 import date from 'date-and-time';
-import toFarsi from '../../modules/toFarsi';
 import StarRating from '../StarRating';
 import userN from '../../assets/images/other/user1.png';
 import male from '../../assets/images/other/man2.png';
@@ -178,9 +177,8 @@ class StatisticsSub extends Component{
     }
 
     onComment = (e) => {
-        var tx = toFarsi(e.target.value)
         this.setState({
-            comment: tx
+            comment: e.target.value
         })
     }
 

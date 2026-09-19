@@ -10,7 +10,6 @@ import siteView from '../modules/siteView';
 import userN from '../assets/images/other/user1.png';
 import male from '../assets/images/other/man2.png';
 import female from '../assets/images/other/woman2.png';
-import More from '../components/More';
 import { MdOndemandVideo, MdMessage } from 'react-icons/md';
 import { IoMdHeart } from 'react-icons/io';
 import { FaLinkedin, FaYoutube, FaFacebook, FaGlobe, FaInstagram, FaTelegram, FaRegEye } from 'react-icons/fa';
@@ -421,7 +420,6 @@ class NotificationPage extends Component{
 			</div>
 		)
 
-        console.log('seenNotifications: ', seenNotifications.length)
         const notificationSub = (
             <div>
 				<div className={`center ${NData.length > 0 ? 'mb-[50px]' : ''}`}>

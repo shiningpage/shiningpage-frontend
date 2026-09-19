@@ -1,6 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const initialState = {
+type PageState = {
+    name: string;
+    title: string;
+    is404: boolean;
+    yOffset: number;
+};
+
+const initialState: PageState = {
     name: '',
     title: '',
     is404: false,
@@ -11,19 +18,19 @@ const pageSlice = createSlice({
     name: 'page',
     initialState,
     reducers: {
-        setPageName: (state, action) => {
+        setPageName: (state, action: PayloadAction<string>) => {
             state.name = action.payload;
         },
 
-        setPageTitle: (state, action) => {
+        setPageTitle: (state, action: PayloadAction<string>) => {
             state.title = action.payload;
         },
 
-        setPage404: (state, action) => {
+        setPage404: (state, action: PayloadAction<boolean>) => {
             state.is404 = action.payload;
         },
 
-        setPageYOffset: (state, action) => {
+        setPageYOffset: (state, action: PayloadAction<number>) => {
             state.yOffset = action.payload;
         },
     },

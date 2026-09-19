@@ -4,7 +4,6 @@ export const loadState = () => {
     try {
         const savedVersion = localStorage.getItem('shiningPageStoreVersion');
 
-        // پاک کردن state قدیمی بعد از مهاجرت به RTK
         if (savedVersion !== STORE_VERSION) {
             localStorage.removeItem('state');
             localStorage.setItem('shiningPageStoreVersion', STORE_VERSION);
@@ -26,12 +25,11 @@ export const loadState = () => {
     }
 };
 
-export const saveState = (state) => {
+export const saveState = (state: unknown): void => {
     try {
         const serializedState = JSON.stringify(state);
 
         localStorage.setItem('state', serializedState);
-
     } catch (err) {
         // Ignore write errors.
     }

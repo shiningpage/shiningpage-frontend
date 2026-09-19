@@ -5,14 +5,13 @@ import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { setToggleMembership } from '../store/slices/authSlice';
 import { setPageName, setPageTitle } from '../store/slices/pageSlice';
-import { setSubject } from '../store/slices/appSlice';
+import { setSubject, setAddress } from '../store/slices/appSlice';
 import male from '../assets/images/other/man2.png';
 import female from '../assets/images/other/woman2.png'; 
 import { MdClose } from 'react-icons/md';
 import { FaRegPaperPlane, FaAngleLeft } from 'react-icons/fa';
 import StarRating from '../components/StarRating';
 import date from 'date-and-time';
-import toFarsi from '../modules/toFarsi';
 import siteView from '../modules/siteView';
 import { AdsHorizontal } from '../components/GoogleAds'
 import { exist, checkSeen } from '../helper';
@@ -36,6 +35,7 @@ class ReviewPage extends Component {
     await this.props.dispatch(setPageTitle(`${this.state.page} | ShiningPage`))
     await this.props.dispatch(setPageName('reviews'))
     await this.props.dispatch(setSubject('reviews'))
+    await this.props.dispatch(setAddress({ content:[], fix:this.state.page }))
     if(this.props.subject==='reviews') siteView(this.props)
     await this.getComments()
   }
@@ -65,9 +65,8 @@ class ReviewPage extends Component {
   }
 
   onComment = (e) => {
-      var tx = toFarsi(e.target.value)
       this.setState({
-          comment: tx
+          comment: e.target.value
       })
   }
 

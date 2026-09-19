@@ -6,7 +6,6 @@ import male from '../assets/images/other/man2.png';
 import female from '../assets/images/other/woman2.png';
 import { IoMdClose } from 'react-icons/io';
 import { BsSearch } from "react-icons/bs";
-import toFarsi from '../modules/toFarsi';
 import { exist, goToWebPage } from '../helper';
 import { serverURL, s, listRefreshQty } from '../srcSet';
 
@@ -26,9 +25,8 @@ class Search extends Component {
   }
 
   changeUsername = (e) => {
-    var tx = toFarsi(e.target.value)
     this.setState({
-      searchUsers: e.target ? tx.toLowerCase() : e,
+      searchUsers: e.target ? e.target.value.toLowerCase() : e,
       n:0,
     })
     this.startSearch(e)
@@ -67,7 +65,6 @@ class Search extends Component {
   searchMemberMap = async (x) => {
     const {w, n,} = this.state
     const {setLT, fullAccess} = this.props
-    console.log('fullAccess: ', fullAccess)
     var dataRv = x.map (
         (item, i) => {
           //console.log(55555555, item),
