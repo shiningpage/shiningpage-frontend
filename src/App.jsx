@@ -547,7 +547,7 @@ class App extends Component {
     render() {
         const { w, h, loadingTicket, socialMediaIndex, toggleChangePassword, toggleWebPageTheme, notFound, scrollDirection, leaveChatList, leaveNotificationList, notSeenNotificationQTY, notSeenChatQTY } = this.state
         const { isAuthenticated, address, fc, setLT, mainUser, subUserInfo, toggleSidebar, toggleShowVideo, fullAccess, 
-            toggleLoading, toggleMembership, sendMessage, toggleChat, username, slug, genderValue, lang, rtl, pageName,
+            toggleLoading, toggleMembership, sendMessage, toggleChat, username, adsInfo, slug, genderValue, lang, rtl, pageName,
             businessType, toggleViewStatus, toggleChatList, rubyAmount, rubyInterval, balance, 
         } = this.props
         const loader13 = <div className='loader-13' style={{margin: '0px 20px', color:''}}></div>
@@ -1690,21 +1690,116 @@ class App extends Component {
             </Container>
         )
 
+        const isContentPage = pageName === 'content';
+        const isNoIndex = noIndexPages.includes(pageName);
+
+        const contentUrl =
+            isContentPage &&
+            typeof username === 'string' &&
+            username &&
+            typeof slug === 'string' &&
+            slug
+                ? `https://www.shiningpage.com/publisher/${encodeURIComponent(username)}/${encodeURIComponent(slug)}`
+                : null;
+
+        const contentImageUrl =
+            isContentPage &&
+            adsInfo?._id != null &&
+            typeof adsInfo?.pictures?.[0] === 'string'
+                ? `https://www.pix.shiningpage.com/whoraly/ads/big/${String(adsInfo._id)}-${adsInfo.pictures[0]}.jpeg`
+                : null;
+
+        const hasContentImage =
+            isContentPage && typeof contentImageUrl === 'string';
+
+        const pageTitle =
+            typeof this.props.pageTitle === 'string'
+                ? this.props.pageTitle
+                : '';
+
         const helmet = (
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>{this.props.pageTitle}</title>
-                {noIndexPages.includes(pageName) && (
-                    <meta name="robots" content="noindex, follow" />
+
+                {/* Page title */}
+                <title>{pageTitle}</title>
+
+                {/* Robots */}
+                {isNoIndex ? (
+                    <meta
+                        name="robots"
+                        content="noindex, follow"
+                    />
+                ) : isContentPage ? (
+                    <meta
+                        name="robots"
+                        content="index, follow, max-image-preview:large"
+                    />
+                ) : null}
+
+                {/* Publisher canonical */}
+                {pageName === 'publisher' &&
+                    typeof username === 'string' &&
+                    username &&
+                    !isNoIndex && (
+                        <link
+                            rel="canonical"
+                            href={`https://www.shiningpage.com/publisher/${encodeURIComponent(username)}`}
+                        />
+                    )}
+
+                {/* Content canonical */}
+                {contentUrl && (
+                    <link
+                        rel="canonical"
+                        href={contentUrl}
+                    />
                 )}
-                {pageName==='publisher' && username && !noIndexPages.includes(pageName) && (
-                    <link rel="canonical" href={`https://www.shiningpage.com/publisher/${username}`} />
+
+                {/* Content / Social image */}
+                {hasContentImage && (
+                    <meta
+                        property="og:image"
+                        content={contentImageUrl}
+                    />
                 )}
-                {pageName==='content' && username && slug && (
-                    <link rel="canonical" href={`https://www.shiningpage.com/publisher/${username}/${slug}`} />
+
+                {hasContentImage && (
+                    <meta
+                        property="og:type"
+                        content="article"
+                    />
+                )}
+
+                {hasContentImage && contentUrl && (
+                    <meta
+                        property="og:url"
+                        content={contentUrl}
+                    />
+                )}
+
+                {hasContentImage && (
+                    <meta
+                        property="og:title"
+                        content={pageTitle}
+                    />
+                )}
+
+                {hasContentImage && (
+                    <meta
+                        name="twitter:card"
+                        content="summary_large_image"
+                    />
+                )}
+
+                {hasContentImage && (
+                    <meta
+                        name="twitter:image"
+                        content={contentImageUrl}
+                    />
                 )}
             </Helmet>
-        )
+        );
 
         const bodyContent = (
             <div className={`flex-1 min-w-0 flex flex-col`}>
@@ -1747,6 +1842,11 @@ class App extends Component {
                 <div className='' style={{fontSize:'14px', fontFamily:'Vazir', minHeight:h, backgroundColor:''}}>{/* `${colors[`C${subUserInfo.fc}`]}00` */}
                     {helmet}
                     <div className='flex w-full'>
+                    {/* <img
+                        style={{width:'200px', height:'100px'}}
+                        src={contentImageUrl}
+                        alt="login"
+                    /> */}
                         {w>s && desktopSidebar}
                         {bodyContent}
                     </div>
@@ -1759,11 +1859,12 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        mainUserId: state.user.userInfo['_id'],
+        mainUserId: state.user.userInfo._id,
         mainUser: state.user.userInfo,
-        userId: state.user.userInfo['_id'],
-        username: state.user.userInfo['username'],
-        slug: state.user.userInfo['slug'],
+        userId: state.user.userInfo._id,
+        username: state.user.userInfo.username,
+        adsInfo: state.media.adsInfo,
+        slug: state.media.adsInfo.slug,
         fc: state.user.userInfo.fc,
         access: state.user.userInfo.access,
         businessType: state.user.userInfo.businessType,

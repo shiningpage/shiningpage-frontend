@@ -570,8 +570,8 @@ class ContentPage extends Component {
         var p2 = parts.slice(-2).shift() // check username root
         var p3 = parts.slice(-3).shift() // check username root
 
-        console.log('p1: ', p1)
-        console.log('p2: ', p2)
+        // console.log('p1: ', p1)
+        // console.log('p2: ', p2)
         if(p1.trim()!=="") {
             await this.getAdsInfo(p1, p2)
         } else {
@@ -583,7 +583,7 @@ class ContentPage extends Component {
         await axios.get(`${serverURL}/ads/getAdsSlugInfo/` + p1)
         .then(async(res) => {
             var data = res.data
-            console.log('setAdsInfo: ', res.data)
+            // console.log('setAdsInfo: ', res.data)
 
             await this.props.dispatch(setAdsInfo(data))
             await axios.post(`${serverURL}/user/getUserInfo`, { _id: data.userId })
