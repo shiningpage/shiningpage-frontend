@@ -33,9 +33,13 @@ class ModalHandleAds extends Component {
     componentDidUpdate(prevProps) {
         if (prevProps.toggleAds !== this.props.toggleAds) {
             const { adsInfo, toggleAds } = this.props;
-            const { adsTitle, slug, adsComment, unitPrice, negotiablePrice, currency, unitMeasurement, pictureType, pictures } = adsInfo;
+            const { adsTitle, slug, adsComment, unitPrice, negotiablePrice, currency, unitMeasurement, pictureType } = adsInfo;
             const isNew = toggleAds.type === 'new';
             const adsCommentLength = adsInfo.adsComment ? adsInfo.adsComment.length : 0;
+
+            const pictures = Array.isArray(adsInfo.pictures)
+                ? adsInfo.pictures
+                : [];
 
             this.setState({
                 imgList : [],
@@ -54,7 +58,7 @@ class ModalHandleAds extends Component {
                 currency: isNew ? '' : currency,
                 unitMeasurement: isNew ? '' : unitMeasurement,
                 pictureType: isNew ? 1 : pictureType,
-                pictures: isNew ? [] : pictures,
+                pictures: isNew ? [] : [...pictures],
                 loader: false,
                 formatErr:'',
                 selectImgErr:'',
@@ -156,8 +160,6 @@ class ModalHandleAds extends Component {
         if(typeof item === "number") deleteArray.push(pictureArrZ[item])
         await this.mapImg()
         this.setState({ goldenAccess: false })
-        // console.log(pictureArrZ)
-        // console.log(deleteArray)
     }
 
     commentHandler = e => {
