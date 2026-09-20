@@ -42,3 +42,6 @@ yarn-error.log*
 *.pid
 *.seed
 *.pid.lock
+
+# Ignore text file
+text.txt
