@@ -1724,7 +1724,7 @@ class ContentPage extends Component {
                     width: w < s ? '100%' : '300px',
                     borderRadius:'0px 100px 0px 100px',
                     marginRight: w < s ? '' : '70px',
-                    marginBottom: w < s ? '50px' : '',
+                    marginBottom: w < s ? '20px' : '',
                     border:'1px solid #99999930'
                 }}
                 src={aboutImgSrc}
