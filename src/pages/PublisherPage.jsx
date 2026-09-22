@@ -791,19 +791,6 @@ class PublisherPage extends Component {
             </div>
         );
 
-        const aboutImgSection = (
-            <div style={{minWidth: w<s+sidebarWidth ? '100%' : '300px'}}>
-                { profileData &&
-                    <img
-                        className={w<s ? '' : 'sticky-top'}
-                        style={{top: w<s ? '' : NavH + 70, zIndex:1, objectFit:'cover', height:'300px', width:'100%', borderRadius:'0px 100px', marginBottom:w<s ? '50px' : 0, border:'1px solid #99999930'}}
-                        src={aboutImgSrc}
-                        alt={`${subUserInfo.username} about`}
-                    />
-                }
-            </div>
-        )
-
         const jobSummarySection = (
             <div className={`center flex-col ${w<s ? 'mb-[50px]' : 'mb-[70px]'}`}>
                 <div className='flex'>
@@ -856,6 +843,19 @@ class PublisherPage extends Component {
                     <div className={w<s ? 'center' : 'd-flex'} style={{ width:w<s ? w-20 : '', flexWrap:'wrap'}}>
                         {teamMembers}
                     </div>
+                }
+            </div>
+        )
+
+        const aboutImgSection = (
+            <div style={{minWidth: w<s+sidebarWidth ? '100%' : '300px'}}>
+                { profileData &&
+                    <img
+                        className={w<s ? '' : 'sticky-top'}
+                        style={{top: w<s ? '' : NavH + 70, zIndex:1, objectFit:'cover', height:'300px', width:'100%', borderRadius:'0px 100px', marginBottom:w<s ? '50px' : 0, border:'1px solid #99999930'}}
+                        src={aboutImgSrc}
+                        alt={`${subUserInfo.username} about`}
+                    />
                 }
             </div>
         )

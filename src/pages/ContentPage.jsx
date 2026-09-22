@@ -1718,10 +1718,10 @@ class ContentPage extends Component {
         const imgNormal = (
             <img
                 className={w<s ? '' : 'sticky-top'}
-                style={{ top: w<s ? '' : NavH + 10, zIndex:0, 
+                style={{ top: w<s ? '' : NavH + 20, zIndex:0, 
                     objectFit:'cover',
                     height:'300px',
-                    width: w < s ? 'calc(100% - 20px)' : '300px',
+                    width: w < s ? '100%' : '300px',
                     borderRadius:'0px 100px 0px 100px',
                     marginRight: w < s ? '' : '70px',
                     marginBottom: w < s ? '50px' : '',
@@ -1733,7 +1733,7 @@ class ContentPage extends Component {
         )
 
         const aboutImgSection = (
-            <div style={{minWidth: w<s + sidebarWidth ? '100%' : '300px'}}>
+            <div className={w<s ? 'px-[10px]' : ''} style={{minWidth: w<s + sidebarWidth ? '100%' : '300px'}}>
                 { adsInfo.pictures &&
                     adsInfo.pictureType === 2
                     ? imgBeforAfter
@@ -1743,18 +1743,18 @@ class ContentPage extends Component {
         )
 
         const mainAds = (
-            <div>
-                <div className='sticky-top' style={{top:w<s ? 50 : 70, zIndex:'1'}}>{me && <EditBtn rtl={rtl} stickyTop='on' onClick={() => this.onToggleEditAds()}/>}</div>
-                <div style={{padding:w<s ? '50px 0px' : '70px 0px', fontSize:w<s ? '16px' : '18px'}}>
-                    <Container className='center' style={{alignItems:'center', flexDirection:'column'}}>
-                        <h1 style={{marginBottom:'50px', textAlign:'center'}}>{adsInfo.adsTitle}</h1>
-                        <div className='flex gap-4' style={{alignItems:w<s ? 'center' : '', flexDirection:w<s ? 'column' : ''}}>
-                            {aboutImgSection}
-                            <div style={{whiteSpace:'pre-wrap', width:w < s ? 'calc(100% - 20px)' : ''}}>
-                                {RenderContent(adsInfo.adsComment)}
-                            </div>
+            <div className={w<s ? 'pt-[70px]' : 'pt-[70px] px-[20px]'}>
+                <div className='sticky-top' style={{top:w<s ? 50 : 70, zIndex:'1'}}>
+                    {me && <EditBtn rtl={rtl} stickyTop='on' onClick={() => this.onToggleEditAds()}/>}
+                </div>
+                <div className='center' style={{fontSize:w<s ? '16px' : '18px', alignItems:'center', flexDirection:'column'}}>
+                    <h1 style={{marginBottom:'50px', textAlign:'center'}}>{adsInfo.adsTitle}</h1>
+                    <div className='flex gap-4' style={{alignItems:w<s ? 'center' : '', flexDirection:w<s ? 'column' : ''}}>
+                        {aboutImgSection}
+                        <div style={{whiteSpace:'pre-wrap', width:w < s ? 'calc(100% - 20px)' : ''}}>
+                            {RenderContent(adsInfo.adsComment)}
                         </div>
-                    </Container>
+                    </div>
                 </div>
             </div>
         )
