@@ -22,7 +22,8 @@ import { serverURL, s, listRefreshQty } from '../../../srcSet';
 
 const PsSub = (props) => {
     const { me, nx, fc, titleStyle, txBlack, index, adsN, videoN, instaN, EditBtn, mapStateToProps, dispatch } = props;
-    const { mainUser, subUserInfo, setLT, lang, rtl, objects, userServiceSelected } = mapStateToProps;
+    const { mainUser, subUserInfo, setLT, lang, rtl, objects } = mapStateToProps;
+    const userServiceSelected = [...mapStateToProps.userServiceSelected]
     const [w, setW] = useState(document.body.clientWidth);
     const [action, setAction] = useState(false);
     const [saveService, setSaveService] = useState(false);
@@ -1073,11 +1074,19 @@ const PsSub = (props) => {
         const newSelection = [...userServiceSelected];
         dispatch(setUserServiceSelected(newSelection))
 
-        data[i].selected = data[i].selected ? undefined : true
+        const newData = data.map((item, index) =>
+            index === i
+                ? {
+                    ...item,
+                    selected: item.selected ? undefined : true
+                }
+                : item
+        );
+
         const mapItems = mapSubcategory(catIXRef.current, null, i, totalSubRef.current, subUserInfo, setLT, w, s, onSubcategory, onService)
         setSubcategoryList(mapItems);
         if(w>=s) {
-            const mapServices = mapService(null, null, data, subUserInfo, setLT, w, s, onService)
+            const mapServices = mapService(null, null, newData, subUserInfo, setLT, w, s, onService)
             setServiceList(mapServices);
         }
 
