@@ -33,7 +33,7 @@ import { AdsHorizontalSmall, AdsHorizontal, AdsMultiplex } from '../components/G
 import ModalHandleAds from '../components/modals/ModalHandleAds';
 import { exist, dig3, checkSeen, addNotification, goToWebPage } from '../helper';
 import { updateCategoryItems } from '../components/web/psSub/psHelper';
-import { serverURL, s, NavH, designedByColors, listRefreshQty, listRefreshQtySmall, googleAds } from '../srcSet';
+import { serverURL, s, sidebarWidth, NavH, designedByColors, listRefreshQty, listRefreshQtySmall, googleAds } from '../srcSet';
 import RenderContent from '../components/RenderContent';
 
 class ContentPage extends Component {
@@ -1702,49 +1702,60 @@ class ContentPage extends Component {
             </div>
         )
 
+        const imgBeforAfter = (
+            <div className='center' style={{ marginRight: w < s ? '' : '70px', width:'300px', height:'300px', borderRadius:'0px 100px 0px 100px', alignItems:'center', overflow:'hidden'}}>
+                <BeforAfter
+                    id={`ps-image`}
+                    title={`${adsInfo.adsTitle}`}
+                    beforUrl={`https://www.pix.shiningpage.com/whoraly/ads/big/${adsInfo._id}-${adsInfo?.pictures?.[0]}.jpeg`}
+                    afterUrl={`https://www.pix.shiningpage.com/whoraly/ads/big/${adsInfo._id}-${adsInfo?.pictures?.[1]}.jpeg`}
+                    borderRadius={0}
+                    width={w<s ? '90%' : '100%'}
+                    height={w<s ? '90%' : '100%'}
+                />
+            </div>
+        )
+        const imgNormal = (
+            <img
+                className={w<s ? '' : 'sticky-top'}
+                style={{ top: w<s ? '' : NavH + 10, zIndex:0, 
+                    objectFit:'cover',
+                    height:'300px',
+                    width: w < s ? 'calc(100% - 20px)' : '300px',
+                    borderRadius:'0px 100px 0px 100px',
+                    marginRight: w < s ? '' : '70px',
+                    marginBottom: w < s ? '50px' : '',
+                    border:'1px solid #99999930'
+                }}
+                src={aboutImgSrc}
+                alt={`${adsInfo.adsTitle} about`}
+            />
+        )
+
+        const aboutImgSection = (
+            <div style={{minWidth: w<s + sidebarWidth ? '100%' : '300px'}}>
+                { adsInfo.pictures &&
+                    adsInfo.pictureType === 2
+                    ? imgBeforAfter
+                    : imgNormal
+                }
+            </div>
+        )
+
         const mainAds = (
             <div>
                 <div className='sticky-top' style={{top:w<s ? 50 : 70, zIndex:'1'}}>{me && <EditBtn rtl={rtl} stickyTop='on' onClick={() => this.onToggleEditAds()}/>}</div>
-                    <div style={{padding:w<s ? '50px 0px' : '70px 0px', fontSize:w<s ? '16px' : '18px'}}>
-                        <Container className='center' style={{alignItems:'center', flexDirection:'column'}}>
-                            <h1 style={{marginBottom:'50px', textAlign:'center'}}>{adsInfo.adsTitle}</h1>
-                            <div className='d-flex' style={{alignItems:w<s ? 'center' : '', flexDirection:w<s ? 'column' : ''}}>
-                                {adsInfo.pictures && (
-                                    adsInfo.pictureType === 2 ? (
-                                        <div className='center' style={{ marginRight: w < s ? '' : '70px', width:'300px', height:'300px', borderRadius:'0px 100px 0px 100px', alignItems:'center', overflow:'hidden'}}>
-                                            <BeforAfter
-                                                id={`ps-image`}
-                                                title={`${adsInfo.adsTitle}`}
-                                                beforUrl={`https://www.pix.shiningpage.com/whoraly/ads/big/${adsInfo._id}-${adsInfo.pictures[0]}.jpeg`}
-                                                afterUrl={`https://www.pix.shiningpage.com/whoraly/ads/big/${adsInfo._id}-${adsInfo.pictures[1]}.jpeg`}
-                                                borderRadius={0}
-                                                width={w<s ? '90%' : '100%'}
-                                                height={w<s ? '90%' : '100%'}
-                                            />
-                                        </div>
-                                    ) : (
-                                        <img
-                                            className={w<s ? '' : 'sticky-top'}
-                                            style={{ top: w<s ? '' : NavH + 10, zIndex:0, 
-                                                objectFit:'cover',
-                                                height:'300px',
-                                                width: w < s ? 'calc(100% - 20px)' : '300px',
-                                                borderRadius:'0px 100px 0px 100px',
-                                                marginRight: w < s ? '' : '70px',
-                                                marginBottom: w < s ? '50px' : '',
-                                                border:'1px solid #99999930'
-                                            }}
-                                            src={aboutImgSrc}
-                                            alt={`${adsInfo.adsTitle} about`}
-                                        />
-                                    )
-                                )}
-                                <div style={{whiteSpace:'pre-wrap', width:w < s ? 'calc(100% - 20px)' : ''}}>
-                                    {RenderContent(adsInfo.adsComment)}
-                                </div>
+                <div style={{padding:w<s ? '50px 0px' : '70px 0px', fontSize:w<s ? '16px' : '18px'}}>
+                    <Container className='center' style={{alignItems:'center', flexDirection:'column'}}>
+                        <h1 style={{marginBottom:'50px', textAlign:'center'}}>{adsInfo.adsTitle}</h1>
+                        <div className='flex gap-4' style={{alignItems:w<s ? 'center' : '', flexDirection:w<s ? 'column' : ''}}>
+                            {aboutImgSection}
+                            <div style={{whiteSpace:'pre-wrap', width:w < s ? 'calc(100% - 20px)' : ''}}>
+                                {RenderContent(adsInfo.adsComment)}
                             </div>
-                        </Container>
-                    </div>
+                        </div>
+                    </Container>
+                </div>
             </div>
         )
     
