@@ -45,3 +45,6 @@ yarn-error.log*
 
 # Ignore text file
 text.txt
+
+# Ignore sitemap
+sitemap.xml
