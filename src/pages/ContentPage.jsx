@@ -1743,7 +1743,7 @@ class ContentPage extends Component {
         )
 
         const mainAds = (
-            <div className={w<s ? 'pt-[70px]' : 'pt-[70px] px-[20px]'}>
+            <div className={w<s ? 'pt-[70px]' : 'pt-[70px] pb-[25px] px-[20px]'}>
                 <div className='sticky-top' style={{top:w<s ? 50 : 70, zIndex:'1'}}>
                     {me && <EditBtn rtl={rtl} stickyTop='on' onClick={() => this.onToggleEditAds()}/>}
                 </div>
